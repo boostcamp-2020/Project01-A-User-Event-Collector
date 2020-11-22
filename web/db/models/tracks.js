@@ -11,15 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Albums, {
         foreignKey: { name: "albumId" },
         sourceKey: "id",
-        onDelete: "CASCADE",
+        onDelete: "SET NULL",
       });
-      this.hasMany(models.Playlists_Tracks, {
-        foreignKey: { name: "trackId" },
-        sourceKey: "id",
-      });
+      // this.hasMany(models.Playlists_Tracks, {
+      //   foreignKey: { name: "trackId" },
+      //   sourceKey: "id",
+      // });
       this.hasMany(models.Artists_Tracks, {
         foreignKey: { name: "trackId" },
         sourceKey: "id",
+        onDelete: "SET NULL",
       });
     }
   }

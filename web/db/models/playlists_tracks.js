@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Playlists_Tracks extends Model {
     /**
@@ -11,22 +9,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Playlists, {
-        foreignKey: { name: 'playlistId'},
-        sourceKey: 'id',
-        onDelete: 'CASCADE',
+        foreignKey: { name: "playlistId" },
+        sourceKey: "id",
+        onDelete: "SET NULL",
       });
       this.belongsTo(models.Tracks, {
-        foreignKey: { name: 'trackId'},
-        sourceKey: 'id',
-        onDelete: 'CASCADE',
+        foreignKey: { name: "trackId" },
+        sourceKey: "id",
+        onDelete: "SET NULL",
       });
     }
-  };
-  Playlists_Tracks.init({
-    playlistTrackNumber: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Playlists_Tracks',
-  });
+  }
+  Playlists_Tracks.init(
+    {
+      playlistTrackNumber: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "Playlists_Tracks",
+    }
+  );
   return Playlists_Tracks;
 };

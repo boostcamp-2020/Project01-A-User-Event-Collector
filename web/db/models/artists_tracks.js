@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Artists, {
-        foreignKey: { name: 'artistId'},
-        sourceKey: 'id',
-        onDelete: 'CASCADE',
+        foreignKey: { name: "artistId" },
+        sourceKey: "id",
+        onDelete: "SET NULL",
       });
       this.belongsTo(models.Tracks, {
-        foreignKey: { name: 'trackId'},
-        sourceKey: 'id',
-        onDelete: 'CASCADE',
+        foreignKey: { name: "trackId" },
+        sourceKey: "id",
+        onDelete: "SET NULL",
       });
     }
   }
