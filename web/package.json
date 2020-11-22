@@ -8,9 +8,12 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "mysql2": "^2.2.5",
     "next": "latest",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
