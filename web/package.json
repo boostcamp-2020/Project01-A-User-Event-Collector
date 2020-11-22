@@ -8,6 +8,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "mysql2": "^2.2.5",
     "next": "latest",
     "react": "^16.12.0",
