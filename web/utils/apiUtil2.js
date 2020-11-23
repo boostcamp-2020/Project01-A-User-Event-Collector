@@ -13,6 +13,7 @@ const {
   Magazines,
   Artists_Tracks,
 } = require("../db/models");
+const magazines = require("../db/models/magazines");
 
 const getTrackCardData = async (id) => {
   const trackResolve = await Tracks.findOne({ where: { id: id } });
@@ -70,7 +71,6 @@ const getArtistPageData = async (id) => {
 const getPlaylistPageData = async (id) => {
   const playlistResolve = await Playlists.findOne({ where: { id: id } });
   const result = playlistResolve.toJSON();
-  console.log(result);
 
   const relationResolve = await Playlists_Tracks.findAll({
     where: { playlistId: id },
@@ -85,3 +85,21 @@ const getPlaylistPageData = async (id) => {
   return result;
 };
 // getPlaylistPageData(1);
+
+const getMagazinePageData = async (id) => {
+  const magazineResolve = await Magazines.findOne({ where: { id: id } });
+  const result = magazineResolve.toJSON();
+
+  const relationResolve = await Playlists_Tracks.findAll({
+    where: { playlistId: result.playlistId },
+  });
+  const trackIdArr = relationResolve.map(
+    (relation) => relation.toJSON().trackId
+  );
+  result.Track = await Promise.all(
+    trackIdArr.map((trackId) => getTrackCardData(trackId))
+  );
+  return result;
+};
+
+// getMagazinePageData(2);
