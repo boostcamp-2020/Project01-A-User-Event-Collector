@@ -14,11 +14,9 @@ struct TrackListView: View {
     var body: some View {
         List {
             ForEach(viewModel.tracks) { track -> TrackCell in
-                var cell = TrackCell(track: track)
-                cell.didToggleFavorite = {
+                TrackCell(track: track, didToggleFavorite: {
                     viewModel.toggleIsFavorite(for: track.id)
-                }
-                return cell
+                })
             }
         }
         .onAppear(perform: {
