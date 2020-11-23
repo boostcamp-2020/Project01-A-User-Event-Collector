@@ -11,6 +11,8 @@
 		51386FCC256A8D9F006CDAA6 /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51386FCB256A8D9F006CDAA6 /* TrackListViewModel.swift */; };
 		51386FD1256A8DE2006CDAA6 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51386FD0256A8DE2006CDAA6 /* TrackCell.swift */; };
 		51386FF3256AB14F006CDAA6 /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51386FF2256AB14E006CDAA6 /* TrackListView.swift */; };
+		514E0B72256BDBF0009C6953 /* EllipsisAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E0B71256BDBF0009C6953 /* EllipsisAccessoryView.swift */; };
+		514E0B7A256BDC0C009C6953 /* HeartAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E0B79256BDC0C009C6953 /* HeartAccessoryView.swift */; };
 		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
 		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
 		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		51386FCB256A8D9F006CDAA6 /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		51386FD0256A8DE2006CDAA6 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		51386FF2256AB14E006CDAA6 /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		514E0B71256BDBF0009C6953 /* EllipsisAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisAccessoryView.swift; sourceTree = "<group>"; };
+		514E0B79256BDC0C009C6953 /* HeartAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartAccessoryView.swift; sourceTree = "<group>"; };
 		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,8 +109,18 @@
 			children = (
 				51386FD0256A8DE2006CDAA6 /* TrackCell.swift */,
 				51386FF2256AB14E006CDAA6 /* TrackListView.swift */,
+				514E0B70256BDB26009C6953 /* AccessoryViews */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		514E0B70256BDB26009C6953 /* AccessoryViews */ = {
+			isa = PBXGroup;
+			children = (
+				514E0B71256BDBF0009C6953 /* EllipsisAccessoryView.swift */,
+				514E0B79256BDC0C009C6953 /* HeartAccessoryView.swift */,
+			);
+			path = AccessoryViews;
 			sourceTree = "<group>";
 		};
 		CF05F89B2567E7AD008080D7 = {
@@ -307,8 +321,10 @@
 				51386FC4256A8D6F006CDAA6 /* Track.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
 				CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */,
+				514E0B7A256BDC0C009C6953 /* HeartAccessoryView.swift in Sources */,
 				51386FCC256A8D9F006CDAA6 /* TrackListViewModel.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
+				514E0B72256BDBF0009C6953 /* EllipsisAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

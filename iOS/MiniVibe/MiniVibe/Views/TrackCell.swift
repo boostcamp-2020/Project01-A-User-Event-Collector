@@ -47,43 +47,6 @@ extension TrackCell {
     }
 }
 
-
-struct HeartAccessoryView: View {
-    var isFavorite: Bool
-    let toggleFavorite: (() -> Void)?
-    
-    var body: some View {
-        Button(action: {
-            toggleFavorite?()
-        }, label: {
-            Image(systemName: isFavorite ? "heart.fill" : "heart")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20, alignment: .center)
-                .accentColor(.red)
-
-        })
-        .buttonStyle(BorderlessButtonStyle())
-    }
-}
-
-struct EllipsisAccessoryView: View {
-    var body: some View {
-        Button(action: {
-            print("show menu")
-            
-        }, label: {
-            Image(systemName: "ellipsis")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20, alignment: .center)
-                .accentColor(.gray)
-
-        })
-        .buttonStyle(BorderlessButtonStyle())
-    }
-}
-
 struct TrackInfoView: View {
     let title: String
     let artist: String
