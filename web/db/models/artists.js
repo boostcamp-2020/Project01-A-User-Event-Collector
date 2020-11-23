@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: { name: "artistId" },
         sourceKey: "id",
       });
+      this.belongsToMany(models.Users, { through: "Users_Like_Artists" });
+      this.belongsToMany(models.Genres, { through: "Artists_Genres" });
     }
   };
   Artists.init({

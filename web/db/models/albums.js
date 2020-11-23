@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: "id",
         onDelete: "SET NULL",
       });
+      this.belongsToMany(models.Users, { through: "Users_Like_Albums" });
+      this.belongsToMany(models.Genres, { through: "Albums_Genres" });
     }
   }
   Albums.init(

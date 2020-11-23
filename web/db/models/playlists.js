@@ -12,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: { name: "playlistId" },
         sourceKey: "id",
       });
+      this.belongsTo(models.Users, {
+        foreignKey: { name: "author" },
+        sourceKey: "id",
+        onDelete: "SET NULL",
+      });
+      this.belongsToMany(models.Users, { through: "Users_Playlists" });
     }
   }
   Playlists.init(
