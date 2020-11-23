@@ -101,7 +101,7 @@ struct TrackInfo: View {
 }
 
  
-struct NewsView_Previews: PreviewProvider {
+struct TrackCell_Previews: PreviewProvider {
 
     static var previews: some View {
         let testTrack1 = Track(id: 1, title: "휘파람", artist: "BLACKPINK", isFavorite: true)
