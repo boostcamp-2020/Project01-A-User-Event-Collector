@@ -43,7 +43,6 @@ const getAlbumPageData = async (id) => {
   result.Track = await Promise.all(
     trackResolve.map((track) => getTrackCardData(track.toJSON().id))
   );
-  // console.log(result);
   return result;
 };
 
@@ -66,49 +65,23 @@ const getArtistPageData = async (id) => {
 
   return result;
 };
+// getArtistPageData(1);
 
-getArtistPageData(1);
+const getPlaylistPageData = async (id) => {
+  const playlistResolve = await Playlists.findOne({ where: { id: id } });
+  const result = playlistResolve.toJSON();
+  console.log(result);
 
-// const fromArtist = async (id) => {
-//   const artistRaw = await Artists.findOne({ where: { id: id } });
-//   const artistResult = artistRaw.toJSON();
-//   return artistResult;
-// };
+  const relationResolve = await Playlists_Tracks.findAll({
+    where: { playlistId: id },
+  });
+  const trackIdArr = relationResolve.map(
+    (relation) => relation.toJSON().trackId
+  );
+  result.Track = await Promise.all(
+    trackIdArr.map((trackId) => getTrackCardData(trackId))
+  );
 
-// const fromTracks = async (id) => {
-//   const trackAlbumRaw = await Tracks.findOne({
-//     where: { id: id },
-//     include: [{ model: Albums }],
-//   });
-//   const result = trackAlbumRaw.toJSON();
-
-//   const b = await Artists_Tracks.findAll({ where: { trackId: result.id } });
-//   const artistsArr = b.map((b) => b.toJSON().artistId);
-
-//   result.Artists = await Promise.all(
-//     artistsArr.map((artistId) => fromArtist(artistId))
-//   );
-
-//   return result;
-// };
-
-// const fromPlaylists = async (id) => {
-//   const playlistRaw = await Playlists.findOne({
-//     where: { id: id },
-//     include: [
-//       {
-//         model: Playlists_Tracks,
-//         where: { playlistId: id },
-//       },
-//     ],
-//   });
-//   const result = playlistRaw.toJSON();
-//   const trackArr = result.Playlists_Tracks.map((r) => r.trackId);
-//   result.Tracks = await Promise.all(
-//     trackArr.map((trackId) => fromTracks(trackId))
-//   );
-//   console.log(result);
-//   console.log(result.Tracks);
-// };
-
-// fromPlaylists(1);
+  return result;
+};
+// getPlaylistPageData(1);
