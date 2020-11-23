@@ -22,11 +22,11 @@ struct TrackCell: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 38, height: 38, alignment: .center)
                 .padding()
-            TrackInfo(title: title, artist: artist)
+            TrackInfoView(title: title, artist: artist)
             Spacer()
             HStack(spacing: 20) {
-                Heart(isFavorite: isFavorite, toggleFavorite: didToggleFavorite)
-                Ellipsis()
+                HeartAccessoryView(isFavorite: isFavorite, toggleFavorite: didToggleFavorite)
+                EllipsisAccessoryView()
             }
             .padding(18)
         }
@@ -38,22 +38,22 @@ struct TrackCell: View {
 }
 
 extension TrackCell {
-    init(track: Track) {
+    init(track: Track, didToggleFavorite: (() -> Void)?) {
         title = track.title
         artist = track.artist
         isFavorite = track.isFavorite
         id = track.id
+        self.didToggleFavorite = didToggleFavorite
     }
 }
 
 
-struct Heart: View {
-    @State var isFavorite: Bool
+struct HeartAccessoryView: View {
+    var isFavorite: Bool
     let toggleFavorite: (() -> Void)?
     
     var body: some View {
         Button(action: {
-            self.isFavorite.toggle()
             toggleFavorite?()
         }, label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
@@ -67,7 +67,7 @@ struct Heart: View {
     }
 }
 
-struct Ellipsis: View {
+struct EllipsisAccessoryView: View {
     var body: some View {
         Button(action: {
             print("show menu")
@@ -84,7 +84,7 @@ struct Ellipsis: View {
     }
 }
 
-struct TrackInfo: View {
+struct TrackInfoView: View {
     let title: String
     let artist: String
     
@@ -108,8 +108,8 @@ struct TrackCell_Previews: PreviewProvider {
         let testTrack2 = Track(id: 2, title: "마지막처럼", artist: "BLACKPINK", isFavorite: false)
 
         Group {
-            TrackCell(track: testTrack1)
-            TrackCell(track: testTrack2)
+            TrackCell(track: testTrack1, didToggleFavorite: nil)
+            TrackCell(track: testTrack2, didToggleFavorite: nil)
                 .preferredColorScheme(.dark)
 
         }
