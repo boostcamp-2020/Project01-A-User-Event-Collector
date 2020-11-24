@@ -2,18 +2,48 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    let datas = [];
-    for (let i = 1; i <= 10; i++) {
-      let obj = {
-        id: i,
-        createdAt: new Date().toISOString().slice(0, 19).replace("T", " "),
-        updatedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
-        playlistId: Math.floor(Math.random() * 5) + 1,
-        trackId: Math.floor(Math.random() * 20) + 1,
-      };
-      datas.push(obj);
-    }
-    return await queryInterface.bulkInsert("Playlists_Tracks", datas, {});
+    return queryInterface.bulkInsert('Playlists_Tracks', [
+      {
+        id: 1,
+        playlistTrackNumber: 1,
+        playlistid: 1,
+        trackId: 2,
+        createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      },
+      {
+        id: 1,
+        playlistTrackNumber: 2,
+        playlistid: 1,
+        trackId: 3,
+        createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      },
+      {
+        id: 1,
+        playlistTrackNumber: 3,
+        playlistid: 1,
+        trackId: 1,
+        createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      },
+      {
+        id: 1,
+        playlistTrackNumber: 4,
+        playlistid: 1,
+        trackId: 7,
+        createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      },
+      {
+        id: 2,
+        playlistTrackNumber: 1,
+        playlistid: 2,
+        trackId: 1,
+        createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      },
+    ]);
   },
 
   down: async (queryInterface, Sequelize) => {
