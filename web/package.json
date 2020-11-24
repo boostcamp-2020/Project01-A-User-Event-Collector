@@ -2,7 +2,8 @@
   "name": "with-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "watch" : "tsc-watch",
+    "dev" : "next",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"
@@ -14,13 +15,14 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.3.5",
-    "sequelize-typescript": "^1.1.0"
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "@types/node": "^12.19.6",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/validator": "^13.1.0",
+    "tsc-watch": "^4.2.9",
     "typescript": "4.0"
   },
   "license": "MIT"
