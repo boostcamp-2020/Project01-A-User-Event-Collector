@@ -22,8 +22,7 @@
     "target": "esnext",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "ts-out/",
-    "moduleResolution": "node"
+    "outDir": "ts-out/"
   },
   "exclude": [
     "node_modules"
