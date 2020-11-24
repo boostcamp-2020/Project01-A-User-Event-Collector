@@ -8,7 +8,7 @@
     "jsx": "preserve",
     "lib": [
       "dom",
-      "esnext"
+      "es2017"
     ],
     "module": "esnext",
     "moduleResolution": "node",
@@ -22,8 +22,8 @@
     "target": "esnext",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "dist",
-    "sourceMap": true,
+    "outDir": "ts-out/",
+    "types" : []
   },
   "exclude": [
     "node_modules"
