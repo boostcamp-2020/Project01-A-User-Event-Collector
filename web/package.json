@@ -2,8 +2,8 @@
   "name": "with-typescript",
   "version": "1.0.0",
   "scripts": {
-    "watch" : "tsc-watch",
-    "dev" : "next",
+    "watch": "tsc-watch",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"
@@ -15,11 +15,13 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@prisma/cli": "^2.11.0",
     "@types/node": "^12.19.6",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "ts-node": "^9.0.0",
     "tsc-watch": "^4.2.9",
-    "typescript": "4.0"
+    "typescript": "^4.0.5"
   },
   "license": "MIT"
 }
