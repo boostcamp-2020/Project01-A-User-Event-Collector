@@ -8,5 +8,6 @@ module.exports = {
    'config': path.resolve('db/config', 'config.js'),
    'models-path': path.resolve('db', 'models'),
    'seeders-path': path.resolve('db', 'seeders'),
-   'migrations-path': path.resolve('db', 'migrations')
+   'migrations-source-path' : path.resolve('db', 'migrations_sources'),
+   'migrations-compiled-path' : path.resolve('db', 'migrations_compiled')
 };
