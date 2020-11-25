@@ -21,28 +21,45 @@ const getPlaylistPageData = async (id : number) => {
   const playlist : any = await prisma.playlists.findUnique({where:{id:id}})
   //author 나중에
   
-  const trackIdArr = await prisma.playlists_Tracks.findMany({where:{playlistId:id}})
-  playlist.Tracks = await Promise.all(
+  const trackIdArr = await prisma.playlists_Tracks.findMany({
+    where:{playlistId:id},
+    orderBy: {playlistTrackNumber: 'asc'},
+  })
+  playlist.Tracks = await Promise.all( 
     trackIdArr.map((elem) => getTrackCardData(elem.trackId))
-    )
+  )
     
   console.log(playlist)
   return playlist
 }
   
-  const getArtistPageData = async (id :number) => {
-    const artist : any = await prisma.artists.findUnique({where:{id:id}})
-    artist.Albums = await prisma.albums.findMany({where:{artistId:id}})
-    
-    const trackIdArr = await prisma.artists_Tracks.findMany({where:{artistId:id}})
-    artist.Tracks = await Promise.all(
-      trackIdArr.map((elem) => getTrackCardData(elem.trackId))
-      )
-    
-    console.log(artist)
-    return artist
-  }
+const getArtistPageData = async (id :number) => {
+  const artist : any = await prisma.artists.findUnique({where:{id:id}})
+  artist.Albums = await prisma.albums.findMany({where:{artistId:id}})
+  
+  const trackIdArr = await prisma.artists_Tracks.findMany({where:{artistId:id}})
+  artist.Tracks = await Promise.all(
+    trackIdArr.map((elem) => getTrackCardData(elem.trackId))
+    )
+  
+  console.log(artist)
+  return artist
+}
 
+const getMagazinePageData = async (id :number) => {
+  const magazine : any = await prisma.magazines.findUnique({ where: { id: id }}) 
+
+  const playlistTracks : any = await prisma.playlists_Tracks.findMany({
+    where: {playlistId: magazine.playlistId},
+    orderBy: {playlistTrackNumber: 'asc'},
+  })
+  magazine.Tracks = await Promise.all(
+    playlistTracks.map((elem)=>getTrackCardData(elem.trackId))
+  );
+
+  console.log(magazine);
+  return magazine
+};
 
 // getTrackCardData(1)
 // getPlaylistPageData(1)

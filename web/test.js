@@ -72,7 +72,10 @@ var getPlaylistPageData = function (id) { return __awaiter(void 0, void 0, void 
             ];
             case 1:
                 playlist = _b.sent();
-                return [4 /*yield*/, prisma.playlists_Tracks.findMany({ where: { playlistId: id } })];
+                return [4 /*yield*/, prisma.playlists_Tracks.findMany({
+                        where: { playlistId: id },
+                        orderBy: { playlistTrackNumber: 'asc' }
+                    })];
             case 2:
                 trackIdArr = _b.sent();
                 _a = playlist;
@@ -109,3 +112,25 @@ var getArtistPageData = function (id) { return __awaiter(void 0, void 0, void 0,
     });
 }); };
 exports.getArtistPageData = getArtistPageData;
+var getMagazinePageData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+    var magazine, playlistTracks, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, prisma.magazines.findUnique({ where: { id: id } })];
+            case 1:
+                magazine = _b.sent();
+                return [4 /*yield*/, prisma.playlists_Tracks.findMany({
+                        where: { playlistId: magazine.playlistId },
+                        orderBy: { playlistTrackNumber: 'asc' }
+                    })];
+            case 2:
+                playlistTracks = _b.sent();
+                _a = magazine;
+                return [4 /*yield*/, Promise.all(playlistTracks.map(function (elem) { return getTrackCardData(elem.trackId); }))];
+            case 3:
+                _a.Tracks = _b.sent();
+                console.log(magazine);
+                return [2 /*return*/, magazine];
+        }
+    });
+}); };
