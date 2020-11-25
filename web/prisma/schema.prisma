@@ -7,6 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Users {
+  id        Int         @id @default(autoincrement())
+  username  String?
+  password  String?
+  oAuth     String?
+  createdAt DateTime
+  updatedAt DateTime
+  Playlists Playlists[]
+}
+
 model Albums {
   id          Int      @id @default(autoincrement())
   albumName   String?
@@ -32,9 +42,9 @@ model Artists {
   artistName     String?
   cover          String?
   createdAt      DateTime
-  updatedAt      DateTime         
+  updatedAt      DateTime
   Albums         Albums[]
-  tracks         Tracks[] @relation(references: [id])
+  Artists_Tracks Artists_Tracks[]
 }
 
 model Artists_Genres {
@@ -44,11 +54,16 @@ model Artists_Genres {
 }
 
 model Artists_Tracks {
-  artists   Artists @relation(fields: [artistId], references: [id])
-  artistId  Int
-  tracks    Tracks  @relation(fields: [trackId], references: [id])
-  trackId   Int
-  @@id([artistId,trackId])
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime
+  updatedAt DateTime
+  trackId   Int?
+  artistId  Int?
+  Artists   Artists? @relation(fields: [artistId], references: [id])
+  Tracks    Tracks?  @relation(fields: [trackId], references: [id])
+
+  @@index([artistId], name: "Artists_Tracks_artistId_foreign_idx")
+  @@index([trackId], name: "Artists_Tracks_trackId_foreign_idx")
 }
 
 model DJStations {
@@ -136,7 +151,7 @@ model Tracks {
   updatedAt        DateTime
   albumId          Int?
   Albums           Albums?            @relation(fields: [albumId], references: [id])
-  artists          Artists[]          @relation(references: [id])
+  Artists_Tracks   Artists_Tracks[]
   Playlists_Tracks Playlists_Tracks[]
 
   @@index([albumId], name: "Tracks_albumId_foreign_idx")
@@ -146,16 +161,6 @@ model Tracks_Genres {
   id        Int      @id @default(autoincrement())
   createdAt DateTime
   updatedAt DateTime
-}
-
-model Users {
-  id        Int         @id @default(autoincrement())
-  username  String?
-  password  String?
-  oAuth     String?
-  createdAt DateTime
-  updatedAt DateTime
-  Playlists Playlists[]
 }
 
 model Users_Like_Albums {
