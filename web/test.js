@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getArtistPageData = exports.getPlaylistPageData = void 0;
+exports.getMagazinePageData = exports.getArtistPageData = exports.getPlaylistPageData = void 0;
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
 var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
@@ -58,7 +58,6 @@ var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, 
                 return [4 /*yield*/, Promise.all(artistIdArr.map(function (elem) { return prisma.artists.findUnique({ where: { id: elem.artistId } }); }))];
             case 3:
                 _a.Artists = _b.sent();
-                console.log(track);
                 return [2 /*return*/, track];
         }
     });
@@ -82,7 +81,6 @@ var getPlaylistPageData = function (id) { return __awaiter(void 0, void 0, void 
                 return [4 /*yield*/, Promise.all(trackIdArr.map(function (elem) { return getTrackCardData(elem.trackId); }))];
             case 3:
                 _a.Tracks = _b.sent();
-                console.log(playlist);
                 return [2 /*return*/, playlist];
         }
     });
@@ -106,7 +104,6 @@ var getArtistPageData = function (id) { return __awaiter(void 0, void 0, void 0,
                 return [4 /*yield*/, Promise.all(trackIdArr.map(function (elem) { return getTrackCardData(elem.trackId); }))];
             case 4:
                 _b.Tracks = _c.sent();
-                console.log(artist);
                 return [2 /*return*/, artist];
         }
     });
@@ -129,8 +126,8 @@ var getMagazinePageData = function (id) { return __awaiter(void 0, void 0, void 
                 return [4 /*yield*/, Promise.all(playlistTracks.map(function (elem) { return getTrackCardData(elem.trackId); }))];
             case 3:
                 _a.Tracks = _b.sent();
-                console.log(magazine);
                 return [2 /*return*/, magazine];
         }
     });
 }); };
+exports.getMagazinePageData = getMagazinePageData;

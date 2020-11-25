@@ -12,7 +12,6 @@ const getTrackCardData = async (id :number) => {
   track.Artists = await Promise.all(
     artistIdArr.map((elem) => prisma.artists.findUnique({ where: { id: elem.artistId } }))
   );
-  console.log(track)
   return track
 };
 
@@ -29,7 +28,6 @@ const getPlaylistPageData = async (id : number) => {
     trackIdArr.map((elem) => getTrackCardData(elem.trackId))
   )
     
-  console.log(playlist)
   return playlist
 }
   
@@ -42,7 +40,6 @@ const getArtistPageData = async (id :number) => {
     trackIdArr.map((elem) => getTrackCardData(elem.trackId))
     )
   
-  console.log(artist)
   return artist
 }
 
@@ -56,8 +53,6 @@ const getMagazinePageData = async (id :number) => {
   magazine.Tracks = await Promise.all(
     playlistTracks.map((elem)=>getTrackCardData(elem.trackId))
   );
-
-  console.log(magazine);
   return magazine
 };
 
@@ -65,4 +60,4 @@ const getMagazinePageData = async (id :number) => {
 // getPlaylistPageData(1)
 // getArtistPageData(1)
 
-export {getPlaylistPageData, getArtistPageData}
+export {getPlaylistPageData, getArtistPageData, getMagazinePageData};
