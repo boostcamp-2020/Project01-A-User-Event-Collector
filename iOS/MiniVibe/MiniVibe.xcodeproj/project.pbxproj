@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51BEB2E1256E2AB700FB2876 /* CategoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB2E0256E2AB700FB2876 /* CategoryRowView.swift */; };
+		51BEB2E6256E2B1A00FB2876 /* DJStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB2E5256E2B1A00FB2876 /* DJStation.swift */; };
+		51BEB2EB256E6D8500FB2876 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB2EA256E6D8400FB2876 /* TodayView.swift */; };
+		51BEB2F0256E6E6200FB2876 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB2EF256E6E6200FB2876 /* Category.swift */; };
+		51BEB2F5256E6ED600FB2876 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB2F4256E6ED600FB2876 /* CategoryItem.swift */; };
+		51BEB2FF256E91C400FB2876 /* CategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB2FE256E91C400FB2876 /* CategoryInfoView.swift */; };
+		51BEB307256E91CE00FB2876 /* CategoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB306256E91CE00FB2876 /* CategoryItemView.swift */; };
 		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
 		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
 		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
@@ -35,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51BEB2E0256E2AB700FB2876 /* CategoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRowView.swift; sourceTree = "<group>"; };
+		51BEB2E5256E2B1A00FB2876 /* DJStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJStation.swift; sourceTree = "<group>"; };
+		51BEB2EA256E6D8400FB2876 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		51BEB2EF256E6E6200FB2876 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		51BEB2F4256E6ED600FB2876 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		51BEB2FE256E91C400FB2876 /* CategoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoView.swift; sourceTree = "<group>"; };
+		51BEB306256E91CE00FB2876 /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
 		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51BEB2FD256E918F00FB2876 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				51BEB2E0256E2AB700FB2876 /* CategoryRowView.swift */,
+				51BEB2FE256E91C400FB2876 /* CategoryInfoView.swift */,
+				51BEB306256E91CE00FB2876 /* CategoryItemView.swift */,
+				51BEB2EF256E6E6200FB2876 /* Category.swift */,
+				51BEB2F4256E6ED600FB2876 /* CategoryItem.swift */,
+				51BEB2EA256E6D8400FB2876 /* TodayView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
 		CF05F89B2567E7AD008080D7 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +131,8 @@
 				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 				CF05F8B52567E7B0008080D7 /* Info.plist */,
+				51BEB2FD256E918F00FB2876 /* Today */,
+				51BEB2E5256E2B1A00FB2876 /* DJStation.swift */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
 				CF05F8AD2567E7B0008080D7 /* Preview Content */,
 			);
@@ -265,10 +294,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BEB2FF256E91C400FB2876 /* CategoryInfoView.swift in Sources */,
+				51BEB2E6256E2B1A00FB2876 /* DJStation.swift in Sources */,
 				CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */,
+				51BEB2E1256E2AB700FB2876 /* CategoryRowView.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
+				51BEB2F5256E6ED600FB2876 /* CategoryItem.swift in Sources */,
+				51BEB2EB256E6D8500FB2876 /* TodayView.swift in Sources */,
 				CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
+				51BEB307256E91CE00FB2876 /* CategoryItemView.swift in Sources */,
+				51BEB2F0256E6E6200FB2876 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
