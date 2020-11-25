@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getArtistPageData = exports.getPlaylistPageData = void 0;
+exports.getMagazinePageData = exports.getArtistPageData = exports.getPlaylistPageData = void 0;
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
 var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
@@ -134,3 +134,4 @@ var getMagazinePageData = function (id) { return __awaiter(void 0, void 0, void 
         }
     });
 }); };
+exports.getMagazinePageData = getMagazinePageData;

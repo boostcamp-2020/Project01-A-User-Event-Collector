@@ -65,4 +65,4 @@ const getMagazinePageData = async (id :number) => {
 // getPlaylistPageData(1)
 // getArtistPageData(1)
 
-export {getPlaylistPageData, getArtistPageData}
+export {getPlaylistPageData, getArtistPageData,getMagazinePageData}
