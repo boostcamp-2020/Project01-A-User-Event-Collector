@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+exports.getArtistPageData = exports.getPlaylistPageData = void 0;
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
 var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
@@ -58,17 +59,53 @@ var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, 
             case 3:
                 _a.Artists = _b.sent();
                 console.log(track);
-                return [2 /*return*/];
+                return [2 /*return*/, track];
         }
     });
 }); };
-getTrackCardData(1);
-// const abc:any = await prisma.artists_Tracks.findMany({
-//   where : { trackId : id},
-// })
-// const abc2:any = await prisma.artists_Tracks.findMany({
-//   select : {artists : true},
-//   where : { trackId : id},
-// })
-// console.log(abc)
-// console.log(abc2)
+var getPlaylistPageData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+    var playlist, trackIdArr, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, prisma.playlists.findUnique({ where: { id: id } })
+                //author 나중에
+            ];
+            case 1:
+                playlist = _b.sent();
+                return [4 /*yield*/, prisma.playlists_Tracks.findMany({ where: { playlistId: id } })];
+            case 2:
+                trackIdArr = _b.sent();
+                _a = playlist;
+                return [4 /*yield*/, Promise.all(trackIdArr.map(function (elem) { return getTrackCardData(elem.trackId); }))];
+            case 3:
+                _a.Tracks = _b.sent();
+                console.log(playlist);
+                return [2 /*return*/, playlist];
+        }
+    });
+}); };
+exports.getPlaylistPageData = getPlaylistPageData;
+var getArtistPageData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+    var artist, _a, trackIdArr, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0: return [4 /*yield*/, prisma.artists.findUnique({ where: { id: id } })];
+            case 1:
+                artist = _c.sent();
+                _a = artist;
+                return [4 /*yield*/, prisma.albums.findMany({ where: { artistId: id } })];
+            case 2:
+                _a.Albums = _c.sent();
+                return [4 /*yield*/, prisma.artists_Tracks.findMany({ where: { artistId: id } })];
+            case 3:
+                trackIdArr = _c.sent();
+                _b = artist;
+                return [4 /*yield*/, Promise.all(trackIdArr.map(function (elem) { return getTrackCardData(elem.trackId); }))];
+            case 4:
+                _b.Tracks = _c.sent();
+                console.log(artist);
+                return [2 /*return*/, artist];
+        }
+    });
+}); };
+exports.getArtistPageData = getArtistPageData;
