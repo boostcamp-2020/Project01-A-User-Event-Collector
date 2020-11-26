@@ -21,7 +21,8 @@ struct TrackCellView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 38, height: 38, alignment: .center)
-                .padding()
+                .padding(.vertical, 5)
+                .padding(.horizontal, 10)
             TrackInfo(title: title, artist: artist)
             Spacer()
             HStack(spacing: 20) {
@@ -48,12 +49,11 @@ extension TrackCellView {
 
 
 struct Heart: View {
-    @State var isFavorite: Bool
+    var isFavorite: Bool
     let toggleFavorite: (() -> Void)?
     
     var body: some View {
         Button(action: {
-            self.isFavorite.toggle()
             toggleFavorite?()
         }, label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
