@@ -16,18 +16,13 @@ struct PlaylistListView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
-                        NavigationLink(destination: Text("")) {
-//                            @StateObject var cellviewModel = PlaylistCellViewModel(playlist: $viewModel.playlistList[index], navigationType: viewModel.navigationType)
-                            PlaylistCellView(playlist: $viewModel.playlistList[index])
-                        }
-                    }
-                }
-            }.modifier(NavigationBarStyle(title: viewModel.navigationType.title()))
-        }
+        List (viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
+            NavigationLink(
+                destination: TrackListView()
+            ) {
+                PlaylistCellView(playlist: $viewModel.playlistList[index])
+            }
+        }.modifier(NavigationBarStyle(title: viewModel.navigationType.title()))
         .onAppear() {
             viewModel.fetchPlaylistList()
         }
