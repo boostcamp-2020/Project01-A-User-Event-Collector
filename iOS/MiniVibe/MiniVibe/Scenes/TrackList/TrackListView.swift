@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TrackListView: View {
     
-    @ObservedObject private var viewModel = TrackListViewModel()
+    @StateObject private var viewModel = TrackListViewModel()
     
     var body: some View {
         List {
@@ -20,7 +20,8 @@ struct TrackListView: View {
                 }
                 return cell
             }
-        }.modifier(NavigationBarStyle(title: "노래 목록"))
+        }
+        .navigationBarTitle("최근 들은 노래", displayMode: .inline)
         .onAppear(perform: {
             viewModel.fetchTracks()
         })
@@ -30,6 +31,5 @@ struct TrackListView: View {
 struct TrackListView_Previews: PreviewProvider {
     static var previews: some View {
         TrackListView()
-            
     }
 }
