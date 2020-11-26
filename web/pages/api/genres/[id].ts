@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { getGenrePageData } from '../../../utils/test';
+import { NextApiRequest, NextApiResponse } from "next";
+import { getGenrePageData } from "../../../utils/test";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const {
@@ -7,14 +7,14 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     method,
   } = _req;
 
-  const id : number = +stringId;
+  const id: number = +stringId;
 
   try {
     switch (method) {
-      case 'GET':
+      case "GET":
         const result = await getGenrePageData(id);
         if (!result) {
-          res.status(400).json({ statusCode: 400, message: 'Bad Request' });
+          res.status(400).json({ statusCode: 400, message: "Bad Request" });
           return;
         }
 
@@ -24,7 +24,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
       default:
         res.end();
     }
-  } catch (err) { res.status(500).json({ statusCode: 500, message: err.message }); }
+  } catch (err) {
+    res.status(500).json({ statusCode: 500, message: err.message });
+  }
 };
 
 export default handler;
