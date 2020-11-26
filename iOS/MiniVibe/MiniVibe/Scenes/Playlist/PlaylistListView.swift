@@ -17,7 +17,11 @@ struct PlaylistListView: View {
     
     var body: some View {
         List (viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
-            PlaylistCellView(playlist: $viewModel.playlistList[index])
+            NavigationLink(
+                destination: TrackListView()
+            ) {
+                PlaylistCellView(playlist: $viewModel.playlistList[index])
+            }
         }.modifier(NavigationBarStyle(title: viewModel.navigationType.title()))
         .onAppear() {
             viewModel.fetchPlaylistList()
