@@ -45,7 +45,7 @@ struct CategoryView: View {
 struct CategoryRowView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CategoryView(category: Category(title: "Station", type: .station, mode: .half))
+            CategoryView(category: Category(title: "Station", items: [], type: .station, mode: .half))
         }
     }
 }

@@ -48,10 +48,47 @@ struct TodayView_Previews: PreviewProvider {
 }
 
 struct TestData {
+    static let stationItems: [CategoryItem] =
+        [.init(id: 1, imageName: "", title: nil, description: nil),
+         .init(id: 2, imageName: "", title: nil, description: nil),
+         .init(id: 3, imageName: "", title: nil, description: nil),
+         .init(id: 4, imageName: "", title: nil, description: nil),
+         .init(id: 5, imageName: "", title: nil, description: nil),
+        ]
+    static let favoritePlaylistItems: [CategoryItem] =
+        [.init(id: 1, imageName: "", title: "잠못드는 밤", description: "VIBE"),
+         .init(id: 2, imageName: "", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
+         .init(id: 4, imageName: "", title: "Avicii 대표곡", description: "VIBE"),
+        ]
+    static let recomendPlaylistItems: [CategoryItem] =
+        [.init(id: 1, imageName: "", title: "올림픽대로", description: "VIBE"),
+         .init(id: 2, imageName: "", title: "하우스 파티", description: "VIBE"),
+         .init(id: 4, imageName: "", title: "꿀 떨어지는 R&B", description: "VIBE"),
+        ]
+    static let magazineItems: [CategoryItem] =
+        [.init(id: 1, imageName: "", title: nil, description: nil),
+         .init(id: 2, imageName: "", title: nil, description: nil),
+         .init(id: 3, imageName: "", title: nil, description: nil),
+         .init(id: 4, imageName: "", title: nil, description: nil),
+         .init(id: 5, imageName: "", title: nil, description: nil),
+        ]
+    
     static let categories: [Category]
-        = [.init(title: "DJ 스테이션", type: .station, mode: .half),
-           .init(title: "즐겨찾는 플레이리스트 ", type: .playlist, mode: .half),
-           .init(title: "VIBE 추천 플레이리스트", type: .playlist, mode: .full),
-           .init(title: "VIBE MAG", type: .magazine, mode: .half),
-           .init(title: "최근들은 노래", type: .track, mode: .full)]
+        = [.init(title: "DJ 스테이션",
+                 items: stationItems,
+                 type: .station,
+                 mode: .half),
+           .init(title: "VIBE 추천 플레이리스트",
+                    items: recomendPlaylistItems,
+                    type: .playlist,
+                    mode: .full),
+           .init(title: "즐겨찾는 플레이리스트",
+                    items: favoritePlaylistItems,
+                    type: .playlist,
+                    mode: .half),
+            .init(title: "VIBE MAG",
+                     items: magazineItems,
+                     type: .magazine,
+                     mode: .full),
+        ]
 }
