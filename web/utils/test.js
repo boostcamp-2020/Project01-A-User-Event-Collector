@@ -46,11 +46,11 @@ var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, 
             case 0: return [4 /*yield*/, prisma.tracks.findUnique({
                     where: { id: id },
                     include: { Albums: true }
-                })
-                // relation -> table
-            ];
+                })];
             case 1:
                 track = _b.sent();
+                if (!track)
+                    return [2 /*return*/, null];
                 return [4 /*yield*/, prisma.artists_Tracks.findMany({ where: { trackId: id } })];
             case 2:
                 artistIdArr = _b.sent();
@@ -67,11 +67,11 @@ var getPlaylistPageData = function (id) { return __awaiter(void 0, void 0, void 
     var playlist, trackIdArr, _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
-            case 0: return [4 /*yield*/, prisma.playlists.findUnique({ where: { id: id } })
-                //author 나중에
-            ];
+            case 0: return [4 /*yield*/, prisma.playlists.findUnique({ where: { id: id } })];
             case 1:
                 playlist = _b.sent();
+                if (!playlist)
+                    return [2 /*return*/, null];
                 return [4 /*yield*/, prisma.playlists_Tracks.findMany({
                         where: { playlistId: id },
                         orderBy: { playlistTrackNumber: 'asc' }
@@ -95,6 +95,8 @@ var getArtistPageData = function (id) { return __awaiter(void 0, void 0, void 0,
             case 0: return [4 /*yield*/, prisma.artists.findUnique({ where: { id: id } })];
             case 1:
                 artist = _c.sent();
+                if (!artist)
+                    return [2 /*return*/, null];
                 _a = artist;
                 return [4 /*yield*/, prisma.albums.findMany({ where: { artistId: id } })];
             case 2:
@@ -119,6 +121,8 @@ var getMagazinePageData = function (id) { return __awaiter(void 0, void 0, void 
             case 0: return [4 /*yield*/, prisma.magazines.findUnique({ where: { id: id } })];
             case 1:
                 magazine = _b.sent();
+                if (!magazine)
+                    return [2 /*return*/, null];
                 return [4 /*yield*/, prisma.playlists_Tracks.findMany({
                         where: { playlistId: magazine.playlistId },
                         orderBy: { playlistTrackNumber: 'asc' }
@@ -142,6 +146,8 @@ var getAlbumPageData = function (id) { return __awaiter(void 0, void 0, void 0, 
             case 0: return [4 /*yield*/, prisma.albums.findUnique({ where: { id: id } })];
             case 1:
                 album = _b.sent();
+                if (!album)
+                    return [2 /*return*/, null];
                 return [4 /*yield*/, prisma.playlists_Tracks.findMany({
                         where: { playlistId: album.playlistId },
                         orderBy: { playlistTrackNumber: 'asc' }
@@ -165,6 +171,8 @@ var getGenrePageData = function (id) { return __awaiter(void 0, void 0, void 0, 
             case 0: return [4 /*yield*/, prisma.genres.findUnique({ where: { id: id } })];
             case 1:
                 genre = _d.sent();
+                if (!genre)
+                    return [2 /*return*/, null];
                 return [4 /*yield*/, prisma.tracks_Genres.findMany({ where: { genreId: id } })];
             case 2:
                 trackIds = _d.sent();
@@ -198,6 +206,8 @@ var getNewsPageData = function (id) { return __awaiter(void 0, void 0, void 0, f
             case 0: return [4 /*yield*/, prisma.news.findUnique({ where: { id: id } })];
             case 1:
                 news = _b.sent();
+                if (!news)
+                    return [2 /*return*/, null];
                 console.log(news);
                 return [4 /*yield*/, prisma.playlists_Tracks.findMany({
                         where: { playlistId: news.playlistId },
