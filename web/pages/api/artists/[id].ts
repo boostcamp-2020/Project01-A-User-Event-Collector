@@ -13,6 +13,8 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     switch(method) {
       case 'GET':
         const result = await getArtistPageData(id);
+        if(!result) res.status(400).json({statusCode: 400, message: 'Bad Request'});
+        
         res.status(200).json({"Artists":result});
         break;
   

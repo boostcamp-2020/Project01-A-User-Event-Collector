@@ -6,6 +6,7 @@ const getTrackCardData = async (id :number) => {
     where: { id: id },
     include:{Albums:true} 
   })
+  if(!track) return null;
 
   // relation -> table
   const artistIdArr = await prisma.artists_Tracks.findMany({where: { trackId: id }})
@@ -19,6 +20,7 @@ const getTrackCardData = async (id :number) => {
 
 const getPlaylistPageData = async (id : number) => {
   const playlist : any = await prisma.playlists.findUnique({where:{id:id}})
+  if(!playlist) return null;
   //author 나중에
   
   const trackIdArr = await prisma.playlists_Tracks.findMany({
@@ -35,6 +37,7 @@ const getPlaylistPageData = async (id : number) => {
   
 const getArtistPageData = async (id :number) => {
   const artist : any = await prisma.artists.findUnique({where:{id:id}})
+  if(!artist) return null;
   artist.Albums = await prisma.albums.findMany({where:{artistId:id}})
   
   const trackIdArr = await prisma.artists_Tracks.findMany({where:{artistId:id}})
@@ -48,6 +51,7 @@ const getArtistPageData = async (id :number) => {
 
 const getMagazinePageData = async (id :number) => {
   const magazine : any = await prisma.magazines.findUnique({ where: { id: id }}) 
+  if(!magazine) return null;
 
   const trackIdArr : any = await prisma.playlists_Tracks.findMany({
     where: {playlistId: magazine.playlistId},
@@ -63,6 +67,9 @@ const getMagazinePageData = async (id :number) => {
 
 const getAlbumPageData = async (id:number) => {
   const album : any = await prisma.albums.findUnique({where:{id:id}})
+
+  if(!album) return null;
+
   const trackIdArr : any = await prisma.playlists_Tracks.findMany({
     where: {playlistId: album.playlistId},
     orderBy: {playlistTrackNumber: 'asc'},
@@ -76,6 +83,8 @@ const getAlbumPageData = async (id:number) => {
 
 const getGenrePageData = async (id) => {
   const genre : any = await prisma.genres.findUnique({where:{id:id}});
+  if(!genre) return null;
+
   const trackIds : any = await prisma.tracks_Genres.findMany({where:{genreId: id}});
   genre.Tracks = await Promise.all(
     trackIds.map((elem: any)=>getTrackCardData(elem.trackId))
@@ -95,6 +104,7 @@ const getGenrePageData = async (id) => {
 
 const getNewsPageData = async (id:number) => {
   const news : any = await prisma.news.findUnique({where:{id:id}})
+  if(!news) return null;
   console.log(news)
   const trackIdArr : any = await prisma.playlists_Tracks.findMany({
     where: {playlistId: news.playlistId},
