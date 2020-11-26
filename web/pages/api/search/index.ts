@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
+
 type optionObject = {
   take?: number;
-  where?: object;
+  where?: Object;
 };
 
 const makeSearchOption = (_query: any, _target: string) => {
   const { limit, filter } = _query;
-  let optObj: optionObject = {};
+  const optObj: optionObject = {};
 
   if (limit) {
     optObj.take = +limit;

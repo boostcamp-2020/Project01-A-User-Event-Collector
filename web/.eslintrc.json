@@ -7,14 +7,24 @@
 
   "parser": "babel-eslint",
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "plugin:prettier/recommended"
   ],
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": { 
+      "node": { 
+        "extensions": [
+          ".js", 
+          ".jsx", 
+          ".ts", 
+          ".tsx"
+        ] 
+      }
     }
   },
   "parserOptions": {
@@ -35,6 +45,17 @@
       "error",
       {
         "endOfLine": "auto"
+      }
+    ],
+    "import/extensions": [
+      "error", 
+      "ignorePackages", 
+      { 
+        "js": "never",
+        "mjs": "never", 
+        "jsx": "never", 
+        "ts": "never", 
+        "tsx": "never"
       }
     ]
   }

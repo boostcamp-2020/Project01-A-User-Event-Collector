@@ -11,7 +11,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     switch (method) {
-      case "GET":
+      case "GET": {
         const result = await getGenrePageData(id);
         if (!result) {
           res.status(400).json({ statusCode: 400, message: "Bad Request" });
@@ -20,7 +20,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
 
         res.status(200).json({ Genres: result });
         break;
-
+      }
       default:
         res.end();
     }

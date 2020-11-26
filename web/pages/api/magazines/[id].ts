@@ -4,7 +4,7 @@ import { getMagazinePageData } from "../../../utils/test";
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { id: stringId },
-    method: method,
+    method,
   } = _req;
   const id: number = +stringId;
 
