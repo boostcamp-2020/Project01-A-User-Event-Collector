@@ -13,8 +13,11 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     switch(method) {
       case 'GET':
         const result = await getPlaylistPageData(id);
-        if(!result) res.status(400).json({statusCode: 400, message: 'Bad Request'});
-        
+        if(!result) {
+          res.status(400).json({statusCode: 400, message: 'Bad Request'});
+          return;
+        }
+                
         res.status(200).json({"Playlists":result});
         break;
 
