@@ -28,6 +28,15 @@
 		CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */; };
 		CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */; };
 		CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */; };
+		CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */; };
+		CF8286AD256BABC600D68373 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286AC256BABC600D68373 /* Playlist.swift */; };
+		CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */; };
+		CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */; };
+		CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */; };
+		CF93D7CB256E703D005A71CF /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CA256E703D005A71CF /* PlaylistRouter.swift */; };
+		CF93D7D0256E7FE6005A71CF /* PlaylistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CF256E7FE6005A71CF /* PlaylistListViewModel.swift */; };
+		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
+		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +84,15 @@
 		CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeUITests.swift; sourceTree = "<group>"; };
 		CF05F8CB2567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellView.swift; sourceTree = "<group>"; };
+		CF8286AC256BABC600D68373 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListView.swift; sourceTree = "<group>"; };
+		CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
+		CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		CF93D7CA256E703D005A71CF /* PlaylistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRouter.swift; sourceTree = "<group>"; };
+		CF93D7CF256E7FE6005A71CF /* PlaylistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListViewModel.swift; sourceTree = "<group>"; };
+		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
+		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +178,9 @@
 		CF05F8A62567E7AD008080D7 /* MiniVibe */ = {
 			isa = PBXGroup;
 			children = (
+				CF93D7D7256E8FBF005A71CF /* Extension */,
+				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
+				CF8286A0256BA4D800D68373 /* Playlist */,
 				CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */,
 				CF05F8A92567E7AD008080D7 /* ContentView.swift */,
 				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
@@ -198,6 +219,36 @@
 				CF05F8CB2567E7B0008080D7 /* Info.plist */,
 			);
 			path = MiniVibeUITests;
+			sourceTree = "<group>";
+		};
+		CF8286A0256BA4D800D68373 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */,
+				CF8286AC256BABC600D68373 /* Playlist.swift */,
+				CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */,
+				CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */,
+				CF93D7CA256E703D005A71CF /* PlaylistRouter.swift */,
+				CF93D7CF256E7FE6005A71CF /* PlaylistListViewModel.swift */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		CF93D7D7256E8FBF005A71CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CFCFC5C0256E2A75004200C4 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */,
+				CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */,
+			);
+			path = ViewModifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +381,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */,
+				CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */,
+				CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */,
+				CF93D7CB256E703D005A71CF /* PlaylistRouter.swift in Sources */,
+				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
+				CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */,
+				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
+				CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */,
+				CF93D7D0256E7FE6005A71CF /* PlaylistListViewModel.swift in Sources */,
 				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
 				51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
@@ -345,6 +404,7 @@
 				51EED2E4256F7E3C00DB32CB /* CategoryItemView.swift in Sources */,
 				51EED2D4256F7D8700DB32CB /* TrackListViewModel.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
+				CF8286AD256BABC600D68373 /* Playlist.swift in Sources */,
 				51EED2D1256F7D8700DB32CB /* TrackCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
