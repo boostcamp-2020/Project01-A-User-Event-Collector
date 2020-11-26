@@ -36,6 +36,7 @@
 		CF93D7CB256E703D005A71CF /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CA256E703D005A71CF /* PlaylistRouter.swift */; };
 		CF93D7D0256E7FE6005A71CF /* PlaylistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CF256E7FE6005A71CF /* PlaylistListViewModel.swift */; };
 		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
+		CFA2A449256FD1F900190A0B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2A448256FD1F900190A0B /* Router.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		CF93D7CA256E703D005A71CF /* PlaylistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRouter.swift; sourceTree = "<group>"; };
 		CF93D7CF256E7FE6005A71CF /* PlaylistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListViewModel.swift; sourceTree = "<group>"; };
 		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
+		CFA2A448256FD1F900190A0B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +220,7 @@
 		CF2D94B5256F82C000D0A66B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CFA2A447256FD1E700190A0B /* Router */,
 				51EED2D8256F7E3C00DB32CB /* Today */,
 				51BEB32E256F3C8600FB2876 /* DJStation */,
 				CF2D94A9256F825B00D0A66B /* TrackList */,
@@ -255,6 +258,14 @@
 				CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CFA2A447256FD1E700190A0B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CFA2A448256FD1F900190A0B /* Router.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		CFCFC5C0256E2A75004200C4 /* ViewModifier */ = {
@@ -399,6 +410,7 @@
 				CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */,
 				CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */,
 				CF93D7CB256E703D005A71CF /* PlaylistRouter.swift in Sources */,
+				CFA2A449256FD1F900190A0B /* Router.swift in Sources */,
 				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
 				CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */,
 				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
