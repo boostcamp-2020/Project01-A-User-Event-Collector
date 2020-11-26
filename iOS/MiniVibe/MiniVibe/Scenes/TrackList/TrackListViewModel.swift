@@ -14,7 +14,10 @@ class TrackListViewModel: ObservableObject {
         self.tracks = [Track(id: 1, title: "Dyanamite", artist: "방탄소년단", isFavorite: true),
                        Track(id: 2, title: "Blooming", artist: "아이유", isFavorite: false),
                        Track(id: 3, title: "Feel Good", artist: "프로미스나인", isFavorite: true),
-                       Track(id: 4, title: "Alone", artist: "Marshmello", isFavorite: false)
+                       Track(id: 4, title: "기억을 걷는 시간", artist: "넬", isFavorite: false),
+                       Track(id: 5, title: "우산", artist: "윤하", isFavorite: true),
+                       Track(id: 6, title: "나의 사춘기에게", artist: "볼빨간사춘기", isFavorite: false),
+                       Track(id: 7, title: "Lovesick Girls", artist: "블랙핑크", isFavorite: true)
         ]
     }
     
