@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getAlbumPageData = exports.getMagazinePageData = exports.getArtistPageData = exports.getPlaylistPageData = void 0;
+exports.getNewsPageData = exports.getAlbumPageData = exports.getMagazinePageData = exports.getArtistPageData = exports.getPlaylistPageData = void 0;
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
 var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
@@ -158,3 +158,27 @@ var getAlbumPageData = function (id) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.getAlbumPageData = getAlbumPageData;
+var getNewsPageData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+    var news, trackIdArr, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, prisma.news.findUnique({ where: { id: id } })];
+            case 1:
+                news = _b.sent();
+                console.log(news);
+                return [4 /*yield*/, prisma.playlists_Tracks.findMany({
+                        where: { playlistId: news.playlistId },
+                        orderBy: { playlistTrackNumber: 'asc' }
+                    })];
+            case 2:
+                trackIdArr = _b.sent();
+                _a = news;
+                return [4 /*yield*/, Promise.all(trackIdArr.map(function (elem) { return getTrackCardData(elem.trackId); }))];
+            case 3:
+                _a.Tracks = _b.sent();
+                console.log(news);
+                return [2 /*return*/, news];
+        }
+    });
+}); };
+exports.getNewsPageData = getNewsPageData;

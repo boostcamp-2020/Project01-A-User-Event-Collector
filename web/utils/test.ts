@@ -61,7 +61,7 @@ const getMagazinePageData = async (id :number) => {
   return magazine
 };
 
-const getAlbumPageData = async (id) => {
+const getAlbumPageData = async (id:number) => {
   const album : any = await prisma.albums.findUnique({where:{id:id}})
   const trackIdArr : any = await prisma.playlists_Tracks.findMany({
     where: {playlistId: album.playlistId},
@@ -74,9 +74,25 @@ const getAlbumPageData = async (id) => {
   return album
 }
 
+const getNewsPageData = async (id:number) => {
+  const news : any = await prisma.news.findUnique({where:{id:id}})
+  console.log(news)
+  const trackIdArr : any = await prisma.playlists_Tracks.findMany({
+    where: {playlistId: news.playlistId},
+    orderBy: {playlistTrackNumber: 'asc'},
+  })
+  news.Tracks = await Promise.all(
+    trackIdArr.map((elem)=>getTrackCardData(elem.trackId))
+  );
+
+  console.log(news);
+  return news
+}
+
+
 // getTrackCardData(1)
 // getPlaylistPageData(1)
 // getArtistPageData(1)
 // getAlbumPageData(1)
 
-export {getPlaylistPageData, getArtistPageData,getMagazinePageData,getAlbumPageData}
+export {getPlaylistPageData, getArtistPageData,getMagazinePageData,getAlbumPageData,getNewsPageData}
