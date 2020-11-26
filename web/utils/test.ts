@@ -74,9 +74,28 @@ const getAlbumPageData = async (id) => {
   return album
 }
 
+const getGenrePageData = async (id) => {
+  const genre : any = await prisma.genres.findUnique({where:{id:id}});
+  const trackIds : any = await prisma.tracks_Genres.findMany({where:{genreId: id}});
+  genre.Tracks = await Promise.all(
+    trackIds.map((elem: any)=>getTrackCardData(elem.trackId))
+  );
+  const albumIds: any = await prisma.albums_Genres.findMany({where:{genreId: id}});
+  genre.Albums = await Promise.all(
+    albumIds.map((elem: any)=> prisma.albums.findMany({where:{id: elem.albumId}}))
+  );
+  const artistIds : any = await prisma.artists_Genres.findMany({where:{genreId: id}});
+  genre.Artists = await Promise.all(
+    artistIds.map((elem: any)=>prisma.artists.findMany({where:{id: elem.artistId}}))
+  );
+
+
+  return genre;
+}
+
 // getTrackCardData(1)
 // getPlaylistPageData(1)
 // getArtistPageData(1)
 // getAlbumPageData(1)
 
-export {getPlaylistPageData, getArtistPageData,getMagazinePageData,getAlbumPageData}
+export {getPlaylistPageData, getArtistPageData,getMagazinePageData,getAlbumPageData, getGenrePageData}

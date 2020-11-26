@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getAlbumPageData = exports.getMagazinePageData = exports.getArtistPageData = exports.getPlaylistPageData = void 0;
+exports.getGenrePageData = exports.getAlbumPageData = exports.getMagazinePageData = exports.getArtistPageData = exports.getPlaylistPageData = void 0;
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
 var getTrackCardData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
@@ -158,3 +158,36 @@ var getAlbumPageData = function (id) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.getAlbumPageData = getAlbumPageData;
+var getGenrePageData = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+    var genre, trackIds, _a, albumIds, _b, artistIds, _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
+            case 0: return [4 /*yield*/, prisma.genres.findUnique({ where: { id: id } })];
+            case 1:
+                genre = _d.sent();
+                return [4 /*yield*/, prisma.tracks_Genres.findMany({ where: { genreId: id } })];
+            case 2:
+                trackIds = _d.sent();
+                _a = genre;
+                return [4 /*yield*/, Promise.all(trackIds.map(function (elem) { return getTrackCardData(elem.trackId); }))];
+            case 3:
+                _a.Tracks = _d.sent();
+                return [4 /*yield*/, prisma.albums_Genres.findMany({ where: { genreId: id } })];
+            case 4:
+                albumIds = _d.sent();
+                _b = genre;
+                return [4 /*yield*/, Promise.all(albumIds.map(function (elem) { return prisma.albums.findMany({ where: { id: elem.albumId } }); }))];
+            case 5:
+                _b.Albums = _d.sent();
+                return [4 /*yield*/, prisma.artists_Genres.findMany({ where: { genreId: id } })];
+            case 6:
+                artistIds = _d.sent();
+                _c = genre;
+                return [4 /*yield*/, Promise.all(artistIds.map(function (elem) { return prisma.artists.findMany({ where: { id: elem.artistId } }); }))];
+            case 7:
+                _c.Artists = _d.sent();
+                return [2 /*return*/, genre];
+        }
+    });
+}); };
+exports.getGenrePageData = getGenrePageData;

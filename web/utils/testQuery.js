@@ -3,21 +3,21 @@ exports.__esModule = true;
 var makeOption = function (_query, _target, _type) {
     var _a, _b;
     var limit = _query.limit, filter = _query.filter;
-    var obtObj = {};
+    var optObj = {};
     if (limit) {
-        obtObj.take = +limit;
+        optObj.take = +limit;
     }
     if (filter) {
         if (_type === 'string') {
-            obtObj.where = (_a = {}, _a[_target] = filter, _a);
+            optObj.where = (_a = {}, _a[_target] = filter, _a);
         }
         if (_type === 'object') {
-            obtObj.where = _target;
+            optObj.where = _target;
         }
         if (_type === 'number') {
-            obtObj.where = (_b = {}, _b[_target] = +filter, _b);
+            optObj.where = (_b = {}, _b[_target] = +filter, _b);
         }
     }
-    return obtObj;
+    return optObj;
 };
 exports["default"] = makeOption;
