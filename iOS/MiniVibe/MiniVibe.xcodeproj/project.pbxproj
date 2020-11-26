@@ -10,10 +10,6 @@
 		51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB32F256F3C8600FB2876 /* DJStation.swift */; };
 		51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */; };
 		51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB331256F3C8600FB2876 /* DJStationListView.swift */; };
-		51EED2D1256F7D8700DB32CB /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2CD256F7D8700DB32CB /* TrackCell.swift */; };
-		51EED2D2256F7D8700DB32CB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2CE256F7D8700DB32CB /* Track.swift */; };
-		51EED2D3256F7D8700DB32CB /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2CF256F7D8700DB32CB /* TrackListView.swift */; };
-		51EED2D4256F7D8700DB32CB /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2D0256F7D8700DB32CB /* TrackListViewModel.swift */; };
 		51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2D9256F7E3C00DB32CB /* CategoryView.swift */; };
 		51EED2E0256F7E3C00DB32CB /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DA256F7E3C00DB32CB /* CategoryItem.swift */; };
 		51EED2E1256F7E3C00DB32CB /* CategoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DB256F7E3C00DB32CB /* CategoryInfoView.swift */; };
@@ -28,6 +24,10 @@
 		CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */; };
 		CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */; };
 		CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */; };
+		CF2D94AE256F825B00D0A66B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AA256F825B00D0A66B /* TrackCell.swift */; };
+		CF2D94AF256F825B00D0A66B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AB256F825B00D0A66B /* Track.swift */; };
+		CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AC256F825B00D0A66B /* TrackListView.swift */; };
+		CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */; };
 		CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */; };
 		CF8286AD256BABC600D68373 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286AC256BABC600D68373 /* Playlist.swift */; };
 		CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */; };
@@ -60,10 +60,6 @@
 		51BEB32F256F3C8600FB2876 /* DJStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStation.swift; sourceTree = "<group>"; };
 		51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStationListViewModel.swift; sourceTree = "<group>"; };
 		51BEB331256F3C8600FB2876 /* DJStationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStationListView.swift; sourceTree = "<group>"; };
-		51EED2CD256F7D8700DB32CB /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
-		51EED2CE256F7D8700DB32CB /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		51EED2CF256F7D8700DB32CB /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
-		51EED2D0256F7D8700DB32CB /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		51EED2D9256F7E3C00DB32CB /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		51EED2DA256F7E3C00DB32CB /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		51EED2DB256F7E3C00DB32CB /* CategoryInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryInfoView.swift; sourceTree = "<group>"; };
@@ -84,6 +80,10 @@
 		CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeUITests.swift; sourceTree = "<group>"; };
 		CF05F8CB2567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF2D94AA256F825B00D0A66B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		CF2D94AB256F825B00D0A66B /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		CF2D94AC256F825B00D0A66B /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellView.swift; sourceTree = "<group>"; };
 		CF8286AC256BABC600D68373 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListView.swift; sourceTree = "<group>"; };
@@ -130,18 +130,6 @@
 			path = DJStation;
 			sourceTree = "<group>";
 		};
-		51EED2CC256F7D8700DB32CB /* TrackList */ = {
-			isa = PBXGroup;
-			children = (
-				51EED2CD256F7D8700DB32CB /* TrackCell.swift */,
-				51EED2CE256F7D8700DB32CB /* Track.swift */,
-				51EED2CF256F7D8700DB32CB /* TrackListView.swift */,
-				51EED2D0256F7D8700DB32CB /* TrackListViewModel.swift */,
-			);
-			name = TrackList;
-			path = "../../../../iOS 13 & Swift 5 /무제 폴더/TrackList";
-			sourceTree = "<group>";
-		};
 		51EED2D8256F7E3C00DB32CB /* Today */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,8 +174,8 @@
 				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 				51EED2D8256F7E3C00DB32CB /* Today */,
-				51EED2CC256F7D8700DB32CB /* TrackList */,
 				51BEB32E256F3C8600FB2876 /* DJStation */,
+				CF2D94A9256F825B00D0A66B /* TrackList */,
 				CF05F8B52567E7B0008080D7 /* Info.plist */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
 				CF05F8AD2567E7B0008080D7 /* Preview Content */,
@@ -219,6 +207,17 @@
 				CF05F8CB2567E7B0008080D7 /* Info.plist */,
 			);
 			path = MiniVibeUITests;
+			sourceTree = "<group>";
+		};
+		CF2D94A9256F825B00D0A66B /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				CF2D94AA256F825B00D0A66B /* TrackCell.swift */,
+				CF2D94AB256F825B00D0A66B /* Track.swift */,
+				CF2D94AC256F825B00D0A66B /* TrackListView.swift */,
+				CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */,
+			);
+			path = TrackList;
 			sourceTree = "<group>";
 		};
 		CF8286A0256BA4D800D68373 /* Playlist */ = {
@@ -389,23 +388,23 @@
 				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
 				CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */,
 				CF93D7D0256E7FE6005A71CF /* PlaylistListViewModel.swift in Sources */,
+				CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */,
 				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
+				CF2D94AE256F825B00D0A66B /* TrackCell.swift in Sources */,
+				CF2D94AF256F825B00D0A66B /* Track.swift in Sources */,
 				51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
 				51EED2E1256F7E3C00DB32CB /* CategoryInfoView.swift in Sources */,
 				51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */,
 				51EED2E3256F7E3C00DB32CB /* TodayView.swift in Sources */,
-				51EED2D3256F7D8700DB32CB /* TrackListView.swift in Sources */,
 				51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */,
-				51EED2D2256F7D8700DB32CB /* Track.swift in Sources */,
 				51EED2E0256F7E3C00DB32CB /* CategoryItem.swift in Sources */,
 				CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */,
 				51EED2E2256F7E3C00DB32CB /* Category.swift in Sources */,
 				51EED2E4256F7E3C00DB32CB /* CategoryItemView.swift in Sources */,
-				51EED2D4256F7D8700DB32CB /* TrackListViewModel.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
+				CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */,
 				CF8286AD256BABC600D68373 /* Playlist.swift in Sources */,
-				51EED2D1256F7D8700DB32CB /* TrackCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
