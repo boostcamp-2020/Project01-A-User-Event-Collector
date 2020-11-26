@@ -1,22 +1,22 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../utils/prisma";
 import makeOption from "../../../utils/testQuery";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const prisma = new PrismaClient();
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
 
   try {
     switch (method) {
-      case "GET":
+      case "GET": {
         const obtObj = makeOption(_req.query, "magazineType", "string");
         const result = await prisma.magazines.findMany(obtObj);
         res.json({ Magazines: result });
         break;
+      }
 
-      case "POST":
+      case "POST": {
         break;
-
+      }
       default:
         res.end();
     }

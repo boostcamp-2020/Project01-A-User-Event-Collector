@@ -1,24 +1,18 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../../../utils/prisma";
+import makeOption from "../../../utils/testQuery";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const {
-    query: { limit },
-    method: method,
-  } = _req;
-
-  const limitOption = {
-    take: limit === undefined ? undefined : +limit,
-  };
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+  const { method } = _req;
 
   try {
     switch (method) {
-      case "GET":
-        const result = await prisma.dJStations.findMany(limitOption);
+      case "GET": {
+        const optObj = makeOption(_req.query);
+        const result = await prisma.dJStations.findMany(optObj);
         res.status(200).json({ DJStations: result });
         break;
-
+      }
       default:
         res.end();
     }

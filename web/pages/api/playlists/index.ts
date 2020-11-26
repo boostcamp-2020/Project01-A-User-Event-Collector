@@ -1,21 +1,22 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../utils/prisma";
 import makeOption from "../../../utils/testQuery";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const prisma = new PrismaClient();
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
 
   try {
     switch (method) {
-      case "GET":
+      case "GET": {
         const optObj = makeOption(_req.query, "author", "number");
         const result = await prisma.playlists.findMany(optObj);
         res.json({ Playlists: result });
         break;
+      }
 
-      case "POST":
+      case "POST": {
         break;
+      }
 
       default:
         res.end();

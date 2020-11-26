@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getGenrePageData } from "../../../utils/test";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
     query: { id: stringId },
     method,
