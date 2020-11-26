@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TrackCell: View {
+struct TrackCellView: View {
 
     let id: Int
     let title: String
@@ -37,7 +37,7 @@ struct TrackCell: View {
     
 }
 
-extension TrackCell {
+extension TrackCellView {
     init(track: Track) {
         title = track.title
         artist = track.artist
@@ -101,15 +101,15 @@ struct TrackInfo: View {
 }
 
  
-struct NewsView_Previews: PreviewProvider {
+struct TrackCellView_Previews: PreviewProvider {
 
     static var previews: some View {
         let testTrack1 = Track(id: 1, title: "휘파람", artist: "BLACKPINK", isFavorite: true)
         let testTrack2 = Track(id: 2, title: "마지막처럼", artist: "BLACKPINK", isFavorite: false)
 
         Group {
-            TrackCell(track: testTrack1)
-            TrackCell(track: testTrack2)
+            TrackCellView(track: testTrack1)
+            TrackCellView(track: testTrack2)
                 .preferredColorScheme(.dark)
 
         }

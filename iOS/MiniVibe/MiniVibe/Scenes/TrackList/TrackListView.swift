@@ -13,14 +13,14 @@ struct TrackListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.tracks) { track -> TrackCell in
-                var cell = TrackCell(track: track)
+            ForEach(viewModel.tracks) { track -> TrackCellView in
+                var cell = TrackCellView(track: track)
                 cell.didToggleFavorite = {
                     viewModel.toggleIsFavorite(for: track.id)
                 }
                 return cell
             }
-        }
+        }.modifier(NavigationBarStyle(title: "노래 목록"))
         .onAppear(perform: {
             viewModel.fetchTracks()
         })
@@ -30,5 +30,6 @@ struct TrackListView: View {
 struct TrackListView_Previews: PreviewProvider {
     static var previews: some View {
         TrackListView()
+            
     }
 }

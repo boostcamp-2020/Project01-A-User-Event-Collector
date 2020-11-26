@@ -24,7 +24,7 @@
 		CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */; };
 		CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */; };
 		CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */; };
-		CF2D94AE256F825B00D0A66B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AA256F825B00D0A66B /* TrackCell.swift */; };
+		CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AA256F825B00D0A66B /* TrackCellView.swift */; };
 		CF2D94AF256F825B00D0A66B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AB256F825B00D0A66B /* Track.swift */; };
 		CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AC256F825B00D0A66B /* TrackListView.swift */; };
 		CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */; };
@@ -80,7 +80,7 @@
 		CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeUITests.swift; sourceTree = "<group>"; };
 		CF05F8CB2567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF2D94AA256F825B00D0A66B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		CF2D94AA256F825B00D0A66B /* TrackCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCellView.swift; sourceTree = "<group>"; };
 		CF2D94AB256F825B00D0A66B /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		CF2D94AC256F825B00D0A66B /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
 		CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		CF2D94A9256F825B00D0A66B /* TrackList */ = {
 			isa = PBXGroup;
 			children = (
-				CF2D94AA256F825B00D0A66B /* TrackCell.swift */,
+				CF2D94AA256F825B00D0A66B /* TrackCellView.swift */,
 				CF2D94AB256F825B00D0A66B /* Track.swift */,
 				CF2D94AC256F825B00D0A66B /* TrackListView.swift */,
 				CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */,
@@ -406,7 +406,7 @@
 				CF93D7D0256E7FE6005A71CF /* PlaylistListViewModel.swift in Sources */,
 				CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */,
 				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
-				CF2D94AE256F825B00D0A66B /* TrackCell.swift in Sources */,
+				CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */,
 				CF2D94AF256F825B00D0A66B /* Track.swift in Sources */,
 				51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,

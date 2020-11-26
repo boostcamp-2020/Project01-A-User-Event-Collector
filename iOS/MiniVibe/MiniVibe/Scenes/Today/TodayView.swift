@@ -29,13 +29,13 @@ struct TodayView: View {
         // 타입에따라서 다른 destination 보여주게하기!
         switch type {
         case .magazine:
-            return AnyView(Text("매거진 목록 화면 보여주기"))
+            return AnyView(PlaylistListView(viewModel: PlaylistListViewModel(navigationType: .magazines)))
         case .playlist:
-            return AnyView(Text("플레이리스트 목록 화면 보여주기"))
+            return AnyView(PlaylistListView(viewModel: PlaylistListViewModel(navigationType: .favorites)))
         case .station:
-            return AnyView(Text("스테이션 목록 화면 보여주기"))
+            return AnyView(DJStationListView())
         case .track:
-            return AnyView(Text("트랙 목록 화면 보여주기"))
+            return AnyView(TrackListView())
         }
     }
     
@@ -52,5 +52,6 @@ struct TestData {
         = [.init(title: "DJ 스테이션", type: .station, mode: .half),
            .init(title: "즐겨찾는 플레이리스트 ", type: .playlist, mode: .half),
            .init(title: "VIBE 추천 플레이리스트", type: .playlist, mode: .full),
-           .init(title: "VIBE MAG", type: .magazine, mode: .half)]
+           .init(title: "VIBE MAG", type: .magazine, mode: .half),
+           .init(title: "최근들은 노래", type: .track, mode: .full)]
 }
