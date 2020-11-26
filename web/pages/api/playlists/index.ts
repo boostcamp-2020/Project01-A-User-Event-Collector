@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import {PrismaClient} from '@prisma/client'
-import makeOption from '../../../testQuery'
+import makeOption from '../../../utils/testQuery'
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const prisma = new PrismaClient()
@@ -20,9 +20,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
         break
 
       default:
-        break;
+        res.end()
     }
-  }catch (err) { res.status(500).json({ statusCode: 500, message: err.message }) }
+  } catch (err) { res.status(500).json({ statusCode: 500, message: err.message }) }
 }
 
 export default handler;

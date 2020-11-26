@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getPlaylistPageData } from '../../../test';
+import { getPlaylistPageData } from '../../../utils/test';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const {
@@ -8,21 +8,18 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   } = _req;
 
   const id : number = +stringId;
-
-  switch(method) {
-    case 'GET':
-      try {
+  
+  try {
+    switch(method) {
+      case 'GET':
         const result = await getPlaylistPageData(id);
         res.status(200).json({"Playlists":result});
-      } catch (err) {
-        res.status(500).json({ statusCode: 500, message: err.message });
-      }
-      break;
-    default:
-      break;
-  }
+        break;
 
-
+      default:
+        res.end()
+    }
+  } catch (err) { res.status(500).json({ statusCode: 500, message: err.message }) }
 }
 
 export default handler;
