@@ -1,26 +1,26 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import {PrismaClient} from '@prisma/client'
-import makeOption from '../../../utils/testQuery'
+import { NextApiRequest, NextApiResponse } from 'next';
+import { PrismaClient } from '@prisma/client';
+import makeOption from '../../../utils/testQuery';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const prisma = new PrismaClient()
-  const {method} = _req;
-  
+  const prisma = new PrismaClient();
+  const { method } = _req;
+
   try {
-    switch(method) {
+    switch (method) {
       case 'GET':
-        const obtObj = makeOption(_req.query, 'magazineType','string')
-        const result = await prisma.magazines.findMany(obtObj)
-        res.json({'Magazines':result})
+        const obtObj = makeOption(_req.query, 'magazineType', 'string');
+        const result = await prisma.magazines.findMany(obtObj);
+        res.json({ Magazines: result });
         break;
 
       case 'POST':
-        break
-        
+        break;
+
       default:
-        res.end()
+        res.end();
     }
-  }catch (err) { res.status(500).json({ statusCode: 500, message: err.message }) }
-}
+  } catch (err) { res.status(500).json({ statusCode: 500, message: err.message }); }
+};
 
 export default handler;
