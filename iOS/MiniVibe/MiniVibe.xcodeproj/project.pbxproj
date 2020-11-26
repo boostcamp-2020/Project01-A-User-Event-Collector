@@ -10,6 +10,10 @@
 		51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB32F256F3C8600FB2876 /* DJStation.swift */; };
 		51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */; };
 		51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB331256F3C8600FB2876 /* DJStationListView.swift */; };
+		51EED2D1256F7D8700DB32CB /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2CD256F7D8700DB32CB /* TrackCell.swift */; };
+		51EED2D2256F7D8700DB32CB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2CE256F7D8700DB32CB /* Track.swift */; };
+		51EED2D3256F7D8700DB32CB /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2CF256F7D8700DB32CB /* TrackListView.swift */; };
+		51EED2D4256F7D8700DB32CB /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2D0256F7D8700DB32CB /* TrackListViewModel.swift */; };
 		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
 		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
 		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 		51BEB32F256F3C8600FB2876 /* DJStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStation.swift; sourceTree = "<group>"; };
 		51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStationListViewModel.swift; sourceTree = "<group>"; };
 		51BEB331256F3C8600FB2876 /* DJStationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStationListView.swift; sourceTree = "<group>"; };
+		51EED2CD256F7D8700DB32CB /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		51EED2CE256F7D8700DB32CB /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		51EED2CF256F7D8700DB32CB /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		51EED2D0256F7D8700DB32CB /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +100,18 @@
 			path = DJStation;
 			sourceTree = "<group>";
 		};
+		51EED2CC256F7D8700DB32CB /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				51EED2CD256F7D8700DB32CB /* TrackCell.swift */,
+				51EED2CE256F7D8700DB32CB /* Track.swift */,
+				51EED2CF256F7D8700DB32CB /* TrackListView.swift */,
+				51EED2D0256F7D8700DB32CB /* TrackListViewModel.swift */,
+			);
+			name = TrackList;
+			path = "../../../../iOS 13 & Swift 5 /무제 폴더/TrackList";
+			sourceTree = "<group>";
+		};
 		CF05F89B2567E7AD008080D7 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +139,7 @@
 				CF05F8A92567E7AD008080D7 /* ContentView.swift */,
 				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
+				51EED2CC256F7D8700DB32CB /* TrackList */,
 				51BEB32E256F3C8600FB2876 /* DJStation */,
 				CF05F8B52567E7B0008080D7 /* Info.plist */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
@@ -286,9 +307,13 @@
 				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
 				51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */,
+				51EED2D3256F7D8700DB32CB /* TrackListView.swift in Sources */,
 				51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */,
+				51EED2D2256F7D8700DB32CB /* Track.swift in Sources */,
 				CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */,
+				51EED2D4256F7D8700DB32CB /* TrackListViewModel.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
+				51EED2D1256F7D8700DB32CB /* TrackCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
