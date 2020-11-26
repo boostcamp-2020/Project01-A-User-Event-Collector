@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var makeOption = function (_query, _target, type) {
+var makeOption = function (_query, _target, _type) {
     var _a, _b;
     var limit = _query.limit, filter = _query.filter;
     var obtObj = {};
@@ -8,13 +8,13 @@ var makeOption = function (_query, _target, type) {
         obtObj.take = +limit;
     }
     if (filter) {
-        if (type === 'string') {
+        if (_type === 'string') {
             obtObj.where = (_a = {}, _a[_target] = filter, _a);
         }
-        if (type === 'object') {
+        if (_type === 'object') {
             obtObj.where = _target;
         }
-        if (type === 'number') {
+        if (_type === 'number') {
             obtObj.where = (_b = {}, _b[_target] = +filter, _b);
         }
     }
