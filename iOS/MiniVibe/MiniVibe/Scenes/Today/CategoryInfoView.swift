@@ -21,5 +21,6 @@ struct CategoryInfoView: View {
                 .padding(.trailing, 15)
                 .padding(.top, 5)
         }
+        .padding(.vertical, 10)
     }
 }
