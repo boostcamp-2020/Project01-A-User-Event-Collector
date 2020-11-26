@@ -1,8 +1,9 @@
 type optionObject = {
   take?: number;
-  where?: object;
+  where?: Object;
 };
-const makeOption = (_query: any, _target: any, _type: string) => {
+
+const makeOption = (_query: any, _target?: any, _type?: string): Object => {
   const { limit, filter } = _query;
   const optObj: optionObject = {};
 

@@ -1,20 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../utils/prisma";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const prisma = new PrismaClient();
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
 
   try {
     switch (method) {
-      case "GET":
+      case "GET": {
         const result = await prisma.genres.findMany();
         res.json({ Genres: result });
         break;
-
-      case "POST":
+      }
+      case "POST": {
         break;
-
+      }
       default:
         res.end();
     }

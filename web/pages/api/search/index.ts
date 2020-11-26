@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../utils/prisma";
+
 type optionObject = {
   take?: number;
-  where?: object;
+  where?: {};
 };
 
-const makeSearchOption = (_query: any, _target: string) => {
+const makeSearchOption = (_query: any, _target: string): Object => {
   const { limit, filter } = _query;
-  let optObj: optionObject = {};
+  const optObj: optionObject = {};
 
   if (limit) {
     optObj.take = +limit;
@@ -20,13 +21,12 @@ const makeSearchOption = (_query: any, _target: string) => {
   return optObj;
 };
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const prisma = new PrismaClient();
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
 
   try {
     switch (method) {
-      case "GET":
+      case "GET": {
         const result: any = {};
 
         const albumFilter = makeSearchOption(_req.query, "albumName");
@@ -40,6 +40,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
 
         res.json(result);
         break;
+      }
 
       case "POST":
         break;
