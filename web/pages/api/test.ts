@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(_req:NextApiRequest,res:NextApiResponse){
-    res.json({stage:process.env.STAGE})
+export default function handler(_req: NextApiRequest, res: NextApiResponse): void {
+  res.json({ stage: process.env.STAGE });
 }
