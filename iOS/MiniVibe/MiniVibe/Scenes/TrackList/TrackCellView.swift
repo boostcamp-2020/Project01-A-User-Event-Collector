@@ -17,11 +17,11 @@ struct TrackCellView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "photo")
+            Image(title)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 38, height: 38, alignment: .center)
-                .padding(.vertical, 5)
+                .frame(width: 44, height: 44, alignment: .center)
+                .padding(.vertical, 2)
                 .padding(.horizontal, 10)
             TrackInfo(title: title, artist: artist)
             Spacer()
@@ -104,7 +104,7 @@ struct TrackInfo: View {
 struct TrackCellView_Previews: PreviewProvider {
 
     static var previews: some View {
-        let testTrack1 = Track(id: 1, title: "휘파람", artist: "BLACKPINK", isFavorite: true)
+        let testTrack1 = Track(id: 1, title: "우산", artist: "BLACKPINK", isFavorite: true)
         let testTrack2 = Track(id: 2, title: "마지막처럼", artist: "BLACKPINK", isFavorite: false)
 
         Group {
