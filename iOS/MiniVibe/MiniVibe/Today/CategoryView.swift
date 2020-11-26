@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryRowView: View {
+struct CategoryView: View {
     let category: Category
     
     var body: some View {
@@ -45,7 +45,7 @@ struct CategoryRowView: View {
 struct CategoryRowView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CategoryRowView(category: Category(title: "Station", type: .station, mode: .half))
+            CategoryView(category: Category(title: "Station", type: .station, mode: .half))
         }
     }
 }

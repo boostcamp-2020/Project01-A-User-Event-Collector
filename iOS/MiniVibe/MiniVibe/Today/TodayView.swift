@@ -15,7 +15,7 @@ struct TodayView: View {
                     NavigationLink(
                         destination: getDestination(from: category.type),
                         label: {
-                            CategoryRowView(category: category)
+                            CategoryView(category: category)
                         }
                     )
                 }
