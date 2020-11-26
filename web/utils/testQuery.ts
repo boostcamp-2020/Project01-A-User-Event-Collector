@@ -1,21 +1,21 @@
-type obtionObject = {
+type optionObject = {
     take? : number
     where? : object
 }
 const makeOption = (_query:any, _target:any, _type:string) => {
     const {limit,filter} = _query
-    let obtObj : obtionObject = {}
+    let optObj : optionObject = {}
 
     if(limit) { 
-        obtObj.take = +limit
+        optObj.take = +limit
     }
     if(filter){
-        if(_type === 'string') { obtObj.where = {[_target] : filter } }
-        if(_type === 'object') { obtObj.where = _target }
-        if(_type === 'number') { obtObj.where = {[_target] : +filter } }
+        if(_type === 'string') { optObj.where = {[_target] : filter } }
+        if(_type === 'object') { optObj.where = _target }
+        if(_type === 'number') { optObj.where = {[_target] : +filter } }
     }
 
-    return obtObj
+    return optObj
 }
 
 export default makeOption

@@ -10,9 +10,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     switch(method) {
       case 'GET':
         //JOIN해서 판단할 경우, 유저 아이디 그 자체로 필터링 하는 경우
-        // const obtObj = makeOption(_req.query,{Users : { username : _req.query.filter}}, 'object')  
-        const obtObj = makeOption(_req.query,'author','number')
-        const result = await prisma.playlists.findMany(obtObj)
+        // const optObj = makeOption(_req.query,{Users : { username : _req.query.filter}}, 'object')  
+        const optObj = makeOption(_req.query,'author','number')
+        const result = await prisma.playlists.findMany(optObj)
         res.json(result)
         break;
 
