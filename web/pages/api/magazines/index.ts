@@ -11,7 +11,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
       case 'GET':
         const obtObj = makeOption(_req.query, 'magazineType','string')
         const result = await prisma.magazines.findMany(obtObj)
-        res.json(result)
+        res.json({'Magazines':result})
         break;
 
       case 'POST':
