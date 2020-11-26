@@ -1,25 +1,26 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import {getMagazinePageData} from '../../../test'
+import {getMagazinePageData} from '../../../utils/test'
 
-export default async function handler(_req:NextApiRequest,res:NextApiResponse) {
+const handler = async (_req:NextApiRequest,res:NextApiResponse) => {
   const {
     query : { id :stringId },
     method : method
   } = _req
   const id : number = +stringId;
   
-  switch(method){
-    case 'GET':
-      try{
+  try{
+    switch(method){
+      case 'GET':
         const result = await getMagazinePageData(id)
         res.status(200).json({'Magzines':result})
-      }catch(err){
-        res.status(500).json({ statusCode: 500, message: err.message });
-      }
-      break
-    case 'POST':
-    default :
-  }
+        break
 
-  res.end()
+      case 'POST':
+
+      default :
+        res.end()
+    }
+  }catch(err){ res.status(500).json({ statusCode: 500, message: err.message }) }
 }
+
+export default handler;
