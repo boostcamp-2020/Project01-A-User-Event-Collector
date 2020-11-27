@@ -19,16 +19,16 @@ struct DJStationListView: View {
                 ForEach(stationViewModel.stations) { station in
                     Button(action: {
                     }, label: {
-                        Image(systemName: station.imageName)
+                        Image(station.imageName)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(minHeight: 100)
+                            .aspectRatio(contentMode: .fill)
                     })
-                    .padding(.all, 30)
+                    .padding(.all, 15)
                     .accentColor(.green)
                 }
             }
         }
+        .modifier(NavigationBarStyle(title: "DJ 스테이션"))
         .onAppear(perform: stationViewModel.fetchStations)
     }
 }

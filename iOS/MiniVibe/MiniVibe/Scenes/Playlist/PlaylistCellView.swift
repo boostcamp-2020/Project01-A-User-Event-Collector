@@ -12,7 +12,7 @@ struct PlaylistCellView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: "person.fill")
+            Image(playlist.imageUrl)
                 .resizable()
                 .frame(width: 90, height: 90)
             VStack(alignment: .leading, spacing: 5) {
