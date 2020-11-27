@@ -32,7 +32,9 @@ struct PlaylistListView: View {
 struct PlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = PlaylistListViewModel(navigationType: .favorites)
-        PlaylistListView(viewModel: viewModel)
-            .preferredColorScheme(.dark)
+        NavigationView {
+            PlaylistListView(viewModel: viewModel)
+                .preferredColorScheme(.dark)
+        }
     }
 }
