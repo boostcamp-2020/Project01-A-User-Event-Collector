@@ -24,6 +24,7 @@ struct TodayView: View {
             .navigationTitle("VIBE")
         }
         .preferredColorScheme(.dark)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func getDestination(from type: CategoryType) -> AnyView {
