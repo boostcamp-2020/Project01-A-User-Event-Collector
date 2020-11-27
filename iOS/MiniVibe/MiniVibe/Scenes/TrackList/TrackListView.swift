@@ -21,7 +21,7 @@ struct TrackListView: View {
                 return cell
             }
         }
-        .navigationBarTitle("최근 들은 노래", displayMode: .inline)
+        .modifier(NavigationBarStyle(title: "노래 목록"))
         .onAppear(perform: {
             viewModel.fetchTracks()
         })
