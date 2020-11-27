@@ -24,3 +24,9 @@ struct CategoryInfoView: View {
         .padding(.vertical, 10)
     }
 }
+
+struct CategoryInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        CategoryInfoView(title: "hi")
+    }
+}
