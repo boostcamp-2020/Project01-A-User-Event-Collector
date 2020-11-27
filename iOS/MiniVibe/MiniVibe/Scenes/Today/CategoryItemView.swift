@@ -29,10 +29,9 @@ struct CategoryItemView: View {
             if let title = item.title,
                let description = item.description {
                 Text(title)
-                    .font(.headline)
+                    .modifier(Title())
                 Text(description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .modifier(Description())
             }
         }
     }

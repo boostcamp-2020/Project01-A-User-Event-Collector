@@ -11,6 +11,7 @@ struct Title: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.headline)
+            .foregroundColor(.primary)
             .lineLimit(1)
             .truncationMode(.tail)
     }
