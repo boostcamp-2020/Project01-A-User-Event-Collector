@@ -14,6 +14,6 @@ struct NavigationBarStyle: ViewModifier {
         content
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
-            .foregroundColor(.primary)
+//            .foregroundColor(.primary)
     }
 }
