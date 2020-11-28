@@ -5,13 +5,13 @@
 //  Created by 류연수 on 2020/11/25.
 //
 
-import Foundation
+import SwiftUI
 
-protocol RoutingDestinationProtocol {
+protocol RoutingStarterProtocol {
     
 }
 
 protocol RouterProtocol {
-    func title() -> String
-    func route()
+    associatedtype RoutingStarter
+    func getDestination() -> AnyView
 }
