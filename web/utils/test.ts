@@ -117,16 +117,19 @@ interface UserInfo {
 }
 
 const getUserInfoData = async ({ username, password }: UserInfo) => {
-  const userInfo = await prisma.users.findUnique({ where: {
-    user: {
-      username,
-      password
-    }
-   } });
+  const userInfo = await prisma.users.findUnique({
+    where: {
+      user: {
+        username,
+        password,
+      },
+    },
+  });
   return userInfo;
-}
+};
 
 export {
+  getTrackCardData,
   getPlaylistPageData,
   getArtistPageData,
   getMagazinePageData,
