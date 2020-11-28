@@ -24,7 +24,6 @@ struct TrackCellView: View {
                 Heart(isFavorite: track.isFavorite, toggleFavorite: didToggleFavorite)
                 Ellipsis()
             }
-            .padding(18)
         }
     }
 }

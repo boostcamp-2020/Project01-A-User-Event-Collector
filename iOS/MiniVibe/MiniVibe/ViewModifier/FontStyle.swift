@@ -7,7 +7,17 @@
 
 import SwiftUI
 
-struct Title: ViewModifier {
+struct Title1: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 20, weight: .bold))
+            .foregroundColor(.primary)
+            .lineLimit(1)
+            .truncationMode(.tail)
+    }
+}
+
+struct Title2: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.headline)
@@ -17,7 +27,17 @@ struct Title: ViewModifier {
     }
 }
 
-struct Description: ViewModifier {
+struct Description1: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 16))
+            .foregroundColor(.secondary)
+            .lineLimit(1)
+            .truncationMode(.tail)
+    }
+}
+
+struct Description2: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.subheadline)

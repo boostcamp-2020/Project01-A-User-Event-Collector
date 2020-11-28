@@ -10,7 +10,7 @@ import Foundation
 class TrackListViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
-    func fetchTracks() {
+    func fetchTracks(id: Int) {
         self.tracks = [Track(id: 1, title: "Dynamite", artist: "방탄소년단", isFavorite: true),
                        Track(id: 2, title: "Blueming", artist: "아이유", isFavorite: false),
                        Track(id: 3, title: "FeelGood", artist: "프로미스나인", isFavorite: true),

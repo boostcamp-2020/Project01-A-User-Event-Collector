@@ -17,22 +17,22 @@ struct PlaylistCellView: View {
                 .frame(width: 90, height: 90)
             VStack(alignment: .leading, spacing: 5) {
                 Text(playlist.title)
-                    .modifier(Title())
+                    .modifier(Title2())
                 if let description = playlist.description {
                     Text(description)
-                        .modifier(Description())
+                        .modifier(Description2())
                         .padding(.bottom, 2)
                 }
                 if let date = playlist.createdAt {
                     Text(date)
-                        .modifier(Description())
+                        .modifier(Description2())
                 }
                 if let author = playlist.author {
                     Text(author)
-                        .modifier(Description())
+                        .modifier(Description2())
                 }
             }
-        }.padding([.top, .leading, .trailing])
+        }.padding(.top)
     }
 }
 

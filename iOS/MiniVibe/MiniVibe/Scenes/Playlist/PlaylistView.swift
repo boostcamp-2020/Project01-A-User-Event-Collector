@@ -1,43 +1,42 @@
 //
-//  PlaylistListView.swift
+//  PlaylistView.swift
 //  MiniVibe
 //
-//  Created by 류연수 on 2020/11/25.
+//  Created by 류연수 on 2020/11/28.
 //
 
 import SwiftUI
 
-struct PlaylistListView: View {
+struct PlaylistView: View {
+    private let playlist = Playlist(id: 1, title: "Dynamite", imageUrl: "Dynamite", description: "아무 생각 없이 드라이브하며 기분전환 어쩌고 저쩌고 dkdkdkdkdk", createdAt: "어제 어쩌고", author: "VIBE")
     
-    @ObservedObject private var viewModel: PlaylistListViewModel
     
-    init(viewModel: PlaylistListViewModel) {
-        self.viewModel = viewModel
-    }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
-                        NavigationLink(destination: Text("")) {
-//                            @StateObject var cellviewModel = PlaylistCellViewModel(playlist: $viewModel.playlistList[index], navigationType: viewModel.navigationType)
-                            PlaylistCellView(playlist: $viewModel.playlistList[index])
-                        }
+        VStack {
+            TrackListHeaderView(playlist: playlist)
+            TrackListButtonView()
+            TrackListView(id: 1)
+        }.padding()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text(playlist.title)
+                        .modifier(Title2())
+                    if let author = playlist.author {
+                        Text(author)
+                            .modifier(Description2())
                     }
                 }
-            }.modifier(NavigationBarStyle(title: viewModel.navigationType.title()))
-        }
-        .onAppear() {
-            viewModel.fetchPlaylistList()
+            }
         }
     }
 }
 
 struct PlaylistView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = PlaylistListViewModel(navigationType: .favorites)
-        PlaylistListView(viewModel: viewModel)
+        PlaylistView()
             .preferredColorScheme(.dark)
     }
 }

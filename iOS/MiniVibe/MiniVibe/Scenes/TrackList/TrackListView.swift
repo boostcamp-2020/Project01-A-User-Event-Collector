@@ -9,7 +9,12 @@ import SwiftUI
 
 struct TrackListView: View {
     
+    private let id: Int
     @StateObject private var viewModel = TrackListViewModel()
+    
+    init(id: Int) {
+        self.id = id
+    }
     
     var body: some View {
         List {
@@ -21,15 +26,15 @@ struct TrackListView: View {
                 return cell
             }
         }
-        .modifier(NavigationBarStyle(title: "노래 목록"))
+//        .modifier(NavigationBarStyle(title: ""))
         .onAppear(perform: {
-            viewModel.fetchTracks()
+            viewModel.fetchTracks(id: id)
         })
     }
 }
 
 struct TrackListView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackListView()
+        TrackListView(id: 1)
     }
 }
