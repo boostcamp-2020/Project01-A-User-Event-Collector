@@ -22,14 +22,12 @@ struct TrackCellView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 44, height: 44, alignment: .center)
                 .padding(.vertical, 2)
-                .padding(.horizontal, 10)
             TrackInfo(title: title, artist: artist)
             Spacer()
             HStack(spacing: 20) {
                 Heart(isFavorite: isFavorite, toggleFavorite: didToggleFavorite)
                 Ellipsis()
             }
-            .padding(18)
         }
         .onTapGesture(perform: {
             print("tapped \(title)")
