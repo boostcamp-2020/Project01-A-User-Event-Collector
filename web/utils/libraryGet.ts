@@ -18,4 +18,22 @@ const getUserLikeAlbums = async (id: number): Promise<Object> => {
   return albums;
 };
 
-export { getUserLikeTracks, getUserLikeAlbums };
+const getUserLikeArtists = async (id: number): Promise<Object> => {
+  const aritstsWithRelation = await prisma.users_Like_Artists.findMany({
+    where: { userId: id },
+    include: { Artists: true },
+  });
+  const artists = aritstsWithRelation.map((elem) => elem.Artists);
+  return artists;
+};
+
+const getUserLikePlaylists = async (id: number): Promise<Object> => {
+  const playlistsWithRelation = await prisma.users_Likes_Playlists.findMany({
+    where: { userId: id },
+    include: { Playlists: true },
+  });
+  const playlists = playlistsWithRelation.map((elem) => elem.Playlists);
+  return playlists;
+};
+
+export { getUserLikeTracks, getUserLikeAlbums, getUserLikePlaylists, getUserLikeArtists };
