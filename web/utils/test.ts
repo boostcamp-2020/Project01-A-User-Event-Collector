@@ -112,19 +112,12 @@ const getNewsPageData = async (id: number): Promise<Object | null> => {
 };
 
 interface UserInfo {
-  username?: string | null;
-  password?: string | null;
+  username?: string;
+  password?: string;
 }
 
 const getUserInfoData = async ({ username, password }: UserInfo) => {
-  const userInfo = await prisma.users.findUnique({
-    where: {
-      user: {
-        username,
-        password,
-      },
-    },
-  });
+  const userInfo = await prisma.users.findFirst({ where: { username, password } });
   return userInfo;
 };
 
