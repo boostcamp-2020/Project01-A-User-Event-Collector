@@ -16,7 +16,7 @@ const handler = async(_req: NextApiRequest, res: NextApiResponse): Promise<void>
               res.status(400).json({ statusCode: 400, message: "Bad Request" });
               return;
             }
-            res.status(200).json({ token: createJWT(result), info: process.env.JWT_SECRET });
+            res.status(200).json({ token: createJWT(result) });
             break;
           }
           default:
