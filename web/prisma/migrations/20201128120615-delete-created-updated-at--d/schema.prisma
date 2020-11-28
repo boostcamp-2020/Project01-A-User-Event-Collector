@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 model Users {
@@ -13,6 +13,8 @@ model Users {
   password  String
   oAuth     String?
   Playlists Playlists[]
+  
+  @@unique(fields: [username, password], name: "user")
 }
 
 model Albums {

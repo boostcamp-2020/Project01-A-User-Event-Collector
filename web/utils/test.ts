@@ -111,11 +111,23 @@ const getNewsPageData = async (id: number): Promise<Object | null> => {
   return news;
 };
 
+interface UserInfo {
+  username?: string;
+  password?: string;
+}
+
+const getUserInfoData = async ({ username, password }: UserInfo) => {
+  const userInfo = await prisma.users.findFirst({ where: { username, password } });
+  return userInfo;
+};
+
 export {
+  getTrackCardData,
   getPlaylistPageData,
   getArtistPageData,
   getMagazinePageData,
   getAlbumPageData,
   getGenrePageData,
   getNewsPageData,
+  getUserInfoData,
 };
