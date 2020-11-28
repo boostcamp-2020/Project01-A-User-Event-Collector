@@ -8,45 +8,26 @@
 import SwiftUI
 
 struct TrackCellView: View {
-
-    let id: Int
-    let title: String
-    let artist: String
-    let isFavorite: Bool
+    
+    let track: Track
     var didToggleFavorite: (() -> Void)?
-
+    @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
+    
     var body: some View {
         HStack {
-            Image(title)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 44, height: 44, alignment: .center)
-                .padding(.vertical, 2)
-                .padding(.horizontal, 10)
-            TrackInfo(title: title, artist: artist)
-            Spacer()
+            Button(action: {
+                nowPlayingViewModel.updateWith(track: track)
+            }, label: {
+                TrackInfoView(title: track.title, artist: track.artist)
+            })
             HStack(spacing: 20) {
-                Heart(isFavorite: isFavorite, toggleFavorite: didToggleFavorite)
+                Heart(isFavorite: track.isFavorite, toggleFavorite: didToggleFavorite)
                 Ellipsis()
             }
             .padding(18)
         }
-        .onTapGesture(perform: {
-            print("tapped \(title)")
-        })
-    }
-    
-}
-
-extension TrackCellView {
-    init(track: Track) {
-        title = track.title
-        artist = track.artist
-        isFavorite = track.isFavorite
-        id = track.id
     }
 }
-
 
 struct Heart: View {
     var isFavorite: Bool
@@ -57,11 +38,7 @@ struct Heart: View {
             toggleFavorite?()
         }, label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20, alignment: .center)
-                .accentColor(.red)
-
+                .accesoryModifier(color: .red, size: .small)
         })
         .buttonStyle(BorderlessButtonStyle())
     }
@@ -74,44 +51,48 @@ struct Ellipsis: View {
             
         }, label: {
             Image(systemName: "ellipsis")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20, alignment: .center)
-                .accentColor(.gray)
-
+                .accesoryModifier(color: .gray, size: .small)
+            
         })
         .buttonStyle(BorderlessButtonStyle())
     }
 }
 
-struct TrackInfo: View {
+struct TrackInfoView: View {
     let title: String
     let artist: String
     
     var body: some View {
-        
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.headline)
-            Text(artist)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+        HStack {
+            Image(title)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 44, height: 44, alignment: .center)
+                .padding(.vertical, 2)
+                .padding(.horizontal, 10)
+            VStack(alignment: .leading) {
+                Text(title)
+                    .modifier(Title())
+                Text(artist)
+                    .modifier(Description())
+            }
+            Spacer()
         }
     }
 }
 
- 
-struct TrackCellView_Previews: PreviewProvider {
 
+struct TrackCellView_Previews: PreviewProvider {
+    
     static var previews: some View {
         let testTrack1 = Track(id: 1, title: "우산", artist: "BLACKPINK", isFavorite: true)
         let testTrack2 = Track(id: 2, title: "마지막처럼", artist: "BLACKPINK", isFavorite: false)
-
+        
         Group {
             TrackCellView(track: testTrack1)
             TrackCellView(track: testTrack2)
                 .preferredColorScheme(.dark)
-
+            
         }
         .previewLayout(.sizeThatFits)
     }
