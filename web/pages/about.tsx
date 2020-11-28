@@ -10,6 +10,7 @@ const AboutPage = () => (
         <a>Go home</a>
       </Link>
     </p>
+    <a href={api_url}><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>
   </Layout>
 );
 
