@@ -1,5 +1,5 @@
 //
-//  CategoryInfoView.swift
+//  CategoryHeaderView.swift
 //  MiniVibe
 //
 //  Created by 강병민 on 2020/11/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryInfoView: View {
+struct CategoryHeaderView: View {
     let title: String
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
@@ -27,6 +27,6 @@ struct CategoryInfoView: View {
 
 struct CategoryInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryInfoView(title: "hi")
+        CategoryHeaderView(title: "hi")
     }
 }

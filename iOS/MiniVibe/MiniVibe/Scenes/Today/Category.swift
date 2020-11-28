@@ -18,7 +18,7 @@ enum CategoryMode {
 struct Category: Identifiable {
     let id = UUID()
     let title: String
-    let items: [CategoryItem]
+    let items: [CategoryCell]
     let type: CategoryType
     let mode: CategoryMode
 }
