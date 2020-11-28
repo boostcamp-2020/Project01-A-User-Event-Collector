@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20201126065920-add-genre-relationship
+20201128115213-user-unqiue-key
