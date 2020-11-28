@@ -1,0 +1,25 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Model",
+          "model": "Users",
+          "arguments": [
+            {
+              "name": "fields",
+              "value": "[username, password]"
+            },
+            {
+              "name": "name",
+              "value": "\"user\""
+            }
+          ]
+        },
+        "directive": "unique"
+      }
+    }
+  ]
+}

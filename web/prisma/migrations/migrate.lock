@@ -5,3 +5,4 @@
 20201128115735-delete-create-at
 20201128120333-add-relation-with-user---album---artist---track---playlist
 20201128120615-delete-created-updated-at--d
+20201128121844-delete-unique-key-on-users
