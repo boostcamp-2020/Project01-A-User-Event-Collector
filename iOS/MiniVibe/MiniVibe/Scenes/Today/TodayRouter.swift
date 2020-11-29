@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum TodayRoutingType: RoutingTypeProtocol {
-    case track, playlist, magazine, station
+    case tracks, playlists, magazines, stations
 }
 
 class TodayRouter: DestinationOrientedRouterProtocol {
@@ -16,15 +16,15 @@ class TodayRouter: DestinationOrientedRouterProtocol {
     
     func getDestination(to routingDestination: RoutingStarter) -> AnyView {
         switch routingDestination {
-        case .magazine:
+        case .magazines:
             return AnyView(PlaylistListView(id: 1,
                                             router: PlaylistRouter(routingStarter: .magazines)))
-        case .playlist:
+        case .playlists:
             return AnyView(PlaylistListView(id: 1,
                                             router: PlaylistRouter(routingStarter: .recommended)))
-        case .station:
+        case .stations:
             return AnyView(DJStationListView())
-        case .track:
+        case .tracks:
             return AnyView(TrackListView(id: 1))
         }
     }

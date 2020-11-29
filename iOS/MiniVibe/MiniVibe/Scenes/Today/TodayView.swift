@@ -65,19 +65,19 @@ struct TestData {
     static let categories: [Category]
         = [.init(title: "DJ 스테이션",
                  items: stationItems,
-                 type: .station,
+                 type: .stations,
                  mode: .half),
            .init(title: "VIBE 추천 플레이리스트",
                     items: recomendPlaylistItems,
-                    type: .playlist,
+                    type: .playlists,
                     mode: .full),
            .init(title: "즐겨찾는 플레이리스트",
                     items: favoritePlaylistItems,
-                    type: .playlist,
+                    type: .playlists,
                     mode: .half),
             .init(title: "VIBE MAG",
                      items: magazineItems,
-                     type: .magazine,
+                     type: .magazines,
                      mode: .full),
         ]
 }
