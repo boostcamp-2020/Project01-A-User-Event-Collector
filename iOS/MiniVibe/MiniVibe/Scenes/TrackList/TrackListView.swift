@@ -17,7 +17,7 @@ struct TrackListView: View {
     }
     
     var body: some View {
-        List {
+        LazyVStack {
             ForEach(viewModel.tracks) { track -> TrackCellView in
                 var cell = TrackCellView(track: track)
                 cell.didToggleFavorite = {
