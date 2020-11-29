@@ -25,4 +25,19 @@ const makeOption = (_query: any, _target?: any, _type?: string): Object => {
   return optObj;
 };
 
-export default makeOption;
+const makeSearchOption = (_query: any, _target: string): Object => {
+  const { limit, filter } = _query;
+  const optObj: optionObject = {};
+
+  if (limit) {
+    optObj.take = +limit;
+  }
+  if (filter) {
+    optObj.where = {
+      [_target]: { contains: filter },
+    };
+  }
+  return optObj;
+};
+
+export { makeOption, makeSearchOption };

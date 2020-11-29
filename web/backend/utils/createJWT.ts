@@ -6,4 +6,4 @@ const createJWT = (payload: any) => {
   return encode(payload, secret);
 };
 
-export { createJWT };
+export default createJWT;

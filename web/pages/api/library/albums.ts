@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserLikeAlbums } from "../../../utils/libraryGet";
+import { getUserLikeAlbums } from "../../../backend/models/library";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const tmpUserId = 1;

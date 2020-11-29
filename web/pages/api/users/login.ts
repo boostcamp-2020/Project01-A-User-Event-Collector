@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserInfoData } from "../../../utils/test";
-import { createJWT } from "../../../utils/createJWT";
+import { getUserInfoData } from "../../../backend/models/test";
+import createJWT from "../../../backend/utils/createJWT";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
