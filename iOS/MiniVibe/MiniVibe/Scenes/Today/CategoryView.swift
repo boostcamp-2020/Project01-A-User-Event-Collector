@@ -28,7 +28,7 @@ struct CategoryView: View {
         .padding(.bottom, 30)
     }
     
-    func getDestination(from type: CategoryType) -> AnyView {
+    func getDestination(from type: TodayRoutingType) -> AnyView {
         //TODO: 타입에따라서 다른 destination 보여주게하기! (대부분 id넘겨서 tracklist 보여주기
         switch type {
         case .magazine:

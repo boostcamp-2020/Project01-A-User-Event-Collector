@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct TodayView: View {
+    private let router = TodayRouter()
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(TestData.categories) { category in
                     NavigationLink(
-                        destination: getDestination(from: category.type),
+                        destination: router.getDestination(to: category.type),
                         label: {
                             CategoryView(category: category)
                         }
@@ -26,21 +28,6 @@ struct TodayView: View {
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
-    func getDestination(from type: CategoryType) -> AnyView {
-        // 타입에따라서 다른 destination 보여주게하기!
-        switch type {
-        case .magazine:
-            return AnyView(PlaylistListView(id: 1, router: PlaylistRouter(routingStarter: .magazines)))
-        case .playlist:
-            return AnyView(PlaylistListView(id: 1, router: PlaylistRouter(routingStarter: .recommended)))
-        case .station:
-            return AnyView(DJStationListView())
-        case .track:
-            return AnyView(TrackListView(id: 1))
-        }
-    }
-    
 }
 
 struct TodayView_Previews: PreviewProvider {
