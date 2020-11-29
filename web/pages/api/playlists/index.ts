@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../prisma";
+import { getPlaylistCovers } from "../../../backend/models/playlists";
 import makeOption from "../../../backend/utils/testQuery";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -9,7 +9,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
     switch (method) {
       case "GET": {
         const optObj = makeOption(_req.query, "author", "number");
-        const result = await prisma.playlists.findMany(optObj);
+        const result = await getPlaylistCovers(optObj);
         res.json({ Playlists: result });
         break;
       }

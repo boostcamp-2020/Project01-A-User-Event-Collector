@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getGenreCovers } from "../../../backend/models/genres";
+import { getNewsCovers } from "../../../backend/models/news";
+import makeOption from "../../../backend/utils/testQuery";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
@@ -7,13 +8,16 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
   try {
     switch (method) {
       case "GET": {
-        const result = await getGenreCovers();
-        res.json({ Genres: result });
+        const optObj = makeOption(_req.query);
+        const result = await getNewsCovers(optObj);
+        res.json({ News: result });
         break;
       }
+
       case "POST": {
         break;
       }
+
       default:
         res.end();
     }

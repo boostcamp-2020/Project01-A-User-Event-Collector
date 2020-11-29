@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { createUser, getUserInfoData } from "../../../../backend/models/test";
-import { createJWT } from "../../../../backend/utils/createJWT";
+import { createUser, getUserInfoData } from "../../../../backend/models/users";
+import createJWT from "../../../../backend/utils/createJWT";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const { code } = _req.query;

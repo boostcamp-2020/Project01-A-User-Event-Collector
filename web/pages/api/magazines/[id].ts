@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getMagazinePageData } from "../../../backend/models/test";
+import { getMagazineById } from "../../../backend/models/magazines";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
@@ -11,7 +11,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
   try {
     switch (method) {
       case "GET": {
-        const result = await getMagazinePageData(id);
+        const result = await getMagazineById(id);
         if (!result) {
           res.status(400).json({ statusCode: 400, message: "Bad Request" });
           return;
