@@ -1,4 +1,4 @@
-import prisma from "./prisma";
+import prisma from "../../prisma";
 import { getTrackCardData } from "./test";
 
 const getUserLikeTracks = async (id: number): Promise<Object> => {

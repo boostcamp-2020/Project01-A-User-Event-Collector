@@ -1,4 +1,4 @@
-import prisma from "./prisma";
+import prisma from "../../prisma";
 
 const getTrackCardData = async (id: number): Promise<Object | null> => {
   const track: any = await prisma.tracks.findUnique({

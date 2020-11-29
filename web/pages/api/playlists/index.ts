@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../utils/prisma";
-import makeOption from "../../../utils/testQuery";
+import prisma from "../../../prisma";
+import makeOption from "../../../backend/utils/testQuery";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;

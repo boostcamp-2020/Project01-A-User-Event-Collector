@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getPlaylistPageData } from "../../../utils/test";
+import { getPlaylistPageData } from "../../../backend/models/test";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
