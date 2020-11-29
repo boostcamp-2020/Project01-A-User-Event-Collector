@@ -48,9 +48,9 @@ struct PlayerInfoView: View {
             HStack {
                 VStack (alignment: .leading){
                     Text(track.title)
-                        .modifier(Title())
+                        .modifier(Title2())
                     Text(track.artist)
-                        .modifier(Description())
+                        .modifier(Description2())
                 }
                 Spacer()
                 Image(systemName: "ellipsis")

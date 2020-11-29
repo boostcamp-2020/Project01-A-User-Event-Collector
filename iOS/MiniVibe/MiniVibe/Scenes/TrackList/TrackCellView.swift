@@ -71,9 +71,9 @@ struct TrackInfoView: View {
                 .padding(.horizontal, 10)
             VStack(alignment: .leading) {
                 Text(title)
-                    .modifier(Title())
+                    .modifier(Title2())
                 Text(artist)
-                    .modifier(Description())
+                    .modifier(Description2())
             }
             Spacer()
         }
