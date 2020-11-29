@@ -1,25 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma";
-
-type optionObject = {
-  take?: number;
-  where?: {};
-};
-
-const makeSearchOption = (_query: any, _target: string): Object => {
-  const { limit, filter } = _query;
-  const optObj: optionObject = {};
-
-  if (limit) {
-    optObj.take = +limit;
-  }
-  if (filter) {
-    optObj.where = {
-      [_target]: { contains: filter },
-    };
-  }
-  return optObj;
-};
+import { makeSearchOption } from "../../../backend/utils/makePrismaObtion";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getDjStationCovers } from "../../../backend/models/dj-station";
-import makeOption from "../../../backend/utils/testQuery";
+import { makeOption } from "../../../backend/utils/makePrismaObtion";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;

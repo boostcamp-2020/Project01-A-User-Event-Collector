@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getPlaylistCovers } from "../../../backend/models/playlists";
-import makeOption from "../../../backend/utils/testQuery";
+import { makeOption } from "../../../backend/utils/makePrismaObtion";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
