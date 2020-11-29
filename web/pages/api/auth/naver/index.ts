@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { postUserInfo, getUserInfo } from "../../../../backend/models/users";
-import createJWT from "../../../../backend/utils/createJWT";
+import encodeJWT from "../../../../backend/utils/encodeJWT";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const { code } = _req.query;
@@ -30,7 +30,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     loginResult = await postUserInfo(userData);
   }
 
-  res.redirect(`/?token=${createJWT(loginResult)}`);
+  res.redirect(`/?token=${encodeJWT(loginResult)}`);
 };
 
 export default handler;
