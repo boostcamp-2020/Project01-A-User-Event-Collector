@@ -13,7 +13,7 @@ struct TrackListButtonStyle: ViewModifier {
             .padding()
             .frame(maxWidth: .infinity)
             .foregroundColor(.primary)
-            .background(Color.secondary)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(6.0)
     }
 }
