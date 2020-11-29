@@ -5,13 +5,21 @@ interface UserInfo {
   password?: string;
 }
 
-const createUser = async ({ username, password }: UserInfo) => {
-  if (!username || !password) return;
+interface returnInfo {
+  id: number;
+  username: string;
+}
+
+const postUserInfo = async ({ username, password }: UserInfo): Promise<returnInfo | undefined> => {
+  if (!username || !password) return undefined;
   const user = await prisma.users.create({ data: { username, password } });
-  return user;
+  return {
+    id: user.id,
+    username,
+  };
 };
 
-const getUserInfoData = async ({ username, password }: UserInfo) => {
+const getUserInfo = async ({ username, password }: UserInfo): Promise<returnInfo | null> => {
   const userInfo = await prisma.users.findFirst({
     where: { username, password },
     select: {
@@ -22,4 +30,4 @@ const getUserInfoData = async ({ username, password }: UserInfo) => {
   return userInfo;
 };
 
-export { createUser, getUserInfoData };
+export { postUserInfo, getUserInfo };

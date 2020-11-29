@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { createUser, getUserInfoData } from "../../../../backend/models/users";
+import { postUserInfo, getUserInfo } from "../../../../backend/models/users";
 import createJWT from "../../../../backend/utils/createJWT";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
@@ -25,9 +25,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     password: profile.id,
   };
 
-  let loginResult: any = await getUserInfoData(userData);
+  let loginResult: any = await getUserInfo(userData);
   if (!loginResult) {
-    loginResult = await createUser(userData);
+    loginResult = await postUserInfo(userData);
   }
 
   res.redirect(`/?token=${createJWT(loginResult)}`);
