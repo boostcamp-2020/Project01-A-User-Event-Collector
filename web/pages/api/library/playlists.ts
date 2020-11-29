@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserLikePlaylists } from "../../../backend/models/libraryGet";
+import { getUserLikePlaylists } from "../../../backend/models/library";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const tmpUserId = 1;
