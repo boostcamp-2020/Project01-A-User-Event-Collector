@@ -1,5 +1,5 @@
 import prisma from "../../../prisma";
-import getTrackCardData from "../tracks";
+import { getTrackCard } from "../tracks";
 
 const getArtistById = async (id: number): Promise<Object | null> => {
   const artist: any = await prisma.artists.findUnique({ where: { id } });
@@ -9,7 +9,7 @@ const getArtistById = async (id: number): Promise<Object | null> => {
   const trackIdArr = await prisma.artists_Tracks.findMany({
     where: { artistId: id },
   });
-  artist.Tracks = await Promise.all(trackIdArr.map((elem: any) => getTrackCardData(elem.trackId)));
+  artist.Tracks = await Promise.all(trackIdArr.map((elem: any) => getTrackCard(elem.trackId)));
 
   return artist;
 };

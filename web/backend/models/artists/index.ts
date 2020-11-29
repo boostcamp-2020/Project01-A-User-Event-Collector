@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
 import getArtistById from "./getById";
+import getArtistCovers from "./getCovers";
 
-export { getArtistById };
+export { getArtistById, getArtistCovers };
