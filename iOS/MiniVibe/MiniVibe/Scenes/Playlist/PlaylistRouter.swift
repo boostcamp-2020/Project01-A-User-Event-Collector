@@ -27,9 +27,9 @@ class PlaylistRouter: StarterOrientedRouterProtocol {
         case .magazines:
             return AnyView(TrackListView(id: 1))
         case .recommended:
-            return AnyView(TrackListView(id: 1))
+            return AnyView(PlaylistView())
         case .favorites:
-            return AnyView(TrackListView(id: 1))
+            return AnyView(PlaylistView())
         }
     }
     
