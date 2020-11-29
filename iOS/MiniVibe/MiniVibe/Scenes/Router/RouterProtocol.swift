@@ -7,11 +7,16 @@
 
 import SwiftUI
 
-protocol RoutingStarterProtocol {
+protocol RoutingTypeProtocol {
     
 }
 
-protocol RouterProtocol {
+protocol StarterOrientedRouterProtocol {
     associatedtype RoutingStarter
     func getDestination() -> AnyView
+}
+
+protocol DestinationOrientedRouterProtocol {
+    associatedtype RoutingType
+    func getDestination(to routingDestination: RoutingType) -> AnyView
 }
