@@ -17,8 +17,8 @@ struct TrackListButtonView: View {
                     Image(systemName: "play.fill")
                     Text("PLAY")
                         .modifier(Title2())
-                }
-            }.modifier(TrackListButtonStyle())
+                }.modifier(TrackListButtonStyle())
+            }
             Button(action: {
                 // action
             }) {
@@ -26,8 +26,8 @@ struct TrackListButtonView: View {
                     Image(systemName: "shuffle")
                     Text("SHUFFLE")
                         .modifier(Title2())
-                }
-            }.modifier(TrackListButtonStyle())
+                }.modifier(TrackListButtonStyle())
+            }
         }
     }
 }
