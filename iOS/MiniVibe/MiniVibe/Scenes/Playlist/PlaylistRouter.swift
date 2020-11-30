@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-enum PlaylistRoutingStarter: RoutingStarterProtocol {
+enum PlaylistRoutingStarter: RoutingTypeProtocol {
     case magazines
     case recommended
     case favorites
 }
 
-class PlaylistRouter: RouterProtocol {
+class PlaylistRouter: StarterOrientedRouterProtocol {
     typealias RoutingStarter = PlaylistRoutingStarter
     
     let routingStarter: RoutingStarter
@@ -27,9 +27,9 @@ class PlaylistRouter: RouterProtocol {
         case .magazines:
             return AnyView(TrackListView(id: 1))
         case .recommended:
-            return AnyView(TrackListView(id: 1))
+            return AnyView(PlaylistView())
         case .favorites:
-            return AnyView(TrackListView(id: 1))
+            return AnyView(PlaylistView())
         }
     }
     

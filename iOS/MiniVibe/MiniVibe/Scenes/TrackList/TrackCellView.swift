@@ -68,12 +68,12 @@ struct TrackInfoView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 44, height: 44, alignment: .center)
                 .padding(.vertical, 2)
-                .padding(.horizontal, 10)
+//                .padding(.horizontal, 10)
             VStack(alignment: .leading) {
                 Text(title)
-                    .modifier(Title())
+                    .modifier(Title2())
                 Text(artist)
-                    .modifier(Description())
+                    .modifier(Description2())
             }
             Spacer()
         }

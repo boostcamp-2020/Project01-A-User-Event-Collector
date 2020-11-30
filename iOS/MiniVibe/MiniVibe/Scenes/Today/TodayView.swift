@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct TodayView: View {
+    private let router = TodayRouter()
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(TestData.categories) { category in
                     NavigationLink(
-                        destination: getDestination(from: category.type),
+                        destination: router.getDestination(to: category.type),
                         label: {
                             CategoryView(category: category)
                         }
@@ -26,21 +28,6 @@ struct TodayView: View {
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
-    func getDestination(from type: CategoryType) -> AnyView {
-        // 타입에따라서 다른 destination 보여주게하기!
-        switch type {
-        case .magazine:
-            return AnyView(PlaylistListView(id: 1, router: PlaylistRouter(routingStarter: .magazines)))
-        case .playlist:
-            return AnyView(PlaylistListView(id: 1, router: PlaylistRouter(routingStarter: .recommended)))
-        case .station:
-            return AnyView(DJStationListView())
-        case .track:
-            return AnyView(TrackListView(id: 1))
-        }
-    }
-    
 }
 
 struct TodayView_Previews: PreviewProvider {
@@ -78,19 +65,19 @@ struct TestData {
     static let categories: [Category]
         = [.init(title: "DJ 스테이션",
                  items: stationItems,
-                 type: .station,
+                 type: .stations,
                  mode: .half),
            .init(title: "VIBE 추천 플레이리스트",
                     items: recomendPlaylistItems,
-                    type: .playlist,
+                    type: .playlists,
                     mode: .full),
            .init(title: "즐겨찾는 플레이리스트",
                     items: favoritePlaylistItems,
-                    type: .playlist,
+                    type: .playlists,
                     mode: .half),
             .init(title: "VIBE MAG",
                      items: magazineItems,
-                     type: .magazine,
+                     type: .magazines,
                      mode: .full),
         ]
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryView: View {
     let category: Category
+    private let router = CategoryRouter()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,7 +18,7 @@ struct CategoryView: View {
                 HStack(alignment: .top, spacing: 10) {
                     ForEach(category.items) { item in
                         NavigationLink(
-                            destination: getDestination(from: category.type)
+                            destination: router.getDestination(to: category.type)
                         ) {
                             CategoryCellView(item: item, mode: category.mode)
                         }
@@ -26,19 +27,6 @@ struct CategoryView: View {
             }
         }
         .padding(.bottom, 30)
-    }
-    
-    func getDestination(from type: CategoryType) -> AnyView {
-        //TODO: 타입에따라서 다른 destination 보여주게하기! (대부분 id넘겨서 tracklist 보여주기
-        switch type {
-        case .magazine:
-            return AnyView(Text("매거진 화면 보여주기")
-                            .bold())
-        case .playlist:
-            return AnyView(PlaylistView())
-        default:
-            return AnyView(Text("기본 화면"))
-        }
     }
     
 }
@@ -52,7 +40,7 @@ struct CategoryRowView_Previews: PreviewProvider {
 
     static var previews: some View {
         NavigationView {
-            CategoryView(category: Category(title: "Station", items: favoritePlaylistItems, type: .station, mode: .full))
+            CategoryView(category: Category(title: "Station", items: favoritePlaylistItems, type: .stations, mode: .full))
         }
 //        .preferredColorScheme(.dark)
     }
