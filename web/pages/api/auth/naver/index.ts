@@ -33,7 +33,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponseWithCookie): Pr
   }
   const jwt = encodeJWT(loginResult);
 
-  res.cookie("token", jwt, { maxAge: 200000, domain: "localhost", path: "/" });
+  res.cookie("token", jwt, { maxAge: 200000, domain: process.env.COOKIE_DOMAIN, path: "/" });
   res.redirect("/");
 };
 
