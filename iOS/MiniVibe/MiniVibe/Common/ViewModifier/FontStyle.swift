@@ -46,3 +46,12 @@ struct Description2: ViewModifier {
             .truncationMode(.tail)
     }
 }
+
+struct Description1NoLimit: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 18))
+            .foregroundColor(.secondary)
+            .truncationMode(.tail)
+    }
+}
