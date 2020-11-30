@@ -21,7 +21,7 @@ class PlaylistListViewModel: ObservableObject {
          .init(id: 4, imageName: "recommend3", title: "꿀 떨어지는 R&B", description: "VIBE"),
         ]
 
-    func fetchPlaylistList(type: PlaylistRoutingStarter, id: Int) {
+    func fetchPlaylistList(type: PlaylistRoutingType, id: Int) {
         let playlist1 = Playlist(id: 1, title: "잠못드는 밤", imageUrl: "favorite1", description: nil, createdAt: "2020-10-11", author: nil)
         let playlist2 = Playlist(id: 2, title: "Kanye West 대표곡", imageUrl: "favorite2", description: nil, createdAt: "2020-10-11", author: nil)
         let playlist3 = Playlist(id: 3, title: "Avicii 대표곡", imageUrl: "favorite3", description: nil, createdAt: "2020-10-11", author: nil)
