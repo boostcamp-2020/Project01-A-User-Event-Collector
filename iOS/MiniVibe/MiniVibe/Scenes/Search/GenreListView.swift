@@ -16,7 +16,7 @@ struct GenreListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout,
-                      spacing: 20) {
+                      spacing: 10) {
                 GenreCellView()
                 GenreCellView()
                 GenreCellView()
