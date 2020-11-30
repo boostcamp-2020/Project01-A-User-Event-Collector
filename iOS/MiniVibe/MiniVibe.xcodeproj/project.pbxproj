@@ -40,6 +40,7 @@
 		CF5E00602572441D0048F019 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E005F2572441D0048F019 /* ButtonStyle.swift */; };
 		CF5E006525724BA00048F019 /* TrackListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E006425724BA00048F019 /* TrackListHeaderView.swift */; };
 		CF5E007A2572669E0048F019 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E00792572669E0048F019 /* PlaylistView.swift */; };
+		CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5D952574E8C400BE7503 /* NetworkService.swift */; };
 		CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */; };
 		CF8286AD256BABC600D68373 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286AC256BABC600D68373 /* Playlist.swift */; };
 		CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */; };
@@ -108,6 +109,7 @@
 		CF5E005F2572441D0048F019 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CF5E006425724BA00048F019 /* TrackListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListHeaderView.swift; sourceTree = "<group>"; };
 		CF5E00792572669E0048F019 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		CF6E5D952574E8C400BE7503 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellView.swift; sourceTree = "<group>"; };
 		CF8286AC256BABC600D68373 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListView.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		CF6E5D902574E82400BE7503 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CF6E5D942574E8B500BE7503 /* Network */,
 				CF93D7D7256E8FBF005A71CF /* Extension */,
 				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
 				CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */,
@@ -300,6 +303,14 @@
 				CFA2A447256FD1E700190A0B /* Router */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CF6E5D942574E8B500BE7503 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E5D952574E8C400BE7503 /* NetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CF8286A0256BA4D800D68373 /* Playlist */ = {
@@ -508,6 +519,7 @@
 				CF8286AD256BABC600D68373 /* Playlist.swift in Sources */,
 				CF5E006525724BA00048F019 /* TrackListHeaderView.swift in Sources */,
 				51D6C6E225721D7A00EF1B26 /* TabBarView.swift in Sources */,
+				CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */,
 				5181EA882570A0E70077A727 /* PlayerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
