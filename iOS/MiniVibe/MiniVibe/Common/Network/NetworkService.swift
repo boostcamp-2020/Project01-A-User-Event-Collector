@@ -21,7 +21,7 @@ final class NetworkService {
         self.session = session
     }
     
-    func request<T: Decodable> (request: URLRequest) -> AnyPublisher<T, NetworkError> {
+    func request(request: URLRequest) -> AnyPublisher<Data, NetworkError> {
         return session.dataTaskPublisher(for: request)
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse,
@@ -30,7 +30,6 @@ final class NetworkService {
                 }
                 return data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error -> NetworkError in
                 .unknownError(message: error.localizedDescription)
             }
@@ -66,4 +65,11 @@ enum NetworkMethod: String {
     case put
     case patch
     case delete
+}
+
+struct Welcome: Codable {
+    let userId: Int
+    let id: Int
+    let title: String
+    let completed: Bool
 }
