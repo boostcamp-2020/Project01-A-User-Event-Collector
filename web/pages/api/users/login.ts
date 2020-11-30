@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserInfoData } from "../../../backend/models/test";
+import { getUserInfo } from "../../../backend/models/users";
 import createJWT from "../../../backend/utils/createJWT";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -11,7 +11,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
   try {
     switch (method) {
       case "POST": {
-        const result = await getUserInfoData({ username, password });
+        const result = await getUserInfo({ username, password });
         if (!result) {
           res.status(400).json({ statusCode: 400, message: "Bad Request" });
           return;

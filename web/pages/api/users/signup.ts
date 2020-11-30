@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { createUser } from "../../../backend/models/test";
+import { postUserInfo } from "../../../backend/models/users";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
@@ -10,7 +10,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
   try {
     switch (method) {
       case "POST": {
-        const result = await createUser({ username, password });
+        const result = await postUserInfo({ username, password });
         if (!result) {
           res.status(400).json({ statusCode: 400, message: "Bad Request" });
           return;

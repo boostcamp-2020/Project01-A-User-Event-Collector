@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserInfoData } from "../../../backend/models/test";
+import { getUserInfo } from "../../../backend/models/users";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
@@ -8,7 +8,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
   } = _req;
   switch (method) {
     case "POST": {
-      const user = await getUserInfoData({ username, password });
+      const user = await getUserInfo({ username, password });
       res.status(200).send(user);
       break;
     }
