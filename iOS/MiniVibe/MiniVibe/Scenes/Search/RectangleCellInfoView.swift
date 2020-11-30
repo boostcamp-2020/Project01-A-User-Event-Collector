@@ -12,22 +12,24 @@ struct RectangleCellInfoView: View {
         ZStack(alignment: .topLeading) {
             Rectangle()
                 .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width/4)
             HStack {
-                Text("EXO 카이가 솔로 데뷔곡 MV를 선공개했습니다.")
+                Text("EXO 카이가 솔로 데뷔곡 MV를 선공개했습니다.djfkdajfkdjkfdajkf")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 18, weight: .bold))
                     .padding([.leading, .top])
                 Spacer()
             }
             HStack {
+                Spacer()
                 Image(systemName: "play.circle")
                 Text("음악듣기")
             }
             .foregroundColor(Color.pink)
-            .padding(.leading, 294)
+            .padding(.trailing)
             .padding(.top, 64)
         }
+        .frame(width: UIScreen.main.bounds.width - 20,
+                height: UIScreen.main.bounds.width/4)
     }
 }
 

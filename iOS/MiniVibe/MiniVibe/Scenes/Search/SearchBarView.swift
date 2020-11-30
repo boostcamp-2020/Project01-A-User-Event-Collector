@@ -18,7 +18,7 @@ struct SearchBarView: View {
                 .padding(.horizontal, 27)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
-                .padding(.horizontal, 10)
+//                .padding(.horizontal, 10)
                 .onTapGesture {
                     self.isEditing = true
                 }
@@ -27,11 +27,11 @@ struct SearchBarView: View {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.gray)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 22)
+                            .padding(.leading, 12)
                         if !isEditing {
                             Image(systemName: "music.note")
                                 .foregroundColor(.gray)
-                                .padding(.trailing, 22)
+                                .padding(.trailing, 12)
                         }
                     }
                 )

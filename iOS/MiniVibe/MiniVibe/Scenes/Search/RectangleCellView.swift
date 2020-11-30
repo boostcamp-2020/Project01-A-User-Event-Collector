@@ -12,7 +12,7 @@ struct RectangleCellView: View {
         ZStack(alignment: .bottomLeading) {
             Image("Blueming")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width/2)
+                .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width/2)
             RectangleCellInfoView()
         }
     }

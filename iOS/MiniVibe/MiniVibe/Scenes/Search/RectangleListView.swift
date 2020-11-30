@@ -14,15 +14,13 @@ struct RectangleListView: View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: layout,
                       spacing: 20) {
-                HStack {
-                    RectangleCellView()
-                    RectangleCellView()
-                    RectangleCellView()
-                    RectangleCellView()
-                    RectangleCellView()
-                    RectangleCellView()
-                    RectangleCellView()
-                }
+                RectangleCellView()
+                RectangleCellView()
+                RectangleCellView()
+                RectangleCellView()
+                RectangleCellView()
+                RectangleCellView()
+                RectangleCellView()
             }
         }
     }
