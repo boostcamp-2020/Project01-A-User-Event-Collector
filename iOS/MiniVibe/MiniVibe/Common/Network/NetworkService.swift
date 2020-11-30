@@ -41,7 +41,7 @@ final class NetworkService {
 struct RequestBuilder<T: Encodable> {
     // TODO: - 각 뷰에 맞춰서 urlString을 endpoint에 맞게 생성해주는 객체 생성 필요
     let urlString: String
-    let method: NetworkMethod
+    let method: NetworkMethod = .get
     let body: T?
     let headers: [String: String]?
     
