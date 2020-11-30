@@ -218,12 +218,9 @@
 		CF05F8A62567E7AD008080D7 /* MiniVibe */ = {
 			isa = PBXGroup;
 			children = (
+				CF6E5D902574E82400BE7503 /* Common */,
 				CF2D94B6256F82F900D0A66B /* CoreData */,
 				CF2D94B5256F82C000D0A66B /* Scenes */,
-				CF93D7D7256E8FBF005A71CF /* Extension */,
-				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
-				CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */,
-				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
 				CF05F8B52567E7B0008080D7 /* Info.plist */,
 				CF05F8AD2567E7B0008080D7 /* Preview Content */,
 			);
@@ -275,7 +272,6 @@
 				51D6C6E025721D6500EF1B26 /* TabBar */,
 				51D6C6F62572417600EF1B26 /* Player */,
 				5181EA7E2570A0BB0077A727 /* NowPlaying */,
-				CFA2A447256FD1E700190A0B /* Router */,
 				51EED2D8256F7E3C00DB32CB /* Today */,
 				51BEB32E256F3C8600FB2876 /* DJStation */,
 				CF2D94A9256F825B00D0A66B /* TrackList */,
@@ -292,6 +288,18 @@
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CF6E5D902574E82400BE7503 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CF93D7D7256E8FBF005A71CF /* Extension */,
+				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
+				CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */,
+				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
+				CFA2A447256FD1E700190A0B /* Router */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		CF8286A0256BA4D800D68373 /* Playlist */ = {
