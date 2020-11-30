@@ -1,25 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../utils/prisma";
-
-type optionObject = {
-  take?: number;
-  where?: {};
-};
-
-const makeSearchOption = (_query: any, _target: string): Object => {
-  const { limit, filter } = _query;
-  const optObj: optionObject = {};
-
-  if (limit) {
-    optObj.take = +limit;
-  }
-  if (filter) {
-    optObj.where = {
-      [_target]: { contains: filter },
-    };
-  }
-  return optObj;
-};
+import { makeSearchOption } from "../../../backend/utils/makePrismaObtion";
+import { getAlbumCovers } from "../../../backend/models/albums";
+import { getArtistCovers } from "../../../backend/models/artists";
+import { getTrackCovers } from "../../../backend/models/tracks";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
@@ -30,14 +13,13 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
         const result: any = {};
 
         const albumFilter = makeSearchOption(_req.query, "albumName");
-        result.Albums = await prisma.albums.findMany(albumFilter);
-
         const trackFilter = makeSearchOption(_req.query, "trackName");
-        result.Tracks = await prisma.tracks.findMany(trackFilter);
-
         const artistFilter = makeSearchOption(_req.query, "artistName");
-        result.Artists = await prisma.artists.findMany(artistFilter);
 
+        // TODO : PROMISE ALL
+        result.Albums = await getAlbumCovers(albumFilter);
+        result.Tracks = await getTrackCovers(trackFilter);
+        result.Artists = await getArtistCovers(artistFilter);
         res.json(result);
         break;
       }

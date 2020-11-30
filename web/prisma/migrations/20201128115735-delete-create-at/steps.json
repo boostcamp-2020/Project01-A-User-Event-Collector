@@ -1,0 +1,45 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "Users_Like_Albums",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Like_Albums",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Like_Artists",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Like_Artists",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Like_Tracks",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Like_Tracks",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Playlists",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users_Playlists",
+      "field": "updatedAt"
+    }
+  ]
+}
