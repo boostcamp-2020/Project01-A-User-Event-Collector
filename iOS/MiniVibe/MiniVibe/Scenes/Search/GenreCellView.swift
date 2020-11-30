@@ -14,7 +14,7 @@ struct GenreCellView: View {
         }) {
             HStack {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .frame(width: 7, height: 50)
+                    .frame(width: 6, height: 30)
                     .foregroundColor(.blue)
                 Text("PLAY")
                     .modifier(Title2())
