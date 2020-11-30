@@ -10,7 +10,8 @@ import SwiftUI
 struct NowPlayingView: View {
     @ObservedObject var viewModel: PlayerViewModel
     @State private var showMediaPlayer = false
-
+    @GestureState private var dragAmount = CGSize.zero
+    
     var body: some View {
         HStack {
             Button(action: {
@@ -18,7 +19,7 @@ struct NowPlayingView: View {
             }, label: {
                 TrackInfoView(title: viewModel.currentTrack.title, artist: viewModel.currentTrack.artist)
                     .padding(.all, 9)
-            }).fullScreenCover(isPresented: $showMediaPlayer, content: {
+            }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
             })
             HStack(spacing: 20) {
