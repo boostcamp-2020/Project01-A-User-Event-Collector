@@ -1,10 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest } from "next";
 import axios from "axios";
+import NextApiResponseWithCookie from "../../../../backend/interfaces/NextApiResponseWithCookie";
 import { postUserInfo, getUserInfo } from "../../../../backend/models/users";
 import cookies from "../../../../backend/utils/cookies";
 import encodeJWT from "../../../../backend/utils/encodeJWT";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const handler = async (_req: NextApiRequest, res: NextApiResponseWithCookie): Promise<void> => {
   const { code } = _req.query;
   const { state } = _req.query;
   const clientId = process.env.NAVER_CLIENT_ID;
