@@ -12,10 +12,10 @@ const getGenreById = async (id: number): Promise<Object | null> => {
   // TODO: REFACTOR PROMISE.ALL, MAKE MORE FASTER
   genre.Tracks = await Promise.all(trackIds.map((elem: any) => getTrackCard(elem.trackId)));
   genre.Albums = await Promise.all(
-    albumIds.map((elem: any) => prisma.albums.findMany({ where: { id: elem.albumId } })),
+    albumIds.map((elem: any) => prisma.albums.findUnique({ where: { id: elem.albumId } })),
   );
   genre.Artists = await Promise.all(
-    artistIds.map((elem: any) => prisma.artists.findMany({ where: { id: elem.artistId } })),
+    artistIds.map((elem: any) => prisma.artists.findUnique({ where: { id: elem.artistId } })),
   );
 
   return genre;
