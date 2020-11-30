@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../utils/prisma";
-import makeOption from "../../../utils/testQuery";
+import { getDjStationCovers } from "../../../backend/models/dj-station";
+import { makeOption } from "../../../backend/utils/makePrismaObtion";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { method } = _req;
@@ -9,7 +9,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
     switch (method) {
       case "GET": {
         const optObj = makeOption(_req.query);
-        const result = await prisma.dJStations.findMany(optObj);
+        const result = await getDjStationCovers(optObj);
         res.status(200).json({ DJStations: result });
         break;
       }

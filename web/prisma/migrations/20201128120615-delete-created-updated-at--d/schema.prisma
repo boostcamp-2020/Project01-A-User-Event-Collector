@@ -1,0 +1,193 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url = "***"
+}
+
+model Users {
+  id        Int         @id @default(autoincrement())
+  username  String
+  password  String
+  oAuth     String?
+  Playlists Playlists[]
+  
+  @@unique(fields: [username, password], name: "user")
+}
+
+model Albums {
+  id          Int      @id @default(autoincrement())
+  albumName   String?
+  description String?
+  cover       String?
+  artistId    Int?
+  Artists     Artists? @relation(fields: [artistId], references: [id])
+  Tracks      Tracks[]
+  Albums_Genres Albums_Genres[]
+  @@index([artistId], name: "Albums_artistId_foreign_idx")
+}
+
+model Albums_Genres {
+  id        Int      @id @default(autoincrement())
+  albumId   Int?
+  genreId   Int?
+  Albums    Albums?  @relation(fields: [albumId], references: [id])
+  Genres    Genres?  @relation(fields: [genreId], references: [id])
+
+  @@index([albumId], name: "Albums_Genres_albumId_foreign_idx")
+  @@index([genreId], name: "Albums_Genres_genreId_foreign_idx")
+}
+
+model Artists {
+  id             Int              @id @default(autoincrement())
+  artistName     String?
+  cover          String?
+  Albums         Albums[]
+  Artists_Tracks Artists_Tracks[]
+  Artists_Genres Artists_Genres[]
+}
+
+model Artists_Genres {
+  id        Int      @id @default(autoincrement())
+  artistId  Int?
+  genreId   Int?
+  Artists   Artists?  @relation(fields: [artistId], references: [id])
+  Genres    Genres?  @relation(fields: [genreId], references: [id])
+
+  @@index([artistId], name: "Artists_Genres_artistId_foreign_idx")
+  @@index([genreId], name: "Artists_Genres_genreId_foreign_idx")
+}
+
+model Artists_Tracks {
+  id        Int      @id @default(autoincrement())
+  trackId   Int?
+  artistId  Int?
+  Artists   Artists? @relation(fields: [artistId], references: [id])
+  Tracks    Tracks?  @relation(fields: [trackId], references: [id])
+
+  @@index([artistId], name: "Artists_Tracks_artistId_foreign_idx")
+  @@index([trackId], name: "Artists_Tracks_trackId_foreign_idx")
+}
+
+model DJStations {
+  id          Int      @id @default(autoincrement())
+  stationName String?
+  cover       String?
+  popularity  Int?
+}
+
+model Genres {
+  id         Int      @id @default(autoincrement())
+  genreName  String?
+  popularity Int?
+  Tracks_Genres Tracks_Genres[]
+  Albums_Genres Albums_Genres[]
+  Artists_Genres Artists_Genres[]
+}
+
+model Magazines {
+  id           Int        @id @default(autoincrement())
+  magazineName String?
+  magazineType String?
+  description  String?
+  createdAt    DateTime
+  playlistId   Int?
+  Playlists    Playlists? @relation(fields: [playlistId], references: [id])
+
+  @@index([playlistId], name: "Magazines_playlistId_foreign_idx")
+}
+
+model News {
+  id          Int        @id @default(autoincrement())
+  newsName    String?
+  type        String?
+  description String?
+  playlistId  Int?
+  Playlists   Playlists? @relation(fields: [playlistId], references: [id])
+
+  @@index([playlistId], name: "News_playlistId_foreign_idx")
+}
+
+model Playlists {
+  id               Int                @id @default(autoincrement())
+  playlistName     String?
+  description      String?
+  cover            String?
+  author           Int?
+  Users            Users?             @relation(fields: [author], references: [id])
+  Magazines        Magazines[]
+  News             News[]
+  Playlists_Tracks Playlists_Tracks[]
+
+  @@index([author], name: "Playlists_author_foreign_idx")
+}
+
+model Playlists_Tracks {
+  id                  Int        @id @default(autoincrement())
+  playlistTrackNumber Int?
+  playlistId          Int?
+  trackId             Int?
+  Playlists           Playlists? @relation(fields: [playlistId], references: [id])
+  Tracks              Tracks?    @relation(fields: [trackId], references: [id])
+
+  @@index([playlistId], name: "Playlists_Tracks_playlistId_foreign_idx")
+  @@index([trackId], name: "Playlists_Tracks_trackId_foreign_idx")
+}
+
+model Tracks {
+  id               Int                @id @default(autoincrement())
+  trackName        String?
+  albumTrackNumber Int?
+  albumId          Int?
+  Albums           Albums?            @relation(fields: [albumId], references: [id])
+  Artists_Tracks   Artists_Tracks[]
+  Playlists_Tracks Playlists_Tracks[]
+  Tracks_Genres Tracks_Genres[]
+
+  @@index([albumId], name: "Tracks_albumId_foreign_idx")
+}
+
+model Tracks_Genres {
+  id        Int      @id @default(autoincrement())
+  trackId   Int?
+  genreId   Int?
+  Tracks    Tracks?  @relation(fields: [trackId], references: [id])
+  Genres    Genres?  @relation(fields: [genreId], references: [id])
+
+  @@index([trackId], name: "Tracks_Genres_trackId_foreign_idx")
+  @@index([genreId], name: "Tracks_Genres_genreId_foreign_idx")
+}
+
+model Users_Like_Albums {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  albumId   Int?
+  Users     Users? @relation(fields: [userId], references: [id])
+  Albums    Albums? @relation(fields: [albumId], references: [id])
+}
+
+model Users_Like_Artists {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  artistId   Int?
+  Users     Users? @relation(fields: [userId], references: [id])
+  Artists   Artists? @relation(fields: [artistId], references: [id])
+}
+
+model Users_Like_Tracks {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  trackId   Int?
+  Users     Users? @relation(fields: [userId], references: [id])
+  Tracks    Tracks? @relation(fields: [trackId], references: [id])
+}
+
+model Users_Likes_Playlists {
+  id        Int       @id @default(autoincrement())
+  userId    Int?
+  playlistId   Int?
+  Users     Users? @relation(fields: [userId], references: [id])
+  Playlists Playlists? @relation(fields: [playlistId], references: [id])
+}

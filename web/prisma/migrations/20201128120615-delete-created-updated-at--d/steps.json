@@ -1,0 +1,140 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "Users",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Albums",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Albums",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Albums_Genres",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Albums_Genres",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Artists",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Artists",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Artists_Genres",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Artists_Genres",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Artists_Tracks",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Artists_Tracks",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "DJStations",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "DJStations",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Genres",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Genres",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Magazines",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "News",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "News",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Playlists",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Playlists",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Playlists_Tracks",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Playlists_Tracks",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Tracks",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Tracks",
+      "field": "updatedAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Tracks_Genres",
+      "field": "createdAt"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Tracks_Genres",
+      "field": "updatedAt"
+    }
+  ]
+}
