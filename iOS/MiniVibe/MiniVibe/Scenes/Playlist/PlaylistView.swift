@@ -19,7 +19,9 @@ struct PlaylistView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: layout, pinnedViews: [.sectionHeaders]) {
+            LazyVGrid(columns: layout,
+                      spacing: 20,
+                      pinnedViews: [.sectionHeaders]) {
                 TrackListHeaderView(playlist: playlist)
                 Section(header: TrackListButtonView()) {
                     TrackListView(id: trackListId)
