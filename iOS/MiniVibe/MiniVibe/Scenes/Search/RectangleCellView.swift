@@ -10,7 +10,7 @@ import SwiftUI
 struct RectangleCellView: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image(systemName: "person.fill")
+            Image("Blueming")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width/2)
             RectangleCellInfoView()
