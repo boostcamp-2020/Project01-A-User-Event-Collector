@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { postUserInfo, getUserInfo } from "../../../../backend/models/users";
+import cookies from "../../../../backend/utils/cookies";
 import encodeJWT from "../../../../backend/utils/encodeJWT";
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { code } = _req.query;
   const { state } = _req.query;
   const clientId = process.env.NAVER_CLIENT_ID;
@@ -29,8 +30,10 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   if (!loginResult) {
     loginResult = await postUserInfo(userData);
   }
+  const jwt = encodeJWT(loginResult);
 
-  res.redirect(`/?token=${encodeJWT(loginResult)}`);
+  res.cookie("token", jwt, { maxAge: 200000, domain: "localhost", path: "/" });
+  res.redirect("/");
 };
 
-export default handler;
+export default cookies(handler);
