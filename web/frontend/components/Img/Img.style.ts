@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ImgStyles } from "./Img.interface";
 
+/* Components, for using storybook */
 const StyledImg = styled.img<ImgStyles>`
   object-fit: cover;
   width: ${({ width }) => width}rem;
@@ -11,6 +12,7 @@ const StyledImg = styled.img<ImgStyles>`
 
 export default StyledImg;
 
+/* Component options, for using in code line */
 const MagazineImgStyles: ImgStyles = {
   width: 20,
   height: 20,
