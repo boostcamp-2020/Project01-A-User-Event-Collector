@@ -1,5 +1,3 @@
-import "styled-components";
-
 interface ImgStyles {
   width?: number;
   height?: number;

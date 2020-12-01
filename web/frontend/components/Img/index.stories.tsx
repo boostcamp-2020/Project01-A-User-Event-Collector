@@ -11,3 +11,4 @@ export default {
 const Template: Story<ImgProps> = (args) => <Img {...args} />;
 
 export const TemplateImg = Template.bind({});
+TemplateImg.args = { src: "https://lthumb.lisimg.com/441/21055441.jpg?width=280&sharpen=true" };
