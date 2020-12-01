@@ -13,7 +13,7 @@ protocol RoutingTypeProtocol {
 
 protocol StarterOrientedRouterProtocol {
     associatedtype RoutingStarter
-    func getDestination() -> AnyView
+    func getDestination(id: Int) -> AnyView
 }
 
 protocol DestinationOrientedRouterProtocol {

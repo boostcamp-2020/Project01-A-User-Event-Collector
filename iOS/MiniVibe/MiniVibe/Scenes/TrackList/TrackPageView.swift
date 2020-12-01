@@ -7,33 +7,33 @@
 
 import SwiftUI
 
-struct TrackPageView: View {
-    private let id: Int
-    @StateObject private var viewModel = TrackListViewModel()
-    
-    init(id: Int) {
-        self.id = id
-    }
-    
-    var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(viewModel.getTracksOfFive()){ group in
-                    TrackGroupView(trackGroup: group)
-                        .padding()
-                        .frame(width: UIScreen.main.bounds.width)
-                }
-            }
-    //        .modifier(NavigationBarStyle(title: ""))
-            .onAppear(perform: {
-                viewModel.fetchTracks(id: id)
-        })
-        }
-    }
-}
-
-struct TrackPageview_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackPageView(id: 1)
-    }
-}
+//struct TrackPageView: View {
+//    private let id: Int
+//    @StateObject private var viewModel = TrackListViewModel()
+//    
+//    init(id: Int) {
+//        self.id = id
+//    }
+//    
+//    var body: some View {
+//        ScrollView(.horizontal) {
+//            HStack {
+//                ForEach(viewModel.getTracksOfFive()){ group in
+//                    TrackGroupView(trackGroup: group)
+//                        .padding()
+//                        .frame(width: UIScreen.main.bounds.width)
+//                }
+//            }
+//    //        .modifier(NavigationBarStyle(title: ""))
+//            .onAppear(perform: {
+//                viewModel.appendTracks(id: id)
+//        })
+//        }
+//    }
+//}
+//
+//struct TrackPageview_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackPageView(id: 1)
+//    }
+//}

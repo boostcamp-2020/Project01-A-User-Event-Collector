@@ -22,6 +22,6 @@ struct TrackGroupView: View {
 
 struct TrackGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackGroupView(trackGroup: TrackGroup(tracks: TestData.playlist.tracks))
+        TrackGroupView(trackGroup: TrackGroup(tracks: TestData.playlist.tracks!))
     }
 }

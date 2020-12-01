@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MagazineView: View {
 //    @Binding var playlist: Playlist
-    let playlist = TestData.playlist
+    let magazine: Magazine
     private let trackListId: Int = 1
     private let layout = [GridItem(.flexible())]
     
@@ -18,15 +18,15 @@ struct MagazineView: View {
             LazyVGrid(columns: layout,
                       spacing: 20,
                       pinnedViews: [.sectionHeaders]) {
-                Image(playlist.cover ?? "logo")
+                Image(magazine.cover ?? "logo")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                 Section(header: TrackListButtonView()) {
-                    if let description = playlist.description {
+                    if let description = magazine.description {
                         Text(description)
                             .modifier(Description1NoLimit())
                     }
-                    TrackListView(id: trackListId)
+                    TrackListView(tracks: magazine.tracks!)
                 }
             }
         }.padding()
@@ -34,12 +34,8 @@ struct MagazineView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(playlist.name)
+                    Text(magazine.name)
                         .modifier(Title2())
-                    if let author = playlist.user.username {
-                        Text(author)
-                            .modifier(Description2())
-                    }
                 }
             }
         }
@@ -48,6 +44,6 @@ struct MagazineView: View {
 
 struct MagazineView_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineView()
+        MagazineView(magazine: TestData.magazine)
     }
 }
