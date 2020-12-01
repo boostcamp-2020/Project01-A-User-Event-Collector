@@ -10,6 +10,7 @@ import SwiftUI
 struct TrackListView: View {
     
     private let id: Int
+    private let layout = [GridItem(.flexible())]
     @StateObject private var viewModel = TrackListViewModel()
     
     init(id: Int) {
@@ -17,7 +18,7 @@ struct TrackListView: View {
     }
     
     var body: some View {
-        LazyVStack {
+        LazyVGrid(columns: layout) {
             ForEach(viewModel.tracks) { track -> TrackCellView in
                 var cell = TrackCellView(track: track)
                 cell.didToggleFavorite = {
