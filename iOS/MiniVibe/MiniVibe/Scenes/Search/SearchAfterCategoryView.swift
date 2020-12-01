@@ -13,12 +13,7 @@ struct SearchAfterCategoryView: View {
     
     init(type: CategoryType, tracks: [Track]) {
         self.type = type
-        if tracks.count > 3 {
-            self.tracks = Array(tracks[0..<3])
-        }
-        else {
-            self.tracks = tracks
-        }
+        self.tracks = tracks
     }
     
     enum CategoryType: String {
@@ -33,7 +28,8 @@ struct SearchAfterCategoryView: View {
                     .modifier(Title1())
                 Spacer()
             }
-            ForEach(tracks) { track in
+            let n = tracks.count >= 3 ? 3 : tracks.count
+            ForEach(tracks[0..<n]) { track in
                 TrackCellView(track: track)
             }
         }
