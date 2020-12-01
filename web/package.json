@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "storybook": "start-storybook",
-    "build-storybook": "build-storybook"
+    "sb": "start-storybook",
+    "build-sb": "build-storybook"
   },
   "dependencies": {
     "@prisma/client": "^2.11.0",

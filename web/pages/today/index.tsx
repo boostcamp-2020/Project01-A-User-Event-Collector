@@ -1,12 +1,31 @@
 import Link from "next/link";
 import Layout from "../../frontend/components/Layout";
-import { MagazineImg } from "../../frontend/components/Img";
+
+import TrackCard from "../../frontend/components/TrackCard";
+
 const IndexPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
     <h1>Hello Next.js 👋</h1>
 
-    <MagazineImg src={"examp.img"} />
-
+    <TrackCard
+      id={21}
+      trackName={"트랙 제목"}
+      Albums={{
+        id: 4,
+        albumName: "I trust",
+        description: "편견이란 답답한 우리를 무너뜨린 ‘LION'의 귀환! ",
+        cover:
+          "https://musicmeta-phinf.pstatic.net/album/004/511/4511159.jpg?type=r360Fll&v=20200406175912",
+        artistId: 2,
+      }}
+      Artists={[
+        {
+          id: 2,
+          artistName: "아이들",
+          cover: null,
+        },
+      ]}
+    />
     <p>
       <Link href="/about">
         <a>About</a>
