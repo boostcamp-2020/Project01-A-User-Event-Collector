@@ -86,7 +86,7 @@ struct TrackInfoView: View {
 struct TrackCellView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let testTrack1 = TestData.playlist.tracks.first!
+        let testTrack1 = TestData.playlist.tracks!.first!
         
         Group {
             TrackCellView(track: testTrack1)

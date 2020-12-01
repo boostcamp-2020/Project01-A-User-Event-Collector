@@ -22,8 +22,8 @@ class TrackListViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
     
-    func fetchTracks(id: Int) {
-        self.tracks = TestData.playlist.tracks
+    func createTracks(tracks: [Track]) {
+        self.tracks = tracks
     }
     
     func toggleIsFavorite(for id: Int) {

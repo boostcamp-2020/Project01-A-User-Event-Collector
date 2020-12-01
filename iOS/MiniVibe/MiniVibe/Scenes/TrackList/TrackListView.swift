@@ -9,12 +9,13 @@ import SwiftUI
 
 struct TrackListView: View {
     
-    private let id: Int
     private let layout = [GridItem(.flexible())]
+    private let tracks: [Track]
+    
     @StateObject private var viewModel = TrackListViewModel()
     
-    init(id: Int) {
-        self.id = id
+    init(tracks: [Track]) {
+        self.tracks = tracks
     }
     
     var body: some View {
@@ -26,16 +27,14 @@ struct TrackListView: View {
                 }
                 return cell
             }
+        }.onAppear() {
+            viewModel.createTracks(tracks: tracks)
         }
-//        .modifier(NavigationBarStyle(title: ""))
-        .onAppear(perform: {
-            viewModel.fetchTracks(id: id)
-        })
     }
 }
 
-struct TrackListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackListView(id: 1)
-    }
-}
+//struct TrackListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackListView(id: 1)
+//    }
+//}

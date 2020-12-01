@@ -19,7 +19,7 @@ struct TrackListHeaderView: View {
                 VStack(alignment: .leading) {
                     Text(playlist.name)
                         .modifier(Title1())
-                    if let author = playlist.user.username {
+                    if let author = playlist.user?.username {
                         Text(author)
                             .modifier(Description1())
                     }

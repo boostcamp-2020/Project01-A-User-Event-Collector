@@ -16,13 +16,13 @@ struct ChartView: View {
                       spacing: 20) {
                 Section(header:
                             NavigationLink(
-                            destination: PlaylistView()
+                                destination: PlaylistView(playlistID: 1)
                             ,
                             label: {
                                 CategoryHeaderView(title: "오늘 TOP 100")
                             }))
                 {
-                    TrackPageView(id: 1)
+//                    TrackPageView(id: 1)
                 }
                       }
         }.padding()

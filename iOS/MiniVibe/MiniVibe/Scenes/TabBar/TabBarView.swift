@@ -15,22 +15,22 @@ struct TabBarView: View {
         TabView {
             TodayView()
                 .tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("First")
+                    Image(systemName: "house.fill")
+                    Text("투데이")
                 }
                 .overlay(NowPlayingView(viewModel: playerViewModel), alignment: .bottom)
             ChartView()
                 .tabItem {
-                    Image(systemName: "2.square.fill")
-                    Text("Second")
+                    Image(systemName: "chart.bar.fill")
+                    Text("차트")
                 }
                 .overlay(NowPlayingView(viewModel: playerViewModel), alignment: .bottom)
-            
-            Text("The Last Tab")
+            SearchView()
                 .tabItem {
-                    Image(systemName: "3.square.fill")
-                    Text("Third")
+                    Image(systemName: "magnifyingglass.circle")
+                    Text("검색")
                 }
+                .overlay(NowPlayingView(viewModel: playerViewModel), alignment: .bottom)
         }
         .environmentObject(playerViewModel)
         .colorScheme(.dark)
