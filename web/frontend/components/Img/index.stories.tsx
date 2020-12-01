@@ -1,6 +1,6 @@
 import React from "react";
-import Img from ".";
 import { Story } from "@storybook/react/types-6-0";
+import Img from ".";
 import { ImgProps } from "./Img.interface";
 
 export default {

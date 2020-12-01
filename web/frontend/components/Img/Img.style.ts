@@ -19,9 +19,14 @@ const MagazineImgStyles: ImgStyles = {
   borderRadius: 0,
 };
 const AlbumImgStyles: ImgStyles = {
-  width: 15,
-  height: 15,
+  width: 12,
+  height: 12,
+  borderRadius: 0,
+};
+const NewsImgStyles: ImgStyles = {
+  width: 20,
+  height: 12,
   borderRadius: 0,
 };
 
-export { MagazineImgStyles, AlbumImgStyles };
+export { MagazineImgStyles, AlbumImgStyles, NewsImgStyles };

@@ -1,5 +1,5 @@
 import React from "react";
-import StyledImg, { MagazineImgStyles, AlbumImgStyles } from "./Img.style";
+import StyledImg, { MagazineImgStyles, AlbumImgStyles, NewsImgStyles } from "./Img.style";
 import { ImgProps } from "./Img.interface";
 
 /* TSX, for using storybook */
@@ -18,4 +18,8 @@ const AlbumImg: React.FC<ImgProps> = ({ src }: ImgProps) => {
   return <StyledImg {...AlbumImgStyles} src={src} />;
 };
 
-export { MagazineImg, AlbumImg };
+const NewsImg: React.FC<ImgProps> = ({ src }: ImgProps) => {
+  return <StyledImg {...NewsImgStyles} src={src} />;
+};
+
+export { MagazineImg, AlbumImg, NewsImg };
