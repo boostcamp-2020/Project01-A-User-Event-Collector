@@ -1,9 +1,9 @@
 import "styled-components";
 
 interface ImgStyles {
-  width?: number;
-  height?: number;
-  borderRadius?: number;
+  width?: string;
+  height?: string;
+  borderRadius?: string;
 }
 
 interface ImgProps extends ImgStyles {
