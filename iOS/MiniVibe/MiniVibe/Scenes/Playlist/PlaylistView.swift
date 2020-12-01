@@ -18,7 +18,7 @@ struct PlaylistView: View {
 //    }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVGrid(columns: layout,
                       spacing: 20,
                       pinnedViews: [.sectionHeaders]) {

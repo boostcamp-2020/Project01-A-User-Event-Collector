@@ -42,6 +42,13 @@
 		CF5E007A2572669E0048F019 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E00792572669E0048F019 /* PlaylistView.swift */; };
 		CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5D952574E8C400BE7503 /* NetworkService.swift */; };
 		CF6E5D9E2574EE6C00BE7503 /* MagazineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5D9D2574EE6C00BE7503 /* MagazineView.swift */; };
+		CF6E5DB62575501F00BE7503 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DB52575501F00BE7503 /* SearchView.swift */; };
+		CF6E5DBB257557D000BE7503 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DBA257557D000BE7503 /* SearchBarView.swift */; };
+		CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DBF25755CCC00BE7503 /* RectangleCellView.swift */; };
+		CF6E5DCE2575688800BE7503 /* RectangleCellInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DCD2575688800BE7503 /* RectangleCellInfoView.swift */; };
+		CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DD525756A3300BE7503 /* RectangleListView.swift */; };
+		CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */; };
+		CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DE225756E6300BE7503 /* GenreListView.swift */; };
 		CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */; };
 		CF8286AD256BABC600D68373 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286AC256BABC600D68373 /* Playlist.swift */; };
 		CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */; };
@@ -112,6 +119,13 @@
 		CF5E00792572669E0048F019 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		CF6E5D952574E8C400BE7503 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CF6E5D9D2574EE6C00BE7503 /* MagazineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineView.swift; sourceTree = "<group>"; };
+		CF6E5DB52575501F00BE7503 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CF6E5DBA257557D000BE7503 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		CF6E5DBF25755CCC00BE7503 /* RectangleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCellView.swift; sourceTree = "<group>"; };
+		CF6E5DCD2575688800BE7503 /* RectangleCellInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCellInfoView.swift; sourceTree = "<group>"; };
+		CF6E5DD525756A3300BE7503 /* RectangleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleListView.swift; sourceTree = "<group>"; };
+		CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
+		CF6E5DE225756E6300BE7503 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
 		CF8286A1256BA5BA00D68373 /* PlaylistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellView.swift; sourceTree = "<group>"; };
 		CF8286AC256BABC600D68373 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		CF93D7AD256E31FB005A71CF /* PlaylistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListView.swift; sourceTree = "<group>"; };
@@ -273,6 +287,7 @@
 		CF2D94B5256F82C000D0A66B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CF6E5DB42575501200BE7503 /* Search */,
 				51D6C6E025721D6500EF1B26 /* TabBar */,
 				51D6C6F62572417600EF1B26 /* Player */,
 				5181EA7E2570A0BB0077A727 /* NowPlaying */,
@@ -313,6 +328,20 @@
 				CF6E5D952574E8C400BE7503 /* NetworkService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		CF6E5DB42575501200BE7503 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E5DB52575501F00BE7503 /* SearchView.swift */,
+				CF6E5DBA257557D000BE7503 /* SearchBarView.swift */,
+				CF6E5DBF25755CCC00BE7503 /* RectangleCellView.swift */,
+				CF6E5DCD2575688800BE7503 /* RectangleCellInfoView.swift */,
+				CF6E5DD525756A3300BE7503 /* RectangleListView.swift */,
+				CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */,
+				CF6E5DE225756E6300BE7503 /* GenreListView.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		CF8286A0256BA4D800D68373 /* Playlist */ = {
@@ -490,11 +519,15 @@
 				CF8286A2256BA5BA00D68373 /* PlaylistCellView.swift in Sources */,
 				CF93D7CB256E703D005A71CF /* PlaylistRouter.swift in Sources */,
 				CF5E005B257241E80048F019 /* TrackListButtonView.swift in Sources */,
+				CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */,
 				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
 				CF93D7AE256E31FB005A71CF /* PlaylistListView.swift in Sources */,
 				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
 				CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */,
+				CF6E5DCE2575688800BE7503 /* RectangleCellInfoView.swift in Sources */,
 				CF93D7D0256E7FE6005A71CF /* PlaylistListViewModel.swift in Sources */,
+				CF6E5DBB257557D000BE7503 /* SearchBarView.swift in Sources */,
+				CF6E5DB62575501F00BE7503 /* SearchView.swift in Sources */,
 				CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */,
 				CF5C214A25741952007C7229 /* TodayRouter.swift in Sources */,
 				CF5C214F25741BEE007C7229 /* CategoryRouter.swift in Sources */,
@@ -517,9 +550,12 @@
 				CF5E007A2572669E0048F019 /* PlaylistView.swift in Sources */,
 				51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */,
 				51D6C7032572725500EF1B26 /* BlurView.swift in Sources */,
+				CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */,
+				CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
 				CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */,
 				5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */,
+				CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */,
 				CF8286AD256BABC600D68373 /* Playlist.swift in Sources */,
 				CF5E006525724BA00048F019 /* TrackListHeaderView.swift in Sources */,
 				51D6C6E225721D7A00EF1B26 /* TabBarView.swift in Sources */,
