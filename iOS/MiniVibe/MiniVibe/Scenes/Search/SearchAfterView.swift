@@ -1,5 +1,5 @@
 //
-//  SearchAfterCategoriesView.swift
+//  SearchAfterView.swift
 //  MiniVibe
 //
 //  Created by 류연수 on 2020/12/02.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchAfterCategoriesView: View {
+struct SearchAfterView: View {
     private let tracks: [Track]?
     private let albums: [Album]?
     private let artists: [Artist]?
@@ -41,8 +41,8 @@ struct SearchAfterCategoriesView: View {
     }
 }
 
-struct SearchAfterCategoriesView_Previews: PreviewProvider {
+struct SearchAfterView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchAfterCategoriesView(tracks: TestData.playlist.tracks, albums: nil, artists: nil)
+        SearchAfterView(tracks: TestData.playlist.tracks, albums: nil, artists: nil)
     }
 }
