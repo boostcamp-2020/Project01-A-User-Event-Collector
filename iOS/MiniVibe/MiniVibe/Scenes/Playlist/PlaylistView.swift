@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlaylistView: View {
-    private let playlist = Playlist(id: 1, title: "Dynamite", imageUrl: "Dynamite", description: "아무 생각 없이 드라이브하며 기분전환 어쩌고 저쩌고 dkdkdkdkdk", createdAt: "어제 어쩌고", author: "VIBE")
+    private let playlist = TestData.playlist
     private let trackListId: Int = 1
     private let layout = [GridItem(.flexible())]
     
@@ -32,9 +32,9 @@ struct PlaylistView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(playlist.title)
+                    Text(playlist.name)
                         .modifier(Title2())
-                    if let author = playlist.author {
+                    if let author = playlist.user.username {
                         Text(author)
                             .modifier(Description2())
                     }
