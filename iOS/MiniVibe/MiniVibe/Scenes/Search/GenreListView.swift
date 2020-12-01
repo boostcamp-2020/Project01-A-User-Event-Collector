@@ -14,20 +14,18 @@ struct GenreListView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: layout,
-                      spacing: 10) {
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-                GenreCellView()
-            }
+        LazyVGrid(columns: layout,
+                  spacing: 10) {
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
+            GenreCellView()
         }
     }
 }

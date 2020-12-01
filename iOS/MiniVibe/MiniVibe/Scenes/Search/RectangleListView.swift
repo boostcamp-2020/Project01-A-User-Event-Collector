@@ -11,7 +11,7 @@ struct RectangleListView: View {
     private let layout = [GridItem(.flexible())]
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: layout,
                       spacing: 20) {
                 RectangleCellView()
