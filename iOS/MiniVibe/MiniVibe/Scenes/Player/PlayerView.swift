@@ -35,13 +35,13 @@ struct PlayerInfoView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            Image(track.title)
+            Image(track.trackName)
                 .fitModifier()
             HStack {
                 VStack (alignment: .leading){
-                    Text(track.title)
+                    Text(track.trackName)
                         .modifier(Title2())
-                    Text(track.artist)
+                    Text(track.trackName)
                         .modifier(Description2())
                 }
                 Spacer()

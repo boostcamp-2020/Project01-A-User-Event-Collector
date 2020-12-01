@@ -10,7 +10,7 @@ import SwiftUI
 struct TabBarView: View {
     
     @StateObject var playerViewModel =  PlayerViewModel()
-
+    
     var body: some View {
         TabView {
             TodayView()
@@ -19,11 +19,13 @@ struct TabBarView: View {
                     Text("First")
                 }
                 .overlay(NowPlayingView(viewModel: playerViewModel), alignment: .bottom)
-            Text("Another Tab")
+            ChartView()
                 .tabItem {
                     Image(systemName: "2.square.fill")
                     Text("Second")
                 }
+                .overlay(NowPlayingView(viewModel: playerViewModel), alignment: .bottom)
+            
             Text("The Last Tab")
                 .tabItem {
                     Image(systemName: "3.square.fill")
@@ -38,6 +40,5 @@ struct TabBarView: View {
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
         TabBarView()
-        
     }
 }

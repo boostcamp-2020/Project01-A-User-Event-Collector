@@ -8,7 +8,7 @@
 import Foundation
 
 class PlayerViewModel: ObservableObject {
-    @Published var currentTrack = Track(id: 1, title: "Dynamite", artist: "방탄소년단", isFavorite: true)
+    @Published var currentTrack = TestData.playlist.tracks.first!
     @Published var queue = [Track]()
     
     func updateWith(track: Track) {

@@ -17,7 +17,7 @@ struct NowPlayingView: View {
             Button(action: {
                 self.showMediaPlayer.toggle()
             }, label: {
-                TrackInfoView(title: viewModel.currentTrack.title, artist: viewModel.currentTrack.artist)
+                TrackInfoView(title: viewModel.currentTrack.trackName, artist: viewModel.currentTrack.artists.first?.name ?? "")
                     .padding(.all, 9)
             }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)

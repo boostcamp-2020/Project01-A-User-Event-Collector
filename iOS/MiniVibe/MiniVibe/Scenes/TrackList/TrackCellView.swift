@@ -12,16 +12,17 @@ struct TrackCellView: View {
     let track: Track
     var didToggleFavorite: (() -> Void)?
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
+    @State var isFavorite = false
     
     var body: some View {
         HStack {
             Button(action: {
                 nowPlayingViewModel.updateWith(track: track)
             }, label: {
-                TrackInfoView(title: track.title, artist: track.artist)
+                TrackInfoView(title: track.trackName, artist: track.artists.first?.name ?? "")
             })
             HStack(spacing: 20) {
-                Heart(isFavorite: track.isFavorite, toggleFavorite: didToggleFavorite)
+                Heart(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
                 Ellipsis()
             }
         }
@@ -29,12 +30,13 @@ struct TrackCellView: View {
 }
 
 struct Heart: View {
-    var isFavorite: Bool
+    @Binding var isFavorite: Bool
     let toggleFavorite: (() -> Void)?
     
     var body: some View {
         Button(action: {
             toggleFavorite?()
+            isFavorite.toggle()
         }, label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
                 .accesoryModifier(color: .red, size: .small)
@@ -84,13 +86,10 @@ struct TrackInfoView: View {
 struct TrackCellView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let testTrack1 = Track(id: 1, title: "우산", artist: "BLACKPINK", isFavorite: true)
-        let testTrack2 = Track(id: 2, title: "마지막처럼", artist: "BLACKPINK", isFavorite: false)
+        let testTrack1 = TestData.playlist.tracks.first!
         
         Group {
             TrackCellView(track: testTrack1)
-            TrackCellView(track: testTrack2)
-                .preferredColorScheme(.dark)
             
         }
         .previewLayout(.sizeThatFits)
