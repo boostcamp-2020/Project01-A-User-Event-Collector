@@ -17,7 +17,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
           return;
         }
 
-        res.status(200).json({ Magzines: result });
+        res.status(200).json({ Magazines: result });
         break;
       }
 
