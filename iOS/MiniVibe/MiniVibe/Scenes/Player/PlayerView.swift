@@ -13,7 +13,7 @@ struct PlayerView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ScrollView(.vertical) {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack() {
                     PlayerHeaderView(showMediaPlayer: $showMediaPlayer)
                     Spacer()
