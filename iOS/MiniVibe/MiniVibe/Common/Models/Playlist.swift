@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Playlist: Codable {
-    let id: Int
-    let name, description: String
-    let cover: String?
+struct Playlist: Thumbnailable, Codable {
+    var id: Int
+    var name, description: String
+    var cover: String?
     let author: Int
-    let user: User
-    let tracks: [Track]
+    let user: User?
+    let tracks: [Track]?
 
     enum CodingKeys: String, CodingKey {
         case id, description, cover, author
@@ -29,5 +29,12 @@ struct PlayListReponse: Codable {
 
     enum CodingKeys: String, CodingKey {
         case playlist = "Playlists"
+    }
+}
+
+struct Playlists: Codable {
+    let playlists: [Playlist]
+    enum CodingKeys: String, CodingKey {
+        case playlists = "Playlists"
     }
 }
