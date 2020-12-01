@@ -1,17 +1,6 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import Img from ".";
-import { ImgProps } from "./Img.interface";
-import {
-  AlbumImgStyles,
-  InfoImgStyles,
-  LikedArtistImgStyles,
-  MagazineImgStyles,
-  NewsImgStyles,
-  PlayerCoverImgStyles,
-  ProfileImgStyles,
-  TrackCardImgStyles,
-} from "./Img.style";
+import Img, { ImgProps } from ".";
 
 export default {
   title: "Img",
@@ -22,26 +11,26 @@ const Template: Story<ImgProps> = (args) => <Img {...args} />;
 
 export const TemplateImg = Template.bind({});
 
-export const MagazineImg = Template.bind({});
-MagazineImg.args = MagazineImgStyles;
+export const TodayBigImg = Template.bind({});
+TodayBigImg.args = { varient: "todayBig" };
 
-export const AlbumImg = Template.bind({});
-AlbumImg.args = AlbumImgStyles;
+export const TodaySmallImg = Template.bind({});
+TodaySmallImg.args = { varient: "todaySmall" };
 
-export const NewsImg = Template.bind({});
-NewsImg.args = NewsImgStyles;
+export const TodayNewsImg = Template.bind({});
+TodayNewsImg.args = { varient: "todayNews" };
 
-export const InfoImg = Template.bind({});
-InfoImg.args = InfoImgStyles;
+export const descriptionCoverImg = Template.bind({});
+descriptionCoverImg.args = { varient: "descriptionCover" };
 
 export const ProfileImg = Template.bind({});
-ProfileImg.args = ProfileImgStyles;
+ProfileImg.args = { varient: "profile" };
 
 export const TrackCardImg = Template.bind({});
-TrackCardImg.args = TrackCardImgStyles;
+TrackCardImg.args = { varient: "trackCardCover" };
 
 export const LikedArtistImg = Template.bind({});
-LikedArtistImg.args = LikedArtistImgStyles;
+LikedArtistImg.args = { varient: "likedArtist" };
 
-export const PlayerCoverImg = Template.bind({});
-PlayerCoverImg.args = PlayerCoverImgStyles;
+export const NowPlayingImg = Template.bind({});
+NowPlayingImg.args = { varient: "nowPlayingCover" };
