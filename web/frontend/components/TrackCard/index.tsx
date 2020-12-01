@@ -1,20 +1,20 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import TrackCover from "./TrackCover";
 import TrackModal from "./TrackModal";
 import Link from "next/link";
+import Img from "../Img";
 
 interface Artist {
   id: number;
   artistName: string;
-  cover: string | null;
+  cover: string;
 }
 
 interface Album {
   id: number;
   albumName: string;
   description?: string;
-  cover: string | null;
+  cover: string;
   artistId: number;
 }
 
@@ -47,11 +47,13 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
 
   return (
     <StyleTrack>
-      <TrackCover cover={cover} />
+      <Img src={cover} varient="trackCardCover" />
+
       <span>{trackName}</span>
       <Link href={`/api/albums/${albumId}`}>
         <span>{albumName}</span>
       </Link>
+
       {artistArr.map((elem: any) => (
         <div>
           <Link href={`/api/artists/${elem.id}`}>
@@ -59,6 +61,7 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
           </Link>
         </div>
       ))}
+
       <TrackModal trackId={id} />
     </StyleTrack>
   );

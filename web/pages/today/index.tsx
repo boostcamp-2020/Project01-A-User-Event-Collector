@@ -15,15 +15,14 @@ const IndexPage = () => (
         id: 4,
         albumName: "I trust",
         description: "편견이란 답답한 우리를 무너뜨린 ‘LION'의 귀환! ",
-        cover:
-          "https://musicmeta-phinf.pstatic.net/album/004/511/4511159.jpg?type=r360Fll&v=20200406175912",
+        cover: "https://musicmeta-phinf.pstatic.net/album/005/094/5094136.jpg?type=r360Fll",
         artistId: 2,
       }}
       Artists={[
         {
           id: 2,
           artistName: "아이들",
-          cover: null,
+          cover: "https://musicmeta-phinf.pstatic.net/album/005/094/5094136.jpg?type=r360Fll",
         },
       ]}
     />
