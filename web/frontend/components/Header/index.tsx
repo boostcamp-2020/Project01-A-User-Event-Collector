@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import ButtonBox from "./ButtonBox";
 import Img from "../Img";
 
 interface Props {
@@ -8,21 +9,22 @@ interface Props {
   description: string;
 }
 
-const StyleAlbumHeader = styled.div`
+const StyleHeader = styled.div`
   display: flex;
 `;
 
 //button box에 id, track배열 넘겨야 함
-const AlbumHeader: FC<Props> = ({ cover, albumName, description }) => {
+const Header: FC<Props> = ({ cover, albumName, description }) => {
   return (
-    <StyleAlbumHeader>
+    <StyleHeader>
       <Img src={cover} varient="descriptionCover" />
       <div>
         <h2>{albumName}</h2>
         <span>{description}</span>
+        <ButtonBox />
       </div>
-    </StyleAlbumHeader>
+    </StyleHeader>
   );
 };
 
-export default AlbumHeader;
+export default Header;

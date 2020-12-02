@@ -1,7 +1,7 @@
 import React from "react";
 import TrackList from "../../frontend/components/Tracklist";
 import styled from "styled-components";
-import AlbumHeader from "../../frontend/components/AlbumHeader";
+import Header from "../../frontend/components/Header";
 // interface Props {}
 
 const StyleAlbumPage = styled.div``;
@@ -9,11 +9,7 @@ const StyleAlbumPage = styled.div``;
 const AlbumPage = ({ Albums }: any) => {
   return (
     <StyleAlbumPage>
-      <AlbumHeader
-        cover={Albums.cover}
-        albumName={Albums.albumName}
-        description={Albums.description}
-      />
+      <Header cover={Albums.cover} albumName={Albums.albumName} description={Albums.description} />
       <TrackList Tracks={Albums.Tracks} />
     </StyleAlbumPage>
   );
