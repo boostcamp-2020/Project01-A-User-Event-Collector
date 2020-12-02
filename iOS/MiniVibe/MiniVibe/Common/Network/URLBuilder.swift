@@ -31,7 +31,9 @@ struct URLBuilder {
             urlString += "\(idString)"
         }
         
-        var urlComponents = URLComponents(string: urlString)
+        guard var urlComponents = URLComponents(string: urlString) else {
+            return URL(string: urlString)
+        }
         
         if let filterValue = filterQuery {
             let queryItem = URLQueryItem(name: "filter", value: filterValue)
@@ -42,8 +44,8 @@ struct URLBuilder {
             queryItems.append(queryItem)
         }
         
-        urlComponents?.queryItems = queryItems
+        urlComponents.queryItems = queryItems
         
-        return urlComponents?.url
+        return urlComponents.url
     }
 }

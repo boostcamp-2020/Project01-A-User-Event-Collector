@@ -19,7 +19,7 @@ class ThumbnailRouter: StarterOrientedRouterProtocol {
     func getDestination(id: Int) -> AnyView {
         switch routingStarter {
         case .magazines:
-            return AnyView(MagazineView(magazine: TestData.magazine))
+            return AnyView(MagazineView(magazineID: id))
         case .recommendations:
             return AnyView(PlaylistView(playlistID: id))
         case .favorites:
