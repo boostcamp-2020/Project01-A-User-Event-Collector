@@ -8,42 +8,58 @@
 import SwiftUI
 
 struct MagazineView: View {
-//    @Binding var playlist: Playlist
-    let magazine: Magazine
-    private let trackListId: Int = 1
+    @StateObject private var viewModel = MagazineViewModel()
+    
+    private let magazineID: Int
     private let layout = [GridItem(.flexible())]
     
+    init(magazineID: Int) {
+        self.magazineID = magazineID
+    }
+    
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: layout,
-                      spacing: 20,
-                      pinnedViews: [.sectionHeaders]) {
-                Image(magazine.cover ?? "logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                Section(header: TrackListButtonView()) {
-                    if let description = magazine.description {
-                        Text(description)
-                            .modifier(Description1NoLimit())
-                    }
-                    TrackListView(tracks: magazine.tracks!)
-                }
-            }
-        }.padding()
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack {
-                    Text(magazine.name)
-                        .modifier(Title2())
-                }
-            }
+        guard let magazine = viewModel.magazine,
+              let tracks = magazine.tracks else { return AnyView(EmptyView().onAppear(perform: {
+                viewModel.fetch(id: magazineID)
+            }))
+             
         }
+        
+        return AnyView(
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: layout,
+                          spacing: 20,
+                          pinnedViews: [.sectionHeaders]) {
+                    Image(magazine.cover ?? "logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    Section(header: TrackListButtonView()) {
+                        if let description = magazine.description {
+                            Text(description)
+                                .modifier(Description1NoLimit())
+                        }
+                        TrackListView(tracks: tracks)
+                    }
+                }
+            }.padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(magazine.name)
+                            .modifier(Title2())
+                    }
+                }
+            }
+        )
+        
+        
     }
 }
 
 struct MagazineView_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineView(magazine: TestData.magazine)
+        MagazineView(magazineID: 1)
+            .preferredColorScheme(.dark)
     }
 }
