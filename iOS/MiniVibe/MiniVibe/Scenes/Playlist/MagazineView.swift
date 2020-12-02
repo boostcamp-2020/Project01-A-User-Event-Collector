@@ -30,9 +30,7 @@ struct MagazineView: View {
                 LazyVGrid(columns: layout,
                           spacing: 20,
                           pinnedViews: [.sectionHeaders]) {
-                    Image(magazine.cover ?? "logo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    AsyncImage(url: URL(string: magazine.cover ?? ""))
                     Section(header: TrackListButtonView()) {
                         if let description = magazine.description {
                             Text(description)

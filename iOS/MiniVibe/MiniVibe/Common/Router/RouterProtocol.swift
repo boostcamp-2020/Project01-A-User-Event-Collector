@@ -18,5 +18,5 @@ protocol StarterOrientedRouterProtocol {
 
 protocol DestinationOrientedRouterProtocol {
     associatedtype RoutingType
-    func getDestination(to routingDestination: RoutingType) -> AnyView
+    func getDestination(to routingDestination: RoutingType, with: Int?) -> AnyView
 }

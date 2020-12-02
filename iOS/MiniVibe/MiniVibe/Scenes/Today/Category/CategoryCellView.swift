@@ -8,42 +8,55 @@
 import SwiftUI
 
 struct CategoryCellView: View {
-    let item: CategoryCell
+    let item: CategoryItem
     let mode: CategoryMode
     var itemSize: CGFloat {
         switch mode {
         case .full:
-            return UIScreen.main.bounds.width - 20
+            return UIScreen.main.bounds.width - 10
         case .half:
             return UIScreen.main.bounds.width/2 - 30
         }
     }
+    var padding: CGFloat {
+        switch mode {
+        case .full:
+            return 10
+        case .half:
+            return 5
+            
+        }
+    }
+
     
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: item.imageName))
-                .frame(width: itemSize, height: itemSize)
-                .padding(.horizontal, 10)
-            if let title = item.title,
-               let description = item.description {
+        VStack(alignment: .leading) {
+            AsyncImage(url: URL(string: item.imageName ?? ""))
+                .frame(width: itemSize - padding, height: itemSize - padding)
+
+            if let title = item.title {
                 Text(title)
                     .modifier(Title2())
-                Text(description)
+            }
+            if let author = item.author {
+                Text(author)
+                    .modifier(Description2())
+
+            }
+            if  let description = item.description {
+                Text(description.prefix(36))
                     .modifier(Description2())
             }
         }
+        .padding(.leading, 20)
+
     }
 }
 
 struct CategoryItemView_Previews: PreviewProvider {
-    static let favoritePlaylistItems: [CategoryCell] =
-        [.init(id: 1, imageName: "https://cdnimg.melon.co.kr/cm/photo/images/000/800/70/534/80070534_org.jpg/melon/quality/80/optimize", title: "우기's 플레이리스트", description: "VIBE"),
-         .init(id: 2, imageName: "favorite2", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
-         .init(id: 4, imageName: "favorite3", title: "Avicii 대표곡", description: "VIBE"),
-        ]
-
+    
     static var previews: some View {
-        CategoryCellView(item: favoritePlaylistItems.first!, mode: .full)
-        
+        CategoryCellView(item: TestData.categoryItem2, mode: .half)
     }
 }
+//414

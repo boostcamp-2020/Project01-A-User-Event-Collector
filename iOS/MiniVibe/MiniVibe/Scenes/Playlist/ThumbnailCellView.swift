@@ -12,8 +12,7 @@ struct ThumbnailCellView: View {
         
     var body: some View {
         HStack(spacing: 20) {
-            Image(thumbnail.cover ?? "logo")
-                .resizable()
+            AsyncImage(url: URL(string: thumbnail.cover ?? ""))
                 .frame(width: 90, height: 90)
             VStack(alignment: .leading, spacing: 5) {
                 Text(thumbnail.name)
