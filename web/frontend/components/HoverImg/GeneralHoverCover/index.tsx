@@ -14,7 +14,7 @@ export const StyledGeneralHoverCover = styled.div<Props>`
   top: 0px;
   left: 0px;
   cursor: pointer;
-  background-color: #00000099;
+  background-color: #00000055;
   z-index: 5;
   display: ${(props) => (props.hover ? "block" : "none")};
   & svg {
@@ -33,7 +33,7 @@ const PlayButton = styled(HoverPlayButton)`
   left: 10%;
 `;
 
-const GeneralHoverCover: React.FC<Props> = ({ hover }) => {
+const GeneralHoverCover: React.FC<Props> = ({ hover }: Props) => {
   return (
     <StyledGeneralHoverCover hover={hover}>
       <PlayButton />

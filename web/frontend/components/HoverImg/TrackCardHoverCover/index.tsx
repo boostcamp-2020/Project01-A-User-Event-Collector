@@ -25,7 +25,7 @@ export const StyledTrackCardHoverCover = styled.div<Props>`
   }
 `;
 
-const TrackCardHoverCover: React.FC<Props> = ({ hover }) => {
+const TrackCardHoverCover: React.FC<Props> = ({ hover }: Props) => {
   return (
     <StyledTrackCardHoverCover hover={hover}>
       <PlaySvg />

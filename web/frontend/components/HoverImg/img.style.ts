@@ -25,8 +25,6 @@ const HoverImgthemes: any = {
 
 export const StyledHoverImg = styled.div<styledHoverImgProps>`
   object-fit: cover;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  position: relative;
   ${(props) => HoverImgthemes[props.varient]}
 `;
