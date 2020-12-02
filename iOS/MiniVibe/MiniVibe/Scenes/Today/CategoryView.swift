@@ -40,7 +40,7 @@ struct CategoryRowView_Previews: PreviewProvider {
 
     static var previews: some View {
         NavigationView {
-            CategoryView(category: Category(title: "Station", items: favoritePlaylistItems, type: .stations, mode: .full))
+            CategoryView(category: Category(title: "Station", items: favoritePlaylistItems, type: .djStations, mode: .full))
         }
 //        .preferredColorScheme(.dark)
     }

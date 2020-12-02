@@ -17,9 +17,9 @@ class PlaylistViewModel: ObservableObject {
     func fetch(id: Int) {
         let url = URLBuilder(pathType: .api, endPoint: .playlists, id: id, filterQuery: nil, limitQuery: nil).create()
         
-        guard let request = RequestBuilder<Playlist>(url: url,
-                                                     body: nil,
-                                                     headers: nil).create() else { return }
+        guard let request = RequestBuilder(url: url,
+                                           body: nil,
+                                           headers: nil).create() else { return }
         network.request(request: request)
             .sink { result in
                 switch result {

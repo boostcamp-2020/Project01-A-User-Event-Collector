@@ -52,6 +52,8 @@
 		CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AA256F825B00D0A66B /* TrackCellView.swift */; };
 		CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AC256F825B00D0A66B /* TrackListView.swift */; };
 		CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */; };
+		CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */; };
+		CF3BDD682576BAB500FF768E /* SearchAfterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BDD672576BAB500FF768E /* SearchAfterView.swift */; };
 		CF5C214A25741952007C7229 /* TodayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C214925741952007C7229 /* TodayRouter.swift */; };
 		CF5C214F25741BEE007C7229 /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C214E25741BEE007C7229 /* CategoryRouter.swift */; };
 		CF5E005B257241E80048F019 /* TrackListButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E005A257241E80048F019 /* TrackListButtonView.swift */; };
@@ -74,6 +76,7 @@
 		CF93D7CB256E703D005A71CF /* ThumbnailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */; };
 		CF93D7D0256E7FE6005A71CF /* ThumbnailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */; };
 		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
+		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +149,8 @@
 		CF2D94AA256F825B00D0A66B /* TrackCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCellView.swift; sourceTree = "<group>"; };
 		CF2D94AC256F825B00D0A66B /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
 		CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
+		CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterCategoryView.swift; sourceTree = "<group>"; };
+		CF3BDD672576BAB500FF768E /* SearchAfterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterView.swift; sourceTree = "<group>"; };
 		CF5C214925741952007C7229 /* TodayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRouter.swift; sourceTree = "<group>"; };
 		CF5C214E25741BEE007C7229 /* CategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRouter.swift; sourceTree = "<group>"; };
 		CF5E005A257241E80048F019 /* TrackListButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListButtonView.swift; sourceTree = "<group>"; };
@@ -168,6 +173,7 @@
 		CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRouter.swift; sourceTree = "<group>"; };
 		CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListViewModel.swift; sourceTree = "<group>"; };
 		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
+		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -401,6 +407,7 @@
 				CF6E5D952574E8C400BE7503 /* NetworkService.swift */,
 				51BBBD7325763375009A6852 /* RequestBuilder.swift */,
 				51BBBD7C25763398009A6852 /* URLBuilder.swift */,
+				CFCBC92D257764B200439C3F /* MiniVibeType.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -415,6 +422,8 @@
 				CF6E5DD525756A3300BE7503 /* RectangleListView.swift */,
 				CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */,
 				CF6E5DE225756E6300BE7503 /* GenreListView.swift */,
+				CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */,
+				CF3BDD672576BAB500FF768E /* SearchAfterView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -590,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */,
+				CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */,
 				CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */,
 				51E4E254257712AF00553E6E /* ImageLoader.swift in Sources */,
 				5188C3F725772ECC001601E6 /* TemporaryImageCache.swift in Sources */,
@@ -616,6 +626,7 @@
 				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
 				51D6C6EF2572220300EF1B26 /* Image+accesoryModifier.swift in Sources */,
 				CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */,
+				CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */,
 				515D266C2575220B00B542BF /* Album.swift in Sources */,
 				51BBBD9025766A9E009A6852 /* ErrorView.swift in Sources */,
 				515D26812575385B00B542BF /* TrackPageView.swift in Sources */,
@@ -649,6 +660,7 @@
 				CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */,
 				5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */,
 				CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */,
+				CF3BDD682576BAB500FF768E /* SearchAfterView.swift in Sources */,
 				CF5E006525724BA00048F019 /* TrackListHeaderView.swift in Sources */,
 				51D6C6E225721D7A00EF1B26 /* TabBarView.swift in Sources */,
 				CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */,
