@@ -21,19 +21,17 @@ struct URLBuilder {
     }
     
     func create() -> URL? {
-        let path = pathType.rawValue + "/"
+        let path = pathType.rawValue
         guard let path2 = self.endPoint.networkPath() else { return nil }
-        let endPoint = path2 + "/"
+        let endPoint = "/" + path2
         var urlString = baseURL + path + endPoint
         var queryItems = [URLQueryItem]()
         
         if let idString = id?.description {
-            urlString += "\(idString)"
+            urlString += "/\(idString)"
         }
         
-        guard var urlComponents = URLComponents(string: urlString) else {
-            return URL(string: urlString)
-        }
+        var urlComponents = URLComponents(string: urlString)
         
         if let filterValue = filterQuery {
             let queryItem = URLQueryItem(name: "filter", value: filterValue)
@@ -44,8 +42,10 @@ struct URLBuilder {
             queryItems.append(queryItem)
         }
         
-        urlComponents.queryItems = queryItems
+        if queryItems.isEmpty == false {
+            urlComponents?.queryItems = queryItems
+        }
         
-        return urlComponents.url
+        return urlComponents?.url
     }
 }
