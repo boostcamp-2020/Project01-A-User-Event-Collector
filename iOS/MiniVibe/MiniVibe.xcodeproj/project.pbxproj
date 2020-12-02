@@ -82,6 +82,8 @@
 		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
 		CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */; };
 		CFCBC95A2577FB4A00439C3F /* TrackInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */; };
+		CFCBC9702578074200439C3F /* SearchAfterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */; };
+		CFCBC975257807F300439C3F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC974257807F300439C3F /* Search.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +186,8 @@
 		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
 		CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHorizontalListView.swift; sourceTree = "<group>"; };
 		CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfoView.swift; sourceTree = "<group>"; };
+		CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterViewModel.swift; sourceTree = "<group>"; };
+		CFCBC974257807F300439C3F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +225,7 @@
 				515D26672575220B00B542BF /* Artist.swift */,
 				515D26682575220B00B542BF /* Playlist.swift */,
 				514FDD8D25761F6800F6BF93 /* Magazine.swift */,
+				CFCBC974257807F300439C3F /* Search.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 		CF2D94A9256F825B00D0A66B /* TrackList */ = {
 			isa = PBXGroup;
 			children = (
+				CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */,
 				CF2D94AA256F825B00D0A66B /* TrackCellView.swift */,
 				CF2D94AC256F825B00D0A66B /* TrackListView.swift */,
 				515D26802575385B00B542BF /* TrackPageView.swift */,
@@ -365,7 +371,6 @@
 				CF5E005A257241E80048F019 /* TrackListButtonView.swift */,
 				CF5E006425724BA00048F019 /* TrackListHeaderView.swift */,
 				CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */,
-				CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */,
 			);
 			path = TrackList;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				CF6E5DE225756E6300BE7503 /* GenreListView.swift */,
 				CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */,
 				CF3BDD672576BAB500FF768E /* SearchAfterView.swift */,
+				CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -628,6 +634,7 @@
 				51E4E25C257712E300553E6E /* AsyncImage.swift in Sources */,
 				CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */,
 				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
+				CFCBC975257807F300439C3F /* Search.swift in Sources */,
 				CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */,
 				5188C3FC25773123001601E6 /* ImageCacheKey.swift in Sources */,
 				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
@@ -676,6 +683,7 @@
 				51BBBD7D25763398009A6852 /* URLBuilder.swift in Sources */,
 				51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */,
 				CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */,
+				CFCBC9702578074200439C3F /* SearchAfterViewModel.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
 				CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */,
 				5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */,
