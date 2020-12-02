@@ -29,8 +29,7 @@ struct SearchAfterCategoryView: View {
                     .modifier(Title1())
                 Spacer()
             }
-            let n = tracks.count >= maxCountOfTracks ? maxCountOfTracks : tracks.count
-            ForEach(tracks[0..<n]) { track in
+            ForEach(tracks.prefix(maxCountOfTracks)) { track in
                 TrackCellView(track: track)
             }
         }
