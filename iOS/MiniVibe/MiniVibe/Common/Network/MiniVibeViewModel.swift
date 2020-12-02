@@ -8,13 +8,12 @@
 import Foundation
 import Combine
 
-class MiniVibeViewModel<T: Decodable>: ObservableObject {
-    var data: T?
+class MiniVibeViewModel {
     
     private let network = NetworkService(session: URLSession.shared)
     private var cancellabes = Set<AnyCancellable>()
     
-    func fetch(endPoint: MiniVibeType, id: Int? = nil, filterQuery: String? = nil, limitQuery: String? = nil) {
+    func internalFetch(endPoint: MiniVibeType, id: Int? = nil, filterQuery: String? = nil, limitQuery: String? = nil,  completion: @escaping (Data) -> Void) {
         let url = URLBuilder(pathType: .api, endPoint: endPoint, id: id, filterQuery: nil, limitQuery: nil).create()
         
         guard let request = RequestBuilder(url: url,
@@ -29,11 +28,7 @@ class MiniVibeViewModel<T: Decodable>: ObservableObject {
                     print("success")
                 }
             } receiveValue: { data in
-                if let decodedData = try? JSONDecoder().decode(T.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.data = decodedData
-                    }
-                }
+                completion(data)
             }
             .store(in: &cancellabes)
     }
