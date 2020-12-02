@@ -10,7 +10,7 @@ import SwiftUI
 class ThumbnailRouter: StarterOrientedRouterProtocol {
     typealias RoutingStarter = MiniVibeType
     
-    private let routingStarter: RoutingStarter
+    let routingStarter: RoutingStarter
     
     init(routingStarter: RoutingStarter) {
         self.routingStarter = routingStarter

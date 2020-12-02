@@ -14,8 +14,8 @@ class ThumbnailListViewModel: ObservableObject {
     private let network = NetworkService(session: URLSession.shared)
     private var cancellabes = Set<AnyCancellable>()
     
-    func fetch(type: ThumbnailRoutingType, id: Int) {
-        let url = URLBuilder(pathType: .api, endPoint: .playlists, id: nil, filterQuery: nil, limitQuery: nil).create()
+    func fetch(type: MiniVibeType, id: Int) {
+        let url = URLBuilder(pathType: .api, endPoint: type, id: nil, filterQuery: nil, limitQuery: nil).create()
         
         guard let request = RequestBuilder(url: url,
                                            body: nil,

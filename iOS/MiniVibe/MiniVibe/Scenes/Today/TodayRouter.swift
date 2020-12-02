@@ -17,7 +17,7 @@ class TodayRouter: DestinationOrientedRouterProtocol {
                                             router: ThumbnailRouter(routingStarter: .magazines)))
         case .playlists:
             return AnyView(ThumbnailListView(id: 1,
-                                            router: ThumbnailRouter(routingStarter: .recommended)))
+                                            router: ThumbnailRouter(routingStarter: .recommendations)))
         case .djStations:
             return AnyView(DJStationListView())
         case .tracks:
