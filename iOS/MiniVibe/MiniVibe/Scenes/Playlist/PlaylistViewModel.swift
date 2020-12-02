@@ -6,35 +6,17 @@
 //
 
 import Foundation
-import Combine
 
-class PlaylistViewModel: ObservableObject {
+class PlaylistViewModel: MiniVibeViewModel, ObservableObject {
     @Published var playlist: Playlist?
     
-    private let network = NetworkService(session: URLSession.shared)
-    private var cancellabes = Set<AnyCancellable>()
-    
     func fetch(id: Int) {
-        let url = URLBuilder(pathType: .api, endPoint: .playlists, id: id, filterQuery: nil, limitQuery: nil).create()
-        
-        guard let request = RequestBuilder(url: url,
-                                           body: nil,
-                                           headers: nil).create() else { return }
-        network.request(request: request)
-            .sink { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    print("success")
-                }
-            } receiveValue: { data in
-                if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.playlist = decodedData.playlist
-                    }
+        internalFetch(endPoint: .playlists, id: id) { [weak self] data in
+            if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
+                DispatchQueue.main.async {
+                    self?.playlist = decodedData.playlist
                 }
             }
-            .store(in: &cancellabes)
+        }
     }
 }
