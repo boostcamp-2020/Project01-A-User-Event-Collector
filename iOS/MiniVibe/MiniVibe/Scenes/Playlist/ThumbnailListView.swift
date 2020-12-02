@@ -9,12 +9,10 @@ import SwiftUI
 
 struct ThumbnailListView: View {
     
-    private let id: Int
     private let router: ThumbnailRouter
     @StateObject private var viewModel = ThumbnailListViewModel()
     
-    init(id: Int, router: ThumbnailRouter) {
-        self.id = id
+    init(router: ThumbnailRouter) {
         self.router = router
     }
     
@@ -30,7 +28,7 @@ struct ThumbnailListView: View {
                 }
             }.modifier(NavigationBarStyle(title: title))
             .onAppear() {
-                viewModel.fetch(type: router.routingStarter, id: id)
+                viewModel.fetch(type: router.routingStarter)
             }
         )
     }
@@ -39,7 +37,7 @@ struct ThumbnailListView: View {
 struct PlaylistListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ThumbnailListView(id: 1, router: ThumbnailRouter(routingStarter: .recommendations))
+            ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations))
                 .preferredColorScheme(.dark)
         }
     }

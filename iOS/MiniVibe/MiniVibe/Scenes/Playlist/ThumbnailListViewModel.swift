@@ -14,9 +14,9 @@ class ThumbnailListViewModel: MiniVibeViewModel, ObservableObject {
     private let network = NetworkService(session: URLSession.shared)
     private var cancellabes = Set<AnyCancellable>()
     
-    func fetch(type: MiniVibeType, id: Int) {
+    func fetch(type: MiniVibeType) {
         
-        internalFetch(endPoint: type, id: id) { [weak self] data in
+        internalFetch(endPoint: type) { [weak self] data in
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {

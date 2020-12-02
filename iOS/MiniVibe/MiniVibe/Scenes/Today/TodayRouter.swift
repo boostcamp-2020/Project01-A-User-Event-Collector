@@ -13,11 +13,11 @@ class TodayRouter: DestinationOrientedRouterProtocol {
     func getDestination(to routingDestination: RoutingStarter) -> AnyView {
         switch routingDestination {
         case .magazines:
-            return AnyView(ThumbnailListView(id: 1,
-                                            router: ThumbnailRouter(routingStarter: .magazines)))
-        case .playlists:
-            return AnyView(ThumbnailListView(id: 1,
-                                            router: ThumbnailRouter(routingStarter: .recommendations)))
+            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines)))
+        case .recommendations:
+            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations)))
+        case .favorites:
+            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites)))
         case .djStations:
             return AnyView(DJStationListView())
         case .tracks:
