@@ -25,7 +25,7 @@ enum MiniVibeType {
         case .djStations:
             return "dj-station"
         case .favorites:
-            return "playlists?filter=1"
+            return "playlists?filter=9"
         case .recommendations:
             return "playlists?filter=1"
         case .search:

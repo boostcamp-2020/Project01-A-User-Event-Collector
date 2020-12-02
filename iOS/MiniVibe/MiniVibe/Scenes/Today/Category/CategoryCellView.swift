@@ -21,9 +21,7 @@ struct CategoryCellView: View {
     
     var body: some View {
         VStack {
-            Image(item.imageName)
-                .resizable()
-                .cornerRadius(5)
+            AsyncImage(url: URL(string: item.imageName))
                 .frame(width: itemSize, height: itemSize)
                 .padding(.horizontal, 10)
             if let title = item.title,
@@ -39,7 +37,7 @@ struct CategoryCellView: View {
 
 struct CategoryItemView_Previews: PreviewProvider {
     static let favoritePlaylistItems: [CategoryCell] =
-        [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", description: "VIBE"),
+        [.init(id: 1, imageName: "https://cdnimg.melon.co.kr/cm/photo/images/000/800/70/534/80070534_org.jpg/melon/quality/80/optimize", title: "우기's 플레이리스트", description: "VIBE"),
          .init(id: 2, imageName: "favorite2", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
          .init(id: 4, imageName: "favorite3", title: "Avicii 대표곡", description: "VIBE"),
         ]
