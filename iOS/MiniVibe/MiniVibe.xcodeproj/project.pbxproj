@@ -81,6 +81,7 @@
 		CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */; };
 		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
 		CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */; };
+		CFCBC95A2577FB4A00439C3F /* TrackInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,7 @@
 		CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeViewModel.swift; sourceTree = "<group>"; };
 		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
 		CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHorizontalListView.swift; sourceTree = "<group>"; };
+		CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfoView.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -363,6 +365,7 @@
 				CF5E005A257241E80048F019 /* TrackListButtonView.swift */,
 				CF5E006425724BA00048F019 /* TrackListHeaderView.swift */,
 				CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */,
+				CFCBC9592577FB4A00439C3F /* TrackInfoView.swift */,
 			);
 			path = TrackList;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */,
 				515D266C2575220B00B542BF /* Album.swift in Sources */,
 				51BBBD9025766A9E009A6852 /* ErrorView.swift in Sources */,
+				CFCBC95A2577FB4A00439C3F /* TrackInfoView.swift in Sources */,
 				515D26812575385B00B542BF /* TrackPageView.swift in Sources */,
 				CF5E00602572441D0048F019 /* ButtonStyle.swift in Sources */,
 				515D266A2575220B00B542BF /* Track.swift in Sources */,
