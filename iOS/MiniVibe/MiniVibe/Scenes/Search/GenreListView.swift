@@ -16,16 +16,16 @@ struct GenreListView: View {
     var body: some View {
         LazyVGrid(columns: layout,
                   spacing: 10) {
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
-            GenreCellView()
+            GenreCellView(title: "국내 댄스")
+            GenreCellView(title: "국내 발라드")
+            GenreCellView(title: "국내 락/메탈")
+            GenreCellView(title: "국내 알앤비/소울")
+            GenreCellView(title: "국내 Pop")
+            GenreCellView(title: "국내 K-Pop")
+            GenreCellView(title: "국내 일레트로닉")
+            GenreCellView(title: "국내 힙합")
+            GenreCellView(title: "국내 재즈")
+            GenreCellView(title: "국내 인디")
         }
     }
 }

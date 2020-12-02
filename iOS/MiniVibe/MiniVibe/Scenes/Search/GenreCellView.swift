@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GenreCellView: View {
+    let title: String
+    
     var body: some View {
         Button(action: {
             // action
@@ -16,7 +18,7 @@ struct GenreCellView: View {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
                     .frame(width: 6, height: 30)
                     .foregroundColor(.blue)
-                Text("PLAY")
+                Text(title)
                     .modifier(Title2())
                 Spacer()
             }.modifier(TrackListButtonStyle())
@@ -26,6 +28,6 @@ struct GenreCellView: View {
 
 struct GenreCellView_Previews: PreviewProvider {
     static var previews: some View {
-        GenreCellView()
+        GenreCellView(title: "Title")
     }
 }
