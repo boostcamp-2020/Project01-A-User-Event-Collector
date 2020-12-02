@@ -2,21 +2,8 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import TrackModal from "./TrackModal";
 import Link from "next/link";
-import Img from "../Img";
-
-interface Artist {
-  id: number;
-  artistName: string;
-  cover: string;
-}
-
-interface Album {
-  id: number;
-  albumName: string;
-  description?: string;
-  cover: string;
-  artistId: number;
-}
+import Img from "../../Img";
+import { Album, Artist } from "../../interface";
 
 interface Props {
   id: number;
@@ -37,7 +24,6 @@ const StyleTrack = styled.div<Styles>`
   }
 `;
 
-// album이랑 artist id 도 모두 내려보내줘야함.
 const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
   const { albumName, id: albumId, cover } = Albums;
 
