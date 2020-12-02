@@ -21,16 +21,22 @@ struct ThumbnailListView: View {
     var body: some View {
         guard let title = router.title() else { return AnyView(ErrorView()) }
         return AnyView(
-            List (viewModel.thumbnails.indexed(), id: \.1.id) { index, thumbnail in
-                NavigationLink(
-                    destination: router.getDestination(id: thumbnail.id)
-                ) {
-                    ThumbnailCellView(thumbnail: viewModel.thumbnails[index])
+            List{
+                ForEach(viewModel.thumbnails.indexed(), id: \.1.id) {
+                    _, thumbnail in
+                    NavigationLink(
+                        destination: router.getDestination(id: thumbnail.id)
+                    ) {
+                        ThumbnailCellView(thumbnail: thumbnail)
+                    }
                 }
+                Rectangle()
+                    .clearBottom()
             }.modifier(NavigationBarStyle(title: title))
             .onAppear() {
                 viewModel.fetch(type: router.routingStarter, id: id)
             }
+            
         )
     }
 }

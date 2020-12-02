@@ -27,6 +27,8 @@ struct TrackListView: View {
                 }
                 return cell
             }
+            Rectangle()
+                .clearBottom()
         }.onAppear() {
             viewModel.createTracks(tracks: tracks)
         }
