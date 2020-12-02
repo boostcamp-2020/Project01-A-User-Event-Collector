@@ -80,6 +80,7 @@
 		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
 		CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */; };
 		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
+		CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +181,7 @@
 		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
 		CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeViewModel.swift; sourceTree = "<group>"; };
 		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
+		CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHorizontalListView.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -360,6 +362,7 @@
 				CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */,
 				CF5E005A257241E80048F019 /* TrackListButtonView.swift */,
 				CF5E006425724BA00048F019 /* TrackListHeaderView.swift */,
+				CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */,
 			);
 			path = TrackList;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				5188C3F2257715D6001601E6 /* ActivityIndicatorView.swift in Sources */,
 				51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */,
 				51D6C7032572725500EF1B26 /* BlurView.swift in Sources */,
+				CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */,
 				CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */,
 				51BBBD7D25763398009A6852 /* URLBuilder.swift in Sources */,
 				51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */,
