@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-enum ThumbnailRoutingType: String, RoutingTypeProtocol{
-    case magazines
-    case recommended
-    case favorites
-}
-
 class ThumbnailRouter: StarterOrientedRouterProtocol {
-    typealias RoutingStarter = ThumbnailRoutingType
+    typealias RoutingStarter = MiniVibeType
     
-    let routingStarter: RoutingStarter
+    private let routingStarter: RoutingStarter
     
     init(routingStarter: RoutingStarter) {
         self.routingStarter = routingStarter
@@ -26,21 +20,21 @@ class ThumbnailRouter: StarterOrientedRouterProtocol {
         switch routingStarter {
         case .magazines:
             return AnyView(MagazineView(magazine: TestData.magazine))
-        case .recommended:
+        case .recommendations:
             return AnyView(PlaylistView(playlistID: id))
         case .favorites:
             return AnyView(PlaylistView(playlistID: id))
+        default:
+            return AnyView(ErrorView())
         }
     }
     
-    func title() -> String {
+    func title() -> String? {
         switch routingStarter {
-        case .magazines:
-            return "VIBE MAG"
-        case .recommended:
-            return "VIBE 추천 플레이리스트"
-        case .favorites:
-            return "즐겨듣는 플레이리스트"
+        case .magazines, .recommendations, .favorites:
+            return routingStarter.title()
+        default:
+            return nil
         }
     }
 }

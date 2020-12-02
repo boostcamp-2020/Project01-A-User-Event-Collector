@@ -11,7 +11,7 @@ struct URLBuilder {
     
     let baseURL = "http://101.101.209.207:3000/"
     let pathType: PathType
-    let endPoint: EndPoint
+    let endPoint: MiniVibeType
     let id: Int?
     let filterQuery: String?
     let limitQuery: String?
@@ -20,14 +20,10 @@ struct URLBuilder {
         case user, api
     }
     
-    enum EndPoint: String {
-        case magazines, playlists, albums
-        case djStation = "dj-station"
-    }
-    
     func create() -> URL? {
         let path = pathType.rawValue + "/"
-        let endPoint = self.endPoint.rawValue + "/"
+        guard let path2 = self.endPoint.title() else { return nil }
+        let endPoint = path2 + "/"
         var urlString = baseURL + path + endPoint
         var queryItems = [URLQueryItem]()
         

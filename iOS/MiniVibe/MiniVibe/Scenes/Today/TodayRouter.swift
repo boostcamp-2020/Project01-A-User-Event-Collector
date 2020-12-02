@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-enum TodayRoutingType: RoutingTypeProtocol {
-    case tracks, playlists, magazines, stations
-}
-
 class TodayRouter: DestinationOrientedRouterProtocol {
-    typealias RoutingStarter = TodayRoutingType
+    typealias RoutingStarter = MiniVibeType
     
     func getDestination(to routingDestination: RoutingStarter) -> AnyView {
         switch routingDestination {
@@ -22,10 +18,12 @@ class TodayRouter: DestinationOrientedRouterProtocol {
         case .playlists:
             return AnyView(ThumbnailListView(id: 1,
                                             router: ThumbnailRouter(routingStarter: .recommended)))
-        case .stations:
+        case .djStations:
             return AnyView(DJStationListView())
         case .tracks:
             return AnyView(PlaylistView(playlistID: 1))
+        default:
+            return AnyView(ErrorView())
         }
     }
 }

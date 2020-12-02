@@ -71,6 +71,7 @@
 		CF93D7CB256E703D005A71CF /* ThumbnailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */; };
 		CF93D7D0256E7FE6005A71CF /* ThumbnailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */; };
 		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
+		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +163,7 @@
 		CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRouter.swift; sourceTree = "<group>"; };
 		CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListViewModel.swift; sourceTree = "<group>"; };
 		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
+		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -382,6 +384,7 @@
 				CF6E5D952574E8C400BE7503 /* NetworkService.swift */,
 				51BBBD7325763375009A6852 /* RequestBuilder.swift */,
 				51BBBD7C25763398009A6852 /* URLBuilder.swift */,
+				CFCBC92D257764B200439C3F /* MiniVibeType.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
 				51D6C6EF2572220300EF1B26 /* Image+accesoryModifier.swift in Sources */,
 				CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */,
+				CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */,
 				515D266C2575220B00B542BF /* Album.swift in Sources */,
 				51BBBD9025766A9E009A6852 /* ErrorView.swift in Sources */,
 				515D26812575385B00B542BF /* TrackPageView.swift in Sources */,
