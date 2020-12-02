@@ -1,16 +1,21 @@
 import React from "react";
-// import { Album } from "../../frontend/components/interface";
-import { useRouter } from "next/router";
-// import prisma from "../../prisma";
+import TrackList from "../../frontend/components/Tracklist";
+import styled from "styled-components";
+import AlbumHeader from "../../frontend/components/AlbumHeader";
+// interface Props {}
 
-const AlbumPage = ({ album }: any) => {
-  const router = useRouter();
-  const { pid } = router.query;
+const StyleAlbumPage = styled.div``;
+
+const AlbumPage = ({ Albums }: any) => {
   return (
-    <>
-      {console.log(pid)}
-      {console.log(album)}
-    </>
+    <StyleAlbumPage>
+      <AlbumHeader
+        cover={Albums.cover}
+        albumName={Albums.albumName}
+        description={Albums.description}
+      />
+      <TrackList Tracks={Albums.Tracks} />
+    </StyleAlbumPage>
   );
 };
 
@@ -26,7 +31,7 @@ export async function getStaticPath() {
 
 export async function getServerSideProps({ params }: any) {
   const res = await fetch(`http://localhost:3000/api/albums/${params.pid}`);
-  const album = await res.json();
+  const { Albums } = await res.json();
 
-  return { props: { album } };
+  return { props: { Albums } };
 }
