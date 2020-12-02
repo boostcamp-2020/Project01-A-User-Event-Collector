@@ -1,25 +1,13 @@
 import React from "react";
-import StyledImg, { MagazineImgStyles, AlbumImgStyles, NewsImgStyles } from "./Img.style";
-import { ImgProps } from "./Img.interface";
+import StyledImg from "./Img.style";
 
-/* TSX, for using storybook */
-const Img: React.FC<ImgProps> = ({ width, height, src, borderRadius }: ImgProps) => {
-  return <StyledImg width={width} height={height} src={src} borderRadius={borderRadius} />;
+export interface ImgProps {
+  varient: string;
+  src?: string;
+}
+
+const Img: React.FC<ImgProps> = ({ varient, src }: ImgProps) => {
+  return <StyledImg varient={varient} src={src} />;
 };
 
 export default Img;
-
-/* TSX, for using in code line */
-const MagazineImg: React.FC<ImgProps> = ({ src }: ImgProps) => {
-  return <StyledImg {...MagazineImgStyles} src={src} />;
-};
-
-const AlbumImg: React.FC<ImgProps> = ({ src }: ImgProps) => {
-  return <StyledImg {...AlbumImgStyles} src={src} />;
-};
-
-const NewsImg: React.FC<ImgProps> = ({ src }: ImgProps) => {
-  return <StyledImg {...NewsImgStyles} src={src} />;
-};
-
-export { MagazineImg, AlbumImg, NewsImg };
