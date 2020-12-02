@@ -8,49 +8,49 @@
 import Foundation
 
 struct TestData {
-    static let stationItems: [CategoryCell] =
-        [.init(id: 1, imageName: "dj1", title: nil, description: nil),
-         .init(id: 2, imageName: "dj2", title: nil, description: nil),
-         .init(id: 3, imageName: "dj3", title: nil, description: nil),
-         .init(id: 4, imageName: "dj4", title: nil, description: nil),
-         .init(id: 5, imageName: "dj5", title: nil, description: nil),
-        ]
-    static let favoritePlaylistItems: [CategoryCell] =
-        [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", description: "VIBE"),
-         .init(id: 2, imageName: "favorite2", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
-         .init(id: 4, imageName: "favorite3", title: "Avicii 대표곡", description: "VIBE"),
-        ]
-    static let recomendPlaylistItems: [CategoryCell] =
-        [.init(id: 1, imageName: "recommend1", title: "올림픽대로", description: "VIBE"),
-         .init(id: 2, imageName: "recommend2", title: "하우스 파티", description: "VIBE"),
-         .init(id: 4, imageName: "recommend3", title: "꿀 떨어지는 R&B", description: "VIBE"),
-        ]
-    static let magazineItems: [CategoryCell] =
-        [.init(id: 1, imageName: "magazine1", title: nil, description: nil),
-         .init(id: 2, imageName: "magazine2", title: nil, description: nil),
-         .init(id: 3, imageName: "magazine3", title: nil, description: nil),
-         .init(id: 4, imageName: "magazine4", title: nil, description: nil),
-         .init(id: 5, imageName: "magazine5", title: nil, description: nil),
-        ]
+//    static let stationItems: [CategoryItem] =
+//        [.init(id: 1, imageName: "dj1", title: nil, description: nil),
+//         .init(id: 2, imageName: "dj2", title: nil, description: nil),
+//         .init(id: 3, imageName: "dj3", title: nil, description: nil),
+//         .init(id: 4, imageName: "dj4", title: nil, description: nil),
+//         .init(id: 5, imageName: "dj5", title: nil, description: nil),
+//        ]
+//    static let favoritePlaylistItems: [CategoryItem] =
+//        [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", description: "VIBE"),
+//         .init(id: 2, imageName: "favorite2", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
+//         .init(id: 4, imageName: "favorite3", title: "Avicii 대표곡", description: "VIBE"),
+//        ]
+//    static let recomendPlaylistItems: [CategoryItem] =
+//        [.init(id: 1, imageName: "recommend1", title: "올림픽대로", description: "VIBE"),
+//         .init(id: 2, imageName: "recommend2", title: "하우스 파티", description: "VIBE"),
+//         .init(id: 4, imageName: "recommend3", title: "꿀 떨어지는 R&B", description: "VIBE"),
+//        ]
+//    static let magazineItems: [CategoryItem] =
+//        [.init(id: 1, imageName: "magazine1", title: nil, description: nil),
+//         .init(id: 2, imageName: "magazine2", title: nil, description: nil),
+//         .init(id: 3, imageName: "magazine3", title: nil, description: nil),
+//         .init(id: 4, imageName: "magazine4", title: nil, description: nil),
+//         .init(id: 5, imageName: "magazine5", title: nil, description: nil),
+//        ]
     
-    static let categories: [Category]
-        = [.init(title: "DJ 스테이션",
-                 items: stationItems,
-                 type: .djStations,
-                 mode: .half),
-           .init(title: "VIBE 추천 플레이리스트",
-                 items: recomendPlaylistItems,
-                 type: .recommendations,
-                 mode: .full),
-           .init(title: "즐겨찾는 플레이리스트",
-                 items: favoritePlaylistItems,
-                 type: .favorites,
-                 mode: .half),
-           .init(title: "VIBE MAG",
-                 items: magazineItems,
-                 type: .magazines,
-                 mode: .full),
-        ]
+//    static let categories: [Category]
+//        = [.init(title: "DJ 스테이션",
+//                 items: stationItems,
+//                 type: .djStations,
+//                 mode: .half),
+//           .init(title: "VIBE 추천 플레이리스트",
+//                 items: recomendPlaylistItems,
+//                 type: .recommendations,
+//                 mode: .full),
+//           .init(title: "즐겨찾는 플레이리스트",
+//                 items: favoritePlaylistItems,
+//                 type: .favorites,
+//                 mode: .half),
+//           .init(title: "VIBE MAG",
+//                 items: magazineItems,
+//                 type: .magazines,
+//                 mode: .full),
+//        ]
     static let playlist
         = Playlist(id: 1,
                    name: "잠못드는 밤",
@@ -180,4 +180,8 @@ struct TestData {
                                     )],
                                    createdAt: "2020년 10월",
                                    type: "PICK")
+    
+    static let categoryItem1 = CategoryItem(magazine: magazine)
+    static let categoryItem2 = CategoryItem(playlist: playlist, type: .favorites)
+    static let categoryItem3 = CategoryItem(playlist: playlist, type: .recommendations)
 }
