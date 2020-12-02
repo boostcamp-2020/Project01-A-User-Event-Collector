@@ -25,7 +25,7 @@ struct PlayerView: View {
                 .frame(height: geometry.size.height)
 
                 LazyVGrid(columns: [GridItem(.flexible())]) {
-                    ForEach(viewModel.queue) { track    in                     TrackCellView(track: track)                    }
+                    ForEach(viewModel.queue) { track    in                     TrackCellView(hasAccessory: true, track: track)                    }
                     Rectangle()
                         .clearBottom()
                 }
@@ -66,13 +66,13 @@ struct PlayerInfoView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            AsyncImage(url: URL(string: track.album.cover ?? ""))
+            AsyncImage(url: URL(string: track.album?.cover ?? ""))
                 .padding()
             HStack() {
                 VStack(alignment: .leading, spacing: 10){
                     Text(track.trackName)
                         .font(.system(size: 24, weight: .bold))
-                    Text(track.artists.first?.name ?? "")
+                    Text(track.artists?.first?.name ?? "")
                         .font(.system(size: 18, weight: .light))
                         .foregroundColor(.secondary)
                 }

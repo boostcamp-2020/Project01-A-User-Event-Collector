@@ -27,10 +27,8 @@ struct TrackHorizontalListView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: layout,
                               spacing: 20) {
-                        ForEach(tracks) { track -> TrackInfoView in
-                            TrackInfoView(title: track.trackName,
-                                          artist: track.artists.first?.name ?? "",
-                                          coverURLString: track.album.cover)
+                        ForEach(tracks) { track -> TrackCellView in
+                            TrackCellView(hasAccessory: false, track: track)
                         }.frame(width: UIScreen.main.bounds.width - 64)
                     }
                 }

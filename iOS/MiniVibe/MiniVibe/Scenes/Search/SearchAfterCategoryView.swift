@@ -30,7 +30,7 @@ struct SearchAfterCategoryView: View {
                 Spacer()
             }
             ForEach(tracks.prefix(maxCountOfTracks)) { track in
-                TrackCellView(track: track)
+                TrackCellView(hasAccessory: true, track: track)
             }
         }
     }

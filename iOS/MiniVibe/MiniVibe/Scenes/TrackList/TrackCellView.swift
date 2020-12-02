@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrackCellView: View {
-    
+    let hasAccessory: Bool
     let track: Track
     var didToggleFavorite: (() -> Void)?
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
@@ -19,12 +19,15 @@ struct TrackCellView: View {
             Button(action: {
                 nowPlayingViewModel.updateWith(track: track)
             }, label: {
-                TrackInfoView(title: track.trackName, artist: track.artists.first?.name ?? "", coverURLString: track.album.cover)
+                TrackInfoView(title: track.trackName, artist: track.artists?.first?.name ?? "", coverURLString: track.album?.cover)
             })
-            HStack(spacing: 20) {
-                Heart(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
-                Ellipsis()
+            if hasAccessory {
+                HStack(spacing: 20) {
+                    Heart(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
+                    Ellipsis()
+                }
             }
+            
         }
     }
 }
@@ -65,7 +68,7 @@ struct TrackCellView_Previews: PreviewProvider {
         let testTrack1 = TestData.playlist.tracks!.first!
         
         Group {
-            TrackCellView(track: testTrack1)
+            TrackCellView(hasAccessory: true, track: testTrack1)
             
         }
         .previewLayout(.sizeThatFits)
