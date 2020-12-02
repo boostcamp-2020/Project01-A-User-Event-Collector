@@ -15,6 +15,6 @@ struct Category: Identifiable {
     let id = UUID()
     let title: String
     let items: [CategoryCell]
-    let type: TodayRoutingType
+    let type: MiniVibeType
     let mode: CategoryMode
 }
