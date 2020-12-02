@@ -29,7 +29,7 @@ struct TodayView: View {
                 NavigationLink(
                     destination: router.getDestination(to: .magazines),
                     label: {
-                        
+                        CategoryView(category: Category(magazines: viewModel.magazines, mode: .full))
                     })
                 .listRowInsets(EdgeInsets())
 
