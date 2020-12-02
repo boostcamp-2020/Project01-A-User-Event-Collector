@@ -16,7 +16,8 @@ const AlbumPage = ({ album }: any) => {
 export default AlbumPage;
 
 export async function getStaticPath() {
-  const albums = [{ id: 1 }, { id: 2 }, { id: 3 }];
+  const res = await fetch("http://localhost:3000/api/albums");
+  const albums = await res.json();
   const paths = albums.map((album: any) => `/albums/${album.id}`);
 
   return { paths, fallback: false };
