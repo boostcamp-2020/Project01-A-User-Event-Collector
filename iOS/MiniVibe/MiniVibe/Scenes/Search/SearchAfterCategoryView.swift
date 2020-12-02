@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchAfterCategoryView: View {
+    private let maxCountOfTracks = 3
     private let type: CategoryType
     private let tracks: [Track]
     
@@ -28,7 +29,7 @@ struct SearchAfterCategoryView: View {
                     .modifier(Title1())
                 Spacer()
             }
-            let n = tracks.count >= 3 ? 3 : tracks.count
+            let n = tracks.count >= maxCountOfTracks ? maxCountOfTracks : tracks.count
             ForEach(tracks[0..<n]) { track in
                 TrackCellView(track: track)
             }
