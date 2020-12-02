@@ -22,6 +22,8 @@ struct TodayView: View {
                     )
                 }
                 .listRowInsets(EdgeInsets())
+                Rectangle()
+                    .clearBottom()
             }.listStyle(PlainListStyle())
             .navigationTitle("VIBE")
         }
@@ -30,9 +32,9 @@ struct TodayView: View {
     }
 }
 
-//struct TodayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodayView()
-//    }
-//}
-//
+struct TodayView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodayView()
+    }
+}
+

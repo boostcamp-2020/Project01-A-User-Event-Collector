@@ -35,6 +35,7 @@ struct NowPlayingView: View {
             .padding(.horizontal, 20)
         }
         .background(BlurView())
+        .preferredColorScheme(.dark)
     }
 }
 
