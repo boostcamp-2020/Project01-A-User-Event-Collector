@@ -23,7 +23,7 @@ struct ThumbnailListView: View {
         return AnyView(
             List (viewModel.thumbnails.indexed(), id: \.1.id) { index, thumbnail in
                 NavigationLink(
-                    destination: router.getDestination(id: id)
+                    destination: router.getDestination(id: thumbnail.id)
                 ) {
                     ThumbnailCellView(thumbnail: viewModel.thumbnails[index])
                 }

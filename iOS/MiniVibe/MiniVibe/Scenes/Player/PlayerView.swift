@@ -25,7 +25,6 @@ struct PlayerView: View {
                 //TODO: 밑에 재생 queue에 있는 노래 목록 보여주기
             }
             .frame(height: geometry.size.height)
-
         }
     }
 }
@@ -35,13 +34,13 @@ struct PlayerInfoView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            Image(track.trackName)
-                .fitModifier()
+            AsyncImage(url: URL(string: track.album.cover ?? ""))
+                .padding()
             HStack {
                 VStack (alignment: .leading){
                     Text(track.trackName)
                         .modifier(Title2())
-                    Text(track.trackName)
+                    Text(track.album.name)
                         .modifier(Description2())
                 }
                 Spacer()
@@ -89,7 +88,6 @@ struct PlayerControlView: View {
                 })
                 .accentColor(.primary)
             }
-            .frame(width: .infinity)
             HStack {
                 Spacer()
                 Button(action: {

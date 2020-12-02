@@ -19,7 +19,7 @@ struct TrackCellView: View {
             Button(action: {
                 nowPlayingViewModel.updateWith(track: track)
             }, label: {
-                TrackInfoView(title: track.trackName, artist: track.artists.first?.name ?? "")
+                TrackInfoView(title: track.trackName, artist: track.artists.first?.name ?? "", coverURLString: track.album.cover)
             })
             HStack(spacing: 20) {
                 Heart(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
@@ -62,15 +62,13 @@ struct Ellipsis: View {
 struct TrackInfoView: View {
     let title: String
     let artist: String
+    let coverURLString: String?
     
     var body: some View {
         HStack {
-            Image(title)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            AsyncImage(url: URL(string: coverURLString ?? ""))
                 .frame(width: 44, height: 44, alignment: .center)
                 .padding(.vertical, 2)
-//                .padding(.horizontal, 10)
             VStack(alignment: .leading) {
                 Text(title)
                     .modifier(Title2())
