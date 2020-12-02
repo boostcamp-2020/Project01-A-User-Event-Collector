@@ -22,7 +22,6 @@ struct PlaylistView: View {
               let tracks = playlist.tracks else { return AnyView(EmptyView().onAppear(perform: {
                 viewModel.fetch(id: playlistID)
             }))
-             
         }
         
         return AnyView(

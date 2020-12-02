@@ -30,6 +30,6 @@ struct TrackInfoView: View {
 
 struct TrackInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackInfoView()
+        TrackInfoView(title: "title", artist: "artist", coverURLString: nil)
     }
 }
