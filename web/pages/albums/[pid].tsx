@@ -1,6 +1,7 @@
 import React from "react";
+// import { Album } from "../../frontend/components/interface";
 import { useRouter } from "next/router";
-import prisma from "../../prisma";
+// import prisma from "../../prisma";
 
 const AlbumPage = ({ album }: any) => {
   const router = useRouter();
@@ -24,6 +25,8 @@ export async function getStaticPath() {
 }
 
 export async function getServerSideProps({ params }: any) {
-  const album = await prisma.albums.findUnique({ where: { id: +params.pid } });
+  const res = await fetch(`http://localhost:3000/api/albums/${params.pid}`);
+  const album = await res.json();
+
   return { props: { album } };
 }
