@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct SearchAfterView: View {
-    private let tracks: [Track]?
-    private let albums: [Album]?
-    private let artists: [Artist]?
+    private let searchText: String
+    @StateObject private var viewModel = SearchAfterViewModel()
     
-    init(tracks: [Track]?, albums: [Album]?, artists: [Artist]?) {
-        self.tracks = tracks
-        self.albums = albums
-        self.artists = artists
+    init(searchText: String) {
+        self.searchText = searchText
     }
     
     var body: some View {
@@ -23,26 +20,27 @@ struct SearchAfterView: View {
             LazyVGrid(columns: [GridItem(.flexible())],
                       spacing: 40,
                       pinnedViews: [.sectionHeaders]) {
-                Section(header: SearchBarView(text: .constant(""))) {
-                    if let tracks = tracks {
+                Section(header: SearchBarView(defaultText: searchText)) {
+                    if let tracks = viewModel.tracks {
                         SearchAfterCategoryView(type: .track, tracks: tracks)
-                        SearchAfterCategoryView(type: .album, tracks: tracks)
-                        SearchAfterCategoryView(type: .artist, tracks: tracks)
                     }
-            //        if let albums = albums {
-            //            SearchAfterCategoryView(type: .album, tracks: albums)
-            //        }
-            //        if let artists = artists {
-            //            SearchAfterCategoryView(type: .artist, tracks: artists)
-            //        }
+//                    if let albums = viewModel.albums {
+//                        SearchAfterCategoryView(type: .album, tracks: albums)
+//                    }
+//                    if let artists = viewModel.artists {
+//                        SearchAfterCategoryView(type: .artist, tracks: artists)
+//                    }
                 }
             }
         }.padding()
+        .onAppear {
+            viewModel.fetch(searchText: searchText)
+        }
     }
 }
 
 struct SearchAfterView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchAfterView(tracks: TestData.playlist.tracks, albums: nil, artists: nil)
+        SearchAfterView(searchText: "우기")
     }
 }
