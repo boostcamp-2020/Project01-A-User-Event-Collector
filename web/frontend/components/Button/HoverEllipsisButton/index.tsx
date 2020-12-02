@@ -7,6 +7,9 @@ export const StyledEllipsisButton = styled.button`
   height: 2.5rem;
   background-color: transparent;
   fill: white;
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
 `;
 
 const HoverEllipsisButton: React.FC = () => {

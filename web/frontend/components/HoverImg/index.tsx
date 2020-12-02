@@ -1,22 +1,42 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import Img from "../Img";
-import HoverCover from "./HoverCover";
+import GeneralHoverCover from "./GeneralHoverCover";
+import { StyledHoverImg } from "./img.style";
+import TrackCardHoverCover from "./TrackCardHoverCover";
 
 export interface HoverImgProps {
   varient: string;
   src?: string;
 }
 
-const StyledHoverImg = styled.div`
-  position: relative;
-`;
+export const getChildren = (varient: string, hover: boolean): JSX.Element | null => {
+  switch (varient) {
+    case "todayBig":
+    case "todaySmall":
+    case "todayNews":
+      return <GeneralHoverCover hover={hover} />;
+    case "trackCardCover":
+      return <TrackCardHoverCover hover={hover} />;
+    default:
+      return null;
+  }
+};
 
 const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
+  const [hover, setHover] = useState(false);
+
+  const onHover = () => {
+    setHover(true);
+  };
+
+  const onHoverOut = () => {
+    setHover(false);
+  };
+
   return (
-    <StyledHoverImg>
-      <HoverCover varient={varient} />
+    <StyledHoverImg varient={varient} onMouseOver={onHover} onMouseOut={onHoverOut}>
       <Img varient={varient} src={src} />
+      {getChildren(varient, hover)}
     </StyledHoverImg>
   );
 };

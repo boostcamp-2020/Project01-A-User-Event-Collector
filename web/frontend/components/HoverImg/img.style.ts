@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface styledHoverImgProps {
+export interface styledHoverImgProps {
   varient: string;
 }
 
@@ -23,38 +23,10 @@ const HoverImgthemes: any = {
   `,
 };
 
-export const StyledHoverImg = styled.img<styledHoverImgProps>`
+export const StyledHoverImg = styled.div<styledHoverImgProps>`
   object-fit: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   ${(props) => HoverImgthemes[props.varient]}
-`;
-
-interface styledHoverCoverProps {
-  varient: string;
-}
-
-const HoverCoverthemes: any = {
-  todayBig: `
-    width: 20rem;
-    height: 20rem;
-  `,
-  todaySmall: `
-    width: 12rem;
-    height: 12rem;
-  `,
-  todayNews: `
-    width: 20rem;
-    height: 12rem;
-  `,
-  trackCardCover: `
-    width: 2.5rem;
-    height: 2.5rem;
-  `,
-};
-
-export const StyledHoverCover = styled.div<styledHoverCoverProps>`
-  display: none;
-  ${(props) => HoverCoverthemes[props.varient]}
-  &:hover {
-    display: block;
-  }
 `;
