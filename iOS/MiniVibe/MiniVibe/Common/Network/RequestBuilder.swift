@@ -15,20 +15,19 @@ enum NetworkMethod: String {
     case delete
 }
 
-struct RequestBuilder<T: Encodable> {
+struct RequestBuilder {
     // TODO: - 각 뷰에 맞춰서 urlString을 endpoint에 맞게 생성해주는 객체 생성 필요
     let url: URL?
     let method: NetworkMethod = .get
-    let body: T?
+    let body: Data?
     let headers: [String: String]?
     
     func create() -> URLRequest? {
         guard let url = url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue.uppercased()
-        if let body = body,
-           let data = try? JSONEncoder().encode(body) {
-            request.httpBody = data
+        if let body = body {
+            request.httpBody = body
         }
         if let headers = headers {
             request.allHTTPHeaderFields = headers
