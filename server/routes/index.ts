@@ -6,6 +6,7 @@ import genresRouter from "./genres";
 import magazinesRouter from "./magazines";
 import newsRouter from "./news";
 import playlistsRouter from "./playlists";
+import libraryRouter from "./library";
 
 const apiRouter = express.Router();
 
@@ -16,15 +17,13 @@ apiRouter.use("/genres", genresRouter);
 apiRouter.use("/magazines", magazinesRouter);
 apiRouter.use("/news", newsRouter);
 apiRouter.use("/playlists", playlistsRouter);
+apiRouter.use("/library", libraryRouter);
 
 apiRouter.use("/auth", (req, res) => {
   res.send("auth");
 });
 apiRouter.use("/search", (req, res) => {
   res.send("search");
-});
-apiRouter.use("/library", (req, res) => {
-  res.send("library");
 });
 apiRouter.use("/users", (req, res) => {
   res.send("users");

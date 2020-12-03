@@ -1,16 +1,10 @@
-import express from "express";
+import { Router } from "express";
+import libraryController from "../../controllers/library";
 
-const router = express.Router();
+const router = Router();
+router.get("/albums", libraryController.getLibAlbums);
+router.get("/artists", libraryController.getLibArtists);
+router.get("/playlists", libraryController.getLibPlaylists);
+router.get("/tracks", libraryController.getLibTracks);
 
-router.get("/", (req, res) => {
-  res.send("album index에요");
-});
-
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-  res.send(id);
-});
-
-// 공부해서 바꾸자..
-const albumRouter = router;
-export default albumRouter;
+export default router;
