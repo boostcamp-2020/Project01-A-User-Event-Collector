@@ -1,12 +1,12 @@
 import Link from "next/link";
-import Layout from "../../frontend/components/Layout";
+import { memo } from "react";
 import TrackList from "../../frontend/components/Tracklist";
 import Img from "../../frontend/components/Img";
 import HotMagCard from "../../frontend/components/HotMagCard";
 import GlobalStyles from "../../frontend/components/GlobalStyles";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
+const IndexPage = memo(() => (
+  <>
     <HotMagCard />
 
     <TrackList
@@ -111,7 +111,7 @@ const IndexPage = () => (
       varient="todayNews"
     />
     <GlobalStyles />
-  </Layout>
-);
+  </>
+));
 
 export default IndexPage;

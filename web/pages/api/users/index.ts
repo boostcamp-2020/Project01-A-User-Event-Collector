@@ -14,7 +14,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void
     }
     default:
       res.end();
-  }
+  } 
 };
 
 export default handler;
