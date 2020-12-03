@@ -1,16 +1,8 @@
-import express from "express";
+import { Router } from "express";
+import genreController from "../../controllers/genres";
 
-const router = express.Router();
+const router = Router();
+router.get("/", genreController.getAll);
+router.get("/:id", genreController.getGenre);
 
-router.get("/", (req, res) => {
-  res.send("album index에요");
-});
-
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-  res.send(id);
-});
-
-// 공부해서 바꾸자..
-const genresRouter = router;
-export default genresRouter;
+export default router;
