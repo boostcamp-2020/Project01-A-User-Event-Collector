@@ -50,7 +50,7 @@ struct TodayView: View {
 //                            .padding([.leading, .trailing])
 //                    })
 //                .listRowInsets(EdgeInsets())
-                
+
                 Rectangle()
                     .clearBottom()
             }.listStyle(PlainListStyle())

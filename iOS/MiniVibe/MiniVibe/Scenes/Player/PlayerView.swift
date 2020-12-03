@@ -23,15 +23,10 @@ struct PlayerView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, geometry.safeAreaInsets.bottom)
                 .frame(height: geometry.size.height)
-                
+
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(viewModel.queue) { track in
-<<<<<<< HEAD
                         TrackCellView(hasAccessory: true, track: track)                    }
-=======
-                        TrackCellView(hasAccessory: true, track: track)
-                    }
->>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
                     Rectangle()
                         .clearBottom()
                 }
@@ -72,13 +67,8 @@ struct PlayerInfoView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-<<<<<<< HEAD
             AsyncImage(url: URL(string: track.album?.cover ?? ""))
                 .padding()
-=======
-            //            AsyncImage(url: URL(string: track.album?.cover ?? ""))
-            //                .padding()
->>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(track.name)

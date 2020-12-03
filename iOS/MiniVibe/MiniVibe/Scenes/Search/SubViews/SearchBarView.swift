@@ -12,10 +12,8 @@ struct SearchBarView: View {
     @State private var isEditing = false
     @State private var isPushed = false
     
-    private let defaultText: String
-    
     init(defaultText: String) {
-        self.defaultText = defaultText
+        self.text = defaultText
     }
     
     var body: some View {
@@ -48,22 +46,12 @@ struct SearchBarView: View {
                     }
                 }
             )
-            .onAppear {
-                self.text = defaultText
-                if defaultText.isEmpty == false {
-                    self.isEditing = true
-                }
-            }
             
             if isEditing {
-                Button {
+                Button(action: {
                     isEditing = false
                     text = ""
-<<<<<<< HEAD:iOS/MiniVibe/MiniVibe/Scenes/Search/SubViews/SearchBarView.swift
                 }, label: {
-=======
-                } label: {
->>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa:iOS/MiniVibe/MiniVibe/Scenes/Search/SearchBarView.swift
                     Text("취소")
                 })
                 .padding(.trailing, 10)

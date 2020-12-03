@@ -42,12 +42,8 @@ struct CategoryRowView_Previews: PreviewProvider {
         NavigationView {
             CategoryView(category: Category(title: "Station",
                                             items: favoritePlaylistItems,
-<<<<<<< HEAD:iOS/MiniVibe/MiniVibe/Scenes/Today/SubViews/CategoryView.swift
                                             type: .magazines, mode: .full))
-=======
-                                            type: .magazines,
-                                            mode: .full))
->>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa:iOS/MiniVibe/MiniVibe/Scenes/Today/Category/CategoryView.swift
         }
+//        .preferredColorScheme(.dark)
     }
 }

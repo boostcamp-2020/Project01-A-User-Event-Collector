@@ -13,8 +13,8 @@ struct TrackListHeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .top, spacing: 20) {
-//                AsyncImage(url: URL(string: playlist.cover ?? ""))
-//                    .frame(width: 130, height: 130)
+                AsyncImage(url: URL(string: playlist.cover ?? ""))
+                    .frame(width: 130, height: 130)
                 VStack(alignment: .leading) {
                     Text(playlist.name)
                         .modifier(Title1())
