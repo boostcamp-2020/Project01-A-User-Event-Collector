@@ -8,17 +8,25 @@ export interface SlidebarProps {
   dataType?: string;
   title?: string;
   titleLink?: string;
-  data?: Object[];
+  data?: any;
 }
 
-const StyledSlidebar = styled.div`
-  overflow-x: auto;
-  overflow-y: hidden;
+const StyledSlidebar = styled.div<SlidebarProps>`
+  display: flex;
+  width: 100%;
 `;
 
-const SlideContent = styled.ul``;
+const SlideContent = styled.ul`
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  display: flex;
+  & > li:first-child {
+    margin: 0;
+  }
+`;
 
-const Img: React.FC<SlidebarProps> = ({
+const Slidebar: React.FC<SlidebarProps> = ({
   varient,
   dataType,
   title,
@@ -32,12 +40,12 @@ const Img: React.FC<SlidebarProps> = ({
         {titleLink ? <NextArrowSvg /> : ""}
       </a>
       <SlideContent>
-        {data?.map((value) => (
-          <Card varient={varient} dataType={dataType} data={value} />
+        {data?.map((value: any) => (
+          <Card varient={varient} dataType={dataType} rawData={value} />
         ))}
       </SlideContent>
     </StyledSlidebar>
   );
 };
 
-export default Img;
+export default Slidebar;

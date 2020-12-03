@@ -44,7 +44,7 @@ const themes: any = {
 const StyledImg = styled.img<styledImgProps>`
   object-fit: cover;
   ${(props) => {
-    return themes[props.varient];
+    return themes[props.varient || ""];
   }}
 `;
 
