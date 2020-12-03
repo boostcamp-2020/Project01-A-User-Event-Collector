@@ -8,9 +8,10 @@
 import SwiftUI
 
 class TodayRouter: DestinationOrientedRouterProtocol {
+    
     typealias RoutingStarter = MiniVibeType
     
-    func getDestination(to routingDestination: RoutingStarter) -> AnyView {
+    func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> AnyView {
         switch routingDestination {
         case .magazines:
             return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines)))
