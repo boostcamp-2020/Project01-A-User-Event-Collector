@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface styledImgProps {
-  varient: string;
+  varient?: string;
 }
 
 const themes: any = {
@@ -44,46 +44,8 @@ const themes: any = {
 const StyledImg = styled.img<styledImgProps>`
   object-fit: cover;
   ${(props) => {
-    return themes[props.varient];
+    return themes[props.varient || ""];
   }}
 `;
 
 export default StyledImg;
-
-// const getStyle = (props) => {
-//   let width;
-//   let height;
-//   const borderRadius = 0;
-//   switch (props.varient) {
-//     case "todayBig":
-//       width = "20rem";
-//       height = "20rem";
-//       break;
-//     case "todaySmall":
-//       width = "12rem";
-//       height = "12rem";
-//       break;
-//     case "todayNews":
-//       width = "20rem";
-//       height = "12rem";
-//       break;
-//     case "todayBig":
-//       width = "20rem";
-//       height = "20rem";
-//       break;
-//     case "todayBig":
-//       width = "20rem";
-//       height = "20rem";
-//       break;
-//     case "todayBig":
-//       width = "20rem";
-//       height = "20rem";
-//       break;
-//     case "todayBig":
-//       width = "20rem";
-//       height = "20rem";
-//       break;
-//     default:
-//       break;
-//   }
-// };

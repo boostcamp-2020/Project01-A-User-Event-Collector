@@ -1,10 +1,12 @@
 import Link from "next/link";
-import Layout from "../../frontend/components/Layout";
+import { memo } from "react";
 import Img from "../../frontend/components/Img";
+import HotMagCard from "../../frontend/components/HotMagCard";
+import GlobalStyles from "../../frontend/components/GlobalStyles";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
+const IndexPage = memo(() => (
+  <>
+    <HotMagCard />
 
     <p>
       <Link href="/about">
@@ -15,7 +17,8 @@ const IndexPage = () => (
       src="https://musicmeta-phinf.pstatic.net/album/005/094/5094136.jpg?type=r360Fll"
       varient="todayNews"
     />
-  </Layout>
-);
+    <GlobalStyles />
+  </>
+));
 
 export default IndexPage;
