@@ -30,7 +30,7 @@ extension CategoryItem {
         self.id = playlist.id
         self.imageName = playlist.cover
         self.title = playlist.name
-        self.author = playlist.user?.username
+        self.author = playlist.user?.name
         switch type {
         case .recommendations:
             self.description = playlist.description

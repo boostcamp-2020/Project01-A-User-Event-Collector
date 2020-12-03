@@ -10,11 +10,11 @@ import SwiftUI
 struct SearchAfterCategoryView: View {
     private let maxCountOfTracks = 3
     private let type: CategoryType
-    private let tracks: [Track]
+    private let cellDatas: [Cellable]
     
-    init(type: CategoryType, tracks: [Track]) {
+    init(type: CategoryType, cellDatas: [Cellable]) {
         self.type = type
-        self.tracks = tracks
+        self.cellDatas = cellDatas
     }
     
     enum CategoryType: String {
@@ -29,8 +29,20 @@ struct SearchAfterCategoryView: View {
                     .modifier(Title1())
                 Spacer()
             }
-            ForEach(tracks.prefix(maxCountOfTracks)) { track in
-                TrackCellView(hasAccessory: true, track: track)
+            if let tracks = cellDatas as? [Track] {
+                ForEach(tracks.prefix(maxCountOfTracks)) { track in
+                    TrackCellView(hasAccessory: true, track: track)
+                }
+            }
+            if let albums = cellDatas as? [Album] {
+                ForEach(albums.prefix(maxCountOfTracks)) { album in
+                    BasicRowCellView(title: album.name, subTitle: nil, coverURLString: album.cover)
+                }
+            }
+            if let artists = cellDatas as? [Artist] {
+                ForEach(artists.prefix(maxCountOfTracks)) { artist in
+                    BasicRowCellView(title: artist.name, subTitle: nil, coverURLString: artist.cover)
+                }
             }
         }
     }
@@ -38,6 +50,6 @@ struct SearchAfterCategoryView: View {
 
 struct SearchAfterCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchAfterCategoryView(type: .album, tracks: TestData.playlist.tracks!)
+        SearchAfterCategoryView(type: .album, cellDatas: TestData.playlist.tracks!)
     }
 }

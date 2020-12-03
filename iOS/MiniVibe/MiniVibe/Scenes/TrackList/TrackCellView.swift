@@ -19,7 +19,7 @@ struct TrackCellView: View {
             Button(action: {
                 nowPlayingViewModel.updateWith(track: track)
             }, label: {
-                TrackInfoView(title: track.trackName, artist: track.artists?.first?.name ?? "", coverURLString: track.album?.cover)
+                BasicRowCellView(title: track.name, subTitle: track.artists?.first?.name ?? "", coverURLString: track.album?.cover)
             })
             if hasAccessory {
                 HStack(spacing: 20) {

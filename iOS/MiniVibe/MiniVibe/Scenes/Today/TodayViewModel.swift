@@ -12,16 +12,18 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
     @Published var recommends = [Playlist]()
     @Published var favorites = [Playlist]()
     @Published var magazines = [Magazine]()
+    @Published var tracks = [Track]()
     
     func fetchAll() {
         fetch(type: .favorites)
         fetch(type: .magazines)
         fetch(type: .recommendations)
+        fetch(type: .playlists, id: 18)
     }
     
     
-    func fetch(type: MiniVibeType) {
-        internalFetch(endPoint: type) { [weak self] data in
+    func fetch(type: MiniVibeType, id: Int? = nil) {
+        internalFetch(endPoint: type, id: id) { [weak self] data in
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
@@ -30,7 +32,16 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
                     }
                 }
             case .djStations:
-                self?.stations = [DJStation(id: 1, imageName: nil)]
+//                self?.stations = [DJStation(id: 1, imageName: nil)]
+                break
+            case .playlists:
+                if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
+                    DispatchQueue.main.async {
+                        if let tracks = decodedData.playlist.tracks {
+                            self?.tracks = tracks
+                        }
+                    }
+                }
             default:
                 if let decodedData = try? JSONDecoder().decode(Playlists.self, from: data) {
                     DispatchQueue.main.async {

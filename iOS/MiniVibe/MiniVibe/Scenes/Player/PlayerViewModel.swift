@@ -9,7 +9,7 @@ import Foundation
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack = Track(id: 37,
-                                        trackName: "Dynamite (Instrumental)",
+                                        name: "Dynamite (Instrumental)",
                                         albumTrackNumber: 2,
                                         albumID: 8,
                                         album: Album(id: 8,
@@ -19,7 +19,7 @@ class PlayerViewModel: ObservableObject {
                                         artists: [Artist(id: 3, name: "방탄소년단", cover: nil)])
     @Published var queue = [Track]()
     var trackName: String {
-        get { currentTrack.trackName }
+        get { currentTrack.name }
     }
     var artist: String {
         get { currentTrack.artists?.first?.name ?? "" }

@@ -39,7 +39,17 @@ struct TodayView: View {
                         CategoryView(category: Category(playlists: viewModel.recommends, type: .recommendations, mode: .full))
                     })
                 .listRowInsets(EdgeInsets())
+                
+//                NavigationLink(
+//                    destination: router.getDestination(to: .tracks),
+//                    label: {
+//                        
+//                        TrackHorizontalListView(tracks: viewModel.tracks)
+//                            .padding([.leading, .trailing])
+//                    })
+//                .listRowInsets(EdgeInsets())
 
+                
                 Rectangle()
                     .clearBottom()
             }.listStyle(PlainListStyle())

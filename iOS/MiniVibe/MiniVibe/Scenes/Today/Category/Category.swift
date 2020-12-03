@@ -32,7 +32,7 @@ extension Category {
 
 extension Category {
     init(magazines : [Magazine], mode: CategoryMode) {
-        self.title = "VIBE MAG" ?? "DEFAULT"
+        self.title = "VIBE MAG" 
         self.type = .magazines
         self.mode = mode
         self.items = magazines.map { magazine -> CategoryItem in

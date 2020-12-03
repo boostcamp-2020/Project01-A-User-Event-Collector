@@ -22,14 +22,14 @@ struct SearchAfterView: View {
                       pinnedViews: [.sectionHeaders]) {
                 Section(header: SearchBarView(defaultText: searchText)) {
                     if let tracks = viewModel.tracks {
-                        SearchAfterCategoryView(type: .track, tracks: tracks)
+                        SearchAfterCategoryView(type: .track, cellDatas: tracks)
                     }
-//                    if let albums = viewModel.albums {
-//                        SearchAfterCategoryView(type: .album, tracks: albums)
-//                    }
-//                    if let artists = viewModel.artists {
-//                        SearchAfterCategoryView(type: .artist, tracks: artists)
-//                    }
+                    if let albums = viewModel.albums {
+                        SearchAfterCategoryView(type: .album, cellDatas: albums)
+                    }
+                    if let artists = viewModel.artists {
+                        SearchAfterCategoryView(type: .artist, cellDatas: artists)
+                    }
                 }
             }
         }.padding()

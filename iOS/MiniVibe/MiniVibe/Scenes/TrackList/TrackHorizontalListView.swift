@@ -20,7 +20,7 @@ struct TrackHorizontalListView: View {
     var body: some View {
         Group {
             VStack {
-                NavigationLink(destination: PlaylistView(playlistID: 1)) {
+                NavigationLink(destination: PlaylistView(playlistID: 18)) {
                     CategoryHeaderView(title: "오늘 TOP 100")
                         .foregroundColor(.primary)
                 }

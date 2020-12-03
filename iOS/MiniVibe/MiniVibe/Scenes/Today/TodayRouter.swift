@@ -22,7 +22,7 @@ class TodayRouter: DestinationOrientedRouterProtocol {
         case .djStations:
             return AnyView(DJStationListView())
         case .tracks:
-            return AnyView(PlaylistView(playlistID: 1))
+            return AnyView(PlaylistView(playlistID: 18))
         default:
             return AnyView(ErrorView())
         }

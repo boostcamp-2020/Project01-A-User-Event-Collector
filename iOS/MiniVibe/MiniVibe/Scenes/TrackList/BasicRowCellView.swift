@@ -1,5 +1,5 @@
 //
-//  TrackInfoView.swift
+//  BasicRowCellView.swift
 //  MiniVibe
 //
 //  Created by 류연수 on 2020/12/03.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct TrackInfoView: View {
+struct BasicRowCellView: View {
     let title: String
-    let artist: String
+    let subTitle: String?
     let coverURLString: String?
     
     var body: some View {
@@ -20,8 +20,10 @@ struct TrackInfoView: View {
             VStack(alignment: .leading) {
                 Text(title)
                     .modifier(Title2())
-                Text(artist)
-                    .modifier(Description2())
+                if let subTitle = subTitle {
+                    Text(subTitle)
+                        .modifier(Description2())
+                }
             }
             Spacer()
         }
@@ -30,6 +32,6 @@ struct TrackInfoView: View {
 
 struct TrackInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackInfoView(title: "title", artist: "artist", coverURLString: nil)
+        BasicRowCellView(title: "title", subTitle: "artist", coverURLString: nil)
     }
 }

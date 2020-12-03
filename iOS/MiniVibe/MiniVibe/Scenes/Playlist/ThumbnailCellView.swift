@@ -26,7 +26,7 @@ struct ThumbnailCellView: View {
                         .modifier(Description2())
                 }
                 if let playlist = thumbnail as? Playlist,
-                   let author = playlist.user?.username {
+                   let author = playlist.user?.name {
                     Text(author)
                         .modifier(Description2())
                 }

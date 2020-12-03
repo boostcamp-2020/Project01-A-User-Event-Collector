@@ -43,7 +43,7 @@ struct PlaylistView: View {
                             Text(name)
                                 .modifier(Title2())
                         }
-                        if let author = playlist.user?.username {
+                        if let author = playlist.user?.name {
                             Text(author)
                                 .modifier(Description2())
                         }

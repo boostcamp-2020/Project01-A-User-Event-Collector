@@ -70,7 +70,7 @@ struct PlayerInfoView: View {
                 .padding()
             HStack() {
                 VStack(alignment: .leading, spacing: 10){
-                    Text(track.trackName)
+                    Text(track.name)
                         .font(.system(size: 24, weight: .bold))
                     Text(track.artists?.first?.name ?? "")
                         .font(.system(size: 18, weight: .light))
