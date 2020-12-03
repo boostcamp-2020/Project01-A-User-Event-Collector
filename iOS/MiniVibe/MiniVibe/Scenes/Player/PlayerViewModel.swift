@@ -19,23 +19,21 @@ class PlayerViewModel: ObservableObject {
                                         artists: [Artist(id: 3, name: "방탄소년단", cover: nil)])
     @Published var queue = [Track]()
     var trackName: String {
-        get { currentTrack.name }
+        currentTrack.name
     }
     var artist: String {
-        get { currentTrack.artists?.first?.name ?? "" }
+        currentTrack.artists?.first?.name ?? ""
     }
     var coverURLString: String? {
-        get { currentTrack.album?.cover }
+        currentTrack.album?.cover
     }
     
     func updateWith(track: Track) {
         currentTrack = track
         if queue.contains(where: {$0.id == track.id}) {
-            queue.removeAll(where:  {$0.id == track.id})
+            queue.removeAll(where: {$0.id == track.id})
         }
         queue.append(track)
     }
 
 }
-
-

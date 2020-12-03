@@ -35,4 +35,3 @@ class ThumbnailListViewModel: MiniVibeViewModel, ObservableObject {
         
     }
 }
-

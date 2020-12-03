@@ -42,4 +42,3 @@ class MiniVibeViewModel {
             .store(in: &cancellabes)
     }
 }
-

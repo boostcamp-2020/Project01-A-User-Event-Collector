@@ -17,7 +17,7 @@ class DJStationListViewModel: ObservableObject {
                     .init(id: 5, imageName: "dj5"),
                     .init(id: 6, imageName: "dj6"),
                     .init(id: 7, imageName: "dj7"),
-                    .init(id: 8, imageName: "dj8"),
+                    .init(id: 8, imageName: "dj8")
         ]
     }
 }

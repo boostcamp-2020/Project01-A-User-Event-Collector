@@ -36,7 +36,9 @@ struct TodayView: View {
                 NavigationLink(
                     destination: router.getDestination(to: .recommendations),
                     label: {
-                        CategoryView(category: Category(playlists: viewModel.recommends, type: .recommendations, mode: .full))
+                        CategoryView(category: Category(playlists: viewModel.recommends,
+                                                        type: .recommendations,
+                                                        mode: .full))
                     })
                 .listRowInsets(EdgeInsets())
                 
@@ -48,7 +50,6 @@ struct TodayView: View {
 //                            .padding([.leading, .trailing])
 //                    })
 //                .listRowInsets(EdgeInsets())
-
                 
                 Rectangle()
                     .clearBottom()
@@ -68,4 +69,3 @@ struct TodayView_Previews: PreviewProvider {
         TodayView()
     }
 }
-

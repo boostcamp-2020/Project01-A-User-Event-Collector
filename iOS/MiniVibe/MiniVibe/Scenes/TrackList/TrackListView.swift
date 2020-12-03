@@ -29,7 +29,7 @@ struct TrackListView: View {
             }
             Rectangle()
                 .clearBottom()
-        }.onAppear() {
+        }.onAppear {
             viewModel.createTracks(tracks: tracks)
         }
     }

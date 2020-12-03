@@ -10,10 +10,10 @@ import Foundation
 struct TrackGroup: Identifiable {
     let id = UUID()
     var tracks = [Track]()
-    mutating func add(_ track: Track){
+    mutating func add(_ track: Track) {
         tracks.append(track)
     }
-    mutating func removeAll(){
+    mutating func removeAll() {
         tracks.removeAll()
     }
 }
@@ -21,13 +21,12 @@ struct TrackGroup: Identifiable {
 class TrackListViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
-    
     func createTracks(tracks: [Track]) {
         self.tracks = tracks
     }
     
     func toggleIsFavorite(for id: Int) {
-        if let index = tracks.firstIndex(where: { $0.id == id }) {
+        if let _ = tracks.firstIndex(where: { $0.id == id }) {
 //            나중에 api에서 track에 isFavorite를 함께 줄때 적용
 //            tracks[index].isFavorite.toggle()
         }

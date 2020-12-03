@@ -13,7 +13,7 @@ struct GenreCellView: View {
     var body: some View {
         Button(action: {
             // action
-        }) {
+        }, label: {
             HStack {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
                     .frame(width: 6, height: 30)
@@ -22,7 +22,7 @@ struct GenreCellView: View {
                     .modifier(Title2())
                 Spacer()
             }.modifier(TrackListButtonStyle())
-        }
+        })
     }
 }
 

@@ -21,7 +21,6 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
         fetch(type: .playlists, id: 18)
     }
     
-    
     func fetch(type: MiniVibeType, id: Int? = nil) {
         internalFetch(endPoint: type, id: id) { [weak self] data in
             switch type {
@@ -45,7 +44,7 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
             default:
                 if let decodedData = try? JSONDecoder().decode(Playlists.self, from: data) {
                     DispatchQueue.main.async {
-                        switch type{
+                        switch type {
                         case .favorites:
                             self?.favorites = decodedData.playlists
                         case .recommendations:
@@ -60,6 +59,4 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
         }
         
     }
-    
-    
 }
