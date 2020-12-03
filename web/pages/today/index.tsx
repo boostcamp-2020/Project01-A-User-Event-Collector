@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Layout from "../../frontend/components/Layout/Layout";
+import Layout from "../../frontend/components/Layout";
 import TrackList from "../../frontend/components/Tracklist";
 import Img from "../../frontend/components/Img";
 import HotMagCard from "../../frontend/components/HotMagCard";
