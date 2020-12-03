@@ -19,7 +19,9 @@ struct TrackCellView: View {
             Button(action: {
                 nowPlayingViewModel.updateWith(track: track)
             }, label: {
-                BasicRowCellView(title: track.name, subTitle: track.artists?.first?.name ?? "", coverURLString: track.album?.cover)
+                BasicRowCellView(title: track.name,
+                                 subTitle: track.artists?.first?.name ?? "",
+                                 coverURLString: track.album?.cover)
             })
             if hasAccessory {
                 HStack(spacing: 20) {
@@ -74,5 +76,3 @@ struct TrackCellView_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
-
-

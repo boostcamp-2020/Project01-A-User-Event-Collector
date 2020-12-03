@@ -15,7 +15,7 @@ struct TrackGroupView: View {
                 TrackCellView(hasAccessory: true, track: track)
             }
         }
-        .onAppear{
+        .onAppear {
         }
     }
 }

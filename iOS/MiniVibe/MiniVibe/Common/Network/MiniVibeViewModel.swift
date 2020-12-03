@@ -13,8 +13,16 @@ class MiniVibeViewModel {
     private let network = NetworkService(session: URLSession.shared)
     private var cancellabes = Set<AnyCancellable>()
     
-    func internalFetch(endPoint: MiniVibeType, id: Int? = nil, filterQuery: String? = nil, limitQuery: String? = nil,  completion: @escaping (Data) -> Void) {
-        let url = URLBuilder(pathType: .api, endPoint: endPoint, id: id, filterQuery: filterQuery, limitQuery: limitQuery).create()
+    func internalFetch(endPoint: MiniVibeType,
+                       id: Int? = nil,
+                       filterQuery: String? = nil,
+                       limitQuery: String? = nil,
+                       completion: @escaping (Data) -> Void) {
+        let url = URLBuilder(pathType: .api,
+                             endPoint: endPoint,
+                             id: id,
+                             filterQuery: filterQuery,
+                             limitQuery: limitQuery).create()
         
         guard let request = RequestBuilder(url: url,
                                            body: nil,
@@ -33,4 +41,3 @@ class MiniVibeViewModel {
             .store(in: &cancellabes)
     }
 }
-

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
-    @ObservedObject var viewModel : PlayerViewModel
+    @ObservedObject var viewModel: PlayerViewModel
     @Binding var showMediaPlayer: Bool
     @State var timeDuration = Float(180)
     
@@ -25,7 +25,8 @@ struct PlayerView: View {
                 .frame(height: geometry.size.height)
 
                 LazyVGrid(columns: [GridItem(.flexible())]) {
-                    ForEach(viewModel.queue) { track    in                     TrackCellView(hasAccessory: true, track: track)                    }
+                    ForEach(viewModel.queue) { track in
+                        TrackCellView(hasAccessory: true, track: track)                    }
                     Rectangle()
                         .clearBottom()
                 }
@@ -43,7 +44,7 @@ struct PlayerHeaderView: View {
     @Binding var showMediaPlayer: Bool
     
     var body: some View {
-        HStack() {
+        HStack {
             Image(systemName: "flame")
                 .accesoryModifier(color: .secondary, size: .medium)
             Spacer()
@@ -68,8 +69,8 @@ struct PlayerInfoView: View {
         VStack(spacing: 40) {
             AsyncImage(url: URL(string: track.album?.cover ?? ""))
                 .padding()
-            HStack() {
-                VStack(alignment: .leading, spacing: 10){
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
                     Text(track.name)
                         .font(.system(size: 24, weight: .bold))
                     Text(track.artists?.first?.name ?? "")
@@ -88,11 +89,11 @@ struct PlayerInfoView: View {
 }
 
 struct PlayerControlView: View {
-    @ObservedObject var viewModel : PlayerViewModel
+    @ObservedObject var viewModel: PlayerViewModel
     
     var body: some View {
-        VStack() {
-            HStack() {
+        VStack {
+            HStack {
                 Button(action: {}, label: {
                     Image(systemName: "repeat")
                         .accesoryModifier(color: .gray, size: .medium)

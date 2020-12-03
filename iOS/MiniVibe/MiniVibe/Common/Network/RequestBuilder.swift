@@ -16,7 +16,6 @@ enum NetworkMethod: String {
 }
 
 struct RequestBuilder {
-    // TODO: - 각 뷰에 맞춰서 urlString을 endpoint에 맞게 생성해주는 객체 생성 필요
     let url: URL?
     let method: NetworkMethod = .get
     let body: Data?

@@ -10,17 +10,16 @@ import Foundation
 struct TrackGroup: Identifiable {
     let id = UUID()
     var tracks = [Track]()
-    mutating func add(_ track: Track){
+    mutating func add(_ track: Track) {
         tracks.append(track)
     }
-    mutating func removeAll(){
+    mutating func removeAll() {
         tracks.removeAll()
     }
 }
 
 class TrackListViewModel: ObservableObject {
     @Published var tracks = [Track]()
-    
     
     func createTracks(tracks: [Track]) {
         self.tracks = tracks

@@ -25,7 +25,6 @@ class ImageLoader: ObservableObject {
     }
 
     func load(url: URL?) {
-        print("load \(url?.absoluteString)")
         guard !isLoading else { return }
         guard let url = url else {
             self.image = UIImage(named: "logo")

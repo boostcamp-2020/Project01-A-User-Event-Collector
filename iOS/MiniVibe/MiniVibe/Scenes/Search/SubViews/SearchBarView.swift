@@ -51,9 +51,9 @@ struct SearchBarView: View {
                 Button(action: {
                     isEditing = false
                     text = ""
-                }) {
+                }, label: {
                     Text("취소")
-                }
+                })
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
                 .animation(.default)

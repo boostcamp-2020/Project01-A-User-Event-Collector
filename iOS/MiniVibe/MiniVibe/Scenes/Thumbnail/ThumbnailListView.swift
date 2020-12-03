@@ -20,9 +20,8 @@ struct ThumbnailListView: View {
         guard let title = router.title() else { return AnyView(ErrorView()) }
         
         return AnyView(
-            List{
-                ForEach(viewModel.thumbnails.indexed(), id: \.1.id) {
-                    _, thumbnail in
+            List {
+                ForEach(viewModel.thumbnails.indexed(), id: \.1.id) { _, thumbnail in
                     NavigationLink(
                         destination: router.getDestination(id: thumbnail.id)
                     ) {
@@ -32,7 +31,7 @@ struct ThumbnailListView: View {
                 Rectangle()
                     .clearBottom()
             }.modifier(NavigationBarStyle(title: title))
-            .onAppear() {
+            .onAppear {
                 viewModel.fetch(type: router.routingStarter)
             }
             

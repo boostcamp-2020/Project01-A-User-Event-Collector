@@ -39,4 +39,3 @@ struct ChartView_Previews: PreviewProvider {
         ChartView(playlistID: 18)
     }
 }
-

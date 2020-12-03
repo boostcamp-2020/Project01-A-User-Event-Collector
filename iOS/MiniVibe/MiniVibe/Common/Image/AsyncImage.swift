@@ -18,7 +18,7 @@ struct AsyncImage: View {
     
     var body: some View {
         content
-            .onAppear{
+            .onAppear {
                 loader.load(url: url)
             }
     }

@@ -35,14 +35,15 @@ struct CategoryRowView_Previews: PreviewProvider {
     static let favoritePlaylistItems: [CategoryItem] =
         [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
          .init(id: 2, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
-         .init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
+         .init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil)
         ]
 
     static var previews: some View {
         NavigationView {
-            CategoryView(category: Category(title: "Station", items: favoritePlaylistItems, type: .magazines, mode: .full))
+            CategoryView(category: Category(title: "Station",
+                                            items: favoritePlaylistItems,
+                                            type: .magazines, mode: .full))
         }
 //        .preferredColorScheme(.dark)
     }
 }
-
