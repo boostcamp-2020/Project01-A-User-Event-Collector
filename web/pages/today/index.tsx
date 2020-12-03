@@ -3,10 +3,11 @@ import Layout from "../../frontend/components/Layout";
 
 import TrackList from "../../frontend/components/Tracklist";
 import Img from "../../frontend/components/Img";
+import HotMagCard from "../../frontend/components/HotMagCard";
 
 const IndexPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
+    <HotMagCard />
 
     <TrackList
       Tracks={[
