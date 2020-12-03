@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Layout from "../../frontend/components/Layout/Layout";
-
 import TrackList from "../../frontend/components/Tracklist";
 import Img from "../../frontend/components/Img";
 import HotMagCard from "../../frontend/components/HotMagCard";
+import GlobalStyles from "../../frontend/components/GlobalStyles";
 
 const IndexPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
@@ -110,6 +110,7 @@ const IndexPage = () => (
       src="https://musicmeta-phinf.pstatic.net/album/005/094/5094136.jpg?type=r360Fll"
       varient="todayNews"
     />
+    <GlobalStyles />
   </Layout>
 );
 
