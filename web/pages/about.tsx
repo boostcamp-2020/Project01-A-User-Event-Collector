@@ -11,7 +11,7 @@ const AboutPage = () => {
           <a>Go home</a>
         </Link>
       </p>
-      <a href="http://localhost:4000/api/auth/naverLogin">
+      <a href={`${process.env.API_URL}:${process.env.API_PORT}/api/auth/naverLogin`}>
         <img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG" />
       </a>
     </Layout>

@@ -31,7 +31,10 @@ const AlbumPage = ({ Albums }: any) => {
 export default AlbumPage;
 
 export async function getStaticPath() {
-  const res = await fetch("http://localhost:3000/api/albums");
+  const apiUrl = process.env.API_URL;
+  const apiPort = process.env.API_PORT;
+
+  const res = await fetch(`${apiUrl}:${apiPort}/api/albums`);
   const albums = await res.json();
   const paths = albums.map((album: any) => `/albums/${album.id}`);
 
@@ -39,7 +42,10 @@ export async function getStaticPath() {
 }
 
 export async function getServerSideProps({ params }: any) {
-  const res = await fetch(`http://localhost:3000/api/albums/${params.pid}`);
+  const apiUrl = process.env.API_URL;
+  const apiPort = process.env.API_PORT;
+
+  const res = await fetch(`${apiUrl}:${apiPort}/api/albums/${params.pid}`);
   const { Albums } = await res.json();
 
   return { props: { Albums } };
