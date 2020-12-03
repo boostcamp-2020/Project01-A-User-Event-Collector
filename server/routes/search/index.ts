@@ -1,16 +1,7 @@
-import express from "express";
+import { Router } from "express";
+import searchController from "../../controllers/search";
 
-const router = express.Router();
+const router = Router();
+router.get("/", searchController.search);
 
-router.get("/", (req, res) => {
-  res.send("album index에요");
-});
-
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-  res.send(id);
-});
-
-// 공부해서 바꾸자..
-const searchRouter = router;
-export default searchRouter;
+export default router;
