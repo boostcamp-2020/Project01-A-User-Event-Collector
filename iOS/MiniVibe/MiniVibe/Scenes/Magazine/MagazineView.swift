@@ -18,43 +18,38 @@ struct MagazineView: View {
     }
     
     var body: some View {
-        Group {
-            if let magazine = viewModel.magazine,
-               let tracks = magazine.tracks {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: layout,
-                              spacing: 20,
-                              pinnedViews: [.sectionHeaders]) {
-                        Image(systemName: "person.fill")
-                        //                    AsyncImage(url: URL(string: magazine.cover ?? ""))
-                        Section(header: TrackListButtonView()) {
-                            if let description = magazine.description {
-                                Text(description)
-                                    .modifier(Description1NoLimit())
-                            }
-                            TrackListView(tracks: tracks)
+        guard let magazine = viewModel.magazine,
+              let tracks = magazine.tracks else { return AnyView(EmptyView().onAppear(perform: {
+                viewModel.fetch(id: magazineID)
+            }))
+             
+        }
+        
+        return AnyView(
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: layout,
+                          spacing: 20,
+                          pinnedViews: [.sectionHeaders]) {
+                    AsyncImage(url: URL(string: magazine.cover ?? ""))
+                    Section(header: TrackListButtonView()) {
+                        if let description = magazine.description {
+                            Text(description)
+                                .modifier(Description1NoLimit())
                         }
-                    }
-                }.padding()
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        VStack {
-                            Text(magazine.name)
-                                .modifier(Title2())
-                        }
+                        TrackListView(tracks: tracks)
                     }
                 }
-            } else {
-                EmptyView().onAppear(perform: {
-                    viewModel.fetch(id: magazineID)
-                })
+            }.padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(magazine.name)
+                            .modifier(Title2())
+                    }
+                }
             }
-<<<<<<< HEAD:iOS/MiniVibe/MiniVibe/Scenes/Magazine/MagazineView.swift
         )
-=======
-        }
->>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa:iOS/MiniVibe/MiniVibe/Scenes/Playlist/MagazineView.swift
     }
 }
 

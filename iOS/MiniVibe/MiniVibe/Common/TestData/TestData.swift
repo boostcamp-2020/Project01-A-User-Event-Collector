@@ -164,7 +164,7 @@ struct TestData {
         )
     static let magazine = Magazine(id: 1,
                                    name: "나만 없어 그 한정판 LP 레코드",
-                                   description: "발매되기 전부터 이토록 화제를 모은 앨범이 2020년에 또 있었을까. JYP를 나간 후 백예린이 발표한 앨범 <Every letter i sent you>는 발매 전부터 후까지 쉬지 않고 크고 작은 화제를 모았다. 음원으로 발표되지 않아 많은 사람들이",
+                                   description: "발매되기 전부터 이토록 화제를 모은 앨범이 2020년에 또 있었을까. JYP를 나간 후 백예린이 발표한 앨범 <Every letter i sent you>는 발매 전부터 후까지 쉬지 않고 크고 작은 화제를 모았다. 음원으로 발표되지 않아 많은 사람들이 라이브,",
                                    cover: nil,
                                    playlistID: 1,
                                    tracks: [
