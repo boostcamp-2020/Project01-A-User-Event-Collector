@@ -56,10 +56,10 @@ struct SearchBarView: View {
             }
             
             if isEditing {
-                Button(action: {
+                Button {
                     isEditing = false
                     text = ""
-                }) {
+                } label: {
                     Text("취소")
                 }
                 .padding(.trailing, 10)

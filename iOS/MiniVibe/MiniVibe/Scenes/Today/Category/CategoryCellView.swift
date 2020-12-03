@@ -28,7 +28,6 @@ struct CategoryCellView: View {
         }
     }
 
-    
     var body: some View {
         VStack(alignment: .leading) {
 //            AsyncImage(url: URL(string: item.imageName ?? ""))

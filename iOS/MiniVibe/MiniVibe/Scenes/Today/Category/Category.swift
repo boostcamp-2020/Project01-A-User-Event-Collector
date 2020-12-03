@@ -20,7 +20,7 @@ struct Category: Identifiable {
 }
 
 extension Category {
-    init(playlists : [Playlist], type: MiniVibeType, mode: CategoryMode) {
+    init(playlists: [Playlist], type: MiniVibeType, mode: CategoryMode) {
         self.title = type.title() ?? "DEFAULT"
         self.type = type
         self.mode = mode
@@ -31,7 +31,7 @@ extension Category {
 }
 
 extension Category {
-    init(magazines : [Magazine], mode: CategoryMode) {
+    init(magazines: [Magazine], mode: CategoryMode) {
         self.title = "VIBE MAG" 
         self.type = .magazines
         self.mode = mode

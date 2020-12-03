@@ -19,14 +19,14 @@ struct PlaylistListView: View {
     }
     
     var body: some View {
-        List (viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
+        List(viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
             NavigationLink(
                 destination: TrackListView(id: playlist.id)
             ) {
                 PlaylistCellView(playlist: $viewModel.playlistList[index])
             }
         }.modifier(NavigationBarStyle(title: router.title()))
-        .onAppear() {
+        .onAppear {
             viewModel.fetchPlaylistList(type: router.routingStarter, id: id)
         }
     }

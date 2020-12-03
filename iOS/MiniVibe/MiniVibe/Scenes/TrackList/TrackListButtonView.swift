@@ -9,25 +9,25 @@ import SwiftUI
 
 struct TrackListButtonView: View {
     var body: some View {
-        HStack{
+        HStack {
             Button(action: {
                 // action
-            }) {
+            }, label: {
                 HStack {
                     Image(systemName: "play.fill")
                     Text("PLAY")
                         .modifier(Title2())
                 }.modifier(TrackListButtonStyle())
-            }
+            })
             Button(action: {
                 // action
-            }) {
+            }, label: {
                 HStack {
                     Image(systemName: "shuffle")
                     Text("SHUFFLE")
                         .modifier(Title2())
                 }.modifier(TrackListButtonStyle())
-            }
+            })
         }
     }
 }

@@ -16,7 +16,7 @@ protocol Thumbnailable {
 
 struct Magazine: Thumbnailable, Codable {
     var id: Int
-    var name, description : String
+    var name, description: String
     var cover: String?
     let playlistID: Int
     let tracks: [Track]?
