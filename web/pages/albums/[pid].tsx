@@ -2,16 +2,30 @@ import React from "react";
 import TrackList from "../../frontend/components/Tracklist";
 import styled from "styled-components";
 import Header from "../../frontend/components/Header";
+import { DefaultCollector, DefaultEmitter } from "../../event";
 // interface Props {}
 
 const StyleAlbumPage = styled.div``;
 
 const AlbumPage = ({ Albums }: any) => {
   return (
-    <StyleAlbumPage>
-      <Header cover={Albums.cover} albumName={Albums.albumName} description={Albums.description} />
-      <TrackList Tracks={Albums.Tracks} />
-    </StyleAlbumPage>
+    <DefaultCollector>
+      <DefaultEmitter>
+        <h1>event emitter test</h1>
+      </DefaultEmitter>
+
+      <StyleAlbumPage>
+        <Header
+          cover={Albums.cover}
+          albumName={Albums.albumName}
+          description={Albums.description}
+        />
+
+        <DefaultEmitter>
+          <TrackList Tracks={Albums.Tracks} />
+        </DefaultEmitter>
+      </StyleAlbumPage>
+    </DefaultCollector>
   );
 };
 
