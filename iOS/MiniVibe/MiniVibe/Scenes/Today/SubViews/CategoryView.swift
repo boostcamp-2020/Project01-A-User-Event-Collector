@@ -42,8 +42,8 @@ struct CategoryRowView_Previews: PreviewProvider {
         NavigationView {
             CategoryView(category: Category(title: "Station",
                                             items: favoritePlaylistItems,
-                                            type: .magazines,
-                                            mode: .full))
+                                            type: .magazines, mode: .full))
         }
+//        .preferredColorScheme(.dark)
     }
 }

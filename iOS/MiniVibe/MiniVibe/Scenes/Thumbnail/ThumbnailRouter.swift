@@ -7,24 +7,25 @@
 
 import SwiftUI
 
-class ThumbnailRouter {
-    let routingStarter: MiniVibeType
+class ThumbnailRouter: StarterOrientedRouterProtocol {
+    typealias RoutingStarter = MiniVibeType
     
-    init(routingStarter: MiniVibeType) {
+    let routingStarter: RoutingStarter
+    
+    init(routingStarter: RoutingStarter) {
         self.routingStarter = routingStarter
     }
     
-    @ViewBuilder
-    func getDestination(id: Int) -> some View {
+    func getDestination(id: Int) -> AnyView {
         switch routingStarter {
         case .magazines:
-            MagazineView(magazineID: id)
+            return AnyView(MagazineView(magazineID: id))
         case .recommendations:
-            PlaylistView(playlistID: id)
+            return AnyView(PlaylistView(playlistID: id))
         case .favorites:
-            PlaylistView(playlistID: id)
+            return AnyView(PlaylistView(playlistID: id))
         default:
-            ErrorView()
+            return AnyView(ErrorView())
         }
     }
     

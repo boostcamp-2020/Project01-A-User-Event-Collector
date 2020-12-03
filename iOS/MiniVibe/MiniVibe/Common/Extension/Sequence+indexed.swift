@@ -8,7 +8,7 @@
 import Foundation
 
 extension Sequence {
-    func indexed() -> [(offset: Int, element: Element)] {
+    func indexed() -> [ (offset: Int, element: Element) ] {
         return Array(enumerated())
     }
 }

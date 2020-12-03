@@ -12,10 +12,8 @@ struct SearchBarView: View {
     @State private var isEditing = false
     @State private var isPushed = false
     
-    private let defaultText: String
-    
     init(defaultText: String) {
-        self.defaultText = defaultText
+        self.text = defaultText
     }
     
     var body: some View {
@@ -48,20 +46,14 @@ struct SearchBarView: View {
                     }
                 }
             )
-            .onAppear {
-                self.text = defaultText
-                if defaultText.isEmpty == false {
-                    self.isEditing = true
-                }
-            }
             
             if isEditing {
-                Button {
+                Button(action: {
                     isEditing = false
                     text = ""
-                } label: {
+                }, label: {
                     Text("취소")
-                }
+                })
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
                 .animation(.default)

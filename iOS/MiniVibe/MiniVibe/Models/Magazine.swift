@@ -37,7 +37,7 @@ struct Magazine: Thumbnailable, Codable {
 struct MagazineReponse: Codable {
     let magazine: Magazine
     enum CodingKeys: String, CodingKey {
-        case magazine = "Magzines"
+        case magazine = "Magazines"
     }
 }
 
