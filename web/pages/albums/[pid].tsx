@@ -2,7 +2,7 @@ import React from "react";
 import TrackList from "../../frontend/components/Tracklist";
 import styled from "styled-components";
 import Header from "../../frontend/components/Header";
-import { DefaultCollector, DefaultEmitter } from "../../event";
+import { DefaultCollector, DefaultEmitter } from "../../event/event";
 
 const StyleAlbumPage = styled.div``;
 
