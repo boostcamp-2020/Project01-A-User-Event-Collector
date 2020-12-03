@@ -1,7 +1,7 @@
 import React, { memo } from "react";
-import LinkCardBlock from "../LinkCardBlock";
+import LinkCardBlock from "./LinkCardBlock";
 import NavTopLogoSearch from "./NavTopLogoSearch";
-import NavBarUser from "../NavBarUser";
+import NavBarUser from "./NavBarUser";
 import StyledNavBar from "./styled";
 
 export enum Theme {

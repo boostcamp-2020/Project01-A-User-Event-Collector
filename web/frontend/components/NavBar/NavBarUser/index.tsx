@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import Img from "../Img";
+import Img from "../../Img";
 import { StyledNavUser, StyledUser } from "./styled";
 
 const NavBarUser = memo(() => {
