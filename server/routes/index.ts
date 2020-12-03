@@ -24,8 +24,5 @@ apiRouter.use("/search", searchRouter);
 apiRouter.use("/auth", (req, res) => {
   res.send("auth");
 });
-apiRouter.use("/users", (req, res) => {
-  res.send("users");
-});
 
 export default apiRouter;
