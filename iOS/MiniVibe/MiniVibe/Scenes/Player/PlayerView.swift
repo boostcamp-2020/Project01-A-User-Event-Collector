@@ -66,8 +66,8 @@ struct PlayerInfoView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            AsyncImage(url: URL(string: track.album?.cover ?? ""))
-                .padding()
+//            AsyncImage(url: URL(string: track.album?.cover ?? ""))
+//                .padding()
             HStack() {
                 VStack(alignment: .leading, spacing: 10){
                     Text(track.name)

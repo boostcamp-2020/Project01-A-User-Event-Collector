@@ -18,40 +18,39 @@ struct MagazineView: View {
     }
     
     var body: some View {
-        guard let magazine = viewModel.magazine,
-              let tracks = magazine.tracks else { return AnyView(EmptyView().onAppear(perform: {
-                viewModel.fetch(id: magazineID)
-            }))
-             
-        }
-        
-        return AnyView(
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: layout,
-                          spacing: 20,
-                          pinnedViews: [.sectionHeaders]) {
-                    AsyncImage(url: URL(string: magazine.cover ?? ""))
-                    Section(header: TrackListButtonView()) {
-                        if let description = magazine.description {
-                            Text(description)
-                                .modifier(Description1NoLimit())
+        Group {
+            if let magazine = viewModel.magazine,
+               let tracks = magazine.tracks {
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: layout,
+                              spacing: 20,
+                              pinnedViews: [.sectionHeaders]) {
+                        Image(systemName: "person.fill")
+                        //                    AsyncImage(url: URL(string: magazine.cover ?? ""))
+                        Section(header: TrackListButtonView()) {
+                            if let description = magazine.description {
+                                Text(description)
+                                    .modifier(Description1NoLimit())
+                            }
+                            TrackListView(tracks: tracks)
                         }
-                        TrackListView(tracks: tracks)
+                    }
+                }.padding()
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        VStack {
+                            Text(magazine.name)
+                                .modifier(Title2())
+                        }
                     }
                 }
-            }.padding()
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text(magazine.name)
-                            .modifier(Title2())
-                    }
-                }
+            } else {
+                EmptyView().onAppear(perform: {
+                    viewModel.fetch(id: magazineID)
+                })
             }
-        )
-        
-        
+        }
     }
 }
 
