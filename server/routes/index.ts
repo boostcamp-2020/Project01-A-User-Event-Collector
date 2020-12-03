@@ -8,6 +8,7 @@ import newsRouter from "./news";
 import playlistsRouter from "./playlists";
 import libraryRouter from "./library";
 import searchRouter from "./search";
+import authRouter from "./auth";
 
 const apiRouter = express.Router();
 
@@ -20,9 +21,6 @@ apiRouter.use("/news", newsRouter);
 apiRouter.use("/playlists", playlistsRouter);
 apiRouter.use("/library", libraryRouter);
 apiRouter.use("/search", searchRouter);
-
-apiRouter.use("/auth", (req, res) => {
-  res.send("auth");
-});
+apiRouter.use("/auth", authRouter);
 
 export default apiRouter;

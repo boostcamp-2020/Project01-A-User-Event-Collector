@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
+import logger from "morgan";
 import apiRouter from "./routes";
 
 if (process.env.NODE_ENV) {
@@ -9,6 +10,8 @@ if (process.env.NODE_ENV) {
 }
 
 const app = express();
+app.use(logger("short"));
+
 app.use("/api", apiRouter);
 
 app.listen(process.env.PORT || 3000, () => {

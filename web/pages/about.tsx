@@ -12,7 +12,7 @@ const AboutPage = ({ clientId, state, redirectURI }: any) => {
           <a>Go home</a>
         </Link>
       </p>
-      <a href={api_url}>
+      <a href="http://localhost:4000/api/auth/naverLogin">
         <img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG" />
       </a>
     </Layout>
