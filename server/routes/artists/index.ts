@@ -5,5 +5,4 @@ const router = Router();
 router.get("/", artistController.getAll);
 router.get("/:id", artistController.getArtist);
 
-const artistsRouter = router;
-export default artistsRouter;
+export default router;

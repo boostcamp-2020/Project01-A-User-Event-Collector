@@ -11,7 +11,7 @@ const apiRouter = express.Router();
 
 apiRouter.use("/albums", albumsRouter);
 apiRouter.use("/artists", artistsRouter);
-apiRouter.use("/dj-station", djStationsRouter);
+apiRouter.use("/dj-stations", djStationsRouter);
 apiRouter.use("/genres", genresRouter);
 apiRouter.use("/magazines", magazinesRouter);
 apiRouter.use("/news", newsRouter);
