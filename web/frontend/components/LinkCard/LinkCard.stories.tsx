@@ -7,7 +7,7 @@ export default {
 };
 
 const Template: Story<Props> = (args: Props) => (
-  <LinkCard theme={args.theme} icon={args.icon}>
+  <LinkCard theme={args.theme} icon={args.icon} href={'/'}>
     {args.children}
   </LinkCard>
 );
