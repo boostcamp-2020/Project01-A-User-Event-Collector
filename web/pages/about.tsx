@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Layout from "../frontend/components/Layout";
+import Layout from "../frontend/components/Layout/Layout";
 
 const AboutPage = ({ clientId, state, redirectURI }: any) => {
   const api_url = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectURI}&state=${state}`;
