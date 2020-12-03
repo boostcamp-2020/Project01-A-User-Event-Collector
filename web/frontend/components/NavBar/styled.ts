@@ -6,6 +6,8 @@ const StyledNavBar = styled.div`
   background-color: #000;
   width: 15%;
   height: 100%;
+  box-sizing: border-box;
+  padding: 0.75em;
 `;
 
 export default StyledNavBar;

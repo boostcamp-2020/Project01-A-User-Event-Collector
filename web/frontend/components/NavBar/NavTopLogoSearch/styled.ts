@@ -3,8 +3,6 @@ import styled from "styled-components";
 const StyledNavTopLogoSearch = styled.div`
   display: flex;
   height: 3em;
-  box-sizing: border-box;
-  padding: 0.75em;
 `;
 
 const StyledNavLogo = styled.div`
