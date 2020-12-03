@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import LinkCard from "../LinkCard";
+import LinkCard from "./LinkCard";
 import StyledLinkCardBlock from "./styled";
 
 export enum Theme {

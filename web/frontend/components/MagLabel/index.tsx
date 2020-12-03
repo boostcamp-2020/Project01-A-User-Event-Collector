@@ -26,15 +26,9 @@ const MagLabel: React.FC<MagLabelProps> = ({
 
 export default MagLabel;
 
-const AllMagLabel: React.FC<MagLabelProps> = () => <MagLabel {...AllMagLabelStyles}>전체</MagLabel>;
-const SpecialMagLabel: React.FC<MagLabelProps> = () => (
-  <MagLabel {...SpecialMagLabelStyles}>SPECIAL</MagLabel>
-);
-const PickMagLabel: React.FC<MagLabelProps> = () => (
-  <MagLabel {...PickMagLabelStyles}>PICK</MagLabel>
-);
-const GenreMagLabel: React.FC<MagLabelProps> = () => (
-  <MagLabel {...GenreMagLabelStyles}>GENRE</MagLabel>
-);
+const AllMagLabel: React.FC = () => <MagLabel {...AllMagLabelStyles}>전체</MagLabel>;
+const SpecialMagLabel: React.FC = () => <MagLabel {...SpecialMagLabelStyles}>SPECIAL</MagLabel>;
+const PickMagLabel: React.FC = () => <MagLabel {...PickMagLabelStyles}>PICK</MagLabel>;
+const GenreMagLabel: React.FC = () => <MagLabel {...GenreMagLabelStyles}>GENRE</MagLabel>;
 
 export { AllMagLabel, SpecialMagLabel, PickMagLabel, GenreMagLabel };

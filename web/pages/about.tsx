@@ -1,10 +1,10 @@
+import { memo } from "react";
 import Link from "next/link";
-import Layout from "../frontend/components/Layout";
 
-const AboutPage = ({ clientId, state, redirectURI }: any) => {
+const AboutPage = memo(({ clientId, state, redirectURI }: any) => {
   const api_url = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectURI}&state=${state}`;
   return (
-    <Layout title="About | Next.js + TypeScript Example">
+    <>
       <h1>About</h1>
       <p>This is the about page</p>
       <p>
@@ -15,9 +15,9 @@ const AboutPage = ({ clientId, state, redirectURI }: any) => {
       <a href={api_url}>
         <img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG" />
       </a>
-    </Layout>
+    </>
   );
-};
+});
 
 export async function getStaticProps() {
   return {
