@@ -57,10 +57,10 @@ struct TestData {
                    description: "울적한 기분에, 복잡한 머리에 쉽게 잠들지 못하는 밤. 부드러운 멜로디의 인디팝과 알앤비 음악이 불안한 마음을 달래줄 거예요.",
                    cover: "favorite1",
                    author: 1,
-                   user: User(username: "VIBE"),
+                   user: User(name: "VIBE"),
                    tracks: [
                     Track(id: 1,
-                          trackName: "Dynamite",
+                          name: "Dynamite",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 1,
@@ -70,7 +70,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS")]
                     ),
                     Track(id: 2,
-                          trackName: "우산",
+                          name: "우산",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 1,
@@ -80,7 +80,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "윤하", cover: "??")]
                     ),
                     Track(id: 3,
-                          trackName: "Blueming",
+                          name: "Blueming",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 1,
@@ -90,7 +90,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "아이유", cover: "??")]
                     ),
                     Track(id: 4,
-                          trackName: "FeelGood",
+                          name: "FeelGood",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 1,
@@ -100,7 +100,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??")]
                     ),
                     Track(id: 5,
-                          trackName: "LoveSick Girls",
+                          name: "LoveSick Girls",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 1,
@@ -110,7 +110,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??")]
                     ),
                     Track(id: 6,
-                          trackName: "Fake Love",
+                          name: "Fake Love",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 2,
@@ -120,7 +120,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS")]
                     ),
                     Track(id: 7,
-                          trackName: "빗소리",
+                          name: "빗소리",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 2,
@@ -130,7 +130,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "윤하", cover: "??")]
                     ),
                     Track(id: 8,
-                          trackName: "밤편지",
+                          name: "밤편지",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 2,
@@ -140,7 +140,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "아이유", cover: "??")]
                     ),
                     Track(id: 9,
-                          trackName: "물고기",
+                          name: "물고기",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 2,
@@ -150,7 +150,7 @@ struct TestData {
                           artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??")]
                     ),
                     Track(id: 10,
-                          trackName: "휘파람",
+                          name: "휘파람",
                           albumTrackNumber: 1,
                           albumID: 1,
                           album: Album.init(id: 2,
@@ -169,7 +169,7 @@ struct TestData {
                                    playlistID: 1,
                                    tracks: [
                                     Track(id: 9,
-                                          trackName: "물고기",
+                                          name: "물고기",
                                           albumTrackNumber: 1,
                                           albumID: 1,
                                           album: Album.init(id: 2,

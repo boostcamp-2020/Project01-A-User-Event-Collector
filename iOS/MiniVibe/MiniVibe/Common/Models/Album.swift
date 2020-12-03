@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Identifiable, Cellable {
     let id: Int
-    let name, description: String
+    var name: String
+    let description: String
     let cover: String?
 
     enum CodingKeys: String, CodingKey {

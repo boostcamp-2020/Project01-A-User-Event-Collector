@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Artist: Codable {
+struct Artist: Codable, Identifiable, Cellable {
     let id: Int
-    let name: String
+    var name: String
     let cover: String?
     
     enum CodingKeys: String, CodingKey {
