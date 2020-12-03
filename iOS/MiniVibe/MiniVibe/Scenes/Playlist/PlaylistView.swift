@@ -1,43 +1,62 @@
 //
-//  PlaylistListView.swift
+//  PlaylistView.swift
 //  MiniVibe
 //
-//  Created by 류연수 on 2020/11/25.
+//  Created by 류연수 on 2020/11/28.
 //
 
 import SwiftUI
 
-struct PlaylistListView: View {
+struct PlaylistView: View {
+    @StateObject private var viewModel = PlaylistViewModel()
     
-    @ObservedObject private var viewModel: PlaylistListViewModel
+    private let playlistID: Int
+    private let layout = [GridItem(.flexible())]
     
-    init(viewModel: PlaylistListViewModel) {
-        self.viewModel = viewModel
+    init(playlistID: Int) {
+        self.playlistID = playlistID
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.playlistList.indexed(), id: \.1.id) { index, playlist in
-                        NavigationLink(destination: Text("")) {
-//                            @StateObject var cellviewModel = PlaylistCellViewModel(playlist: $viewModel.playlistList[index], navigationType: viewModel.navigationType)
-                            PlaylistCellView(playlist: $viewModel.playlistList[index])
+        guard let playlist = viewModel.playlist,
+              let tracks = playlist.tracks else { return AnyView(EmptyView().onAppear(perform: {
+                viewModel.fetch(id: playlistID)
+            }))
+        }
+        
+        return AnyView(
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: layout,
+                          spacing: 20,
+                          pinnedViews: [.sectionHeaders]) {
+                    TrackListHeaderView(playlist: playlist)
+                    Section(header: TrackListButtonView()) {
+                        TrackListView(tracks: tracks)
+                    }
+                }
+            }.padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        if let name = playlist.name {
+                            Text(name)
+                                .modifier(Title2())
+                        }
+                        if let author = playlist.user?.name {
+                            Text(author)
+                                .modifier(Description2())
                         }
                     }
                 }
-            }.modifier(NavigationBarStyle(title: viewModel.navigationType.title()))
-        }
-        .onAppear() {
-            viewModel.fetchPlaylistList()
-        }
+            }
+        )
     }
 }
 
 struct PlaylistView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = PlaylistListViewModel(navigationType: .favorites)
-        PlaylistListView(viewModel: viewModel)
+        PlaylistView(playlistID: 1)
             .preferredColorScheme(.dark)
     }
 }

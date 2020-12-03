@@ -11,10 +11,11 @@ struct DJStationListView: View {
     
     @StateObject var stationViewModel = DJStationListViewModel()
     
-    let columns = [GridItem(.flexible(minimum: 50, maximum: .infinity)), GridItem(.flexible(minimum: 50, maximum: .infinity))]
+    let columns = [GridItem(.flexible(minimum: 50, maximum: .infinity)),
+                   GridItem(.flexible(minimum: 50, maximum: .infinity))]
     
     var body: some View {
-        ScrollView(.vertical) {
+        ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns) {
                 ForEach(stationViewModel.stations) { station in
                     Button(action: {
