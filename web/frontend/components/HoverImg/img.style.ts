@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export interface styledHoverImgProps {
-  varient: string;
+  varient?: string;
 }
 
 const HoverImgthemes: any = {
@@ -26,5 +26,5 @@ const HoverImgthemes: any = {
 export const StyledHoverImg = styled.div<styledHoverImgProps>`
   object-fit: cover;
   position: relative;
-  ${(props) => HoverImgthemes[props.varient]}
+  ${(props) => HoverImgthemes[props.varient || ""]}
 `;

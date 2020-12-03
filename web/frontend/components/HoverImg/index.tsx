@@ -5,11 +5,11 @@ import { StyledHoverImg } from "./img.style";
 import TrackCardHoverCover from "./TrackCardHoverCover";
 
 export interface HoverImgProps {
-  varient: string;
+  varient?: string;
   src?: string;
 }
 
-export const getChildren = (varient: string, hover: boolean): JSX.Element | null => {
+export const getChildren = (hover: boolean, varient?: string): JSX.Element | null => {
   switch (varient) {
     case "todayBig":
     case "todaySmall":
@@ -36,7 +36,7 @@ const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
   return (
     <StyledHoverImg varient={varient} onMouseOver={onHover} onMouseOut={onHoverOut}>
       <Img varient={varient} src={src} />
-      {getChildren(varient, hover)}
+      {getChildren(hover, varient)}
     </StyledHoverImg>
   );
 };

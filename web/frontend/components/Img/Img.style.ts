@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface styledImgProps {
-  varient: string;
+  varient?: string;
 }
 
 const themes: any = {

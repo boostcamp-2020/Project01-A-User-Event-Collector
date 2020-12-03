@@ -21,4 +21,29 @@ interface Track {
   Artists: Artist[];
 }
 
-export type { Track, Artist, Album };
+interface Playlist {
+  id: number;
+  playlistName: string;
+  description?: string;
+  cover?: string;
+  author: number;
+}
+
+interface Magazine {
+  id: number;
+  magazineName: string;
+  magazineType: string;
+  description: string;
+  createdAt: number;
+  playlistId: number;
+}
+
+interface News {
+  id: number;
+  newsName: string;
+  type?: string;
+  description?: string;
+  playlistId?: number;
+}
+
+export type { Track, Artist, Album, Playlist, Magazine, News };

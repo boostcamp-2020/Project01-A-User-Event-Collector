@@ -2,7 +2,7 @@ import React from "react";
 import StyledImg from "./Img.style";
 
 export interface ImgProps {
-  varient: string;
+  varient?: string;
   src?: string;
 }
 

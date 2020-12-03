@@ -17,5 +17,5 @@ todayMagazineCard.args = {
   잭 할로우, 물라토`,
   smallText: new Date().toDateString(),
   mainLink: "https://vibe.naver.com/magazines/38056",
-  varient: "todayBig",
+  varient: "todaySmall",
 };
