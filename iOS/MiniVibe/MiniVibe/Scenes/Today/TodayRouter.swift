@@ -7,24 +7,22 @@
 
 import SwiftUI
 
-class TodayRouter: DestinationOrientedRouterProtocol {
-    
-    typealias RoutingStarter = MiniVibeType
-    
-    func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> AnyView {
+class TodayRouter {
+    @ViewBuilder
+    func getDestination(to routingDestination: MiniVibeType, with id: Int? = nil) -> some View {
         switch routingDestination {
         case .magazines:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines)))
+            ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines))
         case .recommendations:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations)))
+            ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations))
         case .favorites:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites)))
+            ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites))
         case .djStations:
-            return AnyView(DJStationListView())
+            DJStationListView()
         case .tracks:
-            return AnyView(PlaylistView(playlistID: 18))
+            PlaylistView(playlistID: 18)
         default:
-            return AnyView(ErrorView())
+            ErrorView()
         }
     }
 }

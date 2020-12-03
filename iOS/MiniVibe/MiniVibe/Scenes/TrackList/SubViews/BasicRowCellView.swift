@@ -14,9 +14,9 @@ struct BasicRowCellView: View {
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: coverURLString ?? ""))
-                .frame(width: 44, height: 44, alignment: .center)
-                .padding(.vertical, 2)
+//            AsyncImage(url: URL(string: coverURLString ?? ""))
+//                .frame(width: 44, height: 44, alignment: .center)
+//                .padding(.vertical, 2)
             VStack(alignment: .leading) {
                 Text(title)
                     .modifier(Title2())

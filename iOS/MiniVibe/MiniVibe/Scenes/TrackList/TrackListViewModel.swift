@@ -26,7 +26,7 @@ class TrackListViewModel: ObservableObject {
     }
     
     func toggleIsFavorite(for id: Int) {
-        if let index = tracks.firstIndex(where: { $0.id == id }) {
+        if let _ = tracks.firstIndex(where: { $0.id == id }) {
 //            나중에 api에서 track에 isFavorite를 함께 줄때 적용
 //            tracks[index].isFavorite.toggle()
         }

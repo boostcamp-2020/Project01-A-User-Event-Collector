@@ -17,6 +17,7 @@ struct ThumbnailListView: View {
     }
     
     var body: some View {
+<<<<<<< HEAD:iOS/MiniVibe/MiniVibe/Scenes/Thumbnail/ThumbnailListView.swift
         guard let title = router.title() else { return AnyView(ErrorView()) }
         
         return AnyView(
@@ -26,16 +27,34 @@ struct ThumbnailListView: View {
                         destination: router.getDestination(id: thumbnail.id)
                     ) {
                         ThumbnailCellView(thumbnail: thumbnail)
+=======
+        Group {
+            if let title = router.title() {
+                List {
+                    ForEach(viewModel.thumbnails.indexed(), id: \.1.id) { _, thumbnail in
+                        NavigationLink(
+                            destination: router.getDestination(id: thumbnail.id)
+                        ) {
+                            ThumbnailCellView(thumbnail: thumbnail)
+                        }
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa:iOS/MiniVibe/MiniVibe/Scenes/Playlist/ThumbnailListView.swift
                     }
+                    Rectangle()
+                        .clearBottom()
+                }.modifier(NavigationBarStyle(title: title))
+                .onAppear {
+                    viewModel.fetch(type: router.routingStarter)
                 }
+<<<<<<< HEAD:iOS/MiniVibe/MiniVibe/Scenes/Thumbnail/ThumbnailListView.swift
                 Rectangle()
                     .clearBottom()
             }.modifier(NavigationBarStyle(title: title))
             .onAppear {
                 viewModel.fetch(type: router.routingStarter)
+=======
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa:iOS/MiniVibe/MiniVibe/Scenes/Playlist/ThumbnailListView.swift
             }
-            
-        )
+        }
     }
 }
 

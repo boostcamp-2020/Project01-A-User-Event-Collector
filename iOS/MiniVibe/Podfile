@@ -6,7 +6,12 @@ target 'MiniVibe' do
   use_frameworks!
 
   # Pods for MiniVibe
+<<<<<<< HEAD
 pod 'SwiftLint'
+=======
+  pod 'SwiftLint'
+
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
   target 'MiniVibeTests' do
     inherit! :search_paths
     # Pods for testing

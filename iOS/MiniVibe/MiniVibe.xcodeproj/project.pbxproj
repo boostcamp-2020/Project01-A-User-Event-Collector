@@ -44,8 +44,13 @@
 		51EED2E2256F7E3C00DB32CB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DC256F7E3C00DB32CB /* Category.swift */; };
 		51EED2E3256F7E3C00DB32CB /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DD256F7E3C00DB32CB /* TodayView.swift */; };
 		51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DE256F7E3C00DB32CB /* CategoryCellView.swift */; };
+<<<<<<< HEAD
 		8709AE49B2C72C3786052B43 /* Pods_MiniVibe_MiniVibeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B777AFABB2526174881731F0 /* Pods_MiniVibe_MiniVibeUITests.framework */; };
 		A063B5328E81DB6042F6CDD6 /* Pods_MiniVibeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A87315C1F33F43D615A60C /* Pods_MiniVibeTests.framework */; };
+=======
+		56F0D8289EE346E6622951CF /* Pods_MiniVibeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9C197EB4F2C73E5ABD88F9 /* Pods_MiniVibeTests.framework */; };
+		A1D41F7FBD088C20797B6B78 /* Pods_MiniVibe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005CB381344961073B8308FA /* Pods_MiniVibe.framework */; };
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
 		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
 		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
@@ -77,7 +82,6 @@
 		CF8286A2256BA5BA00D68373 /* ThumbnailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */; };
 		CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */; };
 		CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */; };
-		CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */; };
 		CF93D7CB256E703D005A71CF /* ThumbnailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */; };
 		CF93D7D0256E7FE6005A71CF /* ThumbnailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */; };
 		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
@@ -89,6 +93,7 @@
 		CFCBC9702578074200439C3F /* SearchAfterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */; };
 		CFCBC975257807F300439C3F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC974257807F300439C3F /* Search.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
+		F3815658283C1E8414BB4246 /* Pods_MiniVibe_MiniVibeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36775227AD420359B93A239E /* Pods_MiniVibe_MiniVibeUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,11 +114,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		0AFD4FE7A8EF6146D42AD107 /* Pods-MiniVibe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.release.xcconfig"; sourceTree = "<group>"; };
 		176B5CB5A34211B85B75B28C /* Pods-MiniVibeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibeTests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibeTests/Pods-MiniVibeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1FDBC86B66AD494E5E9DF006 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe-MiniVibeUITests.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe-MiniVibeUITests/Pods-MiniVibe-MiniVibeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		33141F37932AF0BCCFFFF4D3 /* Pods-MiniVibeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibeTests.release.xcconfig"; path = "Target Support Files/Pods-MiniVibeTests/Pods-MiniVibeTests.release.xcconfig"; sourceTree = "<group>"; };
 		35A87315C1F33F43D615A60C /* Pods_MiniVibeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		005CB381344961073B8308FA /* Pods_MiniVibe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0063CCB62BD1A30EEDDA8B7F /* Pods-MiniVibe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.release.xcconfig"; sourceTree = "<group>"; };
+		03B76DDF6437D3126710A1A0 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe-MiniVibeUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe-MiniVibeUITests/Pods-MiniVibe-MiniVibeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1E116F0CDEBC374CCB31CF80 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe-MiniVibeUITests.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe-MiniVibeUITests/Pods-MiniVibe-MiniVibeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		36775227AD420359B93A239E /* Pods_MiniVibe_MiniVibeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe_MiniVibeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		419A15A231240688608B79E2 /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 		512EAC2A2577B7DD00315D12 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		514FDD8D25761F6800F6BF93 /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
 		515D26632575220B00B542BF /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -150,9 +164,15 @@
 		51EED2DC256F7E3C00DB32CB /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		51EED2DD256F7E3C00DB32CB /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		51EED2DE256F7E3C00DB32CB /* CategoryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCellView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		A6F7D5640669987CC9A0E50E /* Pods_MiniVibe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B777AFABB2526174881731F0 /* Pods_MiniVibe_MiniVibeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe_MiniVibeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84BD04D9269BD2160BA916F /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
+=======
+		784090104ADF36B7C5D0CB3B /* Pods-MiniVibeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibeTests.release.xcconfig"; path = "Target Support Files/Pods-MiniVibeTests/Pods-MiniVibeTests.release.xcconfig"; sourceTree = "<group>"; };
+		7C9C197EB4F2C73E5ABD88F9 /* Pods_MiniVibeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88CA07EFDD17F1449D9AD209 /* Pods-MiniVibeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibeTests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibeTests/Pods-MiniVibeTests.debug.xcconfig"; sourceTree = "<group>"; };
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -190,7 +210,6 @@
 		CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCellView.swift; sourceTree = "<group>"; };
 		CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListView.swift; sourceTree = "<group>"; };
 		CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
-		CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRouter.swift; sourceTree = "<group>"; };
 		CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListViewModel.swift; sourceTree = "<group>"; };
 		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
@@ -210,7 +229,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				339F5D98C64C2189DBB1B27E /* Pods_MiniVibe.framework in Frameworks */,
+=======
+				A1D41F7FBD088C20797B6B78 /* Pods_MiniVibe.framework in Frameworks */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +241,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				A063B5328E81DB6042F6CDD6 /* Pods_MiniVibeTests.framework in Frameworks */,
+=======
+				56F0D8289EE346E6622951CF /* Pods_MiniVibeTests.framework in Frameworks */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +253,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				8709AE49B2C72C3786052B43 /* Pods_MiniVibe_MiniVibeUITests.framework in Frameworks */,
+=======
+				F3815658283C1E8414BB4246 /* Pods_MiniVibe_MiniVibeUITests.framework in Frameworks */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +358,7 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		64A1B98DA5B1F4CCD4089381 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,10 +368,34 @@
 				1FDBC86B66AD494E5E9DF006 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */,
 				176B5CB5A34211B85B75B28C /* Pods-MiniVibeTests.debug.xcconfig */,
 				33141F37932AF0BCCFFFF4D3 /* Pods-MiniVibeTests.release.xcconfig */,
+=======
+		5E26800264C3955482E919E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				419A15A231240688608B79E2 /* Pods-MiniVibe.debug.xcconfig */,
+				0063CCB62BD1A30EEDDA8B7F /* Pods-MiniVibe.release.xcconfig */,
+				03B76DDF6437D3126710A1A0 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */,
+				1E116F0CDEBC374CCB31CF80 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */,
+				88CA07EFDD17F1449D9AD209 /* Pods-MiniVibeTests.debug.xcconfig */,
+				784090104ADF36B7C5D0CB3B /* Pods-MiniVibeTests.release.xcconfig */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
+		9725ACD1E0F6B52B7FD4C44B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				005CB381344961073B8308FA /* Pods_MiniVibe.framework */,
+				36775227AD420359B93A239E /* Pods_MiniVibe_MiniVibeUITests.framework */,
+				7C9C197EB4F2C73E5ABD88F9 /* Pods_MiniVibeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 		CF05F89B2567E7AD008080D7 = {
 			isa = PBXGroup;
 			children = (
@@ -347,8 +403,13 @@
 				CF05F8BD2567E7B0008080D7 /* MiniVibeTests */,
 				CF05F8C82567E7B0008080D7 /* MiniVibeUITests */,
 				CF05F8A52567E7AD008080D7 /* Products */,
+<<<<<<< HEAD
 				64A1B98DA5B1F4CCD4089381 /* Pods */,
 				D3B7A3C4BAA889019B2A33DD /* Frameworks */,
+=======
+				5E26800264C3955482E919E8 /* Pods */,
+				9725ACD1E0F6B52B7FD4C44B /* Frameworks */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			sourceTree = "<group>";
 		};
@@ -561,14 +622,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		CFA2A447256FD1E700190A0B /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		CFCFC5C0256E2A75004200C4 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,11 +649,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF05F8CE2567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibe" */;
 			buildPhases = (
+<<<<<<< HEAD
 				BFDC63411CE33A8C9F196D24 /* [CP] Check Pods Manifest.lock */,
 				CF05F8A02567E7AD008080D7 /* Sources */,
 				CF05F8A12567E7AD008080D7 /* Frameworks */,
 				CF05F8A22567E7AD008080D7 /* Resources */,
 				CF0737EA2579291A009EC640 /* ShellScript */,
+=======
+				871287D90B535C4F09D70B07 /* [CP] Check Pods Manifest.lock */,
+				CF05F8A02567E7AD008080D7 /* Sources */,
+				CF05F8A12567E7AD008080D7 /* Frameworks */,
+				CF05F8A22567E7AD008080D7 /* Resources */,
+				CF068A1F2578F7B100B1632B /* ShellScript */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			buildRules = (
 			);
@@ -615,7 +676,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF05F8D12567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibeTests" */;
 			buildPhases = (
+<<<<<<< HEAD
 				DDB0ABA28C1AACF15F0AA42A /* [CP] Check Pods Manifest.lock */,
+=======
+				E6CE5EAFBADAEB77D61B67B0 /* [CP] Check Pods Manifest.lock */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 				CF05F8B62567E7B0008080D7 /* Sources */,
 				CF05F8B72567E7B0008080D7 /* Frameworks */,
 				CF05F8B82567E7B0008080D7 /* Resources */,
@@ -634,7 +699,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF05F8D42567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibeUITests" */;
 			buildPhases = (
+<<<<<<< HEAD
 				D786B89F71EEF093B9970215 /* [CP] Check Pods Manifest.lock */,
+=======
+				23F9BEE0BD5CCEA597D86EDF /* [CP] Check Pods Manifest.lock */,
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 				CF05F8C12567E7B0008080D7 /* Sources */,
 				CF05F8C22567E7B0008080D7 /* Frameworks */,
 				CF05F8C32567E7B0008080D7 /* Resources */,
@@ -718,7 +787,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+<<<<<<< HEAD
 		BFDC63411CE33A8C9F196D24 /* [CP] Check Pods Manifest.lock */ = {
+=======
+		23F9BEE0BD5CCEA597D86EDF /* [CP] Check Pods Manifest.lock */ = {
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -733,14 +806,22 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+<<<<<<< HEAD
 				"$(DERIVED_FILE_DIR)/Pods-MiniVibe-checkManifestLockResult.txt",
+=======
+				"$(DERIVED_FILE_DIR)/Pods-MiniVibe-MiniVibeUITests-checkManifestLockResult.txt",
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+<<<<<<< HEAD
 		CF0737EA2579291A009EC640 /* ShellScript */ = {
+=======
+		871287D90B535C4F09D70B07 /* [CP] Check Pods Manifest.lock */ = {
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -748,6 +829,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+<<<<<<< HEAD
 			);
 			outputFileListPaths = (
 			);
@@ -758,6 +840,23 @@
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		D786B89F71EEF093B9970215 /* [CP] Check Pods Manifest.lock */ = {
+=======
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVibe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF068A1F2578F7B100B1632B /* ShellScript */ = {
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -765,6 +864,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+<<<<<<< HEAD
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
@@ -780,6 +880,18 @@
 			showEnvVarsInLog = 0;
 		};
 		DDB0ABA28C1AACF15F0AA42A /* [CP] Check Pods Manifest.lock */ = {
+=======
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		E6CE5EAFBADAEB77D61B67B0 /* [CP] Check Pods Manifest.lock */ = {
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -822,7 +934,6 @@
 				51BBBD7425763375009A6852 /* RequestBuilder.swift in Sources */,
 				51E4E25C257712E300553E6E /* AsyncImage.swift in Sources */,
 				CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */,
-				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
 				CFCBC975257807F300439C3F /* Search.swift in Sources */,
 				CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */,
 				5188C3FC25773123001601E6 /* ImageCacheKey.swift in Sources */,
@@ -1036,7 +1147,11 @@
 		};
 		CF05F8CF2567E7B0008080D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = B84BD04D9269BD2160BA916F /* Pods-MiniVibe.debug.xcconfig */;
+=======
+			baseConfigurationReference = 419A15A231240688608B79E2 /* Pods-MiniVibe.debug.xcconfig */;
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1059,7 +1174,11 @@
 		};
 		CF05F8D02567E7B0008080D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 0AFD4FE7A8EF6146D42AD107 /* Pods-MiniVibe.release.xcconfig */;
+=======
+			baseConfigurationReference = 0063CCB62BD1A30EEDDA8B7F /* Pods-MiniVibe.release.xcconfig */;
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1082,7 +1201,11 @@
 		};
 		CF05F8D22567E7B0008080D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 176B5CB5A34211B85B75B28C /* Pods-MiniVibeTests.debug.xcconfig */;
+=======
+			baseConfigurationReference = 88CA07EFDD17F1449D9AD209 /* Pods-MiniVibeTests.debug.xcconfig */;
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1104,7 +1227,11 @@
 		};
 		CF05F8D32567E7B0008080D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 33141F37932AF0BCCFFFF4D3 /* Pods-MiniVibeTests.release.xcconfig */;
+=======
+			baseConfigurationReference = 784090104ADF36B7C5D0CB3B /* Pods-MiniVibeTests.release.xcconfig */;
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1126,7 +1253,11 @@
 		};
 		CF05F8D52567E7B0008080D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = D1B4E01659B0EC9FC452EFE9 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */;
+=======
+			baseConfigurationReference = 03B76DDF6437D3126710A1A0 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */;
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1146,7 +1277,11 @@
 		};
 		CF05F8D62567E7B0008080D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 1FDBC86B66AD494E5E9DF006 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */;
+=======
+			baseConfigurationReference = 1E116F0CDEBC374CCB31CF80 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */;
+>>>>>>> 24a78041855f0f9f610ea513ca58dc48daa0e1fa
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

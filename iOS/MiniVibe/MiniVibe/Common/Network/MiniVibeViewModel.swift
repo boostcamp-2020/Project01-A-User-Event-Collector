@@ -18,6 +18,7 @@ class MiniVibeViewModel {
                        filterQuery: String? = nil,
                        limitQuery: String? = nil,
                        completion: @escaping (Data) -> Void) {
+        
         let url = URLBuilder(pathType: .api,
                              endPoint: endPoint,
                              id: id,

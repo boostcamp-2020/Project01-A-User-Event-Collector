@@ -30,8 +30,8 @@ struct CategoryCellView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: item.imageName ?? ""))
-                .frame(width: itemSize - padding, height: itemSize - padding)
+//            AsyncImage(url: URL(string: item.imageName ?? ""))
+//                .frame(width: itemSize - padding, height: itemSize - padding)
 
             if let title = item.title {
                 Text(title)
