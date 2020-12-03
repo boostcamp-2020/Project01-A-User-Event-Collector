@@ -12,8 +12,7 @@ struct MiniVibeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TodayView()
-                .preferredColorScheme(.dark)
+            TabBarView()
         }
     }
 }

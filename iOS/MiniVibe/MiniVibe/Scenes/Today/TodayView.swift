@@ -8,50 +8,64 @@
 import SwiftUI
 
 struct TodayView: View {
+    private let router = TodayRouter()
+    @StateObject private var viewModel = TodayViewModel()
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(TestData.categories) { category in
-                    NavigationLink(
-                        destination: getDestination(from: category.type),
-                        label: {
-                            CategoryView(category: category)
-                        }
-                    )
-                }
-            }
+//                NavigationLink(
+//                    destination: router.getDestination(to: .favorites),
+//                    label: {
+//                        CategoryView(category: category)
+//                    }
+//                )
+                NavigationLink(
+                    destination: router.getDestination(to: .favorites),
+                    label: {
+                        CategoryView(category: Category(playlists: viewModel.favorites, type: .favorites, mode: .half))
+                    })
+                .listRowInsets(EdgeInsets())
+                NavigationLink(
+                    destination: router.getDestination(to: .magazines),
+                    label: {
+                        CategoryView(category: Category(magazines: viewModel.magazines, mode: .full))
+                    })
+                .listRowInsets(EdgeInsets())
+
+                NavigationLink(
+                    destination: router.getDestination(to: .recommendations),
+                    label: {
+                        CategoryView(category: Category(playlists: viewModel.recommends,
+                                                        type: .recommendations,
+                                                        mode: .full))
+                    })
+                .listRowInsets(EdgeInsets())
+                
+//                NavigationLink(
+//                    destination: router.getDestination(to: .tracks),
+//                    label: {
+//                        
+//                        TrackHorizontalListView(tracks: viewModel.tracks)
+//                            .padding([.leading, .trailing])
+//                    })
+//                .listRowInsets(EdgeInsets())
+
+                Rectangle()
+                    .clearBottom()
+            }.listStyle(PlainListStyle())
             .navigationTitle("VIBE")
         }
         .preferredColorScheme(.dark)
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: {
+            viewModel.fetchAll()
+        })
     }
-    
-    func getDestination(from type: CategoryType) -> AnyView {
-        // 타입에따라서 다른 destination 보여주게하기!
-        switch type {
-        case .magazine:
-            return AnyView(PlaylistListView(viewModel: PlaylistListViewModel(navigationType: .magazines)))
-        case .playlist:
-            return AnyView(PlaylistListView(viewModel: PlaylistListViewModel(navigationType: .favorites)))
-        case .station:
-            return AnyView(DJStationListView())
-        case .track:
-            return AnyView(TrackListView())
-        }
-    }
-    
 }
 
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
         TodayView()
     }
-}
-
-struct TestData {
-    static let categories: [Category]
-        = [.init(title: "DJ 스테이션", type: .station, mode: .half),
-           .init(title: "즐겨찾는 플레이리스트 ", type: .playlist, mode: .half),
-           .init(title: "VIBE 추천 플레이리스트", type: .playlist, mode: .full),
-           .init(title: "VIBE MAG", type: .magazine, mode: .half),
-           .init(title: "최근들은 노래", type: .track, mode: .full)]
 }

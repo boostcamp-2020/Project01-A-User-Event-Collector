@@ -7,24 +7,60 @@
 
 import Foundation
 
+struct TrackGroup: Identifiable {
+    let id = UUID()
+    var tracks = [Track]()
+    mutating func add(_ track: Track) {
+        tracks.append(track)
+    }
+    mutating func removeAll() {
+        tracks.removeAll()
+    }
+}
+
 class TrackListViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
-    func fetchTracks() {
-        self.tracks = [Track(id: 1, title: "Dyanamite", artist: "방탄소년단", isFavorite: true),
-                       Track(id: 2, title: "Blooming", artist: "아이유", isFavorite: false),
-                       Track(id: 3, title: "Feel Good", artist: "프로미스나인", isFavorite: true),
-                       Track(id: 4, title: "기억을 걷는 시간", artist: "넬", isFavorite: false),
-                       Track(id: 5, title: "우산", artist: "윤하", isFavorite: true),
-                       Track(id: 6, title: "나의 사춘기에게", artist: "볼빨간사춘기", isFavorite: false),
-                       Track(id: 7, title: "Lovesick Girls", artist: "블랙핑크", isFavorite: true)
-        ]
+    func createTracks(tracks: [Track]) {
+        self.tracks = tracks
     }
     
     func toggleIsFavorite(for id: Int) {
         if let index = tracks.firstIndex(where: { $0.id == id }) {
-            tracks[index].isFavorite.toggle()
+//            나중에 api에서 track에 isFavorite를 함께 줄때 적용
+//            tracks[index].isFavorite.toggle()
         }
     }
     
+    func getTracksOfFive() -> [TrackGroup] {
+        let chunked = tracks.chunked(into: 5).map { tracks -> TrackGroup in
+            TrackGroup(tracks: tracks)
+        }
+//        var group1 = TrackGroup(tracks: Array(TestData.playlist.tracks.prefix(5)))
+//        var group2 = TrackGroup(tracks: Array(TestData.playlist.tracks.prefix(5)))
+//        groups.append(contentsOf: [group1,group2])
+//        var tempGroup = TrackGroup()
+//        var count = 0
+//        for (index,track) in tracks.enumerated() {
+//            if count == 5 {
+//                groups.append(tempGroup)
+//                tempGroup.removeAll()
+//                count = 0
+//            } else {
+//                tempGroup.add(track)
+//                count += 1
+//            }
+//        }
+//        groups.append(tempGroup)
+        return chunked
+    }
+    
+}
+
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
+    }
 }

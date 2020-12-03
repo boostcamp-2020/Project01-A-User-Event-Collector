@@ -9,27 +9,34 @@ import SwiftUI
 
 struct TrackListView: View {
     
+    private let layout = [GridItem(.flexible())]
+    private let tracks: [Track]
+    
     @StateObject private var viewModel = TrackListViewModel()
     
+    init(tracks: [Track]) {
+        self.tracks = tracks
+    }
+    
     var body: some View {
-        List {
+        LazyVGrid(columns: layout) {
             ForEach(viewModel.tracks) { track -> TrackCellView in
-                var cell = TrackCellView(track: track)
+                var cell = TrackCellView(hasAccessory: true, track: track)
                 cell.didToggleFavorite = {
                     viewModel.toggleIsFavorite(for: track.id)
                 }
                 return cell
             }
+            Rectangle()
+                .clearBottom()
+        }.onAppear {
+            viewModel.createTracks(tracks: tracks)
         }
-        .navigationBarTitle("최근 들은 노래", displayMode: .inline)
-        .onAppear(perform: {
-            viewModel.fetchTracks()
-        })
     }
 }
 
-struct TrackListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackListView()
-    }
-}
+//struct TrackListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackListView(id: 1)
+//    }
+//}

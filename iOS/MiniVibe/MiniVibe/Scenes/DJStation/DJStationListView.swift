@@ -11,24 +11,27 @@ struct DJStationListView: View {
     
     @StateObject var stationViewModel = DJStationListViewModel()
     
-    let columns = [GridItem(.flexible(minimum: 50, maximum: .infinity)), GridItem(.flexible(minimum: 50, maximum: .infinity))]
+    let columns = [
+        GridItem(.flexible(minimum: 50, maximum: .infinity)),
+        GridItem(.flexible(minimum: 50, maximum: .infinity))
+    ]
     
     var body: some View {
-        ScrollView(.vertical) {
+        ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns) {
                 ForEach(stationViewModel.stations) { station in
                     Button(action: {
                     }, label: {
-                        Image(systemName: station.imageName)
+                        Image(station.imageName)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(minHeight: 100)
+                            .aspectRatio(contentMode: .fill)
                     })
-                    .padding(.all, 30)
+                    .padding(.all, 15)
                     .accentColor(.green)
                 }
             }
         }
+        .modifier(NavigationBarStyle(title: "DJ 스테이션"))
         .onAppear(perform: stationViewModel.fetchStations)
     }
 }
