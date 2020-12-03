@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Layout from "../frontend/components/Layout";
 
-const AboutPage = ({ clientId, state, redirectURI }: any) => {
-  const api_url = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectURI}&state=${state}`;
+const AboutPage = () => {
   return (
     <Layout title="About | Next.js + TypeScript Example">
       <h1>About</h1>
@@ -18,15 +17,5 @@ const AboutPage = ({ clientId, state, redirectURI }: any) => {
     </Layout>
   );
 };
-
-export async function getStaticProps() {
-  return {
-    props: {
-      state: process.env.NAVER_STATE,
-      clientId: process.env.NAVER_CLIENT_ID,
-      redirectURI: encodeURI(process.env.NAVER_REDIRECT_URI || ""),
-    },
-  };
-}
 
 export default AboutPage;

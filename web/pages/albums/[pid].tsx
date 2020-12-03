@@ -3,7 +3,6 @@ import TrackList from "../../frontend/components/Tracklist";
 import styled from "styled-components";
 import Header from "../../frontend/components/Header";
 import { DefaultCollector, DefaultEmitter } from "../../event";
-// interface Props {}
 
 const StyleAlbumPage = styled.div``;
 
