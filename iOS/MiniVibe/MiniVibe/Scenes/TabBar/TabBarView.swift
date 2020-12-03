@@ -19,7 +19,7 @@ struct TabBarView: View {
                     Text("투데이")
                 }
                 .overlay(NowPlayingView(viewModel: playerViewModel), alignment: .bottom)
-            ChartView()
+            ChartView(playlistID: 18)
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("차트")

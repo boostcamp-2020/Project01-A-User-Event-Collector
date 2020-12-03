@@ -12,7 +12,7 @@ struct TrackGroupView: View {
     var body: some View {
         VStack {
             ForEach(trackGroup.tracks) { track in
-                TrackCellView(track: track)
+                TrackCellView(hasAccessory: true, track: track)
             }
         }
         .onAppear{

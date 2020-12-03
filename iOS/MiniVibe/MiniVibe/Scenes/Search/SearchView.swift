@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SearchView: View {
+//    @State private var searchText = ""
+    
     private let layout = [GridItem(.flexible())]
     
     var body: some View {
@@ -15,7 +17,7 @@ struct SearchView: View {
             LazyVGrid(columns: layout,
                       spacing: 20,
                       pinnedViews: [.sectionHeaders]) {
-                Section(header: SearchBarView(text: .constant(""))) {
+                Section(header: SearchBarView(defaultText: "")) {
                     RectangleListView()
                     HStack {
                         Text("장르")

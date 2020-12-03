@@ -22,10 +22,10 @@ class PlayerViewModel: ObservableObject {
         get { currentTrack.trackName }
     }
     var artist: String {
-        get { currentTrack.artists.first?.name ?? "" }
+        get { currentTrack.artists?.first?.name ?? "" }
     }
     var coverURLString: String? {
-        get { currentTrack.album.cover }
+        get { currentTrack.album?.cover }
     }
     
     func updateWith(track: Track) {

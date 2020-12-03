@@ -45,7 +45,6 @@ struct URLBuilder {
         if queryItems.isEmpty == false {
             urlComponents?.queryItems = queryItems
         }
-        
         return urlComponents?.url
     }
 }

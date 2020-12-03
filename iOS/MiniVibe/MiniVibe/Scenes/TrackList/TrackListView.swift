@@ -21,7 +21,7 @@ struct TrackListView: View {
     var body: some View {
         LazyVGrid(columns: layout) {
             ForEach(viewModel.tracks) { track -> TrackCellView in
-                var cell = TrackCellView(track: track)
+                var cell = TrackCellView(hasAccessory: true, track: track)
                 cell.didToggleFavorite = {
                     viewModel.toggleIsFavorite(for: track.id)
                 }

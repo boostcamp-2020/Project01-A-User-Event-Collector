@@ -11,8 +11,8 @@ struct Track: Codable, Identifiable {
     let id: Int
     let trackName: String
     let albumTrackNumber, albumID: Int
-    let album: Album
-    let artists: [Artist]
+    let album: Album?
+    let artists: [Artist]?
 
     enum CodingKeys: String, CodingKey {
         case id, trackName, albumTrackNumber

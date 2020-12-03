@@ -8,30 +8,35 @@
 import SwiftUI
 
 struct ChartView: View {
+    @StateObject private var viewModel = PlaylistViewModel()
+    
+    private let playlistID: Int
     private let layout = [GridItem(.flexible())]
     
+    init(playlistID: Int) {
+        self.playlistID = playlistID
+    }
+    
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: layout,
-                      spacing: 20) {
-                Section(header:
-                            NavigationLink(
-                                destination: PlaylistView(playlistID: 1)
-                            ,
-                            label: {
-                                CategoryHeaderView(title: "오늘 TOP 100")
-                            }))
-                {
-//                    TrackPageView(id: 1)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: layout) {
+                    if let tracks = viewModel.playlist?.tracks {
+                        TrackHorizontalListView(tracks: tracks)
+                    }
                 }
-                      }
-        }.padding()
+            }
+            .padding()
+            .navigationTitle("차트")
+        }.onAppear {
+            viewModel.fetch(id: playlistID)
+        }
     }
     
 }
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView()
+        ChartView(playlistID: 18)
     }
 }
 
