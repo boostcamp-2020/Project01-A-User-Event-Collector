@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ThumbnailListView: View {
     
-    private let router: ThumbnailRouter
     @StateObject private var viewModel = ThumbnailListViewModel()
+    
+    private let router: ThumbnailRouter
     
     init(router: ThumbnailRouter) {
         self.router = router
@@ -22,10 +23,13 @@ struct ThumbnailListView: View {
         return AnyView(
             List {
                 ForEach(viewModel.thumbnails.indexed(), id: \.1.id) { _, thumbnail in
-                    NavigationLink(
-                        destination: router.getDestination(id: thumbnail.id)
-                    ) {
+                    ZStack {
                         ThumbnailCellView(thumbnail: thumbnail)
+                        NavigationLink(
+                            destination: router.getDestination(id: thumbnail.id)
+                        ) {
+                            Rectangle().hidden()
+                        }
                     }
                 }
                 Rectangle()
@@ -34,7 +38,6 @@ struct ThumbnailListView: View {
             .onAppear {
                 viewModel.fetch(type: router.routingStarter)
             }
-            
         )
     }
 }

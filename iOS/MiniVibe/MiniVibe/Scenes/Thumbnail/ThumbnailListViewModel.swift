@@ -11,9 +11,6 @@ import Combine
 class ThumbnailListViewModel: MiniVibeViewModel, ObservableObject {
     @Published var thumbnails = [Thumbnailable]()
     
-    private let network = NetworkService(session: URLSession.shared)
-    private var cancellabes = Set<AnyCancellable>()
-    
     func fetch(type: MiniVibeType) {
         
         internalFetch(endPoint: type) { [weak self] data in

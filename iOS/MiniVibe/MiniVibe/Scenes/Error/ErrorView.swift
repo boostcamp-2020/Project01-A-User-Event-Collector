@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ErrorView: View {
+//    let printer = DeallocPrinter(target: "ErrorView")
+    
+    init() {
+//        print("ErrorView init")
+    }
     var body: some View {
         Text("404 Not Found")
     }

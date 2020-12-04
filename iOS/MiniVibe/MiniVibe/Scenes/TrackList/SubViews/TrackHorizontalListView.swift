@@ -20,9 +20,12 @@ struct TrackHorizontalListView: View {
     var body: some View {
         Group {
             VStack {
-                NavigationLink(destination: PlaylistView(playlistID: 18)) {
+                ZStack {
                     CategoryHeaderView(title: "오늘 TOP 100")
                         .foregroundColor(.primary)
+                    NavigationLink(destination: PlaylistView(playlistID: 18)) {
+                        Rectangle().hidden()
+                    }
                 }
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: layout,

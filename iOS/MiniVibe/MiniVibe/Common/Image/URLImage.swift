@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct URLImage: View {
-    @StateObject private var viewModel = URLImageViewModel()
+    @StateObject private var imageLoader = URLImageLoader()
 
     private let urlString: String?
     let printer = DeallocPrinter(target: "URLImage")
@@ -25,13 +25,13 @@ struct URLImage: View {
     var body: some View {
         content
             .onAppear {
-                viewModel.fetch(urlString: urlString)
+                imageLoader.fetch(urlString: urlString)
             }
     }
 
     private var content: some View {
         Group {
-            if let image = viewModel.image {
+            if let image = imageLoader.image {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

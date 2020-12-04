@@ -5,13 +5,15 @@
 //  Created by 류연수 on 2020/12/02.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 class MiniVibeViewModel {
     
+    @Published var image = UIImage(named: "logo")
+    
     private let network = NetworkService(session: URLSession.shared)
-    private var cancellabes = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     func internalFetch(endPoint: MiniVibeType,
                        id: Int? = nil,
@@ -33,11 +35,16 @@ class MiniVibeViewModel {
                 case .failure(let error):
                     print(error)
                 case .finished:
-                    print("success")
+//                    break
+                    print("\(String(describing: endPoint.title())) success")
                 }
             } receiveValue: { data in
                 completion(data)
             }
-            .store(in: &cancellabes)
+            .store(in: &cancellables)
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
     }
 }

@@ -14,46 +14,54 @@ struct TodayView: View {
     var body: some View {
         NavigationView {
             List {
-//                NavigationLink(
-//                    destination: router.getDestination(to: .favorites),
-//                    label: {
-//                        CategoryView(category: category)
-//                    }
-//                )
-                NavigationLink(
-                    destination: router.getDestination(to: .favorites),
-                    label: {
-                        CategoryView(category: Category(playlists: viewModel.favorites, type: .favorites, mode: .half))
-                    })
-                .listRowInsets(EdgeInsets())
-                NavigationLink(
-                    destination: router.getDestination(to: .magazines),
-                    label: {
-                        CategoryView(category: Category(magazines: viewModel.magazines, mode: .full))
-                    })
-                .listRowInsets(EdgeInsets())
-
-                NavigationLink(
-                    destination: router.getDestination(to: .recommendations),
-                    label: {
-                        CategoryView(category: Category(playlists: viewModel.recommends,
-                                                        type: .recommendations,
-                                                        mode: .full))
-                    })
-                .listRowInsets(EdgeInsets())
+                //                NavigationLink(
+                //                    destination: router.getDestination(to: .favorites),
+                //                    label: {
+                //                        CategoryView(category: category)
+                //                    }
+                //                )
+                ZStack {
+                    CategoryView(category: Category(playlists: viewModel.favorites, type: .favorites, mode: .half))
+                    NavigationLink(
+                        destination: router.getDestination(to: .favorites),
+                        label: {
+                            Rectangle().hidden()
+                        })
+                        .listRowInsets(EdgeInsets())
+                }
+                ZStack {
+                    CategoryView(category: Category(magazines: viewModel.magazines, mode: .full))
+                    NavigationLink(
+                        destination: router.getDestination(to: .magazines),
+                        label: {
+                            Rectangle().hidden()
+                        })
+                        .listRowInsets(EdgeInsets())
+                }
+                ZStack {
+                    CategoryView(category: Category(playlists: viewModel.recommends,
+                                                    type: .recommendations,
+                                                    mode: .full))
+                    NavigationLink(
+                        destination: router.getDestination(to: .recommendations),
+                        label: {
+                            Rectangle().hidden()
+                        })
+                        .listRowInsets(EdgeInsets())
+                }
+                //                NavigationLink(
+                //                    destination: router.getDestination(to: .tracks),
+                //                    label: {
+                //
+                //                        TrackHorizontalListView(tracks: viewModel.tracks)
+                //                            .padding([.leading, .trailing])
+                //                    })
+                //                .listRowInsets(EdgeInsets())
                 
-//                NavigationLink(
-//                    destination: router.getDestination(to: .tracks),
-//                    label: {
-//                        
-//                        TrackHorizontalListView(tracks: viewModel.tracks)
-//                            .padding([.leading, .trailing])
-//                    })
-//                .listRowInsets(EdgeInsets())
-
                 Rectangle()
                     .clearBottom()
-            }.listStyle(PlainListStyle())
+            }.padding()
+            .listStyle(PlainListStyle())
             .navigationTitle("VIBE")
         }
         .preferredColorScheme(.dark)

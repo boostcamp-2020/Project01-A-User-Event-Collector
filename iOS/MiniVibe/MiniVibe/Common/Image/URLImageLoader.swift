@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class URLImageViewModel: ObservableObject {
+class URLImageLoader: ObservableObject {
     @Published var image = UIImage(named: "logo")
     
     private let network = NetworkService(session: URLSession.shared)
