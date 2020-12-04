@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import TrackCard from "./TrackCard";
-import { Track } from "../interface";
+import { Track } from "../../interfaces";
 
 interface Props {
   Tracks: Track[];

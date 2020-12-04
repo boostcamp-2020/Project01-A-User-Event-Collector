@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TrackModal from "./TrackModal";
 import Link from "next/link";
 import Img from "../../Img";
-import { Album, Artist } from "../../interface";
+import { Album, Artist } from "../../../interfaces";
 
 interface Props {
   id: number;
@@ -41,7 +41,7 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
       </Link>
 
       {artistArr.map((elem: any) => (
-        <div>
+        <div key={elem.id}>
           <Link href={`/api/artists/${elem.id}`}>
             <span>{elem.artistName}</span>
           </Link>
