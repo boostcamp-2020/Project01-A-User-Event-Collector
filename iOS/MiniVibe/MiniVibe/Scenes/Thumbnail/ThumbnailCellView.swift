@@ -31,6 +31,7 @@ struct ThumbnailCellView: View {
                         .modifier(Description2())
                 }
             }
+            Spacer()
         }
         .padding(.top)
     }
