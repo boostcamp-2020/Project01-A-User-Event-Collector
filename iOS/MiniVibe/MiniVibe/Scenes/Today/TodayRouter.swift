@@ -11,20 +11,20 @@ class TodayRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingStarter = MiniVibeType
     
-    func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> AnyView {
+    func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> LazyView<AnyView> {
         switch routingDestination {
         case .magazines:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines)))
+            return LazyView(AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines))))
         case .recommendations:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations)))
+            return LazyView(AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations))))
         case .favorites:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites)))
+            return LazyView(AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites))))
         case .djStations:
-            return AnyView(DJStationListView())
+            return LazyView(AnyView(DJStationListView()))
         case .tracks:
-            return AnyView(PlaylistView(playlistID: 18))
+            return LazyView(AnyView(PlaylistView(playlistID: 18)))
         default:
-            return AnyView(ErrorView())
+            return LazyView(AnyView(ErrorView()))
         }
     }
 }

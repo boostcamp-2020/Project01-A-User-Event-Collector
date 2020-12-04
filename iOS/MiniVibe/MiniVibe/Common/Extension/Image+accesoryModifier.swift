@@ -35,4 +35,10 @@ extension Image {
             .padding(.all, amount)
     }
     
+    func base() -> some View {
+        self
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+    }
+    
 }
