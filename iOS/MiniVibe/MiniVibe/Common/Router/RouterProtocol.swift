@@ -13,12 +13,12 @@ protocol RoutingTypeProtocol {
 
 protocol StarterOrientedRouterProtocol {
     associatedtype RoutingStarter
-    func getDestination(id: Int) -> LazyView<AnyView>
+    func getDestination(id: Int) -> AnyView
 }
 
 protocol DestinationOrientedRouterProtocol {
     associatedtype RoutingType
-    func getDestination(to routingDestination: RoutingType, with: Int?) -> LazyView<AnyView>
+    func getDestination(to routingDestination: RoutingType, with: Int?) -> AnyView
 }
 
 struct LazyView<Content: View>: View {

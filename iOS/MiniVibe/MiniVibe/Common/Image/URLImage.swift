@@ -12,13 +12,8 @@ struct URLImage: View {
     @StateObject private var imageLoader = URLImageLoader()
 
     private let urlString: String?
-    let printer = DeallocPrinter(target: "URLImage")
 
     init(urlString: String?) {
-        if let urlString = urlString {
-            print("\(urlString) init")
-        }
-
         self.urlString = urlString
     }
 
@@ -50,14 +45,14 @@ struct URLImage_Previews: PreviewProvider {
     }
 }
 
-class DeallocPrinter {
-    let target: String
-
-    init(target: String) {
-        self.target = target
-    }
-
-    deinit {
-        print("\(target) deinit")
-    }
-}
+//class DeallocPrinter {
+//    let target: String
+//
+//    init(target: String) {
+//        self.target = target
+//    }
+//
+//    deinit {
+//        print("\(target) deinit")
+//    }
+//}

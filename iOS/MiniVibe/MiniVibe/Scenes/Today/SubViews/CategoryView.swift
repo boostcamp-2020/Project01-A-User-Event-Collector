@@ -17,14 +17,10 @@ struct CategoryView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
                     ForEach(category.items) { item in
-                        ZStack {
-                            CategoryCellView(item: item, mode: category.mode)
-                            NavigationLink(
-                                destination: router.getDestination(to: category.type, with: item.id)
-                            ) {
-                                Rectangle().hidden()
-                            }
-                        }
+                        MemorySafeNavigationLink(
+                            contentView: CategoryCellView(item: item, mode: category.mode),
+                            destination: router.getDestination(to: category.type, with: item.id)
+                        )
                     }
                 }
             }

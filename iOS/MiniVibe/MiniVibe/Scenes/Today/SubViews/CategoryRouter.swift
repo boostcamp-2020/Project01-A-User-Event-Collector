@@ -11,17 +11,17 @@ class CategoryRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingType = MiniVibeType
     
-    func getDestination(to routingDestination: MiniVibeType, with id: Int?) -> LazyView<AnyView> {
-        guard let id = id else { return LazyView(AnyView(ErrorView())) }
+    func getDestination(to routingDestination: MiniVibeType, with id: Int?) -> AnyView {
+        guard let id = id else { return AnyView(ErrorView()) }
         switch routingDestination {
         case .magazines:
-            return LazyView(AnyView(MagazineView(magazineID: id)))
+            return AnyView(MagazineView(magazineID: id))
         case .favorites:
-            return LazyView(AnyView(PlaylistView(playlistID: id)))
+            return AnyView(PlaylistView(playlistID: id))
         case .recommendations:
-            return LazyView(AnyView(PlaylistView(playlistID: id)))
+            return AnyView(PlaylistView(playlistID: id))
         default:
-            return LazyView(AnyView(Text("기본 화면")))
+            return AnyView(Text("기본 화면"))
         }
     }
 }

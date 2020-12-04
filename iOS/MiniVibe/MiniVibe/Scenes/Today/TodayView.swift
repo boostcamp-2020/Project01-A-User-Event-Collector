@@ -20,35 +20,29 @@ struct TodayView: View {
                 //                        CategoryView(category: category)
                 //                    }
                 //                )
-                ZStack {
-                    CategoryView(category: Category(playlists: viewModel.favorites, type: .favorites, mode: .half))
-                    NavigationLink(
-                        destination: router.getDestination(to: .favorites),
-                        label: {
-                            Rectangle().hidden()
-                        })
-                        .listRowInsets(EdgeInsets())
-                }
-                ZStack {
-                    CategoryView(category: Category(magazines: viewModel.magazines, mode: .full))
-                    NavigationLink(
-                        destination: router.getDestination(to: .magazines),
-                        label: {
-                            Rectangle().hidden()
-                        })
-                        .listRowInsets(EdgeInsets())
-                }
-                ZStack {
-                    CategoryView(category: Category(playlists: viewModel.recommends,
-                                                    type: .recommendations,
-                                                    mode: .full))
-                    NavigationLink(
-                        destination: router.getDestination(to: .recommendations),
-                        label: {
-                            Rectangle().hidden()
-                        })
-                        .listRowInsets(EdgeInsets())
-                }
+                let favoritesCategory = Category(playlists: viewModel.favorites,
+                                                 type: .favorites,
+                                                 mode: .half)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: favoritesCategory),
+                    destination: router.getDestination(to: .favorites)
+                )
+                
+                let magazinesCategory = Category(magazines: viewModel.magazines,
+                                                 mode: .full)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: magazinesCategory),
+                    destination: router.getDestination(to: .magazines)
+                )
+                
+                let recommendationsCategory = Category(playlists: viewModel.recommends,
+                                                       type: .recommendations,
+                                                       mode: .full)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: recommendationsCategory),
+                    destination: router.getDestination(to: .recommendations)
+                )
+                
                 //                NavigationLink(
                 //                    destination: router.getDestination(to: .tracks),
                 //                    label: {
@@ -60,7 +54,7 @@ struct TodayView: View {
                 
                 Rectangle()
                     .clearBottom()
-            }.padding()
+            }
             .listStyle(PlainListStyle())
             .navigationTitle("VIBE")
         }

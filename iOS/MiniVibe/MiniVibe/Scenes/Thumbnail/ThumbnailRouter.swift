@@ -16,16 +16,16 @@ class ThumbnailRouter: StarterOrientedRouterProtocol {
         self.routingStarter = routingStarter
     }
     
-    func getDestination(id: Int) -> LazyView<AnyView> {
+    func getDestination(id: Int) -> AnyView {
         switch routingStarter {
         case .magazines:
-            return LazyView(AnyView(MagazineView(magazineID: id)))
+            return AnyView(MagazineView(magazineID: id))
         case .recommendations:
-            return LazyView(AnyView(PlaylistView(playlistID: id)))
+            return AnyView(PlaylistView(playlistID: id))
         case .favorites:
-            return LazyView(AnyView(PlaylistView(playlistID: id)))
+            return AnyView(PlaylistView(playlistID: id))
         default:
-            return LazyView(AnyView(ErrorView()))
+            return AnyView(ErrorView())
         }
     }
     

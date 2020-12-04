@@ -35,8 +35,7 @@ class MiniVibeViewModel {
                 case .failure(let error):
                     print(error)
                 case .finished:
-//                    break
-                    print("\(String(describing: endPoint.title())) success")
+                    break
                 }
             } receiveValue: { data in
                 completion(data)
