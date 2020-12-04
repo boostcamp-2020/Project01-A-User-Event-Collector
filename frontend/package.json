@@ -1,5 +1,5 @@
 {
-  "name": "with-typescript",
+  "name": "frontend",
   "version": "1.0.0",
   "scripts": {
     "watch": "tsc-watch",
