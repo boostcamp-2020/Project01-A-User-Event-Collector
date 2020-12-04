@@ -1,5 +1,5 @@
 import React from "react";
-import TrackCard, { Props } from "./";
+import TrackCard, { Props } from ".";
 
 export default {
   title: "TrackCard",

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { memo } from "react";
-import Img from "../../frontend/components/Img";
-import HotMagCard from "../../frontend/components/HotMagCard";
-import GlobalStyles from "../../frontend/components/GlobalStyles";
+import Img from "../../components/Img";
+import HotMagCard from "../../components/HotMagCard";
+import GlobalStyles from "../../components/GlobalStyles";
 
 const IndexPage = memo(() => (
   <>

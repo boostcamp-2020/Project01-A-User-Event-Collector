@@ -1,7 +1,7 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { memo } from "react";
-import Layout from "../frontend/components/Layout";
+import Layout from "../components/Layout";
 
 const MyApp = memo(({ Component, pageProps }: AppProps) => {
   return (
