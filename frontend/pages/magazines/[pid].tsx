@@ -2,17 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 
-const StylePlaylistPage = styled.div``;
+const StyleMagazinePage = styled.div``;
 
-const PlaylistPage = ({ Magazines }: any) => {
+const MagazinePage = ({ Magazines }: any) => {
   return (
-    <StylePlaylistPage>
+    <StyleMagazinePage>
       <DetailPage detailType={"magazine"} detailData={Magazines} tracks={Magazines.Tracks} />
-    </StylePlaylistPage>
+    </StyleMagazinePage>
   );
 };
 
-export default PlaylistPage;
+export default MagazinePage;
 
 export async function getStaticPath() {
   const apiUrl = process.env.API_URL;
