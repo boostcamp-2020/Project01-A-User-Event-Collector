@@ -12,8 +12,8 @@ const makeProps = (detailType: string, detailData: any) => {
   console.log(detailData);
   const result: any = {};
   result.id = detailData.id;
-  result.description = detailData?.description; //artist테이블에 desc없음
-  result.cover = detailData?.cover; //news테이블에 cover 없음
+  result.description = detailData.description; //artist테이블에 desc없음
+  result.cover = detailData.cover;
 
   switch (detailType) {
     case "album":
@@ -30,6 +30,9 @@ const makeProps = (detailType: string, detailData: any) => {
       result.name = detailData.magazineName;
       result.magazineType = detailData.magazineType;
       break;
+
+    case "news":
+      result.name = detailData.newsName;
   }
   return result;
 };
@@ -49,7 +52,6 @@ const Header: FC<Props> = ({ detailType, detailData }) => {
       <div>
         <h2>{props.name}</h2>
         <h3>{props.owner || props.magazineType}</h3>
-        <h4>{props.magazineType}</h4>
         <div>{props.description}</div>
         {/* //button box에 id, track배열 넘겨야 함 */}
         <ButtonBox />
