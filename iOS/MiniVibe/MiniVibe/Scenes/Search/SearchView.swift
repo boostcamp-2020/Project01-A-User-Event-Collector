@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SearchView: View {
-//    @State private var searchText = ""
-    
+    @StateObject private var viewModel = SearchViewModel()
     private let layout = [GridItem(.flexible())]
     
     var body: some View {
@@ -17,14 +17,14 @@ struct SearchView: View {
             LazyVGrid(columns: layout,
                       spacing: 20,
                       pinnedViews: [.sectionHeaders]) {
-                Section(header: SearchBarView(defaultText: "")) {
-                    RectangleListView()
-                    HStack {
-                        Text("장르")
-                            .modifier(Title1())
-                        Spacer()
+                Section(header: SearchBarView(viewModel: viewModel)) {
+                    if viewModel.isEditing {
+                        SearchAfterView(viewModel: viewModel)
+                            .animation(.easeIn)
+                            .transition(.slide)
+                    } else {
+                        SearchBeforeView()
                     }
-                    GenreListView()
                 }
             }
         }.navigationTitle("검색")
