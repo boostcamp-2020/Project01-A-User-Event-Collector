@@ -18,7 +18,13 @@ const makeProps = (detailType: string, detailData: any) => {
   switch (detailType) {
     case "album":
       result.name = detailData.albumName;
-      result.artistName = detailData.Artists.artistName;
+      result.owner = detailData.Artists.artistName;
+      break;
+
+    case "playlist":
+      result.name = detailData.playlistName;
+      result.owner = detailData.Users.username;
+      break;
   }
   return result;
 };
@@ -37,7 +43,7 @@ const Header: FC<Props> = ({ detailType, detailData }) => {
       <Img src={props.cover} varient="descriptionCover" />
       <div>
         <h2>{props.name}</h2>
-        <h3>{props.artistName}</h3>
+        <h3>{props.owner}</h3>
         <div>{props.description}</div>
         {/* //button box에 id, track배열 넘겨야 함 */}
         <ButtonBox />
