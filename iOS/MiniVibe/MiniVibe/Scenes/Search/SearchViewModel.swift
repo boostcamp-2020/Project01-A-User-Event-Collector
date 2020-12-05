@@ -22,14 +22,7 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()
             .map({ (string) -> String? in
-                if string.isEmpty {
-                    if self.isEditing {
-                         self.reset()
-                    }
-                    return nil
-                }
-                self.isEditing = true
-                return string
+                self.validate(string)
             })
             .compactMap { $0 }
             .sink { (_) in
@@ -60,6 +53,17 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
         tracks.removeAll()
         albums.removeAll()
         artists.removeAll()
+    }
+    
+    func validate(_ string: String) -> String? {
+        if string.isEmpty {
+            if self.isEditing {
+                 self.reset()
+            }
+            return nil
+        }
+        self.isEditing = true
+        return string
     }
     
 }
