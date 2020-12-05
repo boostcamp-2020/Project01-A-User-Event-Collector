@@ -1,7 +1,6 @@
 import React from "react";
-import TrackList from "../../components/Tracklist";
 import styled from "styled-components";
-import Header from "../../components/Header";
+import DetailPage from "../../components/DetailPage";
 import { DefaultCollector, DefaultEmitter } from "../../event/event";
 
 const StyleAlbumPage = styled.div``;
@@ -9,19 +8,9 @@ const StyleAlbumPage = styled.div``;
 const AlbumPage = ({ Albums }: any) => {
   return (
     <DefaultCollector>
-      <DefaultEmitter>
-        <h1>event emitter test</h1>
-      </DefaultEmitter>
-
       <StyleAlbumPage>
-        <Header
-          cover={Albums.cover}
-          albumName={Albums.albumName}
-          description={Albums.description}
-        />
-
         <DefaultEmitter>
-          <TrackList Tracks={Albums.Tracks} />
+          <DetailPage detailType={"album"} detailData={Albums} tracks={Albums.Tracks} />
         </DefaultEmitter>
       </StyleAlbumPage>
     </DefaultCollector>
