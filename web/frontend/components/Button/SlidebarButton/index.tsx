@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { NextArrowSvg, PreviousArrowSvg } from "../../../utils/svg";
 
+interface SlideButtonProps {
+  onClick?: () => void;
+}
+
 const NextButton = styled.div`
   position: absolute;
   width: 40px;
@@ -33,17 +37,17 @@ const PreviousButton = styled.div`
   }
 `;
 
-export const SliderNextButtton: React.FC = () => {
+export const SliderNextButtton: React.FC<SlideButtonProps> = ({ onClick }: SlideButtonProps) => {
   return (
-    <NextButton>
+    <NextButton onClick={onClick}>
       <NextArrowSvg />
     </NextButton>
   );
 };
 
-export const SliderPreviousButton: React.FC = () => {
+export const SliderPreviousButton: React.FC<SlideButtonProps> = ({ onClick }: SlideButtonProps) => {
   return (
-    <PreviousButton>
+    <PreviousButton onClick={onClick}>
       <PreviousArrowSvg />
     </PreviousButton>
   );

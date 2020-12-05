@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { NextArrowSvg } from "../../utils/svg";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
@@ -23,16 +23,19 @@ const StyledSlidebar = styled.div<SlidebarProps>`
   }
 `;
 
-const SlideContent = styled.ul`
-  overflow-x: auto;
+const SlideContainer = styled.div`
+  overflow-x: hidden;
   overflow-y: hidden;
   width: 100%;
-  display: flex;
   position: relative;
-  padding-inline-start: 0;
+`;
+
+const SlideContent = styled.ul`
+  display: flex;
   & > li:first-child {
     margin: 0;
   }
+  padding-inline-start: 0;
 `;
 
 const Slidebar: React.FC<SlidebarProps> = ({
@@ -42,19 +45,41 @@ const Slidebar: React.FC<SlidebarProps> = ({
   titleLink,
   data,
 }: SlidebarProps) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const currentSlideRef = useRef<HTMLUListElement>(null);
+
+  const onPreviousClicked = () => {
+    if (currentSlide === 0) return;
+    setCurrentSlide(currentSlide - 1);
+  };
+  const onNextClicked = () => {
+    setCurrentSlide(currentSlide + 1);
+  };
+
+  useEffect(() => {
+    const { current } = currentSlideRef;
+    if (current !== null) {
+      current.style.transition = "all 0.5s ease-in-out";
+      current.style.transform = `translateX(-${currentSlide}00%)`;
+    }
+  }, [currentSlide]);
+
   return (
     <StyledSlidebar varient={varient}>
       <a href={titleLink}>
         {title}
+        {currentSlide}
         {titleLink ? <NextArrowSvg /> : ""}
       </a>
-      <SlideContent>
-        {data?.map((value: any) => (
-          <Card varient={varient} dataType={dataType} rawData={value} />
-        ))}
-        <SliderPreviousButton />
-        <SliderNextButtton />
-      </SlideContent>
+      <SlideContainer>
+        <SlideContent ref={currentSlideRef}>
+          {data?.map((value: any) => (
+            <Card varient={varient} dataType={dataType} rawData={value} />
+          ))}
+        </SlideContent>
+      </SlideContainer>
+      <SliderPreviousButton onClick={onPreviousClicked} />
+      <SliderNextButtton onClick={onNextClicked} />
     </StyledSlidebar>
   );
 };

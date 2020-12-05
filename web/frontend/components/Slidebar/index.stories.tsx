@@ -11,7 +11,7 @@ const Template: Story<SlidebarProps> = (args) => <Slidebar {...args} />;
 
 export const todayMagazineSlider = Template.bind({});
 todayMagazineSlider.args = {
-  varient: "todayBig",
+  varient: "todaySmall",
   dataType: "magazine",
   title: "매거진",
   titleLink: "",
