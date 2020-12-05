@@ -1,7 +1,6 @@
 import { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
-import GlobalStyles from "../../components/GlobalStyles";
 import Card from "../../components/Card";
 
 const TempSlide = styled.div`
@@ -29,14 +28,13 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
       </TempSlide>
 
       <hr />
+
       <h1>VIBE 추천 플레이리스트</h1>
       <TempSlide>
         {Playlists?.map((playlist: any) => (
           <Card dataType={"playlist"} rawData={playlist} varient={"todayBig"} />
         ))}
       </TempSlide>
-
-      <GlobalStyles />
     </>
   );
 });
