@@ -9,13 +9,16 @@ import SwiftUI
 import Combine
 
 class URLImageLoader: ObservableObject {
-    @Published var image = UIImage(named: "logo")
+    @Published var image: UIImage?
     
     private let network = NetworkService(session: URLSession.shared)
     private var cancellables = Set<AnyCancellable>()
     
     func fetch(urlString: String?) {
-        guard let urlString = urlString else { return }
+        guard let urlString = urlString else {
+            image = UIImage(named: "appIcon")
+            return
+        }
         let url = URL(string: urlString)
         let urlRequest = RequestBuilder(url: url,
                                         body: nil,
