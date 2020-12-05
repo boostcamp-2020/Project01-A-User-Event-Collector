@@ -23,37 +23,37 @@ function convertData(dataType?: string, rawData?: any): cardData {
         title: rawData.magazineName,
         smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
-        mainLink: `/playlist/${rawData.playlistId}`,
+        mainLink: `/playlists/${rawData.playlistId}`,
       };
     case "playlist":
       return {
         title: rawData.playlistName,
         smallText: `${rawData.Users.username}`,
         src: rawData.cover,
-        mainLink: `/playlist/${rawData.id}`,
+        mainLink: `/playlists/${rawData.id}`,
       };
     case "album":
       return {
         src: rawData.cover,
         title: rawData.albumName,
         smallText: rawData.artistId,
-        mainLink: `/album/${rawData.id}`,
-        smallLink: `/artist/${rawData.artistId}`,
+        mainLink: `/albums/${rawData.id}`,
+        smallLink: `/artists/${rawData.artistId}`,
       };
     case "track":
       return {
         src: rawData.Albums.cover,
         title: rawData.trackName,
         smallText: rawData.Artists.artistName,
-        mainLink: `/album/${rawData.Albums.id}`,
-        smallLink: `/artist/${rawData.Artists.id}`,
+        mainLink: `/albums/${rawData.Albums.id}`,
+        smallLink: `/artists/${rawData.Artists.id}`,
       };
     case "news":
       return {
         src: rawData.cover,
         title: rawData.newsName,
         smallText: "관련 뉴스 보기",
-        mainLink: `/playlist/${rawData.id}`,
+        mainLink: `/playlists/${rawData.id}`,
         smallLink: rawData.newLink,
       };
     default:

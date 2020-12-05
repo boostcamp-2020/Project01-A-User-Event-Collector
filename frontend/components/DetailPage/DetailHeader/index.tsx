@@ -9,10 +9,9 @@ interface Props {
 }
 
 const makeProps = (detailType: string, detailData: any) => {
-  console.log(detailData);
   const result: any = {};
   result.id = detailData.id;
-  result.description = detailData.description; //artist테이블에 desc없음
+  result.description = detailData.description;
   result.cover = detailData.cover;
 
   switch (detailType) {
