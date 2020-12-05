@@ -23,6 +23,7 @@ export const StyledCard = styled.li<StyledCardProps>`
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
+  margin-bottom: 2rem;
   ${(props) => themes[props.varient || ""]}
   & > a {
     text-decoration: none;

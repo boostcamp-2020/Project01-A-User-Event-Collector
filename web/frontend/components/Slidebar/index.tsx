@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NextArrowSvg } from "../../utils/svg";
+import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import Card from "../Card";
 
 export interface SlidebarProps {
@@ -13,7 +14,13 @@ export interface SlidebarProps {
 
 const StyledSlidebar = styled.div<SlidebarProps>`
   display: flex;
+  flex-direction: column;
   width: 100%;
+  height: auto;
+  & > a > svg {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
 `;
 
 const SlideContent = styled.ul`
@@ -21,6 +28,8 @@ const SlideContent = styled.ul`
   overflow-y: hidden;
   width: 100%;
   display: flex;
+  position: relative;
+  padding-inline-start: 0;
   & > li:first-child {
     margin: 0;
   }
@@ -43,6 +52,8 @@ const Slidebar: React.FC<SlidebarProps> = ({
         {data?.map((value: any) => (
           <Card varient={varient} dataType={dataType} rawData={value} />
         ))}
+        <SliderPreviousButton />
+        <SliderNextButtton />
       </SlideContent>
     </StyledSlidebar>
   );

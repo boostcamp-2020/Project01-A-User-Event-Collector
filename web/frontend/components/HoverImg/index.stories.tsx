@@ -25,7 +25,7 @@ export const GeneralHoverImg: React.FC = () => {
         varient="todayBig"
         src="https://musicmeta-phinf.pstatic.net/album/005/094/5094136.jpg?type=r360Fll"
       />
-      {getChildren("todayBig", hover)}
+      {getChildren(hover, "todayBig")}
     </StyledHoverImg>
   );
 };
@@ -47,7 +47,7 @@ export const TrackCardHoverImg: React.FC = () => {
         varient="trackCardCover"
         src="https://musicmeta-phinf.pstatic.net/album/005/094/5094136.jpg?type=r360Fll"
       />
-      {getChildren("trackCardCover", hover)}
+      {getChildren(hover, "trackCardCover")}
     </StyledHoverImg>
   );
 };
