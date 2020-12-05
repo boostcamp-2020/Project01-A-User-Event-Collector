@@ -23,7 +23,7 @@ function convertData(dataType?: string, rawData?: any): cardData {
         title: rawData.magazineName,
         smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
-        mainLink: `/playlists/${rawData.playlistId}`,
+        mainLink: `/magazines/${rawData.playlistId}`,
       };
     case "playlist":
       return {
