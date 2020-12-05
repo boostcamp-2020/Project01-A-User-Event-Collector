@@ -36,6 +36,7 @@ model Artists {
   id                 Int                  @id @default(autoincrement())
   artistName         String?
   cover              String?
+  description        String?
   Albums             Albums[]
   Artists_Genres     Artists_Genres[]
   Artists_Tracks     Artists_Tracks[]
