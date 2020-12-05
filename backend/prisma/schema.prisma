@@ -99,6 +99,8 @@ model News {
   type        String?
   description String?
   playlistId  Int?
+  cover       String?
+  link        String?
   Playlists   Playlists? @relation(fields: [playlistId], references: [id])
 
   @@index([playlistId], name: "News_playlistId_foreign_idx")
