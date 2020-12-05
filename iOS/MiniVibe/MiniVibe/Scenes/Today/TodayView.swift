@@ -14,46 +14,44 @@ struct TodayView: View {
     var body: some View {
         NavigationView {
             List {
-//                NavigationLink(
-//                    destination: router.getDestination(to: .favorites),
-//                    label: {
-//                        CategoryView(category: category)
-//                    }
-//                )
-                NavigationLink(
-                    destination: router.getDestination(to: .favorites),
-                    label: {
-                        CategoryView(category: Category(playlists: viewModel.favorites, type: .favorites, mode: .half))
-                    })
-                .listRowInsets(EdgeInsets())
-                NavigationLink(
-                    destination: router.getDestination(to: .magazines),
-                    label: {
-                        CategoryView(category: Category(magazines: viewModel.magazines, mode: .full))
-                    })
-                .listRowInsets(EdgeInsets())
-
-                NavigationLink(
-                    destination: router.getDestination(to: .recommendations),
-                    label: {
-                        CategoryView(category: Category(playlists: viewModel.recommends,
-                                                        type: .recommendations,
-                                                        mode: .full))
-                    })
-                .listRowInsets(EdgeInsets())
+                //                NavigationLink(
+                //                    destination: router.getDestination(to: .favorites),
+                //                    label: {
+                //                        CategoryView(category: category)
+                //                    }
+                //                )
+                let favoritesCategory = Category(playlists: viewModel.favorites,
+                                                 type: .favorites,
+                                                 mode: .half)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: favoritesCategory),
+                    destination: router.getDestination(to: .favorites)
+                )
                 
-//                NavigationLink(
-//                    destination: router.getDestination(to: .tracks),
-//                    label: {
-//                        
-//                        TrackHorizontalListView(tracks: viewModel.tracks)
-//                            .padding([.leading, .trailing])
-//                    })
-//                .listRowInsets(EdgeInsets())
-
+                let magazinesCategory = Category(magazines: viewModel.magazines,
+                                                 mode: .full)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: magazinesCategory),
+                    destination: router.getDestination(to: .magazines)
+                )
+                
+                let recommendationsCategory = Category(playlists: viewModel.recommends,
+                                                       type: .recommendations,
+                                                       mode: .full)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: recommendationsCategory),
+                    destination: router.getDestination(to: .recommendations)
+                )
+                
+//                MemorySafeNavigationLink(
+//                    contentView: TrackHorizontalListView(tracks: viewModel.tracks),
+//                    destination: router.getDestination(to: .tracks)
+//                )
+                
                 Rectangle()
                     .clearBottom()
-            }.listStyle(PlainListStyle())
+            }
+            .listStyle(PlainListStyle())
             .navigationTitle("VIBE")
         }
         .preferredColorScheme(.dark)

@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ThumbnailListView: View {
     
-    private let router: ThumbnailRouter
     @StateObject private var viewModel = ThumbnailListViewModel()
+    
+    private let router: ThumbnailRouter
+    private let layout = [GridItem(.flexible())]
     
     init(router: ThumbnailRouter) {
         self.router = router
@@ -20,21 +22,23 @@ struct ThumbnailListView: View {
         guard let title = router.title() else { return AnyView(ErrorView()) }
         
         return AnyView(
-            List {
-                ForEach(viewModel.thumbnails.indexed(), id: \.1.id) { _, thumbnail in
-                    NavigationLink(
-                        destination: router.getDestination(id: thumbnail.id)
-                    ) {
-                        ThumbnailCellView(thumbnail: thumbnail)
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: layout) {
+                    ForEach(viewModel.thumbnails, id: \.id) { thumbnail in
+                        MemorySafeNavigationLink(
+                            contentView: ThumbnailCellView(thumbnail: thumbnail),
+                            destination: router.getDestination(id: thumbnail.id)
+                        )
                     }
+                    Rectangle()
+                        .clearBottom()
                 }
-                Rectangle()
-                    .clearBottom()
-            }.modifier(NavigationBarStyle(title: title))
-            .onAppear {
-                viewModel.fetch(type: router.routingStarter)
+                .modifier(NavigationBarStyle(title: title))
+                .onAppear {
+                    viewModel.fetch(type: router.routingStarter)
+                }
             }
-            
+            .padding()
         )
     }
 }

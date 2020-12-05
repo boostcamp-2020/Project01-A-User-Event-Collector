@@ -15,13 +15,12 @@ struct CategoryView: View {
         VStack(alignment: .leading) {
             CategoryHeaderView(title: category.title)
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 10) {
+                HStack(alignment: .top) {
                     ForEach(category.items) { item in
-                        NavigationLink(
+                        MemorySafeNavigationLink(
+                            contentView: CategoryCellView(item: item, mode: category.mode),
                             destination: router.getDestination(to: category.type, with: item.id)
-                        ) {
-                            CategoryCellView(item: item, mode: category.mode)
-                        }
+                        )
                     }
                 }
             }

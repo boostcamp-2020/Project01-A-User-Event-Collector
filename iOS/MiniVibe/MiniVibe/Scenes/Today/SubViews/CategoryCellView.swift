@@ -30,9 +30,8 @@ struct CategoryCellView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: item.imageName ?? ""))
+            URLImage(urlString: item.imageName)
                 .frame(width: itemSize - padding, height: itemSize - padding)
-
             if let title = item.title {
                 Text(title)
                     .modifier(Title2())
@@ -47,7 +46,7 @@ struct CategoryCellView: View {
                     .modifier(Description2())
             }
         }
-        .padding(.leading, 20)
+//        .padding(.leading, 20)
 
     }
 }

@@ -20,10 +20,10 @@ struct TrackHorizontalListView: View {
     var body: some View {
         Group {
             VStack {
-                NavigationLink(destination: PlaylistView(playlistID: 18)) {
-                    CategoryHeaderView(title: "오늘 TOP 100")
-                        .foregroundColor(.primary)
-                }
+                MemorySafeNavigationLink(
+                    contentView: CategoryHeaderView(title: "오늘 TOP 100").foregroundColor(.primary),
+                    destination: AnyView(PlaylistView(playlistID: 18))
+                )
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: layout,
                               spacing: 20) {

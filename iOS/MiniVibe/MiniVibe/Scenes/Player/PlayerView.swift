@@ -17,7 +17,7 @@ struct PlayerView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10) {
                     PlayerHeaderView(showMediaPlayer: $showMediaPlayer)
-                    PlayerInfoView(track: viewModel.currentTrack, timeDuration: $timeDuration)
+                    PlayerInfoView(timeDuration: $timeDuration, track: viewModel.currentTrack)
                     PlayerControlView(viewModel: viewModel)
                 }
                 .padding(.horizontal, 20)
@@ -62,12 +62,14 @@ struct PlayerHeaderView: View {
 }
 
 struct PlayerInfoView: View {
-    let track: Track
+    
     @Binding var timeDuration: Float
+    
+    let track: Track
     
     var body: some View {
         VStack(spacing: 40) {
-            AsyncImage(url: URL(string: track.album?.cover ?? ""))
+            URLImage(urlString: track.album?.cover)
                 .padding()
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
