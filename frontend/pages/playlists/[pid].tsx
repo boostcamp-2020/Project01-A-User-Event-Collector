@@ -7,7 +7,7 @@ const StylePlaylistPage = styled.div``;
 const PlaylistPage = ({ Playlists }: any) => {
   return (
     <StylePlaylistPage>
-      <DetailPage detailType={"playlist"} detailData={Playlists} tracks={Playlists.Tracks} />
+      <DetailPage type={"playlist"} detailData={Playlists} tracks={Playlists.Tracks} />
     </StylePlaylistPage>
   );
 };

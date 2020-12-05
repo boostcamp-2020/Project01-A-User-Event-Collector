@@ -5,7 +5,7 @@ import { Track } from "../../interfaces";
 import TrackList from "../Tracklist";
 
 interface Props {
-  detailType: "album" | "playlist" | "artist" | "magazine" | "news";
+  type: "album" | "playlist" | "artist" | "magazine" | "news";
   detailData: any;
   tracks: Track[];
 }
@@ -15,10 +15,10 @@ const StyleDetailPage = styled.div`
   flex-direction: column;
 `;
 
-const DetailPage: FC<Props> = ({ detailType, detailData, tracks }) => {
+const DetailPage: FC<Props> = ({ type, detailData, tracks }) => {
   return (
     <StyleDetailPage>
-      <DetailHeader detailType={detailType} detailData={detailData} />
+      <DetailHeader type={type} detailData={detailData} />
       <TrackList Tracks={tracks} />
     </StyleDetailPage>
   );

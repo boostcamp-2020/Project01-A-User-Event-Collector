@@ -7,7 +7,7 @@ const StyleMagazinePage = styled.div``;
 const ArtistsPage = ({ Artists }: any) => {
   return (
     <StyleMagazinePage>
-      <DetailPage detailType={"artist"} detailData={Artists} tracks={Artists.Tracks} />
+      <DetailPage type={"artist"} detailData={Artists} tracks={Artists.Tracks} />
     </StyleMagazinePage>
   );
 };

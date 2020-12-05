@@ -7,7 +7,7 @@ const StyleNewsPage = styled.div``;
 const NewsPage = ({ News }: any) => {
   return (
     <StyleNewsPage>
-      <DetailPage detailType={"news"} detailData={News} tracks={News.Tracks} />
+      <DetailPage type={"news"} detailData={News} tracks={News.Tracks} />
     </StyleNewsPage>
   );
 };

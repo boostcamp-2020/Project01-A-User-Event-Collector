@@ -4,7 +4,7 @@ import ButtonBox from "../DetailButtonBox";
 import Img from "../../Img";
 
 interface Props {
-  detailType: "album" | "playlist" | "artist" | "magazine" | "news";
+  type: "album" | "playlist" | "artist" | "magazine" | "news";
   detailData: string;
 }
 
@@ -33,6 +33,10 @@ const makeProps = (detailType: string, detailData: any) => {
 
     case "news":
       result.name = detailData.newsName;
+      break;
+
+    case "artist":
+      result.name = detailData.artistName;
   }
   return result;
 };
@@ -42,22 +46,20 @@ const StyleHeader = styled.div`
   border: 3px solid black;
 `;
 
-const Header: FC<Props> = ({ detailType, detailData }) => {
-  const props = makeProps(detailType, detailData);
+const DetialHeader: FC<Props> = ({ type, detailData }) => {
+  const props = makeProps(type, detailData);
 
   return (
     <StyleHeader>
-      {console.log(props)}
-      <Img src={props.cover} varient="descriptionCover" />
+      <Img src={props.cover} varient={type === "artist" ? "likedArtist" : "descriptionCover"} />
       <div>
         <h2>{props.name}</h2>
         <h3>{props.owner || props.magazineType}</h3>
         <div>{props.description}</div>
-        {/* //button box에 id, track배열 넘겨야 함 */}
         <ButtonBox />
       </div>
     </StyleHeader>
   );
 };
 
-export default Header;
+export default DetialHeader;
