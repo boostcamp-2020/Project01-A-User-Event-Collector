@@ -21,7 +21,7 @@ function convertData(dataType?: string, rawData?: any): cardData {
     case "magazine":
       return {
         title: rawData.magazineName,
-        smallText: rawData.createdAt,
+        smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
         mainLink: `/playlist/${rawData.playlistId}`,
       };

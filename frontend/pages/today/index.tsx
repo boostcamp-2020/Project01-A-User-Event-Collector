@@ -12,11 +12,14 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
     <>
       <HotMagCard />
-
-      {console.log(Magazines)}
+      <TempSlide>
+        {Magazines?.map((magazine: any) => (
+          <Card dataType={"magazine"} rawData={magazine} varient={"todayBig"} />
+        ))}
+      </TempSlide>
       {console.log(News)}
 
-      <div>플레이리스트</div>
+      <h2>플레이리스트</h2>
       <TempSlide>
         {Playlists?.map((playlist: any) => (
           <Card dataType={"playlist"} rawData={playlist} varient={"todayBig"} />
@@ -34,7 +37,7 @@ export async function getStaticProps() {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
 
-  const VIBE_ID = 1;
+  const VIBE_ID = 1; //나중에 vibe 아이디로 변경해야 함
   const dataLength = 10;
   const resolveArr = await Promise.all([
     fetch(`${apiUrl}:${apiPort}/api/magazines?limit=${dataLength}`),
