@@ -28,7 +28,7 @@ function convertData(dataType?: string, rawData?: any): cardData {
     case "playlist":
       return {
         title: rawData.playlistName,
-        smallText: `${rawData.author}`,
+        smallText: `${rawData.Users.username}`,
         src: rawData.cover,
         mainLink: `/playlist/${rawData.id}`,
       };
