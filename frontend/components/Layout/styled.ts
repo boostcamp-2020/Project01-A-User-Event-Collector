@@ -10,7 +10,6 @@ const StyledContent = styled.div`
   width: 100%;
   background-color: #fff;
   box-sizing: border-box;
-  padding: 5em 10em;
 `;
 
 export { StyledLayout, StyledContent };

@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 
-const StyleMagazinePage = styled.div``;
+const StyleMagazinePage = styled.div`
+  height: 100vh;
+`;
 
 const MagazinePage = ({ Magazines }: any) => {
   return (

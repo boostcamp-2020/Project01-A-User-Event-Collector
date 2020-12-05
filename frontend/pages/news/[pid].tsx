@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 
-const StyleNewsPage = styled.div``;
+const StyleNewsPage = styled.div`
+  height: 100vh;
+`;
 
 const NewsPage = ({ News }: any) => {
   return (

@@ -3,7 +3,9 @@ import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 import { DefaultCollector, DefaultEmitter } from "../../event/event";
 
-const StyleAlbumPage = styled.div``;
+const StyleAlbumPage = styled.div`
+  height: 100vh;
+`;
 
 const AlbumPage = ({ Albums }: any) => {
   return (

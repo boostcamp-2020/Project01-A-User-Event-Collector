@@ -1,5 +1,4 @@
 import { AppProps } from "next/app";
-import Head from "next/head";
 import { memo } from "react";
 import { createGlobalStyle } from "styled-components";
 import Layout from "../components/Layout";
@@ -27,9 +26,6 @@ const MyApp = memo(({ Component, pageProps }: AppProps) => {
   return (
     <>
       <GlobalStyles />
-      <Head>
-        <title>MINI VIBE</title>
-      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>

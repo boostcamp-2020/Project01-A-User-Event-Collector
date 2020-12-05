@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 
-const StylePlaylistPage = styled.div``;
+const StylePlaylistPage = styled.div`
+  height: 100vh;
+`;
 
 const PlaylistPage = ({ Playlists }: any) => {
   return (
