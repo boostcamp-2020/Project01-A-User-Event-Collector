@@ -36,13 +36,13 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
       <Img src={cover} varient="trackCardCover" />
 
       <span>{trackName}</span>
-      <Link href={`/api/albums/${albumId}`}>
+      <Link href={`/albums/${albumId}`}>
         <span>{albumName}</span>
       </Link>
 
       {artistArr.map((elem: any) => (
         <div key={elem.id}>
-          <Link href={`/api/artists/${elem.id}`}>
+          <Link href={`/artists/${elem.id}`}>
             <span>{elem.artistName}</span>
           </Link>
         </div>
