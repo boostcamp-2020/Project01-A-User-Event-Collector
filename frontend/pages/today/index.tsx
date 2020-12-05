@@ -12,14 +12,24 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
     <>
       <HotMagCard />
+      <h1>Magazines</h1>
       <TempSlide>
         {Magazines?.map((magazine: any) => (
           <Card dataType={"magazine"} rawData={magazine} varient={"todayBig"} />
         ))}
       </TempSlide>
-      {console.log(News)}
 
-      <h2>플레이리스트</h2>
+      <hr />
+
+      <h1>News</h1>
+      <TempSlide>
+        {News?.map((news: any) => (
+          <Card dataType={"news"} rawData={news} varient={"todayNews"} />
+        ))}
+      </TempSlide>
+
+      <hr />
+      <h1>VIBE 추천 플레이리스트</h1>
       <TempSlide>
         {Playlists?.map((playlist: any) => (
           <Card dataType={"playlist"} rawData={playlist} varient={"todayBig"} />
