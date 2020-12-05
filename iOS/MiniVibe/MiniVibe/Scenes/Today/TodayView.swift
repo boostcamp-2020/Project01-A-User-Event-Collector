@@ -43,14 +43,10 @@ struct TodayView: View {
                     destination: router.getDestination(to: .recommendations)
                 )
                 
-                //                NavigationLink(
-                //                    destination: router.getDestination(to: .tracks),
-                //                    label: {
-                //
-                //                        TrackHorizontalListView(tracks: viewModel.tracks)
-                //                            .padding([.leading, .trailing])
-                //                    })
-                //                .listRowInsets(EdgeInsets())
+//                MemorySafeNavigationLink(
+//                    contentView: TrackHorizontalListView(tracks: viewModel.tracks),
+//                    destination: router.getDestination(to: .tracks)
+//                )
                 
                 Rectangle()
                     .clearBottom()
