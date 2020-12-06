@@ -2,6 +2,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import logger from "morgan";
+import cookieParser from "cookie-parser";
 import publicRouter from "./routes/public";
 import privateRouter from "./routes/private";
 
@@ -12,6 +13,8 @@ if (process.env.NODE_ENV) {
 }
 
 const app = express();
+
+app.use(cookieParser());
 app.use(logger("short"));
 
 app.use("/api/private", privateRouter);
