@@ -2,7 +2,8 @@
 import dotenv from "dotenv";
 import express from "express";
 import logger from "morgan";
-import apiRouter from "./routes";
+import publicRouter from "./routes/public";
+import privateRouter from "./routes/private";
 
 if (process.env.NODE_ENV) {
   dotenv.config({ path: ".env.production" });
@@ -13,7 +14,8 @@ if (process.env.NODE_ENV) {
 const app = express();
 app.use(logger("short"));
 
-app.use("/api", apiRouter);
+app.use("/api", publicRouter);
+app.use("/api", privateRouter);
 
 app.listen(process.env.PORT || 4000, () => {
   // eslint-disable-next-line no-console
