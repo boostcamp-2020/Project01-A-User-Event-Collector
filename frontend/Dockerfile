@@ -5,7 +5,7 @@ USER jenkins
 
 MAINTAINER marullo Cho <marulloc0214@gmail.com>
 RUN whoami
-RUN mkdir -p /nextServer
+RUN sudo mkdir -p /nextServer
 
 WORKDIR /nextServer
 
