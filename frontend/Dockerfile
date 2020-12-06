@@ -8,6 +8,9 @@ ADD . /nextServer
 WORKDIR /nextServer
 
 RUN npm install
+
+ENV API_URL=http://118.67.135.69
+ENV API_PORT=4000
 RUN npm run build
 
 EXPOSE 3000
