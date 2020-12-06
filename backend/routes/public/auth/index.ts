@@ -1,5 +1,5 @@
 import { Router } from "express";
-import authController from "../../controllers/auth";
+import authController from "../../../controllers/public/auth";
 
 const router = Router();
 router.get("/naver", authController.naverCallback);
