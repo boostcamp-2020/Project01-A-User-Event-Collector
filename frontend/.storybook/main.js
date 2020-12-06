@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    stories: ['../frontend/components/**/**/*.stories.tsx'],
+    stories: ['../components/**/**/*.stories.tsx'],
     addons: ['@storybook/addon-essentials', '@storybook/addon-knobs/register', '@storybook/addon-controls'],
     webpackFinal: async config => {
       config.module.rules.push({

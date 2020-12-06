@@ -2,6 +2,7 @@ import { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Card from "../../components/Card";
+import Slidebar from "../../components/Slidebar";
 
 const TempSlide = styled.div`
   display: flex;
@@ -12,29 +13,29 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
     <>
       <HotMagCard />
       <h1>Magazines</h1>
-      <TempSlide>
-        {Magazines?.map((magazine: any) => (
-          <Card dataType={"magazine"} rawData={magazine} varient={"todayBig"} />
-        ))}
-      </TempSlide>
+      <Slidebar
+        varient="todayBig"
+        dataType="magazine"
+        title="매거진"
+        titleLink=""
+        data={Magazines}
+      />
 
       <hr />
 
       <h1>News</h1>
-      <TempSlide>
-        {News?.map((news: any) => (
-          <Card dataType={"news"} rawData={news} varient={"todayNews"} />
-        ))}
-      </TempSlide>
+      <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
 
       <hr />
 
       <h1>VIBE 추천 플레이리스트</h1>
-      <TempSlide>
-        {Playlists?.map((playlist: any) => (
-          <Card dataType={"playlist"} rawData={playlist} varient={"todayBig"} />
-        ))}
-      </TempSlide>
+      <Slidebar
+        varient="todayBig"
+        dataType="playlist"
+        title="VIBE 추천 플레이리스트"
+        titleLink=""
+        data={Playlists}
+      />
     </>
   );
 });
@@ -45,7 +46,7 @@ export async function getStaticProps() {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
 
-  const VIBE_ID = 1; //나중에 vibe 아이디로 변경해야 함
+  const VIBE_ID = 1; // 나중에 vibe 아이디로 변경해야 함
   const dataLength = 10;
   const resolveArr = await Promise.all([
     fetch(`${apiUrl}:${apiPort}/api/magazines?limit=${dataLength}`),
@@ -60,9 +61,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      Magazines: Magazines,
-      News: News,
-      Playlists: Playlists,
+      Magazines,
+      News,
+      Playlists,
     },
   };
 }
