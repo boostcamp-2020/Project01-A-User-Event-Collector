@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { getNewsCovers, getNewsById } from "../../models/news";
-import { makeOption } from "../../utils/makePrismaObtion";
+import { getNewsCovers, getNewsById } from "../../../models/news";
+import { makeOption } from "../../../utils/makePrismaObtion";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;

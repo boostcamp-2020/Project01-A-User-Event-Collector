@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUserLikeTracks } from "../../models/library";
+import { getUserLikeTracks } from "../../../models/library";
 
 const getTracks = async (req: Request, res: Response): Promise<void> => {
   const tmpUserId = 1;

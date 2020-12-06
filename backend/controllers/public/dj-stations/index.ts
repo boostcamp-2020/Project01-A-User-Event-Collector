@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getDjStationCovers } from "../../models/dj-station";
+import { getDjStationCovers } from "../../../models/dj-station";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;

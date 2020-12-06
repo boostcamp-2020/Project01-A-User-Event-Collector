@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { getPlaylistCovers, getPlaylistById } from "../../models/playlists";
-import { makeOption } from "../../utils/makePrismaObtion";
+import { getPlaylistCovers, getPlaylistById } from "../../../models/playlists";
+import { makeOption } from "../../../utils/makePrismaObtion";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;
