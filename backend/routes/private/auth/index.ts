@@ -3,6 +3,6 @@ import authController from "../../../controllers/private/auth";
 
 const router = Router();
 
-router.get("/check", authController.checkJWT);
+router.get("/userinfo", authController.getUserInfo);
 
 export default router;
