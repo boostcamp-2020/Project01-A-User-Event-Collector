@@ -1,12 +1,6 @@
 import { memo } from "react";
-import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
-import Card from "../../components/Card";
 import Slidebar from "../../components/Slidebar";
-
-const TempSlide = styled.div`
-  display: flex;
-`;
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
