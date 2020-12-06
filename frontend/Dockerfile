@@ -10,12 +10,12 @@ ADD . /nextServer
 
 RUN npm install
 
-ENV NODE_ENV production
-ENV API_URL http://localhost
-ENV API_PORT 3000
-
 RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm","start"]
+CMD "npm","start"
+
+
+
+
