@@ -7,9 +7,9 @@ RUN mkdir -p /expressServer
 WORKDIR /expressServer
 ADD . /expressServer
 
-ENV NODE_ENV production
 RUN npm install
+ENV NODE_ENV production
+ENV DATABASE_URL "mysql://J190:sprint@49.50.172.98:3306/VIBE"
+RUN npx prisma generate
 
 EXPOSE 4000
-
-RUN npx prisma generate
