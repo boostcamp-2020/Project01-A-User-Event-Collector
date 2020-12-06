@@ -1,5 +1,5 @@
 import { Router } from "express";
-import artistController from "../../controllers/artists";
+import artistController from "../../../controllers/public/artists";
 
 const router = Router();
 router.get("/", artistController.getAll);

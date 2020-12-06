@@ -1,5 +1,5 @@
 import { Router } from "express";
-import libraryController from "../../controllers/library";
+import libraryController from "../../../controllers/public/library";
 
 const router = Router();
 router.get("/albums", libraryController.getLibAlbums);
