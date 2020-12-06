@@ -1,4 +1,5 @@
 FROM node:12.18.3
+RUN useradd jenkins
 USER jenkins
 
 MAINTAINER marullo Cho <marulloc0214@gmail.com>
