@@ -15,5 +15,3 @@ RUN npx prisma generate
 EXPOSE 4000
 
 RUN npm start
-
-CMD tail -f /dev/null
