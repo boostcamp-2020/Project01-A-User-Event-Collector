@@ -4,9 +4,10 @@ import { NextArrowSvg, PreviousArrowSvg } from "../../../utils/svg";
 
 interface SlideButtonProps {
   onClick?: () => void;
+  hide?: boolean;
 }
 
-const NextButton = styled.div`
+const NextButton = styled.div<SlideButtonProps>`
   position: absolute;
   width: 40px;
   height: 40px;
@@ -15,13 +16,14 @@ const NextButton = styled.div`
   background-color: #fff;
   border-radius: 50%;
   z-index: 10000;
+  display: ${({ hide }) => (hide ? "none" : "block")};
   & svg {
     width: 20px;
     height: 20px;
     padding: 10px;
   }
 `;
-const PreviousButton = styled.div`
+const PreviousButton = styled.div<SlideButtonProps>`
   position: absolute;
   width: 40px;
   height: 40px;
@@ -30,6 +32,7 @@ const PreviousButton = styled.div`
   background-color: #fff;
   border-radius: 50%;
   z-index: 10000;
+  display: ${({ hide }) => (hide ? "none" : "block")};
   & svg {
     width: 20px;
     height: 20px;
@@ -37,17 +40,23 @@ const PreviousButton = styled.div`
   }
 `;
 
-export const SliderNextButtton: React.FC<SlideButtonProps> = ({ onClick }: SlideButtonProps) => {
+export const SliderNextButtton: React.FC<SlideButtonProps> = ({
+  onClick,
+  hide,
+}: SlideButtonProps) => {
   return (
-    <NextButton onClick={onClick}>
+    <NextButton onClick={onClick} hide={hide}>
       <NextArrowSvg />
     </NextButton>
   );
 };
 
-export const SliderPreviousButton: React.FC<SlideButtonProps> = ({ onClick }: SlideButtonProps) => {
+export const SliderPreviousButton: React.FC<SlideButtonProps> = ({
+  onClick,
+  hide,
+}: SlideButtonProps) => {
   return (
-    <PreviousButton onClick={onClick}>
+    <PreviousButton onClick={onClick} hide={hide}>
       <PreviousArrowSvg />
     </PreviousButton>
   );
