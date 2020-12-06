@@ -36,4 +36,16 @@ const getUserInfo = async ({
   return userInfo;
 };
 
-export { postUserInfo, getUserInfo };
+const getUserInfoWithID = async (id: number): Promise<Object | null> => {
+  const userInfo = await prisma.users.findFirst({
+    where: { id },
+    select: {
+      id: true,
+      username: true,
+      profile: true,
+    },
+  });
+  return userInfo;
+};
+
+export { postUserInfo, getUserInfo, getUserInfoWithID };
