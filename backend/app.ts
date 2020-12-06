@@ -22,7 +22,7 @@ app.use("/api", publicRouter);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
-  if (process.env.NODE_ENV) {
+  if (!process.env.NODE_ENV) {
     console.log(`Server is on http://localhost:${process.env.PORT || 3000}`);
     console.log(`And http://127.0.0.1:${process.env.PORT || 3000}`);
   } else {
