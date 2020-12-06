@@ -8,6 +8,7 @@ WORKDIR /expressServer
 ADD . /expressServer
 
 RUN npm install
+RUN npm install -g nodemon
 ENV NODE_ENV production
 ENV DATABASE_URL "mysql://J190:sprint@49.50.172.98:3306/VIBE"
 RUN npx prisma generate
