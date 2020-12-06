@@ -10,8 +10,9 @@ const authenticate = (
     const { token } = req.cookies;
     const user = decodeJWT(token);
     req.user = user;
-    return next();
+    next();
   } catch (err) {
+    console.log(err);
     return res.status(401).send({ message: "Unauthorized" });
   }
 };

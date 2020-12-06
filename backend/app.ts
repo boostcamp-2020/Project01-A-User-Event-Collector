@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import publicRouter from "./routes/public";
 import privateRouter from "./routes/private";
 
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(logger("short"));
+app.use(cors());
 
 app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
