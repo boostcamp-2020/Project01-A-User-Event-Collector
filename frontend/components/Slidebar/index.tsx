@@ -73,8 +73,8 @@ const Slidebar: React.FC<SlidebarProps> = ({
       </a>
       <SlideContainer>
         <SlideContent ref={currentSlideRef}>
-          {data?.map((value: any) => (
-            <Card varient={varient} dataType={dataType} rawData={value} />
+          {data?.map((value: any, idx: number) => (
+            <Card key={`card${-idx}`} varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
         <SliderPreviousButton onClick={onPreviousClicked} />

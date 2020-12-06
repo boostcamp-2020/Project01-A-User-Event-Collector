@@ -31,9 +31,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <title>Mini VIBE</title>
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
