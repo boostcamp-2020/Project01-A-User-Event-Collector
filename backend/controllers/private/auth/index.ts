@@ -1,11 +1,11 @@
-import checkJWT from "./checkJWT";
+import getUserInfo from "./getUserInfo";
 
 interface Auth {
-  checkJWT: any;
+  getUserInfo: any;
 }
 
 const authController: Auth = {
-  checkJWT,
+  getUserInfo,
 };
 
 export default authController;
