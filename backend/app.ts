@@ -14,7 +14,7 @@ app.use(logger("short"));
 
 app.use("/api", apiRouter);
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 4000, () => {
   // eslint-disable-next-line no-console
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
 });
