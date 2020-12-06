@@ -1,7 +1,7 @@
 FROM node:12.18.3
 RUN adduser --disabled-password --gecos '' jenkins
 
-USER jenkins
+USER root
 
 MAINTAINER marullo Cho <marulloc0214@gmail.com>
 RUN whoami
