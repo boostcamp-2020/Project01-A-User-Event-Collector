@@ -77,9 +77,9 @@ const Slidebar: React.FC<SlidebarProps> = ({
             <Card varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
+        <SliderPreviousButton onClick={onPreviousClicked} />
+        <SliderNextButtton onClick={onNextClicked} />
       </SlideContainer>
-      <SliderPreviousButton onClick={onPreviousClicked} />
-      <SliderNextButtton onClick={onNextClicked} />
     </StyledSlidebar>
   );
 };
