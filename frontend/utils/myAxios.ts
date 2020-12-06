@@ -2,15 +2,13 @@ import axios from "axios";
 
 const serverURL =
   process.env.NODE_ENV === "development"
-    ? process.env.SERVER_DOMAIN_DEVELOP
-    : process.env.SERVER_DOMAIN_PRODUCTION;
+    ? process.env.NEXT_PUBLIC_SERVER_DOMAIN_DEVELOP
+    : process.env.NEXT_PUBLIC_SERVER_DOMAIN_PRODUCTION;
 
 const URL = `${serverURL}/api`;
 
 const headerConfig = {
-  headers: {
-    withCredentials: true,
-  },
+  withCredentials: true,
 };
 
 interface AxiosInterface {
