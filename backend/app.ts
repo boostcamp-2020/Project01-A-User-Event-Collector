@@ -14,8 +14,8 @@ if (process.env.NODE_ENV) {
 const app = express();
 app.use(logger("short"));
 
+app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
-app.use("/api", privateRouter);
 
 app.listen(process.env.PORT || 4000, () => {
   // eslint-disable-next-line no-console
