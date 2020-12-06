@@ -53,15 +53,19 @@ const Slidebar: React.FC<SlidebarProps> = ({
 }: SlidebarProps) => {
   const [currentTranslateX, setCurrentTranslateX] = useState(0);
   const [slidePixels, setSlidePixels] = useState(0);
+  const [nextHide, setNextHide] = useState(false);
+  const [previousHide, setPreviousHide] = useState(true);
   const currentSlideRef = useRef<HTMLUListElement>(null);
 
   const onPreviousClicked = () => {
     const newTranslateX = currentTranslateX + slidePixels;
     if (newTranslateX > 0) {
       setCurrentTranslateX(0);
+      setPreviousHide(true);
       return;
     }
     setCurrentTranslateX(newTranslateX);
+    setNextHide(false);
   };
 
   const onNextClicked = () => {
@@ -73,9 +77,11 @@ const Slidebar: React.FC<SlidebarProps> = ({
       const newTranslateX = currentTranslateX - slidePixels;
       if (newTranslateX < -containerWidth) {
         setCurrentTranslateX(-containerWidth + cardMargin);
+        setNextHide(true);
         return;
       }
       setCurrentTranslateX(newTranslateX);
+      setPreviousHide(false);
     }
   };
 
@@ -93,11 +99,8 @@ const Slidebar: React.FC<SlidebarProps> = ({
 
   useEffect(() => {
     calculatePixels();
-  }, []);
-
-  useEffect(() => {
     window.addEventListener("resize", calculatePixels);
-  }, [currentTranslateX]);
+  }, []);
 
   return (
     <StyledSlidebar varient={varient}>
@@ -111,8 +114,8 @@ const Slidebar: React.FC<SlidebarProps> = ({
             <Card varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
-        <SliderPreviousButton onClick={onPreviousClicked} />
-        <SliderNextButtton onClick={onNextClicked} />
+        <SliderPreviousButton onClick={onPreviousClicked} hide={previousHide} />
+        <SliderNextButtton onClick={onNextClicked} hide={nextHide} />
       </SlideContainer>
     </StyledSlidebar>
   );
