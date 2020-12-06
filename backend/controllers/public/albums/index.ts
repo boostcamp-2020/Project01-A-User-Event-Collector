@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAlbumCovers, getAlbumById } from "../../models/albums";
+import { getAlbumCovers, getAlbumById } from "../../../models/albums";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;
