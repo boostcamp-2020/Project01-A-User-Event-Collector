@@ -12,6 +12,10 @@ export interface SlidebarProps {
   data?: any;
 }
 
+interface TranslateProps {
+  currentTranslateX?: number;
+}
+
 const StyledSlidebar = styled.div<SlidebarProps>`
   display: flex;
   flex-direction: column;
@@ -30,12 +34,14 @@ const SlideContainer = styled.div`
   position: relative;
 `;
 
-const SlideContent = styled.ul`
+const SlideContent = styled.ul<TranslateProps>`
   display: flex;
   & > li:first-child {
     margin: 0;
   }
   padding-inline-start: 0;
+  transition: all 0.6s ease-in-out;
+  transform: ${({ currentTranslateX }) => `translateX(${currentTranslateX}px)`};
 `;
 
 const Slidebar: React.FC<SlidebarProps> = ({
@@ -45,18 +51,35 @@ const Slidebar: React.FC<SlidebarProps> = ({
   titleLink,
   data,
 }: SlidebarProps) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentTranslateX, setCurrentTranslateX] = useState(0);
+  const [slidePixels, setSlidePixels] = useState(0);
   const currentSlideRef = useRef<HTMLUListElement>(null);
 
   const onPreviousClicked = () => {
-    if (currentSlide === 0) return;
-    setCurrentSlide(currentSlide - 1);
-  };
-  const onNextClicked = () => {
-    setCurrentSlide(currentSlide + 1);
+    const newTranslateX = currentTranslateX + slidePixels;
+    if (newTranslateX > 0) {
+      setCurrentTranslateX(0);
+      return;
+    }
+    setCurrentTranslateX(newTranslateX);
   };
 
-  useEffect(() => {
+  const onNextClicked = () => {
+    const { current } = currentSlideRef;
+    if (current !== null) {
+      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
+      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
+      const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
+      const newTranslateX = currentTranslateX - slidePixels;
+      if (newTranslateX < -containerWidth) {
+        setCurrentTranslateX(-containerWidth + cardMargin);
+        return;
+      }
+      setCurrentTranslateX(newTranslateX);
+    }
+  };
+
+  const calculatePixels = () => {
     const { current } = currentSlideRef;
     if (current !== null) {
       const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
@@ -64,23 +87,28 @@ const Slidebar: React.FC<SlidebarProps> = ({
       const cardWidth = Number(cardStyles.width.slice(0, -2));
       const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const viewedCards = Math.floor(containerWidth / cardWidth);
-      const slidePixels = (cardWidth + cardMargin) * viewedCards;
-      current.style.transition = "all 0.5s ease-in-out";
-      current.style.transform = `translateX(-${slidePixels * currentSlide}px)`;
+      setSlidePixels((cardWidth + cardMargin) * viewedCards);
     }
-  }, [currentSlide]);
+  };
+
+  useEffect(() => {
+    calculatePixels();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", calculatePixels);
+  }, [currentTranslateX]);
 
   return (
     <StyledSlidebar varient={varient}>
       <a href={titleLink}>
         {title}
-        {currentSlide}
         {titleLink ? <NextArrowSvg /> : ""}
       </a>
       <SlideContainer>
-        <SlideContent ref={currentSlideRef}>
-          {data?.map((value: any, idx: number) => (
-            <Card key={`card${-idx}`} varient={varient} dataType={dataType} rawData={value} />
+        <SlideContent currentTranslateX={currentTranslateX} ref={currentSlideRef}>
+          {data?.map((value: any) => (
+            <Card varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
         <SliderPreviousButton onClick={onPreviousClicked} />
