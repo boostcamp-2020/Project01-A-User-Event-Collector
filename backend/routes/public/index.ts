@@ -10,17 +10,17 @@ import libraryRouter from "./library";
 import searchRouter from "./search";
 import authRouter from "./auth";
 
-const apiRouter = express.Router();
+const publicRouter = express.Router();
 
-apiRouter.use("/albums", albumsRouter);
-apiRouter.use("/artists", artistsRouter);
-apiRouter.use("/dj-stations", djStationsRouter);
-apiRouter.use("/genres", genresRouter);
-apiRouter.use("/magazines", magazinesRouter);
-apiRouter.use("/news", newsRouter);
-apiRouter.use("/playlists", playlistsRouter);
-apiRouter.use("/library", libraryRouter);
-apiRouter.use("/search", searchRouter);
-apiRouter.use("/auth", authRouter);
+publicRouter.use("/albums", albumsRouter);
+publicRouter.use("/artists", artistsRouter);
+publicRouter.use("/dj-stations", djStationsRouter);
+publicRouter.use("/genres", genresRouter);
+publicRouter.use("/magazines", magazinesRouter);
+publicRouter.use("/news", newsRouter);
+publicRouter.use("/playlists", playlistsRouter);
+publicRouter.use("/library", libraryRouter);
+publicRouter.use("/search", searchRouter);
+publicRouter.use("/auth", authRouter);
 
-export default apiRouter;
+export default publicRouter;
