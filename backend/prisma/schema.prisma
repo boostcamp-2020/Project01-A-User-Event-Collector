@@ -164,6 +164,7 @@ model Users {
   username              String
   password              String
   oAuth                 String?
+  profile               String?
   Playlists             Playlists[]
   Users_Likes_Playlists Users_Likes_Playlists[]
   Users_Like_Albums     Users_Like_Albums[]
