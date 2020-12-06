@@ -1,8 +1,8 @@
 import { AppProps } from "next/app";
 import { memo } from "react";
 import { createGlobalStyle } from "styled-components";
-import Layout from "../components/Layout";
 import reset from "styled-reset";
+import Layout from "../components/Layout";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
