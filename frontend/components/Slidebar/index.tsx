@@ -59,8 +59,14 @@ const Slidebar: React.FC<SlidebarProps> = ({
   useEffect(() => {
     const { current } = currentSlideRef;
     if (current !== null) {
+      const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
+      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
+      const cardWidth = Number(cardStyles.width.slice(0, -2));
+      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
+      const viewedCards = Math.floor(containerWidth / cardWidth);
+      const slidePixels = (cardWidth + cardMargin) * viewedCards;
       current.style.transition = "all 0.5s ease-in-out";
-      current.style.transform = `translateX(-${currentSlide}00%)`;
+      current.style.transform = `translateX(-${slidePixels * currentSlide}px)`;
     }
   }, [currentSlide]);
 
