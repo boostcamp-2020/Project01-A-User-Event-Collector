@@ -14,7 +14,7 @@ export default {
   component: MagLabel,
 };
 
-const Template: Story<MagLabelProps> = (args) => <MagLabel {...args} />;
+const Template: Story<MagLabelProps> = (args: any) => <MagLabel {...args} />;
 
 const AllMagLabel = Template.bind({});
 AllMagLabel.args = { ...AllMagLabelStyles, children: "전체" };

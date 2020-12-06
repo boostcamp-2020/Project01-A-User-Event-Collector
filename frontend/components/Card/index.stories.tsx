@@ -7,7 +7,7 @@ export default {
   component: Card,
 };
 
-const Template: Story<CardProps> = (args) => <Card {...args} />;
+const Template: Story<CardProps> = (args: any) => <Card {...args} />;
 
 export const todayMagazineCard = Template.bind({});
 todayMagazineCard.args = {

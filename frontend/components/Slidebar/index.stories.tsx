@@ -7,7 +7,7 @@ export default {
   component: Slidebar,
 };
 
-const Template: Story<SlidebarProps> = (args) => <Slidebar {...args} />;
+const Template: Story<SlidebarProps> = (args: any) => <Slidebar {...args} />;
 
 export const todayMagazineSlider = Template.bind({});
 todayMagazineSlider.args = {

@@ -20,8 +20,12 @@ const StyleTrack = styled.div<Styles>`
   align-items: center;
   justify-content: space-between;
   &:hover {
-    background-color: white;
+    background-color: red;
   }
+`;
+
+const ChildElem = styled.div`
+  flex: 1;
 `;
 
 const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
@@ -35,18 +39,21 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
     <StyleTrack>
       <Img src={cover} varient="trackCardCover" />
 
-      <span>{trackName}</span>
-      <Link href={`/api/albums/${albumId}`}>
-        <span>{albumName}</span>
-      </Link>
-
-      {artistArr.map((elem: any) => (
-        <div key={elem.id}>
-          <Link href={`/api/artists/${elem.id}`}>
-            <span>{elem.artistName}</span>
+      <ChildElem>
+        <span>{trackName}</span>
+      </ChildElem>
+      <ChildElem>
+        <Link href={`/albums/${albumId}`}>
+          <span>{albumName}</span>
+        </Link>
+      </ChildElem>
+      <ChildElem>
+        {artistArr.map((elem: any) => (
+          <Link key={elem.id} href={`/artists/${elem.id}`}>
+            <span>{` ${elem.artistName} `}</span>
           </Link>
-        </div>
-      ))}
+        ))}
+      </ChildElem>
 
       <TrackModal trackId={id} />
     </StyleTrack>
