@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "watch": "tsc-watch",
-    "dev": "next dev --port 3000",
+    "dev": "next dev -p 80",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 80",
     "type-check": "tsc",
     "sb": "start-storybook",
     "build-sb": "build-storybook"

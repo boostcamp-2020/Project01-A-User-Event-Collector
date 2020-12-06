@@ -1,0 +1,17 @@
+FROM node:12.18.3
+
+MAINTAINER marullo Cho <marulloc0214@gmail.com>
+
+RUN mkdir -p /expressServer
+
+WORKDIR /expressServer
+
+ADD . /expressServer
+
+RUN npm install
+
+ENV NODE_ENV production
+
+EXPOSE 3000
+
+CMD ["npm","start"]
