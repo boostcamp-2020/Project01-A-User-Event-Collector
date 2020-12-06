@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { makeSearchOption } from "../../utils/makePrismaObtion";
-import { getAlbumCovers } from "../../models/albums";
-import { getArtistCovers } from "../../models/artists";
-import { getTrackCovers } from "../../models/tracks";
+import { makeSearchOption } from "../../../utils/makePrismaObtion";
+import { getAlbumCovers } from "../../../models/albums";
+import { getArtistCovers } from "../../../models/artists";
+import { getTrackCovers } from "../../../models/tracks";
 
 interface Controller {
   search(req: Request, res: Response): Promise<void>;
