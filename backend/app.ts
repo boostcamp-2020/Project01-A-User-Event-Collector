@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import dotenv from "dotenv";
 import express from "express";
 import logger from "morgan";
@@ -15,6 +16,11 @@ app.use(logger("short"));
 app.use("/api", apiRouter);
 
 app.listen(process.env.PORT || 3000, () => {
-  // eslint-disable-next-line no-console
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
+  if (process.env.NODE_ENV) {
+    console.log(`Server is on http://localhost:${process.env.PORT || 3000}`);
+    console.log(`And http://127.0.0.1:${process.env.PORT || 3000}`);
+  } else {
+    // TODO: Servery URL 올리기
+  }
 });
