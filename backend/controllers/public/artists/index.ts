@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getArtistCovers, getArtistById } from "../../models/artists";
+import { getArtistCovers, getArtistById } from "../../../models/artists";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;

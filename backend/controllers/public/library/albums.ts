@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUserLikeAlbums } from "../../models/library";
+import { getUserLikeAlbums } from "../../../models/library";
 
 const getAlbums = async (req: Request, res: Response): Promise<void> => {
   const tmpUserId = 1;

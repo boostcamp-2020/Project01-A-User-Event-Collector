@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Request, Response } from "express";
-import { postUserInfo, getUserInfo } from "../../../models/users";
-import encodeJWT from "../../../utils/encodeJWT";
+import { postUserInfo, getUserInfo } from "../../../../models/users";
+import encodeJWT from "../../../../utils/encodeJWT";
 
 const makeAccessTokenURL = (req: Request) => {
   const { code, state } = req.query;

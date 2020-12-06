@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getGenreCovers, getGenreById } from "../../models/genres";
+import { getGenreCovers, getGenreById } from "../../../models/genres";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;
