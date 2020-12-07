@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Album, Artist } from "../../../../interfaces";
 
@@ -18,10 +18,16 @@ const StyleCheckBox = styled.div`
 `;
 
 const CheckBox: FC<Props> = ({ trackData }: Props) => {
-  const test = () => console.log(trackData);
+  const [isChecked, setIsChecked] = useState(false);
+  const checkHandler = () => setIsChecked(!isChecked);
+
+  useEffect(() => {
+    if (isChecked) console.log(trackData);
+  }, [isChecked]);
+
   return (
     <StyleCheckBox>
-      <input type="checkbox" onChange={test} />
+      <input type="checkbox" onChange={checkHandler} />
     </StyleCheckBox>
   );
 };
