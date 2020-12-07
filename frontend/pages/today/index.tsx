@@ -1,35 +1,47 @@
 import { memo } from "react";
+import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
+
+const StyledHotMag = styled.div`
+  display: flex;
+  margin: 2em 0em 1em 0em;
+`;
+
+const StyledSections = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0em 1em 0em;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+`;
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
     <>
-      <HotMagCard />
-      <h1>Magazines</h1>
-      <Slidebar
-        varient="todayBig"
-        dataType="magazine"
-        title="매거진"
-        titleLink=""
-        data={Magazines}
-      />
-
-      <hr />
-
-      <h1>News</h1>
-      <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
-
-      <hr />
-
-      <h1>VIBE 추천 플레이리스트</h1>
-      <Slidebar
-        varient="todayBig"
-        dataType="playlist"
-        title="VIBE 추천 플레이리스트"
-        titleLink=""
-        data={Playlists}
-      />
+      <StyledHotMag>
+        <HotMagCard />
+      </StyledHotMag>
+      <StyledSections>
+        <Slidebar
+          varient="todayBig"
+          dataType="magazine"
+          title="매거진"
+          titleLink=""
+          data={Magazines}
+        />
+      </StyledSections>
+      <StyledSections>
+        <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
+      </StyledSections>
+      <StyledSections>
+        <Slidebar
+          varient="todayBig"
+          dataType="playlist"
+          title="VIBE 추천 플레이리스트"
+          titleLink=""
+          data={Playlists}
+        />
+      </StyledSections>
     </>
   );
 });
