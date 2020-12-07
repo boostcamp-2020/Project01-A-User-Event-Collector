@@ -5,8 +5,7 @@ const StyledNavBar = styled.div`
   position: fixed;
   flex-direction: column;
   background-color: #000;
-  min-width: 15em;
-  width: 15%;
+  width: 15em;
   min-height: 100%;
   box-sizing: border-box;
   padding: 0.75em;
