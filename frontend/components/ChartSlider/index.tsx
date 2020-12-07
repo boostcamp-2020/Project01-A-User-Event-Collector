@@ -19,8 +19,8 @@ const StyledSlidebar = styled.div<Props>`
     height: 0.7rem;
   }
   &: nth-child(n) {
-    margin-top: 2em;
-    margin-bottom: 4em;
+    padding-top: 1.5em;
+    padding-bottom: 2.5em;
     border-bottom: 0.1em solid rgba(0, 0, 0, 0.05);
   }
 `;
