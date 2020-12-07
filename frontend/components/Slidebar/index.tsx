@@ -37,7 +37,7 @@ const SlideContainer = styled.div`
 const StyledTitle = styled.div`
   font-size: 1.3em;
   font-weight: bold;
-  margin: 1em 0em 0.5em 0em;
+  margin-top: 1em;
 `;
 
 const SlideContent = styled.ul<TranslateProps>`
