@@ -4,6 +4,7 @@ import { SpecialMagLabel, PickMagLabel, GenreMagLabel } from "../MagLabel";
 import {
   StyledHotMagCard,
   StyledDescription,
+  StyledDescriptionLabel,
   StyledDescriptionTitle,
   StyledDescriptionContent,
   StyledDescriptionInfo,
@@ -24,7 +25,7 @@ interface Props {
 
 const HotMagCard = memo(() => {
   const fetchedData = {
-    title: "송우기 멋있어",
+    title: "송우기\n멋있어",
     type: "PICK",
     description: "이게 설명이야",
     date: "2020-10-02",
@@ -36,13 +37,15 @@ const HotMagCard = memo(() => {
     <StyledHotMagCard>
       <Img varient="todayBig" src="https://i.ytimg.com/vi/ZTsGTGjQc_M/maxresdefault.jpg" />
       <StyledDescription>
-        {type === "SPECIAL" ? (
-          <SpecialMagLabel />
-        ) : type === "PICK" ? (
-          <PickMagLabel />
-        ) : (
-          <GenreMagLabel />
-        )}
+        <StyledDescriptionLabel>
+          {type === "SPECIAL" ? (
+            <SpecialMagLabel />
+          ) : type === "PICK" ? (
+            <PickMagLabel />
+          ) : (
+            <GenreMagLabel />
+          )}
+        </StyledDescriptionLabel>
         <StyledDescriptionTitle>{title}</StyledDescriptionTitle>
         <StyledDescriptionContent>{description}</StyledDescriptionContent>
         <StyledDescriptionInfo>
