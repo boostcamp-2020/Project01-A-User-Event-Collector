@@ -32,6 +32,9 @@ struct SearchView: View {
                             SearchBeforeView()
                         }
                     }
+                    Rectangle()
+                        .clearBottom()
+
                 }
             }
             .navigationTitle("검색")
