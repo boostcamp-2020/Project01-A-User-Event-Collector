@@ -7,11 +7,19 @@ export interface Props {
   data?: any;
 }
 
+const StyledGenreTitle = styled.div`
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.2em;
+`;
+
 const StyledGenreContainer = styled.div<Props>`
   display: flex;
   flex-direction: column;
   width: 70rem;
   height: 15rem;
+  margin: 1em 0em;
   & > a > svg {
     width: 0.7rem;
     height: 0.7rem;
@@ -27,6 +35,7 @@ const GenreContent = styled.ul`
   grid-row-gap: 1rem;
   width: 100%;
   height: 100%;
+  margin: 1em 0em;
   & > li {
     margin: 0;
   }
@@ -36,7 +45,7 @@ const GenreContent = styled.ul`
 const GenreContainer: React.FC<Props> = ({ title, data }: Props) => {
   return (
     <StyledGenreContainer>
-      <span>{title}</span>
+      <StyledGenreTitle>{title}</StyledGenreTitle>
       <GenreContent>
         {data.map((value: any) => (
           <GenreCard data={value} />
