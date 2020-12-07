@@ -1,11 +1,23 @@
-import { memo } from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
 
 const StyledHotMag = styled.div`
+  position: relative;
   display: flex;
-  margin: 2em 0em 1em 0em;
+  justify-content: center;
+  width: 100%;
+  margin: 4em 0em;
+`;
+
+const StyledHotMagOverlay = styled.div`
+  position: absolute;
+  background-color: #f2f2f2;
+  width: calc(100vw - 15em);
+  top: -4em;
+  z-index: 1;
+  height: 48vh;
 `;
 
 const StyledSections = styled.div`
@@ -22,6 +34,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
     <>
       <StyledHotMag>
         <HotMagCard />
+        <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
         <Slidebar
