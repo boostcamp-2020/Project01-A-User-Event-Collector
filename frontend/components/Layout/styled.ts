@@ -1,8 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const StyledLayout = styled.div`
   display: flex;
   height: 100vh;
+`;
+
+const showSearchBar = keyframes`
+  0% {
+    top: -5em;
+  }
+  50% {
+    top: -2.5em;
+  }
+  100% {
+    top: 0em;
+  }
 `;
 
 const StyledSearchBar = styled.div`
@@ -16,6 +28,8 @@ const StyledSearchBar = styled.div`
   height: 5em;
   justify-content: center;
   align-items: center;
+  transition: width 2s, height 4s;
+  animation: ${showSearchBar} 0.1s 0s linear;
 `;
 
 const StyledContent = styled.div`

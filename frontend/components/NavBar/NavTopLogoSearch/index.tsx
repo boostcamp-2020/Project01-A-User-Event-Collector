@@ -9,18 +9,20 @@ import {
   StyledNavSearch,
 } from "./styled";
 
-const NavTopLogoSearch = memo(() => {
-  const router = useRouter();
+const NavTopLogoSearch = memo(
+  ({ handleSearch }: { handleSearch: () => void }): React.ReactElement => {
+    const router = useRouter();
 
-  return (
-    <StyledNavTopLogoSearch>
-      <StyledNavLogo onClick={() => router.push("/today")}>
-        <StyledNavNaver>NAVER</StyledNavNaver>
-        <StyledNavVibe>Vibe</StyledNavVibe>
-      </StyledNavLogo>
-      <StyledNavSearch>{icons.search}</StyledNavSearch>
-    </StyledNavTopLogoSearch>
-  );
-});
+    return (
+      <StyledNavTopLogoSearch>
+        <StyledNavLogo onClick={() => router.push("/today")}>
+          <StyledNavNaver>NAVER</StyledNavNaver>
+          <StyledNavVibe>Vibe</StyledNavVibe>
+        </StyledNavLogo>
+        <StyledNavSearch onClick={handleSearch}>{icons.search}</StyledNavSearch>
+      </StyledNavTopLogoSearch>
+    );
+  },
+);
 
 export default NavTopLogoSearch;

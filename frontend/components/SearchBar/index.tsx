@@ -8,15 +8,15 @@ import {
 } from "./styled";
 import icons from "../../constant/icons";
 
-const SearchBar = (): any => {
+const SearchBar = ({ handleSearch }: { handleSearch: () => void }): React.ReactElement => {
   return (
     <StyledSearchBar>
       <StyledSearchIcon>
-        <StyledText>{icons.search}</StyledText>
+        <StyledText onClick={handleSearch}>{icons.search}</StyledText>
       </StyledSearchIcon>
       <StyledSearchInput placeholder="VIBE 검색" />
       <StyledClosingIcon>
-        <StyledText>{icons.x}</StyledText>
+        <StyledText onClick={handleSearch}>{icons.x}</StyledText>
       </StyledClosingIcon>
     </StyledSearchBar>
   );
