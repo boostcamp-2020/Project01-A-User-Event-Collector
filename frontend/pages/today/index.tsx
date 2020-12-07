@@ -1,35 +1,63 @@
-import { memo } from "react";
+import React, { memo } from "react";
+import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
+
+const StyledHotMag = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.75em;
+  margin-bottom: 4.5em;
+`;
+
+const StyledHotMagOverlay = styled.div`
+  position: absolute;
+  background-color: #f2f2f2;
+  width: calc(100vw - 15em);
+  top: -4em;
+  z-index: 1;
+  height: 30em;
+`;
+
+const StyledSections = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em 0em;
+  & + & {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
+`;
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
     <>
-      <HotMagCard />
-      <h1>Magazines</h1>
-      <Slidebar
-        varient="todayBig"
-        dataType="magazine"
-        title="매거진"
-        titleLink=""
-        data={Magazines}
-      />
-
-      <hr />
-
-      <h1>News</h1>
-      <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
-
-      <hr />
-
-      <h1>VIBE 추천 플레이리스트</h1>
-      <Slidebar
-        varient="todayBig"
-        dataType="playlist"
-        title="VIBE 추천 플레이리스트"
-        titleLink=""
-        data={Playlists}
-      />
+      <StyledHotMag>
+        <HotMagCard />
+        <StyledHotMagOverlay />
+      </StyledHotMag>
+      <StyledSections>
+        <Slidebar
+          varient="todayBig"
+          dataType="magazine"
+          title="매거진"
+          titleLink=""
+          data={Magazines}
+        />
+      </StyledSections>
+      <StyledSections>
+        <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
+      </StyledSections>
+      <StyledSections>
+        <Slidebar
+          varient="todayBig"
+          dataType="playlist"
+          title="VIBE 추천 플레이리스트"
+          titleLink=""
+          data={Playlists}
+        />
+      </StyledSections>
     </>
   );
 });

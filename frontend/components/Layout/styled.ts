@@ -7,9 +7,12 @@ const StyledLayout = styled.div`
 
 const StyledContent = styled.div`
   display: block;
-  width: 100%;
-  background-color: #fff;
+  position: relative;
   box-sizing: border-box;
+  left: 15em;
+  width: calc(100% - 15em);
+  background-color: #fff;
+  padding: 0em 10em;
 `;
 
 export { StyledLayout, StyledContent };

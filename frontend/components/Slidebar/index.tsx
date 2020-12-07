@@ -34,6 +34,12 @@ const SlideContainer = styled.div`
   position: relative;
 `;
 
+const StyledTitle = styled.div`
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 1em 0em;
+`;
+
 const SlideContent = styled.ul<TranslateProps>`
   display: flex;
   & > li:first-child {
@@ -104,10 +110,12 @@ const Slidebar: React.FC<SlidebarProps> = ({
 
   return (
     <StyledSlidebar varient={varient}>
-      <a href={titleLink}>
-        {title}
-        {titleLink ? <NextArrowSvg /> : ""}
-      </a>
+      <StyledTitle>
+        <a href={titleLink}>
+          {title}
+          {titleLink ? <NextArrowSvg /> : ""}
+        </a>
+      </StyledTitle>
       <SlideContainer>
         <SlideContent currentTranslateX={currentTranslateX} ref={currentSlideRef}>
           {data?.map((value: any, idx: number) => (
