@@ -8,7 +8,8 @@ const NavBarUser = memo(
   ({ loggedIn, setLoggedIn }: { loggedIn: boolean; setLoggedIn: Function }) => {
     const defaultID = 0;
     const defaultUsername = "로그인";
-    const defaultProfile = "https://i.ytimg.com/vi/tgMdlJLSOy4/maxresdefault.jpg";
+    const defaultProfile =
+      "https://www.nailseatowncouncil.gov.uk/wp-content/uploads/blank-profile-picture-973460_1280.jpg";
     const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
 
     const [userID, setUserID] = useState(defaultID);
