@@ -1,4 +1,4 @@
-import { Album, Artist } from "../../../interfaces";
+import { Album, Artist } from "../../interfaces";
 
 // State
 export interface CheckedTrack {

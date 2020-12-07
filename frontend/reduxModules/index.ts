@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import checkedTrackReducer from "./Tracklist/CheckedTrackReducer";
+import checkedTrackReducer from "./checkedTrack";
 
 const rootReducer = combineReducers({
   checkedTrackReducer,

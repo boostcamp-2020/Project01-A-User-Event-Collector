@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "@reduxjs/toolkit";
+import { pushTrack, removeTrack } from "../../../../reduxModules/checkedTrack";
 import { Album, Artist } from "../../../../interfaces";
 
 interface TrackData {
@@ -22,7 +24,10 @@ const CheckBox: FC<Props> = ({ trackData }: Props) => {
   const checkHandler = () => setIsChecked(!isChecked);
 
   useEffect(() => {
-    if (isChecked) console.log(trackData);
+    if (isChecked) {
+      console.log(trackData);
+    } else {
+    }
   }, [isChecked]);
 
   return (
