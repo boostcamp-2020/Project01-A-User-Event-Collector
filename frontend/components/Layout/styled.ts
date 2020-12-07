@@ -10,7 +10,7 @@ const StyledContent = styled.div`
   position: relative;
   box-sizing: border-box;
   left: 15em;
-  width: 100%;
+  width: calc(100% - 15em);
   background-color: #fff;
   padding: 0em 10em;
 `;
