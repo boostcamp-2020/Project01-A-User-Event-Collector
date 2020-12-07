@@ -8,7 +8,8 @@ const StyledHotMag = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 4em 0em;
+  margin-top: 4em;
+  margin-bottom: 6em;
 `;
 
 const StyledHotMagOverlay = styled.div`
