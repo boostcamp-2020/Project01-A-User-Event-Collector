@@ -42,13 +42,13 @@ const NavBarUser = memo(
         {loggedIn ? (
           <StyledNavUser>
             <Img varient="profile" src={userProfile} />
-            <StyledUser>{username}</StyledUser>
+            <StyledUser loggedIn={loggedIn}>{username}</StyledUser>
           </StyledNavUser>
         ) : (
           <Link href={naverLoginURL}>
             <StyledNavUser>
               <Img varient="profile" src={defaultProfile} />
-              <StyledUser>{defaultUsername}</StyledUser>
+              <StyledUser loggedIn={loggedIn}>{defaultUsername}</StyledUser>
             </StyledNavUser>
           </Link>
         )}
