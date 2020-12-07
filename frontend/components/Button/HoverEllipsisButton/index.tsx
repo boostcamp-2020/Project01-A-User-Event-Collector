@@ -8,8 +8,11 @@ export const StyledEllipsisButton = styled.button`
   background-color: transparent;
   fill: white;
   position: absolute;
+  border: none;
+  outline: none;
   right: 10%;
   bottom: 10%;
+  cursor: pointer;
 `;
 
 const HoverEllipsisButton: React.FC = () => {
