@@ -1,8 +1,16 @@
 import React, { memo } from "react";
+import Img from "../Img";
 import icons from "../../constant/icons";
 import {
   StyledPlaybar,
-  StyledSongSection,
+  StyledTrackSection,
+  StyledImgSection,
+  StyledTrackInfo,
+  StyledTrackTitle,
+  StyledTrackArtists,
+  StyledEmptyHeart,
+  StyledFilledHeart,
+  StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
   StyledTrackTime,
@@ -15,9 +23,29 @@ import {
 } from "./styled";
 
 const Playbar = memo(() => {
+  const trackImg =
+    "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2528/image/gAQwYrfgzrdhkL4odG7BDoaIHu8";
+  const trackname = "보자보자";
+  const trackArtists = ["머쉬베놈"];
+  const liked = true;
+
   return (
     <StyledPlaybar>
-      <StyledSongSection>노래</StyledSongSection>
+      <StyledTrackSection>
+        <StyledImgSection>
+          <Img varient="nowPlayingCover" src={trackImg} />
+        </StyledImgSection>
+        <StyledTrackInfo>
+          <StyledTrackTitle>{trackname}</StyledTrackTitle>
+          <StyledTrackArtists>{trackArtists.join(", ")}</StyledTrackArtists>
+        </StyledTrackInfo>
+        {liked ? (
+          <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>
+        ) : (
+          <StyledEmptyHeart>{icons.emptyHeart}</StyledEmptyHeart>
+        )}
+        <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
+      </StyledTrackSection>
       <StyledMainControlSection>
         <StyledMainButtons>
           <StyledSideButtons>{icons.random}</StyledSideButtons>

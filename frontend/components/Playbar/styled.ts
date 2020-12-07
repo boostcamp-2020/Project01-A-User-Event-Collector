@@ -12,9 +12,73 @@ const StyledPlaybar = styled.div`
   z-index: 15;
 `;
 
-const StyledSongSection = styled.div`
+const StyledTrackSection = styled.div`
   display: flex;
+  justify-content: start;
+  align-items: center;
   width: 30%;
+  box-sizing: border-box;
+`;
+
+const StyledImgSection = styled.div`
+  display: block;
+  margin: 0em 1.5em;
+  cursor: pointer;
+`;
+
+const StyledTrackInfo = styled.div`
+  display: flex;
+  width: 8.5em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledTrackTitle = styled.div`
+  display: flex;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 0.5em;
+  font-size: 1.05em;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const StyledTrackArtists = styled.div`
+  display: flex;
+  width: 100%;
+  color: #888;
+  font-size: 0.95em;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const StyledEmptyHeart = styled.div`
+  color: #555;
+  font-size: 1.5em;
+  cursor: pointer;
+`;
+
+const StyledFilledHeart = styled.div`
+  color: #fe1250;
+  font-size: 1.5em;
+  cursor: pointer;
+`;
+
+const StyledEllipsis = styled.div`
+  display: flex;
+  color: #555;
+  font-size: 1.5em;
+  margin: 0em 1em;
+  cursor: pointer;
+  &:hover {
+    color: #aaa;
+  }
 `;
 
 const StyledMainControlSection = styled.div`
@@ -37,6 +101,7 @@ const StyledSideButtons = styled.button`
   outline: none;
   margin: 0em 0.5em;
   border: none;
+  cursor: pointer;
 `;
 
 const StyledMiddleButtons = styled.button`
@@ -46,6 +111,7 @@ const StyledMiddleButtons = styled.button`
   outline: none;
   border: none;
   margin: 0em 0.5em;
+  cursor: pointer;
 `;
 
 const StyledPlayButtons = styled.button`
@@ -55,6 +121,7 @@ const StyledPlayButtons = styled.button`
   outline: none;
   border: none;
   margin: 0em 0.5em;
+  cursor: pointer;
 `;
 
 const StyledSideControlSection = styled.div`
@@ -76,7 +143,14 @@ const StyledPlaylistButton = styled.div`
 
 export {
   StyledPlaybar,
-  StyledSongSection,
+  StyledTrackSection,
+  StyledImgSection,
+  StyledTrackInfo,
+  StyledTrackTitle,
+  StyledTrackArtists,
+  StyledEmptyHeart,
+  StyledFilledHeart,
+  StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
   StyledTrackTime,
