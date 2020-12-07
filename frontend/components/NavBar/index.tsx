@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import LinkCardBlock from "./LinkCardBlock";
 import NavTopLogoSearch from "./NavTopLogoSearch";
 import NavBarUser from "./NavBarUser";
@@ -10,12 +10,14 @@ export enum Theme {
 }
 
 const NavBar = memo(() => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <StyledNavBar>
       <NavTopLogoSearch />
-      <NavBarUser />
+      <NavBarUser loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <LinkCardBlock theme={Theme.Main} />
-      <LinkCardBlock theme={Theme.Library} />
+      {loggedIn ? <LinkCardBlock theme={Theme.Library} /> : ""}
     </StyledNavBar>
   );
 });
