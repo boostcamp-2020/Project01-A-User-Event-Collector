@@ -68,6 +68,7 @@ const Slidebar: React.FC<SlidebarProps> = ({
     if (newTranslateX > 0) {
       setCurrentTranslateX(0);
       setPreviousHide(true);
+      setNextHide(false);
       return;
     }
     setCurrentTranslateX(newTranslateX);
@@ -77,13 +78,16 @@ const Slidebar: React.FC<SlidebarProps> = ({
   const onNextClicked = () => {
     const { current } = currentSlideRef;
     if (current !== null) {
-      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
-      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
+      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
+      const cardWidth = Number(cardStyles.width.slice(0, -2));
+      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
+      const maxCardWidth = (cardWidth + cardMargin) * data.length - cardMargin - containerWidth;
       const newTranslateX = currentTranslateX - slidePixels;
-      if (newTranslateX < -containerWidth) {
-        setCurrentTranslateX(-containerWidth + cardMargin);
+      if (newTranslateX < -maxCardWidth) {
+        setCurrentTranslateX(-maxCardWidth);
         setNextHide(true);
+        setPreviousHide(false);
         return;
       }
       setCurrentTranslateX(newTranslateX);
@@ -100,6 +104,11 @@ const Slidebar: React.FC<SlidebarProps> = ({
       const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const viewedCards = Math.floor(containerWidth / cardWidth);
       setSlidePixels((cardWidth + cardMargin) * viewedCards);
+      if (containerWidth >= (cardWidth + cardMargin) * data.length) {
+        setPreviousHide(true);
+        setNextHide(true);
+      }
+      console.log(containerWidth);
     }
   };
 
