@@ -23,7 +23,6 @@ app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
 
 app.listen(process.env.PORT || 4000, () => {
-  // eslint-disable-next-line no-console
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
   if (process.env.NODE_ENV) {
     console.log(`Server is on http://localhost:${process.env.PORT || 4000}`);
