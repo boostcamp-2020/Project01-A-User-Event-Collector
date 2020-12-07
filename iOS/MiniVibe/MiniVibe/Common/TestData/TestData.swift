@@ -51,6 +51,16 @@ struct TestData {
 //                 type: .magazines,
 //                 mode: .full),
 //        ]
+    static let defaultTrack = Track(id: 37,
+                                    name: "Dynamite (Instrumental)",
+                                    albumTrackNumber: 2,
+                                    albumID: 8,
+                                    album: Album(id: 8,
+                                                 name: "Dynamite",
+                                                 description: "방탄",
+                                                 cover: "https://musicmeta-phinf.pstatic.net/album/004/820/4820425.jpg?type=r360Fll&v=20200918130108"),
+                                    artists: [Artist(id: 3, name: "방탄소년단", cover: nil)])
+    
     static let playlist
         = Playlist(id: 1,
                    name: "잠못드는 밤",

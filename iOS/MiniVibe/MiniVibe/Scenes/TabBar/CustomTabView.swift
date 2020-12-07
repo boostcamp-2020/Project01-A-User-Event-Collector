@@ -10,12 +10,13 @@ import SwiftUI
 struct CustomTabView: View {
     
     @State var selectedTab: MiniVibeTab = MiniVibeTab.today
-    @StateObject var playerViewModel = PlayerViewModel()
+    @ObservedObject var playerViewModel: PlayerViewModel
     
     private let manager: AnalyticsManager
 
     init(manager: AnalyticsManager) {
         self.manager = manager
+        self.playerViewModel = PlayerViewModel(manager: manager)
     }
 
     var body: some View {
@@ -70,6 +71,7 @@ struct CustomTabView: View {
             }
         }
         .environmentObject(playerViewModel)
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
