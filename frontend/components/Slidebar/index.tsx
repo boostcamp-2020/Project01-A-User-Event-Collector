@@ -110,7 +110,7 @@ const Slidebar: React.FC<SlidebarProps> = ({
       </a>
       <SlideContainer>
         <SlideContent currentTranslateX={currentTranslateX} ref={currentSlideRef}>
-          {data?.map((value: any, , idx: number) => (
+          {data?.map((value: any, idx: number) => (
             <Card key={`card${-idx}`} varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
