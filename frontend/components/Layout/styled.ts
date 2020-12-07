@@ -5,6 +5,19 @@ const StyledLayout = styled.div`
   height: 100vh;
 `;
 
+const StyledSearchBar = styled.div`
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  top: 0em;
+  background-color: #fff;
+  width: calc(100vw - 15em);
+  right: 0em;
+  height: 5em;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledContent = styled.div`
   display: block;
   position: relative;
@@ -15,4 +28,4 @@ const StyledContent = styled.div`
   padding: 0em 10em;
 `;
 
-export { StyledLayout, StyledContent };
+export { StyledLayout, StyledContent, StyledSearchBar };
