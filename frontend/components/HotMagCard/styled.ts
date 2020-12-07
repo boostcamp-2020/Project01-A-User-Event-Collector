@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledHotMagCard = styled.div`
   display: flex;
   background-color: #fff;
+  width: 100%;
 `;
 
 const StyledDescriptionLabel = styled.div`
