@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import TrackModal from "./TrackModal";
 import Link from "next/link";
+import TrackModal from "./TrackModal";
 import Img from "../../Img";
 import { Album, Artist } from "../../../interfaces";
+import CheckBox from "./CheckBox";
 
 interface Props {
   id: number;
@@ -28,7 +29,7 @@ const ChildElem = styled.div`
   flex: 1;
 `;
 
-const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
+const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }: Props) => {
   const { albumName, id: albumId, cover } = Albums;
 
   const artistArr = Artists.map((elem: Artist) => {
@@ -37,6 +38,7 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }) => {
 
   return (
     <StyleTrack>
+      <CheckBox />
       <Img src={cover} varient="trackCardCover" />
 
       <ChildElem>
