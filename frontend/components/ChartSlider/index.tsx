@@ -49,10 +49,6 @@ const SlideContent = styled.ul`
   position: relative;
   width: 100%;
   height: 100%;
-  & > li {
-    margin: 0;
-    padding: 0 1rem;
-  }
   padding-inline-start: 0;
 `;
 
