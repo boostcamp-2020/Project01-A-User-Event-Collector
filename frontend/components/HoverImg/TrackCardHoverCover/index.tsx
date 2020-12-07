@@ -13,11 +13,11 @@ export const StyledTrackCardHoverCover = styled.div<Props>`
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: #00000099;
-  z-index: 5;
+  background-color: #fff; // TODO: 색상 수정
+  z-index: 1;
   display: ${(props) => (props.hover ? "block" : "none")};
   & svg {
-    fill: #ffffff99;
+    fill: #fff; // TODO: 색상 수정
     background-color: transparent;
     width: 60%;
     height: 60%;
