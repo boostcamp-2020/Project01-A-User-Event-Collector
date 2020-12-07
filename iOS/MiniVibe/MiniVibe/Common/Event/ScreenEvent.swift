@@ -24,4 +24,9 @@ struct ScreenEvent: AnalyticsEvent {
         return ScreenEvent(name: "\(type)Viewed")
     }
     
+    //재생 화면은 좀 더 신경 써야해서 따로 빼놨습니다.
+    static let playerPushed = ScreenEvent(name: "playerPushed")
+
+    static let playerPopped = ScreenEvent(name: "playerPopped")
+    
 }
