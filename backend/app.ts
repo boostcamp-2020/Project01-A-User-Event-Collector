@@ -22,11 +22,12 @@ app.use(cors());
 app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
 
-app.listen(process.env.PORT || 3000, () => {
+
+app.listen(process.env.PORT || 4000, () => {
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
-  if (!process.env.NODE_ENV) {
-    console.log(`Server is on http://localhost:${process.env.PORT || 3000}`);
-    console.log(`And http://127.0.0.1:${process.env.PORT || 3000}`);
+  if (process.env.NODE_ENV) {
+    console.log(`Server is on http://localhost:${process.env.PORT || 4000}`);
+    console.log(`And http://127.0.0.1:${process.env.PORT || 4000}`);
   } else {
     // TODO: Servery URL 올리기
   }

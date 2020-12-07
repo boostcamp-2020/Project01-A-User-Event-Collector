@@ -12,8 +12,7 @@ const authenticate = (
     req.user = user;
     next();
   } catch (err) {
-    console.log(err);
-    return res.status(401).send({ message: "Unauthorized" });
+    return res.status(401).send({ message: "Unauthorized", err });
   }
 };
 
