@@ -67,6 +67,10 @@ const genreData = [
   },
 ];
 
+const StyledChartPageWrapper = styled.div`
+  margin: 5em 7em;
+`;
+
 const StyledPagetitle = styled.div`
   font-size: 2em;
   font-weight: bold;
@@ -75,12 +79,12 @@ const StyledPagetitle = styled.div`
 
 const ChartsPage = memo(() => {
   return (
-    <>
+    <StyledChartPageWrapper>
       <StyledPagetitle>차트</StyledPagetitle>
       <ChartSlider title="TOP 100" titleLink="" data={mockData.data} />
       <ChartSlider title="국내 TOP 100" titleLink="" data={mockData.data} />
       <GenreContainer title="장르 바로가기" data={genreData} />
-    </>
+    </StyledChartPageWrapper>
   );
 });
 
