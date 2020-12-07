@@ -103,19 +103,29 @@ const Slidebar: React.FC<SlidebarProps> = ({
       const cardWidth = Number(cardStyles.width.slice(0, -2));
       const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const viewedCards = Math.floor(containerWidth / cardWidth);
+      const maxCardWidth = (cardWidth + cardMargin) * data.length - cardMargin - containerWidth;
       setSlidePixels((cardWidth + cardMargin) * viewedCards);
+      if (nextHide && !previousHide) {
+        // 우측 끝에 붙어있었을 때
+        setCurrentTranslateX(-maxCardWidth);
+        return;
+      }
       if (containerWidth >= (cardWidth + cardMargin) * data.length) {
         setPreviousHide(true);
         setNextHide(true);
+      } else {
+        setNextHide(false);
       }
-      console.log(containerWidth);
     }
   };
 
   useEffect(() => {
     calculatePixels();
     window.addEventListener("resize", calculatePixels);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", calculatePixels);
+    };
+  }, [nextHide]);
 
   return (
     <StyledSlidebar varient={varient}>
