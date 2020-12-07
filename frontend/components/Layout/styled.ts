@@ -7,7 +7,7 @@ const StyledLayout = styled.div`
 
 const StyledSearchBar = styled.div`
   display: flex;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0em;
   background-color: #fff;
