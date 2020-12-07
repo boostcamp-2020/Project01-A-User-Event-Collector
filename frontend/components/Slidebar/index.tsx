@@ -79,7 +79,9 @@ const Slidebar: React.FC<SlidebarProps> = ({
     const { current } = currentSlideRef;
     if (current !== null) {
       const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
-      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
+      const cardStyles = window.getComputedStyle(
+        current.firstElementChild?.nextElementSibling || new Element(),
+      );
       const cardWidth = Number(cardStyles.width.slice(0, -2));
       const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const maxCardWidth = (cardWidth + cardMargin) * data.length - cardMargin - containerWidth;
@@ -99,7 +101,9 @@ const Slidebar: React.FC<SlidebarProps> = ({
     const { current } = currentSlideRef;
     if (current !== null) {
       const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
-      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
+      const cardStyles = window.getComputedStyle(
+        current.firstElementChild?.nextElementSibling || new Element(),
+      );
       const cardWidth = Number(cardStyles.width.slice(0, -2));
       const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const viewedCards = Math.floor(containerWidth / cardWidth);
