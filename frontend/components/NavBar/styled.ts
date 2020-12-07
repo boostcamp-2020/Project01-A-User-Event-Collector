@@ -8,7 +8,8 @@ const StyledNavBar = styled.div`
   width: 15em;
   min-height: 100%;
   box-sizing: border-box;
-  padding: 0.75em;
+  padding: 1.5em;
+  z-index: 9;
 `;
 
 export default StyledNavBar;

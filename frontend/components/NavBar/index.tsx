@@ -9,17 +9,19 @@ export enum Theme {
   Library = "library",
 }
 
-const NavBar = memo(() => {
-  const [loggedIn, setLoggedIn] = useState(false);
+const NavBar = memo(
+  ({ handleSearch }: { handleSearch: () => void }): React.ReactElement => {
+    const [loggedIn, setLoggedIn] = useState(false);
 
-  return (
-    <StyledNavBar>
-      <NavTopLogoSearch />
-      <NavBarUser loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <LinkCardBlock theme={Theme.Main} />
-      {loggedIn ? <LinkCardBlock theme={Theme.Library} /> : ""}
-    </StyledNavBar>
-  );
-});
+    return (
+      <StyledNavBar>
+        <NavTopLogoSearch handleSearch={handleSearch} />
+        <NavBarUser loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <LinkCardBlock theme={Theme.Main} />
+        {loggedIn ? <LinkCardBlock theme={Theme.Library} /> : ""}
+      </StyledNavBar>
+    );
+  },
+);
 
 export default NavBar;
