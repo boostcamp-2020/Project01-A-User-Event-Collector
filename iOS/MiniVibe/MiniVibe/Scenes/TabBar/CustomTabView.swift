@@ -12,16 +12,22 @@ struct CustomTabView: View {
     @State var selectedTab: MiniVibeTab = MiniVibeTab.today
     @StateObject var playerViewModel = PlayerViewModel()
     
+    private let manager: AnalyticsManager
+
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
                 if case MiniVibeTab.today = selectedTab {
-                    TodayView()
+                    TodayView(manager: manager)
                 } else if case MiniVibeTab.chart = selectedTab {
-                    ChartView(playlistID: 18)
+                    ChartView(playlistID: 18, manager: manager)
                 } else if case MiniVibeTab.search = selectedTab {
-                    SearchView()
+                    SearchView(manager: manager)
                 } else if case MiniVibeTab.library = selectedTab {
                     //보관함뷰 여기에 추가
                     VStack {
@@ -76,13 +82,13 @@ extension CustomTabView {
     }
 }
 
-struct CustomTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            CustomTabView()
-            CustomTabView()
-                .previewDevice("iPhone SE (2nd generation)")
-        }
-    }
-}
+//struct CustomTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            CustomTabView()
+//            CustomTabView()
+//                .previewDevice("iPhone SE (2nd generation)")
+//        }
+//    }
+//}
 
