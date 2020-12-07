@@ -63,6 +63,7 @@ struct CustomTabView: View {
                 }
             }
         }
+        .environmentObject(playerViewModel)
     }
 }
 
