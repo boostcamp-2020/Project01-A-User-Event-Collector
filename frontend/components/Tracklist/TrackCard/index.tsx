@@ -38,7 +38,7 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }: Props) => {
 
   return (
     <StyleTrack>
-      <CheckBox />
+      <CheckBox trackData={{ id, trackName, Albums, Artists }} />
       <Img src={cover} varient="trackCardCover" />
 
       <ChildElem>
