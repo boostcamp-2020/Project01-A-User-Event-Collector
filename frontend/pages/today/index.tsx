@@ -11,8 +11,10 @@ const StyledHotMag = styled.div`
 const StyledSections = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2em 0em 1em 0em;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 0.5em 0em;
+  & + & {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
