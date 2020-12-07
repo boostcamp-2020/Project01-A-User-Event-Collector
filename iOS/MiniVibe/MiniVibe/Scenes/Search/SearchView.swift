@@ -18,21 +18,24 @@ struct SearchView: View {
     }
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: layout,
-                      spacing: 20,
-                      pinnedViews: [.sectionHeaders]) {
-                Section(header: SearchBarView(viewModel: viewModel)) {
-                    if viewModel.isEditing {
-                        SearchAfterView(viewModel: viewModel)
-                            .animation(.easeIn)
-                            .transition(.slide)
-                    } else {
-                        SearchBeforeView()
+        NavigationView {
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: layout,
+                          spacing: 20,
+                          pinnedViews: [.sectionHeaders]) {
+                    Section(header: SearchBarView(viewModel: viewModel)) {
+                        if viewModel.isEditing {
+                            SearchAfterView(viewModel: viewModel)
+                                .animation(.easeIn)
+                                .transition(.slide)
+                        } else {
+                            SearchBeforeView()
+                        }
                     }
                 }
             }
-        }.navigationTitle("검색")
+            .navigationTitle("검색")
+        }
         .padding()
         .onAppear {
             manager.log(ScreenEvent.screenViewed(.search))
