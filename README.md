@@ -8,7 +8,8 @@
 <br><br>
 
 # Technology Stack
-![stack](https://user-images.githubusercontent.com/48251136/100568098-8b530f80-330d-11eb-8a39-fcbc63845dbc.png)
+![stack](https://user-images.githubusercontent.com/48251136/101351939-bc66ad80-38d4-11eb-8d7c-6091a4330b1c.png)
+
 
 <br><br>
 
