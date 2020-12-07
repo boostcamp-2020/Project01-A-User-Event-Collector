@@ -14,16 +14,28 @@ const StyledSlidebar = styled.div<Props>`
   display: flex;
   flex-direction: column;
   width: 70rem;
-  height: 15rem;
   & > a > svg {
     width: 0.7rem;
     height: 0.7rem;
   }
+  &: nth-child(n) {
+    margin-top: 2em;
+    margin-bottom: 4em;
+    border-bottom: 0.1em solid rgba(0, 0, 0, 0.05);
+  }
+`;
+
+const StyledSlidebarTitle = styled.div`
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.2em;
 `;
 
 const SlideContainer = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
+  margin: 1em 0em;
   position: relative;
   width: 100%;
   height: 100%;
@@ -67,10 +79,12 @@ const ChartSlider: React.FC<Props> = ({ title, titleLink, data }: Props) => {
 
   return (
     <StyledSlidebar>
-      <a href={titleLink}>
-        {title}
-        <NextArrowSvg />
-      </a>
+      <StyledSlidebarTitle>
+        <a href={titleLink}>
+          {title}
+          {/* <NextArrowSvg /> */}
+        </a>
+      </StyledSlidebarTitle>
       <SlideContainer>
         <SlideContent ref={currentSlideRef}>
           {data?.map((value: any) => (
