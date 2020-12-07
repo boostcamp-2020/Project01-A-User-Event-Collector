@@ -6,6 +6,7 @@ const StyledPlaybar = styled.div`
   bottom: 0em;
   border: 2px solid red;
   background-color: red;
+  z-index: 10;
 `;
 
 export default StyledPlaybar;

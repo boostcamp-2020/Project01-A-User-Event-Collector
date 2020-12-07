@@ -11,11 +11,13 @@ const StyledNavLogo = styled.div`
   width: 88%;
   color: #fff;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const StyledNavNaver = styled.span`
-  font-size: 0.75em;
-  padding: 0em 0.5em;
+  font-size: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.25em;
   font-weight: bold;
 `;
 
@@ -28,6 +30,7 @@ const StyledNavSearch = styled.div`
   align-items: center;
   width: 12%;
   color: #fff;
+  cursor: pointer;
 `;
 
 export { StyledNavTopLogoSearch, StyledNavLogo, StyledNavNaver, StyledNavVibe, StyledNavSearch };

@@ -1,5 +1,7 @@
 import React, { memo } from "react";
 import { useRouter } from "next/router";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   StyledNavTopLogoSearch,
   StyledNavLogo,
@@ -17,7 +19,9 @@ const NavTopLogoSearch = memo(() => {
         <StyledNavNaver>NAVER</StyledNavNaver>
         <StyledNavVibe>Vibe</StyledNavVibe>
       </StyledNavLogo>
-      <StyledNavSearch>돋</StyledNavSearch>
+      <StyledNavSearch>
+        <FontAwesomeIcon icon={faSearch} />
+      </StyledNavSearch>
     </StyledNavTopLogoSearch>
   );
 });
