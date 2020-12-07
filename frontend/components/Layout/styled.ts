@@ -11,7 +11,7 @@ const StyledContent = styled.div`
   box-sizing: border-box;
   left: 15em;
   width: calc(100% - 15em);
-  background-color: #fff;
+  background-color: #f2f2f2;
   padding: 0em 10em;
 `;
 
