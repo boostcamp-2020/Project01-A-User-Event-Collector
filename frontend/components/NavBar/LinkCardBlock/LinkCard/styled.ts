@@ -14,9 +14,9 @@ interface StyledProps {
 }
 
 const StyledLinkCard = styled.div`
-  color: #fff;
+  color: #ccc;
   &:hover {
-    color: #ff0350;
+    color: #fff;
   }
   ${({ theme, icon }: StyledProps) => {
     switch (theme) {
@@ -31,14 +31,14 @@ const StyledLinkCard = styled.div`
       default:
         return `
           height: 1.25em;
-          font-size: 1.5em;
+          font-size: 1.25em;
           && {
             margin: 0em 0em 1em 0em;
           }
 
           &::before {
             content: "${icons[icon]}";
-            margin: 0 10px;
+            margin-right: 0.5em;
           }
         `;
     }
