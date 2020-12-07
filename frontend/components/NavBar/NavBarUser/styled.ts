@@ -9,13 +9,29 @@ const StyledNavUser = styled.div`
   margin: 1.5em 0em;
   border-top: 0.1em solid #282828;
   border-bottom: 0.1em solid #282828;
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledUser = styled.div`
-  color: #fff;
   padding-left: 0.4em;
-  font-size: 1em;
-  line-height: 1em;
+  margin-left: 0.3em;
+  font-size: 1.25em;
+  ${({ loggedIn }: { loggedIn: boolean }) => {
+    return loggedIn
+      ? `
+        line-height: 1.25em;
+        color: #ccc;
+        `
+      : `
+        line-height: 1em;
+        color: #888;
+        `;
+  }}
+  &: hover {
+    color: #fff;
+  } ;
 `;
 
 export { StyledNavUser, StyledUser };
