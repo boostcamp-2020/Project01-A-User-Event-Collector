@@ -12,7 +12,7 @@ struct MiniVibeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            CustomTabView()
         }
     }
 }

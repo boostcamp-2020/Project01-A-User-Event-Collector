@@ -9,7 +9,7 @@ import Foundation
 
 struct URLBuilder {
     
-    let baseURL = "http://101.101.209.207:3000/"
+    let baseURL = "http://118.67.135.69:4000/"
     let pathType: PathType
     let endPoint: MiniVibeType
     let id: Int?
