@@ -27,8 +27,8 @@ const LinkCardBlock = memo(({ theme }: Props) => {
   return (
     <>
       {arr.map((el: any) => (
-        <StyledLinkCardBlock>
-          <LinkCard theme={theme} icon={el.icon} key={el.name} href={el.href}>
+        <StyledLinkCardBlock key={el.name}>
+          <LinkCard theme={theme} icon={el.icon} href={el.href}>
             {el.name}
           </LinkCard>
         </StyledLinkCardBlock>
