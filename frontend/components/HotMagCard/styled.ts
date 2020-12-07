@@ -5,6 +5,11 @@ const StyledHotMagCard = styled.div`
   background-color: #fff;
 `;
 
+const StyledDescriptionLabel = styled.div`
+  display: flex;
+  margin: 0.25em 0em;
+`;
+
 const StyledDescription = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,12 +21,14 @@ const StyledDescriptionTitle = styled.div`
   display: flex;
   font-size: 2.75em;
   font-weight: bold;
+  margin: 0.25em 0em;
 `;
 
 const StyledDescriptionContent = styled.div`
   display: flex;
   font-size: 1em;
   color: #939393;
+  margin: 0.25em 0em;
 `;
 
 const StyledDescriptionInfo = styled.div`
@@ -29,9 +36,11 @@ const StyledDescriptionInfo = styled.div`
   display: flex;
   font-size: 1em;
   color: #939393;
+  margin: 0.25em 0em;
 `;
 
 const StyledDate = styled.span`
+  margin: 0.25em 0em;
   &::before {
     content: "-";
   }
@@ -40,6 +49,7 @@ const StyledDate = styled.span`
 export {
   StyledHotMagCard,
   StyledDescription,
+  StyledDescriptionLabel,
   StyledDescriptionTitle,
   StyledDescriptionContent,
   StyledDescriptionInfo,
