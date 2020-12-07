@@ -126,19 +126,61 @@ const StyledPlayButtons = styled.button`
 
 const StyledSideControlSection = styled.div`
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 30%;
 `;
 
 const StyledTrackTime = styled.div`
   display: block;
+  color: #555;
+  &:color {
+    color: #fff;
+  }
 `;
 
 const StyledTrackVolume = styled.div`
-  display: block;
+  display: flex;
+  color: #fff;
+  margin: 2em;
+`;
+
+const StyledTrackVolumeSlide = styled.input`
+  -webkit-appearance: none;
+
+  &::-webkit-slider-runnable-track {
+    background-color: #555;
+    height: 0.5em;
+    &:hover {
+      background-color: #555;
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: none;
+    height: 0em;
+    width: 16px;
+    margin-top: -0.3em;
+  }
+`;
+
+const StyledPlaylistButtonWrapper = styled.div`
+  display: flex;
+  min-width: 6em;
+  min-height: 6em;
+  justify-content: center;
+  align-items: center;
+  border-left: 0.1em solid #555;
+  cursor: pointer;
 `;
 
 const StyledPlaylistButton = styled.div`
-  display: block;
+  display: flex;
+  font-size: 2em;
+  color: #555;
 `;
 
 export {
@@ -155,6 +197,8 @@ export {
   StyledSideControlSection,
   StyledTrackTime,
   StyledTrackVolume,
+  StyledTrackVolumeSlide,
+  StyledPlaylistButtonWrapper,
   StyledPlaylistButton,
   StyledMainButtons,
   StyledSideButtons,

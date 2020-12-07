@@ -15,6 +15,8 @@ import {
   StyledSideControlSection,
   StyledTrackTime,
   StyledTrackVolume,
+  StyledTrackVolumeSlide,
+  StyledPlaylistButtonWrapper,
   StyledPlaylistButton,
   StyledMainButtons,
   StyledSideButtons,
@@ -28,6 +30,8 @@ const Playbar = memo(() => {
   const trackname = "보자보자";
   const trackArtists = ["머쉬베놈"];
   const liked = true;
+  const fullPlayTime = "3:32";
+  const currentPlayTime = "1:32";
 
   return (
     <StyledPlaybar>
@@ -56,9 +60,15 @@ const Playbar = memo(() => {
         </StyledMainButtons>
       </StyledMainControlSection>
       <StyledSideControlSection>
-        <StyledTrackTime>01:02/03:42</StyledTrackTime>
-        <StyledTrackVolume>불륨</StyledTrackVolume>
-        <StyledPlaylistButton>블륨</StyledPlaylistButton>
+        <StyledTrackTime>
+          {currentPlayTime} / {fullPlayTime}
+        </StyledTrackTime>
+        <StyledTrackVolume>
+          <StyledTrackVolumeSlide type="range" />
+        </StyledTrackVolume>
+        <StyledPlaylistButtonWrapper>
+          <StyledPlaylistButton>{icons.list}</StyledPlaylistButton>
+        </StyledPlaylistButtonWrapper>
       </StyledSideControlSection>
     </StyledPlaybar>
   );
