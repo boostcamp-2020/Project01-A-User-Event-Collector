@@ -1,0 +1,1222 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		339F5D98C64C2189DBB1B27E /* Pods_MiniVibe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F7D5640669987CC9A0E50E /* Pods_MiniVibe.framework */; };
+		512EAC2B2577B7DD00315D12 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512EAC2A2577B7DD00315D12 /* TodayViewModel.swift */; };
+		514FDD8E25761F6800F6BF93 /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514FDD8D25761F6800F6BF93 /* Magazine.swift */; };
+		515D266A2575220B00B542BF /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26632575220B00B542BF /* Track.swift */; };
+		515D266C2575220B00B542BF /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26652575220B00B542BF /* Album.swift */; };
+		515D266D2575220B00B542BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26662575220B00B542BF /* User.swift */; };
+		515D266E2575220B00B542BF /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26672575220B00B542BF /* Artist.swift */; };
+		515D266F2575220B00B542BF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26682575220B00B542BF /* Playlist.swift */; };
+		515D26752575224A00B542BF /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26742575224A00B542BF /* TestData.swift */; };
+		515D26812575385B00B542BF /* TrackPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26802575385B00B542BF /* TrackPageView.swift */; };
+		515D268C2575E9C700B542BF /* TrackGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D268B2575E9C700B542BF /* TrackGroupView.swift */; };
+		515D26922575FAFF00B542BF /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26912575FAFF00B542BF /* ChartView.swift */; };
+		5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181EA7F2570A0DA0077A727 /* NowPlayingView.swift */; };
+		5181EA882570A0E70077A727 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181EA872570A0E70077A727 /* PlayerViewModel.swift */; };
+		5188C3F2257715D6001601E6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C3F1257715D6001601E6 /* ActivityIndicatorView.swift */; };
+		5188C3F725772ECC001601E6 /* TemporaryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C3F625772ECC001601E6 /* TemporaryImageCache.swift */; };
+		5188C3FC25773123001601E6 /* ImageCacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C3FB25773123001601E6 /* ImageCacheKey.swift */; };
+		51BBBD7425763375009A6852 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD7325763375009A6852 /* RequestBuilder.swift */; };
+		51BBBD7D25763398009A6852 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD7C25763398009A6852 /* URLBuilder.swift */; };
+		51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD84257662E1009A6852 /* PlaylistViewModel.swift */; };
+		51BBBD9025766A9E009A6852 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD8F25766A9E009A6852 /* ErrorView.swift */; };
+		51BE9E3925777BF300CE41A6 /* Rectangle+Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE9E3825777BF300CE41A6 /* Rectangle+Modifier.swift */; };
+		51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB32F256F3C8600FB2876 /* DJStation.swift */; };
+		51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */; };
+		51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEB331256F3C8600FB2876 /* DJStationListView.swift */; };
+		51D6C6E225721D7A00EF1B26 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D6C6E125721D7A00EF1B26 /* TabBarView.swift */; };
+		51D6C6EF2572220300EF1B26 /* Image+accesoryModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D6C6EE2572220300EF1B26 /* Image+accesoryModifier.swift */; };
+		51D6C6F82572418800EF1B26 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D6C6F72572418800EF1B26 /* PlayerView.swift */; };
+		51D6C7032572725500EF1B26 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D6C7022572725500EF1B26 /* BlurView.swift */; };
+		51E4E254257712AF00553E6E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E4E253257712AE00553E6E /* ImageLoader.swift */; };
+		51E4E25C257712E300553E6E /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E4E25B257712E300553E6E /* AsyncImage.swift */; };
+		51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2D9256F7E3C00DB32CB /* CategoryView.swift */; };
+		51EED2E0256F7E3C00DB32CB /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DA256F7E3C00DB32CB /* CategoryItem.swift */; };
+		51EED2E1256F7E3C00DB32CB /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DB256F7E3C00DB32CB /* CategoryHeaderView.swift */; };
+		51EED2E2256F7E3C00DB32CB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DC256F7E3C00DB32CB /* Category.swift */; };
+		51EED2E3256F7E3C00DB32CB /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DD256F7E3C00DB32CB /* TodayView.swift */; };
+		51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EED2DE256F7E3C00DB32CB /* CategoryCellView.swift */; };
+		8709AE49B2C72C3786052B43 /* Pods_MiniVibe_MiniVibeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B777AFABB2526174881731F0 /* Pods_MiniVibe_MiniVibeUITests.framework */; };
+		A063B5328E81DB6042F6CDD6 /* Pods_MiniVibeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A87315C1F33F43D615A60C /* Pods_MiniVibeTests.framework */; };
+		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
+		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
+		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
+		CF05F8AF2567E7B0008080D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AE2567E7B0008080D7 /* Preview Assets.xcassets */; };
+		CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B02567E7B0008080D7 /* Persistence.swift */; };
+		CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */; };
+		CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */; };
+		CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */; };
+		CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AA256F825B00D0A66B /* TrackCellView.swift */; };
+		CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AC256F825B00D0A66B /* TrackListView.swift */; };
+		CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */; };
+		CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */; };
+		CF3BDD682576BAB500FF768E /* SearchAfterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BDD672576BAB500FF768E /* SearchAfterView.swift */; };
+		CF5C214A25741952007C7229 /* TodayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C214925741952007C7229 /* TodayRouter.swift */; };
+		CF5C214F25741BEE007C7229 /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C214E25741BEE007C7229 /* CategoryRouter.swift */; };
+		CF5E005B257241E80048F019 /* TrackListButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E005A257241E80048F019 /* TrackListButtonView.swift */; };
+		CF5E00602572441D0048F019 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E005F2572441D0048F019 /* ButtonStyle.swift */; };
+		CF5E006525724BA00048F019 /* TrackListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E006425724BA00048F019 /* TrackListHeaderView.swift */; };
+		CF5E007A2572669E0048F019 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E00792572669E0048F019 /* PlaylistView.swift */; };
+		CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5D952574E8C400BE7503 /* NetworkService.swift */; };
+		CF6E5D9E2574EE6C00BE7503 /* MagazineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5D9D2574EE6C00BE7503 /* MagazineView.swift */; };
+		CF6E5DB62575501F00BE7503 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DB52575501F00BE7503 /* SearchView.swift */; };
+		CF6E5DBB257557D000BE7503 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DBA257557D000BE7503 /* SearchBarView.swift */; };
+		CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DBF25755CCC00BE7503 /* RectangleCellView.swift */; };
+		CF6E5DCE2575688800BE7503 /* RectangleCellInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DCD2575688800BE7503 /* RectangleCellInfoView.swift */; };
+		CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DD525756A3300BE7503 /* RectangleListView.swift */; };
+		CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */; };
+		CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DE225756E6300BE7503 /* GenreListView.swift */; };
+		CF8286A2256BA5BA00D68373 /* ThumbnailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */; };
+		CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */; };
+		CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */; };
+		CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */; };
+		CF93D7CB256E703D005A71CF /* ThumbnailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */; };
+		CF93D7D0256E7FE6005A71CF /* ThumbnailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */; };
+		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
+		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
+		CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */; };
+		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
+		CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */; };
+		CFCBC95A2577FB4A00439C3F /* BasicRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */; };
+		CFCBC9702578074200439C3F /* SearchAfterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */; };
+		CFCBC975257807F300439C3F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC974257807F300439C3F /* Search.swift */; };
+		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF05F8BB2567E7B0008080D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF05F89C2567E7AD008080D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF05F8A32567E7AD008080D7;
+			remoteInfo = MiniVibe;
+		};
+		CF05F8C62567E7B0008080D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF05F89C2567E7AD008080D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF05F8A32567E7AD008080D7;
+			remoteInfo = MiniVibe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AFD4FE7A8EF6146D42AD107 /* Pods-MiniVibe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.release.xcconfig"; sourceTree = "<group>"; };
+		176B5CB5A34211B85B75B28C /* Pods-MiniVibeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibeTests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibeTests/Pods-MiniVibeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1FDBC86B66AD494E5E9DF006 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe-MiniVibeUITests.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe-MiniVibeUITests/Pods-MiniVibe-MiniVibeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		33141F37932AF0BCCFFFF4D3 /* Pods-MiniVibeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibeTests.release.xcconfig"; path = "Target Support Files/Pods-MiniVibeTests/Pods-MiniVibeTests.release.xcconfig"; sourceTree = "<group>"; };
+		35A87315C1F33F43D615A60C /* Pods_MiniVibeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512EAC2A2577B7DD00315D12 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		514FDD8D25761F6800F6BF93 /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
+		515D26632575220B00B542BF /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		515D26652575220B00B542BF /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		515D26662575220B00B542BF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		515D26672575220B00B542BF /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		515D26682575220B00B542BF /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		515D26742575224A00B542BF /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		515D26802575385B00B542BF /* TrackPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPageView.swift; sourceTree = "<group>"; };
+		515D268B2575E9C700B542BF /* TrackGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGroupView.swift; sourceTree = "<group>"; };
+		515D26912575FAFF00B542BF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		5181EA7F2570A0DA0077A727 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		5181EA872570A0E70077A727 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		5188C3F1257715D6001601E6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		5188C3F625772ECC001601E6 /* TemporaryImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryImageCache.swift; sourceTree = "<group>"; };
+		5188C3FB25773123001601E6 /* ImageCacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheKey.swift; sourceTree = "<group>"; };
+		51BBBD7325763375009A6852 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		51BBBD7C25763398009A6852 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		51BBBD84257662E1009A6852 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		51BBBD8F25766A9E009A6852 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		51BE9E3825777BF300CE41A6 /* Rectangle+Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rectangle+Modifier.swift"; sourceTree = "<group>"; };
+		51BEB32F256F3C8600FB2876 /* DJStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStation.swift; sourceTree = "<group>"; };
+		51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStationListViewModel.swift; sourceTree = "<group>"; };
+		51BEB331256F3C8600FB2876 /* DJStationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJStationListView.swift; sourceTree = "<group>"; };
+		51D6C6E125721D7A00EF1B26 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		51D6C6EE2572220300EF1B26 /* Image+accesoryModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+accesoryModifier.swift"; sourceTree = "<group>"; };
+		51D6C6F72572418800EF1B26 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		51D6C7022572725500EF1B26 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		51E4E253257712AE00553E6E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		51E4E25B257712E300553E6E /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		51EED2D9256F7E3C00DB32CB /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		51EED2DA256F7E3C00DB32CB /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		51EED2DB256F7E3C00DB32CB /* CategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
+		51EED2DC256F7E3C00DB32CB /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		51EED2DD256F7E3C00DB32CB /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		51EED2DE256F7E3C00DB32CB /* CategoryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCellView.swift; sourceTree = "<group>"; };
+		A6F7D5640669987CC9A0E50E /* Pods_MiniVibe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B777AFABB2526174881731F0 /* Pods_MiniVibe_MiniVibeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe_MiniVibeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B84BD04D9269BD2160BA916F /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
+		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
+		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CF05F8AB2567E7B0008080D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF05F8AE2567E7B0008080D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CF05F8B02567E7B0008080D7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		CF05F8B32567E7B0008080D7 /* MiniVibe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniVibe.xcdatamodel; sourceTree = "<group>"; };
+		CF05F8B52567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF05F8BA2567E7B0008080D7 /* MiniVibeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeTests.swift; sourceTree = "<group>"; };
+		CF05F8C02567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeUITests.swift; sourceTree = "<group>"; };
+		CF05F8CB2567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF2D94AA256F825B00D0A66B /* TrackCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCellView.swift; sourceTree = "<group>"; };
+		CF2D94AC256F825B00D0A66B /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
+		CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterCategoryView.swift; sourceTree = "<group>"; };
+		CF3BDD672576BAB500FF768E /* SearchAfterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterView.swift; sourceTree = "<group>"; };
+		CF5C214925741952007C7229 /* TodayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRouter.swift; sourceTree = "<group>"; };
+		CF5C214E25741BEE007C7229 /* CategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRouter.swift; sourceTree = "<group>"; };
+		CF5E005A257241E80048F019 /* TrackListButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListButtonView.swift; sourceTree = "<group>"; };
+		CF5E005F2572441D0048F019 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		CF5E006425724BA00048F019 /* TrackListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListHeaderView.swift; sourceTree = "<group>"; };
+		CF5E00792572669E0048F019 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		CF6E5D952574E8C400BE7503 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CF6E5D9D2574EE6C00BE7503 /* MagazineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineView.swift; sourceTree = "<group>"; };
+		CF6E5DB52575501F00BE7503 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CF6E5DBA257557D000BE7503 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		CF6E5DBF25755CCC00BE7503 /* RectangleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCellView.swift; sourceTree = "<group>"; };
+		CF6E5DCD2575688800BE7503 /* RectangleCellInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCellInfoView.swift; sourceTree = "<group>"; };
+		CF6E5DD525756A3300BE7503 /* RectangleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleListView.swift; sourceTree = "<group>"; };
+		CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
+		CF6E5DE225756E6300BE7503 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
+		CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCellView.swift; sourceTree = "<group>"; };
+		CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListView.swift; sourceTree = "<group>"; };
+		CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
+		CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRouter.swift; sourceTree = "<group>"; };
+		CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListViewModel.swift; sourceTree = "<group>"; };
+		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
+		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
+		CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeViewModel.swift; sourceTree = "<group>"; };
+		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
+		CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHorizontalListView.swift; sourceTree = "<group>"; };
+		CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRowCellView.swift; sourceTree = "<group>"; };
+		CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterViewModel.swift; sourceTree = "<group>"; };
+		CFCBC974257807F300439C3F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		D1B4E01659B0EC9FC452EFE9 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe-MiniVibeUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe-MiniVibeUITests/Pods-MiniVibe-MiniVibeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF05F8A12567E7AD008080D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				339F5D98C64C2189DBB1B27E /* Pods_MiniVibe.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF05F8B72567E7B0008080D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A063B5328E81DB6042F6CDD6 /* Pods_MiniVibeTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF05F8C22567E7B0008080D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8709AE49B2C72C3786052B43 /* Pods_MiniVibe_MiniVibeUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		512EAC292577B7B400315D12 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				51EED2D9256F7E3C00DB32CB /* CategoryView.swift */,
+				51EED2DA256F7E3C00DB32CB /* CategoryItem.swift */,
+				51EED2DB256F7E3C00DB32CB /* CategoryHeaderView.swift */,
+				51EED2DC256F7E3C00DB32CB /* Category.swift */,
+				51EED2DE256F7E3C00DB32CB /* CategoryCellView.swift */,
+				CF5C214E25741BEE007C7229 /* CategoryRouter.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		515D26622575220B00B542BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51BEB32F256F3C8600FB2876 /* DJStation.swift */,
+				515D26632575220B00B542BF /* Track.swift */,
+				515D26652575220B00B542BF /* Album.swift */,
+				515D26662575220B00B542BF /* User.swift */,
+				515D26672575220B00B542BF /* Artist.swift */,
+				515D26682575220B00B542BF /* Playlist.swift */,
+				514FDD8D25761F6800F6BF93 /* Magazine.swift */,
+				CFCBC974257807F300439C3F /* Search.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		515D267F2575381300B542BF /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				515D26912575FAFF00B542BF /* ChartView.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		5181EA7E2570A0BB0077A727 /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				5181EA7F2570A0DA0077A727 /* NowPlayingView.swift */,
+				51D6C7022572725500EF1B26 /* BlurView.swift */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		51BEB32E256F3C8600FB2876 /* DJStation */ = {
+			isa = PBXGroup;
+			children = (
+				51BEB331256F3C8600FB2876 /* DJStationListView.swift */,
+				51BEB330256F3C8600FB2876 /* DJStationListViewModel.swift */,
+			);
+			path = DJStation;
+			sourceTree = "<group>";
+		};
+		51D6C6E025721D6500EF1B26 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				51D6C6E125721D7A00EF1B26 /* TabBarView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		51D6C6F62572417600EF1B26 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				51D6C6F72572418800EF1B26 /* PlayerView.swift */,
+				5181EA872570A0E70077A727 /* PlayerViewModel.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		51E4E2522577127400553E6E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				51E4E25B257712E300553E6E /* AsyncImage.swift */,
+				51E4E253257712AE00553E6E /* ImageLoader.swift */,
+				5188C3F625772ECC001601E6 /* TemporaryImageCache.swift */,
+				5188C3FB25773123001601E6 /* ImageCacheKey.swift */,
+				5188C3F1257715D6001601E6 /* ActivityIndicatorView.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		51EED2D8256F7E3C00DB32CB /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				512EAC292577B7B400315D12 /* SubViews */,
+				51EED2DD256F7E3C00DB32CB /* TodayView.swift */,
+				512EAC2A2577B7DD00315D12 /* TodayViewModel.swift */,
+				CF5C214925741952007C7229 /* TodayRouter.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		64A1B98DA5B1F4CCD4089381 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B84BD04D9269BD2160BA916F /* Pods-MiniVibe.debug.xcconfig */,
+				0AFD4FE7A8EF6146D42AD107 /* Pods-MiniVibe.release.xcconfig */,
+				D1B4E01659B0EC9FC452EFE9 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */,
+				1FDBC86B66AD494E5E9DF006 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */,
+				176B5CB5A34211B85B75B28C /* Pods-MiniVibeTests.debug.xcconfig */,
+				33141F37932AF0BCCFFFF4D3 /* Pods-MiniVibeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF05F89B2567E7AD008080D7 = {
+			isa = PBXGroup;
+			children = (
+				CF05F8A62567E7AD008080D7 /* MiniVibe */,
+				CF05F8BD2567E7B0008080D7 /* MiniVibeTests */,
+				CF05F8C82567E7B0008080D7 /* MiniVibeUITests */,
+				CF05F8A52567E7AD008080D7 /* Products */,
+				64A1B98DA5B1F4CCD4089381 /* Pods */,
+				D3B7A3C4BAA889019B2A33DD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CF05F8A52567E7AD008080D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF05F8A42567E7AD008080D7 /* MiniVibe.app */,
+				CF05F8BA2567E7B0008080D7 /* MiniVibeTests.xctest */,
+				CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF05F8A62567E7AD008080D7 /* MiniVibe */ = {
+			isa = PBXGroup;
+			children = (
+				515D26622575220B00B542BF /* Models */,
+				CF2D94B5256F82C000D0A66B /* Scenes */,
+				CF6E5D902574E82400BE7503 /* Common */,
+				CF2D94B6256F82F900D0A66B /* CoreData */,
+				CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */,
+				CF05F8B52567E7B0008080D7 /* Info.plist */,
+				CF05F8AD2567E7B0008080D7 /* Preview Content */,
+			);
+			path = MiniVibe;
+			sourceTree = "<group>";
+		};
+		CF05F8AD2567E7B0008080D7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CF05F8AE2567E7B0008080D7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CF05F8BD2567E7B0008080D7 /* MiniVibeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */,
+				CF05F8C02567E7B0008080D7 /* Info.plist */,
+			);
+			path = MiniVibeTests;
+			sourceTree = "<group>";
+		};
+		CF05F8C82567E7B0008080D7 /* MiniVibeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */,
+				CF05F8CB2567E7B0008080D7 /* Info.plist */,
+			);
+			path = MiniVibeUITests;
+			sourceTree = "<group>";
+		};
+		CF0737CC25792690009EC640 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E5DBA257557D000BE7503 /* SearchBarView.swift */,
+				CF6E5DBF25755CCC00BE7503 /* RectangleCellView.swift */,
+				CF6E5DCD2575688800BE7503 /* RectangleCellInfoView.swift */,
+				CF6E5DD525756A3300BE7503 /* RectangleListView.swift */,
+				CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */,
+				CF6E5DE225756E6300BE7503 /* GenreListView.swift */,
+				CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */,
+				CF3BDD672576BAB500FF768E /* SearchAfterView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		CF0737DB257926E8009EC640 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				515D26742575224A00B542BF /* TestData.swift */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		CF0737DC257926FA009EC640 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				51BBBD8F25766A9E009A6852 /* ErrorView.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		CF0737DD2579272A009EC640 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				515D26802575385B00B542BF /* TrackPageView.swift */,
+				515D268B2575E9C700B542BF /* TrackGroupView.swift */,
+				CF5E005A257241E80048F019 /* TrackListButtonView.swift */,
+				CF5E006425724BA00048F019 /* TrackListHeaderView.swift */,
+				CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */,
+				CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */,
+				CF2D94AA256F825B00D0A66B /* TrackCellView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		CF0737DE25792812009EC640 /* Thumbnail */ = {
+			isa = PBXGroup;
+			children = (
+				CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */,
+				CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */,
+				CF93D7CA256E703D005A71CF /* ThumbnailRouter.swift */,
+				CF93D7CF256E7FE6005A71CF /* ThumbnailListViewModel.swift */,
+			);
+			path = Thumbnail;
+			sourceTree = "<group>";
+		};
+		CF0737DF2579282D009EC640 /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E5D9D2574EE6C00BE7503 /* MagazineView.swift */,
+				CFCBC9432577866900439C3F /* MagazineViewModel.swift */,
+			);
+			path = Magazine;
+			sourceTree = "<group>";
+		};
+		CF2D94A9256F825B00D0A66B /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				CF0737DD2579272A009EC640 /* SubViews */,
+				CF2D94AC256F825B00D0A66B /* TrackListView.swift */,
+				CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */,
+			);
+			path = TrackList;
+			sourceTree = "<group>";
+		};
+		CF2D94B5256F82C000D0A66B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				51EED2D8256F7E3C00DB32CB /* Today */,
+				515D267F2575381300B542BF /* Chart */,
+				CF6E5DB42575501200BE7503 /* Search */,
+				51D6C6E025721D6500EF1B26 /* TabBar */,
+				51D6C6F62572417600EF1B26 /* Player */,
+				5181EA7E2570A0BB0077A727 /* NowPlaying */,
+				CF2D94A9256F825B00D0A66B /* TrackList */,
+				CF0737DE25792812009EC640 /* Thumbnail */,
+				CF8286A0256BA4D800D68373 /* Playlist */,
+				CF0737DF2579282D009EC640 /* Magazine */,
+				51BEB32E256F3C8600FB2876 /* DJStation */,
+				CF0737DC257926FA009EC640 /* Error */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CF2D94B6256F82F900D0A66B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
+				CF05F8A92567E7AD008080D7 /* ContentView.swift */,
+				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CF6E5D902574E82400BE7503 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E5D942574E8B500BE7503 /* Network */,
+				CFA2A447256FD1E700190A0B /* Router */,
+				51E4E2522577127400553E6E /* Image */,
+				CF93D7D7256E8FBF005A71CF /* Extension */,
+				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
+				CF0737DB257926E8009EC640 /* TestData */,
+				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CF6E5D942574E8B500BE7503 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */,
+				CF6E5D952574E8C400BE7503 /* NetworkService.swift */,
+				51BBBD7325763375009A6852 /* RequestBuilder.swift */,
+				51BBBD7C25763398009A6852 /* URLBuilder.swift */,
+				CFCBC92D257764B200439C3F /* MiniVibeType.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CF6E5DB42575501200BE7503 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CF0737CC25792690009EC640 /* SubViews */,
+				CF6E5DB52575501F00BE7503 /* SearchView.swift */,
+				CFCBC96F2578074200439C3F /* SearchAfterViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CF8286A0256BA4D800D68373 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				CF5E00792572669E0048F019 /* PlaylistView.swift */,
+				51BBBD84257662E1009A6852 /* PlaylistViewModel.swift */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		CF93D7D7256E8FBF005A71CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */,
+				51D6C6EE2572220300EF1B26 /* Image+accesoryModifier.swift */,
+				51BE9E3825777BF300CE41A6 /* Rectangle+Modifier.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CFA2A447256FD1E700190A0B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CF93D7C5256E6FED005A71CF /* RouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CFCFC5C0256E2A75004200C4 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */,
+				CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */,
+				CF5E005F2572441D0048F019 /* ButtonStyle.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		D3B7A3C4BAA889019B2A33DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6F7D5640669987CC9A0E50E /* Pods_MiniVibe.framework */,
+				B777AFABB2526174881731F0 /* Pods_MiniVibe_MiniVibeUITests.framework */,
+				35A87315C1F33F43D615A60C /* Pods_MiniVibeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF05F8A32567E7AD008080D7 /* MiniVibe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF05F8CE2567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibe" */;
+			buildPhases = (
+				BFDC63411CE33A8C9F196D24 /* [CP] Check Pods Manifest.lock */,
+				CF05F8A02567E7AD008080D7 /* Sources */,
+				CF05F8A12567E7AD008080D7 /* Frameworks */,
+				CF05F8A22567E7AD008080D7 /* Resources */,
+				CF0737EA2579291A009EC640 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiniVibe;
+			productName = MiniVibe;
+			productReference = CF05F8A42567E7AD008080D7 /* MiniVibe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF05F8B92567E7B0008080D7 /* MiniVibeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF05F8D12567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibeTests" */;
+			buildPhases = (
+				DDB0ABA28C1AACF15F0AA42A /* [CP] Check Pods Manifest.lock */,
+				CF05F8B62567E7B0008080D7 /* Sources */,
+				CF05F8B72567E7B0008080D7 /* Frameworks */,
+				CF05F8B82567E7B0008080D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF05F8BC2567E7B0008080D7 /* PBXTargetDependency */,
+			);
+			name = MiniVibeTests;
+			productName = MiniVibeTests;
+			productReference = CF05F8BA2567E7B0008080D7 /* MiniVibeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CF05F8C42567E7B0008080D7 /* MiniVibeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF05F8D42567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibeUITests" */;
+			buildPhases = (
+				D786B89F71EEF093B9970215 /* [CP] Check Pods Manifest.lock */,
+				CF05F8C12567E7B0008080D7 /* Sources */,
+				CF05F8C22567E7B0008080D7 /* Frameworks */,
+				CF05F8C32567E7B0008080D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF05F8C72567E7B0008080D7 /* PBXTargetDependency */,
+			);
+			name = MiniVibeUITests;
+			productName = MiniVibeUITests;
+			productReference = CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF05F89C2567E7AD008080D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					CF05F8A32567E7AD008080D7 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					CF05F8B92567E7B0008080D7 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = CF05F8A32567E7AD008080D7;
+					};
+					CF05F8C42567E7B0008080D7 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = CF05F8A32567E7AD008080D7;
+					};
+				};
+			};
+			buildConfigurationList = CF05F89F2567E7AD008080D7 /* Build configuration list for PBXProject "MiniVibe" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF05F89B2567E7AD008080D7;
+			productRefGroup = CF05F8A52567E7AD008080D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF05F8A32567E7AD008080D7 /* MiniVibe */,
+				CF05F8B92567E7B0008080D7 /* MiniVibeTests */,
+				CF05F8C42567E7B0008080D7 /* MiniVibeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF05F8A22567E7AD008080D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF05F8AF2567E7B0008080D7 /* Preview Assets.xcassets in Resources */,
+				CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF05F8B82567E7B0008080D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF05F8C32567E7B0008080D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BFDC63411CE33A8C9F196D24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVibe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF0737EA2579291A009EC640 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		D786B89F71EEF093B9970215 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVibe-MiniVibeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDB0ABA28C1AACF15F0AA42A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVibeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF05F8A02567E7AD008080D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */,
+				CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */,
+				CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */,
+				51E4E254257712AF00553E6E /* ImageLoader.swift in Sources */,
+				5188C3F725772ECC001601E6 /* TemporaryImageCache.swift in Sources */,
+				CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */,
+				CF8286A2256BA5BA00D68373 /* ThumbnailCellView.swift in Sources */,
+				515D26752575224A00B542BF /* TestData.swift in Sources */,
+				515D266E2575220B00B542BF /* Artist.swift in Sources */,
+				CF93D7CB256E703D005A71CF /* ThumbnailRouter.swift in Sources */,
+				CF5E005B257241E80048F019 /* TrackListButtonView.swift in Sources */,
+				51BBBD7425763375009A6852 /* RequestBuilder.swift in Sources */,
+				51E4E25C257712E300553E6E /* AsyncImage.swift in Sources */,
+				CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */,
+				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
+				CFCBC975257807F300439C3F /* Search.swift in Sources */,
+				CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */,
+				5188C3FC25773123001601E6 /* ImageCacheKey.swift in Sources */,
+				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
+				CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */,
+				CF6E5DCE2575688800BE7503 /* RectangleCellInfoView.swift in Sources */,
+				CF93D7D0256E7FE6005A71CF /* ThumbnailListViewModel.swift in Sources */,
+				CF6E5DBB257557D000BE7503 /* SearchBarView.swift in Sources */,
+				CF6E5DB62575501F00BE7503 /* SearchView.swift in Sources */,
+				CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */,
+				CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */,
+				CF5C214A25741952007C7229 /* TodayRouter.swift in Sources */,
+				51BE9E3925777BF300CE41A6 /* Rectangle+Modifier.swift in Sources */,
+				CF5C214F25741BEE007C7229 /* CategoryRouter.swift in Sources */,
+				51BEB333256F3C8600FB2876 /* DJStationListViewModel.swift in Sources */,
+				51D6C6EF2572220300EF1B26 /* Image+accesoryModifier.swift in Sources */,
+				CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */,
+				CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */,
+				515D266C2575220B00B542BF /* Album.swift in Sources */,
+				51BBBD9025766A9E009A6852 /* ErrorView.swift in Sources */,
+				CFCBC95A2577FB4A00439C3F /* BasicRowCellView.swift in Sources */,
+				515D26812575385B00B542BF /* TrackPageView.swift in Sources */,
+				CF5E00602572441D0048F019 /* ButtonStyle.swift in Sources */,
+				515D266A2575220B00B542BF /* Track.swift in Sources */,
+				51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */,
+				515D26922575FAFF00B542BF /* ChartView.swift in Sources */,
+				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
+				51EED2E1256F7E3C00DB32CB /* CategoryHeaderView.swift in Sources */,
+				51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */,
+				514FDD8E25761F6800F6BF93 /* Magazine.swift in Sources */,
+				51D6C6F82572418800EF1B26 /* PlayerView.swift in Sources */,
+				51EED2E3256F7E3C00DB32CB /* TodayView.swift in Sources */,
+				51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */,
+				51EED2E0256F7E3C00DB32CB /* CategoryItem.swift in Sources */,
+				515D268C2575E9C700B542BF /* TrackGroupView.swift in Sources */,
+				CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */,
+				51EED2E2256F7E3C00DB32CB /* Category.swift in Sources */,
+				CF6E5D9E2574EE6C00BE7503 /* MagazineView.swift in Sources */,
+				515D266F2575220B00B542BF /* Playlist.swift in Sources */,
+				515D266D2575220B00B542BF /* User.swift in Sources */,
+				CF5E007A2572669E0048F019 /* PlaylistView.swift in Sources */,
+				5188C3F2257715D6001601E6 /* ActivityIndicatorView.swift in Sources */,
+				51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */,
+				51D6C7032572725500EF1B26 /* BlurView.swift in Sources */,
+				CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */,
+				CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */,
+				512EAC2B2577B7DD00315D12 /* TodayViewModel.swift in Sources */,
+				51BBBD7D25763398009A6852 /* URLBuilder.swift in Sources */,
+				51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */,
+				CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */,
+				CFCBC9702578074200439C3F /* SearchAfterViewModel.swift in Sources */,
+				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
+				CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */,
+				5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */,
+				CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */,
+				CF3BDD682576BAB500FF768E /* SearchAfterView.swift in Sources */,
+				CF5E006525724BA00048F019 /* TrackListHeaderView.swift in Sources */,
+				51D6C6E225721D7A00EF1B26 /* TabBarView.swift in Sources */,
+				CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */,
+				5181EA882570A0E70077A727 /* PlayerViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF05F8B62567E7B0008080D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF05F8C12567E7B0008080D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF05F8BC2567E7B0008080D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF05F8A32567E7AD008080D7 /* MiniVibe */;
+			targetProxy = CF05F8BB2567E7B0008080D7 /* PBXContainerItemProxy */;
+		};
+		CF05F8C72567E7B0008080D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF05F8A32567E7AD008080D7 /* MiniVibe */;
+			targetProxy = CF05F8C62567E7B0008080D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CF05F8CC2567E7B0008080D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF05F8CD2567E7B0008080D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF05F8CF2567E7B0008080D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B84BD04D9269BD2160BA916F /* Pods-MiniVibe.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MiniVibe/Preview Content\"";
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MiniVibe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.yeonduing.MiniVibe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF05F8D02567E7B0008080D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AFD4FE7A8EF6146D42AD107 /* Pods-MiniVibe.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MiniVibe/Preview Content\"";
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MiniVibe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.yeonduing.MiniVibe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CF05F8D22567E7B0008080D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 176B5CB5A34211B85B75B28C /* Pods-MiniVibeTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MiniVibeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.yeonduing.MiniVibeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVibe.app/MiniVibe";
+			};
+			name = Debug;
+		};
+		CF05F8D32567E7B0008080D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33141F37932AF0BCCFFFF4D3 /* Pods-MiniVibeTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MiniVibeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.yeonduing.MiniVibeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVibe.app/MiniVibe";
+			};
+			name = Release;
+		};
+		CF05F8D52567E7B0008080D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1B4E01659B0EC9FC452EFE9 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MiniVibeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.yeonduing.MiniVibeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MiniVibe;
+			};
+			name = Debug;
+		};
+		CF05F8D62567E7B0008080D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FDBC86B66AD494E5E9DF006 /* Pods-MiniVibe-MiniVibeUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MiniVibeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.yeonduing.MiniVibeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MiniVibe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF05F89F2567E7AD008080D7 /* Build configuration list for PBXProject "MiniVibe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF05F8CC2567E7B0008080D7 /* Debug */,
+				CF05F8CD2567E7B0008080D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF05F8CE2567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF05F8CF2567E7B0008080D7 /* Debug */,
+				CF05F8D02567E7B0008080D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF05F8D12567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF05F8D22567E7B0008080D7 /* Debug */,
+				CF05F8D32567E7B0008080D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF05F8D42567E7B0008080D7 /* Build configuration list for PBXNativeTarget "MiniVibeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF05F8D52567E7B0008080D7 /* Debug */,
+				CF05F8D62567E7B0008080D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CF05F8B32567E7B0008080D7 /* MiniVibe.xcdatamodel */,
+			);
+			currentVersion = CF05F8B32567E7B0008080D7 /* MiniVibe.xcdatamodel */;
+			path = MiniVibe.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CF05F89C2567E7AD008080D7 /* Project object */;
+}
