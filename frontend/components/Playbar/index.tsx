@@ -35,7 +35,7 @@ const Playbar = memo(() => {
   const fullPlayTime = "3:32";
   const currentPlayTime = "1:32";
 
-  const data = useSelector((state: RootState) => state.chekdTrack);
+  const data = useSelector((state: RootState) => state.checkedTrack);
 
   return (
     <StyledPlaybar>

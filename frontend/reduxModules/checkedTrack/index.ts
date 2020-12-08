@@ -83,19 +83,19 @@ const checkedTrackReducer = (
     case INIT:
       return {
         checkedTrackArr: [],
-        isAllChecked: false,
+        isAllChecked,
       };
 
     case PUSH:
       return {
         checkedTrackArr: [...checkedTrackArr, action.payload],
-        isAllChecked: false,
+        isAllChecked,
       };
 
     case REMOVE:
       return {
         checkedTrackArr: checkedTrackArr.filter((elem) => elem !== action.payload),
-        isAllChecked: false,
+        isAllChecked,
       };
 
     case ALLCHECK:
