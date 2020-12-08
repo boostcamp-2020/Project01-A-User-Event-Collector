@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { NextArrowSvg } from "../../utils/svg";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import ChartTrackCard from "./ChartTrackCard";
 
@@ -18,7 +17,7 @@ const StyledSlidebar = styled.div<Props>`
     width: 0.7rem;
     height: 0.7rem;
   }
-  &: nth-child(n) {
+  &:nth-child(n) {
     padding-top: 1.5em;
     padding-bottom: 2.5em;
     border-bottom: 0.1em solid rgba(0, 0, 0, 0.05);
@@ -76,10 +75,7 @@ const ChartSlider: React.FC<Props> = ({ title, titleLink, data }: Props) => {
   return (
     <StyledSlidebar>
       <StyledSlidebarTitle>
-        <a href={titleLink}>
-          {title}
-          {/* <NextArrowSvg /> */}
-        </a>
+        <a href={titleLink}>{title}</a>
       </StyledSlidebarTitle>
       <SlideContainer>
         <SlideContent ref={currentSlideRef}>

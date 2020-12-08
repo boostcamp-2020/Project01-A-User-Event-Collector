@@ -70,22 +70,28 @@ export async function getStaticProps() {
 
   const VIBE_ID = 1; // 나중에 vibe 아이디로 변경해야 함
   const dataLength = 10;
-  const resolveArr = await Promise.all([
-    fetch(`${apiUrl}:${apiPort}/api/magazines?limit=${dataLength}`),
-    fetch(`${apiUrl}:${apiPort}/api/news?limit=${dataLength}`),
-    fetch(`${apiUrl}:${apiPort}/api/playlists?filter=${VIBE_ID}&limit=${dataLength}`),
-  ]);
 
-  const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
-  const { Magazines } = result[0];
-  const { News } = result[1];
-  const { Playlists } = result[2];
+  try {
+    const resolveArr = await Promise.all([
+      fetch(`${apiUrl}:${apiPort}/api/magazines?limit=${dataLength}`),
+      fetch(`${apiUrl}:${apiPort}/api/news?limit=${dataLength}`),
+      fetch(`${apiUrl}:${apiPort}/api/playlists?filter=${VIBE_ID}&limit=${dataLength}`),
+    ]);
+    console.log(apiPort, apiUrl);
+    const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
+    const { Magazines } = result[0];
+    const { News } = result[1];
+    const { Playlists } = result[2];
 
-  return {
-    props: {
-      Magazines,
-      News,
-      Playlists,
-    },
-  };
+    return {
+      props: {
+        Magazines,
+        News,
+        Playlists,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
+  return { props: {} };
 }
