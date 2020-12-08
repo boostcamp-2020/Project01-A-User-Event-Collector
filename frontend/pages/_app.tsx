@@ -28,6 +28,10 @@ const GlobalStyles = createGlobalStyle`
 
 const store = createStore(rootReducer);
 const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    // dispatch(initCheckedTrack());
+    console.log("asdasd");
+  }, [pageProps);
   return (
     <Provider store={store}>
       <GlobalStyles />
