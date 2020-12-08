@@ -17,7 +17,7 @@ const NavTopLogoSearch = memo(
       <StyledNavTopLogoSearch>
         <StyledNavLogo onClick={() => router.push("/today")}>
           <StyledNavNaver>NAVER</StyledNavNaver>
-          <StyledNavVibe>Vibe</StyledNavVibe>
+          <StyledNavVibe>VIBE</StyledNavVibe>
         </StyledNavLogo>
         <StyledNavSearch onClick={handleSearch}>{icons.search}</StyledNavSearch>
       </StyledNavTopLogoSearch>
