@@ -1,10 +1,9 @@
 import React, { FC, useEffect, useState, memo } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   pushCheckedTrack,
   removeCheckedTrack,
-  initCheckedTrack,
   CheckedTrack,
 } from "../../../../reduxModules/checkedTrack";
 

@@ -1,18 +1,12 @@
 import { AppProps } from "next/app";
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import React, { FC, memo, useEffect } from "react";
-import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import { rootReducer } from "../reduxModules";
-import { initCheckedTrack } from "../reduxModules/checkedTrack";
 
-// useEffect(() => {
-//   // dispatch(initCheckedTrack());
-//   console.log("asdasd");
-// }, []);
 const GlobalStyles = createGlobalStyle`
   ${reset};
   a{
@@ -34,11 +28,6 @@ const GlobalStyles = createGlobalStyle`
 
 const store = createStore(rootReducer);
 const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
-  useEffect(() => {
-    console.log("asdasd");
-  }, [router.pathname]);
-
   return (
     <Provider store={store}>
       <GlobalStyles />
