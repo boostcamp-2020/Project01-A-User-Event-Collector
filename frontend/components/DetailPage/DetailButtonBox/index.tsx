@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import { Track } from "../../../interfaces";
-
+import { allCheckTrack } from "../../../reduxModules/checkedTrack";
 // import Modal from "../../Modal";
 
 interface Props {
@@ -13,9 +14,11 @@ const StyleButtonBox = styled.div`
   display: flex;
 `;
 
+// parentId will be used for Like Button
 const ButtonBox: FC<Props> = ({ parentId, tracks }: Props) => {
+  const dispatch = useDispatch();
   const allCheckHandler = () => {
-    console.log("test");
+    dispatch(allCheckTrack(tracks));
   };
 
   return (
