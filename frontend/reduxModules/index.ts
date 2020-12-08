@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import checkedTrackReducer from "./checkedTrack";
 import allCheckedReducer from "./allCheck";
+import playQueueReducer from "./playQueue";
 
 export const rootReducer = combineReducers({
   checkedTrack: checkedTrackReducer,
   AllCheckedFlag: allCheckedReducer,
+  playQueue: playQueueReducer,
 });
 
 // eslint-disable-next-line no-undef
