@@ -44,7 +44,6 @@ struct PlayerEvent: AnalyticsEvent {
         )
     }
 
-    
     static let shuffleOn = PlayerEvent(name: "shuffleOn")
     
     static let shuffleOff = PlayerEvent(name: "shuffleOff")

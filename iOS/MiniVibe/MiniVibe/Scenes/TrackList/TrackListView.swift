@@ -12,25 +12,17 @@ struct TrackListView: View {
     private let layout = [GridItem(.flexible())]
     private let tracks: [Track]
     
-    @StateObject private var viewModel = TrackListViewModel()
-    
     init(tracks: [Track]) {
         self.tracks = tracks
     }
     
     var body: some View {
         LazyVGrid(columns: layout) {
-            ForEach(viewModel.tracks) { track -> TrackCellView in
-                var cell = TrackCellView(hasAccessory: true, track: track)
-                cell.didToggleFavorite = {
-                    viewModel.toggleIsFavorite(for: track.id)
-                }
-                return cell
+            ForEach(tracks) { track -> TrackCellView in
+                TrackCellView(hasAccessory: true, track: track)
             }
             Rectangle()
                 .clearBottom()
-        }.onAppear {
-            viewModel.createTracks(tracks: tracks)
         }
     }
 }

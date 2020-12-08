@@ -35,3 +35,9 @@ struct PlayerInfoView: View {
         }
     }
 }
+
+struct PlayerInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerInfoView(timeDuration: .constant(0), track: TestData.defaultTrack)
+    }
+}
