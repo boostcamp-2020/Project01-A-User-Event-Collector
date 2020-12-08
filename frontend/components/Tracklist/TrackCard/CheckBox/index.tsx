@@ -34,7 +34,7 @@ const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
     if (isChecked) {
       if (!isAllChecked && checkLength(checkedTrackArr, trackData, listLength))
         dispatch(preventEffect({ isAllChecked: true }));
-      dispatch(pushCheckedTrack(trackData));
+      if (!isAllChecked) dispatch(pushCheckedTrack(trackData));
     }
 
     if (!isChecked) {
