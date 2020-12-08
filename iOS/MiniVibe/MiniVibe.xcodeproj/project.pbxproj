@@ -57,6 +57,7 @@
 		A063B5328E81DB6042F6CDD6 /* Pods_MiniVibeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A87315C1F33F43D615A60C /* Pods_MiniVibeTests.framework */; };
 		CF0564BF257FB7F100F24681 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0564BE257FB7F100F24681 /* CacheService.swift */; };
 		CF0564C4257FC44F00F24681 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0564C3257FC44F00F24681 /* ImageCache.swift */; };
+		CF0564CA257FFAD800F24681 /* CoreTrackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */; };
 		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
 		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
 		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
@@ -178,6 +179,7 @@
 		B84BD04D9269BD2160BA916F /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
 		CF0564BE257FB7F100F24681 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		CF0564C3257FC44F00F24681 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTrackAPI.swift; sourceTree = "<group>"; };
 		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -403,6 +405,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CF0564C8257FFA6A00F24681 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CF05F89B2567E7AD008080D7 = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +581,7 @@
 		CF2D94B6256F82F900D0A66B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CF0564C8257FFA6A00F24681 /* Model */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
 				CF05F8A92567E7AD008080D7 /* ContentView.swift */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
@@ -948,6 +959,7 @@
 				512E0E1E257B4AA000576C78 /* SearchViewModel.swift in Sources */,
 				51EED2E1256F7E3C00DB32CB /* CategoryHeaderView.swift in Sources */,
 				51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */,
+				CF0564CA257FFAD800F24681 /* CoreTrackAPI.swift in Sources */,
 				514FDD8E25761F6800F6BF93 /* Magazine.swift in Sources */,
 				51B3D4AB257CFB5B008025E5 /* AnalyticsEvent.swift in Sources */,
 				CF0564C4257FC44F00F24681 /* ImageCache.swift in Sources */,
