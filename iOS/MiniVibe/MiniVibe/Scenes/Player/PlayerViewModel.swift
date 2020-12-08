@@ -71,8 +71,8 @@ class PlayerViewModel: ObservableObject {
     
     func randomSubscription() {
         $isRepeat
-            .sink { isRepeat in
-                self.manager.log(PlayerEvent.repeat(isRepeat))
+            .sink { [weak self] isRepeat in
+                self?.manager.log(PlayerEvent.repeat(isRepeat))
             }
             .store(in: &subscriptions)
     }

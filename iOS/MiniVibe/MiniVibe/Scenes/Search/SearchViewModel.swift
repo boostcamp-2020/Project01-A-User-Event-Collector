@@ -56,8 +56,8 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
             .compactMap { $0 }
             .sink { (_) in
                 
-            } receiveValue: { searchText in
-                self.fetch(searchText)
+            } receiveValue: { [weak self] searchText in
+                self?.fetch(searchText)
             }
             .store(in: &subscription)
 
@@ -76,11 +76,11 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
     
     func searchEventSubscription() {
         $isEditing
-            .sink { isEditing in
+            .sink { [weak self] isEditing in
                 if isEditing {
-                    self.manager.log(ScreenEvent.screenViewed(.searchAfter))
+                    self?.manager.log(ScreenEvent.screenViewed(.searchAfter))
                 } else {
-                    self.manager.log(ScreenEvent.screenViewed(.searchBefore))
+                    self?.manager.log(ScreenEvent.screenViewed(.searchBefore))
                 }
             }
             .store(in: &subscription)
