@@ -17,6 +17,7 @@ export interface CheckedState {
 export const PUSH = "checkedTrack/PUSH";
 export const REMOVE = "checkedTrack/Remove";
 export const INIT = "checkedTrack/INIT";
+export const ALLCHECK = "checkedTrack/ALLCHECK";
 
 interface InitAction {
   type: typeof INIT;
@@ -31,7 +32,13 @@ interface RemoveAction {
   type: typeof REMOVE;
   payload: CheckedTrack;
 }
-export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction;
+
+interface AllCheckAction {
+  type: typeof ALLCHECK;
+  payload: CheckedTrack[];
+}
+
+export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction | AllCheckAction;
 
 // Action Creator
 export const initCheckedTrack = (): InitAction => {
@@ -51,6 +58,13 @@ export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
   return {
     type: REMOVE,
     payload: trackData,
+  };
+};
+
+export const allCheckTrack = (allTrackData: CheckedTrack[]): AllCheckAction => {
+  return {
+    type: ALLCHECK,
+    payload: allTrackData,
   };
 };
 
@@ -84,6 +98,11 @@ const checkedTrackReducer = (
         isAllChecked: false,
       };
 
+    case ALLCHECK:
+      return {
+        checkedTrackArr: action.payload,
+        isAllChecked: !isAllChecked,
+      };
     default:
       return state;
   }
