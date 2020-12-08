@@ -31,6 +31,7 @@ const StyledDescriptionContent = styled.div`
   font-size: 1rem;
   color: #939393;
   margin: 0.25rem 0rem;
+  text-overflow: ellipsis;
 `;
 
 const StyledDescriptionInfo = styled.div`
@@ -41,10 +42,9 @@ const StyledDescriptionInfo = styled.div`
   margin: 0.25rem 0rem;
 `;
 
-const StyledDate = styled.span`
-  margin: 0.25rem 0rem;
-  &::before {
-    content: "-";
+const StyledTrivialInfo = styled.span`
+  &:hover: {
+    cursor: none;
   }
 `;
 
@@ -55,5 +55,5 @@ export {
   StyledDescriptionTitle,
   StyledDescriptionContent,
   StyledDescriptionInfo,
-  StyledDate,
+  StyledTrivialInfo,
 };
