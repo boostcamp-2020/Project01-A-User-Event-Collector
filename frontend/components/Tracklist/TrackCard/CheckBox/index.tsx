@@ -5,19 +5,21 @@ import {
   pushCheckedTrack,
   removeCheckedTrack,
   CheckedTrack,
+  allCheckTrack,
 } from "../../../../reduxModules/checkedTrack";
 import { RootState } from "../../../../reduxModules";
 
 interface Props {
   trackData: CheckedTrack;
+  trackListLength: number;
 }
 
 const StyleCheckBox = styled.div`
   padding: 10px;
 `;
 
-const CheckBox: FC<Props> = ({ trackData }: Props) => {
-  const isAllChecked = useSelector((state: RootState) => state.checkedTrack.isAllChecked);
+const CheckBox: FC<Props> = ({ trackData, trackListLength }: Props) => {
+  const { isAllChecked, checkedTrackArr } = useSelector((state: RootState) => state.checkedTrack);
   const [isChecked, setIsChecked] = useState(isAllChecked);
   const checkHandler = () => setIsChecked(!isChecked);
 
@@ -25,6 +27,9 @@ const CheckBox: FC<Props> = ({ trackData }: Props) => {
   useEffect(() => {
     if (isChecked) dispatch(pushCheckedTrack(trackData));
     else dispatch(removeCheckedTrack(trackData));
+
+    if (checkedTrackArr.length + 1 === trackListLength)
+      dispatch(allCheckTrack([...checkedTrackArr, trackData]));
   }, [isChecked]);
 
   useEffect(() => {

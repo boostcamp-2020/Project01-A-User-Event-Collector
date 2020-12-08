@@ -20,10 +20,7 @@ const ButtonBox: FC<Props> = ({ parentId, tracks }: Props) => {
   const isAllChecked = useSelector((state: RootState) => state.checkedTrack.isAllChecked);
   const dispatch = useDispatch();
 
-  // console.log("??", isAllChecked);
-
   const allCheckHandler = () => {
-    console.log(isAllChecked, "->", !isAllChecked);
     if (!isAllChecked) dispatch(allCheckTrack(tracks));
     else dispatch(allCheckTrack([]));
   };
