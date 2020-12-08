@@ -1,18 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useDispatch } from "@reduxjs/toolkit";
-import { pushTrack, removeTrack } from "../../../../reduxModules/checkedTrack";
-import { Album, Artist } from "../../../../interfaces";
-
-interface TrackData {
-  id: number;
-  trackName: string;
-  Albums: Album;
-  Artists: Artist[];
-}
+import { useDispatch, useSelector } from "react-redux";
+import { pushTrack, removeTrack, CheckedTrack } from "../../../../reduxModules/checkedTrack";
+import { RootState } from "../../../../reduxModules";
 
 interface Props {
-  trackData: TrackData;
+  trackData: CheckedTrack;
 }
 
 const StyleCheckBox = styled.div`
@@ -23,11 +16,12 @@ const CheckBox: FC<Props> = ({ trackData }: Props) => {
   const [isChecked, setIsChecked] = useState(false);
   const checkHandler = () => setIsChecked(!isChecked);
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    if (isChecked) {
-      console.log(trackData);
-    } else {
-    }
+    if (isChecked) dispatch(pushTrack(trackData));
+    else dispatch(removeTrack(trackData));
+
+    console.log(useSelector((state: RootState) => state));
   }, [isChecked]);
 
   return (

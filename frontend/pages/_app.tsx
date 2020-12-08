@@ -1,8 +1,11 @@
 import { AppProps } from "next/app";
 import { memo } from "react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import Layout from "../components/Layout";
+import { rootReducer } from "../reduxModules";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -23,14 +26,15 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const store = createStore(rootReducer);
 const MyApp = memo(({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyles />
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </Provider>
   );
 });
 

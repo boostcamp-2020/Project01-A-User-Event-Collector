@@ -4,7 +4,7 @@ import { Album, Artist } from "../../interfaces";
 export interface CheckedTrack {
   id: number;
   trackName: string;
-  Album: Album;
+  Albums: Album;
   Artists: Artist[];
 }
 

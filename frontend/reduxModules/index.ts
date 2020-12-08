@@ -1,11 +1,9 @@
-import { combineReducers } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
 import checkedTrackReducer from "./checkedTrack";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   checkedTrackReducer,
 });
-
-export default rootReducer;
 
 // eslint-disable-next-line no-undef
 export type RootState = ReturnType<typeof rootReducer>;
