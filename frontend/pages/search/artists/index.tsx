@@ -1,40 +1,39 @@
 import React, { useState, useEffect } from "react";
 import myAxios from "../../../utils/myAxios";
 import {
-  StyledSearchTrackPage,
+  StyledSearchArtistPage,
   StyledResult,
   StyledResultText,
-  StyledSearchTrackCards,
+  StyledSearchArtistCards,
 } from "./styled";
-import SearchTrackCards from "../../../components/SearchSamples/tracks";
-import icons from "../../../constant/icons";
+import SearchArtistCards from "../../../components/SearchSamples/artists";
 
-const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => {
-  const [sampleAlbums, setSampleAlbums] = useState([]);
+const SearchArtistPage = ({ filter }: { filter: string }): React.ReactElement => {
+  const [sampleArtists, setSampleArtists] = useState([]);
 
   useEffect(() => {
-    myAxios.get(`/search/albums?filter=${filter}&page=1`).then((response: any) => {
+    myAxios.get(`/search/artists?filter=${filter}&page=1`).then((response: any) => {
       const { data } = response;
-      setSampleAlbums(data);
+      setSampleArtists(data);
     });
   }, []);
 
   return (
-    <StyledSearchTrackPage>
+    <StyledSearchArtistPage>
       <StyledResult>
         <StyledResultText>{`'${filter}'의 검색 결과`}</StyledResultText>
       </StyledResult>
-      <StyledSearchTrackCards>
-        <SearchTrackCards data={sampleAlbums} />
-      </StyledSearchTrackCards>
-    </StyledSearchTrackPage>
+      <StyledSearchArtistCards>
+        <SearchArtistCards data={sampleArtists} />
+      </StyledSearchArtistCards>
+    </StyledSearchArtistPage>
   );
 };
 
-SearchTrackPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
+SearchArtistPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
   const { filter } = query;
 
   return { filter };
 };
 
-export default SearchTrackPage;
+export default SearchArtistPage;

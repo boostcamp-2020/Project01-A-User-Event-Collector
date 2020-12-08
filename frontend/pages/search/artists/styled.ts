@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSearchTrackPage = styled.div`
+const StyledSearchArtistPage = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 85vh;
@@ -18,7 +18,6 @@ const StyledResult = styled.div`
   height: 4em;
   margin-bottom: 2em;
   padding-bottom: 0.25em;
-  border-bottom: 0.1em solid rgba(0, 0, 0, 0.1);
   width: 100%;
 `;
 
@@ -30,8 +29,8 @@ const StyledResultText = styled.div`
   font-weight: bold;
 `;
 
-const StyledSearchTrackCards = styled.div`
+const StyledSearchArtistCards = styled.div`
   display: flex;
 `;
 
-export { StyledSearchTrackPage, StyledResult, StyledResultText, StyledSearchTrackCards };
+export { StyledSearchArtistPage, StyledResult, StyledResultText, StyledSearchArtistCards };
