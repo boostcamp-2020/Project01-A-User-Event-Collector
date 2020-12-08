@@ -1,7 +1,7 @@
 import { Album, Artist } from "../../interfaces";
 
 // State
-export interface Node {
+export interface TrackNode {
   id: number;
   trackName: string;
   Albums: Album;
@@ -20,17 +20,17 @@ interface InitAction {
 
 interface PushAction {
   type: typeof PUSH;
-  payload: Node;
+  payload: TrackNode;
 }
 
 interface RemoveAction {
   type: typeof REMOVE;
-  payload: Node;
+  payload: TrackNode;
 }
 
 interface AllPushAction {
   type: typeof ALLPUSH;
-  payload: Node[];
+  payload: TrackNode[];
 }
 
 export type PlayQueueActionTypes = InitAction | PushAction | RemoveAction | AllPushAction;
@@ -42,21 +42,21 @@ export const initPlayQueue = (): InitAction => {
   };
 };
 
-export const pushPlayQueue = (trackNode: Node): PushAction => {
+export const pushPlayQueue = (trackNode: TrackNode): PushAction => {
   return {
     type: PUSH,
     payload: trackNode,
   };
 };
 
-export const removePlayQueue = (trackNode: Node): RemoveAction => {
+export const removePlayQueue = (trackNode: TrackNode): RemoveAction => {
   return {
     type: REMOVE,
     payload: trackNode,
   };
 };
 
-export const allPushPlayQueue = (trackNodeList: Node[]): AllPushAction => {
+export const allPushPlayQueue = (trackNodeList: TrackNode[]): AllPushAction => {
   return {
     type: ALLPUSH,
     payload: trackNodeList,
@@ -64,9 +64,9 @@ export const allPushPlayQueue = (trackNodeList: Node[]): AllPushAction => {
 };
 
 // Reducer
-const initialState: Node[] = [];
+const initialState: TrackNode[] = [];
 
-const playQueueReducer = (state = initialState, action: PlayQueueActionTypes): Node[] => {
+const playQueueReducer = (state = initialState, action: PlayQueueActionTypes): TrackNode[] => {
   switch (action.type) {
     case INIT:
       return initialState;

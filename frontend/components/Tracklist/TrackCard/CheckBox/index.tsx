@@ -1,16 +1,13 @@
 import React, { FC, useEffect, useState, memo } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  pushCheckedTrack,
-  removeCheckedTrack,
-  CheckedTrack,
-} from "../../../../reduxModules/checkedTrack";
+import { pushCheckedTrack, removeCheckedTrack } from "../../../../reduxModules/checkedTrack";
 import { RootState } from "../../../../reduxModules";
 import { preventEffect } from "../../../../reduxModules/allCheck";
+import { TrackNode } from "../../../../reduxModules/playQueue";
 
 interface Props {
-  trackData: CheckedTrack;
+  trackData: TrackNode;
   listLength: number;
 }
 
@@ -18,7 +15,7 @@ const StyleCheckBox = styled.div`
   padding: 10px;
 `;
 
-const checkLength = (base: CheckedTrack[], target: CheckedTrack, length: number) => {
+const checkLength = (base: TrackNode[], target: TrackNode, length: number) => {
   const tmp = new Set([...base, target]);
   return tmp.size >= length;
 };
