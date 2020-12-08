@@ -20,12 +20,12 @@ struct TodayView: View {
     var body: some View {
         NavigationView {
             List {
-                //                NavigationLink(
-                //                    destination: router.getDestination(to: .favorites),
-                //                    label: {
-                //                        CategoryView(category: category)
-                //                    }
-                //                )
+                let stationCategory = Category(stations: viewModel.stations)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: stationCategory),
+                    destination: router.getDestination(to: .djStations)
+                )
+
                 let favoritesCategory = Category(playlists: viewModel.favorites,
                                                  type: .favorites,
                                                  mode: .half)
