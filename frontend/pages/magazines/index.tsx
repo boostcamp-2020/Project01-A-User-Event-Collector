@@ -59,6 +59,31 @@ const StyledSection = styled.div`
   }
 `;
 
+const AllMagLabelToggle = styled(AllMagLabel)<{ magType: string; className: string }>`
+  background-color: ${({ magType }) => (magType === "ALL" ? "#FF0350" : "#fff")};
+  color: ${({ magType }) => (magType === "ALL" ? "#fff" : "#000")};
+  border: ${({ magType }) => (magType === "PICK" ? "1px solid transparent" : "1px solid #dddddd")};
+`;
+
+const SpecialMagLabelToggle = styled(SpecialMagLabel)<{ magType: string; className: string }>`
+  background-color: ${({ magType }) => (magType === "SPECIAL" ? "" : "#fff")};
+  background-image: ${({ magType }) => (magType === "SPECIAL" ? "linear-gradient(#e66465, #9198e5)" : "none")};
+  color: ${({ magType }) => (magType === "SPECIAL" ? "#fff" : "#000")};
+  border: ${({ magType }) => (magType === "SPECIAL" ? "1px solid transparent" : "1px solid #dddddd")};
+`;
+
+const PickMagLabelToggle = styled(PickMagLabel)<{ magType: string; className: string }>`
+  background-color: ${({ magType }) => (magType === "PICK" ? "#FF0350" : "#fff")};
+  color: ${({ magType }) => (magType === "PICK" ? "#fff" : "#000")};
+  border: ${({ magType }) => (magType === "PICK" ? "1px solid transparent" : "1px solid #dddddd")};
+`;
+
+const GenreMagLabelToggle = styled(GenreMagLabel)<{ magType: string; className: string }>`
+  background-color: ${({ magType }) => (magType === "GENRE" ? "#8B02ED" : "#fff")};
+  color: ${({ magType }) => (magType === "GENRE" ? "#fff" : "#000")};
+  border: ${({ magType }) => (magType === "GENRE" ? "1px solid transparent" : "1px solid #dddddd")};
+`;
+
 const IndexPage = memo(({ magazines }: any) => {
   const [magType, setMagType] = useState("ALL");
 
@@ -71,7 +96,7 @@ const IndexPage = memo(({ magazines }: any) => {
       <StyledPagetitle>VIBE MAG</StyledPagetitle>
       <StyledMagazineRadioContainer>
         <label htmlFor="magazineAll">
-          <AllMagLabel />
+          <AllMagLabelToggle magType={magType} />
           <input
             type="radio"
             name="magazine-radio"
@@ -82,7 +107,7 @@ const IndexPage = memo(({ magazines }: any) => {
           />
         </label>
         <label htmlFor="magazineSpecial">
-          <SpecialMagLabel />
+          <SpecialMagLabelToggle magType={magType} />
           <input
             type="radio"
             name="magazine-radio"
@@ -93,7 +118,7 @@ const IndexPage = memo(({ magazines }: any) => {
           />
         </label>
         <label htmlFor="magazinePick">
-          <PickMagLabel />
+          <PickMagLabelToggle magType={magType} />
           <input
             type="radio"
             name="magazine-radio"
@@ -104,7 +129,7 @@ const IndexPage = memo(({ magazines }: any) => {
           />
         </label>
         <label htmlFor="magazineGenre">
-          <GenreMagLabel />
+          <GenreMagLabelToggle magType={magType} />
           <input
             type="radio"
             name="magazine-radio"
@@ -117,7 +142,6 @@ const IndexPage = memo(({ magazines }: any) => {
       </StyledMagazineRadioContainer>
       <StyledHotMag>
         <HotMagCard />
-        {/* <StyledHotMagOverlay /> */}
       </StyledHotMag>
       <StyledSection>
         {magazines
