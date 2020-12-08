@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import getAll from "./getAll";
-import getTracks from "./getAlbums";
-import getAlbums from "./getTracks";
+import getTracks from "./getTracks";
+import getAlbums from "./getAlbums";
 import getArtists from "./getArtists";
 
 interface Controller {
