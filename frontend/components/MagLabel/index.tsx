@@ -29,7 +29,7 @@ const MagLabel: React.FC<MagLabelProps> = ({
 export default MagLabel;
 
 interface ClassNameProps {
-  className: string;
+  className?: string;
 }
 
 const AllMagLabel: React.FC<ClassNameProps> = ({ className }: ClassNameProps) => (

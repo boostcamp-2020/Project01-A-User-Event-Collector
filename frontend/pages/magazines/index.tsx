@@ -84,7 +84,7 @@ const GenreMagLabelToggle = styled(GenreMagLabel)<{ magType: string; className: 
   border: ${({ magType }) => (magType === "GENRE" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const IndexPage = memo(({ magazines }: any) => {
+const IndexPage = memo(({ magazines, className }: any) => {
   const [magType, setMagType] = useState("ALL");
 
   const handleTypeChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +96,7 @@ const IndexPage = memo(({ magazines }: any) => {
       <StyledPagetitle>VIBE MAG</StyledPagetitle>
       <StyledMagazineRadioContainer>
         <label htmlFor="magazineAll">
-          <AllMagLabelToggle magType={magType} />
+          <AllMagLabelToggle magType={magType} className={className} />
           <input
             type="radio"
             name="magazine-radio"
@@ -107,7 +107,7 @@ const IndexPage = memo(({ magazines }: any) => {
           />
         </label>
         <label htmlFor="magazineSpecial">
-          <SpecialMagLabelToggle magType={magType} />
+          <SpecialMagLabelToggle magType={magType} className={className} />
           <input
             type="radio"
             name="magazine-radio"
@@ -118,7 +118,7 @@ const IndexPage = memo(({ magazines }: any) => {
           />
         </label>
         <label htmlFor="magazinePick">
-          <PickMagLabelToggle magType={magType} />
+          <PickMagLabelToggle magType={magType} className={className} />
           <input
             type="radio"
             name="magazine-radio"
@@ -129,7 +129,7 @@ const IndexPage = memo(({ magazines }: any) => {
           />
         </label>
         <label htmlFor="magazineGenre">
-          <GenreMagLabelToggle magType={magType} />
+          <GenreMagLabelToggle magType={magType} className={className} />
           <input
             type="radio"
             name="magazine-radio"

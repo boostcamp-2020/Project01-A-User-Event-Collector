@@ -6,7 +6,7 @@ interface MagLabelStyles {
 
 interface MagLabelProps extends MagLabelStyles {
   children: string;
-  className: string;
+  className?: string;
 }
 
 export type { MagLabelStyles, MagLabelProps };
