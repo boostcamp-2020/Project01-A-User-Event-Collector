@@ -6,9 +6,9 @@ const StyledPlaybar = styled.div`
   align-items: center;
   position: sticky;
   width: 100%;
-  min-height: 6rem;
+  height: 6rem;
   bottom: 0rem;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(10, 10, 10, 0.95);
   z-index: 15;
 `;
 
@@ -16,7 +16,7 @@ const StyledTrackSection = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 30%;
+  width: 30rem;
   box-sizing: border-box;
 `;
 
@@ -83,7 +83,7 @@ const StyledEllipsis = styled.div`
 
 const StyledMainControlSection = styled.div`
   display: flex;
-  width: 40%;
+  width: calc(100% - 60rem);
   justify-content: center;
   align-items: center;
 `;
@@ -128,7 +128,7 @@ const StyledSideControlSection = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 30%;
+  width: 30rem;
 `;
 
 const StyledTrackTime = styled.div`
@@ -180,7 +180,7 @@ const StyledPlaylistButtonWrapper = styled.div`
 const StyledPlaylistButton = styled.div`
   display: flex;
   font-size: 2rem;
-  color: #555;
+  color: ${({ showPlaylist }: { showPlaylist: boolean }) => (showPlaylist ? "#FE1250" : "#555")};
 `;
 
 export {
