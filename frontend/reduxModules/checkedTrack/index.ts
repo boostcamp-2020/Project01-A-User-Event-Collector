@@ -11,6 +11,7 @@ export interface CheckedTrack {
 export interface CheckedState {
   checkedTrackArr: CheckedTrack[];
   isAllChecked: boolean;
+  flag?: boolean;
 }
 
 // Actions
@@ -35,7 +36,7 @@ interface RemoveAction {
 
 interface AllCheckAction {
   type: typeof ALLCHECK;
-  payload: CheckedTrack[];
+  payload: { allTrackData: CheckedTrack[]; flag: boolean };
 }
 
 export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction | AllCheckAction;
@@ -61,10 +62,10 @@ export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
   };
 };
 
-export const allCheckTrack = (allTrackData: CheckedTrack[]): AllCheckAction => {
+export const allCheckTrack = (allTrackData: CheckedTrack[], flag: boolean): AllCheckAction => {
   return {
     type: ALLCHECK,
-    payload: allTrackData,
+    payload: { allTrackData, flag },
   };
 };
 
@@ -73,11 +74,13 @@ const initialState: CheckedState = {
   checkedTrackArr: [],
   isAllChecked: false,
 };
+
 const checkedTrackReducer = (
   state = initialState,
   action: CheckedTrackActionTypes,
 ): CheckedState => {
   const { checkedTrackArr, isAllChecked } = state;
+
   switch (action.type) {
     case INIT:
       return {
@@ -98,10 +101,13 @@ const checkedTrackReducer = (
       };
 
     case ALLCHECK:
+      console.log("리스트 ", action.payload.allTrackData.length);
+      console.log(action.payload.flag);
       return {
-        checkedTrackArr: action.payload,
-        isAllChecked: !isAllChecked,
+        checkedTrackArr: action.payload.allTrackData,
+        isAllChecked: action.payload.flag !== undefined ? action.payload.flag : true,
       };
+
     default:
       return state;
   }
