@@ -37,7 +37,7 @@ struct SearchBarView: View {
             
             if viewModel.isEditing {
                 Button(action: {
-                    viewModel.reset()
+                    viewModel.searchText = ""
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 
                 }, label: {
