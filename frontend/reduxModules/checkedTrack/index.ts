@@ -1,12 +1,6 @@
 import { Album, Artist } from "../../interfaces";
-
+import { Node } from "../playQueue";
 // State
-export interface CheckedTrack {
-  id: number;
-  trackName: string;
-  Albums: Album;
-  Artists: Artist[];
-}
 
 // Actions
 export const PUSH = "checkedTrack/PUSH";
@@ -20,17 +14,17 @@ interface InitAction {
 
 interface PushAction {
   type: typeof PUSH;
-  payload: CheckedTrack;
+  payload: Node;
 }
 
 interface RemoveAction {
   type: typeof REMOVE;
-  payload: CheckedTrack;
+  payload: Node;
 }
 
 interface AllPushAction {
   type: typeof ALLPUSH;
-  payload: CheckedTrack[];
+  payload: Node[];
 }
 
 export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction | AllPushAction;
@@ -42,21 +36,21 @@ export const initCheckedTrack = (): InitAction => {
   };
 };
 
-export const pushCheckedTrack = (trackData: CheckedTrack): PushAction => {
+export const pushCheckedTrack = (trackData: Node): PushAction => {
   return {
     type: PUSH,
     payload: trackData,
   };
 };
 
-export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
+export const removeCheckedTrack = (trackData: Node): RemoveAction => {
   return {
     type: REMOVE,
     payload: trackData,
   };
 };
 
-export const allPushCheckedTrack = (allTrackData: CheckedTrack[]): AllPushAction => {
+export const allPushCheckedTrack = (allTrackData: Node[]): AllPushAction => {
   return {
     type: ALLPUSH,
     payload: allTrackData,
@@ -64,12 +58,9 @@ export const allPushCheckedTrack = (allTrackData: CheckedTrack[]): AllPushAction
 };
 
 // Reducer
-const initialState: CheckedTrack[] = [];
+const initialState: Node[] = [];
 
-const checkedTrackReducer = (
-  state = initialState,
-  action: CheckedTrackActionTypes,
-): CheckedTrack[] => {
+const checkedTrackReducer = (state = initialState, action: CheckedTrackActionTypes): Node[] => {
   switch (action.type) {
     case INIT:
       return initialState;
