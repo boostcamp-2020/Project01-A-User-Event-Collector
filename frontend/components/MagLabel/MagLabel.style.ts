@@ -12,7 +12,7 @@ const StyledMagLabel = styled.div<MagLabelStyles>`
   color: #fff;
   border-radius: 1.6rem;
   line-height: 0.15rem;
-  font=size: 0.2rem;
+  font-size: 0.2rem;
   text-align: center;
 `;
 
