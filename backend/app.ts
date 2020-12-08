@@ -14,14 +14,14 @@ if (process.env.NODE_ENV) {
 }
 
 const app = express();
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(logger("short"));
 app.use(cors());
 
 app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
-
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
