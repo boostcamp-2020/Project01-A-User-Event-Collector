@@ -11,6 +11,11 @@ export interface CheckedTrack {
 // Actions
 export const PUSH = "checkedTrack/PUSH";
 export const REMOVE = "checkedTrack/Remove";
+export const INIT = "checkedTrack/INIT";
+
+interface InitAction {
+  type: typeof INIT;
+}
 
 interface PushAction {
   type: typeof PUSH;
@@ -21,17 +26,23 @@ interface RemoveAction {
   type: typeof REMOVE;
   payload: CheckedTrack;
 }
-export type CheckedTrackActionTypes = PushAction | RemoveAction;
+export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction;
 
 // Action Creator
-export const pushTrack = (trackData: CheckedTrack): PushAction => {
+export const initCheckedTrack = (): InitAction => {
+  return {
+    type: INIT,
+  };
+};
+
+export const pushCheckedTrack = (trackData: CheckedTrack): PushAction => {
   return {
     type: PUSH,
     payload: trackData,
   };
 };
 
-export const removeTrack = (trackData: CheckedTrack): RemoveAction => {
+export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
   return {
     type: REMOVE,
     payload: trackData,

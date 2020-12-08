@@ -1,7 +1,12 @@
 import React, { FC, useEffect, useState, memo } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { pushTrack, removeTrack, CheckedTrack } from "../../../../reduxModules/checkedTrack";
+import {
+  pushCheckedTrack,
+  removeCheckedTrack,
+  initCheckedTrack,
+  CheckedTrack,
+} from "../../../../reduxModules/checkedTrack";
 
 interface Props {
   trackData: CheckedTrack;
@@ -17,8 +22,8 @@ const CheckBox: FC<Props> = memo(({ trackData }: Props) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (isChecked) dispatch(pushTrack(trackData));
-    else dispatch(removeTrack(trackData));
+    if (isChecked) dispatch(pushCheckedTrack(trackData));
+    else dispatch(removeCheckedTrack(trackData));
   }, [isChecked]);
 
   return (
