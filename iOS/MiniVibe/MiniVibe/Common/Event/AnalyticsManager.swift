@@ -39,12 +39,18 @@ class AnalyticsManager {
     }
     
     func switchToServerEngine() {
-        //TODO: Core Data에 쌓인 이벤트 로그 서버에 보내기
-        currentEngine = serverEngine
+        if currentEngine !== serverEngine {
+            print("switchToServerEngine")
+            //TODO: Core Data에 쌓인 이벤트 로그 서버에 보내기
+            currentEngine = serverEngine
+        }
     }
     
     func switchToBackupEngine() {
-        currentEngine = backupEngine
+        if currentEngine !== backupEngine {
+            print("switchToBackupEngine")
+            currentEngine = backupEngine
+        }
     }
     
 }
@@ -53,10 +59,8 @@ extension AnalyticsManager: ReachabilityObserverDelegate {
     
     func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {
-            print("switchToServerEngine")
             switchToServerEngine()
         } else {
-            print("switchToBackupEngine")
             switchToBackupEngine()
         }
     }
