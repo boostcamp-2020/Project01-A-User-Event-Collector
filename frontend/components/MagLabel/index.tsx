@@ -12,12 +12,14 @@ const MagLabel: React.FC<MagLabelProps> = ({
   backgroundImage,
   width,
   children,
+  className,
 }: MagLabelProps) => {
   return (
     <StyledMagLabel
       backgroundColor={backgroundColor}
       backgroundImage={backgroundImage}
       width={width}
+      className={className}
     >
       {children}
     </StyledMagLabel>
@@ -26,9 +28,29 @@ const MagLabel: React.FC<MagLabelProps> = ({
 
 export default MagLabel;
 
-const AllMagLabel: React.FC = () => <MagLabel {...AllMagLabelStyles}>전체</MagLabel>;
-const SpecialMagLabel: React.FC = () => <MagLabel {...SpecialMagLabelStyles}>SPECIAL</MagLabel>;
-const PickMagLabel: React.FC = () => <MagLabel {...PickMagLabelStyles}>PICK</MagLabel>;
-const GenreMagLabel: React.FC = () => <MagLabel {...GenreMagLabelStyles}>GENRE</MagLabel>;
+interface ClassNameProps {
+  className: string;
+}
+
+const AllMagLabel: React.FC<ClassNameProps> = ({ className }: ClassNameProps) => (
+  <MagLabel {...AllMagLabelStyles} className={className}>
+    전체
+  </MagLabel>
+);
+const SpecialMagLabel: React.FC<ClassNameProps> = ({ className }: ClassNameProps) => (
+  <MagLabel {...SpecialMagLabelStyles} className={className}>
+    SPECIAL
+  </MagLabel>
+);
+const PickMagLabel: React.FC<ClassNameProps> = ({ className }: ClassNameProps) => (
+  <MagLabel {...PickMagLabelStyles} className={className}>
+    PICK
+  </MagLabel>
+);
+const GenreMagLabel: React.FC<ClassNameProps> = ({ className }: ClassNameProps) => (
+  <MagLabel {...GenreMagLabelStyles} className={className}>
+    GENRE
+  </MagLabel>
+);
 
 export { AllMagLabel, SpecialMagLabel, PickMagLabel, GenreMagLabel };
