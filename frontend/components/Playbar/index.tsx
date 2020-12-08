@@ -35,15 +35,14 @@ const Playbar = memo(() => {
   const fullPlayTime = "3:32";
   const currentPlayTime = "1:32";
 
-  const data = useSelector((state: RootState) => state.checkedTrack);
+  const data = useSelector((state: RootState) => state.playQueue);
 
   return (
     <StyledPlaybar>
-      {/* {console.log(data.checkedTrackArr)} */}
-      {/* {console.log(data)} */}
-      {data.map((elem) => (
+      {console.log(data)}
+      {/* {data.map((elem) => (
         <h1 key={elem.id}>{elem.trackName}</h1>
-      ))}
+      ))} */}
       <StyledTrackSection>
         <StyledImgSection>
           <Img varient="nowPlayingCover" src={trackImg} />

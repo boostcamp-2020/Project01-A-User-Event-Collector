@@ -5,7 +5,7 @@ export interface Node {
   id: number;
   trackName: string;
   Albums: Album;
-  Aritsts: Artist[];
+  Artists: Artist[];
 }
 
 // Actions
@@ -78,7 +78,7 @@ const playQueueReducer = (state = initialState, action: PlayQueueActionTypes): N
       return state.filter((elem) => elem.id !== action.payload.id);
 
     case ALLPUSH:
-      return [...action.payload];
+      return [...state, ...action.payload];
 
     default:
       return state;
