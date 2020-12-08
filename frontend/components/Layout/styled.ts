@@ -48,6 +48,24 @@ const StyledContent = styled.div`
   padding: 0rem 10rem;
 `;
 
+const showOverlay = keyframes`
+  0% {
+    bottom: 25rem;
+  }
+  25% {
+    bottom: 20rem;
+  }
+  50% {
+    bottom: 10rem;
+  }
+  75% {
+    bottom: 5rem;
+  }
+  100% {
+    bottom: 0rem;
+  }
+`; //TODO: animation 변경
+
 const StyledBlockingOverlay = styled.div`
   display: flex;
   position: fixed;
@@ -55,6 +73,7 @@ const StyledBlockingOverlay = styled.div`
   width: 100%;
   height: calc(100% - 6rem) !important;
   z-index: 60;
+  animation: ${showOverlay} 1.2s 0s linear;
 `;
 
 const StyledOverlay = styled.div`
@@ -65,6 +84,7 @@ const StyledOverlay = styled.div`
   height: calc(100% - 6rem) !important;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 61;
+  animation: ${showOverlay} 1.2s 0s linear;
 `;
 
 const StyledOverlayImg = styled.div`
