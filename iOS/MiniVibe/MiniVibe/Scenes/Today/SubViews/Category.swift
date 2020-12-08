@@ -40,3 +40,14 @@ extension Category {
         }
     }
 }
+
+extension Category {
+    init(stations: [DJStation]) {
+        self.title = "DJ 스테이션"
+        self.type = .djStations
+        self.mode = .half
+        self.items = stations.map { station -> CategoryItem in
+            CategoryItem(station: station)
+        }
+    }
+}

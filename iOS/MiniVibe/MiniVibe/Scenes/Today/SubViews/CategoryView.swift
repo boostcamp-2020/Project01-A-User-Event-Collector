@@ -17,10 +17,18 @@ struct CategoryView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
                     ForEach(category.items) { item in
-                        MemorySafeNavigationLink(
-                            contentView: CategoryCellView(item: item, mode: category.mode),
-                            destination: router.getDestination(to: category.type, with: item.id)
-                        )
+                        if category.type == MiniVibeType.djStations {
+                            Button(action: {
+                                
+                            }, label: {
+                                CategoryCellView(item: item, mode: category.mode)
+                            })
+                        } else {
+                            MemorySafeNavigationLink(
+                                contentView: CategoryCellView(item: item, mode: category.mode),
+                                destination: router.getDestination(to: category.type, with: item.id)
+                            )
+                        }
                     }
                 }
             }
@@ -36,13 +44,13 @@ struct CategoryRowView_Previews: PreviewProvider {
          .init(id: 2, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
          .init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil)
         ]
-
+    
     static var previews: some View {
         NavigationView {
             CategoryView(category: Category(title: "Station",
                                             items: favoritePlaylistItems,
                                             type: .magazines, mode: .full))
         }
-//        .preferredColorScheme(.dark)
+        //        .preferredColorScheme(.dark)
     }
 }
