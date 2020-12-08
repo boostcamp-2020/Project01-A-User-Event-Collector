@@ -26,10 +26,7 @@ const Sample = ({ name, artists, cover }: SampleProps): React.ReactElement => {
         <Img varient="nowPlayingCover" src={cover} />
       </StyledCover>
       <StyledInfo>
-        <StyledName>
-          {name}
-          <StyledIcon>{icons.angleRight}</StyledIcon>
-        </StyledName>
+        <StyledName>{name}</StyledName>
         <StyledArtist>{typeof artists === "string" ? artists : "노래 아티스트 조인"}</StyledArtist>
         {/* TODO: 노래 artist join으로 변경 */}
       </StyledInfo>
@@ -45,7 +42,10 @@ interface SamplesProps {
 const Samples = ({ sectionTitle, data }: SamplesProps): React.ReactElement => {
   return (
     <StyledSamples>
-      <StyledSectionTitle>{sectionTitle}</StyledSectionTitle>
+      <StyledSectionTitle>
+        {sectionTitle}
+        <StyledIcon>{icons.angleRight}</StyledIcon>
+      </StyledSectionTitle>
       <StyledSampleWrapper>
         {data.map((el: any) => {
           const name =

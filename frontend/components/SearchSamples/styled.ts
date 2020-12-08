@@ -4,7 +4,7 @@ const StyledSectionTitle = styled.div`
   font-size: 1.25em;
   font-weight: bold;
   margin-top: 1em;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.6em;
 `;
 
 const StyledSamples = styled.div`
@@ -39,7 +39,7 @@ const StyledInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 0.5em;
+  margin-left: 1em;
 `;
 
 const StyledName = styled.div`
