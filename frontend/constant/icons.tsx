@@ -14,6 +14,7 @@ import {
   faVolumeDown,
   faVolumeUp,
   faBars,
+  faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -31,6 +32,7 @@ const volumeLow = <FontAwesomeIcon icon={faVolumeOff} />;
 const volumeMiddle = <FontAwesomeIcon icon={faVolumeDown} />;
 const volumeMax = <FontAwesomeIcon icon={faVolumeUp} />;
 const list = <FontAwesomeIcon icon={faBars} />;
+const angleRight = <FontAwesomeIcon icon={faAngleRight} />;
 
 const icons = {
   search,
@@ -47,6 +49,7 @@ const icons = {
   volumeMiddle,
   volumeMax,
   list,
+  angleRight,
 };
 
 export default icons;
