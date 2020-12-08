@@ -28,8 +28,7 @@ const Sample = ({ name, artists, cover }: SampleProps): React.ReactElement => {
       </StyledCover>
       <StyledInfo>
         <StyledName>{name}</StyledName>
-        <StyledArtist>{typeof artists === "string" ? artists : "노래 아티스트 조인"}</StyledArtist>
-        {/* TODO: 노래 artist join으로 변경 */}
+        <StyledArtist>{typeof artists === "string" ? artists : artists.join(", ")}</StyledArtist>
       </StyledInfo>
     </StyledSample>
   );
@@ -62,10 +61,14 @@ const Samples = ({ sectionTitle, data, filter }: SamplesProps): React.ReactEleme
 
           const artists =
             sectionTitle === "노래"
-              ? ["아티스트1", "아티스트2", "예정"]
+              ? []
               : sectionTitle === "앨범"
               ? el.Artists.artistName
               : "아티스트";
+
+          if (sectionTitle === "노래") {
+            el.Artists_Tracks.forEach((el) => artists.push(el.Artists.artistName));
+          }
           return (
             <Sample
               name={name}
@@ -80,3 +83,47 @@ const Samples = ({ sectionTitle, data, filter }: SamplesProps): React.ReactEleme
 };
 
 export default Samples;
+
+// TODO: 인터페이스 정리
+// interface AlbumProps {
+//   id: number;
+//   albumName: string;
+//   description: string;
+//   cover: string;
+//   artistId: number;
+//   Artist: {
+//     artistName: string;
+//   };
+// }
+
+// interface TrackProps {
+//   id: number;
+//   trackName: string;
+//   albumTrackNumber: number;
+//   albumId: number;
+//   Albums: {
+//     cover: string;
+//     albumName: string;
+//   };
+//   Artists_Tracks: {
+//     id: number;
+//     trackId: number;
+//     artistId: number;
+//     Artists: {
+//       artistName: string;
+//     };
+//   }[];
+// }
+
+// interface ArtistProps {
+//   id: number;
+//   artistName: string;
+//   cover: string;
+//   description: string;
+// }
+
+// interface SampleProps {
+//   sectionTitle: string;
+//   data: AlbumProps[] | ArtistProps[] | TrackProps[];
+//   filter: string;
+// }
