@@ -1,6 +1,8 @@
 import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import Img from "../Img";
 import icons from "../../constant/icons";
+import { RootState } from "../../reduxModules";
 import {
   StyledPlaybar,
   StyledTrackSection,
@@ -33,8 +35,14 @@ const Playbar = memo(() => {
   const fullPlayTime = "3:32";
   const currentPlayTime = "1:32";
 
+  const data = useSelector((state: RootState) => state.chekdTrack);
+
   return (
     <StyledPlaybar>
+      {console.log(data)}
+      {data.map((elem) => (
+        <h1 key={elem.id}>{elem.trackName}</h1>
+      ))}
       <StyledTrackSection>
         <StyledImgSection>
           <Img varient="nowPlayingCover" src={trackImg} />
