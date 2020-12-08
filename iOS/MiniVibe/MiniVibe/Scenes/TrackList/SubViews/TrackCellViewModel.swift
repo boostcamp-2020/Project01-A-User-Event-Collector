@@ -6,12 +6,43 @@
 //
 
 import Foundation
+import Combine
 
-class TrackCellViewModel: ObservableObject {
-    @Published var track: Track?
+class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
+    @Published var track: Track
+    @Published var isFavorite = false
     
-    func update(with track: Track) {
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(track: Track) {
         self.track = track
+        super.init()
+        toggleSubscription()
+    }
+    
+    func didToggleFavorite() {
+        isFavorite.toggle()
+    }
+    
+    func toggleSubscription() {
+        $isFavorite
+            .sink { [weak self] isFavorite in
+                self?.post(isFavorite: isFavorite)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func post(isFavorite: Bool) {
+        postToServer()
+        postToCoreData()
+    }
+    
+    func postToServer() {
+        
+    }
+    
+    func postToCoreData() {
+        
     }
     
 }

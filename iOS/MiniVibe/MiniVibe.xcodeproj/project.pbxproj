@@ -66,7 +66,6 @@
 		CF232C7E257AB05600838F18 /* MemorySafeNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */; };
 		CF2D94AE256F825B00D0A66B /* TrackCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AA256F825B00D0A66B /* TrackCellView.swift */; };
 		CF2D94B0256F825B00D0A66B /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AC256F825B00D0A66B /* TrackListView.swift */; };
-		CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */; };
 		CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */; };
 		CF3BDD682576BAB500FF768E /* SearchAfterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BDD672576BAB500FF768E /* SearchAfterView.swift */; };
 		CF5C214A25741952007C7229 /* TodayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C214925741952007C7229 /* TodayRouter.swift */; };
@@ -191,7 +190,6 @@
 		CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySafeNavigationLink.swift; sourceTree = "<group>"; };
 		CF2D94AA256F825B00D0A66B /* TrackCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCellView.swift; sourceTree = "<group>"; };
 		CF2D94AC256F825B00D0A66B /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
-		CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		CF3BDD622576AA6100FF768E /* SearchAfterCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterCategoryView.swift; sourceTree = "<group>"; };
 		CF3BDD672576BAB500FF768E /* SearchAfterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAfterView.swift; sourceTree = "<group>"; };
 		CF5C214925741952007C7229 /* TodayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRouter.swift; sourceTree = "<group>"; };
@@ -530,7 +528,6 @@
 			children = (
 				CF0737DD2579272A009EC640 /* SubViews */,
 				CF2D94AC256F825B00D0A66B /* TrackListView.swift */,
-				CF2D94AD256F825B00D0A66B /* TrackListViewModel.swift */,
 			);
 			path = TrackList;
 			sourceTree = "<group>";
@@ -950,7 +947,6 @@
 				51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */,
 				CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */,
 				CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */,
-				CF2D94B1256F825B00D0A66B /* TrackListViewModel.swift in Sources */,
 				51B82B0F257DF0DA00A005E8 /* PlayerHeaderView.swift in Sources */,
 				5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */,
 				CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */,

@@ -11,35 +11,30 @@ struct TrackCellView: View {
     let hasAccessory: Bool
     let track: Track
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
-    @StateObject private var viewModel = TrackCellViewModel()
-    @State var isFavorite = false
+    @StateObject private var viewModel: TrackCellViewModel
     
     init(hasAccessory: Bool, track: Track) {
         self.hasAccessory = hasAccessory
         self.track = track
+        _viewModel = StateObject(wrappedValue: TrackCellViewModel(track: track))
     }
     
     var body: some View {
         HStack {
             Button(action: {
-                nowPlayingViewModel.updateWith(track: track)
+                nowPlayingViewModel.update(with: track)
             }, label: {
                 BasicRowCellView(title: track.name,
-                                 subTitle: track.artists?.first?.name ?? "",
-                                 coverURLString: track.album?.cover)
+                                 subTitle: track.artist,
+                                 coverURLString: track.coverURLString)
             })
             if hasAccessory {
                 HStack(spacing: 20) {
-                    HeartAccessory(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
+                    HeartAccessory(isFavorite: viewModel.isFavorite, toggleFavorite: viewModel.didToggleFavorite)
                     EllipsisAssessory()
                 }
             }
-            
         }
-    }
-    
-    func didToggleFavorite() {
-        viewModel.update(with: track)
     }
 }
 

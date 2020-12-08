@@ -34,7 +34,7 @@ class PlayerViewModel: ObservableObject {
         randomSubscription()
     }
 
-    func updateWith(track: Track) {
+    func update(with track: Track) {
         currentTrack = track
         isPlaying = true
         if queue.contains(where: {$0.id == track.id}) {
