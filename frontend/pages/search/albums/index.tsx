@@ -21,7 +21,7 @@ const SearchAlbumPage = ({ filter }: { filter: string }): React.ReactElement => 
   return (
     <StyledSearchAlbumPage>
       <StyledResult>
-        <StyledResultText>{`"${filter}"의 검색 결과`}</StyledResultText>
+        <StyledResultText>{`'${filter}'의 검색 결과`}</StyledResultText>
       </StyledResult>
       <StyledSearchAlbumCards>
         <SearchAlbumCards data={sampleAlbums} />

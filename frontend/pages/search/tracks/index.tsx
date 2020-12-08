@@ -26,7 +26,7 @@ const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => 
   return (
     <StyledSearchTrackPage>
       <StyledResult>
-        <StyledResultText>{`"${filter}"의 검색 결과`}</StyledResultText>
+        <StyledResultText>{`'${filter}'의 검색 결과`}</StyledResultText>
         <StyledResultButtons>
           <StyledPlayAllButton>
             <StyledIcons>{icons.play}</StyledIcons>전체재생
