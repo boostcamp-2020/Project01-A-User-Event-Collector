@@ -18,12 +18,11 @@ const StyleButtonBox = styled.div`
 
 // parentId will be used for Like Button
 const ButtonBox: FC<Props> = ({ parentId, tracks }: Props) => {
-  const checkedTrackArr = useSelector((state: RootState) => state.checkedTrack);
-  const AllCheckedFlag = useSelector((state: RootState) => state.AllCheckedFlag);
+  const { isAllChecked } = useSelector((state: RootState) => state.AllCheckedFlag);
 
   const dispatch = useDispatch();
   const allCheckHandler = () => {
-    if (checkedTrackArr.length >= tracks.length) {
+    if (isAllChecked) {
       dispatch(initCheckedTrack());
       dispatch(permitEffect({ isAllChecked: false }));
     } else {
