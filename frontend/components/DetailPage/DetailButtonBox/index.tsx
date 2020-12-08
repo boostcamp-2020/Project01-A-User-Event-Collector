@@ -25,10 +25,10 @@ const ButtonBox: FC<Props> = ({ parentId, tracks }: Props) => {
   const allCheckHandler = () => {
     if (checkedTrackArr.length >= tracks.length) {
       dispatch(initCheckedTrack());
-      dispatch(permitEffect({ isAllChecked: false, prevent: true }));
+      dispatch(permitEffect({ isAllChecked: false }));
     } else {
       dispatch(allPushCheckedTrack(tracks));
-      dispatch(permitEffect({ isAllChecked: true, prevent: true }));
+      dispatch(permitEffect({ isAllChecked: true }));
     }
   };
 

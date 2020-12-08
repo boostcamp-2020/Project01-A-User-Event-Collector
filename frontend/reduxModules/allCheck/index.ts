@@ -1,7 +1,7 @@
 // State
 export interface AllCheckedFlag {
   isAllChecked: boolean;
-  prevent: boolean;
+  preventBubbling?: boolean;
 }
 
 // Actions
@@ -23,30 +23,35 @@ interface InternalAction {
 export type FlagTypes = ExteranlAction | InternalAction;
 
 // Action creator
-export const preventEffect = (flagOption: AllCheckedFlag): ExteranlAction => {
+export const preventEffect = ({ isAllChecked }: AllCheckedFlag): ExteranlAction => {
   return {
     type: EXACCESS,
-    payload: flagOption,
+    payload: {
+      isAllChecked,
+      preventBubbling: true,
+    },
   };
 };
 
-export const permitEffect = (flagOption: AllCheckedFlag): InternalAction => {
+export const permitEffect = ({ isAllChecked }: AllCheckedFlag): InternalAction => {
   return {
     type: INACCESS,
-    payload: flagOption,
+    payload: {
+      isAllChecked,
+      preventBubbling: false,
+    },
   };
 };
 
 // Reducer
 const initialFlag: AllCheckedFlag = {
   isAllChecked: false,
-  prevent: false,
+  preventBubbling: false,
 };
 
 const allCheckedReducer = (state = initialFlag, action: FlagTypes): AllCheckedFlag => {
   switch (action.type) {
     case INACCESS:
-      console.log(action.payload);
       return action.payload;
 
     case EXACCESS:

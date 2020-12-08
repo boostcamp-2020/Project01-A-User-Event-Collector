@@ -20,41 +20,36 @@ const StyleCheckBox = styled.div`
 
 const checkLength = (base: CheckedTrack[], target: CheckedTrack, length: number) => {
   const tmp = new Set([...base, target]);
-  return tmp.size === length;
+  return tmp.size >= length;
 };
 
 const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
   const checkedTrackArr = useSelector((state: RootState) => state.checkedTrack);
-  const allCheckedFlag = useSelector((state: RootState) => state.AllCheckedFlag);
+  const { isAllChecked, preventBubbling } = useSelector((state: RootState) => state.AllCheckedFlag);
   const [isChecked, setIsChecked] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (isChecked) {
-      // if (checkLength(checkedTrackArr, trackData, listLength))
-      // dispatch(allCheckTrack([...checkedTrackArr, trackData], true));
+      if (!isAllChecked && checkLength(checkedTrackArr, trackData, listLength))
+        dispatch(preventEffect({ isAllChecked: true }));
       dispatch(pushCheckedTrack(trackData));
-    } else if (!isChecked) {
-      // if (isAllChecked) {
-      //   console.log("asdasdasdasd");
-      //   dispatch(allCheckTrack([...checkedTrackArr, trackData], false));
-      // } else
+    }
+
+    if (!isChecked) {
+      if (isAllChecked) dispatch(preventEffect({ isAllChecked: false }));
       dispatch(removeCheckedTrack(trackData));
     }
   }, [isChecked]);
 
   useEffect(() => {
-    setIsChecked(allCheckedFlag.isAllChecked);
-  }, [allCheckedFlag]);
-
-  // useEffect(() => {
-  //   console.log("변화");
-  //   if (checkedTrackArr.length > 0 && !isAllChecked) return;
-  //   setIsChecked(isAllChecked);
-  // }, [isAllChecked]);
+    if (preventBubbling) return;
+    setIsChecked(isAllChecked);
+  }, [isAllChecked]);
 
   const checkHandler = () => setIsChecked(!isChecked);
+
   return (
     <StyleCheckBox>
       <input type="checkbox" checked={isChecked} onChange={checkHandler} />
