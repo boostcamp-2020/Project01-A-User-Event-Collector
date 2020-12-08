@@ -25,10 +25,10 @@ struct NowPlayingView: View {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
             })
             HStack(spacing: 20) {
-                Button(action: {}, label: {
-                    Image(systemName: "play.fill")
-                        .accesoryModifier(color: .gray, size: .small)
-                })
+                ToggleableImage(isEnabled: $viewModel.isPlaying,
+                                imageWhenTrue: "pause",
+                                imageWhenFalse: "play.fill",
+                                size: .medium)
                 Button(action: {}, label: {
                     Image(systemName: "forward.fill")
                         .accesoryModifier(color: .gray, size: .small)
@@ -43,6 +43,6 @@ struct NowPlayingView: View {
 
 struct NowPlayingView_Previews: PreviewProvider {
     static var previews: some View {
-        NowPlayingView(viewModel: PlayerViewModel())
+        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
     }
 }

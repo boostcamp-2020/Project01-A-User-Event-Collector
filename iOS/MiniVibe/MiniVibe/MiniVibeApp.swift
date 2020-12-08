@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct MiniVibeApp: App {
+    
+    let manager = AnalyticsManager(engine: MockAnalyticsEngine())
 
     var body: some Scene {
         WindowGroup {
-            CustomTabView()
+            CustomTabView(manager: manager)
         }
     }
 }

@@ -9,8 +9,13 @@ import SwiftUI
 
 struct TodayView: View {
     private let router = TodayRouter()
+    private let manager: AnalyticsManager
     @StateObject private var viewModel = TodayViewModel()
-    
+
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
+
     var body: some View {
         NavigationView {
             List {
@@ -57,6 +62,7 @@ struct TodayView: View {
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: {
+            manager.log(ScreenEvent.screenViewed(.today))
             viewModel.fetchAll()
         })
     }
@@ -64,6 +70,6 @@ struct TodayView: View {
 
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView()
+        TodayView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
     }
 }
