@@ -23,9 +23,7 @@ struct LibraryView: View {
                 LazyVGrid(columns: layout,
                           spacing: 20,
                           pinnedViews: [.sectionHeaders]) {
-                    Section(header: TrackListButtonView()) {
-                        TrackListView(tracks: viewModel.tracks)
-                    }
+                    TrackListView(tracks: viewModel.tracks)
                 }
                 .padding()
                 Rectangle()
