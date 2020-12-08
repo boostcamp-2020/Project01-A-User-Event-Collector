@@ -37,10 +37,10 @@ struct SearchView: View {
                         .clearBottom()
 
                 }
+                .padding()
             }
             .navigationTitle("검색")
         }
-        .padding()
     }
 }
 
