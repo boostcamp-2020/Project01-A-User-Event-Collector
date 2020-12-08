@@ -17,7 +17,9 @@ struct PlayerView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10) {
                     PlayerHeaderView(showMediaPlayer: $showMediaPlayer)
-                    PlayerInfoView(timeDuration: $timeDuration, track: viewModel.currentTrack)
+                    if let track = viewModel.currentTrack {
+                        PlayerInfoView(timeDuration: $timeDuration, track: track)
+                    }
                     PlayerControlView(viewModel: viewModel)
                 }
                 .padding(.horizontal, 20)

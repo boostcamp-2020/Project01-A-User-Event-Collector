@@ -15,11 +15,13 @@ struct NowPlayingView: View {
     var body: some View {
         HStack {
             Button(action: {
-                self.showMediaPlayer.toggle()
+                if viewModel.currentTrack != nil {
+                    self.showMediaPlayer.toggle()
+                }
             }, label: {
                 BasicRowCellView(title: viewModel.trackName,
                                  subTitle: viewModel.artist,
-                                 coverURLString: viewModel.currentTrack.album?.cover)
+                                 coverURLString: viewModel.coverURLString)
                     .padding(.all, 9)
             }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)

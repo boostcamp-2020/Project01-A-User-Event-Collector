@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HeartAccessory: View, Accessoriable {
+struct HeartAccessory: View {
     @Binding var isFavorite: Bool
     let toggleFavorite: (() -> Void)?
     

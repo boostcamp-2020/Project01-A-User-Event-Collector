@@ -25,4 +25,11 @@ struct Track: Codable, Identifiable, Cellable {
         case album = "Albums"
         case artists = "Artists"
     }
+    
+    var artist: String {
+        artists?.first?.name ?? ""
+    }
+    var coverURLString: String? {
+        album?.cover
+    }
 }

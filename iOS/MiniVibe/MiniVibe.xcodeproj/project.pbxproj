@@ -93,7 +93,7 @@
 		CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */; };
 		CF9A6590257F60880051E799 /* HeartAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A658F257F60880051E799 /* HeartAccessory.swift */; };
 		CF9A659C257F61070051E799 /* EllipsisAssessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A659B257F61070051E799 /* EllipsisAssessory.swift */; };
-		CF9A65A1257F623C0051E799 /* Accessoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A65A0257F623C0051E799 /* Accessoriable.swift */; };
+		CF9A65A9257F691A0051E799 /* TrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */; };
 		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
 		CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */; };
 		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
@@ -218,7 +218,7 @@
 		CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+indexed.swift"; sourceTree = "<group>"; };
 		CF9A658F257F60880051E799 /* HeartAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartAccessory.swift; sourceTree = "<group>"; };
 		CF9A659B257F61070051E799 /* EllipsisAssessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisAssessory.swift; sourceTree = "<group>"; };
-		CF9A65A0257F623C0051E799 /* Accessoriable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessoriable.swift; sourceTree = "<group>"; };
+		CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellViewModel.swift; sourceTree = "<group>"; };
 		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
 		CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeViewModel.swift; sourceTree = "<group>"; };
 		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
@@ -489,6 +489,7 @@
 				CF5E006425724BA00048F019 /* TrackListHeaderView.swift */,
 				CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */,
 				CF2D94AA256F825B00D0A66B /* TrackCellView.swift */,
+				CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -624,7 +625,6 @@
 			children = (
 				CF9A658F257F60880051E799 /* HeartAccessory.swift */,
 				CF9A659B257F61070051E799 /* EllipsisAssessory.swift */,
-				CF9A65A0257F623C0051E799 /* Accessoriable.swift */,
 			);
 			path = Accessory;
 			sourceTree = "<group>";
@@ -927,7 +927,6 @@
 				514FDD8E25761F6800F6BF93 /* Magazine.swift in Sources */,
 				51B3D4AB257CFB5B008025E5 /* AnalyticsEvent.swift in Sources */,
 				51D6C6F82572418800EF1B26 /* PlayerView.swift in Sources */,
-				CF9A65A1257F623C0051E799 /* Accessoriable.swift in Sources */,
 				51EED2E3256F7E3C00DB32CB /* TodayView.swift in Sources */,
 				51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */,
 				51EED2E0256F7E3C00DB32CB /* CategoryItem.swift in Sources */,
@@ -961,6 +960,7 @@
 				51D6C6E225721D7A00EF1B26 /* TabBarView.swift in Sources */,
 				CF9A6590257F60880051E799 /* HeartAccessory.swift in Sources */,
 				CF6E5D962574E8C400BE7503 /* NetworkService.swift in Sources */,
+				CF9A65A9257F691A0051E799 /* TrackCellViewModel.swift in Sources */,
 				5181EA882570A0E70077A727 /* PlayerViewModel.swift in Sources */,
 				CF232C49257A3A7300838F18 /* URLImage.swift in Sources */,
 			);

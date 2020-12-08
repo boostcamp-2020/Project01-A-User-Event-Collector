@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EllipsisAssessory: View, Accessoriable {
+struct EllipsisAssessory: View {
     var body: some View {
         Button(action: {
             print("show menu")

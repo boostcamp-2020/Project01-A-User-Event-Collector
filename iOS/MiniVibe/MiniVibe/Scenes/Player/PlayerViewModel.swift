@@ -9,20 +9,20 @@ import Foundation
 import Combine
 
 class PlayerViewModel: ObservableObject {
-    @Published var currentTrack = TestData.defaultTrack
-    @Published var queue: [Track] = [TestData.defaultTrack]
+    @Published var currentTrack: Track?
+    @Published var queue: [Track] = []
     @Published var isPlaying = true
     @Published var isShuffle = false
     @Published var isRepeat = false
     var subscriptions = Set<AnyCancellable>()
     var trackName: String {
-        currentTrack.name
+        currentTrack?.name ?? "오늘 뭐 듣지?"
     }
     var artist: String {
-        currentTrack.artists?.first?.name ?? ""
+        currentTrack?.artist ?? "듣고 싶은 노래를 추가하세요"
     }
     var coverURLString: String? {
-        currentTrack.album?.cover
+        currentTrack?.album?.cover
     }
     
     let manager: AnalyticsManager
@@ -49,11 +49,13 @@ class PlayerViewModel: ObservableObject {
 
     func trackPlayingSubscription() {
         $isPlaying
-            .sink { isPlaying in
-                if isPlaying {
-                    self.manager.log(PlayerEvent.trackPlayed(self.currentTrack.id))
-                } else {
-                    self.manager.log(PlayerEvent.trackPaused(self.currentTrack.id))
+            .sink { [weak self] isPlaying in
+                if let id = self?.currentTrack?.id {
+                    if isPlaying {
+                        self?.manager.log(PlayerEvent.trackPlayed(id))
+                    } else {
+                        self?.manager.log(PlayerEvent.trackPaused(id))
+                    }
                 }
             }
             .store(in: &subscriptions)

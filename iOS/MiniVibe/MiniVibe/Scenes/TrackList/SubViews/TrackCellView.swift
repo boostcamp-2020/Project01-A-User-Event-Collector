@@ -10,9 +10,14 @@ import SwiftUI
 struct TrackCellView: View {
     let hasAccessory: Bool
     let track: Track
-    var didToggleFavorite: (() -> Void)?
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
+    @StateObject private var viewModel = TrackCellViewModel()
     @State var isFavorite = false
+    
+    init(hasAccessory: Bool, track: Track) {
+        self.hasAccessory = hasAccessory
+        self.track = track
+    }
     
     var body: some View {
         HStack {
@@ -31,6 +36,10 @@ struct TrackCellView: View {
             }
             
         }
+    }
+    
+    func didToggleFavorite() {
+        viewModel.update(with: track)
     }
 }
 
