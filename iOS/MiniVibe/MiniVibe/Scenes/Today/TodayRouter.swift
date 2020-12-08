@@ -19,15 +19,35 @@ class TodayRouter: DestinationOrientedRouterProtocol {
     func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> AnyView {
         switch routingDestination {
         case .magazines:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines)))
+            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines, manager: manager))
+                            .onAppear {
+                                self.manager.log(ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today))
+                            }
+            )
         case .recommendations:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations)))
+            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations, manager: manager))
+                            .onAppear {
+                                self.manager.log(ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today))
+                            }
+            )
         case .favorites:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites)))
+            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites, manager: manager))
+                            .onAppear {
+                                self.manager.log(ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today))
+                            }
+            )
         case .djStations:
-            return AnyView(DJStationListView())
+            return AnyView(DJStationListView()
+                            .onAppear {
+                                self.manager.log(ScreenEvent.screenViewedWithSource(.djStationList, source: .today))
+                            }
+            )
         case .tracks:
-            return AnyView(PlaylistView(playlistID: 18))
+            return AnyView(PlaylistView(playlistID: 18)
+                            .onAppear {
+                                self.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))
+                            }
+            )
         default:
             return AnyView(ErrorView())
         }

@@ -9,7 +9,12 @@ import SwiftUI
 
 struct CategoryView: View {
     let category: Category
-    private let router = CategoryRouter()
+    private let router: CategoryRouter
+    
+    init(category: Category, manager: AnalyticsManager) {
+        self.category = category
+        router = CategoryRouter(manager: manager)
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -49,7 +54,7 @@ struct CategoryRowView_Previews: PreviewProvider {
         NavigationView {
             CategoryView(category: Category(title: "Station",
                                             items: favoritePlaylistItems,
-                                            type: .magazines, mode: .full))
+                                            type: .magazines, mode: .full), manager: AnalyticsManager(engine: MockAnalyticsEngine()))
         }
         //        .preferredColorScheme(.dark)
     }

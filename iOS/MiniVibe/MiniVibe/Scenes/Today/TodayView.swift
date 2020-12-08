@@ -22,7 +22,7 @@ struct TodayView: View {
             List {
                 let stationCategory = Category(stations: viewModel.stations)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: stationCategory),
+                    contentView: CategoryView(category: stationCategory, manager: manager),
                     destination: router.getDestination(to: .djStations)
                 )
 
@@ -30,14 +30,14 @@ struct TodayView: View {
                                                  type: .favorites,
                                                  mode: .half)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: favoritesCategory),
+                    contentView: CategoryView(category: favoritesCategory, manager: manager),
                     destination: router.getDestination(to: .favorites)
                 )
                 
                 let magazinesCategory = Category(magazines: viewModel.magazines,
                                                  mode: .full)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: magazinesCategory),
+                    contentView: CategoryView(category: magazinesCategory, manager: manager),
                     destination: router.getDestination(to: .magazines)
                 )
                 
@@ -45,7 +45,7 @@ struct TodayView: View {
                                                        type: .recommendations,
                                                        mode: .full)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: recommendationsCategory),
+                    contentView: CategoryView(category: recommendationsCategory, manager: manager),
                     destination: router.getDestination(to: .recommendations)
                 )
                 
@@ -66,6 +66,9 @@ struct TodayView: View {
             manager.log(ScreenEvent.screenViewed(.today))
             viewModel.fetchAll()
         })
+        .onDisappear {
+            
+        }
     }
 }
 
