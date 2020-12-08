@@ -6,42 +6,42 @@ interface styledImgProps {
 
 const themes: any = {
   todayBig: `
-    width: 20rem;
-    height: 20rem;
+    width: 20em;
+    height: 20em;
   `,
   todaySmall: `
-    width: 12rem;
-    height: 12rem;
+    width: 12em;
+    height: 12em;
   `,
   todayNews: `
-    width: 20rem;
-    height: 12rem;
+    width: 20em;
+    height: 12em;
   `,
   descriptionCover: `
-    width: 13rem;
-    height: 13rem;
+    width: 13em;
+    height: 13em;
   `,
   profile: `
-    width: 2rem;
-    height: 2rem;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
   `,
   trackCardCover: `
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.5em;
+    height: 2.5em;
   `,
   likedArtist: `
-    width: 12rem;
-    height: 12rem;
+    width: 12em;
+    height: 12em;
     border-radius: 50%;
   `,
   nowPlayingCover: `
-    width: 3rem;
-    height: 3rem;
+    width: 3em;
+    height: 3em;
   `,
   magazineBig: `
-    width: 19rem;
-    height: 19rem;
+    width: 19em;
+    height: 19em;
   `,
 };
 

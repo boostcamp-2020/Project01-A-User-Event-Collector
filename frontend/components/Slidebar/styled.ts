@@ -7,8 +7,8 @@ const StyledSlidebar = styled.div<SlidebarProps>`
   width: 100%;
   height: auto;
   & > a > svg {
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.7em;
+    height: 0.7em;
   }
 `;
 

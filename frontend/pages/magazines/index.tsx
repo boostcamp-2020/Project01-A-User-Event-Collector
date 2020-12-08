@@ -53,7 +53,7 @@ const StyledSection = styled.div`
   grid-template-columns: repeat(3, minmax(33%, auto));
   grid-template-rows: repeat(auto-fill, minmax(20%, auto));
   grid-auto-flow: row;
-  row-gap: 1rem;
+  row-gap: 1em;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }

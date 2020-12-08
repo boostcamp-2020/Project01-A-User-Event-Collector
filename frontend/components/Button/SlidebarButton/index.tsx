@@ -11,7 +11,7 @@ const NextButton = styled.div<SlideButtonProps>`
   position: absolute;
   width: 40px;
   height: 40px;
-  right: -1rem;
+  right: -1em;
   top: 31%;
   background-color: #fff;
   border-radius: 50%;
@@ -27,7 +27,7 @@ const PreviousButton = styled.div<SlideButtonProps>`
   position: absolute;
   width: 40px;
   height: 40px;
-  left: -1rem;
+  left: -1em;
   top: 31%;
   background-color: #fff;
   border-radius: 50%;

@@ -7,12 +7,12 @@ interface Props {
 
 const StyleTrackModalLayout = styled.div`
   position: absolute;
-  right: 3rem;
-  top: 0rem;
+  right: 3em;
+  top: 0em;
 
-  width: 15rem;
-  height: 8rem;
-  padding: 1rem;
+  width: 15em;
+  height: 8em;
+  padding: 1em;
 
   display: flex;
   flex-direction: column;

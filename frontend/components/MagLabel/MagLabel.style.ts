@@ -2,17 +2,17 @@ import styled from "styled-components";
 import { MagLabelStyles } from "./MagLabel.interface";
 
 const StyledMagLabel = styled.div<MagLabelStyles>`
-  height: 0.15rem;
-  width: ${({ width }) => width}rem;
-  padding: 1rem;
-  margin: 0.3rem;
+  height: 0.15em;
+  width: ${({ width }) => width}em;
+  padding: 1em;
+  margin: 0.3em;
   background-color: ${({ backgroundColor, backgroundImage }) =>
     backgroundImage ? "" : backgroundColor};
   background-image: ${({ backgroundImage }) => backgroundImage};
   color: #fff;
-  border-radius: 1.6rem;
-  line-height: 0.15rem;
-  font-size: 0.2rem;
+  border-radius: 1.6em;
+  line-height: 0.15em;
+  font-size: 0.2em;
   text-align: center;
 `;
 

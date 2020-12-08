@@ -3,10 +3,10 @@ import styled from "styled-components";
 const StyledSlidebar = styled.div<Props>`
   display: flex;
   flex-direction: column;
-  width: 70rem;
+  width: 70em;
   & > a > svg {
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.7em;
+    height: 0.7em;
   }
   &:nth-child(n) {
     padding-top: 1.5em;
