@@ -39,6 +39,10 @@ const themes: any = {
     width: 3rem;
     height: 3rem;
   `,
+  magazineBig: `
+    width: 19rem;
+    height: 19rem;
+  `,
 };
 
 const StyledImg = styled.img<styledImgProps>`
