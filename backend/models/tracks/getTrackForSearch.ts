@@ -6,7 +6,13 @@ const getTrackForSearch = async (optObj: any): Promise<Object> => {
     Albums: {
       select: { cover: true },
     },
-    Artists_Tracks: true,
+    Artists_Tracks: {
+      include: {
+        Artists: {
+          select: { artistName: true },
+        },
+      },
+    },
   };
   const result = await prisma.tracks.findMany(optObj);
   return result;
