@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Track } from "../../../interfaces";
 import { allPushCheckedTrack, initCheckedTrack } from "../../../reduxModules/checkedTrack";
+import { permitEffect } from "../../../reduxModules/allCheck";
 import { RootState } from "../../../reduxModules";
 // import Modal from "../../Modal";
 
@@ -18,12 +19,17 @@ const StyleButtonBox = styled.div`
 // parentId will be used for Like Button
 const ButtonBox: FC<Props> = ({ parentId, tracks }: Props) => {
   const checkedTrackArr = useSelector((state: RootState) => state.checkedTrack);
+  const AllCheckedFlag = useSelector((state: RootState) => state.AllCheckedFlag);
 
   const dispatch = useDispatch();
-
   const allCheckHandler = () => {
-    if (checkedTrackArr.length >= tracks.length) dispatch(initCheckedTrack());
-    else dispatch(allPushCheckedTrack(tracks));
+    if (checkedTrackArr.length >= tracks.length) {
+      dispatch(initCheckedTrack());
+      dispatch(permitEffect({ isAllChecked: false, prevent: true }));
+    } else {
+      dispatch(allPushCheckedTrack(tracks));
+      dispatch(permitEffect({ isAllChecked: true, prevent: true }));
+    }
   };
 
   return (

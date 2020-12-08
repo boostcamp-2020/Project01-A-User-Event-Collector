@@ -46,6 +46,7 @@ const initialFlag: AllCheckedFlag = {
 const allCheckedReducer = (state = initialFlag, action: FlagTypes): AllCheckedFlag => {
   switch (action.type) {
     case INACCESS:
+      console.log(action.payload);
       return action.payload;
 
     case EXACCESS:

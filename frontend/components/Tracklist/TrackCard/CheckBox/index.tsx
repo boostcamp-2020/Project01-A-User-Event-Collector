@@ -7,6 +7,7 @@ import {
   CheckedTrack,
 } from "../../../../reduxModules/checkedTrack";
 import { RootState } from "../../../../reduxModules";
+import { preventEffect } from "../../../../reduxModules/allCheck";
 
 interface Props {
   trackData: CheckedTrack;
@@ -24,6 +25,7 @@ const checkLength = (base: CheckedTrack[], target: CheckedTrack, length: number)
 
 const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
   const checkedTrackArr = useSelector((state: RootState) => state.checkedTrack);
+  const allCheckedFlag = useSelector((state: RootState) => state.AllCheckedFlag);
   const [isChecked, setIsChecked] = useState(false);
 
   const dispatch = useDispatch();
@@ -41,6 +43,10 @@ const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
       dispatch(removeCheckedTrack(trackData));
     }
   }, [isChecked]);
+
+  useEffect(() => {
+    setIsChecked(allCheckedFlag.isAllChecked);
+  }, [allCheckedFlag]);
 
   // useEffect(() => {
   //   console.log("변화");
