@@ -10,6 +10,11 @@ import SwiftUI
 class TodayRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingStarter = MiniVibeType
+    private let manager: AnalyticsManager
+    
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
     
     func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> AnyView {
         switch routingDestination {

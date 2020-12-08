@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct TodayView: View {
-    private let router = TodayRouter()
+    private let router: TodayRouter
     private let manager: AnalyticsManager
     @StateObject private var viewModel = TodayViewModel()
 
     init(manager: AnalyticsManager) {
         self.manager = manager
+        self.router = TodayRouter(manager: manager)
     }
 
     var body: some View {
