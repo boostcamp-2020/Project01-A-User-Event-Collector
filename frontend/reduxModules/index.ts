@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import checkedTrackReducer from "./checkedTrack";
 
 export const rootReducer = combineReducers({
-  checkedTrackReducer,
+  chekdTrack: checkedTrackReducer,
 });
 
 // eslint-disable-next-line no-undef
