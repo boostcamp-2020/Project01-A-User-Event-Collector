@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Album" representedClassName="Album" syncable="YES" codeGenerationType="class">
+    <entity name="CoreAlbum" representedClassName="CoreAlbum" syncable="YES" codeGenerationType="class">
         <attribute name="descript" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="album" inverseEntity="Track"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreTrack" inverseName="album" inverseEntity="CoreTrack"/>
     </entity>
-    <entity name="Artist" representedClassName="Artist" syncable="YES" codeGenerationType="class">
+    <entity name="CoreArtist" representedClassName="CoreArtist" syncable="YES" codeGenerationType="class">
         <attribute name="cover" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="artists" inverseEntity="Track"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreTrack" inverseName="artists" inverseEntity="CoreTrack"/>
+    </entity>
+    <entity name="CoreTrack" representedClassName="CoreTrack" syncable="YES" codeGenerationType="class">
+        <attribute name="albumTrackNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreAlbum" inverseName="tracks" inverseEntity="CoreAlbum"/>
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreArtist" inverseName="tracks" inverseEntity="CoreArtist"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Track" representedClassName="Track" syncable="YES" codeGenerationType="class">
-        <attribute name="albumTrackNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="tracks" inverseEntity="Album"/>
-        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="tracks" inverseEntity="Artist"/>
-    </entity>
     <elements>
+        <element name="CoreAlbum" positionX="-54" positionY="18" width="128" height="103"/>
+        <element name="CoreArtist" positionX="-36" positionY="45" width="128" height="103"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="Track" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Album" positionX="-54" positionY="18" width="128" height="103"/>
-        <element name="Artist" positionX="-36" positionY="45" width="128" height="103"/>
+        <element name="CoreTrack" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
