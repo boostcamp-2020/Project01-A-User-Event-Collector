@@ -2,10 +2,12 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import ButtonBox from "../DetailButtonBox";
 import Img from "../../Img";
+import { Track } from "../../../interfaces";
 
 interface Props {
   type: "album" | "playlist" | "artist" | "magazine" | "news";
   detailData: string;
+  tracks: Track[];
 }
 
 const makeProps = (detailType: string, detailData: any) => {
@@ -36,6 +38,9 @@ const makeProps = (detailType: string, detailData: any) => {
 
     case "artist":
       result.name = detailData.artistName;
+      break;
+
+    default:
   }
   return result;
 };
@@ -45,17 +50,17 @@ const StyleHeader = styled.div`
   border: 3px solid black;
 `;
 
-const DetialHeader: FC<Props> = ({ type, detailData }) => {
+const DetialHeader: FC<Props> = ({ type, detailData, tracks }: Props) => {
   const props = makeProps(type, detailData);
-
+  const { id, cover, name, owner, magazineType, description } = props;
   return (
     <StyleHeader>
-      <Img src={props.cover} varient={type === "artist" ? "likedArtist" : "descriptionCover"} />
+      <Img src={cover} varient={type === "artist" ? "likedArtist" : "descriptionCover"} />
       <div>
-        <h2>{props.name}</h2>
-        <h3>{props.owner || props.magazineType}</h3>
-        <div>{props.description}</div>
-        <ButtonBox />
+        <h2>{name}</h2>
+        <h3>{owner || magazineType}</h3>
+        <div>{description}</div>
+        <ButtonBox parentId={id} tracks={tracks} />
       </div>
     </StyleHeader>
   );
