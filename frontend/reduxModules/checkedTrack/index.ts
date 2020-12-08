@@ -8,17 +8,11 @@ export interface CheckedTrack {
   Artists: Artist[];
 }
 
-export interface CheckedState {
-  checkedTrackArr: CheckedTrack[];
-  isAllChecked: boolean;
-  flag?: boolean;
-}
-
 // Actions
 export const PUSH = "checkedTrack/PUSH";
 export const REMOVE = "checkedTrack/Remove";
 export const INIT = "checkedTrack/INIT";
-export const ALLCHECK = "checkedTrack/ALLCHECK";
+export const ALLPUSH = "checkedTrack/ALLPUSH";
 
 interface InitAction {
   type: typeof INIT;
@@ -34,12 +28,12 @@ interface RemoveAction {
   payload: CheckedTrack;
 }
 
-interface AllCheckAction {
-  type: typeof ALLCHECK;
-  payload: { allTrackData: CheckedTrack[]; flag: boolean };
+interface AllPushAction {
+  type: typeof ALLPUSH;
+  payload: CheckedTrack[];
 }
 
-export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction | AllCheckAction;
+export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction | AllPushAction;
 
 // Action Creator
 export const initCheckedTrack = (): InitAction => {
@@ -62,51 +56,32 @@ export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
   };
 };
 
-export const allCheckTrack = (allTrackData: CheckedTrack[], flag: boolean): AllCheckAction => {
+export const allPushTrack = (allTrackData: CheckedTrack[]): AllPushAction => {
   return {
-    type: ALLCHECK,
-    payload: { allTrackData, flag },
+    type: ALLPUSH,
+    payload: allTrackData,
   };
 };
 
 // Reducer
-const initialState: CheckedState = {
-  checkedTrackArr: [],
-  isAllChecked: false,
-};
+const initialState: CheckedTrack[] = [];
 
 const checkedTrackReducer = (
   state = initialState,
   action: CheckedTrackActionTypes,
-): CheckedState => {
-  const { checkedTrackArr, isAllChecked } = state;
-
+): CheckedTrack[] => {
   switch (action.type) {
     case INIT:
-      return {
-        checkedTrackArr: [],
-        isAllChecked,
-      };
+      return [];
 
     case PUSH:
-      return {
-        checkedTrackArr: [...checkedTrackArr, action.payload],
-        isAllChecked,
-      };
+      return [...state, action.payload];
 
     case REMOVE:
-      return {
-        checkedTrackArr: checkedTrackArr.filter((elem) => elem.id !== action.payload.id),
-        isAllChecked,
-      };
+      return state.filter((elem) => elem.id !== action.payload.id);
 
-    case ALLCHECK:
-      console.log("리스트 ", action.payload.allTrackData.length);
-      console.log(action.payload.flag);
-      return {
-        checkedTrackArr: action.payload.allTrackData,
-        isAllChecked: action.payload.flag !== undefined ? action.payload.flag : true,
-      };
+    case ALLPUSH:
+      return [...action.payload];
 
     default:
       return state;

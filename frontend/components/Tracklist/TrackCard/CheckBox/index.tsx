@@ -31,13 +31,15 @@ const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
 
   useEffect(() => {
     if (isChecked && !isAllChecked) {
-      // if (checkLength(checkedTrackArr, trackData, listLength)) {
-      //   dispatch(allCheckTrack([...checkedTrackArr, trackData], true));
-      // } else {
-      dispatch(pushCheckedTrack(trackData));
-      // }
+      if (checkLength(checkedTrackArr, trackData, listLength))
+        dispatch(allCheckTrack([...checkedTrackArr, trackData], true));
+      else dispatch(pushCheckedTrack(trackData));
+    } else if (!isChecked) {
+      if (isAllChecked) {
+        console.log("asdasdasdasd");
+        dispatch(allCheckTrack([...checkedTrackArr, trackData], false));
+      } else dispatch(removeCheckedTrack(trackData));
     }
-    if (!isChecked) dispatch(removeCheckedTrack(trackData));
     // if (!(isChecked === isAllChecked)) {
     // if (checkedTrackArr.length === 1) {
     //   dispatch(allCheckTrack([]));
@@ -49,6 +51,8 @@ const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
   }, [isChecked]);
 
   useEffect(() => {
+    console.log("변화");
+    if (checkedTrackArr.length > 0 && !isAllChecked) return;
     setIsChecked(isAllChecked);
   }, [isAllChecked]);
 
