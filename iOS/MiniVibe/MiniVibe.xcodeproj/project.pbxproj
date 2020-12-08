@@ -488,7 +488,6 @@
 				CF5E005A257241E80048F019 /* TrackListButtonView.swift */,
 				CF5E006425724BA00048F019 /* TrackListHeaderView.swift */,
 				CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */,
-				CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */,
 				CF2D94AA256F825B00D0A66B /* TrackCellView.swift */,
 			);
 			path = SubViews;
@@ -517,7 +516,9 @@
 		CF232C7C257AB03C00838F18 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				51E4E2522577127400553E6E /* Image */,
 				CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */,
+				CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -568,7 +569,6 @@
 				CF6E5D942574E8B500BE7503 /* Network */,
 				CFA2A447256FD1E700190A0B /* Router */,
 				CF232C7C257AB03C00838F18 /* CustomView */,
-				51E4E2522577127400553E6E /* Image */,
 				CF93D7D7256E8FBF005A71CF /* Extension */,
 				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
 				CF0737DB257926E8009EC640 /* TestData */,
