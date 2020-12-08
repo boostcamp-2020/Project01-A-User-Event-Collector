@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { getUserLikePlaylists } from "../../../models/library";
 
-const getPlaylists = async (req: Request, res: Response): Promise<void> => {
+const getLibPlaylists = async (req: Request, res: Response): Promise<void> => {
   const tmpUserId = 1;
   try {
     const result = await getUserLikePlaylists(tmpUserId);
@@ -11,4 +11,13 @@ const getPlaylists = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export default getPlaylists;
+const postLibPlaylists = async (req: Request, res: Response): Promise<void> => {
+  // const tmpUserId = 1;
+  try {
+    res.status(200).json();
+  } catch (err) {
+    res.status(500).json({ statusCode: 500, message: err.message });
+  }
+};
+
+export { getLibPlaylists, postLibPlaylists };

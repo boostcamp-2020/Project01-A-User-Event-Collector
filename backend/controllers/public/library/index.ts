@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import getLibArtists from "./artists";
-import getLibAlbums from "./albums";
-import getLibTracks from "./tracks";
-import getLibPlaylists from "./playlsits";
+import { getLibArtists } from "./artists";
+import { getLibAlbums } from "./albums";
+import { getLibTracks } from "./tracks";
+import { getLibPlaylists } from "./playlsits";
 
 interface Controller {
   getLibArtists(req: Request, res: Response): Promise<void>;
