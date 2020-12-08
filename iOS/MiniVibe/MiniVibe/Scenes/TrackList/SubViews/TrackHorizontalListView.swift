@@ -26,11 +26,12 @@ struct TrackHorizontalListView: View {
     var body: some View {
         Group {
             VStack {
+                let screenEvent = ScreenEvent.screenViewedWithSource(.playlist, source: .chart)
                 MemorySafeNavigationLink(
                     contentView: CategoryHeaderView(title: "오늘 TOP 100").foregroundColor(.primary),
                     destination: AnyView(PlaylistView(playlistID: 18)
                                             .onAppear {
-                                                manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .chart))
+                                                manager.log(screenEvent)
                                             })
                 )
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -48,6 +49,7 @@ struct TrackHorizontalListView: View {
 
 struct TrackHorizontalListView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackHorizontalListView(tracks: TestData.playlist.tracks!, manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
+                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
     }
 }

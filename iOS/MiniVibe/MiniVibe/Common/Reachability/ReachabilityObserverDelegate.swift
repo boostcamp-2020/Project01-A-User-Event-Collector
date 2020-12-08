@@ -10,7 +10,7 @@ import Reachability
 
 //Reachability
 //declare this property where it won't go out of scope relative to your listener
-fileprivate var reachability: Reachability!
+private var reachability: Reachability!
 
 protocol ReachabilityActionDelegate {
     func reachabilityChanged(_ isReachable: Bool)

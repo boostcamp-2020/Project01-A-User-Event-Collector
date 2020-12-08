@@ -54,7 +54,9 @@ struct CategoryRowView_Previews: PreviewProvider {
         NavigationView {
             CategoryView(category: Category(title: "Station",
                                             items: favoritePlaylistItems,
-                                            type: .magazines, mode: .full), manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+                                            type: .magazines,
+                                            mode: .full),
+                         manager: AnalyticsManager(engine: MockAnalyticsEngine()))
         }
         //        .preferredColorScheme(.dark)
     }
