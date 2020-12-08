@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   StyledSamples,
   StyledSectionTitle,
@@ -37,15 +38,19 @@ const Sample = ({ name, artists, cover }: SampleProps): React.ReactElement => {
 interface SamplesProps {
   sectionTitle: string;
   data: SampleProps[];
+  filter: string;
 }
 
-const Samples = ({ sectionTitle, data }: SamplesProps): React.ReactElement => {
+const Samples = ({ sectionTitle, data, filter }: SamplesProps): React.ReactElement => {
+  const page = sectionTitle === "노래" ? "tracks" : sectionTitle === "앨범" ? "albums" : "artists";
   return (
     <StyledSamples>
-      <StyledSectionTitle>
-        {sectionTitle}
-        <StyledIcon>{icons.angleRight}</StyledIcon>
-      </StyledSectionTitle>
+      <Link href={`/search/${page}?filter=${filter}`}>
+        <StyledSectionTitle>
+          {sectionTitle}
+          <StyledIcon>{icons.angleRight}</StyledIcon>
+        </StyledSectionTitle>
+      </Link>
       <StyledSampleWrapper>
         {data.map((el: any) => {
           const name =

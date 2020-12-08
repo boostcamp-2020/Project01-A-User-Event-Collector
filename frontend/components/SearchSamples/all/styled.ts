@@ -5,6 +5,7 @@ const StyledSectionTitle = styled.div`
   font-weight: bold;
   margin-top: 1em;
   margin-bottom: 0.6em;
+  cursor: pointer;
 `;
 
 const StyledSamples = styled.div`

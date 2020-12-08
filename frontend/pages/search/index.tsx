@@ -20,9 +20,9 @@ const SearchPage = ({ filter }: { filter: string }): React.ReactElement => {
   }, []);
   return (
     <StyledSearchPage>
-      <SearchSamples sectionTitle="노래" data={sampleTracks} />
-      <SearchSamples sectionTitle="앨범" data={sampleAlbums} />
-      <SearchSamples sectionTitle="아티스트" data={sampleArtists} />
+      <SearchSamples sectionTitle="노래" data={sampleTracks} filter={filter} />
+      <SearchSamples sectionTitle="앨범" data={sampleAlbums} filter={filter} />
+      <SearchSamples sectionTitle="아티스트" data={sampleArtists} filter={filter} />
     </StyledSearchPage>
   );
 };
