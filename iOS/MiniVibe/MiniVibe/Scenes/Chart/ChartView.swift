@@ -23,7 +23,7 @@ struct ChartView: View {
             ScrollView {
                 LazyVGrid(columns: layout) {
                     if let tracks = viewModel.playlist?.tracks {
-                        TrackHorizontalListView(tracks: tracks)
+                        TrackHorizontalListView(tracks: tracks, manager: manager)
                     }
                 }
             }

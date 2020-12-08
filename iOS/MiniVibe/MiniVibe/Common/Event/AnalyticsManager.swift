@@ -8,13 +8,61 @@
 import Foundation
 
 class AnalyticsManager {
-    private let engine: AnalyticsEngine
-
+    private var currentEngine: AnalyticsEngine?
+    private let serverEngine: AnalyticsEngine
+    private let backupEngine = BackupAnalyticsEngine()
+    
     init(engine: AnalyticsEngine) {
-        self.engine = engine
+        self.serverEngine = engine
+        try? addReachabilityObserver()
+        setupEngine()
     }
-
+    
+    deinit {
+        removeReachabilityObserver()
+    }
+    
+    func setupEngine() {
+        switch getConnection() {
+        case .unavailable:
+            currentEngine = backupEngine
+            print("init engine: backup")
+        default:
+            currentEngine = serverEngine
+            print("init engine: server")
+        }
+    }
+    
     func log(_ event: AnalyticsEvent) {
-        engine.sendAnalyticsEvent(named: event.name, metadata: event.metadata)
+        guard let currentEngine = currentEngine else { return }
+        currentEngine.sendAnalyticsEvent(named: event.name, metadata: event.metadata)
     }
+    
+    func switchToServerEngine() {
+        if currentEngine !== serverEngine {
+            print("switchToServerEngine")
+            //TODO: Core Data에 쌓인 이벤트 로그 서버에 보내기
+            currentEngine = serverEngine
+        }
+    }
+    
+    func switchToBackupEngine() {
+        if currentEngine !== backupEngine {
+            print("switchToBackupEngine")
+            currentEngine = backupEngine
+        }
+    }
+    
+}
+
+extension AnalyticsManager: ReachabilityObserverDelegate {
+    
+    func reachabilityChanged(_ isReachable: Bool) {
+        if isReachable {
+            switchToServerEngine()
+        } else {
+            switchToBackupEngine()
+        }
+    }
+    
 }

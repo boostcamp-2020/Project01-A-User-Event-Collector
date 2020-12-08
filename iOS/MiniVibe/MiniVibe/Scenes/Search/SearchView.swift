@@ -9,12 +9,13 @@ import SwiftUI
 import Combine
 
 struct SearchView: View {
-    @StateObject private var viewModel = SearchViewModel()
+    @ObservedObject private var viewModel: SearchViewModel
     private let manager: AnalyticsManager
     private let layout = [GridItem(.flexible())]
     
     init(manager: AnalyticsManager) {
         self.manager = manager
+        self.viewModel = SearchViewModel(manager: manager)
     }
 
     var body: some View {
@@ -40,9 +41,6 @@ struct SearchView: View {
             .navigationTitle("검색")
         }
         .padding()
-        .onAppear {
-            manager.log(ScreenEvent.screenViewed(.search))
-        }
     }
 }
 

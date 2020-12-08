@@ -15,10 +15,11 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
     @Published var tracks = [Track]()
     
     func fetchAll() {
+        fetch(type: .djStations)
         fetch(type: .favorites)
         fetch(type: .magazines)
         fetch(type: .recommendations)
-        fetch(type: .playlists, id: 18)
+//        fetch(type: .playlists, id: 18)
     }
     
     func fetch(type: MiniVibeType, id: Int? = nil) {
@@ -31,8 +32,11 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
                     }
                 }
             case .djStations:
-//                self?.stations = [DJStation(id: 1, imageName: nil)]
-                break
+                if let decodedData = try? JSONDecoder().decode(DJStationResponse.self, from: data) {
+                    DispatchQueue.main.async {
+                        self?.stations = decodedData.djStations
+                    }
+                }
             case .playlists:
                 if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
                     DispatchQueue.main.async {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,8 @@
 		51B82B17257DF0E600A005E8 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B82B16257DF0E600A005E8 /* PlayerInfoView.swift */; };
 		51B82B1C257DF0F100A005E8 /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B82B1B257DF0F100A005E8 /* PlayerControlView.swift */; };
 		51B82B21257E00AC00A005E8 /* ToggleableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B82B20257E00AC00A005E8 /* ToggleableImage.swift */; };
+		51B82B2A257E5F5600A005E8 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 51B82B29257E5F5600A005E8 /* Reachability */; };
+		51B82B30257E5FE000A005E8 /* ReachabilityObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B82B2F257E5FE000A005E8 /* ReachabilityObserverDelegate.swift */; };
 		51BBBD7425763375009A6852 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD7325763375009A6852 /* RequestBuilder.swift */; };
 		51BBBD7D25763398009A6852 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD7C25763398009A6852 /* URLBuilder.swift */; };
 		51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBBD84257662E1009A6852 /* PlaylistViewModel.swift */; };
@@ -152,6 +154,7 @@
 		51B82B16257DF0E600A005E8 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
 		51B82B1B257DF0F100A005E8 /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		51B82B20257E00AC00A005E8 /* ToggleableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleableImage.swift; sourceTree = "<group>"; };
+		51B82B2F257E5FE000A005E8 /* ReachabilityObserverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityObserverDelegate.swift; sourceTree = "<group>"; };
 		51BBBD7325763375009A6852 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		51BBBD7C25763398009A6852 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		51BBBD84257662E1009A6852 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				339F5D98C64C2189DBB1B27E /* Pods_MiniVibe.framework in Frameworks */,
+				51B82B2A257E5F5600A005E8 /* Reachability in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +325,14 @@
 				51B82B20257E00AC00A005E8 /* ToggleableImage.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		51B82B2E257E5FCC00A005E8 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				51B82B2F257E5FE000A005E8 /* ReachabilityObserverDelegate.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		51BEB32E256F3C8600FB2876 /* DJStation */ = {
@@ -564,6 +576,7 @@
 		CF6E5D902574E82400BE7503 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				51B82B2E257E5FCC00A005E8 /* Reachability */,
 				51B3D4A9257CFB25008025E5 /* Event */,
 				CF6E5D942574E8B500BE7503 /* Network */,
 				CFA2A447256FD1E700190A0B /* Router */,
@@ -664,6 +677,9 @@
 			dependencies = (
 			);
 			name = MiniVibe;
+			packageProductDependencies = (
+				51B82B29257E5F5600A005E8 /* Reachability */,
+			);
 			productName = MiniVibe;
 			productReference = CF05F8A42567E7AD008080D7 /* MiniVibe.app */;
 			productType = "com.apple.product-type.application";
@@ -737,6 +753,9 @@
 				Base,
 			);
 			mainGroup = CF05F89B2567E7AD008080D7;
+			packageReferences = (
+				51B82B28257E5F5500A005E8 /* XCRemoteSwiftPackageReference "Reachability" */,
+			);
 			productRefGroup = CF05F8A52567E7AD008080D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -902,6 +921,7 @@
 				CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */,
 				515D266C2575220B00B542BF /* Album.swift in Sources */,
 				51BBBD9025766A9E009A6852 /* ErrorView.swift in Sources */,
+				51B82B30257E5FE000A005E8 /* ReachabilityObserverDelegate.swift in Sources */,
 				CFCBC95A2577FB4A00439C3F /* BasicRowCellView.swift in Sources */,
 				515D26812575385B00B542BF /* TrackPageView.swift in Sources */,
 				CF5E00602572441D0048F019 /* ButtonStyle.swift in Sources */,
@@ -1272,6 +1292,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51B82B28257E5F5500A005E8 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51B82B29257E5F5600A005E8 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51B82B28257E5F5500A005E8 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */ = {

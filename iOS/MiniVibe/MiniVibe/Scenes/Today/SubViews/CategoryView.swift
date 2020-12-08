@@ -9,7 +9,12 @@ import SwiftUI
 
 struct CategoryView: View {
     let category: Category
-    private let router = CategoryRouter()
+    private let router: CategoryRouter
+    
+    init(category: Category, manager: AnalyticsManager) {
+        self.category = category
+        router = CategoryRouter(manager: manager)
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,10 +22,18 @@ struct CategoryView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
                     ForEach(category.items) { item in
-                        MemorySafeNavigationLink(
-                            contentView: CategoryCellView(item: item, mode: category.mode),
-                            destination: router.getDestination(to: category.type, with: item.id)
-                        )
+                        if category.type == MiniVibeType.djStations {
+                            Button(action: {
+                                
+                            }, label: {
+                                CategoryCellView(item: item, mode: category.mode)
+                            })
+                        } else {
+                            MemorySafeNavigationLink(
+                                contentView: CategoryCellView(item: item, mode: category.mode),
+                                destination: router.getDestination(to: category.type, with: item.id)
+                            )
+                        }
                     }
                 }
             }
@@ -36,13 +49,13 @@ struct CategoryRowView_Previews: PreviewProvider {
          .init(id: 2, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
          .init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil)
         ]
-
+    
     static var previews: some View {
         NavigationView {
             CategoryView(category: Category(title: "Station",
                                             items: favoritePlaylistItems,
-                                            type: .magazines, mode: .full))
+                                            type: .magazines, mode: .full), manager: AnalyticsManager(engine: MockAnalyticsEngine()))
         }
-//        .preferredColorScheme(.dark)
+        //        .preferredColorScheme(.dark)
     }
 }

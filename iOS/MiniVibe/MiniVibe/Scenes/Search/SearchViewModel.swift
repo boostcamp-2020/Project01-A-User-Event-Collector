@@ -15,22 +15,13 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
     @Published var artists = [Artist]()
     
     var subscription: Set<AnyCancellable> = []
+    private let manager: AnalyticsManager
     
-    override init() {
+    init(manager: AnalyticsManager) {
+        self.manager = manager
         super.init()
-        $searchText
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-            .removeDuplicates()
-            .map({ (string) -> String? in
-                self.validate(string)
-            })
-            .compactMap { $0 }
-            .sink { (_) in
-                
-            } receiveValue: { searchText in
-                self.fetch(searchText)
-            }
-            .store(in: &subscription)
+        searchSubscription()
+        searchEventSubscription()
     }
     
     func fetch(_ searchText: String) {
@@ -55,6 +46,23 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
         artists.removeAll()
     }
     
+    func searchSubscription() {
+        $searchText
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map({ (string) -> String? in
+                self.validate(string)
+            })
+            .compactMap { $0 }
+            .sink { (_) in
+                
+            } receiveValue: { searchText in
+                self.fetch(searchText)
+            }
+            .store(in: &subscription)
+
+    }
+    
     func validate(_ string: String) -> String? {
         if string.isEmpty {
             if self.isEditing {
@@ -66,4 +74,15 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
         return string
     }
     
+    func searchEventSubscription() {
+        $isEditing
+            .sink { isEditing in
+                if isEditing {
+                    self.manager.log(ScreenEvent.screenViewed(.searchAfter))
+                } else {
+                    self.manager.log(ScreenEvent.screenViewed(.searchBefore))
+                }
+            }
+            .store(in: &subscription)
+    }
 }

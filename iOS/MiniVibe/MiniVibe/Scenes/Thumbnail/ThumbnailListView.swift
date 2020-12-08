@@ -46,7 +46,7 @@ struct ThumbnailListView: View {
 struct PlaylistListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations))
+            ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations, manager: AnalyticsManager(engine: MockAnalyticsEngine())))
                 .preferredColorScheme(.dark)
         }
     }

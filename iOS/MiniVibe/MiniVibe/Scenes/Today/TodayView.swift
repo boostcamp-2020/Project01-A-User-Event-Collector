@@ -8,35 +8,36 @@
 import SwiftUI
 
 struct TodayView: View {
-    private let router = TodayRouter()
+    private let router: TodayRouter
     private let manager: AnalyticsManager
     @StateObject private var viewModel = TodayViewModel()
 
     init(manager: AnalyticsManager) {
         self.manager = manager
+        self.router = TodayRouter(manager: manager)
     }
 
     var body: some View {
         NavigationView {
             List {
-                //                NavigationLink(
-                //                    destination: router.getDestination(to: .favorites),
-                //                    label: {
-                //                        CategoryView(category: category)
-                //                    }
-                //                )
+                let stationCategory = Category(stations: viewModel.stations)
+                MemorySafeNavigationLink(
+                    contentView: CategoryView(category: stationCategory, manager: manager),
+                    destination: router.getDestination(to: .djStations)
+                )
+
                 let favoritesCategory = Category(playlists: viewModel.favorites,
                                                  type: .favorites,
                                                  mode: .half)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: favoritesCategory),
+                    contentView: CategoryView(category: favoritesCategory, manager: manager),
                     destination: router.getDestination(to: .favorites)
                 )
                 
                 let magazinesCategory = Category(magazines: viewModel.magazines,
                                                  mode: .full)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: magazinesCategory),
+                    contentView: CategoryView(category: magazinesCategory, manager: manager),
                     destination: router.getDestination(to: .magazines)
                 )
                 
@@ -44,7 +45,7 @@ struct TodayView: View {
                                                        type: .recommendations,
                                                        mode: .full)
                 MemorySafeNavigationLink(
-                    contentView: CategoryView(category: recommendationsCategory),
+                    contentView: CategoryView(category: recommendationsCategory, manager: manager),
                     destination: router.getDestination(to: .recommendations)
                 )
                 
@@ -65,6 +66,9 @@ struct TodayView: View {
             manager.log(ScreenEvent.screenViewed(.today))
             viewModel.fetchAll()
         })
+        .onDisappear {
+            
+        }
     }
 }
 
