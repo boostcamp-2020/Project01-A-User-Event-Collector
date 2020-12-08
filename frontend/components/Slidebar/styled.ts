@@ -7,8 +7,8 @@ const StyledSlidebar = styled.div<SlidebarProps>`
   width: 100%;
   height: auto;
   & > a > svg {
-    width: 0.7em;
-    height: 0.7em;
+    width: 0.7rem;
+    height: 0.7rem;
   }
 `;
 
@@ -20,9 +20,9 @@ const SlideContainer = styled.div`
 `;
 
 const StyledTitle = styled.div`
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin: 1em 0em;
+  margin: 1rem 0rem;
 `;
 
 const SlideContent = styled.ul<TranslateProps>`
@@ -36,7 +36,7 @@ const SlideContent = styled.ul<TranslateProps>`
 `;
 
 const StyledIcon = styled.span`
-  margin-left: 0.3em;
+  margin-left: 0.3rem;
 `;
 
 export { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledIcon };

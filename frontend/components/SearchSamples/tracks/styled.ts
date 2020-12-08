@@ -13,7 +13,7 @@ const StyledTrackCard = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0.4em 0em;
+  padding: 0.4rem 0rem;
   &:hover {
     background-color: #ededed;
   }

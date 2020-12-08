@@ -17,7 +17,7 @@ interface Styles {}
 
 const StyleTrack = styled.li<Styles>`
   display: flex;
-  height: 4em;
+  height: 4rem;
   justify-content: start;
   align-items: center;
   justify-content: space-between;
@@ -25,10 +25,10 @@ const StyleTrack = styled.li<Styles>`
     background-color: #eeeeee;
   }
   &:nth-child(n) {
-    border-top: 0.1em solid rgba(0, 0, 0, 0.05);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.05);
   }
   &:nth-child(n):nth-child(5n + 1) {
-    border-top: 0em;
+    border-top: 0rem;
   }
 `;
 
@@ -41,8 +41,8 @@ const StyledRank = styled.div`
 `;
 
 const StyledRankNumber = styled.div`
-  margin: 0.85em 1em 0em 1em;
-  font-size: 1em;
+  margin: 0.85rem 1rem 0rem 1rem;
+  font-size: 1rem;
   width: auto;
 `;
 
@@ -56,14 +56,14 @@ const StyledTrackInfo = styled.div`
 const StyledTrackName = styled.div`
   display: flex;
   justify-content: start;
-  font-size: 1em;
-  margin-bottom: 0.5em;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const StyledTrackArtist = styled.div`
   display: flex;
   justify-content: start;
-  font-size: 0.75em;
+  font-size: 0.75rem;
   color: #acacac;
 `;
 

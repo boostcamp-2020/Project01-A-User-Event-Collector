@@ -14,9 +14,9 @@ interface GenreColorProps {
 
 const StyledGenreCard = styled.li`
   background-color: #ddd;
-  width: 11em;
-  height: 4em;
-  border-radius: 0.3em;
+  width: 11rem;
+  height: 4rem;
+  border-radius: 0.3rem;
   display: flex;
 `;
 
@@ -30,8 +30,8 @@ const ColorDiv = styled.div<GenreColorProps>`
 const NameDiv = styled.div`
   margin-left: 10px;
   text-align: left;
-  padding: 1.2rem 0;
-  height: 1.5em;
+  padding: 1.2rrem 0;
+  height: 1.5rem;
 `;
 
 const GenreCard: React.FC<Props> = ({ data }: Props) => {

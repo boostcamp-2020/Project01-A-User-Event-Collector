@@ -15,9 +15,9 @@ const MagazineContainer = styled.div`
 `;
 
 const StyledPagetitle = styled.div`
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
-  margin: 2em 0em 1em 0em;
+  margin: 2rem 0rem 1rem 0rem;
 `;
 
 const StyledMagazineRadioContainer = styled.div`
@@ -34,17 +34,17 @@ const StyledHotMag = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2.75em;
-  margin-bottom: 4.5em;
+  margin-top: 2.75rem;
+  margin-bottom: 4.5rem;
 `;
 
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15em);
-  top: -4em;
+  width: calc(100vw - 15rem);
+  top: -4rem;
   z-index: 1;
-  height: 30em;
+  height: 30rem;
 `;
 
 const StyledSection = styled.div`
@@ -53,7 +53,7 @@ const StyledSection = styled.div`
   grid-template-columns: repeat(3, minmax(33%, auto));
   grid-template-rows: repeat(auto-fill, minmax(20%, auto));
   grid-auto-flow: row;
-  row-gap: 1em;
+  row-gap: 1rem;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { PlaySvg } from "../../../utils/svg";
 
 export const StyledPlayButton = styled.button`
-  width: 2.5em;
-  height: 2.5em;
+  width: 2.5rem;
+  height: 2.5rem;
   background-color: white;
   border-radius: 50%;
   border: 0px;

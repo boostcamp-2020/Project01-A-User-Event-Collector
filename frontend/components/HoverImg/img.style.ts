@@ -6,24 +6,24 @@ export interface styledHoverImgProps {
 
 const HoverImgthemes: any = {
   todayBig: `
-    width: 20em;
-    height: 20em;
+    width: 20rem;
+    height: 20rem;
   `,
   todaySmall: `
-    width: 12em;
-    height: 12em;
+    width: 12rem;
+    height: 12rem;
   `,
   todayNews: `
-    width: 20em;
-    height: 12em;
+    width: 20rem;
+    height: 12rem;
   `,
   trackCardCover: `
-    width: 2.5em;
-    height: 2.5em;
+    width: 2.5rem;
+    height: 2.5rem;
   `,
   magazineBig: `
-    width: 19em;
-    height: 19em;
+    width: 19rem;
+    height: 19rem;
   `,
 };
 

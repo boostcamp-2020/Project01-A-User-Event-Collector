@@ -4,10 +4,10 @@ const StyledSearchTrackPage = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 85vh;
-  margin: 1.75em;
+  margin: 1.75rem;
   box-sizing: border-box;
-  padding-left: 5em;
-  padding-right: 10em;
+  padding-left: 5rem;
+  padding-right: 10rem;
   width: 100%;
 `;
 
@@ -15,10 +15,10 @@ const StyledResult = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4em;
-  margin-bottom: 2em;
-  padding-bottom: 0.25em;
-  border-bottom: 0.1em solid rgba(0, 0, 0, 0.1);
+  height: 4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
   width: 100%;
 `;
 
@@ -26,15 +26,15 @@ const StyledResultText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-weight: bold;
 `;
 
 const StyledResultButtons = styled.div`
   display: flex;
-  min-width: 21em;
+  min-width: 21rem;
   justify-content: space-between;
-  height: 3em;
+  height: 3rem;
 `;
 
 const StyledPlayAllButton = styled.button`
@@ -42,20 +42,20 @@ const StyledPlayAllButton = styled.button`
   color: #fbfbfb;
   border: none;
   height: 100%;
-  width: 9em;
-  border-radius: 0.5em;
-  font-size: 1.1em;
+  width: 9rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
   text-align: center;
 `;
 
 const StyledRandomPlayButton = styled.button`
   background-color: #fbfbfb;
   color: #000;
-  border: 0.1em solid #ccc;
+  border: 0.1rem solid #ccc;
   height: 100%;
-  width: 9em;
-  border-radius: 0.5em;
-  font-size: 1.1em;
+  width: 9rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
   text-align: center;
 `;
 
@@ -64,7 +64,7 @@ const StyledSearchTrackCards = styled.div`
 `;
 
 const StyledIcons = styled.span`
-  padding-right: 0.5em;
+  padding-right: 0.5rem;
 `;
 
 export {

@@ -6,27 +6,27 @@ interface StyledCardProps {
 
 const themes: any = {
   todayBig: `
-    width: 20em;
+    width: 20rem;
   `,
   todaySmall: `
-    width: 12em;
+    width: 12rem;
   `,
   todayNews: `
-    width: 20em;
+    width: 20rem;
   `,
   trackCardCover: `
-    width: 2.5em;
+    width: 2.5rem;
   `,
   magazineBig: `
-    width: 19em;
+    width: 19rem;
   `,
 };
 
 export const StyledCard = styled.li<StyledCardProps>`
   display: flex;
   flex-direction: column;
-  margin-left: 1em;
-  margin-bottom: 2em;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
   ${(props) => themes[props.varient || ""]}
   & > a {
     text-decoration: none;
@@ -36,15 +36,15 @@ export const StyledCard = styled.li<StyledCardProps>`
   }
 `;
 export const TitleA = styled.a`
-  font-size: 1em;
+  font-size: 1rem;
   color: #222222;
   padding: 10px 0;
 `;
 export const SmallA = styled.a`
-  font-size: 0.7em;
+  font-size: 0.7rem;
   color: #777777;
 `;
 export const SmallSpan = styled.span`
-  font-size: 0.7em;
+  font-size: 0.7rem;
   color: #777777;
 `;

@@ -7,13 +7,13 @@ const StyledLayout = styled.div`
 
 const showSearchBar = keyframes`
   0% {
-    top: -5em;
+    top: -5rem;
   }
   50% {
-    top: -2.5em;
+    top: -2.5rem;
   }
   100% {
-    top: 0em;
+    top: 0rem;
   }
 `;
 
@@ -21,11 +21,11 @@ const StyledSearchBar = styled.div`
   display: flex;
   position: fixed;
   z-index: 10;
-  top: 0em;
+  top: 0rem;
   background-color: #fff;
-  width: calc(100vw - 15em);
-  right: 0em;
-  height: 5em;
+  width: calc(100vw - 15rem);
+  right: 0rem;
+  height: 5rem;
   justify-content: center;
   align-items: center;
   transition: width 2s, height 4s;
@@ -36,10 +36,10 @@ const StyledContent = styled.div`
   display: block;
   position: relative;
   box-sizing: border-box;
-  left: 15em;
-  width: calc(100% - 15em);
+  left: 15rem;
+  width: calc(100% - 15rem);
   background-color: #fff;
-  padding: 0em 10em;
+  padding: 0rem 10rem;
 `;
 
 export { StyledLayout, StyledContent, StyledSearchBar };

@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { MagLabelStyles } from "./MagLabel.interface";
 
 const StyledMagLabel = styled.div<MagLabelStyles>`
-  height: 0.5em;
-  width: ${({ width }) => width}em;
-  padding: 1em;
+  height: 0.5rem;
+  width: ${({ width }) => width}rem;
+  padding: 1rem;
   background-color: ${({ backgroundColor, backgroundImage }) =>
     backgroundImage ? "" : backgroundColor};
   background-image: ${({ backgroundImage }) => backgroundImage};
   color: #fff;
-  border-radius: 1.6em;
-  font-size: 0.9em;
-  line-height: 0.5em;
+  border-radius: 1.6rem;
+  font-size: 0.9rem;
+  line-height: 0.5rem;
   text-align: center;
 `;
 
