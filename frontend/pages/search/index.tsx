@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import myAxios from "../../utils/myAxios";
 import StyledSearchPage from "./styled";
-import SearchSamples from "../../components/SearchSamples";
+import SearchSamples from "../../components/SearchSamples/all";
 
 const SearchPage = ({ filter }: { filter: string }): React.ReactElement => {
   const [sampleTracks, setSampleTracks] = useState([]);

@@ -10,8 +10,8 @@ import {
   StyledArtist,
   StyledIcon,
 } from "./styled";
-import Img from "../Img";
-import icons from "../../constant/icons";
+import Img from "../../Img";
+import icons from "../../../constant/icons";
 
 interface SampleProps {
   name: string;
