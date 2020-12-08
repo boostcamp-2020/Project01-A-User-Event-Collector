@@ -10,6 +10,10 @@ import {
 } from "../../components/MagLabel";
 import { Magazine } from "../../interfaces";
 
+const MagazineContainer = styled.div`
+  width: 964px;
+`;
+
 const StyledPagetitle = styled.div`
   font-size: 2em;
   font-weight: bold;
@@ -46,11 +50,10 @@ const StyledHotMagOverlay = styled.div`
 const StyledSection = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(50%, auto));
+  grid-template-columns: repeat(3, minmax(33%, auto));
   grid-template-rows: repeat(auto-fill, minmax(20%, auto));
   grid-auto-flow: row;
   row-gap: 1rem;
-  column-gap: 0.5rem;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
@@ -64,7 +67,7 @@ const IndexPage = memo(({ magazines }: any) => {
   };
 
   return (
-    <>
+    <MagazineContainer>
       <StyledPagetitle>VIBE MAG</StyledPagetitle>
       <StyledMagazineRadioContainer>
         <label htmlFor="magazineAll">
@@ -120,10 +123,10 @@ const IndexPage = memo(({ magazines }: any) => {
         {magazines
           .filter((value: Magazine) => magType === "ALL" || value.magazineType === magType)
           .map((value: Magazine) => (
-            <Card varient="todayBig" dataType="magazine" rawData={value} />
+            <Card varient="magazineBig" dataType="magazine" rawData={value} />
           ))}
       </StyledSection>
-    </>
+    </MagazineContainer>
   );
 });
 
