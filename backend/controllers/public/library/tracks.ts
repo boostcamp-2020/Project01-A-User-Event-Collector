@@ -12,7 +12,9 @@ const getLibTracks = async (req: Request, res: Response): Promise<void> => {
 };
 
 const postLibTracks = async (req: Request, res: Response): Promise<void> => {
-  // const tmpUserId = 1;
+  const userId = 1; // decode jwt
+  const { id: trackId } = req.params;
+  console.log(trackId, userId);
   try {
     res.status(200).json();
   } catch (err) {

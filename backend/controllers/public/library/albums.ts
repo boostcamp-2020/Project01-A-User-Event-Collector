@@ -12,7 +12,9 @@ const getLibAlbums = async (req: Request, res: Response): Promise<void> => {
 };
 
 const postLibAlbums = async (req: Request, res: Response): Promise<void> => {
-  // const tmpUserId = 1;
+  const userId = 1; // decode jwt
+  const { id: albumId } = req.params;
+  console.log(albumId, userId);
   try {
     res.status(200).json();
   } catch (err) {

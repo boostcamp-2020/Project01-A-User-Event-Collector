@@ -12,7 +12,9 @@ const getLibPlaylists = async (req: Request, res: Response): Promise<void> => {
 };
 
 const postLibPlaylists = async (req: Request, res: Response): Promise<void> => {
-  // const tmpUserId = 1;
+  const userId = 1; // decode jwt
+  const { id: playlistId } = req.params;
+  console.log(playlistId, userId);
   try {
     res.status(200).json();
   } catch (err) {

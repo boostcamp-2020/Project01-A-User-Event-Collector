@@ -12,7 +12,9 @@ const getLibArtists = async (req: Request, res: Response): Promise<void> => {
 };
 
 const postLibArtists = async (req: Request, res: Response): Promise<void> => {
-  // const tmpUserId = 1;
+  const userId = 1; // decode jwt
+  const { id: artistId } = req.params;
+  console.log(artistId, userId);
   try {
     res.status(200).json();
   } catch (err) {
