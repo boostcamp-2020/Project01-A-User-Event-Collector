@@ -36,11 +36,20 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     
     private func post(isFavorite: Bool) {
         postToServer()
-        coreTrackAPI.addToFavorite(track: track, isFavorite: isFavorite)
+        // TODO: - FavoriteTracks CoreData model 생성 및 분리
+        addToFavorite(track: track, isFavorite: isFavorite)
     }
     
     private func postToServer() {
         // TODO:- Server로 isFavorite update
+    }
+    
+    private func addToFavorite(track: Track, isFavorite: Bool) {
+        if isFavorite {
+            coreTrackAPI.create(with: track)
+        } else {
+            coreTrackAPI.delete(id: track.id)
+        }
     }
     
 }

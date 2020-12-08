@@ -9,11 +9,14 @@ import Foundation
 import Combine
 
 class PlayerViewModel: ObservableObject {
+    // TODO: - 외부 접근이 필요 없는 곳에는 private 설정하기
     @Published var currentTrack: Track?
     @Published var queue: [Track] = []
     @Published var isPlaying = true
     @Published var isShuffle = false
     @Published var isRepeat = false
+    
+    private let coreTrackAPI = CoreTrackAPI()
     var subscriptions = Set<AnyCancellable>()
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
@@ -41,6 +44,8 @@ class PlayerViewModel: ObservableObject {
             queue.removeAll(where: {$0.id == track.id})
         }
         queue.append(track)
+        // TODO: - RecentPlayedTracks CoreData model 생성 및 분리
+        coreTrackAPI.create(with: track)
     }
     
     func reorder(from source: IndexSet, to destination: Int) {

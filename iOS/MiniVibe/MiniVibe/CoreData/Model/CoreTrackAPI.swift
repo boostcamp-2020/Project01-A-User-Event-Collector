@@ -11,18 +11,10 @@ import CoreData
 class CoreTrackAPI {
     @Environment(\.managedObjectContext) private var context
     
-    func addToFavorite(track: Track, isFavorite: Bool) {
-        if isFavorite {
-            create(with: track)
-        } else {
-            remove(id: track.id)
-        }
-    }
-    
     func create(with track: Track) {
         // 중복 체크
         if isDuplicated(id: track.id) {
-            return
+            delete(id: track.id)
         }
         // Track 추가
         let coreTrack = CoreTrack(context: context)
@@ -48,7 +40,7 @@ class CoreTrackAPI {
         save()
     }
     
-    private func remove(id: Int) {
+    func delete(id: Int) {
         let coreTracks = fetch(id: id)
         coreTracks.forEach { track in
             context.delete(track)
@@ -56,7 +48,7 @@ class CoreTrackAPI {
         save()
     }
     
-    private func fetch(id: Int) -> [CoreTrack] {
+    func fetch(id: Int) -> [CoreTrack] {
         var coreTracks = [CoreTrack]()
         do {
             let request = CoreTrack.fetchRequest() as NSFetchRequest<CoreTrack>
