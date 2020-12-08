@@ -8,6 +8,11 @@ export interface CheckedTrack {
   Artists: Artist[];
 }
 
+export interface CheckedState {
+  checkedTrackArr: CheckedTrack[];
+  isAllChecked: boolean;
+}
+
 // Actions
 export const PUSH = "checkedTrack/PUSH";
 export const REMOVE = "checkedTrack/Remove";
@@ -50,20 +55,34 @@ export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
 };
 
 // Reducer
-const initialCheckedTrackArr: CheckedTrack[] = [];
+const initialState: CheckedState = {
+  checkedTrackArr: [],
+  isAllChecked: false,
+};
 const checkedTrackReducer = (
-  state = initialCheckedTrackArr,
+  state = initialState,
   action: CheckedTrackActionTypes,
-): CheckedTrack[] => {
+): CheckedState => {
+  const { checkedTrackArr, isAllChecked } = state;
+
   switch (action.type) {
     case INIT:
-      return [];
+      return {
+        checkedTrackArr: [],
+        isAllChecked: false,
+      };
 
     case PUSH:
-      return [...state, action.payload];
+      return {
+        checkedTrackArr: [...checkedTrackArr, action.payload],
+        isAllChecked: false,
+      };
 
     case REMOVE:
-      return state.filter((elem) => elem !== action.payload);
+      return {
+        checkedTrackArr: checkedTrackArr.filter((elem) => elem !== action.payload),
+        isAllChecked: false,
+      };
 
     default:
       return state;
