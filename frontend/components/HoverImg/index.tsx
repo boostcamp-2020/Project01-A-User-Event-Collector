@@ -14,6 +14,7 @@ export const getChildren = (hover: boolean, varient?: string): JSX.Element | nul
     case "todayBig":
     case "todaySmall":
     case "todayNews":
+    case "magazineBig":
       return <GeneralHoverCover hover={hover} />;
     case "trackCardCover":
       return <TrackCardHoverCover hover={hover} />;
