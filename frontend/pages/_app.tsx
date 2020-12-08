@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import React, { FC, useEffect, memo } from "react";
+import React, { FC, memo } from "react";
 import Layout from "../components/Layout";
 import { rootReducer } from "../reduxModules";
 
@@ -28,10 +28,6 @@ const GlobalStyles = createGlobalStyle`
 
 const store = createStore(rootReducer);
 const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
-  useEffect(() => {
-    // dispatch(initCheckedTrack());
-    console.log("asdasd");
-  }, [pageProps);
   return (
     <Provider store={store}>
       <GlobalStyles />

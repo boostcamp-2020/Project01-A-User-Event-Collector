@@ -56,6 +56,9 @@ const checkedTrackReducer = (
   action: CheckedTrackActionTypes,
 ): CheckedTrack[] => {
   switch (action.type) {
+    case INIT:
+      return [];
+
     case PUSH:
       return [...state, action.payload];
 

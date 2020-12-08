@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { initCheckedTrack } from "../../reduxModules/checkedTrack";
 import DetailPage from "../../components/DetailPage";
 import { DefaultCollector, DefaultEmitter } from "../../event/event";
 
@@ -8,6 +10,10 @@ const StyleAlbumPage = styled.div`
 `;
 
 const AlbumPage = ({ Albums }: any) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(initCheckedTrack());
+  }, []);
   return (
     <DefaultCollector>
       <StyleAlbumPage>

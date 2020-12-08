@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 
@@ -7,9 +7,13 @@ const StylePlaylistPage = styled.div`
 `;
 
 const PlaylistPage = ({ Playlists }: any) => {
+  // useEffect(() => {
+  //   // dispatch(initCheckedTrack());
+  //   console.log("asdasd");
+  // }, []);
   return (
     <StylePlaylistPage>
-      <DetailPage type={"playlist"} detailData={Playlists} tracks={Playlists.Tracks} />
+      <DetailPage type="playlist" detailData={Playlists} tracks={Playlists.Tracks} />
     </StylePlaylistPage>
   );
 };
