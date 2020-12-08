@@ -23,7 +23,6 @@ const TrackList: FC<Props> = ({ Tracks }: Props) => {
           trackName={elem.trackName}
           Albums={elem.Albums}
           Artists={elem.Artists}
-          trackListLength={Tracks.length}
         />
       ))}
     </StyleTrackList>

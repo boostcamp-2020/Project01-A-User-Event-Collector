@@ -11,7 +11,6 @@ interface Props {
   trackName: string;
   Albums: Album;
   Artists: Artist[];
-  trackListLength: number;
 }
 
 interface Styles {}
@@ -30,7 +29,7 @@ const ChildElem = styled.div`
   flex: 1;
 `;
 
-const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists, trackListLength }: Props) => {
+const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists }: Props) => {
   const { albumName, id: albumId, cover } = Albums;
 
   const artistArr = Artists.map((elem: Artist) => {
@@ -39,7 +38,7 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists, trackListLength 
 
   return (
     <StyleTrack>
-      <CheckBox trackData={{ id, trackName, Albums, Artists }} trackListLength={trackListLength} />
+      <CheckBox trackData={{ id, trackName, Albums, Artists }} />
       <Img src={cover} varient="trackCardCover" />
 
       <ChildElem>
