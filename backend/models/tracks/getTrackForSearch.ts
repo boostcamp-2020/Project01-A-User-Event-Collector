@@ -4,7 +4,7 @@ const getTrackForSearch = async (optObj: any): Promise<Object> => {
   // eslint-disable-next-line no-param-reassign
   optObj.include = {
     Albums: {
-      select: { cover: true },
+      select: { cover: true, albumName: true },
     },
     Artists_Tracks: {
       include: {
