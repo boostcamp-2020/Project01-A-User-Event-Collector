@@ -18,7 +18,7 @@ const StyledHotMagOverlay = styled.div`
   width: calc(100vw - 15em);
   top: -4em;
   z-index: 1;
-  height: 30em;
+  height: 28em;
 `;
 
 const StyledSections = styled.div`
