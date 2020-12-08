@@ -25,42 +25,12 @@ struct TrackCellView: View {
             })
             if hasAccessory {
                 HStack(spacing: 20) {
-                    Heart(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
-                    Ellipsis()
+                    HeartAccessory(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
+                    EllipsisAssessory()
                 }
             }
             
         }
-    }
-}
-
-struct Heart: View {
-    @Binding var isFavorite: Bool
-    let toggleFavorite: (() -> Void)?
-    
-    var body: some View {
-        Button(action: {
-            toggleFavorite?()
-            isFavorite.toggle()
-        }, label: {
-            Image(systemName: isFavorite ? "heart.fill" : "heart")
-                .accesoryModifier(color: .red, size: .small)
-        })
-        .buttonStyle(BorderlessButtonStyle())
-    }
-}
-
-struct Ellipsis: View {
-    var body: some View {
-        Button(action: {
-            print("show menu")
-            
-        }, label: {
-            Image(systemName: "ellipsis")
-                .accesoryModifier(color: .gray, size: .small)
-            
-        })
-        .buttonStyle(BorderlessButtonStyle())
     }
 }
 

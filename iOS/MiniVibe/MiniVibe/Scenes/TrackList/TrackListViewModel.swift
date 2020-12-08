@@ -7,17 +7,6 @@
 
 import Foundation
 
-struct TrackGroup: Identifiable {
-    let id = UUID()
-    var tracks = [Track]()
-    mutating func add(_ track: Track) {
-        tracks.append(track)
-    }
-    mutating func removeAll() {
-        tracks.removeAll()
-    }
-}
-
 class TrackListViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
@@ -30,29 +19,6 @@ class TrackListViewModel: ObservableObject {
 //            나중에 api에서 track에 isFavorite를 함께 줄때 적용
 //            tracks[index].isFavorite.toggle()
         }
-    }
-    
-    func getTracksOfFive() -> [TrackGroup] {
-        let chunked = tracks.chunked(into: 5).map { tracks -> TrackGroup in
-            TrackGroup(tracks: tracks)
-        }
-//        var group1 = TrackGroup(tracks: Array(TestData.playlist.tracks.prefix(5)))
-//        var group2 = TrackGroup(tracks: Array(TestData.playlist.tracks.prefix(5)))
-//        groups.append(contentsOf: [group1,group2])
-//        var tempGroup = TrackGroup()
-//        var count = 0
-//        for (index,track) in tracks.enumerated() {
-//            if count == 5 {
-//                groups.append(tempGroup)
-//                tempGroup.removeAll()
-//                count = 0
-//            } else {
-//                tempGroup.add(track)
-//                count += 1
-//            }
-//        }
-//        groups.append(tempGroup)
-        return chunked
     }
     
 }
