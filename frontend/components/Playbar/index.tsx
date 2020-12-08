@@ -40,8 +40,8 @@ const Playbar = memo(() => {
   return (
     <StyledPlaybar>
       {/* {console.log(data.checkedTrackArr)} */}
-      {/* {console.log(data)} */}
-      {data.checkedTrackArr.map((elem) => (
+      {console.log(data)}
+      {data.map((elem) => (
         <h1 key={elem.id}>{elem.trackName}</h1>
       ))}
       <StyledTrackSection>

@@ -5,7 +5,6 @@ import {
   pushCheckedTrack,
   removeCheckedTrack,
   CheckedTrack,
-  allCheckTrack,
 } from "../../../../reduxModules/checkedTrack";
 import { RootState } from "../../../../reduxModules";
 
@@ -24,37 +23,30 @@ const checkLength = (base: CheckedTrack[], target: CheckedTrack, length: number)
 };
 
 const CheckBox: FC<Props> = ({ trackData, listLength }: Props) => {
-  const { isAllChecked, checkedTrackArr } = useSelector((state: RootState) => state.checkedTrack);
+  const checkedTrackArr = useSelector((state: RootState) => state.checkedTrack);
   const [isChecked, setIsChecked] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isChecked && !isAllChecked) {
-      if (checkLength(checkedTrackArr, trackData, listLength))
-        dispatch(allCheckTrack([...checkedTrackArr, trackData], true));
-      else dispatch(pushCheckedTrack(trackData));
+    if (isChecked) {
+      // if (checkLength(checkedTrackArr, trackData, listLength))
+      // dispatch(allCheckTrack([...checkedTrackArr, trackData], true));
+      dispatch(pushCheckedTrack(trackData));
     } else if (!isChecked) {
-      if (isAllChecked) {
-        console.log("asdasdasdasd");
-        dispatch(allCheckTrack([...checkedTrackArr, trackData], false));
-      } else dispatch(removeCheckedTrack(trackData));
+      // if (isAllChecked) {
+      //   console.log("asdasdasdasd");
+      //   dispatch(allCheckTrack([...checkedTrackArr, trackData], false));
+      // } else
+      dispatch(removeCheckedTrack(trackData));
     }
-    // if (!(isChecked === isAllChecked)) {
-    // if (checkedTrackArr.length === 1) {
-    //   dispatch(allCheckTrack([]));
-    //   console.log(3);
-    // }
-    // }
-
-    // console.log(isAllChecked, isChecked);
   }, [isChecked]);
 
-  useEffect(() => {
-    console.log("변화");
-    if (checkedTrackArr.length > 0 && !isAllChecked) return;
-    setIsChecked(isAllChecked);
-  }, [isAllChecked]);
+  // useEffect(() => {
+  //   console.log("변화");
+  //   if (checkedTrackArr.length > 0 && !isAllChecked) return;
+  //   setIsChecked(isAllChecked);
+  // }, [isAllChecked]);
 
   const checkHandler = () => setIsChecked(!isChecked);
   return (

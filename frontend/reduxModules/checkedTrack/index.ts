@@ -56,7 +56,7 @@ export const removeCheckedTrack = (trackData: CheckedTrack): RemoveAction => {
   };
 };
 
-export const allPushTrack = (allTrackData: CheckedTrack[]): AllPushAction => {
+export const allPushCheckedTrack = (allTrackData: CheckedTrack[]): AllPushAction => {
   return {
     type: ALLPUSH,
     payload: allTrackData,
