@@ -12,4 +12,16 @@ const StyledNavBar = styled.div`
   z-index: 9;
 `;
 
-export default StyledNavBar;
+const StyledLibrary = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+`;
+
+const StyledLibraryText = styled.div`
+  display: flex;
+  font-size: 0.9rem;
+  color: #444;
+`;
+
+export { StyledNavBar, StyledLibrary, StyledLibraryText };

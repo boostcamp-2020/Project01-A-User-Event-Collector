@@ -25,15 +25,17 @@ const StyledLinkCard = styled.div`
           height: 1rem;
           font-size: 1rem;
           && {
-            margin: 0rem 0rem 0.75rem 0rem;
-          }
+            margin-right: 0.75rem;
+            margin-top: 1rem;
+          };
         `;
       default:
         return `
           height: 1.25rem;
           font-size: 1.25rem;
           && {
-            margin: 0rem 0rem 1rem 0rem;
+            margin-right: 1rem;
+            margin-top: 1rem;
           }
 
           &::before {
