@@ -29,11 +29,12 @@ struct ChartView: View {
             }
             .padding()
             .navigationTitle("차트")
-        }.onAppear {
-            manager.log(ScreenEvent.screenViewed(.chart))
-            viewModel.fetch(id: playlistID)
-        }
-    }
+            .onAppear {
+                manager.log(ScreenEvent.screenViewed(.chart))
+                viewModel.fetch(id: playlistID)
+            }
+
+        }    }
     
 }
 struct ChartView_Previews: PreviewProvider {
