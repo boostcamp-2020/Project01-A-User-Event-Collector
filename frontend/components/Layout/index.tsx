@@ -1,7 +1,10 @@
-import React, { ReactNode, memo, useState } from "react";
+import React, { ReactNode, memo, useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import NavBar from "../NavBar";
 import SearchBar from "../SearchBar";
 import Playbar from "../Playbar";
+import { initCheckedTrack } from "../../reduxModules/checkedTrack";
 import {
   StyledLayoutWrapper,
   StyledLayout,
@@ -10,6 +13,7 @@ import {
   StyledBlockingOverlay,
 } from "./styled";
 import Overlay from "./Overlay";
+
 
 type Props = {
   children: ReactNode | undefined;
@@ -36,13 +40,18 @@ interface TrackProps {
 
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
+
   const [showPlaylist, setShowPlaylist] = useState(false);
-  const handleSearch = (): void => {
-    setSearchMode(!searchMode);
-  };
-  const handleShowPlaylist = () => {
-    setShowPlaylist(!showPlaylist);
-  };
+    
+  const router = useRouter();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(initCheckedTrack());
+  }, [router.pathname]);
+  
+  const handleSearch = (): void => setSearchMode(!searchMode);
+  const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
+
 
   return (
     <StyledLayoutWrapper>

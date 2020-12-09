@@ -1,6 +1,8 @@
 import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import Img from "../Img";
 import icons from "../../constant/icons";
+import { RootState } from "../../reduxModules";
 import {
   StyledPlaybar,
   StyledTrackSection,
@@ -40,8 +42,11 @@ const Playbar = memo(
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
 
+    const data = useSelector((state: RootState) => state.playQueue);
+  
     return (
       <StyledPlaybar onClick={handleShowPlaylist}>
+        {console.log(data)}
         <StyledTrackSection>
           <StyledImgSection>
             <Img varient="nowPlayingCover" src={trackImg} />
@@ -81,5 +86,6 @@ const Playbar = memo(
     );
   },
 );
+
 
 export default Playbar;

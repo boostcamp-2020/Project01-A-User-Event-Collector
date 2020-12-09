@@ -1,5 +1,5 @@
-import React from "react";
 import styled from "styled-components";
+import React from "react";
 import DetailPage from "../../components/DetailPage";
 
 const StyleMagazinePage = styled.div`
@@ -9,7 +9,7 @@ const StyleMagazinePage = styled.div`
 const MagazinePage = ({ Magazines }: any) => {
   return (
     <StyleMagazinePage>
-      <DetailPage type={"magazine"} detailData={Magazines} tracks={Magazines.Tracks} />
+      <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
     </StyleMagazinePage>
   );
 };
