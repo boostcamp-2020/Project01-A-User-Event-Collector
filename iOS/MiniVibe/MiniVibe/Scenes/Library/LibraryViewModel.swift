@@ -12,6 +12,7 @@ class LibraryViewModel: MiniVibeViewModel, ObservableObject {
     @Published var tracks = [Track]()
     
     private let manager: AnalyticsManager
+    private let coreDataManager = CoreTrackAPI()
     
     init(manager: AnalyticsManager) {
         self.manager = manager
@@ -19,8 +20,13 @@ class LibraryViewModel: MiniVibeViewModel, ObservableObject {
     }
     
     func fetch() {
-        self.tracks = TestData.playlist.tracks ?? []
-        //TODO: 코어 데이터에 있는 track 배열 가져오기
+        var tracks = [Track]()
+        let predicate = NSPredicate(format: "isFavorite Contains %d", true)
+        let coreTracks = coreDataManager.fetch(predicate: predicate)
+        coreTracks.forEach { coreTrack in
+            tracks.append(Track(from: coreTrack))
+        }
+        self.tracks = tracks
     }
     
 }
