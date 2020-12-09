@@ -12,9 +12,26 @@ struct Album: Codable, Identifiable, Cellable {
     var name: String
     let description: String
     let cover: String?
-
+    let coverData: Data?
+    
+    init(id: Int, name: String, description: String, cover: String?) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.cover = cover
+        self.coverData = nil
+    }
+    
+    init(from coreAlbum: CoreAlbum) {
+        self.id = Int(coreAlbum.id)
+        self.name = coreAlbum.name ?? ""
+        self.description = coreAlbum.descript ?? ""
+        self.cover = nil
+        self.coverData = coreAlbum.cover
+    }
+    
     enum CodingKeys: String, CodingKey {
-        case id, description
+        case id, description, coverData
         case name = "albumName"
         case cover
     }
