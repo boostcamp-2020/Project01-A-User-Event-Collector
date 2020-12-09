@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { getUserLikeAlbums, postUserLikeAlbums } from "../../../models/library";
+import {
+  getUserLikeAlbums,
+  postUserLikeAlbums,
+  deleteUserLikeAlbums,
+} from "../../../models/library";
 
 const getLibAlbums = async (req: Request, res: Response): Promise<void> => {
   const tmpUserId = 1;
@@ -23,11 +27,11 @@ const postLibAlbums = async (req: Request, res: Response): Promise<void> => {
 };
 
 const deleteLibAlbums = async (req: Request, res: Response): Promise<void> => {
-  // const userId = 1;
-  // const { id: albumId } = req.params;
+  const userId = 1;
+  const { id: albumId } = req.params;
   try {
-    // const msg = await postUserLikeAlbums(userId, +albumId);
-    // res.status(200).json({ message: msg });
+    const msg = await deleteUserLikeAlbums(userId, +albumId);
+    res.status(200).json({ message: msg });
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
   }

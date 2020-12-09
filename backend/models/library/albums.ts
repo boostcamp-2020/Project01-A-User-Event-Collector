@@ -29,4 +29,22 @@ const postUserLikeAlbums = async (
     return new Error("Fail Post");
   }
 };
-export { getUserLikeAlbums, postUserLikeAlbums };
+
+const deleteUserLikeAlbums = async (
+  userId: number,
+  albumId: number
+): Promise<String | Error> => {
+  try {
+    await prisma.users_Like_Albums.deleteMany({
+      where: {
+        userId,
+        albumId,
+      },
+    });
+    return "Success Delete";
+  } catch (err) {
+    return new Error("Fail Post");
+  }
+};
+
+export { getUserLikeAlbums, postUserLikeAlbums, deleteUserLikeAlbums };
