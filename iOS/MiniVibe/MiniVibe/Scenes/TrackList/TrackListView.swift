@@ -22,7 +22,7 @@ struct TrackListView: View {
                 nowPlayingViewModel.update(with: tracks)
             },
             didPressShuffleButton: {
-                nowPlayingViewModel.update(with: tracks.shuffled())
+                nowPlayingViewModel.update(with: tracks, isShuffled: true)
             }
         )
         Section(header: headerView) {

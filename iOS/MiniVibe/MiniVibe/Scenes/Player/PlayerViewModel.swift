@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import AVFoundation
+import MediaPlayer
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?
@@ -26,24 +28,30 @@ class PlayerViewModel: ObservableObject {
     }
     
     let manager: AnalyticsManager
-
+    
+    private let session = AVAudioSession.sharedInstance()// Audio session object
+    private var progressObserver: NSKeyValueObservation!// Observer
+    
     init(manager: AnalyticsManager) {
         self.manager = manager
         trackPlayingSubscription()
         shuffleSubscription()
         randomSubscription()
+        setupVolumeListener()
     }
-
+    
     func update(with track: Track) {
         safeAppend(track)
         currentTrack = track
         isPlaying = true
     }
     
-    func update(with tracks: [Track]) {
-        tracks.forEach { safeAppend($0) }
+    func update(with tracks: [Track], isShuffled: Bool = false) {
+        let mytracks = isShuffled ? tracks.shuffled() : tracks
+        mytracks.forEach { safeAppend($0) }
         currentTrack = queue.last
         isPlaying = true
+        manager.log(PlayerEvent.playlistPlayed(isShuffled))
     }
     
     func reorder(from source: IndexSet, to destination: Int) {
@@ -55,9 +63,24 @@ class PlayerViewModel: ObservableObject {
             queue.removeAll(where: {$0.id == track.id})
         }
         queue.append(track)
-
     }
+    
+    func setupVolumeListener() {
+        do {
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            print("cannot activate session")
+        }
+        progressObserver = session.observe(\.outputVolume) { (session, _) in
+            print(session.outputVolume)
+        }
+    }
+    
+}
 
+// MARK: Combine과 관련된 subscription 함수들
+extension PlayerViewModel {
+    
     func trackPlayingSubscription() {
         $isPlaying
             .sink { [weak self] isPlaying in
@@ -87,5 +110,5 @@ class PlayerViewModel: ObservableObject {
             }
             .store(in: &subscriptions)
     }
-    
+
 }
