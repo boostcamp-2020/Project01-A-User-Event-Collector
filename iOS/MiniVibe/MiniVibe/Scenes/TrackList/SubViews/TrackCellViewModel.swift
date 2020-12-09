@@ -11,7 +11,7 @@ import CoreData
 
 class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     @Published var track: Track
-    @Published var isFavorite = false
+    @Published var isFavorite: Bool
     
     private let coreTrackAPI = CoreTrackAPI()
     private var cancellables = Set<AnyCancellable>()
@@ -19,6 +19,11 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     
     init(track: Track) {
         self.track = track
+        if let isFavorite = track.isFavorite {
+            self.isFavorite = isFavorite
+        } else {
+            self.isFavorite = false
+        }
         super.init()
         toggleSubscription()
     }
