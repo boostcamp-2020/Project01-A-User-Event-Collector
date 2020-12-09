@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import { NextArrowSvg } from "../../utils/svg";
+import { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledIcon } from "./styled";
+import icons from "../../constant/icons";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import Card from "../Card";
 
@@ -12,43 +12,9 @@ export interface SlidebarProps {
   data?: any;
 }
 
-interface TranslateProps {
+export interface TranslateProps {
   currentTranslateX?: number;
 }
-
-const StyledSlidebar = styled.div<SlidebarProps>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  & > a > svg {
-    width: 0.7rem;
-    height: 0.7rem;
-  }
-`;
-
-const SlideContainer = styled.div`
-  overflow-x: hidden;
-  overflow-y: hidden;
-  width: 100%;
-  position: relative;
-`;
-
-const StyledTitle = styled.div`
-  font-size: 1.3em;
-  font-weight: bold;
-  margin: 1em 0em;
-`;
-
-const SlideContent = styled.ul<TranslateProps>`
-  display: flex;
-  & > li:first-child {
-    margin: 0;
-  }
-  padding-inline-start: 0;
-  transition: all 0.6s ease-in-out;
-  transform: ${({ currentTranslateX }) => `translateX(${currentTranslateX}px)`};
-`;
 
 const Slidebar: React.FC<SlidebarProps> = ({
   varient,
@@ -136,7 +102,7 @@ const Slidebar: React.FC<SlidebarProps> = ({
       <StyledTitle>
         <a href={titleLink}>
           {title}
-          {titleLink ? <NextArrowSvg /> : ""}
+          <StyledIcon>{icons.angleRight}</StyledIcon>
         </a>
       </StyledTitle>
       <SlideContainer>

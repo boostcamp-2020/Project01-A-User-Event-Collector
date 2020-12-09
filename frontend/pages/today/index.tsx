@@ -8,23 +8,23 @@ const StyledHotMag = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2.75em;
-  margin-bottom: 4.5em;
+  margin-top: 2.75rem;
+  margin-bottom: 4.5rem;
 `;
 
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15em);
-  top: -4em;
+  width: calc(100vw - 15rem);
+  top: -4rem;
   z-index: 1;
-  height: 30em;
+  height: 28rem;
 `;
 
 const StyledSections = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0.5em 0em;
+  margin: 0.5rem 0rem;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }

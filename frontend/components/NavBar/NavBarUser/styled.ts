@@ -5,27 +5,27 @@ const StyledNavUser = styled.div`
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  padding: 1em 0em;
-  margin: 1.5em 0em;
-  border-top: 0.1em solid #282828;
-  border-bottom: 0.1em solid #282828;
+  padding: 1rem 0rem;
+  margin: 1.5rem 0rem;
+  border-top: 0.1rem solid #282828;
+  border-bottom: 0.1rem solid #282828;
   &: hover {
     cursor: pointer;
   }
 `;
 
 const StyledUser = styled.div`
-  padding-left: 0.4em;
-  margin-left: 0.3em;
-  font-size: 1.25em;
+  padding-left: 0.4rem;
+  margin-left: 0.3rem;
+  font-size: 1.25rem;
   ${({ loggedIn }: { loggedIn: boolean }) => {
     return loggedIn
       ? `
-        line-height: 1.25em;
+        line-height: 1.25rem;
         color: #ccc;
         `
       : `
-        line-height: 1em;
+        line-height: 1rem;
         color: #888;
         `;
   }}

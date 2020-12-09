@@ -30,7 +30,7 @@ const ColorDiv = styled.div<GenreColorProps>`
 const NameDiv = styled.div`
   margin-left: 10px;
   text-align: left;
-  padding: 1.2rem 0;
+  padding: 1.2rrem 0;
   height: 1.5rem;
 `;
 
