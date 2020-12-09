@@ -51,7 +51,9 @@ struct PlayerEvent: AnalyticsEvent {
             metadata: ["shuffleMode": suffix]
         )
     }
-
+    
+    static let volumeChanged = PlayerEvent(name: "volumeChangedIn3Seconds")
+    
     static let shuffleOn = PlayerEvent(name: "shuffleOn")
     
     static let shuffleOff = PlayerEvent(name: "shuffleOff")
