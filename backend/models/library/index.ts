@@ -1,5 +1,5 @@
 import getUserLikeTracks from "./tracks";
-import getUserLikeAlbums from "./albums";
+import { getUserLikeAlbums, postUserLikeAlbums } from "./albums";
 import getUserLikeArtists from "./artists";
 import getUserLikePlaylists from "./playlists";
 
@@ -8,4 +8,5 @@ export {
   getUserLikeTracks,
   getUserLikeArtists,
   getUserLikePlaylists,
+  postUserLikeAlbums,
 };
