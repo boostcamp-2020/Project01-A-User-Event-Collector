@@ -11,16 +11,16 @@ const getUserLikePlaylists = async (id: number): Promise<Object> => {
 
 const postUserLikePlaylists = async (
   userId: number,
-  albumId: number
+  playlistsId: number
 ): Promise<void> => {
   try {
-    await prisma.users_Like_Albums.create({
+    await prisma.users_Likes_Playlists.create({
       data: {
         Users: {
           connect: { id: userId },
         },
-        Albums: {
-          connect: { id: albumId },
+        Playlists: {
+          connect: { id: playlistsId },
         },
       },
     });
