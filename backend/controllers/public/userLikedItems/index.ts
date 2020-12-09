@@ -7,17 +7,13 @@ import {
 } from "../../../models/library";
 
 const userLikedItems = async (req: Request, res: Response): Promise<void> => {
-  if (!req.user) {
-    res.json(403).json({});
-    return;
-  }
   //   const userId = req.user.id;
   const userId = 1;
   const result = await Promise.all([
-    getUserLikeAlbums(+userId),
-    getUserLikeTracks(+userId),
-    getUserLikeArtists(+userId),
-    getUserLikePlaylists(+userId),
+    getUserLikeAlbums(userId),
+    getUserLikeTracks(userId),
+    getUserLikeArtists(userId),
+    getUserLikePlaylists(userId),
   ]);
 
   res.status(200).json({
