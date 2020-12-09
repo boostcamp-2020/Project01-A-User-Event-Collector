@@ -11,4 +11,24 @@ const getUserLikeTracks = async (id: number): Promise<Object> => {
   return tracks;
 };
 
-export default getUserLikeTracks;
+const postUserLikeTracks = async (
+  userId: number,
+  albumId: number
+): Promise<void> => {
+  try {
+    await prisma.users_Like_Albums.create({
+      data: {
+        Users: {
+          connect: { id: userId },
+        },
+        Albums: {
+          connect: { id: albumId },
+        },
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getUserLikeTracks, postUserLikeTracks };
