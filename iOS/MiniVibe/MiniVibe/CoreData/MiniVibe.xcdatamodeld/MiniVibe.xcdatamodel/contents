@@ -16,17 +16,16 @@
     <entity name="CoreTrack" representedClassName="CoreTrack" syncable="YES" codeGenerationType="class">
         <attribute name="albumTrackNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreAlbum" inverseName="tracks" inverseEntity="CoreAlbum"/>
         <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreArtist" inverseName="tracks" inverseEntity="CoreArtist"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="CoreAlbum" positionX="-54" positionY="18" width="128" height="118"/>
         <element name="CoreArtist" positionX="-36" positionY="45" width="128" height="103"/>
-        <element name="CoreTrack" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="CoreTrack" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="43"/>
     </elements>
 </model>

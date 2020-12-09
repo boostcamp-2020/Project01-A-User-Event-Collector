@@ -17,6 +17,7 @@ struct Track: Codable, Identifiable, Cellable {
     let albumTrackNumber, albumID: Int
     let album: Album?
     let artists: [Artist]?
+    var isFavorite: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id, albumTrackNumber
