@@ -1,8 +1,12 @@
 import { Request, Response } from "express";
-import { getLibArtists, postLibArtists } from "./artists";
-import { getLibAlbums, postLibAlbums } from "./albums";
-import { getLibTracks, postLibTracks } from "./tracks";
-import { getLibPlaylists, postLibPlaylists } from "./playlsits";
+import { getLibArtists, postLibArtists, deleteLibArtists } from "./artists";
+import { getLibAlbums, postLibAlbums, deleteLibAlbums } from "./albums";
+import { getLibTracks, postLibTracks, deleteLibTracks } from "./tracks";
+import {
+  getLibPlaylists,
+  postLibPlaylists,
+  deleteLibPlaylists,
+} from "./playlsits";
 
 interface Controller {
   getLibArtists(req: Request, res: Response): Promise<void>;
@@ -14,6 +18,11 @@ interface Controller {
   postLibAlbums(req: Request, res: Response): Promise<void>;
   postLibTracks(req: Request, res: Response): Promise<void>;
   postLibPlaylists(req: Request, res: Response): Promise<void>;
+
+  deleteLibArtists(req: Request, res: Response): Promise<void>;
+  deleteLibAlbums(req: Request, res: Response): Promise<void>;
+  deleteLibTracks(req: Request, res: Response): Promise<void>;
+  deleteLibPlaylists(req: Request, res: Response): Promise<void>;
 }
 
 const controller: Controller = {
@@ -25,5 +34,9 @@ const controller: Controller = {
   postLibAlbums,
   postLibTracks,
   postLibPlaylists,
+  deleteLibArtists,
+  deleteLibAlbums,
+  deleteLibTracks,
+  deleteLibPlaylists,
 };
 export default controller;

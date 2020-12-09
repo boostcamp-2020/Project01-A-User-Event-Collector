@@ -21,4 +21,15 @@ const postLibTracks = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ statusCode: 500, message: err.message });
   }
 };
-export { getLibTracks, postLibTracks };
+
+const deleteLibTracks = async (req: Request, res: Response): Promise<void> => {
+  // const userId = 1; // decode jwt
+  // const { id: trackId } = req.params;
+  try {
+    // const msg = await deleteUserLikeTracks(userId, +trackId);
+    // res.status(200).json({ message: msg });
+  } catch (err) {
+    res.status(500).json({ statusCode: 500, message: err.message });
+  }
+};
+export { getLibTracks, postLibTracks, deleteLibTracks };
