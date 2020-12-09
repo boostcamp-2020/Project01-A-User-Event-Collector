@@ -15,6 +15,7 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     
     private let coreTrackAPI = CoreTrackAPI()
     private var cancellables = Set<AnyCancellable>()
+    private var isFirst = true
     
     init(track: Track) {
         self.track = track
@@ -36,7 +37,6 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     
     private func post(isFavorite: Bool) {
         postToServer()
-        // TODO: - FavoriteTracks CoreData model 생성 및 분리
         addToFavorite(track: track, isFavorite: isFavorite)
     }
     
@@ -45,6 +45,10 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     }
     
     private func addToFavorite(track: Track, isFavorite: Bool) {
+        if isFirst {
+            isFirst = false
+            return
+        }
         if isFavorite {
             var track = track
             track.isFavorite = isFavorite

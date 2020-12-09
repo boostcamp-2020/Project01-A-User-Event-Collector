@@ -26,7 +26,8 @@ struct TrackCellView: View {
             }, label: {
                 BasicRowCellView(title: track.name,
                                  subTitle: track.artist,
-                                 coverURLString: track.coverURLString)
+                                 coverURLString: track.coverURLString,
+                                 coverData: track.coverData)
             })
             if hasAccessory {
                 HStack(spacing: 20) {

@@ -15,7 +15,11 @@ class URLImageLoader: ObservableObject {
     private let network = NetworkService(session: URLSession.shared)
     private var cancellables = Set<AnyCancellable>()
     
-    func fetch(urlString: String?) {
+    func fetch(urlString: String?, imageData: Data?) {
+        if let imageData = imageData {
+            image = UIImage(data: imageData)
+            return
+        }
         guard let urlString = urlString else {
             image = UIImage(named: "appIcon")
             return

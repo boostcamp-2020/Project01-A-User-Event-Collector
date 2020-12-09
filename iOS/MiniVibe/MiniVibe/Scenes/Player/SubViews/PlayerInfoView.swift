@@ -15,7 +15,7 @@ struct PlayerInfoView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            URLImage(urlString: track.album?.cover)
+            URLImage(urlString: track.coverURLString, imageData: track.coverData)
                 .padding()
             HStack {
                 VStack(alignment: .leading, spacing: 10) {

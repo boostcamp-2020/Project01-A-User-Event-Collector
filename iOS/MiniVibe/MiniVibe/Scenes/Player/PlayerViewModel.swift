@@ -25,7 +25,10 @@ class PlayerViewModel: ObservableObject {
         currentTrack?.artist ?? "듣고 싶은 노래를 추가하세요"
     }
     var coverURLString: String? {
-        currentTrack?.album?.cover
+        currentTrack?.coverURLString
+    }
+    var coverData: Data? {
+        currentTrack?.coverData
     }
     
     let manager: AnalyticsManager

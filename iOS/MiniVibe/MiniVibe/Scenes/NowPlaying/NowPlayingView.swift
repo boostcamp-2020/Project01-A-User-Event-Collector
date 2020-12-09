@@ -21,7 +21,8 @@ struct NowPlayingView: View {
             }, label: {
                 BasicRowCellView(title: viewModel.trackName,
                                  subTitle: viewModel.artist,
-                                 coverURLString: viewModel.coverURLString)
+                                 coverURLString: viewModel.coverURLString,
+                                 coverData: viewModel.coverData)
                     .padding(.all, 9)
             }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)

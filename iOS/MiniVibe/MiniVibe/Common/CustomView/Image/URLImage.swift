@@ -12,15 +12,17 @@ struct URLImage: View {
     @StateObject private var imageLoader = URLImageLoader()
 
     private let urlString: String?
+    private let imageData: Data?
 
-    init(urlString: String?) {
+    init(urlString: String?, imageData: Data? = nil) {
         self.urlString = urlString
+        self.imageData = imageData
     }
 
     var body: some View {
         content
             .onAppear {
-                imageLoader.fetch(urlString: urlString)
+                imageLoader.fetch(urlString: urlString, imageData: imageData)
             }
     }
 
@@ -41,7 +43,7 @@ struct URLImage: View {
 
 struct URLImage_Previews: PreviewProvider {
     static var previews: some View {
-        URLImage(urlString: "")
+        URLImage(urlString: "", imageData: nil)
     }
 }
 
