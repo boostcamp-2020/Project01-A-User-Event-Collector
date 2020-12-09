@@ -43,7 +43,7 @@ const deleteUserLikeAlbums = async (
     });
     return "Success Delete";
   } catch (err) {
-    return new Error("Fail Post");
+    return new Error("Fail Delete");
   }
 };
 

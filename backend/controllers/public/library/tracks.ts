@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { getUserLikeTracks, postUserLikeTracks } from "../../../models/library";
+import {
+  getUserLikeTracks,
+  postUserLikeTracks,
+  deleteUserLikeTracks,
+} from "../../../models/library";
 
 const getLibTracks = async (req: Request, res: Response): Promise<void> => {
   const tmpUserId = 1;
@@ -23,11 +27,11 @@ const postLibTracks = async (req: Request, res: Response): Promise<void> => {
 };
 
 const deleteLibTracks = async (req: Request, res: Response): Promise<void> => {
-  // const userId = 1; // decode jwt
-  // const { id: trackId } = req.params;
+  const userId = 1; // decode jwt
+  const { id: trackId } = req.params;
   try {
-    // const msg = await deleteUserLikeTracks(userId, +trackId);
-    // res.status(200).json({ message: msg });
+    const msg = await deleteUserLikeTracks(userId, +trackId);
+    res.status(200).json({ message: msg });
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
   }

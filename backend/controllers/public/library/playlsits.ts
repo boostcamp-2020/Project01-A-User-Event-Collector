@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   getUserLikePlaylists,
   postUserLikePlaylists,
+  deleteUserLikeTracks,
 } from "../../../models/library";
 
 const getLibPlaylists = async (req: Request, res: Response): Promise<void> => {
@@ -29,11 +30,11 @@ const deleteLibPlaylists = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  // const userId = 1; // decode jwt
-  // const { id: playlistId } = req.params;
+  const userId = 1; // decode jwt
+  const { id: playlistId } = req.params;
   try {
-    // const msg = await postUserLikePlaylists(userId, +playlistId);
-    // res.status(200).json({ message: msg });
+    const msg = await deleteUserLikeTracks(userId, +playlistId);
+    res.status(200).json({ message: msg });
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
   }
