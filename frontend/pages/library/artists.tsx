@@ -1,7 +1,9 @@
 import React, { memo } from "react";
 import styled from "styled-components";
 import Card from "../../components/Card";
-import { Album } from "../../interfaces";
+import Img from "../../components/Img";
+import { Artist } from "../../interfaces";
+import LikedArtistCard from "../../components/LikedArtistCard";
 
 const StyledLibraryText = styled.div`
   font-size: 1em;
@@ -29,32 +31,32 @@ const StyledSection = styled.ul`
   }
 `;
 
-const AlbumsLibraryPage = memo(({ albums }: any) => {
+const ArtistsLibraryPage = memo(({ artists }: any) => {
   return (
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
-      <StyledPagetitle>앨범</StyledPagetitle>
+      <StyledPagetitle>아티스트</StyledPagetitle>
       <StyledSection>
-        {albums.map((value: Album) => (
-          <Card varient="todaySmall" dataType="album" rawData={value} />
+        {artists.map((value: Artist) => (
+          <LikedArtistCard varient="likedArtist" artist={value} />
         ))}
       </StyledSection>
     </>
   );
 });
 
-export default AlbumsLibraryPage;
+export default ArtistsLibraryPage;
 
 export async function getStaticProps() {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
 
   try {
-    const res = await fetch(`${apiUrl}:${apiPort}/api/library/albums`);
-    const albums = await res.json();
+    const res = await fetch(`${apiUrl}:${apiPort}/api/library/artists`);
+    const artists = await res.json();
     return {
       props: {
-        albums: albums.Albums,
+        artists: artists.Artists,
       },
     };
   } catch (err) {
