@@ -11,4 +11,9 @@ router.post("/albums/:id", libraryController.postLibAlbums);
 router.post("/artists/:id", libraryController.postLibArtists);
 router.post("/playlists/:id", libraryController.postLibPlaylists);
 router.post("/tracks/:id", libraryController.postLibTracks);
+
+router.delete("/albums/:id", libraryController.deleteLibAlbums);
+router.delete("/artists/:id", libraryController.deleteLibArtists);
+router.delete("/playlists/:id", libraryController.delelteLibPlaylists);
+router.delete("/tracks/:id", libraryController.deleteLibTracks);
 export default router;
