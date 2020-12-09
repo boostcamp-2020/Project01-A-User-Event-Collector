@@ -9,8 +9,8 @@ import SwiftUI
 import CoreData
 
 class CoreTrackAPI {
-    let persistenceController = PersistenceController.shared
-    let context: NSManagedObjectContext
+    private let persistenceController = PersistenceController.shared
+    private let context: NSManagedObjectContext
     
     init() {
         context = persistenceController.context
@@ -49,14 +49,14 @@ class CoreTrackAPI {
     }
     
     func delete(id: Int) {
-        let coreTracks = fetch(id: id)
+        let predicate = NSPredicate(format: "id Contains %ld", id)
+        let coreTracks = fetch(predicate: predicate)
         let result = persistenceController.deleteAll(datas: coreTracks)
         processResult(result: result)
     }
     
-    func fetch(id: Int) -> [CoreTrack] {
+    func fetch(predicate: NSPredicate) -> [CoreTrack] {
         let request = CoreTrack.fetchRequest() as NSFetchRequest<CoreTrack>
-        let predicate = NSPredicate(format: "id Contains %ld", id)
         request.predicate = predicate
         return persistenceController.fetch(request: request)
     }
@@ -80,7 +80,8 @@ class CoreTrackAPI {
     }
     
     private func isDuplicated(id: Int) -> Bool {
-        if fetch(id: id).count > 0 {
+        let predicate = NSPredicate(format: "id Contains %ld", id)
+        if fetch(predicate: predicate).count > 0 {
             return true
         }
         return false
