@@ -46,6 +46,8 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     
     private func addToFavorite(track: Track, isFavorite: Bool) {
         if isFavorite {
+            var track = track
+            track.isFavorite = isFavorite
             coreTrackAPI.create(with: track)
         } else {
             coreTrackAPI.delete(id: track.id)

@@ -59,7 +59,6 @@
 		CF0564C4257FC44F00F24681 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0564C3257FC44F00F24681 /* ImageCache.swift */; };
 		CF0564CA257FFAD800F24681 /* CoreTrackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */; };
 		CF05F8A82567E7AD008080D7 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */; };
-		CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8A92567E7AD008080D7 /* ContentView.swift */; };
 		CF05F8AC2567E7B0008080D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AB2567E7B0008080D7 /* Assets.xcassets */; };
 		CF05F8AF2567E7B0008080D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF05F8AE2567E7B0008080D7 /* Preview Assets.xcassets */; };
 		CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B02567E7B0008080D7 /* Persistence.swift */; };
@@ -182,7 +181,6 @@
 		CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTrackAPI.swift; sourceTree = "<group>"; };
 		CF05F8A42567E7AD008080D7 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8A72567E7AD008080D7 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
-		CF05F8A92567E7AD008080D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CF05F8AB2567E7B0008080D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF05F8AE2567E7B0008080D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF05F8B02567E7B0008080D7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -583,7 +581,6 @@
 			children = (
 				CF0564C8257FFA6A00F24681 /* Model */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
-				CF05F8A92567E7AD008080D7 /* ContentView.swift */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 			);
 			path = CoreData;
@@ -968,7 +965,6 @@
 				51BEB332256F3C8600FB2876 /* DJStation.swift in Sources */,
 				51EED2E0256F7E3C00DB32CB /* CategoryItem.swift in Sources */,
 				512E0E23257B4AEF00576C78 /* SearchBeforeView.swift in Sources */,
-				CF05F8AA2567E7AD008080D7 /* ContentView.swift in Sources */,
 				51EED2E2256F7E3C00DB32CB /* Category.swift in Sources */,
 				CF6E5D9E2574EE6C00BE7503 /* MagazineView.swift in Sources */,
 				51B82B09257DE8A200A005E8 /* PlayerEvent.swift in Sources */,

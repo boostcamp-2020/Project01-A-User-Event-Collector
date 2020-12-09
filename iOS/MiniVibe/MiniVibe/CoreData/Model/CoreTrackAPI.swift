@@ -9,7 +9,12 @@ import SwiftUI
 import CoreData
 
 class CoreTrackAPI {
-    @Environment(\.managedObjectContext) private var context
+    let persistenceController = PersistenceController.shared
+    let context: NSManagedObjectContext
+    
+    init() {
+        context = persistenceController.context
+    }
     
     func create(with track: Track) {
         // 중복 체크
@@ -21,6 +26,9 @@ class CoreTrackAPI {
         coreTrack.id = Int64(track.id)
         coreTrack.name = track.name
         coreTrack.albumTrackNumber = Int64(track.albumTrackNumber)
+        if let isFavorite = track.isFavorite {
+            coreTrack.isFavorite = isFavorite
+        }
         // Artists 추가
         track.artists?.forEach { artist in
             let coreArtist = CoreArtist(context: context)
@@ -42,30 +50,32 @@ class CoreTrackAPI {
     
     func delete(id: Int) {
         let coreTracks = fetch(id: id)
-        coreTracks.forEach { track in
-            context.delete(track)
-        }
-        save()
+        let result = persistenceController.deleteAll(datas: coreTracks)
+        processResult(result: result)
     }
     
     func fetch(id: Int) -> [CoreTrack] {
-        var coreTracks = [CoreTrack]()
-        do {
-            let request = CoreTrack.fetchRequest() as NSFetchRequest<CoreTrack>
-            let predicate = NSPredicate(format: "id Contains %@", id)
-            request.predicate = predicate
-            coreTracks = try context.fetch(request)
-        } catch {
-            print(error)
-        }
-        return coreTracks
+        let request = CoreTrack.fetchRequest() as NSFetchRequest<CoreTrack>
+        let predicate = NSPredicate(format: "id Contains %ld", id)
+        request.predicate = predicate
+        return persistenceController.fetch(request: request)
     }
     
     private func save() {
-        do {
-            try context.save()
-        } catch {
-            print(error)
+        let result = persistenceController.save()
+        processResult(result: result)
+    }
+    
+    private func processResult(result: PersistenceController.CoreDataResult) {
+        switch result {
+        case .success:
+            print("success")
+        case .failure(.saveFailed):
+            print("saveFailed")
+        case .failure(.deleteFailed):
+            print("deleteFailed")
+        case .failure(.deleteAllFailed):
+            print("deleteAllFailed")
         }
     }
     
