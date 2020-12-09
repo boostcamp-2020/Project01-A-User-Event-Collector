@@ -22,23 +22,25 @@ const StyledLinkCard = styled.div`
     switch (theme) {
       case Theme.Library:
         return `
-          height: 1em;
-          font-size: 1em;
+          height: 1rem;
+          font-size: 1rem;
           && {
-            margin: 0em 0em 0.75em 0em;
-          }
+            margin-right: 0.75rem;
+            margin-top: 1rem;
+          };
         `;
       default:
         return `
-          height: 1.25em;
-          font-size: 1.25em;
+          height: 1.25rem;
+          font-size: 1.25rem;
           && {
-            margin: 0em 0em 1em 0em;
+            margin-right: 1rem;
+            margin-top: 1rem;
           }
 
           &::before {
             content: "${icons[icon]}";
-            margin-right: 0.5em;
+            margin-right: 0.5rem;
           }
         `;
     }

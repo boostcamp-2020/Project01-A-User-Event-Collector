@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledNavTopLogoSearch = styled.div`
   display: flex;
-  height: 3em;
+  height: 3rem;
 `;
 
 const StyledNavLogo = styled.div`
@@ -11,16 +11,18 @@ const StyledNavLogo = styled.div`
   width: 88%;
   color: #fff;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const StyledNavNaver = styled.span`
-  font-size: 0.75em;
-  padding: 0em 0.5em;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
   font-weight: bold;
 `;
 
 const StyledNavVibe = styled.span`
-  font-size: 1.75em;
+  font-size: 1.75rem;
 `;
 
 const StyledNavSearch = styled.div`
@@ -28,6 +30,7 @@ const StyledNavSearch = styled.div`
   align-items: center;
   width: 12%;
   color: #fff;
+  cursor: pointer;
 `;
 
 export { StyledNavTopLogoSearch, StyledNavLogo, StyledNavNaver, StyledNavVibe, StyledNavSearch };

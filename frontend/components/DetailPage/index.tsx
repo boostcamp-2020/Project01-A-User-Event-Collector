@@ -15,10 +15,10 @@ const StyleDetailPage = styled.div`
   flex-direction: column;
 `;
 
-const DetailPage: FC<Props> = ({ type, detailData, tracks }) => {
+const DetailPage: FC<Props> = ({ type, detailData, tracks }: Props) => {
   return (
     <StyleDetailPage>
-      <DetailHeader type={type} detailData={detailData} />
+      <DetailHeader type={type} detailData={detailData} tracks={tracks} />
       <TrackList Tracks={tracks} />
     </StyleDetailPage>
   );

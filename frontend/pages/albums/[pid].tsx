@@ -12,7 +12,7 @@ const AlbumPage = ({ Albums }: any) => {
     <DefaultCollector>
       <StyleAlbumPage>
         <DefaultEmitter>
-          <DetailPage type={"album"} detailData={Albums} tracks={Albums.Tracks} />
+          <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
         </DefaultEmitter>
       </StyleAlbumPage>
     </DefaultCollector>

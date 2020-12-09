@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { useRouter } from "next/router";
+import icons from "../../../constant/icons";
 import {
   StyledNavTopLogoSearch,
   StyledNavLogo,
@@ -8,18 +9,20 @@ import {
   StyledNavSearch,
 } from "./styled";
 
-const NavTopLogoSearch = memo(() => {
-  const router = useRouter();
+const NavTopLogoSearch = memo(
+  ({ handleSearch }: { handleSearch: () => void }): React.ReactElement => {
+    const router = useRouter();
 
-  return (
-    <StyledNavTopLogoSearch>
-      <StyledNavLogo onClick={() => router.push("/today")}>
-        <StyledNavNaver>NAVER</StyledNavNaver>
-        <StyledNavVibe>Vibe</StyledNavVibe>
-      </StyledNavLogo>
-      <StyledNavSearch>돋</StyledNavSearch>
-    </StyledNavTopLogoSearch>
-  );
-});
+    return (
+      <StyledNavTopLogoSearch>
+        <StyledNavLogo onClick={() => router.push("/today")}>
+          <StyledNavNaver>NAVER</StyledNavNaver>
+          <StyledNavVibe>VIBE</StyledNavVibe>
+        </StyledNavLogo>
+        <StyledNavSearch onClick={handleSearch}>{icons.search}</StyledNavSearch>
+      </StyledNavTopLogoSearch>
+    );
+  },
+);
 
 export default NavTopLogoSearch;

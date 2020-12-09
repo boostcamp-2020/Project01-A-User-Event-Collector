@@ -10,15 +10,12 @@ const StyleModal = styled.div`
   position: relative;
 `;
 
-const TrackModal: FC<Props> = ({ trackId }) => {
+const TrackModal: FC<Props> = ({ trackId }: Props) => {
   const [isClicked, setIsClicked] = useState(false);
-  const ShowLayout = () => {
-    setIsClicked(!isClicked);
-  };
-
+  const clickHandler = (): any => setIsClicked(!isClicked);
   return (
     <StyleModal>
-      <span onClick={ShowLayout}> Click </span>
+      <span onClick={clickHandler}> Click </span>
       {isClicked && <TrackModalLayout trackId={trackId} />}
     </StyleModal>
   );

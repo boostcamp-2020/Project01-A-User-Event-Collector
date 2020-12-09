@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import { NextArrowSvg } from "../../utils/svg";
+import { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledIcon } from "./styled";
+import icons from "../../constant/icons";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import Card from "../Card";
 
@@ -12,43 +12,9 @@ export interface SlidebarProps {
   data?: any;
 }
 
-interface TranslateProps {
+export interface TranslateProps {
   currentTranslateX?: number;
 }
-
-const StyledSlidebar = styled.div<SlidebarProps>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  & > a > svg {
-    width: 0.7rem;
-    height: 0.7rem;
-  }
-`;
-
-const SlideContainer = styled.div`
-  overflow-x: hidden;
-  overflow-y: hidden;
-  width: 100%;
-  position: relative;
-`;
-
-const StyledTitle = styled.div`
-  font-size: 1.3em;
-  font-weight: bold;
-  margin: 1em 0em;
-`;
-
-const SlideContent = styled.ul<TranslateProps>`
-  display: flex;
-  & > li:first-child {
-    margin: 0;
-  }
-  padding-inline-start: 0;
-  transition: all 0.6s ease-in-out;
-  transform: ${({ currentTranslateX }) => `translateX(${currentTranslateX}px)`};
-`;
 
 const Slidebar: React.FC<SlidebarProps> = ({
   varient,
@@ -68,6 +34,7 @@ const Slidebar: React.FC<SlidebarProps> = ({
     if (newTranslateX > 0) {
       setCurrentTranslateX(0);
       setPreviousHide(true);
+      setNextHide(false);
       return;
     }
     setCurrentTranslateX(newTranslateX);
@@ -77,13 +44,18 @@ const Slidebar: React.FC<SlidebarProps> = ({
   const onNextClicked = () => {
     const { current } = currentSlideRef;
     if (current !== null) {
-      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
-      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
+      const cardStyles = window.getComputedStyle(
+        current.firstElementChild?.nextElementSibling || new Element(),
+      );
+      const cardWidth = Number(cardStyles.width.slice(0, -2));
+      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
+      const maxCardWidth = (cardWidth + cardMargin) * data.length - cardMargin - containerWidth;
       const newTranslateX = currentTranslateX - slidePixels;
-      if (newTranslateX < -containerWidth) {
-        setCurrentTranslateX(-containerWidth + cardMargin);
+      if (newTranslateX < -maxCardWidth) {
+        setCurrentTranslateX(-maxCardWidth);
         setNextHide(true);
+        setPreviousHide(false);
         return;
       }
       setCurrentTranslateX(newTranslateX);
@@ -95,25 +67,42 @@ const Slidebar: React.FC<SlidebarProps> = ({
     const { current } = currentSlideRef;
     if (current !== null) {
       const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
-      const cardStyles = window.getComputedStyle(current.firstElementChild?.nextSibling);
+      const cardStyles = window.getComputedStyle(
+        current.firstElementChild?.nextElementSibling || new Element(),
+      );
       const cardWidth = Number(cardStyles.width.slice(0, -2));
       const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
       const viewedCards = Math.floor(containerWidth / cardWidth);
+      const maxCardWidth = (cardWidth + cardMargin) * data.length - cardMargin - containerWidth;
       setSlidePixels((cardWidth + cardMargin) * viewedCards);
+      if (nextHide && !previousHide) {
+        // 우측 끝에 붙어있었을 때
+        setCurrentTranslateX(-maxCardWidth);
+        return;
+      }
+      if (containerWidth >= (cardWidth + cardMargin) * data.length) {
+        setPreviousHide(true);
+        setNextHide(true);
+      } else {
+        setNextHide(false);
+      }
     }
   };
 
   useEffect(() => {
     calculatePixels();
     window.addEventListener("resize", calculatePixels);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", calculatePixels);
+    };
+  }, [nextHide]);
 
   return (
     <StyledSlidebar varient={varient}>
       <StyledTitle>
         <a href={titleLink}>
           {title}
-          {titleLink ? <NextArrowSvg /> : ""}
+          <StyledIcon>{icons.angleRight}</StyledIcon>
         </a>
       </StyledTitle>
       <SlideContainer>

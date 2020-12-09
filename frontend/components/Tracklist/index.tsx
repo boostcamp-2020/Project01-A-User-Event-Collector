@@ -5,7 +5,6 @@ import { Track } from "../../interfaces";
 
 interface Props {
   Tracks: Track[];
-  childern?: React.ReactNode;
 }
 
 const StyleTrackList = styled.div`
@@ -14,16 +13,17 @@ const StyleTrackList = styled.div`
   flex-direction: column;
 `;
 
-const TrackList: FC<Props> = ({ Tracks }) => {
+const TrackList: FC<Props> = ({ Tracks }: Props) => {
   return (
     <StyleTrackList>
-      {Tracks.map((elem: Track) => (
+      {Tracks?.map((elem: Track) => (
         <TrackCard
           key={elem.id}
           id={elem.id}
           trackName={elem.trackName}
           Albums={elem.Albums}
           Artists={elem.Artists}
+          listLength={Tracks.length}
         />
       ))}
     </StyleTrackList>
