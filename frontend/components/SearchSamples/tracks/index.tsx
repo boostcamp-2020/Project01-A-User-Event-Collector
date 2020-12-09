@@ -64,7 +64,7 @@ interface TrackProps {
   Artists_Tracks: TrackArtistProps[];
 }
 
-const SearchTrackCards = ({ data }: { data: [] }): React.ReactElement => {
+const SearchTrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
   return (
     <StyledTrackCards>
       {data.map((track: TrackProps) => {

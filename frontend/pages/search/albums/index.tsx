@@ -31,9 +31,10 @@ const SearchAlbumPage = ({ filter }: { filter: string }): React.ReactElement => 
 };
 
 SearchAlbumPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
-  const { filter } = query;
-
-  return { filter };
+  if (query?.filter !== undefined) {
+    return query?.filter;
+  }
+  return {};
 };
 
 export default SearchAlbumPage;

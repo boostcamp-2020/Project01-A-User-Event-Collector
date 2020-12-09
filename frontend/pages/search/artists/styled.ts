@@ -34,3 +34,4 @@ const StyledSearchArtistCards = styled.div`
 `;
 
 export { StyledSearchArtistPage, StyledResult, StyledResultText, StyledSearchArtistCards };
+export default StyledSearchArtistPage;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSlidebar = styled.div<Props>`
+const StyledSlidebar = styled.div`
   display: flex;
   flex-direction: column;
   width: 70rem;

@@ -67,7 +67,7 @@ const Samples = ({ sectionTitle, data, filter }: SamplesProps): React.ReactEleme
               : "아티스트";
 
           if (sectionTitle === "노래") {
-            el.Artists_Tracks.forEach((el) => artists.push(el.Artists.artistName));
+            el.Artists_Tracks.forEach((elem: any) => artists.push(elem.Artists.artistName));
           }
           return (
             <Sample
