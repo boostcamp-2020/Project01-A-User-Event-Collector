@@ -12,11 +12,13 @@ import MediaPlayer
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?
+    @Published var currentTrackIndex: Int?
     @Published var queue: [Track] = []
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
     var volumeChangeAmount = 0
+    var timer: Timer?
     @Published private var timeRemaining = 3
     var subscriptions = Set<AnyCancellable>()
     var trackName: String {
@@ -36,9 +38,7 @@ class PlayerViewModel: ObservableObject {
     
     init(manager: AnalyticsManager) {
         self.manager = manager
-        trackPlayingSubscription()
-        shuffleSubscription()
-        randomSubscription()
+        setupSubscriptions()
         setupVolumeListener()
     }
     
@@ -56,6 +56,20 @@ class PlayerViewModel: ObservableObject {
         manager.log(PlayerEvent.playlistPlayed(isShuffled))
     }
     
+    func changeCurrentTrackInQueue(to track: Track) {
+        currentTrack = track
+    }
+    
+    func playNextTrack() {
+        guard let nextIndex = getOptionalNextIndex() else { return }
+        currentTrack = queue[nextIndex]
+    }
+    
+    func playPreviousTrack() {
+        guard let previousIndex = getOptionalPreviousIndex() else { return }
+        currentTrack = queue[previousIndex]
+    }
+    
     func reorder(from source: IndexSet, to destination: Int) {
         queue.move(fromOffsets: source, toOffset: destination)
     }
@@ -65,6 +79,47 @@ class PlayerViewModel: ObservableObject {
             queue.removeAll(where: {$0.id == track.id})
         }
         queue.append(track)
+    }
+    
+    @objc func changeRemainingTime() {
+        timeRemaining -= 1
+    }
+    
+    func checkVolume() {
+        if self.volumeChangeAmount >= 3 {
+            self.manager.log(PlayerEvent.volumeChanged)
+        }
+        self.volumeChangeAmount = 0
+    }
+    
+    func getOptionalNextIndex() -> Int? {
+        guard let currentTrackIndex = currentTrackIndex else { return nil }
+        if currentTrackIndex == queue.count - 1 {
+            return nil
+        } else {
+            return queue.index(after: currentTrackIndex)
+        }
+    }
+    
+    func getOptionalPreviousIndex() -> Int? {
+        guard let currentTrackIndex = currentTrackIndex else { return nil }
+        if currentTrackIndex == 0 {
+            return nil
+        } else {
+            return queue.index(before: currentTrackIndex)
+        }
+    }
+
+}
+// MARK: setup하는 함수들
+extension PlayerViewModel {
+    
+    func setupSubscriptions() {
+        trackPlayingSubscription()
+        shuffleSubscription()
+        randomSubscription()
+        timeSubscription()
+        trackIndexSubscription()
     }
     
     func setupVolumeListener() {
@@ -79,30 +134,18 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func setTimer(isPlaying: Bool) {
+    func setupTimer(isPlaying: Bool) {
+        timer?.invalidate() // 기존에 timer가 있었다면 invalidate 시키고 새롭게 만들어야함
         if isPlaying {
             timeRemaining = 3
-            let date = Date().addingTimeInterval(5)
-            let timer = Timer.scheduledTimer(timeInterval: 1 ,
+            timer = Timer.scheduledTimer(timeInterval: 1 ,
                                              target: self,
                                              selector: #selector(changeRemainingTime),
                                              userInfo: nil,
                                              repeats: true)
+            guard let timer = timer else { return }
             RunLoop.main.add(timer, forMode: .common)
         }
-    }
-    
-    @objc func changeRemainingTime() {
-        timeRemaining -= 1
-    }
-    
-    func checkVolume() {
-        if self.volumeChangeAmount >= 3 {
-            self.manager.log(PlayerEvent.volumeChanged)
-        } else {
-            print("it's okay....")
-        }
-        self.volumeChangeAmount = 0
     }
 
 }
@@ -119,7 +162,7 @@ extension PlayerViewModel {
                     } else {
                         self?.manager.log(PlayerEvent.trackPaused(id))
                     }
-                    self?.setTimer(isPlaying: isPlaying)
+                    self?.setupTimer(isPlaying: isPlaying)
                 }
             }
             .store(in: &subscriptions)
@@ -145,9 +188,19 @@ extension PlayerViewModel {
         $timeRemaining
             .sink { timeRemaining in
                 if timeRemaining <= 0 {
+                    self.timer?.invalidate()
+                    self.checkVolume()
                 }
             }
             .store(in: &subscriptions)
     }
     
+    func trackIndexSubscription() {
+        $currentTrack
+            .compactMap { $0 }
+            .sink { track in
+                self.currentTrackIndex = self.queue.firstIndex(where: {$0.id == track.id})
+            }
+            .store(in: &subscriptions)
+    }
 }
