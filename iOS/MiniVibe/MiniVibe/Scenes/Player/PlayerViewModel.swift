@@ -13,9 +13,11 @@ import MediaPlayer
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?
     @Published var queue: [Track] = []
-    @Published var isPlaying = true
+    @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
+    var volumeChangeAmount = 0
+    @Published private var timeRemaining = 3
     var subscriptions = Set<AnyCancellable>()
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
@@ -72,10 +74,37 @@ class PlayerViewModel: ObservableObject {
             print("cannot activate session")
         }
         progressObserver = session.observe(\.outputVolume) { (session, _) in
-            print(session.outputVolume)
+            self.volumeChangeAmount += 1
+            print(self.volumeChangeAmount)
         }
     }
     
+    func setTimer(isPlaying: Bool) {
+        if isPlaying {
+            timeRemaining = 3
+            let date = Date().addingTimeInterval(5)
+            let timer = Timer.scheduledTimer(timeInterval: 1 ,
+                                             target: self,
+                                             selector: #selector(changeRemainingTime),
+                                             userInfo: nil,
+                                             repeats: true)
+            RunLoop.main.add(timer, forMode: .common)
+        }
+    }
+    
+    @objc func changeRemainingTime() {
+        timeRemaining -= 1
+    }
+    
+    func checkVolume() {
+        if self.volumeChangeAmount >= 3 {
+            self.manager.log(PlayerEvent.volumeChanged)
+        } else {
+            print("it's okay....")
+        }
+        self.volumeChangeAmount = 0
+    }
+
 }
 
 // MARK: Combine과 관련된 subscription 함수들
@@ -90,6 +119,7 @@ extension PlayerViewModel {
                     } else {
                         self?.manager.log(PlayerEvent.trackPaused(id))
                     }
+                    self?.setTimer(isPlaying: isPlaying)
                 }
             }
             .store(in: &subscriptions)
@@ -110,5 +140,14 @@ extension PlayerViewModel {
             }
             .store(in: &subscriptions)
     }
-
+    
+    func timeSubscription() {
+        $timeRemaining
+            .sink { timeRemaining in
+                if timeRemaining <= 0 {
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
 }
