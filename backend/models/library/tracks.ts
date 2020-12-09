@@ -31,5 +31,20 @@ const postUserLikeTracks = async (
     return new Error("Fail Post");
   }
 };
-
-export { getUserLikeTracks, postUserLikeTracks };
+const deleteUserLikeTracks = async (
+  userId: number,
+  trackId: number
+): Promise<String | Error> => {
+  try {
+    await prisma.users_Like_Tracks.deleteMany({
+      where: {
+        userId,
+        trackId,
+      },
+    });
+    return "Success Delete";
+  } catch (err) {
+    return new Error("Fail Post");
+  }
+};
+export { getUserLikeTracks, postUserLikeTracks, deleteUserLikeTracks };

@@ -1,11 +1,23 @@
-import { getUserLikeTracks, postUserLikeTracks } from "./tracks";
+import {
+  getUserLikeTracks,
+  postUserLikeTracks,
+  deleteUserLikeTracks,
+} from "./tracks";
 import {
   getUserLikeAlbums,
   postUserLikeAlbums,
   deleteUserLikeAlbums,
 } from "./albums";
-import { getUserLikeArtists, postUserLikeArtists } from "./artists";
-import { getUserLikePlaylists, postUserLikePlaylists } from "./playlists";
+import {
+  getUserLikeArtists,
+  postUserLikeArtists,
+  deleteUserLikeArtists,
+} from "./artists";
+import {
+  getUserLikePlaylists,
+  postUserLikePlaylists,
+  deleteUserLikePlaylists,
+} from "./playlists";
 
 export {
   getUserLikeAlbums,
@@ -17,4 +29,7 @@ export {
   postUserLikePlaylists,
   postUserLikeTracks,
   deleteUserLikeAlbums,
+  deleteUserLikeArtists,
+  deleteUserLikePlaylists,
+  deleteUserLikeTracks,
 };

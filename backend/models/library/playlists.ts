@@ -29,5 +29,21 @@ const postUserLikePlaylists = async (
     return new Error("Fail Post");
   }
 };
+const deleteUserLikePlaylists = async (
+  userId: number,
+  playlistId: number
+): Promise<String | Error> => {
+  try {
+    await prisma.users_Likes_Playlists.deleteMany({
+      where: {
+        userId,
+        playlistId,
+      },
+    });
+    return "Success Delete";
+  } catch (err) {
+    return new Error("Fail Post");
+  }
+};
 
-export { getUserLikePlaylists, postUserLikePlaylists };
+export { getUserLikePlaylists, postUserLikePlaylists, deleteUserLikePlaylists };
