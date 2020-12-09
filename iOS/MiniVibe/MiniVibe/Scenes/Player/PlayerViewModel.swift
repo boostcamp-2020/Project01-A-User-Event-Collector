@@ -38,18 +38,27 @@ class PlayerViewModel: ObservableObject {
     }
 
     func update(with track: Track) {
+        safeAppend(track)
         currentTrack = track
         isPlaying = true
-        if queue.contains(where: {$0.id == track.id}) {
-            queue.removeAll(where: {$0.id == track.id})
-        }
-        queue.append(track)
-        // TODO: - RecentPlayedTracks CoreData model 생성 및 분리
-        coreTrackAPI.create(with: track)
+    }
+    
+    func update(with tracks: [Track]) {
+        tracks.forEach { safeAppend($0) }
+        currentTrack = queue.last
+        isPlaying = true
     }
     
     func reorder(from source: IndexSet, to destination: Int) {
         queue.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    func safeAppend(_ track: Track) {
+        if queue.contains(where: {$0.id == track.id}) {
+            queue.removeAll(where: {$0.id == track.id})
+        }
+        queue.append(track)
+
     }
 
     func trackPlayingSubscription() {

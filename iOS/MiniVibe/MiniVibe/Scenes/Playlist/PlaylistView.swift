@@ -30,9 +30,7 @@ struct PlaylistView: View {
                           spacing: 20,
                           pinnedViews: [.sectionHeaders]) {
                     TrackListHeaderView(playlist: playlist)
-                    Section(header: TrackListButtonView()) {
-                        TrackListView(tracks: tracks)
-                    }
+                    TrackListView(tracks: tracks)
                 }
             }.padding()
             .navigationBarTitleDisplayMode(.inline)

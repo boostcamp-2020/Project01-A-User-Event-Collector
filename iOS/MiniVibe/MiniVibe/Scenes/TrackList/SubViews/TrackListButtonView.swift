@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct TrackListButtonView: View {
+    var didPressPlayButton: (() -> Void)?
+    var didPressShuffleButton: (() -> Void)?
+
     var body: some View {
         HStack {
             Button(action: {
-                // action
+                self.didPressPlayButton?()
             }, label: {
                 HStack {
                     Image(systemName: "play.fill")
@@ -20,7 +23,7 @@ struct TrackListButtonView: View {
                 }.modifier(TrackListButtonStyle())
             })
             Button(action: {
-                // action
+                self.didPressShuffleButton?()
             }, label: {
                 HStack {
                     Image(systemName: "shuffle")

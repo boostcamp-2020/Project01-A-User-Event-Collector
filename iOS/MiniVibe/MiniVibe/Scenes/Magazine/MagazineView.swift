@@ -31,13 +31,7 @@ struct MagazineView: View {
                           spacing: 20,
                           pinnedViews: [.sectionHeaders]) {
                     URLImage(urlString: magazine.cover)
-                    Section(header: TrackListButtonView()) {
-                        if let description = magazine.description {
-                            Text(description)
-                                .modifier(Description1NoLimit())
-                        }
-                        TrackListView(tracks: tracks)
-                    }
+                    TrackListView(tracks: tracks)
                 }
             }
             .padding()
