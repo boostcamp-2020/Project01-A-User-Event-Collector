@@ -43,8 +43,9 @@ const takeCallback = async (req: Request, res: Response): Promise<void> => {
 
   const jwt = encodeJWT(loginResult);
   res.cookie("token", jwt, {
-    maxAge: 200000,
+    maxAge: 1000000000,
     domain: process.env.COOKIE_DOMAIN,
+    httpOnly: true,
     path: "/",
   });
   res.redirect(process.env.REDIRECT_URL || "/");

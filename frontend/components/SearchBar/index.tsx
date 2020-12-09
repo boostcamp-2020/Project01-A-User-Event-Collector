@@ -15,6 +15,7 @@ const SearchBar = ({ handleSearch }: { handleSearch: () => void }): React.ReactE
     setSearchValue(e.currentTarget.value);
   const doSearch = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") Router.push(`/search?filter=${searchValue}`);
+    handleSearch();
   };
 
   return (

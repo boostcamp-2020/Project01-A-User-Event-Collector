@@ -15,7 +15,7 @@ const NextButton = styled.div<SlideButtonProps>`
   top: 31%;
   background-color: #fff;
   border-radius: 50%;
-  z-index: 10000;
+  z-index: 11;
   display: ${({ hide }) => (hide ? "none" : "block")};
   & svg {
     width: 20px;
@@ -31,7 +31,7 @@ const PreviousButton = styled.div<SlideButtonProps>`
   top: 31%;
   background-color: #fff;
   border-radius: 50%;
-  z-index: 10000;
+  z-index: 11;
   display: ${({ hide }) => (hide ? "none" : "block")};
   & svg {
     width: 20px;

@@ -8,7 +8,7 @@ import {
   StyledDescriptionTitle,
   StyledDescriptionContent,
   StyledDescriptionInfo,
-  StyledDate,
+  StyledTrivialInfo,
 } from "./styled";
 
 export enum Theme {
@@ -49,7 +49,7 @@ const HotMagCard = memo(() => {
         <StyledDescriptionTitle>{title}</StyledDescriptionTitle>
         <StyledDescriptionContent>{description}</StyledDescriptionContent>
         <StyledDescriptionInfo>
-          VIBE MAG<StyledDate>{date}</StyledDate>
+          <StyledTrivialInfo>VIBE MAG-{date}</StyledTrivialInfo>
         </StyledDescriptionInfo>
       </StyledDescription>
     </StyledHotMagCard>
