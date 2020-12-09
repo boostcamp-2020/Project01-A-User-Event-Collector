@@ -30,12 +30,7 @@ struct CustomTabView: View {
                 } else if case MiniVibeTab.search = selectedTab {
                     SearchView(manager: manager)
                 } else if case MiniVibeTab.library = selectedTab {
-                    //보관함뷰 여기에 추가
-                    VStack {
-                        Color.white
-                    }
-                    .foregroundColor(Color.gray)
-                    .background(Color.white)
+                    LibraryView(manager: manager)
                 }
                 Spacer()
                 ZStack {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrackListView: View {
-    
+    @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
     private let layout = [GridItem(.flexible())]
     private let tracks: [Track]
     
@@ -17,12 +17,22 @@ struct TrackListView: View {
     }
     
     var body: some View {
-        LazyVGrid(columns: layout) {
-            ForEach(tracks) { track -> TrackCellView in
-                TrackCellView(hasAccessory: true, track: track)
+        let headerView = TrackListButtonView(
+            didPressPlayButton: {
+                nowPlayingViewModel.update(with: tracks)
+            },
+            didPressShuffleButton: {
+                nowPlayingViewModel.update(with: tracks.shuffled())
             }
-            Rectangle()
-                .clearBottom()
+        )
+        Section(header: headerView) {
+            LazyVGrid(columns: layout) {
+                ForEach(tracks) { track -> TrackCellView in
+                    TrackCellView(hasAccessory: true, track: track)
+                }
+                Rectangle()
+                    .clearBottom()
+            }
         }
     }
 }
