@@ -11,16 +11,16 @@ const getUserLikeArtists = async (id: number): Promise<Object> => {
 
 const postUserLikeArtists = async (
   userId: number,
-  albumId: number
+  artistId: number
 ): Promise<void> => {
   try {
-    await prisma.users_Like_Albums.create({
+    await prisma.users_Like_Artists.create({
       data: {
         Users: {
           connect: { id: userId },
         },
-        Albums: {
-          connect: { id: albumId },
+        Artists: {
+          connect: { id: artistId },
         },
       },
     });
