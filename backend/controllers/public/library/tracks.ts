@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUserLikeTracks } from "../../../models/library";
+import { getUserLikeTracks, postUserLikeTracks } from "../../../models/library";
 
 const getLibTracks = async (req: Request, res: Response): Promise<void> => {
   const tmpUserId = 1;
@@ -14,8 +14,8 @@ const getLibTracks = async (req: Request, res: Response): Promise<void> => {
 const postLibTracks = async (req: Request, res: Response): Promise<void> => {
   const userId = 1; // decode jwt
   const { id: trackId } = req.params;
-  console.log(trackId, userId);
   try {
+    await postUserLikeTracks(userId, +trackId);
     res.status(200).json();
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
