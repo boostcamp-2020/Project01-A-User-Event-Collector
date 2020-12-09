@@ -14,7 +14,7 @@ const getUserLikeTracks = async (id: number): Promise<Object> => {
 const postUserLikeTracks = async (
   userId: number,
   trackId: number
-): Promise<void> => {
+): Promise<String | Error> => {
   try {
     await prisma.users_Like_Tracks.create({
       data: {
@@ -26,8 +26,9 @@ const postUserLikeTracks = async (
         },
       },
     });
+    return "Success Post";
   } catch (err) {
-    console.log(err);
+    return new Error("Fail Post");
   }
 };
 

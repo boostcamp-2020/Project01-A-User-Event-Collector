@@ -12,7 +12,7 @@ const getUserLikeArtists = async (id: number): Promise<Object> => {
 const postUserLikeArtists = async (
   userId: number,
   artistId: number
-): Promise<void> => {
+): Promise<String | Error> => {
   try {
     await prisma.users_Like_Artists.create({
       data: {
@@ -24,8 +24,9 @@ const postUserLikeArtists = async (
         },
       },
     });
+    return "Success Post";
   } catch (err) {
-    console.log(err);
+    return new Error("Fail Post");
   }
 };
 
