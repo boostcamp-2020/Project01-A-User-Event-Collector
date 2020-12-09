@@ -58,16 +58,19 @@ class PlayerViewModel: ObservableObject {
     
     func changeCurrentTrackInQueue(to track: Track) {
         currentTrack = track
+        isPlaying = true
     }
     
     func playNextTrack() {
         guard let nextIndex = getOptionalNextIndex() else { return }
         currentTrack = queue[nextIndex]
+        isPlaying = true
     }
     
     func playPreviousTrack() {
         guard let previousIndex = getOptionalPreviousIndex() else { return }
         currentTrack = queue[previousIndex]
+        isPlaying = true
     }
     
     func reorder(from source: IndexSet, to destination: Int) {
