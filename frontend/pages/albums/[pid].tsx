@@ -16,9 +16,6 @@ const AlbumPage = ({ Albums }: any) => {
 export default AlbumPage;
 
 export async function getStaticPath() {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
   const { data: albums } = await myAxios.get(`/albums`);
   const paths = albums.map((album: any) => `/albums/${album.id}`);
 
