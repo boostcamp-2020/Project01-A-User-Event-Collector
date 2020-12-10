@@ -31,7 +31,7 @@ struct DJStationListView: View {
             }
         }
         .modifier(NavigationBarStyle(title: "DJ 스테이션"))
-        .onAppear(perform: stationViewModel.fetchStations)
+        .onAppear(perform: stationViewModel.fetch)
     }
 }
 

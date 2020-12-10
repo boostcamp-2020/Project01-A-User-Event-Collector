@@ -7,11 +7,18 @@
 
 import Foundation
 
-class MagazineViewModel: MiniVibeViewModel, ObservableObject {
+class MagazineViewModel: ObservableObject {
     @Published var magazine: Magazine?
     
+    private let networkManager = NetworkManager()
+    
     func fetch(id: Int) {
-        internalFetch(endPoint: .magazines, id: id) { [weak self] data in
+        let url = URLBuilder(pathType: .api,
+                             endPoint: .magazines,
+                             id: id).create()
+        let urlRequest = RequestBuilder(url: url,
+                                        method: .get).create()
+        networkManager.request(urlRequest: urlRequest) { [weak self] data in
             if let decodedData = try? JSONDecoder().decode(MagazineReponse.self, from: data) {
                 DispatchQueue.main.async {
                     self?.magazine = decodedData.magazine

@@ -8,12 +8,17 @@
 import SwiftUI
 import Combine
 
-class ThumbnailListViewModel: MiniVibeViewModel, ObservableObject {
+class ThumbnailListViewModel: ObservableObject {
     @Published var thumbnails = [Thumbnailable]()
     
+    private let networkManager = NetworkManager()
+    
     func fetch(type: MiniVibeType) {
-        
-        internalFetch(endPoint: type) { [weak self] data in
+        let url = URLBuilder(pathType: .api,
+                             endPoint: type).create()
+        let urlRequest = RequestBuilder(url: url,
+                                        method: .get).create()
+        networkManager.request(urlRequest: urlRequest) { [weak self] data in
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {

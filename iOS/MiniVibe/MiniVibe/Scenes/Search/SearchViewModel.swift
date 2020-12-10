@@ -7,7 +7,7 @@
 import Foundation
 import Combine
 
-class SearchViewModel: MiniVibeViewModel, ObservableObject {
+class SearchViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var isEditing = false
     @Published var tracks = [Track]()
@@ -16,17 +16,22 @@ class SearchViewModel: MiniVibeViewModel, ObservableObject {
     
     var subscription: Set<AnyCancellable> = []
     private let manager: AnalyticsManager
+    private let networkManager = NetworkManager()
     
     init(manager: AnalyticsManager) {
         self.manager = manager
-        super.init()
         searchSubscription()
         searchEventSubscription()
     }
     
     func fetch(_ searchText: String) {
         if isEditing {
-            internalFetch(endPoint: .search, filterQuery: searchText) { [weak self] data in
+            let url = URLBuilder(pathType: .api,
+                                 endPoint: .search,
+                                 filterQuery: searchText).create()
+            let urlRequest = RequestBuilder(url: url,
+                                            method: .get).create()
+            networkManager.request(urlRequest: urlRequest) { [weak self] data in
                 if let decodedData = try? JSONDecoder().decode(Search.self, from: data) {
                     DispatchQueue.main.async {
                         self?.tracks = decodedData.tracks ?? []

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class LibraryViewModel: MiniVibeViewModel, ObservableObject {
+class LibraryViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
     private let manager: AnalyticsManager
@@ -16,7 +16,6 @@ class LibraryViewModel: MiniVibeViewModel, ObservableObject {
     
     init(manager: AnalyticsManager) {
         self.manager = manager
-        super.init()
     }
     
     func fetch() {
