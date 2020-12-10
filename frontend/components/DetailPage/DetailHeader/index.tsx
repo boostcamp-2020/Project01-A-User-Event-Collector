@@ -2,12 +2,12 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import ButtonBox from "../DetailButtonBox";
 import Img from "../../Img";
-import { Track } from "../../../interfaces";
+import { TrackProps } from "../../../interfaces";
 
 interface Props {
   type: "album" | "playlist" | "artist" | "magazine" | "news";
   detailData: string;
-  tracks: Track[];
+  tracks: TrackProps[];
 }
 
 const makeProps = (detailType: string, detailData: any) => {

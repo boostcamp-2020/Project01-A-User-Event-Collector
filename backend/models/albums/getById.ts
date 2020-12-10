@@ -1,5 +1,4 @@
 import prisma from "../../prisma";
-import { getTrackCard } from "../tracks";
 
 const getAlbumById = async (id: number): Promise<Object | null> => {
   const album: any = await prisma.albums.findUnique({

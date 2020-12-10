@@ -1,20 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 import { DefaultCollector, DefaultEmitter } from "../../event/event";
-
-const StyleAlbumPage = styled.div`
-  height: 100vh;
-`;
+import myAxios from "../../utils/myAxios";
 
 const AlbumPage = ({ Albums }: any) => {
   return (
     <DefaultCollector>
-      <StyleAlbumPage>
-        <DefaultEmitter>
-          <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
-        </DefaultEmitter>
-      </StyleAlbumPage>
+      <DefaultEmitter>
+        <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
+      </DefaultEmitter>
     </DefaultCollector>
   );
 };
@@ -33,11 +27,7 @@ export async function getStaticPath() {
 }
 
 export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/albums/${params.pid}`);
-  const { Albums } = await res.json();
-
+  const res = await myAxios.get(`/albums/${params.pid}`);
+  const { Albums } = await res.data;
   return { props: { Albums } };
 }

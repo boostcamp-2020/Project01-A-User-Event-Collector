@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { TrackProps, TrackCardProps } from "../../interfaces";
 import {
   StyledTrackCards,
   StyledTrackCard,
@@ -12,13 +13,6 @@ import {
 } from "./styled";
 import HoverImg from "../HoverImg";
 import icons from "../../constant/icons";
-
-interface TrackCardProps {
-  trackName: string;
-  cover: string;
-  artists: string[];
-  albumName: string;
-}
 
 const TrackCard = ({ trackName, cover, artists, albumName }: TrackCardProps) => {
   const [checked, setChecked] = useState(false);
@@ -40,29 +34,6 @@ const TrackCard = ({ trackName, cover, artists, albumName }: TrackCardProps) => 
     </StyledTrackCard>
   );
 };
-
-interface TrackArtistProps {
-  id: number;
-  trackId: number;
-  artistId: number;
-  Artists: {
-    artistName: string;
-  };
-}
-
-interface TrackAlbumProps {
-  cover: string;
-  albumName: string;
-}
-
-interface TrackProps {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: TrackAlbumProps;
-  Artists_Tracks: TrackArtistProps[];
-}
 
 const TrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
   return (
