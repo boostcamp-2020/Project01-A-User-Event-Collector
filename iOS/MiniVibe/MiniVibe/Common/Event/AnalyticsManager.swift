@@ -57,7 +57,7 @@ class AnalyticsManager {
 
 extension AnalyticsManager: ReachabilityObserverDelegate {
     
-    private func reachabilityChanged(_ isReachable: Bool) {
+    internal func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {
             switchToServerEngine()
         } else {
