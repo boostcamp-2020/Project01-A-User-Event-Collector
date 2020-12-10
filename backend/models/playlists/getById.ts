@@ -32,7 +32,9 @@ const getPlaylistById = async (id: number): Promise<Object | null> => {
       },
     },
   });
-  playlist.Tracks = trackIdArr;
+  const tracks: any = [];
+  trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  playlist.Tracks = tracks;
 
   return playlist;
 };

@@ -25,7 +25,9 @@ const getNewsById = async (id: number): Promise<Object | null> => {
       },
     },
   });
-  news.Tracks = trackIdArr;
+  const tracks: any = [];
+  trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  news.Tracks = tracks;
 
   return news;
 };

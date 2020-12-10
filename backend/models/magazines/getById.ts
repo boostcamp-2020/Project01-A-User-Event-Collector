@@ -25,7 +25,9 @@ const getMagazineById = async (id: number): Promise<Object | null> => {
       },
     },
   });
-  magazine.Tracks = trackIdArr;
+  const tracks: any = [];
+  trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  magazine.Tracks = tracks;
 
   return magazine;
 };
