@@ -1,9 +1,11 @@
 import React, { FC } from "react";
+
 interface Props {
   children: any;
 }
 
-const DefaultCollector: FC<Props> = ({ children }) => {
+const DefaultCollector: FC<Props> = ({ children }: Props) => {
+  console.log(children);
   const collector = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (e.type === "boostEvent") {
@@ -14,7 +16,7 @@ const DefaultCollector: FC<Props> = ({ children }) => {
   return <div onClick={collector}>{children}</div>;
 };
 
-const DefaultEmitter: FC<Props> = ({ children }) => {
+const DefaultEmitter: FC<Props> = ({ children }: Props) => {
   const emitter = (event: React.MouseEvent<HTMLDivElement>) => {
     event.type = "boostEvent";
   };

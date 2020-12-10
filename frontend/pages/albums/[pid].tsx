@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
-import { DefaultCollector, DefaultEmitter } from "../../event/event";
+import Collector from "../../event/event_2";
 
 const StyleAlbumPage = styled.div`
   height: 100vh;
@@ -9,13 +9,11 @@ const StyleAlbumPage = styled.div`
 
 const AlbumPage = ({ Albums }: any) => {
   return (
-    <DefaultCollector>
+    <Collector>
       <StyleAlbumPage>
-        <DefaultEmitter>
-          <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
-        </DefaultEmitter>
+        <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
       </StyleAlbumPage>
-    </DefaultCollector>
+    </Collector>
   );
 };
 
