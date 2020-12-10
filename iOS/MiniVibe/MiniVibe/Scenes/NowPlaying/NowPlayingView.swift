@@ -19,7 +19,7 @@ struct NowPlayingView: View {
                     self.showMediaPlayer.toggle()
                 }
             }, label: {
-                BasicRowCellView(title: viewModel.trackName,
+                SwappableRowView(title: viewModel.trackName,
                                  subTitle: viewModel.artist,
                                  coverURLString: viewModel.coverURLString,
                                  coverData: viewModel.coverData)
