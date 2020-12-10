@@ -38,7 +38,7 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists, listLength }: Pr
   });
 
   return (
-    <StyleTrack className="boost_whqudrjs">
+    <StyleTrack>
       <CheckBox trackData={{ id, trackName, Albums, Artists }} listLength={listLength} />
       <Img src={cover} varient="trackCardCover" />
 
@@ -57,7 +57,6 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists, listLength }: Pr
           </Link>
         ))}
       </ChildElem>
-
       <TrackModal trackId={id} />
     </StyleTrack>
   );

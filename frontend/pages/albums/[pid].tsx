@@ -1,40 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
-import Collector, { EventObject } from "../../event/event_2";
 
 const StyleAlbumPage = styled.div`
   height: 100vh;
 `;
 
-const test: EventObject = {
-  single: [
-    {
-      className: "boost_whqudrjs",
-      event_id: 1,
-      event_name: "prototype",
-      event_type: "click",
-      once: true,
-      description: "너무 잼따",
-    },
-    {
-      className: "boost_dbtjsrb",
-      event_id: 2,
-      event_name: "prototype",
-      event_type: "mouseover",
-      once: true,
-      description: "너무 잼따",
-    },
-  ],
-};
-
 const AlbumPage = ({ Albums }: any) => {
   return (
-    <Collector eventConfig={test}>
-      <StyleAlbumPage>
-        <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
-      </StyleAlbumPage>
-    </Collector>
+    <StyleAlbumPage>
+      <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
+    </StyleAlbumPage>
   );
 };
 

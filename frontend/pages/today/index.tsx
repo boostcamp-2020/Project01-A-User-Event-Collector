@@ -2,6 +2,8 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
+import Emitter from "../../event/emitter";
+import { Collector, EventObject } from "../../event";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -29,15 +31,35 @@ const StyledSections = styled.div`
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
 `;
-
+const test: EventObject = {
+  simple: {
+    eventName1: {
+      className: "boost_whqudrjs",
+      event_id: 1,
+      event_type: "click",
+      once: true,
+      description: "너무 잼따",
+    },
+    eventName2: {
+      className: "boost_dbtjsrb",
+      event_id: 2,
+      event_type: "click",
+      once: true,
+      description: "너무 잼따",
+    },
+  },
+};
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
-    <>
+    <Collector eventConfig={test}>
       <StyledHotMag>
         <HotMagCard />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
+        <Emitter identifier="LIBRARYID" eventType={["click"]}>
+          <div> 이벤트 테스트</div>
+        </Emitter>
         <Slidebar
           varient="todayBig"
           dataType="magazine"
@@ -58,7 +80,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
           data={Playlists}
         />
       </StyledSections>
-    </>
+    </Collector>
   );
 });
 
