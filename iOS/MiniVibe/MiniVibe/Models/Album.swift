@@ -14,13 +14,14 @@ struct Album: Codable, Identifiable, Cellable {
     let cover: String?
     let coverData: Data?
     
-    init(id: Int, name: String, description: String, cover: String?) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.cover = cover
-        self.coverData = nil
+    enum CodingKeys: String, CodingKey {
+        case id, description, coverData
+        case name = "albumName"
+        case cover
     }
+}
+
+extension Album {
     
     init(from coreAlbum: CoreAlbum) {
         self.id = Int(coreAlbum.id)
@@ -28,11 +29,5 @@ struct Album: Codable, Identifiable, Cellable {
         self.description = coreAlbum.descript ?? ""
         self.cover = nil
         self.coverData = coreAlbum.cover
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case id, description, coverData
-        case name = "albumName"
-        case cover
     }
 }

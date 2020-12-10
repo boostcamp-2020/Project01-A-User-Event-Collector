@@ -20,22 +20,26 @@ struct Track: Codable, Identifiable, Cellable {
     let artists: [Artist]?
     var isFavorite: Bool?
     
-    init(id: Int,
-         name: String,
-         albumTrackNumber: Int,
-         albumID: Int?,
-         album: Album?,
-         artists: [Artist]?,
-         isFavorite: Bool? = nil) {
-        
-        self.id = id
-        self.name = name
-        self.albumTrackNumber = albumTrackNumber
-        self.albumID = albumID
-        self.album = album
-        self.artists = artists
-        self.isFavorite = isFavorite
+    var artist: String {
+        artists?.first?.name ?? ""
     }
+    var coverURLString: String? {
+        album?.cover
+    }
+    var coverData: Data? {
+        album?.coverData
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id, albumTrackNumber
+        case name = "trackName"
+        case albumID = "albumId"
+        case album = "Albums"
+        case artists = "Artists"
+    }
+}
+
+extension Track {
     
     init(from coreTrack: CoreTrack) {
         self.id = Int(coreTrack.id)
@@ -62,23 +66,5 @@ struct Track: Codable, Identifiable, Cellable {
             self.artists = nil
         }
         self.isFavorite = coreTrack.isFavorite
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case id, albumTrackNumber
-        case name = "trackName"
-        case albumID = "albumId"
-        case album = "Albums"
-        case artists = "Artists"
-    }
-    
-    var artist: String {
-        artists?.first?.name ?? ""
-    }
-    var coverURLString: String? {
-        album?.cover
-    }
-    var coverData: Data? {
-        album?.coverData
     }
 }

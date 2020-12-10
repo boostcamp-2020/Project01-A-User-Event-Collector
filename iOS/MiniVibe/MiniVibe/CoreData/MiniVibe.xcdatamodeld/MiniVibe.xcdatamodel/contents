@@ -17,7 +17,9 @@
         <attribute name="albumTrackNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isQueue" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreAlbum" inverseName="tracks" inverseEntity="CoreAlbum"/>
         <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreArtist" inverseName="tracks" inverseEntity="CoreArtist"/>
     </entity>
@@ -25,7 +27,7 @@
     <elements>
         <element name="CoreAlbum" positionX="-54" positionY="18" width="128" height="118"/>
         <element name="CoreArtist" positionX="-36" positionY="45" width="128" height="103"/>
-        <element name="CoreTrack" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="CoreTrack" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="43"/>
     </elements>
 </model>

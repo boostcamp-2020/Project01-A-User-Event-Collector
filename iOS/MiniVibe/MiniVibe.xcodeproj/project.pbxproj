@@ -70,6 +70,7 @@
 		CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */; };
 		CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */; };
 		CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */; };
+		CF10A54D2582353A00044827 /* Metadatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10A54C2582353A00044827 /* Metadatable.swift */; };
 		CF232C49257A3A7300838F18 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C48257A3A7300838F18 /* URLImage.swift */; };
 		CF232C4E257A3FFA00838F18 /* URLImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C4D257A3FFA00838F18 /* URLImageLoader.swift */; };
 		CF232C7E257AB05600838F18 /* MemorySafeNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */; };
@@ -202,6 +203,7 @@
 		CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeUITests.swift; sourceTree = "<group>"; };
 		CF05F8CB2567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF10A54C2582353A00044827 /* Metadatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadatable.swift; sourceTree = "<group>"; };
 		CF232C48257A3A7300838F18 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		CF232C4D257A3FFA00838F18 /* URLImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageLoader.swift; sourceTree = "<group>"; };
 		CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySafeNavigationLink.swift; sourceTree = "<group>"; };
@@ -425,12 +427,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CF0564C8257FFA6A00F24681 /* Model */ = {
+		CF0564C8257FFA6A00F24681 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				CF10A54C2582353A00044827 /* Metadatable.swift */,
 				CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */,
 			);
-			path = Model;
+			path = API;
 			sourceTree = "<group>";
 		};
 		CF05F89B2567E7AD008080D7 = {
@@ -602,7 +605,7 @@
 		CF2D94B6256F82F900D0A66B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CF0564C8257FFA6A00F24681 /* Model */,
+				CF0564C8257FFA6A00F24681 /* API */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 			);
@@ -947,6 +950,7 @@
 				CF6E5DC025755CCC00BE7503 /* RectangleCellView.swift in Sources */,
 				CF93D7C6256E6FED005A71CF /* RouterProtocol.swift in Sources */,
 				CFCBC975257807F300439C3F /* Search.swift in Sources */,
+				CF10A54D2582353A00044827 /* Metadatable.swift in Sources */,
 				CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */,
 				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
 				51B82B1C257DF0F100A005E8 /* PlayerControlView.swift in Sources */,
