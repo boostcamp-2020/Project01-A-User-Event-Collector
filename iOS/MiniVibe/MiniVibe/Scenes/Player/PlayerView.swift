@@ -28,7 +28,7 @@ struct PlayerView: View {
 
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(viewModel.queue) { track in
-                        TrackCellView(hasAccessory: false, track: track, isCellForQueue: true)
+                        TrackCellView(hasAccessory: true, track: track, isCellForQueue: true)
                             .padding(.vertical, 5)
                     }
                     .onMove(perform: viewModel.reorder(from:to:))
