@@ -13,6 +13,7 @@ import {
   StyledBlockingOverlay,
 } from "./styled";
 import Overlay from "./Overlay";
+import PlaylistCheckBar from "./PlaylistCheckBar";
 
 type Props = {
   children: ReactNode | undefined;
@@ -39,6 +40,7 @@ interface Track {
 
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
+  const [checkMode, setCheckMode] = useState(false);
 
   const [showPlaylist, setShowPlaylist] = useState(false);
 
@@ -50,6 +52,7 @@ const Layout = memo(({ children }: Props) => {
 
   const handleSearch = (): void => setSearchMode(!searchMode);
   const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
+  const handleCheckMode = () => setCheckMode(!checkMode);
 
   const closeSearch = (e: React.KeyboardEvent) => {
     if (e.key === "Escape" || e.key === "Esc") {
@@ -60,6 +63,7 @@ const Layout = memo(({ children }: Props) => {
   return (
     <StyledLayoutWrapper onKeyDown={closeSearch}>
       <StyledLayout>
+        {checkMode ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
         {searchMode ? (
           <StyledSearchBar>
