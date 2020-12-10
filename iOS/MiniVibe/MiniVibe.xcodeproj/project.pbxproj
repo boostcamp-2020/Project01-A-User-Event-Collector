@@ -70,6 +70,9 @@
 		CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */; };
 		CF05F8BF2567E7B0008080D7 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8BE2567E7B0008080D7 /* MiniVibeTests.swift */; };
 		CF05F8CA2567E7B0008080D7 /* MiniVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */; };
+		CF10A566258249FB00044827 /* CoreEventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10A565258249FB00044827 /* CoreEventAPI.swift */; };
+		CF10A56B2582530500044827 /* CoreDataAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10A56A2582530500044827 /* CoreDataAPIManager.swift */; };
+		CF189DE72582A0550048AF40 /* Data+PrettifyJSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF189DE62582A0550048AF40 /* Data+PrettifyJSONString.swift */; };
 		CF232C49257A3A7300838F18 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C48257A3A7300838F18 /* URLImage.swift */; };
 		CF232C4E257A3FFA00838F18 /* URLImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C4D257A3FFA00838F18 /* URLImageLoader.swift */; };
 		CF232C7E257AB05600838F18 /* MemorySafeNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */; };
@@ -103,7 +106,7 @@
 		CF9A659C257F61070051E799 /* EllipsisAssessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A659B257F61070051E799 /* EllipsisAssessory.swift */; };
 		CF9A65A9257F691A0051E799 /* TrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */; };
 		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
-		CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */; };
+		CFCBC9392577852900439C3F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* NetworkManager.swift */; };
 		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
 		CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */; };
 		CFCBC95A2577FB4A00439C3F /* BasicRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */; };
@@ -202,6 +205,9 @@
 		CF05F8C52567E7B0008080D7 /* MiniVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF05F8C92567E7B0008080D7 /* MiniVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeUITests.swift; sourceTree = "<group>"; };
 		CF05F8CB2567E7B0008080D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF10A565258249FB00044827 /* CoreEventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreEventAPI.swift; sourceTree = "<group>"; };
+		CF10A56A2582530500044827 /* CoreDataAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAPIManager.swift; sourceTree = "<group>"; };
+		CF189DE62582A0550048AF40 /* Data+PrettifyJSONString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettifyJSONString.swift"; sourceTree = "<group>"; };
 		CF232C48257A3A7300838F18 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		CF232C4D257A3FFA00838F18 /* URLImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageLoader.swift; sourceTree = "<group>"; };
 		CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySafeNavigationLink.swift; sourceTree = "<group>"; };
@@ -235,7 +241,7 @@
 		CF9A659B257F61070051E799 /* EllipsisAssessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisAssessory.swift; sourceTree = "<group>"; };
 		CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellViewModel.swift; sourceTree = "<group>"; };
 		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
-		CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeViewModel.swift; sourceTree = "<group>"; };
+		CFCBC9382577852900439C3F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
 		CFCBC9512577BC9B00439C3F /* TrackHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHorizontalListView.swift; sourceTree = "<group>"; };
 		CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRowCellView.swift; sourceTree = "<group>"; };
@@ -429,6 +435,8 @@
 			isa = PBXGroup;
 			children = (
 				CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */,
+				CF10A565258249FB00044827 /* CoreEventAPI.swift */,
+				CF10A56A2582530500044827 /* CoreDataAPIManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -628,7 +636,7 @@
 		CF6E5D942574E8B500BE7503 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CFCBC9382577852900439C3F /* MiniVibeViewModel.swift */,
+				CFCBC9382577852900439C3F /* NetworkManager.swift */,
 				CF6E5D952574E8C400BE7503 /* NetworkService.swift */,
 				51BBBD7325763375009A6852 /* RequestBuilder.swift */,
 				51BBBD7C25763398009A6852 /* URLBuilder.swift */,
@@ -663,6 +671,7 @@
 				CF93D7D8256E9009005A71CF /* Sequence+indexed.swift */,
 				51D6C6EE2572220300EF1B26 /* Image+accesoryModifier.swift */,
 				51BE9E3825777BF300CE41A6 /* Rectangle+Modifier.swift */,
+				CF189DE62582A0550048AF40 /* Data+PrettifyJSONString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -933,7 +942,7 @@
 				CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */,
 				CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */,
 				CF9A659C257F61070051E799 /* EllipsisAssessory.swift in Sources */,
-				CFCBC9392577852900439C3F /* MiniVibeViewModel.swift in Sources */,
+				CFCBC9392577852900439C3F /* NetworkManager.swift in Sources */,
 				51B3D4CA257CFDCF008025E5 /* AnalyticsEngine.swift in Sources */,
 				CF8286A2256BA5BA00D68373 /* ThumbnailCellView.swift in Sources */,
 				515D26752575224A00B542BF /* TestData.swift in Sources */,
@@ -949,6 +958,7 @@
 				CFCBC975257807F300439C3F /* Search.swift in Sources */,
 				CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */,
 				CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */,
+				CF189DE72582A0550048AF40 /* Data+PrettifyJSONString.swift in Sources */,
 				51B82B1C257DF0F100A005E8 /* PlayerControlView.swift in Sources */,
 				CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */,
 				CF6E5DCE2575688800BE7503 /* RectangleCellInfoView.swift in Sources */,
@@ -1002,6 +1012,8 @@
 				51B3D4EB257DB739008025E5 /* TabIconView.swift in Sources */,
 				51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */,
 				51D6C7032572725500EF1B26 /* BlurView.swift in Sources */,
+				CF10A56B2582530500044827 /* CoreDataAPIManager.swift in Sources */,
+				CF10A566258249FB00044827 /* CoreEventAPI.swift in Sources */,
 				CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */,
 				CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */,
 				512EAC2B2577B7DD00315D12 /* TodayViewModel.swift in Sources */,

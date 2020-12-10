@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import CoreData
 
-class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
+class TrackCellViewModel: ObservableObject {
     @Published var track: Track
     @Published var isFavorite: Bool
     
@@ -24,7 +24,6 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
         } else {
             self.isFavorite = false
         }
-        super.init()
         toggleSubscription()
     }
     
