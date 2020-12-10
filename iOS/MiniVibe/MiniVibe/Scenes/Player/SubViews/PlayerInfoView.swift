@@ -15,7 +15,7 @@ struct PlayerInfoView: View {
     var body: some View {
         VStack(spacing: 40) {
             SwipableImageView(urlString: track.coverURLString, 
-                              imageData: track.coverData,
+                              coverData: track.coverData,
                               didSwipeLeft: {
                                 viewModel.playNextTrack()
                               },
