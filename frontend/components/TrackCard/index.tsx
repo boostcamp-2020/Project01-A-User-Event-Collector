@@ -49,7 +49,13 @@ const TrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
           artists.push(el.Artists.artistName);
         });
         return (
-          <TrackCard trackName={trackName} cover={cover} artists={artists} albumName={albumName} />
+          <TrackCard
+            key={trackName}
+            trackName={trackName}
+            cover={cover}
+            artists={artists}
+            albumName={albumName}
+          />
         );
       })}
     </StyledTrackCards>
