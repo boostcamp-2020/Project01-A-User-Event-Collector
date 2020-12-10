@@ -1,63 +1,54 @@
 import React, { FC, useEffect, useRef } from "react";
-import * as eventConfig from "./event.config";
 
-type eventType = "click" | "mouseover";
+type EventType = "click" | "mouseover";
 
-interface SingleEvent {
-  identifier: string;
+export interface SingleEvent {
+  className: string;
   event_id: number;
   event_name: string;
-  event_type: eventType;
+  event_type: EventType;
   once?: boolean;
   description?: string;
 }
 
-interface Event {
+export interface EventObject {
   single: SingleEvent[];
 }
 
-interface Props {
+export interface Props {
   children: any;
+  eventConfig: EventObject;
 }
 
-// ['click','mouseover'].forEach(function(ev) {
-//     el.addEventListener(ev, function() {
-//         console.log('event:', ev)
-//     })
-// })
-const Collector: FC<Props> = ({ children }: Props) => {
+const Collector: FC<Props> = ({ eventConfig, children }: Props) => {
   const { single } = eventConfig;
 
-  const typeArray = new Set();
-  const identifierArr = new Set();
+  // config event
+  const typeArray: Set<string> = new Set();
+  const identifierArr: Set<string> = new Set();
 
   single.forEach((eventObject: SingleEvent) => {
-    identifierArr.add(eventObject.identifier);
+    identifierArr.add(eventObject.className);
     typeArray.add(eventObject.event_type);
   });
-  console.log(typeArray);
-  console.log(identifierArr);
+
+  // event listener
   const div = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    ["click", "mouseover"].forEach((ev) => {
-      div?.current?.addEventListener(ev, (e) => {
-        console.log(`event: ${ev}, component: ${e.target.id}`);
+    Array.from(typeArray).forEach((ev: string) => {
+      div?.current?.addEventListener(ev, (e: Event) => {
+        const classList = Object.values(e.target?.classList);
+
+        // filtering
+        classList.forEach((value) => {
+          if (!identifierArr.has(value)) {
+          }
+        });
       });
     });
   }, []);
-
-  //   const test = () => {
-  //     console.log(window.location.href);
-  //     console.log(single);
-  //   };
 
   return <div ref={div}>{children}</div>;
 };
 
 export default Collector;
-// const collector = (e: React.MouseEvent<HTMLDivElement>) => {
-//   e.stopPropagation();
-//   if (e.type === "boostEvent") {
-//     alert("지정한 이벤트에용");
-//   }
-// };
