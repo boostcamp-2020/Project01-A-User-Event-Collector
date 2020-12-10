@@ -16,6 +16,7 @@ const getAlbumById = async (id: number): Promise<Object | null> => {
     where: { albumId: id },
     orderBy: { albumTrackNumber: "asc" },
     include: {
+      Albums: true,
       Artists_Tracks: {
         include: {
           Artists: {
@@ -28,9 +29,7 @@ const getAlbumById = async (id: number): Promise<Object | null> => {
       },
     },
   });
-  album.Tracks = await Promise.all(
-    trackIdArr.map((elem: any) => getTrackCard(elem.id))
-  );
+  album.Tracks = trackIdArr;
 
   return album;
 };
