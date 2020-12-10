@@ -10,17 +10,17 @@ import {
   StyledAlbum,
   StyledEllipsis,
 } from "./styled";
-import HoverImg from "../../HoverImg";
-import icons from "../../../constant/icons";
+import HoverImg from "../HoverImg";
+import icons from "../../constant/icons";
 
-interface SearchTrackCardProps {
+interface TrackCardProps {
   trackName: string;
   cover: string;
   artists: string[];
   albumName: string;
 }
 
-const SearchTrackCard = ({ trackName, cover, artists, albumName }: SearchTrackCardProps) => {
+const TrackCard = ({ trackName, cover, artists, albumName }: TrackCardProps) => {
   const [checked, setChecked] = useState(false);
   const handleChecked = () => {
     setChecked(!checked);
@@ -64,7 +64,7 @@ interface TrackProps {
   Artists_Tracks: TrackArtistProps[];
 }
 
-const SearchTrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
+const TrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
   return (
     <StyledTrackCards>
       {data.map((track: TrackProps) => {
@@ -78,16 +78,11 @@ const SearchTrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement 
           artists.push(el.Artists.artistName);
         });
         return (
-          <SearchTrackCard
-            trackName={trackName}
-            cover={cover}
-            artists={artists}
-            albumName={albumName}
-          />
+          <TrackCard trackName={trackName} cover={cover} artists={artists} albumName={albumName} />
         );
       })}
     </StyledTrackCards>
   );
 };
 
-export default SearchTrackCards;
+export default TrackCards;

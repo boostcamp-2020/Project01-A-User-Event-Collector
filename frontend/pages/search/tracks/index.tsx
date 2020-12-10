@@ -10,7 +10,7 @@ import {
   StyledSearchTrackCards,
   StyledIcons,
 } from "./styled";
-import SearchTrackCards from "../../../components/SearchSamples/tracks";
+import SearchTrackCards from "../../../components/TrackCard";
 import icons from "../../../constant/icons";
 
 const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => {
