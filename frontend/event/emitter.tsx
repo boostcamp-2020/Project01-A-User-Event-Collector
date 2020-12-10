@@ -10,7 +10,7 @@ interface Props extends InitialOption {
   children: any;
 }
 
-const Emitter: FC<any> = ({ identifier, eventType, children }: Props) => {
+const Emitter: FC<Props> = ({ identifier, eventType, children }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
