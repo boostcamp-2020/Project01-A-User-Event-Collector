@@ -19,8 +19,7 @@ export async function getStaticPath() {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
 
-  const res = await fetch(`${apiUrl}:${apiPort}/api/albums`);
-  const albums = await res.json();
+  const { data: albums } = await myAxios.get(`/albums`);
   const paths = albums.map((album: any) => `/albums/${album.id}`);
 
   return { paths, fallback: false };
