@@ -14,7 +14,6 @@ import {
 } from "./styled";
 import Overlay from "./Overlay";
 
-
 type Props = {
   children: ReactNode | undefined;
 };
@@ -42,19 +41,24 @@ const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
 
   const [showPlaylist, setShowPlaylist] = useState(false);
-    
+
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initCheckedTrack());
   }, [router.pathname]);
-  
+
   const handleSearch = (): void => setSearchMode(!searchMode);
   const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
 
+  const closeSearch = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape" || e.key === "Esc") {
+      handleSearch();
+    }
+  };
 
   return (
-    <StyledLayoutWrapper>
+    <StyledLayoutWrapper onKeyDown={closeSearch}>
       <StyledLayout>
         <NavBar handleSearch={handleSearch} />
         {searchMode ? (
