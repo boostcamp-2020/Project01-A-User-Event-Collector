@@ -21,7 +21,7 @@ const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => 
       const { data } = response;
       setSampleTracks(data);
     });
-  }, []);
+  }, [filter]);
 
   return (
     <StyledSearchTrackPage>

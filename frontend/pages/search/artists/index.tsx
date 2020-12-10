@@ -16,7 +16,7 @@ const SearchArtistPage = ({ filter }: { filter: string }): React.ReactElement =>
       const { data } = response;
       setSampleArtists(data);
     });
-  }, []);
+  }, [filter]);
 
   return (
     <StyledSearchArtistPage>

@@ -16,7 +16,7 @@ const SearchAlbumPage = ({ filter }: { filter: string }): React.ReactElement => 
       const { data } = response;
       setSampleAlbums(data);
     });
-  }, []);
+  }, [filter]);
 
   return (
     <StyledSearchAlbumPage>
