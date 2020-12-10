@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AnalyticsEvent {
+protocol AnalyticsEvent: Codable {
     var name: String { get }
     var metadata: [String: String] { get }
 }

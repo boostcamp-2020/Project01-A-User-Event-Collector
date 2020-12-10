@@ -22,7 +22,7 @@ class AnalyticsManager {
         removeReachabilityObserver()
     }
     
-    func setupEngine() {
+    private func setupEngine() {
         switch getConnection() {
         case .unavailable:
             currentEngine = backupEngine
@@ -33,12 +33,12 @@ class AnalyticsManager {
         }
     }
     
-    func log(_ event: AnalyticsEvent) {
+    func log<T: AnalyticsEvent>(_ event: T) {
         guard let currentEngine = currentEngine else { return }
-        currentEngine.sendAnalyticsEvent(named: event.name, metadata: event.metadata)
+        currentEngine.sendAnalyticsEvent(event)
     }
     
-    func switchToServerEngine() {
+    private func switchToServerEngine() {
         if currentEngine !== serverEngine {
             print("switchToServerEngine")
             //TODO: Core Data에 쌓인 이벤트 로그 서버에 보내기
@@ -46,7 +46,7 @@ class AnalyticsManager {
         }
     }
     
-    func switchToBackupEngine() {
+    private func switchToBackupEngine() {
         if currentEngine !== backupEngine {
             print("switchToBackupEngine")
             currentEngine = backupEngine
@@ -57,7 +57,7 @@ class AnalyticsManager {
 
 extension AnalyticsManager: ReachabilityObserverDelegate {
     
-    func reachabilityChanged(_ isReachable: Bool) {
+    private func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {
             switchToServerEngine()
         } else {
