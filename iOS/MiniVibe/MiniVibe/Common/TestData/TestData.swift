@@ -61,7 +61,8 @@ struct TestData {
     
     static let defaultArtist = Artist(id: -1,
                                       name: "재생버튼을 눌러보세요",
-                                      cover: nil)
+                                      cover: nil,
+                                      coverData: nil)
     
     static let playlist
         = Playlist(id: 1,
@@ -78,8 +79,9 @@ struct TestData {
                           album: Album.init(id: 1,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "Dynamite"),
-                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS")]
+                                            cover: "Dynamite",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS", coverData: nil)]
                     ),
                     Track(id: 2,
                           name: "우산",
@@ -88,8 +90,9 @@ struct TestData {
                           album: Album.init(id: 1,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "우산"),
-                          artists: [Artist.init(id: 1, name: "윤하", cover: "??")]
+                                            cover: "우산",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "윤하", cover: "??", coverData: nil)]
                     ),
                     Track(id: 3,
                           name: "Blueming",
@@ -98,8 +101,9 @@ struct TestData {
                           album: Album.init(id: 1,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "Blueming"),
-                          artists: [Artist.init(id: 1, name: "아이유", cover: "??")]
+                                            cover: "Blueming",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "아이유", cover: "??", coverData: nil)]
                     ),
                     Track(id: 4,
                           name: "FeelGood",
@@ -108,8 +112,9 @@ struct TestData {
                           album: Album.init(id: 1,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "Blueming"),
-                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??")]
+                                            cover: "Blueming",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)]
                     ),
                     Track(id: 5,
                           name: "LoveSick Girls",
@@ -118,8 +123,9 @@ struct TestData {
                           album: Album.init(id: 1,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "LoveSick Girls"),
-                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??")]
+                                            cover: "LoveSick Girls",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??", coverData: nil)]
                     ),
                     Track(id: 6,
                           name: "Fake Love",
@@ -128,8 +134,9 @@ struct TestData {
                           album: Album.init(id: 2,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "Dynamite"),
-                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS")]
+                                            cover: "Dynamite",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS", coverData: nil)]
                     ),
                     Track(id: 7,
                           name: "빗소리",
@@ -138,8 +145,9 @@ struct TestData {
                           album: Album.init(id: 2,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "우산"),
-                          artists: [Artist.init(id: 1, name: "윤하", cover: "??")]
+                                            cover: "우산",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "윤하", cover: "??", coverData: nil)]
                     ),
                     Track(id: 8,
                           name: "밤편지",
@@ -148,8 +156,9 @@ struct TestData {
                           album: Album.init(id: 2,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "Blueming"),
-                          artists: [Artist.init(id: 1, name: "아이유", cover: "??")]
+                                            cover: "Blueming",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "아이유", cover: "??", coverData: nil)]
                     ),
                     Track(id: 9,
                           name: "물고기",
@@ -158,8 +167,9 @@ struct TestData {
                           album: Album.init(id: 2,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "Blueming"),
-                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??")]
+                                            cover: "Blueming",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)]
                     ),
                     Track(id: 10,
                           name: "휘파람",
@@ -168,8 +178,9 @@ struct TestData {
                           album: Album.init(id: 2,
                                             name: "앨범 제목",
                                             description: "앨범 설명",
-                                            cover: "LoveSick Girls"),
-                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??")]
+                                            cover: "LoveSick Girls",
+                                            coverData: nil),
+                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??", coverData: nil)]
                     )
                     
                    ]
@@ -187,8 +198,9 @@ struct TestData {
                                           album: Album.init(id: 2,
                                                             name: "앨범 제목",
                                                             description: "앨범 설명",
-                                                            cover: "Blueming"),
-                                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??")]
+                                                            cover: "Blueming",
+                                                            coverData: nil),
+                                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)]
                                     )],
                                    createdAt: "2020년 10월",
                                    type: "PICK")

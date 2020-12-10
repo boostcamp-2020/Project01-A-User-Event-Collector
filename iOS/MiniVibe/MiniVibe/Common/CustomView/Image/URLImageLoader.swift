@@ -16,6 +16,9 @@ class URLImageLoader: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     func fetch(urlString: String?, imageData: Data?) {
+        if image != nil {
+            return
+        }
         if let imageData = imageData {
             image = UIImage(data: imageData)
             return

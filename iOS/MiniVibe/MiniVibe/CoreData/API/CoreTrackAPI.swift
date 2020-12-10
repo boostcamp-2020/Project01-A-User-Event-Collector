@@ -16,7 +16,7 @@ class CoreTrackAPI {
         context = persistenceController.context
     }
     
-    func create(with track: Track) {
+    func create(with track: Track, isQueue: Bool = false) {
         // 중복 체크
         if isDuplicated(id: track.id) {
             delete(id: track.id)
@@ -29,6 +29,8 @@ class CoreTrackAPI {
         if let isFavorite = track.isFavorite {
             coreTrack.isFavorite = isFavorite
         }
+        coreTrack.isQueue = isQueue
+        coreTrack.updatedAt = Date()
         // Artists 추가
         track.artists?.forEach { artist in
             let coreArtist = CoreArtist(context: context)
@@ -56,8 +58,10 @@ class CoreTrackAPI {
     }
     
     func fetch(predicate: NSPredicate) -> [CoreTrack] {
+        let sortDescriptor = NSSortDescriptor(keyPath: \CoreTrack.updatedAt, ascending: true)
         let request = CoreTrack.fetchRequest() as NSFetchRequest<CoreTrack>
         request.predicate = predicate
+        request.sortDescriptors = [sortDescriptor]
         return persistenceController.fetch(request: request)
     }
     
