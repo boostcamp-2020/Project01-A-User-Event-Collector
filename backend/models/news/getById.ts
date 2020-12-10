@@ -28,6 +28,11 @@ const getNewsById = async (id: number): Promise<Object | null> => {
   const tracks: any = [];
   trackIdArr.forEach((el) => tracks.push(el.Tracks));
   news.Tracks = tracks;
+  news.Tracks.forEach((el) => {
+    el.Artists = [];
+    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist));
+    delete el.Artists_Tracks;
+  });
 
   return news;
 };
