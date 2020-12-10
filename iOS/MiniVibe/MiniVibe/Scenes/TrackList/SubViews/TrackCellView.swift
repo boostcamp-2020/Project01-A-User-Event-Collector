@@ -9,20 +9,26 @@ import SwiftUI
 
 struct TrackCellView: View {
     let hasAccessory: Bool
+    let isCellForQueue: Bool
     let track: Track
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
     @StateObject private var viewModel: TrackCellViewModel
     
-    init(hasAccessory: Bool, track: Track) {
+    init(hasAccessory: Bool, track: Track, isCellForQueue: Bool = false) {
         self.hasAccessory = hasAccessory
         self.track = track
+        self.isCellForQueue = isCellForQueue
         _viewModel = StateObject(wrappedValue: TrackCellViewModel(track: track))
     }
     
     var body: some View {
         HStack {
             Button(action: {
-                nowPlayingViewModel.update(with: track)
+                if isCellForQueue {
+                    nowPlayingViewModel.changeCurrentTrackInQueue(to: track)
+                } else {
+                    nowPlayingViewModel.update(with: track)
+                }
             }, label: {
                 BasicRowCellView(title: track.name,
                                  subTitle: track.artist,

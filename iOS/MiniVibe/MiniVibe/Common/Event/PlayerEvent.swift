@@ -43,7 +43,17 @@ struct PlayerEvent: AnalyticsEvent {
             name: "repeat" + suffix
         )
     }
-
+    
+    static func playlistPlayed(_ isShuffled: Bool) -> PlayerEvent {
+        let suffix = isShuffled ? "On" : "Off"
+        return PlayerEvent(
+            name: "playlistPlayed",
+            metadata: ["shuffleMode": suffix]
+        )
+    }
+    
+    static let volumeChanged = PlayerEvent(name: "volumeChangedIn3Seconds")
+    
     static let shuffleOn = PlayerEvent(name: "shuffleOn")
     
     static let shuffleOff = PlayerEvent(name: "shuffleOff")

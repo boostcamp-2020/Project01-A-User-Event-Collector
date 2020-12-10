@@ -18,7 +18,7 @@ struct PlayerView: View {
                 VStack(spacing: 10) {
                     PlayerHeaderView(showMediaPlayer: $showMediaPlayer)
                     if let track = viewModel.currentTrack {
-                        PlayerInfoView(timeDuration: $timeDuration, track: track)
+                        PlayerInfoView(timeDuration: $timeDuration, viewModel: viewModel, track: track)
                     }
                     PlayerControlView(viewModel: viewModel)
                 }
@@ -28,7 +28,7 @@ struct PlayerView: View {
 
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(viewModel.queue) { track in
-                        TrackCellView(hasAccessory: false, track: track)
+                        TrackCellView(hasAccessory: false, track: track, isCellForQueue: true)
                             .padding(.vertical, 5)
                     }
                     .onMove(perform: viewModel.reorder(from:to:))

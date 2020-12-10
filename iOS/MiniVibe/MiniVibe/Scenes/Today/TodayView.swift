@@ -59,16 +59,13 @@ struct TodayView: View {
             }
             .listStyle(PlainListStyle())
             .navigationTitle("VIBE")
+            .onAppear(perform: {
+                viewModel.fetchAll()
+                manager.log(ScreenEvent.screenViewed(.today))
+            })
         }
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: {
-            manager.log(ScreenEvent.screenViewed(.today))
-            viewModel.fetchAll()
-        })
-        .onDisappear {
-            
-        }
     }
 }
 
