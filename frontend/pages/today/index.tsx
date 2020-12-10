@@ -33,32 +33,33 @@ const StyledSections = styled.div`
 `;
 const test: EventObject = {
   simple: {
-    eventName1: {
-      className: "boost_whqudrjs",
+    identifier_1: {
       event_id: 1,
       event_type: "click",
       once: true,
       description: "너무 잼따",
     },
-    eventName2: {
-      className: "boost_dbtjsrb",
+    identifier_2: {
       event_id: 2,
-      event_type: "click",
+      event_type: "mouseover",
       once: true,
-      description: "너무 잼따",
+      description: "이건 두번째 식별자에요~",
     },
   },
 };
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
-    <Collector eventConfig={test}>
+    <Collector eventConfig={test} dispatch={console.log}>
       <StyledHotMag>
         <HotMagCard />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
-        <Emitter identifier="LIBRARYID" eventType={["click"]}>
-          <div> 이벤트 테스트</div>
+        <Emitter identifier="identifier_1" eventType={["click"]}>
+          <h1> 이벤트 테스트</h1>
+        </Emitter>
+        <Emitter identifier="identifier_2" eventType={["mouseover"]}>
+          <h1> 마우스 오버 테스트</h1>
         </Emitter>
         <Slidebar
           varient="todayBig"
