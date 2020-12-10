@@ -30,7 +30,7 @@ const getMagazineById = async (id: number): Promise<Object | null> => {
   magazine.Tracks = tracks;
   magazine.Tracks.forEach((el) => {
     el.Artists = [];
-    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist));
+    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
     delete el.Artists_Tracks;
   });
 

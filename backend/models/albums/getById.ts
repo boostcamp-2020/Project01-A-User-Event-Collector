@@ -31,7 +31,7 @@ const getAlbumById = async (id: number): Promise<Object | null> => {
   album.Tracks = trackIdArr;
   album.Tracks.forEach((el) => {
     el.Artists = [];
-    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist));
+    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
     delete el.Artists_Tracks;
   });
 

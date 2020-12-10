@@ -37,7 +37,7 @@ const getPlaylistById = async (id: number): Promise<Object | null> => {
   playlist.Tracks = tracks;
   playlist.Tracks.forEach((el) => {
     el.Artists = [];
-    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist));
+    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
     delete el.Artists_Tracks;
   });
 
