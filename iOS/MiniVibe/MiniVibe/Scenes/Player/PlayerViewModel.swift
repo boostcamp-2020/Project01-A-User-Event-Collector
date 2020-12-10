@@ -18,6 +18,7 @@ class PlayerViewModel: ObservableObject {
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
+    private var isInitial = true
     @Published private var timeRemaining = 3
     
     private let coreTrackAPI = CoreTrackAPI()
@@ -47,6 +48,7 @@ class PlayerViewModel: ObservableObject {
         setupSubscriptions()
         setupVolumeListener()
         fetchFromCoreData()
+        isInitial = false
     }
     
     func update(with track: Track) {
@@ -133,10 +135,10 @@ class PlayerViewModel: ObservableObject {
 // MARK: setup하는 함수들
 extension PlayerViewModel {
     
-    private func setupSubscriptions() {
+    func setupSubscriptions() {
         trackPlayingSubscription()
         shuffleSubscription()
-        randomSubscription()
+        repeatSubscription()
         timeSubscription()
         trackIndexSubscription()
     }
@@ -189,15 +191,19 @@ extension PlayerViewModel {
     private func shuffleSubscription() {
         $isShuffle
             .sink { isShuffle in
-                self.manager.log(PlayerEvent.shuffle(isShuffle))
+                if self.isInitial == false {
+                    self.manager.log(PlayerEvent.shuffle(isShuffle))
+                }
             }
             .store(in: &subscriptions)
     }
     
-    private func randomSubscription() {
+    private func repeatSubscription() {
         $isRepeat
-            .sink { [weak self] isRepeat in
-                self?.manager.log(PlayerEvent.repeat(isRepeat))
+            .sink { isRepeat in
+                if self.isInitial == false {
+                    self.manager.log(PlayerEvent.repeat(isRepeat))
+                }
             }
             .store(in: &subscriptions)
     }
