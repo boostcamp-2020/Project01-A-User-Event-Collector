@@ -15,6 +15,18 @@ const getAlbumById = async (id: number): Promise<Object | null> => {
   const trackIdArr = await prisma.tracks.findMany({
     where: { albumId: id },
     orderBy: { albumTrackNumber: "asc" },
+    include: {
+      Artists_Tracks: {
+        include: {
+          Artists: {
+            select: {
+              id: true,
+              artistName: true,
+            },
+          },
+        },
+      },
+    },
   });
   album.Tracks = await Promise.all(
     trackIdArr.map((elem: any) => getTrackCard(elem.id))
