@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import AVFoundation
 import MediaPlayer
+import CoreData
 
 class PlayerViewModel: ObservableObject {
     // TODO: - 외부 접근이 필요 없는 곳에는 private 설정하기
@@ -18,10 +19,11 @@ class PlayerViewModel: ObservableObject {
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
+    @Published private var timeRemaining = 3
+    
     private let coreTrackAPI = CoreTrackAPI()
     var volumeChangeAmount = 0
     var timer: Timer?
-    @Published private var timeRemaining = 3
     var subscriptions = Set<AnyCancellable>()
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
@@ -45,20 +47,30 @@ class PlayerViewModel: ObservableObject {
         self.manager = manager
         setupSubscriptions()
         setupVolumeListener()
+        fetchFromCoreData()
     }
     
     func update(with track: Track) {
-        safeAppend(track)
-        currentTrack = track
         isPlaying = true
+        coreTrackAPI.create(with: track, isQueue: true)
+        fetchFromCoreData()
     }
     
     func update(with tracks: [Track], isShuffled: Bool = false) {
         let mytracks = isShuffled ? tracks.shuffled() : tracks
-        mytracks.forEach { safeAppend($0) }
-        currentTrack = queue.last
         isPlaying = true
         manager.log(PlayerEvent.playlistPlayed(isShuffled))
+        mytracks.forEach {
+            coreTrackAPI.create(with: $0, isQueue: true)
+        }
+        fetchFromCoreData()
+    }
+    
+    private func fetchFromCoreData() {
+        let predicate = NSPredicate(format: "isQueue == %d", true)
+        let coreTracks = coreTrackAPI.fetch(predicate: predicate)
+        self.queue = coreTracks.map { Track(from: $0) }
+        currentTrack = queue.last
     }
     
     func changeCurrentTrackInQueue(to track: Track) {
@@ -117,7 +129,7 @@ class PlayerViewModel: ObservableObject {
             return queue.index(before: currentTrackIndex)
         }
     }
-
+    
 }
 // MARK: setup하는 함수들
 extension PlayerViewModel {
@@ -147,15 +159,15 @@ extension PlayerViewModel {
         if isPlaying {
             timeRemaining = 3
             timer = Timer.scheduledTimer(timeInterval: 1 ,
-                                             target: self,
-                                             selector: #selector(changeRemainingTime),
-                                             userInfo: nil,
-                                             repeats: true)
+                                         target: self,
+                                         selector: #selector(changeRemainingTime),
+                                         userInfo: nil,
+                                         repeats: true)
             guard let timer = timer else { return }
             RunLoop.main.add(timer, forMode: .common)
         }
     }
-
+    
 }
 
 // MARK: Combine과 관련된 subscription 함수들
@@ -211,4 +223,5 @@ extension PlayerViewModel {
             }
             .store(in: &subscriptions)
     }
+    
 }

@@ -422,12 +422,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CF0564C8257FFA6A00F24681 /* Model */ = {
+		CF0564C8257FFA6A00F24681 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */,
 			);
-			path = Model;
+			path = API;
 			sourceTree = "<group>";
 		};
 		CF05F89B2567E7AD008080D7 = {
@@ -599,7 +599,7 @@
 		CF2D94B6256F82F900D0A66B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CF0564C8257FFA6A00F24681 /* Model */,
+				CF0564C8257FFA6A00F24681 /* API */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 			);
