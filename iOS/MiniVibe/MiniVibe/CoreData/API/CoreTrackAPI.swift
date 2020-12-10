@@ -9,13 +9,16 @@ import SwiftUI
 import CoreData
 
 class CoreTrackAPI {
-    private let persistenceController = PersistenceController.shared
+    
+    private let manager = CoreDataAPIManager()
+    private let controller: PersistenceController
     private let context: NSManagedObjectContext
     
     init() {
-        context = persistenceController.context
+        self.controller = manager.persistenceController
+        self.context = manager.context
     }
-    
+
     func create(with track: Track, isQueue: Bool = false) {
         // 중복 체크
         if isDuplicated(id: track.id) {
@@ -47,14 +50,14 @@ class CoreTrackAPI {
         coreAlbum.cover = loadFromCache(urlString: album.cover)
         coreAlbum.addToTracks(coreTrack)
         
-        save()
+        manager.save()
     }
     
     func delete(id: Int) {
         let predicate = NSPredicate(format: "id Contains %ld", id)
         let coreTracks = fetch(predicate: predicate)
-        let result = persistenceController.deleteAll(datas: coreTracks)
-        processResult(result: result)
+        let result = controller.deleteAll(datas: coreTracks)
+        manager.processResult(result: result)
     }
     
     func fetch(predicate: NSPredicate) -> [CoreTrack] {
@@ -62,25 +65,7 @@ class CoreTrackAPI {
         let request = CoreTrack.fetchRequest() as NSFetchRequest<CoreTrack>
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
-        return persistenceController.fetch(request: request)
-    }
-    
-    private func save() {
-        let result = persistenceController.save()
-        processResult(result: result)
-    }
-    
-    private func processResult(result: PersistenceController.CoreDataResult) {
-        switch result {
-        case .success:
-            print("success")
-        case .failure(.saveFailed):
-            print("saveFailed")
-        case .failure(.deleteFailed):
-            print("deleteFailed")
-        case .failure(.deleteAllFailed):
-            print("deleteAllFailed")
-        }
+        return controller.fetch(request: request)
     }
     
     private func isDuplicated(id: Int) -> Bool {
