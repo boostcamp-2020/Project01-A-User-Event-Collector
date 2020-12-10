@@ -11,7 +11,7 @@ struct PlayerInfoView: View {
     @Binding var timeDuration: Float
     @ObservedObject var viewModel: PlayerViewModel
     let track: Track
-
+    
     var body: some View {
         VStack(spacing: 40) {
             SwipableImageView(urlString: track.coverURLString, 
@@ -51,13 +51,14 @@ struct PlayerInfoView_Previews: PreviewProvider {
 
 struct SwipableImageView: View {
     @State private var offset: CGSize = .zero
+    
     let urlString: String?
     let coverData: Data? 
     var didSwipeLeft: (() -> Void)?
     var didSwipeRight: (() -> Void)?
-
+    
     var body: some View {
-            URLImage(urlString: urlString, imageData: coverData)
+        SwappableImageWithURL(urlString, data: coverData)
             .padding()
             .highPriorityGesture(
                 DragGesture(minimumDistance: 20, coordinateSpace: .local)
