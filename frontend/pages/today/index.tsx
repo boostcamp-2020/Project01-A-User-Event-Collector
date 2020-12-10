@@ -2,8 +2,8 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
-import Emitter from "../../event/emitter";
-import { Collector, EventObject } from "../../event";
+import { Emitter, Collector, EventObject } from "../../event";
+import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -31,25 +31,11 @@ const StyledSections = styled.div`
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
 `;
-const test: EventObject = {
-  simple: {
-    identifier_1: {
-      event_id: 1,
-      event_type: "click",
-      once: true,
-      description: "너무 잼따",
-    },
-    identifier_2: {
-      event_id: 2,
-      event_type: "mouseover",
-      once: true,
-      description: "이건 두번째 식별자에요~",
-    },
-  },
-};
+
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
-    <Collector eventConfig={test} dispatch={console.log}>
+    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
+      {/* Collector 사용 */}
       <StyledHotMag>
         <HotMagCard />
         <StyledHotMagOverlay />
@@ -61,6 +47,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
         <Emitter identifier="identifier_2" eventType={["mouseover"]}>
           <h1> 마우스 오버 테스트</h1>
         </Emitter>
+        {/* Emitter 사용 */}
         <Slidebar
           varient="todayBig"
           dataType="magazine"
