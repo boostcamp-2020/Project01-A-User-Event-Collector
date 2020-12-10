@@ -337,7 +337,6 @@
 				512EF5742580EE4C00930F13 /* LoggableButton.swift */,
 				51B3D4C8257CFDCF008025E5 /* AnalyticsEngine.swift */,
 				51B3D4C9257CFDCF008025E5 /* AnalyticsManager.swift */,
-				CF10A54C2582353A00044827 /* Metadatable.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -428,6 +427,7 @@
 		CF0564C8257FFA6A00F24681 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				CF10A54C2582353A00044827 /* Metadatable.swift */,
 				CF0564C9257FFAD800F24681 /* CoreTrackAPI.swift */,
 			);
 			path = API;
