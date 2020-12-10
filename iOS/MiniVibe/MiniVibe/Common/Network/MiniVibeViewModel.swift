@@ -27,6 +27,7 @@ class MiniVibeViewModel {
                              limitQuery: limitQuery).create()
         
         guard let request = RequestBuilder(url: url,
+                                           method: .get,
                                            body: nil,
                                            headers: nil).create() else { return }
         network.request(request: request)
