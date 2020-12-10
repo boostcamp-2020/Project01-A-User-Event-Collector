@@ -32,7 +32,9 @@ struct NowPlayingView: View {
                                 imageWhenTrue: "pause",
                                 imageWhenFalse: "play.fill",
                                 size: .medium)
-                Button(action: {}, label: {
+                Button(action: {
+                    viewModel.playNextTrack()
+                }, label: {
                     Image(systemName: "forward.fill")
                         .accesoryModifier(color: .gray, size: .small)
                 })
