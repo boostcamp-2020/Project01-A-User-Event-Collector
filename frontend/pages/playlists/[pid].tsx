@@ -18,7 +18,7 @@ const PlaylistPage = ({ Playlists }: any) => {
 export default PlaylistPage;
 
 export async function getStaticPath() {
-  const { data: playlists } = await myAxios.get(`/playlists`);
+  const { data: playlists }: any = await myAxios.get(`/playlists`);
   const paths = playlists.map((artist: any) => `/playlists/${artist.id}`);
 
   return { paths, fallback: false };

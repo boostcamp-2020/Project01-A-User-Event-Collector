@@ -7,7 +7,7 @@ const StyleMagazinePage = styled.div`
   height: 100vh;
 `;
 
-const MagazinePage = ({ Magazines }: any) => {
+const MagazinePage = ({ Magazines }: any): React.ReactElement => {
   return (
     <StyleMagazinePage>
       <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
@@ -18,7 +18,7 @@ const MagazinePage = ({ Magazines }: any) => {
 export default MagazinePage;
 
 export async function getStaticPath() {
-  const { data: magazines } = await myAxios.get(`/magazines`);
+  const { data: magazines }: any = await myAxios.get(`/magazines`);
   const paths = magazines.map((artist: any) => `/magazines/${artist.id}`);
 
   return { paths, fallback: false };

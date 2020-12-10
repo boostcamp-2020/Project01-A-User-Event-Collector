@@ -18,7 +18,7 @@ const NewsPage = ({ News }: any) => {
 export default NewsPage;
 
 export async function getStaticPath() {
-  const { data: news } = await myAxios.get(`/news`);
+  const { data: news }: any = await myAxios.get(`/news`);
   const paths = news.map((artist: any) => `/news/${artist.id}`);
 
   return { paths, fallback: false };
