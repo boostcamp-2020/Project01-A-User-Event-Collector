@@ -19,29 +19,6 @@ interface TrackCardProps {
   albumName: string;
 }
 
-interface TrackArtistProps {
-  id: number;
-  trackId: number;
-  artistId: number;
-  Artists: {
-    artistName: string;
-  };
-}
-
-interface TrackAlbumProps {
-  cover: string;
-  albumName: string;
-}
-
-interface TrackProps {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: TrackAlbumProps;
-  Artists_Tracks: TrackArtistProps[];
-}
-
 interface Track {
   id: number;
   trackName: string;
@@ -76,15 +53,4 @@ interface News {
   playlistId?: number;
 }
 
-export type {
-  Track,
-  Artist,
-  Album,
-  Playlist,
-  Magazine,
-  News,
-  TrackCardProps,
-  TrackArtistProps,
-  TrackAlbumProps,
-  TrackProps,
-};
+export type { Track, Artist, Album, Playlist, Magazine, News, TrackCardProps };

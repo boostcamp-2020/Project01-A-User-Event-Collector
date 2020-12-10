@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { TrackProps, TrackCardProps } from "../../interfaces";
+import React, { useState } from "react";
+import { Track, TrackCardProps } from "../../interfaces";
 import {
   StyledTrackCards,
   StyledTrackCard,
@@ -35,18 +35,18 @@ const TrackCard = ({ trackName, cover, artists, albumName }: TrackCardProps) => 
   );
 };
 
-const TrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
+const TrackCards = ({ data }: { data: Track[] }): React.ReactElement => {
   return (
     <StyledTrackCards>
-      {data.map((track: TrackProps) => {
+      {data.map((track: Track) => {
         const {
           trackName,
           Albums: { cover, albumName },
-          Artists_Tracks: artistTracks,
+          Artists,
         } = track;
         const artists: string[] = [];
-        artistTracks.forEach((el) => {
-          artists.push(el.Artists.artistName);
+        Artists.forEach((el) => {
+          artists.push(el.artistName);
         });
         return (
           <TrackCard

@@ -96,7 +96,7 @@ export default Samples;
 //   };
 // }
 
-// interface TrackProps {
+// interface Track {
 //   id: number;
 //   trackName: string;
 //   albumTrackNumber: number;
@@ -124,6 +124,6 @@ export default Samples;
 
 // interface SampleProps {
 //   sectionTitle: string;
-//   data: AlbumProps[] | ArtistProps[] | TrackProps[];
+//   data: AlbumProps[] | ArtistProps[] | Track[];
 //   filter: string;
 // }

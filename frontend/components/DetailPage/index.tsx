@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import DetailHeader from "./DetailHeader";
-import { TrackProps } from "../../interfaces";
+import { Track } from "../../interfaces";
 import TrackCard from "../TrackCard";
 
 interface Props {
   type: "album" | "playlist" | "artist" | "magazine" | "news";
   detailData: any;
-  tracks: TrackProps[];
+  tracks: Track[];
 }
 
 const StyleDetailPage = styled.div`

@@ -18,7 +18,7 @@ type Props = {
   children: ReactNode | undefined;
 };
 
-interface TrackProps {
+interface Track {
   id: number;
   trackName: string;
   albumTrackNumber: number;
