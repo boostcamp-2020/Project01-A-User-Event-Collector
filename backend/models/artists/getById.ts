@@ -23,7 +23,9 @@ const getArtistById = async (id: number): Promise<Object | null> => {
       },
     },
   });
-  artist.Tracks = trackIdArr;
+  const tracks: any = [];
+  trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  artist.Tracks = tracks;
   return artist;
 };
 
