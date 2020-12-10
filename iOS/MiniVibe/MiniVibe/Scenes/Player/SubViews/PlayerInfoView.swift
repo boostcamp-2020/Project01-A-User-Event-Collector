@@ -14,7 +14,8 @@ struct PlayerInfoView: View {
 
     var body: some View {
         VStack(spacing: 40) {
-            SwipableImageView(urlString: track.album?.cover,
+            SwipableImageView(urlString: track.coverURLString, 
+                              imageData: track.coverData,
                               didSwipeLeft: {
                                 viewModel.playNextTrack()
                               },
@@ -51,11 +52,12 @@ struct PlayerInfoView_Previews: PreviewProvider {
 struct SwipableImageView: View {
     @State private var offset: CGSize = .zero
     let urlString: String?
+    let coverData: Data? 
     var didSwipeLeft: (() -> Void)?
     var didSwipeRight: (() -> Void)?
 
     var body: some View {
-        URLImage(urlString: urlString)
+            URLImage(urlString: urlString, imageData: coverData)
             .padding()
             .highPriorityGesture(
                 DragGesture(minimumDistance: 20, coordinateSpace: .local)

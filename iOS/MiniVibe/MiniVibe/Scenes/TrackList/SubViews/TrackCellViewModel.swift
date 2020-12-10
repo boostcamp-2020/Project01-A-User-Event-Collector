@@ -5,17 +5,25 @@
 //  Created by 류연수 on 2020/12/08.
 //
 
-import Foundation
+import SwiftUI
 import Combine
+import CoreData
 
 class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
     @Published var track: Track
-    @Published var isFavorite = false
+    @Published var isFavorite: Bool
     
+    private let coreTrackAPI = CoreTrackAPI()
     private var cancellables = Set<AnyCancellable>()
+    private var isFirst = true
     
     init(track: Track) {
         self.track = track
+        if let isFavorite = track.isFavorite {
+            self.isFavorite = isFavorite
+        } else {
+            self.isFavorite = false
+        }
         super.init()
         toggleSubscription()
     }
@@ -32,17 +40,27 @@ class TrackCellViewModel: MiniVibeViewModel, ObservableObject {
             .store(in: &cancellables)
     }
     
-    func post(isFavorite: Bool) {
+    private func post(isFavorite: Bool) {
         postToServer()
-        postToCoreData()
+        addToFavorite(track: track, isFavorite: isFavorite)
     }
     
-    func postToServer() {
-        
+    private func postToServer() {
+        // TODO:- Server로 isFavorite update
     }
     
-    func postToCoreData() {
-        
+    private func addToFavorite(track: Track, isFavorite: Bool) {
+        if isFirst {
+            isFirst = false
+            return
+        }
+        if isFavorite {
+            var track = track
+            track.isFavorite = isFavorite
+            coreTrackAPI.create(with: track)
+        } else {
+            coreTrackAPI.delete(id: track.id)
+        }
     }
     
 }

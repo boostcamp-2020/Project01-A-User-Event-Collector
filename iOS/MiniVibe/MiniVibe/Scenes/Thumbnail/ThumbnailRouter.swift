@@ -22,7 +22,7 @@ class ThumbnailRouter: StarterOrientedRouterProtocol {
         switch routingStarter {
         case .magazines:
             return AnyView(MagazineView(magazineID: id)
-                            .onAppear{
+                            .onAppear {
                                 self.manager.log(ScreenEvent.screenViewedWithSource(.magazine, source: .thumbnailList))
                             })
         case .recommendations:

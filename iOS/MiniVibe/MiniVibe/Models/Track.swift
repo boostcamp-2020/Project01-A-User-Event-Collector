@@ -14,9 +14,55 @@ protocol Cellable {
 struct Track: Codable, Identifiable, Cellable {
     let id: Int
     var name: String
-    let albumTrackNumber, albumID: Int
+    let albumTrackNumber: Int
+    let albumID: Int?
     let album: Album?
     let artists: [Artist]?
+    var isFavorite: Bool?
+    
+    init(id: Int,
+         name: String,
+         albumTrackNumber: Int,
+         albumID: Int?,
+         album: Album?,
+         artists: [Artist]?,
+         isFavorite: Bool? = nil) {
+        
+        self.id = id
+        self.name = name
+        self.albumTrackNumber = albumTrackNumber
+        self.albumID = albumID
+        self.album = album
+        self.artists = artists
+        self.isFavorite = isFavorite
+    }
+    
+    init(from coreTrack: CoreTrack) {
+        self.id = Int(coreTrack.id)
+        self.name = coreTrack.name ?? ""
+        self.albumTrackNumber = Int(coreTrack.albumTrackNumber)
+        if let coreAlbum = coreTrack.album {
+            let album = Album(from: coreAlbum)
+            self.album = album
+            self.albumID = Int(album.id)
+        } else {
+            self.album = nil
+            self.albumID = nil
+        }
+        if let coreArtists = coreTrack.artists {
+            var artists = [Artist]()
+            coreArtists.forEach { coreArtist in
+                if let coreArtist = coreArtist as? CoreArtist {
+                    let artist = Artist(from: coreArtist)
+                    artists.append(artist)
+                }
+            }
+            self.artists = artists
+        } else {
+            self.artists = nil
+        }
+        self.isFavorite = coreTrack.isFavorite
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, albumTrackNumber
@@ -31,5 +77,8 @@ struct Track: Codable, Identifiable, Cellable {
     }
     var coverURLString: String? {
         album?.cover
+    }
+    var coverData: Data? {
+        album?.coverData
     }
 }

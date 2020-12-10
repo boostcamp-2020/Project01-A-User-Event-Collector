@@ -10,21 +10,33 @@ import Combine
 
 class URLImageLoader: ObservableObject {
     @Published var image: UIImage?
+    var imageCache = ImageCache.shared
     
     private let network = NetworkService(session: URLSession.shared)
     private var cancellables = Set<AnyCancellable>()
     
-    func fetch(urlString: String?) {
+    func fetch(urlString: String?, imageData: Data?) {
+        if let imageData = imageData {
+            image = UIImage(data: imageData)
+            return
+        }
         guard let urlString = urlString else {
             image = UIImage(named: "appIcon")
             return
         }
+        if loadFromCache(urlString: urlString) {
+            return
+        }
+        loadFromUrl(urlString: urlString)
+    }
+    
+    func loadFromUrl(urlString: String) {
         let url = URL(string: urlString)
         let urlRequest = RequestBuilder(url: url,
                                         body: nil,
                                         headers: nil).create()
-        
         guard let request = urlRequest else { return }
+        
         network.request(request: request)
             .sink { result in
                 switch result {
@@ -37,9 +49,21 @@ class URLImageLoader: ObservableObject {
             } receiveValue: { [weak self] data in
                 DispatchQueue.main.async {
                     self?.image = UIImage(data: data)
+                    self?.imageCache.set(forKey: urlString, data: data as NSData)
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    func loadFromCache(urlString: String) -> Bool {
+        guard let data = imageCache.get(forKey: urlString) else {
+            return false
+        }
+        
+        DispatchQueue.main.async {
+            self.image = UIImage(data: data as Data)
+        }
+        return true
     }
     
     deinit {

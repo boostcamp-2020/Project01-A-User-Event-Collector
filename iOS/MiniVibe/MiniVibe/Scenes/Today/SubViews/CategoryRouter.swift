@@ -16,7 +16,6 @@ class CategoryRouter: DestinationOrientedRouterProtocol {
         self.manager = manager
     }
 
-    
     func getDestination(to routingDestination: MiniVibeType, with id: Int?) -> AnyView {
         guard let id = id else { return AnyView(ErrorView()) }
         switch routingDestination {

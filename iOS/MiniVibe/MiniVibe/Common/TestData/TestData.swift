@@ -51,15 +51,7 @@ struct TestData {
 //                 type: .magazines,
 //                 mode: .full),
 //        ]
-//    static let defaultTrack = Track(id: 37,
-//                                    name: "Dynamite (Instrumental)",
-//                                    albumTrackNumber: 2,
-//                                    albumID: 8,
-//                                    album: Album(id: 8,
-//                                                 name: "Dynamite",
-//                                                 description: "방탄",
-//                                                 cover: "https://musicmeta-phinf.pstatic.net/album/004/820/4820425.jpg?type=r360Fll&v=20200918130108"),
-//                                    artists: [Artist(id: 3, name: "방탄소년단", cover: nil)])
+    
     static let defaultTrack = Track(id: -1,
                                     name: "오늘 뭐 듣지?",
                                     albumTrackNumber: -1,
@@ -184,7 +176,7 @@ struct TestData {
         )
     static let magazine = Magazine(id: 1,
                                    name: "나만 없어 그 한정판 LP 레코드",
-                                   description: "발매되기 전부터 이토록 화제를 모은 앨범이 2020년에 또 있었을까. JYP를 나간 후 백예린이 발표한 앨범 <Every letter i sent you>는 발매 전부터 후까지 쉬지 않고 크고 작은 화제를 모았다. 음원으로 발표되지 않아 많은 사람들이 라이브,",
+                                   description: "발매되기 전부터 이토록 화제를 모은 앨범이 2020년에 또 있었을까. JYP를 나간 후 백예린이 발표한 앨범",
                                    cover: nil,
                                    playlistID: 1,
                                    tracks: [

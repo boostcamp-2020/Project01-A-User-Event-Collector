@@ -11,12 +11,14 @@ import AVFoundation
 import MediaPlayer
 
 class PlayerViewModel: ObservableObject {
+    // TODO: - 외부 접근이 필요 없는 곳에는 private 설정하기
     @Published var currentTrack: Track?
     @Published var currentTrackIndex: Int?
     @Published var queue: [Track] = []
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
+    private let coreTrackAPI = CoreTrackAPI()
     var volumeChangeAmount = 0
     var timer: Timer?
     @Published private var timeRemaining = 3
@@ -28,7 +30,10 @@ class PlayerViewModel: ObservableObject {
         currentTrack?.artist ?? "듣고 싶은 노래를 추가하세요"
     }
     var coverURLString: String? {
-        currentTrack?.album?.cover
+        currentTrack?.coverURLString
+    }
+    var coverData: Data? {
+        currentTrack?.coverData
     }
     
     let manager: AnalyticsManager
@@ -181,8 +186,8 @@ extension PlayerViewModel {
     
     func randomSubscription() {
         $isRepeat
-            .sink { isRepeat in
-                self.manager.log(PlayerEvent.repeat(isRepeat))
+            .sink { [weak self] isRepeat in
+                self?.manager.log(PlayerEvent.repeat(isRepeat))
             }
             .store(in: &subscriptions)
     }
