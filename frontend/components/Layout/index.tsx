@@ -19,25 +19,6 @@ type Props = {
   children: ReactNode | undefined;
 };
 
-interface Track {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: {
-    cover: string;
-    albumName: string;
-  };
-  Artists_Tracks: {
-    id: number;
-    trackId: number;
-    artistId: number;
-    Artists: {
-      artistName: string;
-    };
-  }[];
-}
-
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
   const [checkMode, setCheckMode] = useState(false);
