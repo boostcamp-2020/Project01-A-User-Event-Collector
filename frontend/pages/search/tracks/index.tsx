@@ -44,10 +44,10 @@ const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => 
 };
 
 SearchTrackPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
-  if (query?.filter !== undefined) {
-    return query?.filter;
+  if (query && query.filter) {
+    const { filter } = query;
+    return { filter };
   }
-  return {};
 };
 
 export default SearchTrackPage;
