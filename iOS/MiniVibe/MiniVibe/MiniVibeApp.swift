@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MiniVibeApp: App {
     
-    let manager = AnalyticsManager(engine: MockAnalyticsEngine())
+    let manager = AnalyticsManager(engine: MongoDBEngine())
 
     var body: some Scene {
         WindowGroup {

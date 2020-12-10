@@ -23,6 +23,7 @@
 		515D266F2575220B00B542BF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26682575220B00B542BF /* Playlist.swift */; };
 		515D26752575224A00B542BF /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26742575224A00B542BF /* TestData.swift */; };
 		515D26922575FAFF00B542BF /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D26912575FAFF00B542BF /* ChartView.swift */; };
+		516F457A2581E0D3004400D1 /* MongoDBEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F45792581E0D3004400D1 /* MongoDBEngine.swift */; };
 		5181EA802570A0DC0077A727 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181EA7F2570A0DA0077A727 /* NowPlayingView.swift */; };
 		5181EA882570A0E70077A727 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181EA872570A0E70077A727 /* PlayerViewModel.swift */; };
 		5188C3F2257715D6001601E6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C3F1257715D6001601E6 /* ActivityIndicatorView.swift */; };
@@ -149,6 +150,7 @@
 		515D26682575220B00B542BF /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		515D26742575224A00B542BF /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		515D26912575FAFF00B542BF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		516F45792581E0D3004400D1 /* MongoDBEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MongoDBEngine.swift; sourceTree = "<group>"; };
 		5181EA7F2570A0DA0077A727 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		5181EA872570A0E70077A727 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		5188C3F1257715D6001601E6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				512EF56F2580EA2100930F13 /* ButtonEvent.swift */,
 				512EF5742580EE4C00930F13 /* LoggableButton.swift */,
 				51B3D4C8257CFDCF008025E5 /* AnalyticsEngine.swift */,
+				516F45792581E0D3004400D1 /* MongoDBEngine.swift */,
 				51B3D4C9257CFDCF008025E5 /* AnalyticsManager.swift */,
 			);
 			path = Event;
@@ -1006,6 +1009,7 @@
 				CFCBC9522577BC9B00439C3F /* TrackHorizontalListView.swift in Sources */,
 				CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */,
 				512EAC2B2577B7DD00315D12 /* TodayViewModel.swift in Sources */,
+				516F457A2581E0D3004400D1 /* MongoDBEngine.swift in Sources */,
 				51BBBD7D25763398009A6852 /* URLBuilder.swift in Sources */,
 				51BBBD85257662E1009A6852 /* PlaylistViewModel.swift in Sources */,
 				CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */,

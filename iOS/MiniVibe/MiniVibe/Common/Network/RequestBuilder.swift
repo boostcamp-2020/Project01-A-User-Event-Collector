@@ -17,7 +17,7 @@ enum NetworkMethod: String {
 
 struct RequestBuilder {
     let url: URL?
-    let method: NetworkMethod = .get
+    let method: NetworkMethod
     let body: Data?
     let headers: [String: String]?
     

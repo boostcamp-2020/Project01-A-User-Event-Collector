@@ -1,35 +1,36 @@
 //
-//  MiniVibeViewModel.swift
+//  MongoDBEngine.swift
 //  MiniVibe
 //
-//  Created by 류연수 on 2020/12/02.
+//  Created by 강병민 on 2020/12/10.
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
-class MiniVibeViewModel {
-    
-    @Published var image = UIImage(named: "logo")
+class MongoDBEngine: AnalyticsEngine {
     
     private let network = NetworkService(session: URLSession.shared)
     private var cancellables = Set<AnyCancellable>()
     
-    func internalFetch(endPoint: MiniVibeType,
-                       id: Int? = nil,
-                       filterQuery: String? = nil,
-                       limitQuery: String? = nil,
-                       completion: @escaping (Data) -> Void) {
+    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
+        post(event)
+    }
+    
+    func post<T: AnalyticsEvent>(_ event: T) {
         let url = URLBuilder(pathType: .api,
-                             endPoint: endPoint,
-                             id: id,
-                             filterQuery: filterQuery,
-                             limitQuery: limitQuery).create()
+                             endPoint: .log,
+                             id: nil,
+                             filterQuery: nil,
+                             limitQuery: nil).create()
+        
+        let jsonBody = try? JSONEncoder().encode(event)
         
         guard let request = RequestBuilder(url: url,
-                                           method: .get,
-                                           body: nil,
+                                           method: .post,
+                                           body: jsonBody,
                                            headers: nil).create() else { return }
+        
         network.request(request: request)
             .sink { result in
                 switch result {
@@ -39,7 +40,7 @@ class MiniVibeViewModel {
                     break
                 }
             } receiveValue: { data in
-                completion(data)
+                print(data)
             }
             .store(in: &cancellables)
     }
@@ -47,4 +48,5 @@ class MiniVibeViewModel {
     deinit {
         cancellables.forEach { $0.cancel() }
     }
+    
 }

@@ -15,27 +15,32 @@ struct PlayerView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 10) {
-                    PlayerHeaderView(showMediaPlayer: $showMediaPlayer)
-                    if let track = viewModel.currentTrack {
-                        PlayerInfoView(timeDuration: $timeDuration, viewModel: viewModel, track: track)
+                ScrollViewReader { value in
+                    VStack(spacing: 10) {
+                        PlayerHeaderView(showMediaPlayer: $showMediaPlayer)
+                        if let track = viewModel.currentTrack {
+                            PlayerInfoView(timeDuration: $timeDuration, viewModel: viewModel, track: track)
+                        }
+                        PlayerControlView(viewModel: viewModel) {
+                            value.scrollTo(10)
+                        }
                     }
-                    PlayerControlView(viewModel: viewModel)
-                }
-                .padding(.horizontal, 20)
-                .padding(.bottom, geometry.safeAreaInsets.bottom)
-                .frame(height: geometry.size.height)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, geometry.safeAreaInsets.bottom)
+                    .frame(height: geometry.size.height)
 
-                LazyVGrid(columns: [GridItem(.flexible())]) {
-                    ForEach(viewModel.queue) { track in
-                        TrackCellView(hasAccessory: true, track: track, isCellForQueue: true)
-                            .padding(.vertical, 5)
+                    LazyVGrid(columns: [GridItem(.flexible())]) {
+                        ForEach(viewModel.queue) { track in
+                            TrackCellView(hasAccessory: false, track: track, isCellForQueue: true)
+                                .padding(.vertical, 5)
+                        }
+                        .onMove(perform: viewModel.reorder(from:to:))
+                        Rectangle()
+                            .clearBottom()
                     }
-                    .onMove(perform: viewModel.reorder(from:to:))
-                    Rectangle()
-                        .clearBottom()
+                    .padding(.horizontal, 20)
+
                 }
-                .padding(.horizontal, 20)
 
             }
             .background(Color(UIColor.systemBackground))
