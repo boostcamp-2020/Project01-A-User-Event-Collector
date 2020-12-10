@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+
 interface Props {
   children: any;
 }
@@ -10,7 +11,6 @@ const DefaultCollector: FC<Props> = ({ children }) => {
       alert("지정한 이벤트에용");
     }
   };
-  // console.log(children);
   return <div onClick={collector}>{children}</div>;
 };
 
