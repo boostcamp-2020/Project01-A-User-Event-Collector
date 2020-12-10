@@ -11,3 +11,8 @@ protocol AnalyticsEvent: Codable {
     var name: String { get }
     var metadata: [String: String]? { get }
 }
+
+struct BaseEvent: AnalyticsEvent {
+    var name: String
+    var metadata: [String: String]?
+}
