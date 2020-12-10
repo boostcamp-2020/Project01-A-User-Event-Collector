@@ -9,5 +9,5 @@ import Foundation
 
 protocol AnalyticsEvent: Codable {
     var name: String { get }
-    var metadata: [String: String] { get }
+    var metadata: [String: String]? { get }
 }

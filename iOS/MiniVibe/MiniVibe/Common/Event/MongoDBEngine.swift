@@ -24,8 +24,7 @@ class MongoDBEngine: AnalyticsEngine {
                              filterQuery: nil,
                              limitQuery: nil).create()
         
-        let jsonBody = try? JSONEncoder().encode(event)
-        
+        guard let jsonBody = try? JSONEncoder().encode(event) else { return }
         guard let request = RequestBuilder(url: url,
                                            method: .post,
                                            body: jsonBody,
