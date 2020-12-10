@@ -24,7 +24,7 @@ class PersistenceController {
     }()
     
     lazy var context: NSManagedObjectContext = {
-        container.viewContext
+        container.newBackgroundContext()
     }()
     
     func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
