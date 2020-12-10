@@ -9,6 +9,7 @@ import playlistsRouter from "./playlists";
 import libraryRouter from "./library";
 import searchRouter from "./search";
 import authRouter from "./auth";
+import logRouter from "./log";
 
 const publicRouter = express.Router();
 
@@ -22,5 +23,6 @@ publicRouter.use("/playlists", playlistsRouter);
 publicRouter.use("/library", libraryRouter);
 publicRouter.use("/search", searchRouter);
 publicRouter.use("/auth", authRouter);
+publicRouter.use("/log", logRouter);
 
 export default publicRouter;
