@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Track, TrackCardProps } from "../../interfaces";
+import { Track } from "../../interfaces";
 import {
   StyledTrackCards,
   StyledTrackCard,
@@ -14,11 +14,22 @@ import {
 import HoverImg from "../HoverImg";
 import icons from "../../constant/icons";
 
-const TrackCard = ({ trackName, cover, artists, albumName }: TrackCardProps) => {
+const TrackCard = ({ track }: { track: Track }) => {
+  const {
+    trackName,
+    Albums: { cover, albumName },
+    Artists,
+  } = track;
+  const artists: string[] = [];
+  Artists.forEach((el) => {
+    artists.push(el.artistName);
+  });
+
   const [checked, setChecked] = useState(false);
   const handleChecked = () => {
     setChecked(!checked);
   };
+
   return (
     <StyledTrackCard>
       <StyledCheckboxDiv>
@@ -39,24 +50,7 @@ const TrackCards = ({ data }: { data: Track[] }): React.ReactElement => {
   return (
     <StyledTrackCards>
       {data.map((track: Track) => {
-        const {
-          trackName,
-          Albums: { cover, albumName },
-          Artists,
-        } = track;
-        const artists: string[] = [];
-        Artists.forEach((el) => {
-          artists.push(el.artistName);
-        });
-        return (
-          <TrackCard
-            key={trackName}
-            trackName={trackName}
-            cover={cover}
-            artists={artists}
-            albumName={albumName}
-          />
-        );
+        return <TrackCard key={track.trackName} track={track} />;
       })}
     </StyledTrackCards>
   );
