@@ -9,10 +9,12 @@ import Foundation
 
 struct PlayerEvent: AnalyticsEvent {
     var name: String
+    var createdAt: Date?
     var metadata: [String: String]?
     
-    private init(name: String, metadata: [String: String]? = nil) {
+    private init(name: String, createdAt: Date? = nil, metadata: [String: String]? = nil) {
         self.name = name
+        self.createdAt = createdAt
         self.metadata = metadata
     }
     
