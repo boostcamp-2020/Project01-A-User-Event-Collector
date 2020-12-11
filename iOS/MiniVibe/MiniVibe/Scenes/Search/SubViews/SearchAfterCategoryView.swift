@@ -36,12 +36,18 @@ struct SearchAfterCategoryView: View {
             }
             if let albums = cellDatas as? [Album] {
                 ForEach(albums.prefix(maxCountOfTracks)) { album in
-                    BasicRowCellView(title: album.name, subTitle: nil, coverURLString: album.cover)
+                    BasicRowCellView(title: album.name,
+                                     subTitle: nil,
+                                     coverURLString: album.cover,
+                                     coverData: album.coverData)
                 }
             }
             if let artists = cellDatas as? [Artist] {
                 ForEach(artists.prefix(maxCountOfTracks)) { artist in
-                    BasicRowCellView(title: artist.name, subTitle: nil, coverURLString: artist.cover)
+                    BasicRowCellView(title: artist.name,
+                                     subTitle: nil,
+                                     coverURLString: artist.cover,
+                                     coverData: artist.coverData)
                 }
             }
         }

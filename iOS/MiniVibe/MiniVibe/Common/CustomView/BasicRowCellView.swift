@@ -11,10 +11,11 @@ struct BasicRowCellView: View {
     let title: String
     let subTitle: String?
     let coverURLString: String?
+    let coverData: Data?
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: coverURLString ?? ""))
+            URLImage(urlString: coverURLString, imageData: coverData)
                 .frame(width: 44, height: 44, alignment: .center)
                 .padding(.vertical, 2)
             VStack(alignment: .leading) {
@@ -32,6 +33,6 @@ struct BasicRowCellView: View {
 
 struct TrackInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        BasicRowCellView(title: "title", subTitle: "artist", coverURLString: nil)
+        BasicRowCellView(title: "title", subTitle: "artist", coverURLString: nil, coverData: nil)
     }
 }

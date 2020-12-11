@@ -35,4 +35,8 @@ final class NetworkService {
             }
             .eraseToAnyPublisher()
     }
+    
+    deinit {
+//        session.invalidateAndCancel()
+    }
 }

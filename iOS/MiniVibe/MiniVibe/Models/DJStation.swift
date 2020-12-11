@@ -7,8 +7,17 @@
 
 import Foundation
 
-struct DJStation: Identifiable {
+struct DJStation: Codable, Identifiable {
     let id: Int
-    let imageName: String
-    let title: String = "TEMP"
+    let stationName: String
+    let cover: String
+    let popularity: Int
+}
+
+struct DJStationResponse: Codable {
+    let djStations: [DJStation]
+
+    enum CodingKeys: String, CodingKey {
+        case djStations = "DJStations"
+    }
 }

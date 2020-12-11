@@ -7,22 +7,30 @@
 
 import Foundation
 
-class TodayViewModel: MiniVibeViewModel, ObservableObject {
+class TodayViewModel: ObservableObject {
     @Published var stations = [DJStation]()
     @Published var recommends = [Playlist]()
     @Published var favorites = [Playlist]()
     @Published var magazines = [Magazine]()
     @Published var tracks = [Track]()
     
+    private let networkManager = NetworkManager()
+    
     func fetchAll() {
+        fetch(type: .djStations)
         fetch(type: .favorites)
         fetch(type: .magazines)
         fetch(type: .recommendations)
-        fetch(type: .playlists, id: 18)
+//        fetch(type: .playlists, id: 18)
     }
     
     func fetch(type: MiniVibeType, id: Int? = nil) {
-        internalFetch(endPoint: type, id: id) { [weak self] data in
+        let url = URLBuilder(pathType: .api,
+                             endPoint: type,
+                             id: id).create()
+        let urlRequest = RequestBuilder(url: url,
+                                        method: .get).create()
+        networkManager.request(urlRequest: urlRequest) { [weak self] data in
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
@@ -31,8 +39,11 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
                     }
                 }
             case .djStations:
-//                self?.stations = [DJStation(id: 1, imageName: nil)]
-                break
+                if let decodedData = try? JSONDecoder().decode(DJStationResponse.self, from: data) {
+                    DispatchQueue.main.async {
+                        self?.stations = decodedData.djStations
+                    }
+                }
             case .playlists:
                 if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
                     DispatchQueue.main.async {

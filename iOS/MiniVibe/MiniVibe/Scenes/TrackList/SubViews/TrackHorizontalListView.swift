@@ -16,14 +16,24 @@ struct TrackHorizontalListView: View {
         GridItem(.fixed(60)),
         GridItem(.fixed(60))
     ]
+    private let manager: AnalyticsManager
+
+    init(tracks: [Track], manager: AnalyticsManager) {
+        self.tracks = tracks
+        self.manager = manager
+    }
     
     var body: some View {
         Group {
             VStack {
-                NavigationLink(destination: PlaylistView(playlistID: 18)) {
-                    CategoryHeaderView(title: "오늘 TOP 100")
-                        .foregroundColor(.primary)
-                }
+                let screenEvent = ScreenEvent.screenViewedWithSource(.playlist, source: .chart)
+                MemorySafeNavigationLink(
+                    contentView: CategoryHeaderView(title: "오늘 TOP 100").foregroundColor(.primary),
+                    destination: AnyView(PlaylistView(playlistID: 18)
+                                            .onAppear {
+                                                manager.log(screenEvent)
+                                            })
+                )
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: layout,
                               spacing: 20) {
@@ -39,6 +49,7 @@ struct TrackHorizontalListView: View {
 
 struct TrackHorizontalListView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackHorizontalListView(tracks: TestData.playlist.tracks!)
+        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
+                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
     }
 }

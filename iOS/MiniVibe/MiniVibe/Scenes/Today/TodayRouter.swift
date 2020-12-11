@@ -10,19 +10,47 @@ import SwiftUI
 class TodayRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingStarter = MiniVibeType
+    private let manager: AnalyticsManager
+    
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
     
     func getDestination(to routingDestination: RoutingStarter, with id: Int? = nil) -> AnyView {
         switch routingDestination {
         case .magazines:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .magazines)))
+            let router = ThumbnailRouter(routingStarter: .magazines, manager: manager)
+            let screenEvent = ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)
+            return AnyView(ThumbnailListView(router: router)
+                            .onAppear {
+                                self.manager.log(screenEvent)
+                            })
         case .recommendations:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .recommendations)))
+            let router = ThumbnailRouter(routingStarter: .recommendations, manager: manager)
+            let screenEvent = ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)
+            return AnyView(ThumbnailListView(router: router)
+                            .onAppear {
+                                self.manager.log(screenEvent)
+                            })
         case .favorites:
-            return AnyView(ThumbnailListView(router: ThumbnailRouter(routingStarter: .favorites)))
+            let router = ThumbnailRouter(routingStarter: .favorites, manager: manager)
+            let screenEvent = ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)
+            return AnyView(ThumbnailListView(router: router)
+                            .onAppear {
+                                self.manager.log(screenEvent)
+                            })
         case .djStations:
-            return AnyView(DJStationListView())
+            let screenEvent = ScreenEvent.screenViewedWithSource(.djStationList, source: .today)
+            return AnyView(DJStationListView()
+                            .onAppear {
+                                self.manager.log(screenEvent)
+                            })
         case .tracks:
-            return AnyView(PlaylistView(playlistID: 18))
+            let screenEvent = ScreenEvent.screenViewedWithSource(.playlist, source: .today)
+            return AnyView(PlaylistView(playlistID: 18)
+                            .onAppear {
+                                self.manager.log(screenEvent)
+                            })
         default:
             return AnyView(ErrorView())
         }

@@ -16,10 +16,21 @@ enum NetworkMethod: String {
 }
 
 struct RequestBuilder {
-    let url: URL?
-    let method: NetworkMethod = .get
-    let body: Data?
-    let headers: [String: String]?
+    private let url: URL?
+    private let method: NetworkMethod
+    private let body: Data?
+    private let headers: [String: String]?
+    
+    init(url: URL?,
+         method: NetworkMethod,
+         body: Data? = nil,
+         headers: [String: String]? = nil) {
+        
+        self.url = url
+        self.method = method
+        self.body = body
+        self.headers = headers
+    }
     
     func create() -> URLRequest? {
         guard let url = url else { return nil }

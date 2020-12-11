@@ -15,21 +15,26 @@ struct NowPlayingView: View {
     var body: some View {
         HStack {
             Button(action: {
-                self.showMediaPlayer.toggle()
+                if viewModel.currentTrack != nil {
+                    self.showMediaPlayer.toggle()
+                }
             }, label: {
-                BasicRowCellView(title: viewModel.trackName,
+                SwappableRowView(title: viewModel.trackName,
                                  subTitle: viewModel.artist,
-                                 coverURLString: viewModel.currentTrack.album?.cover)
+                                 coverURLString: viewModel.coverURLString,
+                                 coverData: viewModel.coverData)
                     .padding(.all, 9)
             }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
             })
             HStack(spacing: 20) {
-                Button(action: {}, label: {
-                    Image(systemName: "play.fill")
-                        .accesoryModifier(color: .gray, size: .small)
-                })
-                Button(action: {}, label: {
+                ToggleableImage(isEnabled: $viewModel.isPlaying,
+                                imageWhenTrue: "pause",
+                                imageWhenFalse: "play.fill",
+                                size: .medium)
+                Button(action: {
+                    viewModel.playNextTrack()
+                }, label: {
                     Image(systemName: "forward.fill")
                         .accesoryModifier(color: .gray, size: .small)
                 })
@@ -43,6 +48,6 @@ struct NowPlayingView: View {
 
 struct NowPlayingView_Previews: PreviewProvider {
     static var previews: some View {
-        NowPlayingView(viewModel: PlayerViewModel())
+        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
     }
 }

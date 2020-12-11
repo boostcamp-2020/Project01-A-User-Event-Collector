@@ -8,38 +8,26 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @State private var text: String = ""
-    @State private var isEditing = false
-    @State private var isPushed = false
-    
-    init(defaultText: String) {
-        self.text = defaultText
-    }
+    @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해 주세요.", text: $text) { isEditing in
-                self.isEditing = isEditing
+            TextField("검색어를 입력해 주세요.", text: $viewModel.searchText) { isEditing in
+                viewModel.isEditing = isEditing
             } onCommit: {
-                isPushed = true
-            }.sheet(isPresented: $isPushed) {
-                SearchAfterView(searchText: text)
+                viewModel.reset()
             }
             .padding(9)
             .padding(.horizontal, 27)
             .background(Color(.systemGray6))
             .cornerRadius(8)
-            //                .padding(.horizontal, 10)
-            //                .onTapGesture {
-            //                    self.isEditing = true
-            //                }
             .overlay(
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                    if !isEditing {
+                    if !viewModel.isEditing {
                         Image(systemName: "music.note")
                             .foregroundColor(.gray)
                             .padding(.trailing, 12)
@@ -47,23 +35,27 @@ struct SearchBarView: View {
                 }
             )
             
-            if isEditing {
+            if viewModel.isEditing {
                 Button(action: {
-                    isEditing = false
-                    text = ""
+                    viewModel.searchText = ""
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                    to: nil,
+                                                    from: nil,
+                                                    for: nil)
+
                 }, label: {
                     Text("취소")
                 })
                 .padding(.trailing, 10)
-                .transition(.move(edge: .trailing))
                 .animation(.default)
+                .transition(.move(edge: .trailing))
             }
         }
     }
 }
-
-struct SearchBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBarView(defaultText: "")
-    }
-}
+//
+//struct SearchBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchBarView(defaultText: "")
+//    }
+//}

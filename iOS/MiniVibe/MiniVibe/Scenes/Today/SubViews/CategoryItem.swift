@@ -41,5 +41,11 @@ extension CategoryItem {
 }
 
 extension CategoryItem {
-    //init이 필요할때는
+    init(station: DJStation) {
+        self.id = station.id
+        self.imageName = station.cover
+        self.title = nil
+        self.author = nil
+        self.description = nil
+    }
 }

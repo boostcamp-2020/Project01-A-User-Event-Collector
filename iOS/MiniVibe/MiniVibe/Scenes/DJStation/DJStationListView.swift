@@ -22,9 +22,8 @@ struct DJStationListView: View {
                 ForEach(stationViewModel.stations) { station in
                     Button(action: {
                     }, label: {
-                        Image(station.imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
+                        URLImage(urlString: station.cover)
+                            .frame(minHeight: 100)
                     })
                     .padding(.all, 15)
                     .accentColor(.green)
@@ -32,7 +31,7 @@ struct DJStationListView: View {
             }
         }
         .modifier(NavigationBarStyle(title: "DJ 스테이션"))
-        .onAppear(perform: stationViewModel.fetchStations)
+        .onAppear(perform: stationViewModel.fetch)
     }
 }
 

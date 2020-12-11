@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct MiniVibeApp: App {
+    
+    let manager = AnalyticsManager(engine: MongoDBEngine())
 
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            CustomTabView(manager: manager)
         }
     }
 }

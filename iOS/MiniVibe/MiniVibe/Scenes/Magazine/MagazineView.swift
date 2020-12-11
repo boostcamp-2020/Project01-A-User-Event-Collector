@@ -30,16 +30,11 @@ struct MagazineView: View {
                 LazyVGrid(columns: layout,
                           spacing: 20,
                           pinnedViews: [.sectionHeaders]) {
-                    AsyncImage(url: URL(string: magazine.cover ?? ""))
-                    Section(header: TrackListButtonView()) {
-                        if let description = magazine.description {
-                            Text(description)
-                                .modifier(Description1NoLimit())
-                        }
-                        TrackListView(tracks: tracks)
-                    }
+                    URLImage(urlString: magazine.cover)
+                    TrackListView(tracks: tracks)
                 }
-            }.padding()
+            }
+            .padding()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

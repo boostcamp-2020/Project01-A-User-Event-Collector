@@ -9,58 +9,39 @@ import SwiftUI
 
 struct TrackCellView: View {
     let hasAccessory: Bool
+    let isCellForQueue: Bool
     let track: Track
-    var didToggleFavorite: (() -> Void)?
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
-    @State var isFavorite = false
+    @StateObject private var viewModel: TrackCellViewModel
+    
+    init(hasAccessory: Bool, track: Track, isCellForQueue: Bool = false) {
+        self.hasAccessory = hasAccessory
+        self.track = track
+        self.isCellForQueue = isCellForQueue
+        _viewModel = StateObject(wrappedValue: TrackCellViewModel(track: track))
+    }
     
     var body: some View {
         HStack {
             Button(action: {
-                nowPlayingViewModel.updateWith(track: track)
+                if isCellForQueue {
+                    nowPlayingViewModel.changeCurrentTrackInQueue(to: track)
+                } else {
+                    nowPlayingViewModel.update(with: track)
+                }
             }, label: {
                 BasicRowCellView(title: track.name,
-                                 subTitle: track.artists?.first?.name ?? "",
-                                 coverURLString: track.album?.cover)
+                                 subTitle: track.artist,
+                                 coverURLString: track.coverURLString,
+                                 coverData: track.coverData)
             })
             if hasAccessory {
                 HStack(spacing: 20) {
-                    Heart(isFavorite: $isFavorite, toggleFavorite: didToggleFavorite)
-                    Ellipsis()
+                    HeartAccessory(isFavorite: viewModel.isFavorite, toggleFavorite: viewModel.didToggleFavorite)
+                    EllipsisAssessory()
                 }
             }
-            
         }
-    }
-}
-
-struct Heart: View {
-    @Binding var isFavorite: Bool
-    let toggleFavorite: (() -> Void)?
-    
-    var body: some View {
-        Button(action: {
-            toggleFavorite?()
-            isFavorite.toggle()
-        }, label: {
-            Image(systemName: isFavorite ? "heart.fill" : "heart")
-                .accesoryModifier(color: .red, size: .small)
-        })
-        .buttonStyle(BorderlessButtonStyle())
-    }
-}
-
-struct Ellipsis: View {
-    var body: some View {
-        Button(action: {
-            print("show menu")
-            
-        }, label: {
-            Image(systemName: "ellipsis")
-                .accesoryModifier(color: .gray, size: .small)
-            
-        })
-        .buttonStyle(BorderlessButtonStyle())
     }
 }
 

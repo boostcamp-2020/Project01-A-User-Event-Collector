@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct TrackListView: View {
-    
+    @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
     private let layout = [GridItem(.flexible())]
     private let tracks: [Track]
-    
-    @StateObject private var viewModel = TrackListViewModel()
     
     init(tracks: [Track]) {
         self.tracks = tracks
     }
     
     var body: some View {
-        LazyVGrid(columns: layout) {
-            ForEach(viewModel.tracks) { track -> TrackCellView in
-                var cell = TrackCellView(hasAccessory: true, track: track)
-                cell.didToggleFavorite = {
-                    viewModel.toggleIsFavorite(for: track.id)
-                }
-                return cell
+        let headerView = TrackListButtonView(
+            didPressPlayButton: {
+                nowPlayingViewModel.update(with: tracks)
+            },
+            didPressShuffleButton: {
+                nowPlayingViewModel.update(with: tracks, isShuffled: true)
             }
-            Rectangle()
-                .clearBottom()
-        }.onAppear {
-            viewModel.createTracks(tracks: tracks)
+        )
+        Section(header: headerView) {
+            LazyVGrid(columns: layout) {
+                ForEach(tracks) { track -> TrackCellView in
+                    TrackCellView(hasAccessory: true, track: track)
+                }
+                Rectangle()
+                    .clearBottom()
+            }
         }
     }
 }

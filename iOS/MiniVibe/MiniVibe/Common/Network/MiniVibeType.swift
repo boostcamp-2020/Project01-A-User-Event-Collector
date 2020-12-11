@@ -13,6 +13,7 @@ enum MiniVibeType {
     case albums
     case tracks
     case search
+    case log
     
     func networkPath() -> String? {
         switch self {
@@ -23,7 +24,7 @@ enum MiniVibeType {
         case .albums:
             return "albums"
         case .djStations:
-            return "dj-station"
+            return "dj-stations"
         case .favorites:
             return "playlists?filter=9"
         case .recommendations:
@@ -32,6 +33,8 @@ enum MiniVibeType {
             return "search"
         case .tracks:
             return nil
+        case .log:
+            return "log/ios"
         }
     }
     
@@ -53,6 +56,8 @@ enum MiniVibeType {
             return "검색"
         case .tracks:
             return "노래"
+        default:
+            return ""
         }
     }
 }

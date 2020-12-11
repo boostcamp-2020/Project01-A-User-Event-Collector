@@ -7,49 +7,76 @@
 
 import CoreData
 
-struct PersistenceController {
+class PersistenceController {
+    
     static let shared = PersistenceController()
-
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        return result
-    }()
-
-    let container: NSPersistentContainer
-
-    init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "MiniVibe")
-        if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+    
+    private init() { }
+    
+    private lazy var container: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MiniVibe")
+        container.loadPersistentStores { (description, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                Typical reasons for an error here include:
-                * The parent directory does not exist, cannot be created, or disallows writing.
-                * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                * The device is out of space.
-                * The store could not be migrated to the current model version.
-                Check the error message to determine what the actual problem was.
-                */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
-        })
+        }
+        return container
+    }()
+    
+    lazy var context: NSManagedObjectContext = {
+        container.newBackgroundContext()
+    }()
+    
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+        var coreDatas: [T] = []
+        do {
+            coreDatas = try context.fetch(request)
+        } catch {
+            print(error)
+        }
+        return coreDatas
+    }
+    
+    func delete<T: NSManagedObject>(data: T) -> CoreDataResult {
+        context.delete(data)
+        return save()
+    }
+    
+    func deleteAll<T: NSManagedObject>(datas: [T]) -> CoreDataResult {
+        datas.forEach { data in
+            context.delete(data)
+        }
+        return save()
+    }
+    
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> CoreDataResult {
+        let request = T.fetchRequest()
+        let delete = NSBatchDeleteRequest(fetchRequest: request)
+        do {
+            try context.execute(delete)
+        } catch {
+            return .failure(.deleteAllFailed)
+        }
+        return .success
+    }
+    
+    func save() -> CoreDataResult {
+        do {
+            try context.save()
+        } catch {
+            return .failure(.saveFailed)
+        }
+        return .success
+    }
+    
+    enum CoreDataResult {
+        case success
+        case failure(CoreDataError)
+    }
+    
+    enum CoreDataError: Error {
+        case deleteFailed
+        case saveFailed
+        case deleteAllFailed
     }
 }

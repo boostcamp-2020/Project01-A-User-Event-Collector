@@ -9,12 +9,13 @@ import SwiftUI
 
 struct ChartView: View {
     @StateObject private var viewModel = PlaylistViewModel()
-    
+    private let manager: AnalyticsManager
     private let playlistID: Int
     private let layout = [GridItem(.flexible())]
     
-    init(playlistID: Int) {
+    init(playlistID: Int, manager: AnalyticsManager) {
         self.playlistID = playlistID
+        self.manager = manager
     }
     
     var body: some View {
@@ -22,20 +23,22 @@ struct ChartView: View {
             ScrollView {
                 LazyVGrid(columns: layout) {
                     if let tracks = viewModel.playlist?.tracks {
-                        TrackHorizontalListView(tracks: tracks)
+                        TrackHorizontalListView(tracks: tracks, manager: manager)
                     }
                 }
             }
             .padding()
             .navigationTitle("차트")
-        }.onAppear {
-            viewModel.fetch(id: playlistID)
-        }
-    }
+            .onAppear {
+                manager.log(ScreenEvent.screenViewed(.chart))
+                viewModel.fetch(id: playlistID)
+            }
+
+        }    }
     
 }
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView(playlistID: 18)
+        ChartView(playlistID: 18, manager: AnalyticsManager(engine: MockAnalyticsEngine()))
     }
 }

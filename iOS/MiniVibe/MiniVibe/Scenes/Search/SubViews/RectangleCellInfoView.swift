@@ -16,6 +16,7 @@ struct RectangleCellInfoView: View {
                 Text("EXO 카이가 솔로 데뷔곡 MV를 선공개했습니다.")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.black)
                     .lineLimit(2)
                     .padding([.leading, .top])
                 Spacer()
