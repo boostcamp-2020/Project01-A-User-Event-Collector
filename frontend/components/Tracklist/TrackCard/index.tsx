@@ -57,7 +57,6 @@ const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists, listLength }: Pr
           </Link>
         ))}
       </ChildElem>
-
       <TrackModal trackId={id} />
     </StyleTrack>
   );
