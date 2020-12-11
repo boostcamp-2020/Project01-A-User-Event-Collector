@@ -7,12 +7,14 @@
 
 import Foundation
 
-class TodayViewModel: MiniVibeViewModel, ObservableObject {
+class TodayViewModel: ObservableObject {
     @Published var stations = [DJStation]()
     @Published var recommends = [Playlist]()
     @Published var favorites = [Playlist]()
     @Published var magazines = [Magazine]()
     @Published var tracks = [Track]()
+    
+    private let networkManager = NetworkManager()
     
     func fetchAll() {
         fetch(type: .djStations)
@@ -23,7 +25,12 @@ class TodayViewModel: MiniVibeViewModel, ObservableObject {
     }
     
     func fetch(type: MiniVibeType, id: Int? = nil) {
-        internalFetch(endPoint: type, id: id) { [weak self] data in
+        let url = URLBuilder(pathType: .api,
+                             endPoint: type,
+                             id: id).create()
+        let urlRequest = RequestBuilder(url: url,
+                                        method: .get).create()
+        networkManager.request(urlRequest: urlRequest) { [weak self] data in
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {

@@ -9,7 +9,7 @@ import Foundation
 
 struct ScreenEvent: AnalyticsEvent {
     var name: String
-    var metadata: [String: String]
+    var metadata: [String: String]?
     
     enum ScreenType: String {
         case today, chart, search, library
@@ -20,7 +20,7 @@ struct ScreenEvent: AnalyticsEvent {
         case error
     }
     
-    private init(name: String, metadata: [String: String] = [:]) {
+    private init(name: String, metadata: [String: String]? = nil) {
         self.name = name
         self.metadata = metadata
     }

@@ -10,7 +10,7 @@ import Combine
 
 class MongoDBEngine: AnalyticsEngine {
     
-    private let network = NetworkService(session: URLSession.shared)
+    private let networkManager = NetworkManager()
     private var cancellables = Set<AnyCancellable>()
     
     func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
@@ -19,30 +19,17 @@ class MongoDBEngine: AnalyticsEngine {
     
     func post<T: AnalyticsEvent>(_ event: T) {
         let url = URLBuilder(pathType: .api,
-                             endPoint: .log,
-                             id: nil,
-                             filterQuery: nil,
-                             limitQuery: nil).create()
-        
+                             endPoint: .log).create()
         let jsonBody = try? JSONEncoder().encode(event)
-        
-        guard let request = RequestBuilder(url: url,
+        let urlrequest = RequestBuilder(url: url,
                                            method: .post,
-                                           body: jsonBody,
-                                           headers: nil).create() else { return }
+                                           body: jsonBody).create()
         
-        network.request(request: request)
-            .sink { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    break
-                }
-            } receiveValue: { data in
-                print(data)
+        networkManager.request(urlRequest: urlrequest) { data in
+            if let prettifyJSONString = data.prettifyJSONString {
+                print(prettifyJSONString)
             }
-            .store(in: &cancellables)
+        }
     }
     
     deinit {

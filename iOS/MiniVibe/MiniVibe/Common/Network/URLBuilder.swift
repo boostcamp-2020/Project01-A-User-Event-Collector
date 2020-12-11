@@ -9,12 +9,26 @@ import Foundation
 
 struct URLBuilder {
     
-    let baseURL = "http://118.67.135.69:4000/"
-    let pathType: PathType
-    let endPoint: MiniVibeType
-    let id: Int?
-    let filterQuery: String?
-    let limitQuery: String?
+    private let baseURL = "http://118.67.135.69:4000/"
+    private let pathType: PathType
+    private let endPoint: MiniVibeType
+    private let id: Int?
+    private let filterQuery: String?
+    private let limitQuery: String?
+    
+    init(pathType: PathType,
+         endPoint: MiniVibeType,
+         id: Int? = nil,
+         filterQuery: String? = nil,
+         limitQuery: String? = nil) {
+        
+        self.pathType = pathType
+        self.endPoint = endPoint
+        self.id = id
+        self.filterQuery = filterQuery
+        self.limitQuery = limitQuery
+        
+    }
     
     enum PathType: String {
         case user, api
