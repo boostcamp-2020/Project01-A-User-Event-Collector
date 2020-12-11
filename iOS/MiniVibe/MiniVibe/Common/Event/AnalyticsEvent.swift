@@ -9,13 +9,13 @@ import Foundation
 
 protocol AnalyticsEvent: Codable {
     var name: String { get }
-    var createdAt: Date? { get }
+    var createdAt: String? { get }
     var metadata: [String: String]? { get }
 }
 
 struct BaseEvent: AnalyticsEvent {
     var id: Int?
     var name: String
-    var createdAt: Date?
+    var createdAt: String?
     var metadata: [String: String]?
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct ScreenEvent: AnalyticsEvent {
     var name: String
-    var createdAt: Date?
+    var createdAt: String?
     var metadata: [String: String]?
     
     enum ScreenType: String {
@@ -21,9 +21,9 @@ struct ScreenEvent: AnalyticsEvent {
         case error
     }
     
-    private init(name: String, createdAt: Date? = nil, metadata: [String: String]? = nil) {
+    private init(name: String, metadata: [String: String]? = nil) {
         self.name = name
-        self.createdAt = createdAt
+        self.createdAt = Date().convertToStringForWeb()
         self.metadata = metadata
     }
 
