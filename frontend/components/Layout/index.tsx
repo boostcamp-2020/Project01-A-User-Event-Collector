@@ -13,49 +13,38 @@ import {
   StyledBlockingOverlay,
 } from "./styled";
 import Overlay from "./Overlay";
-
+import PlaylistCheckBar from "./PlaylistCheckBar";
 
 type Props = {
   children: ReactNode | undefined;
 };
 
-interface TrackProps {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: {
-    cover: string;
-    albumName: string;
-  };
-  Artists_Tracks: {
-    id: number;
-    trackId: number;
-    artistId: number;
-    Artists: {
-      artistName: string;
-    };
-  }[];
-}
-
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
+  const [checkMode, setCheckMode] = useState(false);
 
   const [showPlaylist, setShowPlaylist] = useState(false);
-    
+
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initCheckedTrack());
   }, [router.pathname]);
-  
+
   const handleSearch = (): void => setSearchMode(!searchMode);
   const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
+  const handleCheckMode = () => setCheckMode(!checkMode);
 
+  const closeSearch = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape" || e.key === "Esc") {
+      handleSearch();
+    }
+  };
 
   return (
-    <StyledLayoutWrapper>
+    <StyledLayoutWrapper onKeyDown={closeSearch}>
       <StyledLayout>
+        {checkMode ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
         {searchMode ? (
           <StyledSearchBar>

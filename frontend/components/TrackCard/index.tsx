@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Track, TrackCardProps } from "../../interfaces";
 import {
   StyledTrackCards,
   StyledTrackCard,
@@ -10,17 +11,10 @@ import {
   StyledAlbum,
   StyledEllipsis,
 } from "./styled";
-import HoverImg from "../../HoverImg";
-import icons from "../../../constant/icons";
+import HoverImg from "../HoverImg";
+import icons from "../../constant/icons";
 
-interface SearchTrackCardProps {
-  trackName: string;
-  cover: string;
-  artists: string[];
-  albumName: string;
-}
-
-const SearchTrackCard = ({ trackName, cover, artists, albumName }: SearchTrackCardProps) => {
+const TrackCard = ({ trackName, cover, artists, albumName }: TrackCardProps) => {
   const [checked, setChecked] = useState(false);
   const handleChecked = () => {
     setChecked(!checked);
@@ -41,44 +35,22 @@ const SearchTrackCard = ({ trackName, cover, artists, albumName }: SearchTrackCa
   );
 };
 
-interface TrackArtistProps {
-  id: number;
-  trackId: number;
-  artistId: number;
-  Artists: {
-    artistName: string;
-  };
-}
-
-interface TrackAlbumProps {
-  cover: string;
-  albumName: string;
-}
-
-interface TrackProps {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: TrackAlbumProps;
-  Artists_Tracks: TrackArtistProps[];
-}
-
-const SearchTrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement => {
+const TrackCards = ({ data }: { data: Track[] }): React.ReactElement => {
   return (
     <StyledTrackCards>
-      {data.map((track: TrackProps) => {
+      {data.map((track: Track) => {
         const {
           trackName,
           Albums: { cover, albumName },
-          Artists_Tracks: artistTracks,
+          Artists,
         } = track;
         const artists: string[] = [];
-        artistTracks.forEach((el) => {
-          artists.push(el.Artists.artistName);
+        Artists.forEach((el) => {
+          artists.push(el.artistName);
         });
         return (
-          <SearchTrackCard
+          <TrackCard
+            key={trackName}
             trackName={trackName}
             cover={cover}
             artists={artists}
@@ -90,4 +62,4 @@ const SearchTrackCards = ({ data }: { data: TrackProps[] }): React.ReactElement 
   );
 };
 
-export default SearchTrackCards;
+export default TrackCards;

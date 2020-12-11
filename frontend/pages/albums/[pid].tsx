@@ -1,20 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 import { DefaultCollector, DefaultEmitter } from "../../event/event";
+import myAxios from "../../utils/myAxios";
 
-const StyleAlbumPage = styled.div`
-  height: 100vh;
-`;
-
-const AlbumPage = ({ Albums }: any) => {
+const AlbumPage = ({ Albums }: any): React.ReactElement => {
   return (
     <DefaultCollector>
-      <StyleAlbumPage>
-        <DefaultEmitter>
-          <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
-        </DefaultEmitter>
-      </StyleAlbumPage>
+      <DefaultEmitter>
+        <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
+      </DefaultEmitter>
     </DefaultCollector>
   );
 };
@@ -22,22 +16,16 @@ const AlbumPage = ({ Albums }: any) => {
 export default AlbumPage;
 
 export async function getStaticPath() {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/albums`);
-  const albums = await res.json();
+  const { data: albums }: any = await myAxios.get(`/albums`);
   const paths = albums.map((album: any) => `/albums/${album.id}`);
 
   return { paths, fallback: false };
 }
 
 export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/albums/${params.pid}`);
-  const { Albums } = await res.json();
-
+  const res = await myAxios.get(`/albums/${params.pid}`);
+  const {
+    data: { Albums },
+  }: any = await res;
   return { props: { Albums } };
 }

@@ -12,6 +12,13 @@ interface Album {
   artistId: number;
 }
 
+interface TrackCardProps {
+  trackName: string;
+  cover: string;
+  artists: string[];
+  albumName: string;
+}
+
 interface Track {
   id: number;
   trackName: string;
@@ -46,4 +53,4 @@ interface News {
   playlistId?: number;
 }
 
-export type { Track, Artist, Album, Playlist, Magazine, News };
+export type { Track, Artist, Album, Playlist, Magazine, News, TrackCardProps };

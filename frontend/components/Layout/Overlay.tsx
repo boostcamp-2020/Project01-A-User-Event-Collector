@@ -18,7 +18,7 @@ import {
 import icons from "../../constant/icons";
 import Img from "../Img";
 
-interface TrackProps {
+interface Track {
   id: number;
   trackName: string;
   albumTrackNumber: number;
@@ -133,7 +133,7 @@ const firstMockData = {
   ],
 };
 
-const TrackCard = ({ track }: { track: TrackProps }): React.ReactElement => {
+const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
   const {
     id,
     trackName,
