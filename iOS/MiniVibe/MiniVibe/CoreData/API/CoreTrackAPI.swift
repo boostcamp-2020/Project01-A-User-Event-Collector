@@ -36,7 +36,11 @@ class CoreTrackAPI {
             let coreArtist = CoreArtist(context: context)
             coreArtist.id = Int64(artist.id)
             coreArtist.name = artist.name
-            coreArtist.cover = loadFromCache(urlString: artist.cover)
+            if let coverData = artist.coverData {
+                coreArtist.cover = coverData
+            } else {
+                coreArtist.cover = loadFromCache(urlString: artist.cover)
+            }
             coreArtist.addToTracks(coreTrack)
         }
         // Album 추가
@@ -44,7 +48,11 @@ class CoreTrackAPI {
         let coreAlbum = CoreAlbum(context: context)
         coreAlbum.id = Int64(album.id)
         coreAlbum.descript = album.description
-        coreAlbum.cover = loadFromCache(urlString: album.cover)
+        if let coverData = album.coverData {
+            coreAlbum.cover = coverData
+        } else {
+            coreAlbum.cover = loadFromCache(urlString: album.cover)
+        }
         coreAlbum.addToTracks(coreTrack)
         
         save()

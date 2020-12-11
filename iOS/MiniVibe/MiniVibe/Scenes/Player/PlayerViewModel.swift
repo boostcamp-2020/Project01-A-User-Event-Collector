@@ -12,19 +12,19 @@ import MediaPlayer
 import CoreData
 
 class PlayerViewModel: ObservableObject {
-    // TODO: - 외부 접근이 필요 없는 곳에는 private 설정하기
     @Published var currentTrack: Track?
     @Published var currentTrackIndex: Int?
     @Published var queue: [Track] = []
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
+    private var isInitial = true
     @Published private var timeRemaining = 3
     
     private let coreTrackAPI = CoreTrackAPI()
-    var volumeChangeAmount = 0
-    var timer: Timer?
-    var subscriptions = Set<AnyCancellable>()
+    private var volumeChangeAmount = 0
+    private var timer: Timer?
+    private var subscriptions = Set<AnyCancellable>()
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
     }
@@ -48,6 +48,7 @@ class PlayerViewModel: ObservableObject {
         setupSubscriptions()
         setupVolumeListener()
         fetchFromCoreData()
+        isInitial = false
     }
     
     func update(with track: Track) {
@@ -94,7 +95,7 @@ class PlayerViewModel: ObservableObject {
         queue.move(fromOffsets: source, toOffset: destination)
     }
     
-    func safeAppend(_ track: Track) {
+    private func safeAppend(_ track: Track) {
         if queue.contains(where: {$0.id == track.id}) {
             queue.removeAll(where: {$0.id == track.id})
         }
@@ -105,14 +106,14 @@ class PlayerViewModel: ObservableObject {
         timeRemaining -= 1
     }
     
-    func checkVolume() {
+    private func checkVolume() {
         if self.volumeChangeAmount >= 3 {
             self.manager.log(PlayerEvent.volumeChanged)
         }
         self.volumeChangeAmount = 0
     }
     
-    func getOptionalNextIndex() -> Int? {
+    private func getOptionalNextIndex() -> Int? {
         guard let currentTrackIndex = currentTrackIndex else { return nil }
         if currentTrackIndex == queue.count - 1 {
             return nil
@@ -121,7 +122,7 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func getOptionalPreviousIndex() -> Int? {
+    private func getOptionalPreviousIndex() -> Int? {
         guard let currentTrackIndex = currentTrackIndex else { return nil }
         if currentTrackIndex == 0 {
             return nil
@@ -137,12 +138,12 @@ extension PlayerViewModel {
     func setupSubscriptions() {
         trackPlayingSubscription()
         shuffleSubscription()
-        randomSubscription()
+        repeatSubscription()
         timeSubscription()
         trackIndexSubscription()
     }
     
-    func setupVolumeListener() {
+    private func setupVolumeListener() {
         do {
             try session.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
@@ -150,11 +151,10 @@ extension PlayerViewModel {
         }
         progressObserver = session.observe(\.outputVolume) { (session, _) in
             self.volumeChangeAmount += 1
-            print(self.volumeChangeAmount)
         }
     }
     
-    func setupTimer(isPlaying: Bool) {
+    private func setupTimer(isPlaying: Bool) {
         timer?.invalidate() // 기존에 timer가 있었다면 invalidate 시키고 새롭게 만들어야함
         if isPlaying {
             timeRemaining = 3
@@ -173,7 +173,7 @@ extension PlayerViewModel {
 // MARK: Combine과 관련된 subscription 함수들
 extension PlayerViewModel {
     
-    func trackPlayingSubscription() {
+    private func trackPlayingSubscription() {
         $isPlaying
             .sink { [weak self] isPlaying in
                 if let id = self?.currentTrack?.id {
@@ -188,23 +188,27 @@ extension PlayerViewModel {
             .store(in: &subscriptions)
     }
     
-    func shuffleSubscription() {
+    private func shuffleSubscription() {
         $isShuffle
             .sink { isShuffle in
-                self.manager.log(PlayerEvent.shuffle(isShuffle))
+                if self.isInitial == false {
+                    self.manager.log(PlayerEvent.shuffle(isShuffle))
+                }
             }
             .store(in: &subscriptions)
     }
     
-    func randomSubscription() {
+    private func repeatSubscription() {
         $isRepeat
-            .sink { [weak self] isRepeat in
-                self?.manager.log(PlayerEvent.repeat(isRepeat))
+            .sink { isRepeat in
+                if self.isInitial == false {
+                    self.manager.log(PlayerEvent.repeat(isRepeat))
+                }
             }
             .store(in: &subscriptions)
     }
     
-    func timeSubscription() {
+    private func timeSubscription() {
         $timeRemaining
             .sink { timeRemaining in
                 if timeRemaining <= 0 {
@@ -215,7 +219,7 @@ extension PlayerViewModel {
             .store(in: &subscriptions)
     }
     
-    func trackIndexSubscription() {
+    private func trackIndexSubscription() {
         $currentTrack
             .compactMap { $0 }
             .sink { track in

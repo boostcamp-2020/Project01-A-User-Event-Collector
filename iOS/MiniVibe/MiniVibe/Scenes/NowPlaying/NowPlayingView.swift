@@ -19,7 +19,7 @@ struct NowPlayingView: View {
                     self.showMediaPlayer.toggle()
                 }
             }, label: {
-                BasicRowCellView(title: viewModel.trackName,
+                SwappableRowView(title: viewModel.trackName,
                                  subTitle: viewModel.artist,
                                  coverURLString: viewModel.coverURLString,
                                  coverData: viewModel.coverData)
@@ -32,7 +32,9 @@ struct NowPlayingView: View {
                                 imageWhenTrue: "pause",
                                 imageWhenFalse: "play.fill",
                                 size: .medium)
-                Button(action: {}, label: {
+                Button(action: {
+                    viewModel.playNextTrack()
+                }, label: {
                     Image(systemName: "forward.fill")
                         .accesoryModifier(color: .gray, size: .small)
                 })
