@@ -9,12 +9,17 @@ const getTrackForSearch = async (optObj: any): Promise<Object> => {
     Artists_Tracks: {
       include: {
         Artists: {
-          select: { artistName: true },
+          select: { id: true, artistName: true },
         },
       },
     },
   };
   const result = await prisma.tracks.findMany(optObj);
+  result.forEach((el) => {
+    el.Artists = [];
+    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
+    delete el.Artists_Tracks;
+  });
   return result;
 };
 

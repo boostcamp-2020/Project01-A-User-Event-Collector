@@ -67,7 +67,7 @@ const Samples = ({ sectionTitle, data, filter }: SamplesProps): React.ReactEleme
               : "아티스트";
 
           if (sectionTitle === "노래") {
-            el.Artists_Tracks.forEach((elem: any) => artists.push(elem.Artists.artistName));
+            el.Artists.forEach((elem: any) => artists.push(elem.artistName));
           }
           return (
             <Sample
@@ -96,7 +96,7 @@ export default Samples;
 //   };
 // }
 
-// interface TrackProps {
+// interface Track {
 //   id: number;
 //   trackName: string;
 //   albumTrackNumber: number;
@@ -124,6 +124,6 @@ export default Samples;
 
 // interface SampleProps {
 //   sectionTitle: string;
-//   data: AlbumProps[] | ArtistProps[] | TrackProps[];
+//   data: AlbumProps[] | ArtistProps[] | Track[];
 //   filter: string;
 // }

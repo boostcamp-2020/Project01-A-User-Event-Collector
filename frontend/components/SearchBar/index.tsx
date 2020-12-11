@@ -14,8 +14,10 @@ const SearchBar = ({ handleSearch }: { handleSearch: () => void }): React.ReactE
   const handleSearchValue = (e: React.FormEvent<HTMLInputElement>) =>
     setSearchValue(e.currentTarget.value);
   const doSearch = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") Router.push(`/search?filter=${searchValue}`);
-    handleSearch();
+    if (e.key === "Enter") {
+      Router.push(`/search?filter=${searchValue}`);
+      handleSearch();
+    }
   };
 
   return (

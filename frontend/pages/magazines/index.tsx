@@ -160,7 +160,6 @@ export async function getStaticProps() {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
 
-  const VIBE_ID = 1;
   const dataLength = 10;
 
   try {
