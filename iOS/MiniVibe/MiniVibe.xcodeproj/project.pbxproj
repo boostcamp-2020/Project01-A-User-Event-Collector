@@ -579,7 +579,6 @@
 			isa = PBXGroup;
 			children = (
 				CF9A658E257F60280051E799 /* Accessory */,
-				51E4E2522577127400553E6E /* Image */,
 				CF232C7D257AB05600838F18 /* MemorySafeNavigationLink.swift */,
 				CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */,
 				516F4596258283DA004400D1 /* SwappableRowView.swift */,
@@ -631,6 +630,7 @@
 			children = (
 				51B82B2E257E5FCC00A005E8 /* Reachability */,
 				51B3D4A9257CFB25008025E5 /* Event */,
+				51E4E2522577127400553E6E /* Image */,
 				CF6E5D942574E8B500BE7503 /* Network */,
 				CFA2A447256FD1E700190A0B /* Router */,
 				CF232C7C257AB03C00838F18 /* CustomView */,
