@@ -33,6 +33,8 @@ const getArtistById = async (id: number, user: any): Promise<Object | null> => {
     el.Artists = [];
     el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
     delete el.Artists_Tracks;
+    el.Liked = el.Users_Like_Tracks.length > 0;
+    delete el.Users_Like_Tracks;
   });
   return artist;
 };
