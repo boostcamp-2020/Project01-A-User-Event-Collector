@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Track } from "../../interfaces";
-import { pushCheckedTrack, removeCheckedTrack } from "../../reduxModules/checkedTrack";
+import {
+  addCheckedTrack,
+  deleteCheckedTrack,
+  setAllChecked,
+  emptyCheckedTrack,
+} from "../../reduxModules/checkedTrack";
 import { RootState } from "../../reduxModules";
-import { preventEffect } from "../../reduxModules/allCheck";
 import {
   StyledTrackCards,
   StyledTrackCard,
@@ -18,12 +22,7 @@ import {
 import HoverImg from "../HoverImg";
 import icons from "../../constant/icons";
 
-const checkLength = (base: Track[], target: Track, length: number) => {
-  const tmp = new Set([...base, target]);
-  return tmp.size >= length;
-};
-
-const TrackCard = ({ track, listLength }: { track: Track; listLength: number }) => {
+const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: number }) => {
   const {
     trackName,
     Albums: { cover, albumName },
@@ -34,36 +33,53 @@ const TrackCard = ({ track, listLength }: { track: Track; listLength: number }) 
     artists.push(el.artistName);
   });
 
-  const checkedTrackArr = useSelector((state: RootState) => state.checkedTrack);
-  const { isAllChecked, preventBubbling } = useSelector((state: RootState) => state.AllCheckedFlag);
-  const [isChecked, setIsChecked] = useState(false);
+  const {
+    allChecked,
+    checkedTracks,
+  }: { allChecked: boolean; checkedTracks: Set<Track> } = useSelector(
+    (state: RootState) => state.checkedTracks,
+  );
+  const [checked, setChecked] = useState(false);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (isChecked) {
-      if (!isAllChecked && checkLength(checkedTrackArr, track, listLength))
-        dispatch(preventEffect({ isAllChecked: true }));
-      if (!isAllChecked) dispatch(pushCheckedTrack(track));
+  const controlCheckedList = () => {
+    if (!checked) {
+      dispatch(addCheckedTrack(track));
+    } else {
+      dispatch(deleteCheckedTrack(track));
     }
+  };
 
-    if (!isChecked) {
-      if (isAllChecked) dispatch(preventEffect({ isAllChecked: false }));
-      dispatch(removeCheckedTrack(track));
-    }
-  }, [isChecked]);
+  const handleChecked = () => {
+    setChecked(!checked);
+    controlCheckedList();
+  };
 
   useEffect(() => {
-    if (preventBubbling) return;
-    setIsChecked(isAllChecked);
-  }, [isAllChecked]);
+    if (allChecked) {
+      setChecked(true);
+      dispatch(addCheckedTrack(track));
+    } else if (!allChecked && checkedTracks.size === numberOfCards) {
+      setChecked(false);
+      dispatch(emptyCheckedTrack());
+    }
+  }, [allChecked]);
 
-  const checkHandler = () => setIsChecked(!isChecked);
+  useEffect(() => {
+    if (checked) {
+      if (checkedTracks.size === numberOfCards) {
+        dispatch(setAllChecked(true));
+      }
+    } else if (checkedTracks.size < numberOfCards) {
+      dispatch(setAllChecked(false));
+    }
+  }, [checked]);
 
   return (
     <StyledTrackCard>
       <StyledCheckboxDiv>
-        <StyledCheckbox type="checkbox" checked={isChecked} onChange={checkHandler} />
+        <StyledCheckbox type="checkbox" checked={checked} onChange={handleChecked} />
       </StyledCheckboxDiv>
       <StyledImg>
         <HoverImg varient="trackCardCover" src={cover} />
@@ -80,7 +96,7 @@ const TrackCards = ({ data }: { data: Track[] }): React.ReactElement => {
   return (
     <StyledTrackCards>
       {data.map((track: Track) => {
-        return <TrackCard key={track.trackName} track={track} listLength={data.length} />;
+        return <TrackCard key={track.trackName} track={track} numberOfCards={data.length} />;
       })}
     </StyledTrackCards>
   );

@@ -1,5 +1,7 @@
-import React, { memo } from "react";
-import { useSelector } from "react-redux";
+import React, { memo, MouseEvent } from "react";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { Track } from "../../interfaces";
 import Img from "../Img";
 import icons from "../../constant/icons";
 import { RootState } from "../../reduxModules";
@@ -10,6 +12,7 @@ import {
   StyledTrackInfo,
   StyledTrackTitle,
   StyledTrackArtists,
+  StyledTrackArtist,
   StyledEmptyHeart,
   StyledFilledHeart,
   StyledEllipsis,
@@ -31,28 +34,67 @@ const Playbar = memo(
     handleShowPlaylist,
     showPlaylist,
   }: {
-    handleShowPlaylist: () => void;
+    handleShowPlaylist: (e: MouseEvent) => void;
     showPlaylist: boolean;
   }) => {
-    const trackImg =
-      "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2528/image/gAQwYrfgzrdhkL4odG7BDoaIHu8";
-    const trackname = "보자보자";
-    const trackArtists = ["머쉬베놈"];
+    const playList: Track[] = useSelector((state: RootState) => state.playQueue);
+    const dispatch = useDispatch();
+
+    const emptyTrack: Track = {
+      id: 0,
+      albumTrackNumber: 0,
+      trackName: "",
+      albumId: 0,
+      Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
+      Artists: [{ artistName: "", id: 0, cover: "" }],
+    };
+    const {
+      id: trackId,
+      trackName,
+      Albums: { cover, id: albumId },
+      Artists,
+    } = playList[0] ? playList[0] : emptyTrack;
     const liked = true;
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
+    const router = useRouter();
 
-    const data = useSelector((state: RootState) => state.playQueue);
+    const pushToAlbum = (e: MouseEvent) => {
+      e.stopPropagation();
+      router.push(`/albums/${albumId}`);
+    };
+
+    const pushToArtist = (artistId: number) => (e: MouseEvent) => {
+      e.stopPropagation();
+      router.push(`/artists/${artistId}`);
+    };
+
+    const artists = () =>
+      Artists.map((el, idx) => {
+        if (idx === Artists.length - 1) {
+          return (
+            <>
+              <StyledTrackArtist onClick={pushToArtist(el.id)}>{el.artistName}</StyledTrackArtist>
+            </>
+          );
+        }
+        return (
+          <>
+            <StyledTrackArtist onClick={pushToArtist(el.id)}>{el.artistName}</StyledTrackArtist>
+            <span>, </span>
+          </>
+        );
+      });
 
     return (
       <StyledPlaybar onClick={handleShowPlaylist}>
         <StyledTrackSection>
-          <StyledImgSection>
-            <Img varient="nowPlayingCover" src={trackImg} />
+          <StyledImgSection onClick={pushToAlbum}>
+            <Img varient="nowPlayingCover" src={cover} />
           </StyledImgSection>
           <StyledTrackInfo>
-            <StyledTrackTitle>{trackname}</StyledTrackTitle>
-            <StyledTrackArtists>{trackArtists.join(", ")}</StyledTrackArtists>
+            <StyledTrackTitle>{trackName}</StyledTrackTitle>
+            <StyledTrackArtists>{artists()}</StyledTrackArtists>
           </StyledTrackInfo>
           {liked ? (
             <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>

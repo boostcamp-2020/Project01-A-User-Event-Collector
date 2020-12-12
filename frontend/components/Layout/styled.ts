@@ -187,7 +187,7 @@ const StyledTrackDeleteButton = styled.div`
   align-items: center;
   position: absolute;
   right: 1.5rem;
-  color: #333;
+  color: #666;
 `;
 
 export {

@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allPushCheckedTrack, initCheckedTrack } from "../../reduxModules/checkedTrack";
-import { permitEffect } from "../../reduxModules/allCheck";
+import { concatenatePlayQueue } from "../../reduxModules/playQueue";
+import { Track } from "../../interfaces";
+import { toggleAllChecked } from "../../reduxModules/checkedTrack";
 import { RootState } from "../../reduxModules";
 import icons from "../../constant/icons";
 import {
@@ -20,18 +21,19 @@ import {
 } from "./PlaylistCheckBar.styled";
 
 const PlaylistCheckBar = (): React.ReactElement => {
-  const { isAllChecked } = useSelector((state: RootState) => state.AllCheckedFlag);
-  const checkedTracks = useSelector((state: RootState) => state.checkedTrack);
-
+  const {
+    allChecked,
+    checkedTracks,
+  }: { allChecked: boolean; checkedTracks: Set<Track> } = useSelector(
+    (state: RootState) => state.checkedTracks,
+  );
   const dispatch = useDispatch();
   const allCheckHandler = () => {
-    if (isAllChecked) {
-      dispatch(initCheckedTrack());
-      dispatch(permitEffect({ isAllChecked: false }));
-    } else {
-      dispatch(allPushCheckedTrack(checkedTracks));
-      dispatch(permitEffect({ isAllChecked: true }));
-    }
+    dispatch(toggleAllChecked());
+  };
+
+  const concatePlaylist = () => {
+    dispatch(concatenatePlayQueue(checkedTracks));
   };
 
   return (
@@ -39,18 +41,18 @@ const PlaylistCheckBar = (): React.ReactElement => {
       <StyledInfoSection>
         <StyledInfoSectionLeft>
           <StyledInfoSectionCheckWrapper>
-            <input type="checkbox" checked={isAllChecked} onClick={allCheckHandler} />
+            <input type="checkbox" checked={allChecked} onClick={allCheckHandler} />
             전체선택
           </StyledInfoSectionCheckWrapper>
           <StyledInfoSectionCheckedNumber>
-            {checkedTracks.length}곡 선택
+            {checkedTracks.size}곡 선택
           </StyledInfoSectionCheckedNumber>
         </StyledInfoSectionLeft>
         <StyledInfoSectionRight>{icons.x}</StyledInfoSectionRight>
       </StyledInfoSection>
       <StyledButtonSection>
         <StyledButtonSectionButtons>
-          <StyledButtonSectionButton>
+          <StyledButtonSectionButton onClick={concatePlaylist}>
             <StyledIcons>{icons.arrowUp}</StyledIcons>바로 다음에
           </StyledButtonSectionButton>
           <StyledButtonSectionButton>
@@ -64,7 +66,7 @@ const PlaylistCheckBar = (): React.ReactElement => {
           </StyledButtonSectionButton>
         </StyledButtonSectionButtons>
         <StyledButtonSectionPlayWrapper>
-          <StyledButtonSectionPlayButton>
+          <StyledButtonSectionPlayButton onClick={concatePlaylist}>
             <StyledIcons>{icons.play}</StyledIcons>재생
           </StyledButtonSectionPlayButton>
         </StyledButtonSectionPlayWrapper>

@@ -53,6 +53,9 @@ const StyledTrackArtists = styled.div`
   color: #888;
   font-size: 0.95rem;
   cursor: pointer;
+`;
+
+const StyledTrackArtist = styled.span`
   &:hover {
     text-decoration: underline;
   }
@@ -190,6 +193,7 @@ export {
   StyledTrackInfo,
   StyledTrackTitle,
   StyledTrackArtists,
+  StyledTrackArtist,
   StyledEmptyHeart,
   StyledFilledHeart,
   StyledEllipsis,

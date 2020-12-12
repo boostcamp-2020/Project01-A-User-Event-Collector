@@ -1,11 +1,9 @@
 import { combineReducers } from "redux";
 import checkedTrackReducer from "./checkedTrack";
-import allCheckedReducer from "./allCheck";
 import playQueueReducer from "./playQueue";
 
 export const rootReducer = combineReducers({
-  checkedTrack: checkedTrackReducer,
-  AllCheckedFlag: allCheckedReducer,
+  checkedTracks: checkedTrackReducer,
   playQueue: playQueueReducer,
 });
 
