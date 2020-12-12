@@ -14,6 +14,12 @@ const example1: EventObject = {
       once: true,
       description: "이건 두번째 식별자에요~",
     },
+    identifier_3: {
+      event_id: 4,
+      event_type: "click",
+      once: false,
+      description: "이게 바로 스트레스 테스트",
+    },
   },
   complex: {
     identifier_3: {

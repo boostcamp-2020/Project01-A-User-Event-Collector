@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import DetailPage from "../../components/DetailPage";
+import { Collector } from "../../event";
+import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyleMagazinePage = styled.div`
   height: 100vh;
@@ -8,9 +10,11 @@ const StyleMagazinePage = styled.div`
 
 const MagazinePage = ({ Magazines }: any) => {
   return (
-    <StyleMagazinePage>
-      <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
-    </StyleMagazinePage>
+    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
+      <StyleMagazinePage>
+        <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
+      </StyleMagazinePage>
+    </Collector>
   );
 };
 

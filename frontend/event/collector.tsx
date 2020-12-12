@@ -43,10 +43,11 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
     Array.from(eventTypeSet).forEach((ev: string) => {
       div?.current?.addEventListener(ev, (e: any) => {
         const eventKey = e.identifier;
-        if (identifierSet.has(eventKey)) dispatch(simple[eventKey]);
 
-        // Complex
-        complexInstanceArr.forEach((complexInstance) => complexInstance.notify(eventKey));
+        if (identifierSet.has(eventKey)) {
+          dispatch({ userEvent: simple[eventKey], props: e.children, nativeEvent: e });
+          complexInstanceArr.forEach((complexInstance) => complexInstance.notify(eventKey));
+        }
       });
     });
   }, []);
