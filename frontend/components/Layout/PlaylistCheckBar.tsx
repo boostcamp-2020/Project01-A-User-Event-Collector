@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { concatenatePlayQueue } from "../../reduxModules/playQueue";
 import { Track } from "../../interfaces";
 import { toggleAllChecked } from "../../reduxModules/checkedTrack";
 import { RootState } from "../../reduxModules";
@@ -31,6 +32,10 @@ const PlaylistCheckBar = (): React.ReactElement => {
     dispatch(toggleAllChecked());
   };
 
+  const concatePlaylist = () => {
+    dispatch(concatenatePlayQueue(checkedTracks));
+  };
+
   return (
     <StyledPlaylistCheckBar>
       <StyledInfoSection>
@@ -47,7 +52,7 @@ const PlaylistCheckBar = (): React.ReactElement => {
       </StyledInfoSection>
       <StyledButtonSection>
         <StyledButtonSectionButtons>
-          <StyledButtonSectionButton>
+          <StyledButtonSectionButton onClick={concatePlaylist}>
             <StyledIcons>{icons.arrowUp}</StyledIcons>바로 다음에
           </StyledButtonSectionButton>
           <StyledButtonSectionButton>
@@ -61,7 +66,7 @@ const PlaylistCheckBar = (): React.ReactElement => {
           </StyledButtonSectionButton>
         </StyledButtonSectionButtons>
         <StyledButtonSectionPlayWrapper>
-          <StyledButtonSectionPlayButton>
+          <StyledButtonSectionPlayButton onClick={concatePlaylist}>
             <StyledIcons>{icons.play}</StyledIcons>재생
           </StyledButtonSectionPlayButton>
         </StyledButtonSectionPlayWrapper>

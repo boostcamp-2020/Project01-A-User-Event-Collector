@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Track } from "../../interfaces";
+import { RootState } from "../../reduxModules";
 import {
   StyledOverlay,
   StyledOverlayImg,
@@ -18,25 +21,6 @@ import {
 import icons from "../../constant/icons";
 import Img from "../Img";
 
-interface Track {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: {
-    cover: string;
-    albumName: string;
-  };
-  Artists_Tracks: {
-    id: number;
-    trackId: number;
-    artistId: number;
-    Artists: {
-      artistName: string;
-    };
-  }[];
-}
-
 const mockdata = [
   {
     id: 1,
@@ -48,7 +32,7 @@ const mockdata = [
         "https://musicmeta-phinf.pstatic.net/album/005/055/5055232.jpg?type=r360Fll&v=20201029173916",
       albumName: "MORE",
     },
-    Artists_Tracks: [
+    Artists: [
       {
         id: 1,
         trackId: 1,
@@ -77,7 +61,7 @@ const mockdata = [
         "https://musicmeta-phinf.pstatic.net/album/005/055/5055232.jpg?type=r360Fll&v=20201029173916",
       albumName: "MORE",
     },
-    Artists_Tracks: [
+    Artists: [
       {
         id: 2,
         trackId: 2,
@@ -98,7 +82,7 @@ const mockdata = [
         "https://musicmeta-phinf.pstatic.net/album/005/055/5055232.jpg?type=r360Fll&v=20201029173916",
       albumName: "MORE",
     },
-    Artists_Tracks: [
+    Artists: [
       {
         id: 5,
         trackId: 5,
@@ -121,7 +105,7 @@ const firstMockData = {
       "https://musicmeta-phinf.pstatic.net/album/004/855/4855609.jpg?type=r360Fll&v=20200902102707",
     albumName: "THE BADDEST\n",
   },
-  Artists_Tracks: [
+  Artists: [
     {
       id: 10,
       trackId: 10,
@@ -137,11 +121,11 @@ const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
   const {
     id,
     trackName,
-    Artists_Tracks,
+    Artists,
     Albums: { cover, albumName },
   } = track;
   const artists: string[] = [];
-  Artists_Tracks.forEach((el) => artists.push(el.Artists.artistName));
+  Artists.forEach((el) => artists.push(el.artistName));
   return (
     <StyledTrackCard>
       <StyledTrackCardCover>
@@ -157,14 +141,13 @@ const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
 };
 
 const Overlay = (): React.ReactElement => {
-  const [playList, setPlayList] = useState([firstMockData]);
+  const playList: Track[] = useSelector((state: RootState) => state.playQueue);
+  const dispatch = useDispatch();
   const {
-    Albums: { cover },
-  } = playList[0];
+    id: trackId,
+    Albums: { cover, id: albumId },
+  } = playList[0] ? playList[0] : { id: 0, Albums: { cover: "", id: 0 } };
 
-  useEffect(() => {
-    setPlayList(mockdata);
-  }, []);
   return (
     <StyledOverlay>
       <StyledOverlayImg>

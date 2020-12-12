@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import { Track } from "../../interfaces";
 
 // State
@@ -97,7 +98,7 @@ const checkedTrackReducer = (
 ): { allChecked: boolean; checkedTracks: Set<Track> } => {
   switch (action.type) {
     case INIT:
-      return initialState;
+      return { ...state, ...initialState };
 
     case ADD:
       return { ...state, checkedTracks: state.checkedTracks.add(action.payload) };
