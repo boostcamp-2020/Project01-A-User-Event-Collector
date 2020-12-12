@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { RootState } from "../../reduxModules";
 import NavBar from "../NavBar";
+import { Track } from "../../interfaces";
 import SearchBar from "../SearchBar";
 import Playbar from "../Playbar";
 import { initCheckedTrack } from "../../reduxModules/checkedTrack";
@@ -23,7 +24,9 @@ type Props = {
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
   const [showPlaylist, setShowPlaylist] = useState(false);
-  const checkedTracks = useSelector((state: RootState) => state.checkedTrack);
+  const { checkedTracks }: { checkedTracks: Set<Track> } = useSelector(
+    (state: RootState) => state.checkedTracks,
+  );
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -43,7 +46,7 @@ const Layout = memo(({ children }: Props) => {
   return (
     <StyledLayoutWrapper onKeyDown={closeSearch}>
       <StyledLayout>
-        {checkedTracks.length !== 0 ? <PlaylistCheckBar /> : ""}
+        {checkedTracks.size !== 0 ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
         {searchMode ? (
           <StyledSearchBar>

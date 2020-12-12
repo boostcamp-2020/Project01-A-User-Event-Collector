@@ -4,7 +4,7 @@ import allCheckedReducer from "./allCheck";
 import playQueueReducer from "./playQueue";
 
 export const rootReducer = combineReducers({
-  checkedTrack: checkedTrackReducer,
+  checkedTracks: checkedTrackReducer,
   AllCheckedFlag: allCheckedReducer,
   playQueue: playQueueReducer,
 });
