@@ -21,7 +21,7 @@ const getNews = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
 
   try {
-    const result = await getNewsById(+id);
+    const result = await getNewsById(+id, req.user);
     if (!result) throw new Error("empty data");
     res.status(200).json({ News: result });
   } catch (err) {

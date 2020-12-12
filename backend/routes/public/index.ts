@@ -10,9 +10,11 @@ import libraryRouter from "./library";
 import searchRouter from "./search";
 import authRouter from "./auth";
 import logRouter from "./log";
+import userToReq from "../../middlewares/userToReq";
 
 const publicRouter = express.Router();
 
+publicRouter.use(userToReq);
 publicRouter.use("/albums", albumsRouter);
 publicRouter.use("/artists", artistsRouter);
 publicRouter.use("/dj-stations", djStationsRouter);

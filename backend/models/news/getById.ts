@@ -1,6 +1,6 @@
 import prisma from "../../prisma";
 
-const getNewsById = async (id: number): Promise<Object | null> => {
+const getNewsById = async (id: number, user: any): Promise<Object | null> => {
   const news: any = await prisma.news.findUnique({ where: { id } });
   if (!news) return null;
 
@@ -20,6 +20,9 @@ const getNewsById = async (id: number): Promise<Object | null> => {
                 },
               },
             },
+          },
+          Users_Like_Tracks: {
+            where: { userId: user ? user.id : -1 },
           },
         },
       },

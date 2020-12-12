@@ -1,6 +1,6 @@
 import prisma from "../../prisma";
 
-const getTrackForSearch = async (optObj: any): Promise<Object> => {
+const getTrackForSearch = async (optObj: any, user: any): Promise<Object> => {
   // eslint-disable-next-line no-param-reassign
   optObj.include = {
     Albums: {
@@ -12,6 +12,9 @@ const getTrackForSearch = async (optObj: any): Promise<Object> => {
           select: { id: true, artistName: true },
         },
       },
+    },
+    Users_Like_Tracks: {
+      where: { userId: user ? user.id : -1 },
     },
   };
   const result = await prisma.tracks.findMany(optObj);

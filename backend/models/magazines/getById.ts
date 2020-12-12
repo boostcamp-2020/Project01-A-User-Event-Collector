@@ -1,6 +1,9 @@
 import prisma from "../../prisma";
 
-const getMagazineById = async (id: number): Promise<Object | null> => {
+const getMagazineById = async (
+  id: number,
+  user: any
+): Promise<Object | null> => {
   const magazine: any = await prisma.magazines.findUnique({ where: { id } });
   if (!magazine) return null;
 
@@ -20,6 +23,9 @@ const getMagazineById = async (id: number): Promise<Object | null> => {
                 },
               },
             },
+          },
+          Users_Like_Tracks: {
+            where: { userId: user ? user.id : -1 },
           },
         },
       },

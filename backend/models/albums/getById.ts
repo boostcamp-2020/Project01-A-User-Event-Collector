@@ -1,6 +1,6 @@
 import prisma from "../../prisma";
 
-const getAlbumById = async (id: number): Promise<Object | null> => {
+const getAlbumById = async (id: number, user: any): Promise<Object | null> => {
   const album: any = await prisma.albums.findUnique({
     where: { id },
     include: {
@@ -25,6 +25,9 @@ const getAlbumById = async (id: number): Promise<Object | null> => {
             },
           },
         },
+      },
+      Users_Like_Tracks: {
+        where: { userId: user ? user.id : -1 },
       },
     },
   });
