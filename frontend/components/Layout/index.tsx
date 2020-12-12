@@ -35,7 +35,9 @@ const Layout = memo(({ children }: Props) => {
   }, [router.pathname]);
 
   const handleSearch = (): void => setSearchMode(!searchMode);
-  const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
+  const handleShowPlaylist = (e: MouseEvent): void => {
+    setShowPlaylist(!showPlaylist);
+  };
 
   const closeSearch = (e: React.KeyboardEvent) => {
     if (e.key === "Escape" || e.key === "Esc") {

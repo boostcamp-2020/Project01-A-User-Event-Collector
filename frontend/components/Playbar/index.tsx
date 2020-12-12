@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import React, { memo, MouseEvent } from "react";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { Track } from "../../interfaces";
 import Img from "../Img";
@@ -53,12 +54,17 @@ const Playbar = memo(
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
 
-    const data = useSelector((state: RootState) => state.playQueue);
+    const router = useRouter();
+
+    const pushToAlbum = (e: MouseEvent) => {
+      e.stopPropagation();
+      router.push(`/albums/${albumId}`);
+    };
 
     return (
       <StyledPlaybar onClick={handleShowPlaylist}>
         <StyledTrackSection>
-          <StyledImgSection>
+          <StyledImgSection onClick={pushToAlbum}>
             <Img varient="nowPlayingCover" src={cover} />
           </StyledImgSection>
           <StyledTrackInfo>
