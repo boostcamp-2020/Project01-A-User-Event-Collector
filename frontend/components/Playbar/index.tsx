@@ -34,7 +34,7 @@ const Playbar = memo(
     handleShowPlaylist,
     showPlaylist,
   }: {
-    handleShowPlaylist: () => void;
+    handleShowPlaylist: (e: MouseEvent) => void;
     showPlaylist: boolean;
   }) => {
     const playList: Track[] = useSelector((state: RootState) => state.playQueue);

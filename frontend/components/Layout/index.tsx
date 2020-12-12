@@ -1,4 +1,4 @@
-import React, { ReactNode, memo, useState, useEffect } from "react";
+import React, { ReactNode, memo, useState, useEffect, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { RootState } from "../../reduxModules";
