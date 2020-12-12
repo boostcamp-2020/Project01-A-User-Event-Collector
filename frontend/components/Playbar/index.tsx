@@ -47,6 +47,7 @@ const Playbar = memo(
       albumId: 0,
       Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
       Artists: [{ artistName: "", id: 0, cover: "" }],
+      Users_Like_Tracks: [],
     };
     const {
       id: trackId,
