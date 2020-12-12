@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Track } from "../../interfaces";
 import Img from "../Img";
 import icons from "../../constant/icons";
 import { RootState } from "../../reduxModules";
@@ -34,10 +35,20 @@ const Playbar = memo(
     handleShowPlaylist: () => void;
     showPlaylist: boolean;
   }) => {
-    const trackImg =
-      "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2528/image/gAQwYrfgzrdhkL4odG7BDoaIHu8";
-    const trackname = "보자보자";
-    const trackArtists = ["머쉬베놈"];
+    const playList: Track[] = useSelector((state: RootState) => state.playQueue);
+    const dispatch = useDispatch();
+    const {
+      id: trackId,
+      trackName,
+      Albums: { cover, id: albumId },
+      Artists,
+    } = playList[0]
+      ? playList[0]
+      : { id: 0, trackName: "", Albums: { cover: "", id: 0 }, Artists: [{ artistName: "" }] };
+    const artists: string[] = [];
+    Artists.forEach((el) => {
+      artists.push(el.artistName);
+    });
     const liked = true;
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
@@ -48,11 +59,11 @@ const Playbar = memo(
       <StyledPlaybar onClick={handleShowPlaylist}>
         <StyledTrackSection>
           <StyledImgSection>
-            <Img varient="nowPlayingCover" src={trackImg} />
+            <Img varient="nowPlayingCover" src={cover} />
           </StyledImgSection>
           <StyledTrackInfo>
-            <StyledTrackTitle>{trackname}</StyledTrackTitle>
-            <StyledTrackArtists>{trackArtists.join(", ")}</StyledTrackArtists>
+            <StyledTrackTitle>{trackName}</StyledTrackTitle>
+            <StyledTrackArtists>{artists.join(", ")}</StyledTrackArtists>
           </StyledTrackInfo>
           {liked ? (
             <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>
