@@ -6,3 +6,12 @@ export interface SimpleEvent {
   once?: boolean;
   description?: string;
 }
+
+export interface ComplexEvent {
+  event_id: number;
+  event_type: string;
+  once?: boolean;
+  description?: string;
+  timer: number;
+  sequence: string[];
+}

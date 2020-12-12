@@ -15,5 +15,15 @@ const example1: EventObject = {
       description: "이건 두번째 식별자에요~",
     },
   },
+  complex: {
+    identifier_3: {
+      timer: 3000,
+      sequence: ["identifier_1", "identifier_2"],
+      event_id: 3,
+      event_type: "compext test1",
+      once: false,
+      description: "complex event 테스트 임둥",
+    },
+  },
 };
 export default example1;
