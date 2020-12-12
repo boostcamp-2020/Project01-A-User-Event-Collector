@@ -8,7 +8,7 @@ export const ADD = "checkedTrack/ADD";
 export const DELETE = "checkedTrack/DELETE";
 export const EMPTY = "checkedTrack/EMPTY";
 export const SET_ALLCHECKED = "checkedTrack/SET_ALL";
-export const REVERSE_ALLCHECKED = "checkedTrack/REVERSE_ALL";
+export const TOGGLE_ALLCHECKED = "checkedTrack/TOGGLE_ALL";
 
 interface InitAction {
   type: typeof INIT;
@@ -28,8 +28,8 @@ interface EmptyAction {
   type: typeof EMPTY;
 }
 
-interface ReverseAllCheckedAction {
-  type: typeof REVERSE_ALLCHECKED;
+interface ToggleAllCheckedAction {
+  type: typeof TOGGLE_ALLCHECKED;
 }
 
 interface SetAllCheckedAction {
@@ -42,7 +42,7 @@ export type CheckedTrackActionTypes =
   | DeleteAction
   | InitAction
   | EmptyAction
-  | ReverseAllCheckedAction
+  | ToggleAllCheckedAction
   | SetAllCheckedAction;
 
 // Action Creator
@@ -72,9 +72,9 @@ export const emptyCheckedTrack = (): EmptyAction => {
   };
 };
 
-export const reverseAllChecked = (): ReverseAllCheckedAction => {
+export const toggleAllChecked = (): ToggleAllCheckedAction => {
   return {
-    type: REVERSE_ALLCHECKED,
+    type: TOGGLE_ALLCHECKED,
   };
 };
 
@@ -109,7 +109,7 @@ const checkedTrackReducer = (
     case EMPTY:
       return { ...state, checkedTracks: new Set() };
 
-    case REVERSE_ALLCHECKED:
+    case TOGGLE_ALLCHECKED:
       return { ...state, allChecked: !state.allChecked };
 
     case SET_ALLCHECKED:

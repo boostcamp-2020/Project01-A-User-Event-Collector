@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Track } from "../../interfaces";
-import { reverseAllChecked } from "../../reduxModules/checkedTrack";
+import { toggleAllChecked } from "../../reduxModules/checkedTrack";
 import { RootState } from "../../reduxModules";
 import icons from "../../constant/icons";
 import {
@@ -28,7 +28,7 @@ const PlaylistCheckBar = (): React.ReactElement => {
   );
   const dispatch = useDispatch();
   const allCheckHandler = () => {
-    dispatch(reverseAllChecked());
+    dispatch(toggleAllChecked());
   };
 
   return (
