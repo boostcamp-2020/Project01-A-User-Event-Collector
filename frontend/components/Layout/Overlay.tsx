@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { removePlayQueue } from "../../reduxModules/playQueue";
 import { Track } from "../../interfaces";
 import { RootState } from "../../reduxModules";
 import {
@@ -22,6 +23,8 @@ import icons from "../../constant/icons";
 import Img from "../Img";
 
 const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
+  const dispatch = useDispatch();
+
   const {
     id,
     trackName,
@@ -30,6 +33,11 @@ const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
   } = track;
   const artists: string[] = [];
   Artists.forEach((el) => artists.push(el.artistName));
+
+  const handleRemove = () => {
+    dispatch(removePlayQueue(track));
+  };
+
   return (
     <StyledTrackCard>
       <StyledTrackCardCover>
@@ -39,7 +47,7 @@ const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
         <StyledTrackCardTitle>{trackName}</StyledTrackCardTitle>
         <StyledTrackCardArtists>{artists.join(", ")}</StyledTrackCardArtists>
       </StyledTrackCardInfo>
-      <StyledTrackDeleteButton>{icons.x}</StyledTrackDeleteButton>
+      <StyledTrackDeleteButton onClick={handleRemove}>{icons.x}</StyledTrackDeleteButton>
     </StyledTrackCard>
   );
 };
