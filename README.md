@@ -346,14 +346,3 @@ protocol AnalyticsEngine: class {
 
 <br>
 <br>
-<br>
-<br>
-## iOS 기술 특장점
-
-### SwiftUI + Combine
-
-### CoreData
-
-### 이벤트 수집기
-
-<img src="https://cdn.i-scmp.com/sites/default/files/styles/1200x800/public/d8/images/methode/2020/02/13/55632592-4be9-11ea-9b4e-9c10402c07b7_image_hires_020008.jpg?itok=W4McLW3U&v=1581530415" height="200" width="200" style="border-radius:50%">
