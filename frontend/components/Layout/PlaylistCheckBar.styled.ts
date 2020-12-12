@@ -36,6 +36,7 @@ const StyledInfoSectionCheckWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 `;
 
 const StyledInfoSectionCheckedNumber = styled.div`
@@ -68,6 +69,7 @@ const StyledButtonSectionButtons = styled.div`
 `;
 
 const StyledButtonSectionButton = styled.button`
+  cursor: pointer;
   border: none;
   outline: none;
   border: transparent;
@@ -79,6 +81,7 @@ const StyledButtonSectionPlayWrapper = styled.div`
 `;
 
 const StyledButtonSectionPlayButton = styled.button`
+  cursor: pointer;
   background-color: #fe1250;
   color: #fbfbfb;
   border: none;
