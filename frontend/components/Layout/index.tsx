@@ -1,6 +1,7 @@
 import React, { ReactNode, memo, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { RootState } from "../../reduxModules";
 import NavBar from "../NavBar";
 import SearchBar from "../SearchBar";
 import Playbar from "../Playbar";
@@ -21,9 +22,8 @@ type Props = {
 
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
-  const [checkMode, setCheckMode] = useState(false);
-
   const [showPlaylist, setShowPlaylist] = useState(false);
+  const checkedTracks = useSelector((state: RootState) => state.checkedTrack);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,7 +33,6 @@ const Layout = memo(({ children }: Props) => {
 
   const handleSearch = (): void => setSearchMode(!searchMode);
   const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
-  const handleCheckMode = () => setCheckMode(!checkMode);
 
   const closeSearch = (e: React.KeyboardEvent) => {
     if (e.key === "Escape" || e.key === "Esc") {
@@ -44,7 +43,7 @@ const Layout = memo(({ children }: Props) => {
   return (
     <StyledLayoutWrapper onKeyDown={closeSearch}>
       <StyledLayout>
-        {checkMode ? <PlaylistCheckBar /> : ""}
+        {checkedTracks.length !== 0 ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
         {searchMode ? (
           <StyledSearchBar>
