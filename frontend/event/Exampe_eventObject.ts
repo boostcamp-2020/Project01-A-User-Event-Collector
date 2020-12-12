@@ -18,7 +18,7 @@ const example1: EventObject = {
   complex: {
     identifier_3: {
       timer: 3000,
-      sequence: ["identifier_1", "identifier_2"],
+      sequence: ["identifier_1", "identifier_2", "identifier_1"],
       event_id: 3,
       event_type: "compext test1",
       once: false,

@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef } from "react";
 import { SimpleEvent, ComplexEvent } from "./interface";
+import SequenceEvent from "./complexEvent";
 
 export interface EventObject {
   simple: { [identifier: string]: SimpleEvent };
@@ -31,12 +32,10 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
 
   // Complex Event
   const complexEventArr = Object.values(complex);
-  const complexEventKeys = Object.keys(complex);
-  const complexIdSet: Set<string> = new Set();
-
-  const originSequence = complexEventArr.map((value) => value.sequence);
-  const processQueue = complexEventArr.map((value) => value.sequence);
-  const timers = complexEventArr.map((value) => value.timer);
+  const complexInstanceArr = complexEventArr.map((complexInstance) => {
+    // eslint-disable-next-line no-new
+    return new SequenceEvent(complexInstance, dispatch);
+  });
 
   // event listener
   const div = useRef<HTMLDivElement>(null);
@@ -47,6 +46,7 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
         if (identifierSet.has(eventKey)) dispatch(simple[eventKey]);
 
         // Complex
+        complexInstanceArr.forEach((complexInstance) => complexInstance.notify(eventKey));
       });
     });
   }, []);

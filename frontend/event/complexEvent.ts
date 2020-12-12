@@ -1,6 +1,4 @@
 /* eslint-disable lines-between-class-members */
-import { TIMEOUT } from "dns";
-import { runInThisContext } from "vm";
 import { SimpleEvent, ComplexEvent } from "./interface";
 
 class SequenceEvent {
