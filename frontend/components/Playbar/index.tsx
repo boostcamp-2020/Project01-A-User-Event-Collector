@@ -12,6 +12,7 @@ import {
   StyledTrackInfo,
   StyledTrackTitle,
   StyledTrackArtists,
+  StyledTrackArtist,
   StyledEmptyHeart,
   StyledFilledHeart,
   StyledEllipsis,
@@ -38,28 +39,52 @@ const Playbar = memo(
   }) => {
     const playList: Track[] = useSelector((state: RootState) => state.playQueue);
     const dispatch = useDispatch();
+
+    const emptyTrack: Track = {
+      id: 0,
+      albumTrackNumber: 0,
+      trackName: "",
+      albumId: 0,
+      Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
+      Artists: [{ artistName: "", id: 0, cover: "" }],
+    };
     const {
       id: trackId,
       trackName,
       Albums: { cover, id: albumId },
       Artists,
-    } = playList[0]
-      ? playList[0]
-      : { id: 0, trackName: "", Albums: { cover: "", id: 0 }, Artists: [{ artistName: "" }] };
-    const artists: string[] = [];
-    Artists.forEach((el) => {
-      artists.push(el.artistName);
-    });
+    } = playList[0] ? playList[0] : emptyTrack;
     const liked = true;
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
-
     const router = useRouter();
 
     const pushToAlbum = (e: MouseEvent) => {
       e.stopPropagation();
       router.push(`/albums/${albumId}`);
     };
+
+    const pushToArtist = (artistId: number) => (e: MouseEvent) => {
+      e.stopPropagation();
+      router.push(`/artists/${artistId}`);
+    };
+
+    const artists = () =>
+      Artists.map((el, idx) => {
+        if (idx === Artists.length - 1) {
+          return (
+            <>
+              <StyledTrackArtist onClick={pushToArtist(el.id)}>{el.artistName}</StyledTrackArtist>
+            </>
+          );
+        }
+        return (
+          <>
+            <StyledTrackArtist onClick={pushToArtist(el.id)}>{el.artistName}</StyledTrackArtist>
+            <span>, </span>
+          </>
+        );
+      });
 
     return (
       <StyledPlaybar onClick={handleShowPlaylist}>
@@ -69,7 +94,7 @@ const Playbar = memo(
           </StyledImgSection>
           <StyledTrackInfo>
             <StyledTrackTitle>{trackName}</StyledTrackTitle>
-            <StyledTrackArtists>{artists.join(", ")}</StyledTrackArtists>
+            <StyledTrackArtists>{artists()}</StyledTrackArtists>
           </StyledTrackInfo>
           {liked ? (
             <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>
