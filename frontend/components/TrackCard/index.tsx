@@ -35,10 +35,9 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
 
   const { allChecked, checkedTracks } = useSelector((state: RootState) => state.checkedTracks);
   const [checked, setChecked] = useState(false);
-
+  const dispatch = useDispatch();
   const handleChecked = () => setChecked(!checked);
 
-  const dispatch = useDispatch();
   useEffect(() => {
     if (allChecked) {
       setChecked(true);
@@ -67,7 +66,9 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
       <StyledTrackName>{trackName}</StyledTrackName>
       <StyledArtists>
         {Artists.map((artist) => (
-          <Link href={`/artists/${artist.id}`}>{artist.artistName}</Link>
+          <Link href={`/artists/${artist.id}`}>
+            <span style={{ padding: "3px" }}>{artist.artistName}</span>
+          </Link>
         ))}
       </StyledArtists>
       <StyledAlbum>
@@ -78,7 +79,7 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
   );
 };
 
-const TrackCards = ({ data }: { data: Track[] }): React.ReactElement => {
+const TrackCards: FC<{ data: Track[] }> = ({ data }: { data: Track[] }) => {
   return (
     <StyledTrackCards>
       {data.map((track: Track) => {
