@@ -1,32 +1,49 @@
-import { TrackNode } from "../playQueue";
+import { Track } from "../../interfaces";
+
 // State
 
 // Actions
-export const PUSH = "checkedTrack/PUSH";
-export const REMOVE = "checkedTrack/Remove";
 export const INIT = "checkedTrack/INIT";
-export const ALLPUSH = "checkedTrack/ALLPUSH";
+export const ADD = "checkedTrack/ADD";
+export const DELETE = "checkedTrack/DELETE";
+export const EMPTY = "checkedTrack/EMPTY";
+export const SET_ALLCHECKED = "checkedTrack/SET_ALL";
+export const TOGGLE_ALLCHECKED = "checkedTrack/TOGGLE_ALL";
 
 interface InitAction {
   type: typeof INIT;
 }
 
-interface PushAction {
-  type: typeof PUSH;
-  payload: TrackNode;
+interface AddAction {
+  type: typeof ADD;
+  payload: Track;
 }
 
-interface RemoveAction {
-  type: typeof REMOVE;
-  payload: TrackNode;
+interface DeleteAction {
+  type: typeof DELETE;
+  payload: Track;
 }
 
-interface AllPushAction {
-  type: typeof ALLPUSH;
-  payload: TrackNode[];
+interface EmptyAction {
+  type: typeof EMPTY;
 }
 
-export type CheckedTrackActionTypes = PushAction | RemoveAction | InitAction | AllPushAction;
+interface ToggleAllCheckedAction {
+  type: typeof TOGGLE_ALLCHECKED;
+}
+
+interface SetAllCheckedAction {
+  type: typeof SET_ALLCHECKED;
+  payload: boolean;
+}
+
+export type CheckedTrackActionTypes =
+  | AddAction
+  | DeleteAction
+  | InitAction
+  | EmptyAction
+  | ToggleAllCheckedAction
+  | SetAllCheckedAction;
 
 // Action Creator
 export const initCheckedTrack = (): InitAction => {
@@ -35,46 +52,68 @@ export const initCheckedTrack = (): InitAction => {
   };
 };
 
-export const pushCheckedTrack = (trackData: TrackNode): PushAction => {
+export const addCheckedTrack = (trackData: Track): AddAction => {
   return {
-    type: PUSH,
+    type: ADD,
     payload: trackData,
   };
 };
 
-export const removeCheckedTrack = (trackData: TrackNode): RemoveAction => {
+export const deleteCheckedTrack = (trackData: Track): DeleteAction => {
   return {
-    type: REMOVE,
+    type: DELETE,
     payload: trackData,
   };
 };
 
-export const allPushCheckedTrack = (allTrackData: TrackNode[]): AllPushAction => {
+export const emptyCheckedTrack = (): EmptyAction => {
   return {
-    type: ALLPUSH,
-    payload: allTrackData,
+    type: EMPTY,
+  };
+};
+
+export const toggleAllChecked = (): ToggleAllCheckedAction => {
+  return {
+    type: TOGGLE_ALLCHECKED,
+  };
+};
+
+export const setAllChecked = (newAllChecked: boolean): SetAllCheckedAction => {
+  return {
+    type: SET_ALLCHECKED,
+    payload: newAllChecked,
   };
 };
 
 // Reducer
-const initialState: TrackNode[] = [];
+const initialState: { allChecked: boolean; checkedTracks: Set<Track> } = {
+  allChecked: false,
+  checkedTracks: new Set(),
+};
 
 const checkedTrackReducer = (
   state = initialState,
   action: CheckedTrackActionTypes,
-): TrackNode[] => {
+): { allChecked: boolean; checkedTracks: Set<Track> } => {
   switch (action.type) {
     case INIT:
       return initialState;
 
-    case PUSH:
-      return [...state, action.payload];
+    case ADD:
+      return { ...state, checkedTracks: state.checkedTracks.add(action.payload) };
 
-    case REMOVE:
-      return state.filter((elem) => elem.id !== action.payload.id);
+    case DELETE:
+      state.checkedTracks.delete(action.payload);
+      return { ...state };
 
-    case ALLPUSH:
-      return [...action.payload];
+    case EMPTY:
+      return { ...state, checkedTracks: new Set() };
+
+    case TOGGLE_ALLCHECKED:
+      return { ...state, allChecked: !state.allChecked };
+
+    case SET_ALLCHECKED:
+      return { ...state, allChecked: action.payload };
 
     default:
       return state;

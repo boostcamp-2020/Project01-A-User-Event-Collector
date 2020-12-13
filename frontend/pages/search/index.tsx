@@ -17,7 +17,7 @@ const SearchPage = ({ filter }: { filter: string }): React.ReactElement => {
       setSampleArtists(Artists);
       setSampleAlbums(Albums);
     });
-  }, []);
+  }, [filter]);
   return (
     <StyledSearchPage>
       <SearchSamples sectionTitle="노래" data={sampleTracks} filter={filter} />
@@ -28,10 +28,10 @@ const SearchPage = ({ filter }: { filter: string }): React.ReactElement => {
 };
 
 SearchPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
-  if (query?.filter !== undefined) {
-    return query?.filter;
+  if (query && query.filter) {
+    const { filter } = query;
+    return { filter };
   }
-  return {};
 };
 
 export default SearchPage;

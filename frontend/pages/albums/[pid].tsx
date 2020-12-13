@@ -1,43 +1,70 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import { Track } from "../../interfaces";
 import DetailPage from "../../components/DetailPage";
-import { DefaultCollector, DefaultEmitter } from "../../event/event";
+import myAxios from "../../utils/myAxios";
 
-const StyleAlbumPage = styled.div`
-  height: 100vh;
-`;
+const AlbumPage = ({ pid }: { pid: number }): React.ReactElement => {
+  const initTracks: Track[] = [
+    {
+      id: 0,
+      trackName: "",
+      albumTrackNumber: 0,
+      albumId: 0,
+      Albums: {
+        id: 0,
+        albumName: "",
+        description: "",
+        cover: "",
+        artistId: 0,
+      },
+      Artists: [
+        {
+          id: 0,
+          artistName: "",
+          cover: "",
+        },
+      ],
+      Liked: false,
+    },
+  ];
+  const initAlbums = {
+    id: 0,
+    albumName: "",
+    description: "",
+    cover: "",
+    artistId: 0,
+    Artists: {
+      artistName: "",
+    },
+    Tracks: initTracks,
+  };
 
-const AlbumPage = ({ Albums }: any) => {
-  return (
-    <DefaultCollector>
-      <StyleAlbumPage>
-        <DefaultEmitter>
-          <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />
-        </DefaultEmitter>
-      </StyleAlbumPage>
-    </DefaultCollector>
-  );
+  const [albums, setAlbums] = useState(initAlbums);
+  const [tracks, setTracks] = useState(initTracks);
+
+  useEffect(() => {
+    myAxios.get(`/albums/${pid}`).then((result: any) => {
+      const { data } = result;
+
+      setAlbums(data.Albums);
+      setTracks(data.Albums.Tracks);
+    });
+  }, []);
+  return <DetailPage type="album" detailData={albums} tracks={tracks} />;
 };
 
 export default AlbumPage;
 
-export async function getStaticPath() {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/albums`);
-  const albums = await res.json();
-  const paths = albums.map((album: any) => `/albums/${album.id}`);
+export async function getStaticPaths() {
+  const {
+    data: { Albums },
+  }: any = await myAxios.get(`/albums`);
+  const paths = Albums.map((album: any) => `/albums/${album.id}`);
 
   return { paths, fallback: false };
 }
 
-export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/albums/${params.pid}`);
-  const { Albums } = await res.json();
-
-  return { props: { Albums } };
+export async function getStaticProps({ params }: any) {
+  const { pid } = params;
+  return { props: { pid } };
 }

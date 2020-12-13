@@ -1,7 +1,9 @@
 import { Router } from "express";
 import libraryController from "../../../controllers/public/library";
+import userLikedItems from "../../../controllers/public/userLikedItems";
 
 const router = Router();
+router.get("/test", userLikedItems);
 router.get("/albums", libraryController.getLibAlbums);
 router.get("/artists", libraryController.getLibArtists);
 router.get("/playlists", libraryController.getLibPlaylists);

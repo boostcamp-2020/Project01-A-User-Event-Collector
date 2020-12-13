@@ -2,6 +2,8 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
+import { Emitter, Collector, EventObject } from "../../event";
+import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -32,12 +34,20 @@ const StyledSections = styled.div`
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
-    <>
+    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
+      {/* Collector 사용 */}
       <StyledHotMag>
         <HotMagCard />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
+        <Emitter identifier="identifier_1" eventType={["click"]}>
+          <h1> 이벤트 테스트</h1>
+        </Emitter>
+        <Emitter identifier="identifier_2" eventType={["mouseover"]}>
+          <h1> 마우스 오버 테스트</h1>
+        </Emitter>
+        {/* Emitter 사용 */}
         <Slidebar
           varient="todayBig"
           dataType="magazine"
@@ -58,7 +68,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
           data={Playlists}
         />
       </StyledSections>
-    </>
+    </Collector>
   );
 });
 
@@ -77,7 +87,6 @@ export async function getStaticProps() {
       fetch(`${apiUrl}:${apiPort}/api/news?limit=${dataLength}`),
       fetch(`${apiUrl}:${apiPort}/api/playlists?filter=${VIBE_ID}&limit=${dataLength}`),
     ]);
-    console.log(apiPort, apiUrl);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
     const { News } = result[1];
