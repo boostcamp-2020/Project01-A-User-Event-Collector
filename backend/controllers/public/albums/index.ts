@@ -19,7 +19,7 @@ const getAlbum = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
 
   try {
-    const result = await getAlbumById(+id);
+    const result = await getAlbumById(+id, req.user);
     if (!result) throw new Error("empty data");
     res.status(200).json({ Albums: result });
   } catch (err) {

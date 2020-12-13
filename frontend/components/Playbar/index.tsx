@@ -1,6 +1,7 @@
 import React, { memo, MouseEvent } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchLike, fetchUnlike } from "../../utils/fetchLike";
 import { Track } from "../../interfaces";
 import Img from "../Img";
 import icons from "../../constant/icons";
@@ -47,14 +48,15 @@ const Playbar = memo(
       albumId: 0,
       Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
       Artists: [{ artistName: "", id: 0, cover: "" }],
+      Liked: false,
     };
     const {
       id: trackId,
       trackName,
       Albums: { cover, id: albumId },
       Artists,
+      Liked: liked,
     } = playList[0] ? playList[0] : emptyTrack;
-    const liked = true;
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
     const router = useRouter();
@@ -67,6 +69,20 @@ const Playbar = memo(
     const pushToArtist = (artistId: number) => (e: MouseEvent) => {
       e.stopPropagation();
       router.push(`/artists/${artistId}`);
+    };
+
+    const makeLike = async () => {
+      const result = await fetchLike(trackId);
+      if (result) {
+        playList[0].Liked = true;
+      }
+    };
+
+    const makeUnlike = async () => {
+      const result = await fetchUnlike(trackId);
+      if (result) {
+        playList[0].Liked = false;
+      }
     };
 
     const artists = () =>
@@ -97,9 +113,9 @@ const Playbar = memo(
             <StyledTrackArtists>{artists()}</StyledTrackArtists>
           </StyledTrackInfo>
           {liked ? (
-            <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>
+            <StyledFilledHeart onClick={makeUnlike}>{icons.emptyHeart}</StyledFilledHeart>
           ) : (
-            <StyledEmptyHeart>{icons.emptyHeart}</StyledEmptyHeart>
+            <StyledEmptyHeart onClick={makeLike}>{icons.emptyHeart}</StyledEmptyHeart>
           )}
           <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
         </StyledTrackSection>

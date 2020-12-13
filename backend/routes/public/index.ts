@@ -1,4 +1,5 @@
 import express from "express";
+import tracksRouter from "./tracks";
 import albumsRouter from "./albums";
 import artistsRouter from "./artists";
 import djStationsRouter from "./dj-stations";
@@ -10,9 +11,12 @@ import libraryRouter from "./library";
 import searchRouter from "./search";
 import authRouter from "./auth";
 import logRouter from "./log";
+import userToReq from "../../middlewares/userToReq";
 
 const publicRouter = express.Router();
 
+publicRouter.use(userToReq);
+publicRouter.use("/tracks", tracksRouter);
 publicRouter.use("/albums", albumsRouter);
 publicRouter.use("/artists", artistsRouter);
 publicRouter.use("/dj-stations", djStationsRouter);

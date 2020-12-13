@@ -6,7 +6,7 @@ const getTracks = async (req: Request, res: Response): Promise<void> => {
   const trackFilter = makeSearchOption(req.query, "trackName");
 
   try {
-    const result = await getTrackForSearch(trackFilter);
+    const result = await getTrackForSearch(trackFilter, req.user);
 
     res.status(200).json(result);
   } catch (err) {

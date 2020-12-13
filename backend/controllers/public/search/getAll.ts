@@ -14,7 +14,7 @@ const getAll = async (req: Request, res: Response): Promise<void> => {
 
     // TODO : PROMISE ALL
     result.Albums = await getAlbumCovers(albumFilter);
-    result.Tracks = await getTrackForSearch(trackFilter);
+    result.Tracks = await getTrackForSearch(trackFilter, req.user);
     result.Artists = await getArtistCovers(artistFilter);
 
     res.status(200).json(result);

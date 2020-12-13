@@ -21,7 +21,7 @@ const getPlaylist = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
 
   try {
-    const result = await getPlaylistById(+id);
+    const result = await getPlaylistById(+id, req.user);
     if (!result) throw new Error("empty data");
     res.status(200).json({ Playlists: result });
   } catch (err) {

@@ -55,10 +55,19 @@ const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
 const Overlay = (): React.ReactElement => {
   const playList: Track[] = useSelector((state: RootState) => state.playQueue);
   const dispatch = useDispatch();
+  const emptyTrack: Track = {
+    id: 0,
+    albumTrackNumber: 0,
+    trackName: "",
+    albumId: 0,
+    Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
+    Artists: [{ artistName: "", id: 0, cover: "" }],
+    Liked: false,
+  };
   const {
     id: trackId,
     Albums: { cover, id: albumId },
-  } = playList[0] ? playList[0] : { id: 0, Albums: { cover: "", id: 0 } };
+  } = playList[0] ? playList[0] : emptyTrack;
 
   return (
     <StyledOverlay>
