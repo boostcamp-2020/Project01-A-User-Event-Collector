@@ -293,12 +293,15 @@ protocol AnalyticsEngine: class {
 
 
 **이벤트의 간편한 확장성**
+
 `AnalyticEvent이` protocol로 구현함으로써, 새로운 이벤트를 추가하는것은 매우 간편해집니다. 
 
 ![](https://i.imgur.com/fCncpdR.gif)
 
 **이벤트 type checking**
+
 `AnalyticEvent` protocol을 채택하는 custom type의 이벤트를 구현함으로써, 원하는 이벤트에 대한 자동완성 결과를 볼수 있습니다.
+
 ![](https://i.imgur.com/MSw2rnw.png)
 
 
@@ -306,7 +309,9 @@ protocol AnalyticsEngine: class {
 **엔진의 다양한 구현**
 `AnalyticsEngine` protocol을 채택하는 엔진을 다양하게 구현할수 있습니다.
 그리고 상황에 맞게 필요한 엔진을 갈아 끼우는것도 매우 쉽습니다.
+
 ![](https://i.imgur.com/s13yZNi.gif)
+
 또한, AnalyticsManager는 다수의 엔진을 가질 수도 있습니다.
 실제로 저희 앱에서는 back end server를 위한 `engine`과 core data를 위한 `engine` 두개를 구현하고 주입했습니다.
 
