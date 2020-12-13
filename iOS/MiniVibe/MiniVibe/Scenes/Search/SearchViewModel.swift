@@ -6,6 +6,7 @@
 //
 import Foundation
 import Combine
+import UIKit
 
 class SearchViewModel: ObservableObject {
     @Published var searchText = ""
@@ -20,8 +21,7 @@ class SearchViewModel: ObservableObject {
     
     init(manager: AnalyticsManager) {
         self.manager = manager
-        searchSubscription()
-        searchEventSubscription()
+        addSubscriptions()
     }
     
     func fetch(_ searchText: String) {
@@ -41,6 +41,11 @@ class SearchViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func addSubscriptions() {
+        searchSubscription()
+        searchEventSubscription()
     }
     
     func reset() {
@@ -65,29 +70,32 @@ class SearchViewModel: ObservableObject {
                 self?.fetch(searchText)
             }
             .store(in: &subscription)
-
     }
     
-    func validate(_ string: String) -> String? {
+    private func searchEventSubscription() {
+        $isEditing
+            .sink { [weak self] isEditing in
+                if isEditing {
+                    self?.manager.log(ScreenEvent.screenViewed(.searchAfter))
+                } else {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                    to: nil,
+                                                    from: nil,
+                                                    for: nil)
+                    self?.manager.log(ScreenEvent.screenViewed(.searchBefore))
+                }
+            }
+            .store(in: &subscription)
+    }
+
+    private func validate(_ string: String) -> String? {
         if string.isEmpty {
             if self.isEditing {
                  self.reset()
             }
             return nil
         }
-        self.isEditing = true
         return string
     }
     
-    func searchEventSubscription() {
-        $isEditing
-            .sink { [weak self] isEditing in
-                if isEditing {
-                    self?.manager.log(ScreenEvent.screenViewed(.searchAfter))
-                } else {
-                    self?.manager.log(ScreenEvent.screenViewed(.searchBefore))
-                }
-            }
-            .store(in: &subscription)
-    }
 }
