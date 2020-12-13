@@ -27,21 +27,17 @@ struct SearchBarView: View {
                         .foregroundColor(.gray)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                    if !viewModel.isEditing {
-                        Image(systemName: "music.note")
-                            .foregroundColor(.gray)
-                            .padding(.trailing, 12)
-                    }
+//                    if !viewModel.isEditing {
+//                        Image(systemName: "music.note")
+//                            .foregroundColor(.gray)
+//                            .padding(.trailing, 12)
+//                    }
                 }
             )
             
             if viewModel.isEditing {
                 Button(action: {
-                    viewModel.searchText = ""
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                                    to: nil,
-                                                    from: nil,
-                                                    for: nil)
+                    viewModel.reset()
 
                 }, label: {
                     Text("취소")
