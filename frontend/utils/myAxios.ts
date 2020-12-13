@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 const serverURL =
   process.env.NODE_ENV === "development"
@@ -7,7 +7,7 @@ const serverURL =
 
 const URL = `${serverURL}/api`;
 
-const headerConfig = {
+const headerConfig: AxiosRequestConfig = {
   withCredentials: true,
 };
 

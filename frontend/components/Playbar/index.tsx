@@ -1,6 +1,7 @@
 import React, { memo, MouseEvent } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchLike, fetchUnlike } from "../../utils/fetchLike";
 import { Track } from "../../interfaces";
 import Img from "../Img";
 import icons from "../../constant/icons";
@@ -70,6 +71,20 @@ const Playbar = memo(
       router.push(`/artists/${artistId}`);
     };
 
+    const makeLike = async () => {
+      const result = await fetchLike(trackId);
+      if (result) {
+        playList[0].Liked = true;
+      }
+    };
+
+    const makeUnlike = async () => {
+      const result = await fetchUnlike(trackId);
+      if (result) {
+        playList[0].Liked = false;
+      }
+    };
+
     const artists = () =>
       Artists.map((el, idx) => {
         if (idx === Artists.length - 1) {
@@ -98,9 +113,9 @@ const Playbar = memo(
             <StyledTrackArtists>{artists()}</StyledTrackArtists>
           </StyledTrackInfo>
           {liked ? (
-            <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>
+            <StyledFilledHeart onClick={makeUnlike}>{icons.emptyHeart}</StyledFilledHeart>
           ) : (
-            <StyledEmptyHeart>{icons.emptyHeart}</StyledEmptyHeart>
+            <StyledEmptyHeart onClick={makeLike}>{icons.emptyHeart}</StyledEmptyHeart>
           )}
           <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
         </StyledTrackSection>
