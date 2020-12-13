@@ -279,6 +279,23 @@ protocol AnalyticsEvent: Codable {
 }
 ```
 
+```swift
+struct ScreenEvent: AnalyticsEvent {
+    var name: String
+    var metadata: [String: String]?
+    
+    private init(name: String, metadata: [String: String]? = nil) {
+        self.name = name
+        self.metadata = metadata
+    }
+    
+    static let playerPushed = ScreenEvent(name: "playerPushed")
+
+    static let playerPopped = ScreenEvent(name: "playerPopped")
+    
+}
+```
+
 ### AnalyticsEngine
 ```swift
 protocol AnalyticsEngine: class {
@@ -286,6 +303,16 @@ protocol AnalyticsEngine: class {
 }
 ```
 
+```swift
+class MockAnalyticsEngine: AnalyticsEngine {
+    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
+        print("MockServer - \(event.name)")
+        event.metadata?.forEach { key, value in
+            print("ㄴ \(key) : \(value)")
+        }
+    }
+}
+```
 <br>
 
 ### 이벤트의 흐름
