@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { GetServerSideProps } from "next";
 import React from "react";
+import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
 import myAxios from "../../utils/myAxios";
 
@@ -26,12 +28,14 @@ export default MagazinePage;
 //   return { paths, fallback: false };
 // }
 
-export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
+export async function getServerSideProps(context: GetServerSideProps) {
+  const { params, req } = context;
+  const Cookie = req.headers.cookie;
+  const jwt = findTokenFromCookie(Cookie);
 
-  const res = await fetch(`${apiUrl}:${apiPort}/api/magazines/${params.pid}`);
-  const { Magazines } = await res.json();
-
+  const res = await myAxios.get(`/magazines/${params.pid}`, jwt);
+  const {
+    data: { Magazines },
+  }: any = res;
   return { props: { Magazines } };
 }

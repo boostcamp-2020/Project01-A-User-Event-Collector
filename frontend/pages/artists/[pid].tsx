@@ -1,4 +1,6 @@
 import React from "react";
+import { GetServerSideProps } from "next";
+import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
 import myAxios from "../../utils/myAxios";
 
@@ -17,10 +19,14 @@ export default AlbumPage;
 //   return { paths, fallback: false };
 // }
 
-export async function getServerSideProps({ params }: any) {
-  const res = await myAxios.get(`/albums/${params.pid}`);
+export async function getServerSideProps(context: GetServerSideProps) {
+  const { params, req } = context;
+  const Cookie = req.headers.cookie;
+  const jwt = findTokenFromCookie(Cookie);
+
+  const res = await myAxios.get(`/artists/${params.pid}`, jwt);
   const {
-    data: { Albums },
-  }: any = await res;
-  return { props: { Albums } };
+    data: { Artists },
+  }: any = res;
+  return { props: { Artists } };
 }

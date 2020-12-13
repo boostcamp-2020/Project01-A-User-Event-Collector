@@ -12,27 +12,55 @@ const headerConfig: AxiosRequestConfig = {
 };
 
 interface AxiosInterface {
-  get: (path: string) => Promise<Object>;
-  post: (path: string, data: any) => Promise<Object>;
-  put: (path: string, data: any) => Promise<Object>;
-  delete: (path: string) => Promise<Object>;
+  get: (path: string, cookie?: string) => Promise<Object>;
+  post: (path: string, data: any, cookie?: string) => Promise<Object>;
+  put: (path: string, data: any, cookie?: string) => Promise<Object>;
+  delete: (path: string, cookie?: string) => Promise<Object>;
 }
 
 const myAxios: AxiosInterface = {
-  get(path) {
-    return axios.get(URL + path, headerConfig);
+  get(path, token = undefined) {
+    return token
+      ? axios.get(URL + path, {
+          ...headerConfig,
+          headers: {
+            Cookie: `token=${token}`,
+          },
+        })
+      : axios.get(URL + path, headerConfig);
   },
 
-  post(path, data) {
-    return axios.post(URL + path, data, headerConfig);
+  post(path, data, token = undefined) {
+    return token
+      ? axios.post(URL + path, data, {
+          ...headerConfig,
+          headers: {
+            Cookie: `token=${token}`,
+          },
+        })
+      : axios.post(URL + path, data, headerConfig);
   },
 
-  put(path, data) {
-    return axios.put(URL + path, data, headerConfig);
+  put(path, data, token = undefined) {
+    return token
+      ? axios.put(URL + path, data, {
+          ...headerConfig,
+          headers: {
+            Cookie: `token=${token}`,
+          },
+        })
+      : axios.put(URL + path, data, headerConfig);
   },
 
-  delete(path) {
-    return axios.delete(URL + path, headerConfig);
+  delete(path, token = undefined) {
+    return token
+      ? axios.delete(URL + path, {
+          ...headerConfig,
+          headers: {
+            Cookie: `token=${token}`,
+          },
+        })
+      : axios.delete(URL + path, headerConfig);
   },
 };
 

@@ -1,5 +1,7 @@
 import React from "react";
+import { GetServerSideProps } from "next";
 import styled from "styled-components";
+import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
 import myAxios from "../../utils/myAxios";
 
@@ -26,12 +28,14 @@ export default NewsPage;
 //   return { paths, fallback: false };
 // }
 
-export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
+export async function getServerSideProps(context: GetServerSideProps) {
+  const { params, req } = context;
+  const Cookie = req.headers.cookie;
+  const jwt = findTokenFromCookie(Cookie);
 
-  const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
-  const { News } = await res.json();
-
+  const res = await myAxios.get(`/news/${params.pid}`, jwt);
+  const {
+    data: { News },
+  }: any = res;
   return { props: { News } };
 }
