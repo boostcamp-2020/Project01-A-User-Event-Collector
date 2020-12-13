@@ -47,9 +47,9 @@ struct TrackHorizontalListView: View {
     }
 }
 
-struct TrackHorizontalListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
-                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-    }
-}
+//struct TrackHorizontalListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
+//                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//    }
+//}

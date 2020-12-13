@@ -41,7 +41,7 @@ class TodayRouter: DestinationOrientedRouterProtocol {
                             })
         case .djStations:
             let screenEvent = ScreenEvent.screenViewedWithSource(.djStationList, source: .today)
-            return AnyView(DJStationListView()
+            return AnyView(DJStationListView(manager: manager)
                             .onAppear {
                                 self.manager.log(screenEvent)
                             })

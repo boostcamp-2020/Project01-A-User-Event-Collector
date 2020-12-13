@@ -46,8 +46,8 @@ struct NowPlayingView: View {
     }
 }
 
-struct NowPlayingView_Previews: PreviewProvider {
-    static var previews: some View {
-        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
-    }
-}
+//struct NowPlayingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
+//    }
+//}

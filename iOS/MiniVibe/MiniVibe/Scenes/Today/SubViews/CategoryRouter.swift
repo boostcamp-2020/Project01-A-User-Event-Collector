@@ -10,7 +10,7 @@ import SwiftUI
 class CategoryRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingType = MiniVibeType
-    private let manager: AnalyticsManager
+    let manager: AnalyticsManager
     
     init(manager: AnalyticsManager) {
         self.manager = manager

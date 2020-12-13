@@ -9,15 +9,17 @@ import Foundation
 
 struct ButtonEvent: AnalyticsEvent {
     var name: String
+    var createdAt: String?
     var metadata: [String: String]?
     
     private init(name: String, metadata: [String: String]? = nil) {
         self.name = name
+        self.createdAt = Date().convertToStringForWeb()
         self.metadata = metadata
     }
     
     static let magazineTouched = ButtonEvent(name: "magazineTouched")
-    
     static let genreTouched = ButtonEvent(name: "genreTouched")
+    static let djStationTouched = ButtonEvent(name: "djStationTouched")
 
 }

@@ -41,13 +41,13 @@ struct PlayerInfoView: View {
     }
 }
 
-struct PlayerInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerInfoView(timeDuration: .constant(0),
-                       viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())),
-                       track: TestData.defaultTrack)
-    }
-}
+//struct PlayerInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlayerInfoView(timeDuration: .constant(0),
+//                       viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())),
+//                       track: TestData.defaultTrack)
+//    }
+//}
 
 struct SwipableImageView: View {
     @State private var offset: CGSize = .zero
