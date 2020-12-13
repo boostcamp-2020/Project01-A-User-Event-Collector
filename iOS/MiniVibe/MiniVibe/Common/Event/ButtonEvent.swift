@@ -19,7 +19,7 @@ struct ButtonEvent: AnalyticsEvent {
     }
     
     static let magazineTouched = ButtonEvent(name: "magazineTouched")
-    
     static let genreTouched = ButtonEvent(name: "genreTouched")
+    static let djStationTouched = ButtonEvent(name: "djStationTouched")
 
 }
