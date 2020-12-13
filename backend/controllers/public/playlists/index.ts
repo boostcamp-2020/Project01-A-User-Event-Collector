@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { getPlaylistCovers, getPlaylistById } from "../../../models/playlists";
+import prisma from "../../../prisma";
 import { makeOption } from "../../../utils/makePrismaObtion";
 
 interface Controller {

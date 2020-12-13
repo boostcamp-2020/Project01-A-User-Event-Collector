@@ -32,6 +32,13 @@ function convertData(dataType?: string, rawData?: any): cardData {
         src: rawData.cover,
         mainLink: `/playlists/${rawData.id}`,
       };
+    case "myPlaylist":
+      return {
+        title: rawData.playlistName,
+        smallText: `${rawData.Users.username}`,
+        src: rawData.cover,
+        mainLink: `/playlists/${rawData.id}`,
+      };
     case "album":
       return {
         src: rawData.cover,
