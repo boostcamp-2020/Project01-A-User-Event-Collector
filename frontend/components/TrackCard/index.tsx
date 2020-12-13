@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 import { Track } from "../../interfaces";
 import {
   addCheckedTrack,
@@ -28,10 +29,6 @@ const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: numb
     Albums: { cover, albumName },
     Artists,
   } = track;
-  const artists: string[] = [];
-  Artists.forEach((el) => {
-    artists.push(el.artistName);
-  });
 
   const {
     allChecked,
@@ -76,6 +73,11 @@ const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: numb
     }
   }, [checked]);
 
+  const artists: string[] = [];
+  Artists.forEach((el) => {
+    artists.push(el.artistName);
+  });
+
   return (
     <StyledTrackCard>
       <StyledCheckboxDiv>
@@ -85,7 +87,11 @@ const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: numb
         <HoverImg varient="trackCardCover" src={cover} />
       </StyledImg>
       <StyledTrackName>{trackName}</StyledTrackName>
-      <StyledArtists>{artists.join(", ")}</StyledArtists>
+      <StyledArtists>
+        {Artists.map((artist) => {
+          return <Link href={`/artists/${artist.id}`}>{artist.artistName}</Link>;
+        })}
+      </StyledArtists>
       <StyledAlbum>{albumName}</StyledAlbum>
       <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
     </StyledTrackCard>

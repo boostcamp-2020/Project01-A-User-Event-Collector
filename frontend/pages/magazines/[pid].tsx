@@ -23,21 +23,12 @@ const MagazinePage = ({ Magazines }: any): React.ReactElement => {
 
 export default MagazinePage;
 
-// export async function getStaticPaths() {
-//   const {
-//     data: { Magazines },
-//   }: any = await myAxios.get(`/magazines`);
-//   const paths = Magazines.map((magazine: any) => `/magazines/${magazine.id}`);
+export async function getServerSideProps(context: GetServerSideProps): Promise<any> {
+  const { params, req }: any = context;
+  // const Cookie = req.headers.cookie;
+  // const jwt = findTokenFromCookie(Cookie);
 
-//   return { paths, fallback: false };
-// }
-
-export async function getServerSideProps(context: GetServerSideProps) {
-  const { params, req } = context;
-  const Cookie = req.headers.cookie;
-  const jwt = findTokenFromCookie(Cookie);
-
-  const res = await myAxios.get(`/magazines/${params.pid}`, jwt);
+  const res = await myAxios.get(`/magazines/${params.pid}`); // jwt
   const {
     data: { Magazines },
   }: any = res;

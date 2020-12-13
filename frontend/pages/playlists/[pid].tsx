@@ -19,21 +19,12 @@ const PlaylistPage = ({ Playlists }: any) => {
 
 export default PlaylistPage;
 
-// export async function getStaticPaths() {
-//   const {
-//     data: { Playlists },
-//   }: any = await myAxios.get(`/playlists`);
-//   const paths = Playlists.map((playlist: any) => `/playlists/${playlist.id}`);
+export async function getServerSideProps(context: GetServerSideProps): Promise<any> {
+  const { params, req }: any = context;
+  // const Cookie = req.headers.cookie;
+  // const jwt = findTokenFromCookie(Cookie);
 
-//   return { paths, fallback: false };
-// }
-
-export async function getServerSideProps(context: GetServerSideProps) {
-  const { params, req } = context;
-  const Cookie = req.headers.cookie;
-  const jwt = findTokenFromCookie(Cookie);
-
-  const res = await myAxios.get(`/playlists/${params.pid}`, jwt);
+  const res = await myAxios.get(`/playlists/${params.pid}`); // jwt
   const {
     data: { Playlists },
   }: any = res;

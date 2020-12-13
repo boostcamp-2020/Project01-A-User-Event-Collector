@@ -2,31 +2,21 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
-import myAxios from "../../utils/myAxios";
 
-const AlbumPage = ({ Albums }: any): React.ReactElement => {
-  return <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />;
+const ArtistPage = ({ Artists }: any): React.ReactElement => {
+  return <DetailPage type="artist" detailData={Artists} tracks={Artists.Tracks} />;
 };
 
-export default AlbumPage;
+export default ArtistPage;
 
-// export async function getStaticPaths() {
-//   const {
-//     data: { Artists },
-//   }: any = await myAxios.get(`/artists`);
-//   const paths = Artists.map((artist: any) => `/artists/${artist.id}`);
+export async function getServerSideProps({ params }: any): Promise<any> {
+  const apiUrl = process.env.API_URL;
+  const apiPort = process.env.API_PORT;
+  // const Cookie = req.headers.cookie;
+  // const jwt = findTokenFromCookie(Cookie);
 
-//   return { paths, fallback: false };
-// }
+  const res = await fetch(`${apiUrl}:${apiPort}/api/artists/${params.pid}`);
+  const { Artists } = await res.json();
 
-export async function getServerSideProps(context: GetServerSideProps) {
-  const { params, req } = context;
-  const Cookie = req.headers.cookie;
-  const jwt = findTokenFromCookie(Cookie);
-
-  const res = await myAxios.get(`/artists/${params.pid}`, jwt);
-  const {
-    data: { Artists },
-  }: any = res;
   return { props: { Artists } };
 }

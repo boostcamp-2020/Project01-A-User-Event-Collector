@@ -19,21 +19,12 @@ const NewsPage = ({ News }: any) => {
 
 export default NewsPage;
 
-// export async function getStaticPaths() {
-//   const {
-//     data: { News },
-//   }: any = await myAxios.get(`/news`);
-//   const paths = News.map((news: any) => `/news/${news.id}`);
+export async function getServerSideProps(context: GetServerSideProps): Promise<any> {
+  const { params, req }: any = context;
+  // const Cookie = req.headers.cookie;
+  // const jwt = findTokenFromCookie(Cookie);
 
-//   return { paths, fallback: false };
-// }
-
-export async function getServerSideProps(context: GetServerSideProps) {
-  const { params, req } = context;
-  const Cookie = req.headers.cookie;
-  const jwt = findTokenFromCookie(Cookie);
-
-  const res = await myAxios.get(`/news/${params.pid}`, jwt);
+  const res = await myAxios.get(`/news/${params.pid}`); // jwt
   const {
     data: { News },
   }: any = res;
