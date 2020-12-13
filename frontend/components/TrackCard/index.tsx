@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-expressions */
+import React, { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { Track } from "../../interfaces";
@@ -23,36 +24,21 @@ import {
 import HoverImg from "../HoverImg";
 import icons from "../../constant/icons";
 
-const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: number }) => {
-  const {
-    trackName,
-    Albums: { cover, albumName },
-    Artists,
-  } = track;
+interface Props {
+  track: Track;
+  numberOfCards: number;
+}
 
-  const {
-    allChecked,
-    checkedTracks,
-  }: { allChecked: boolean; checkedTracks: Set<Track> } = useSelector(
-    (state: RootState) => state.checkedTracks,
-  );
+const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
+  const { trackName, Albums, Artists } = track;
+  const { cover, albumName, id: albumId } = Albums;
+
+  const { allChecked, checkedTracks } = useSelector((state: RootState) => state.checkedTracks);
   const [checked, setChecked] = useState(false);
 
+  const handleChecked = () => setChecked(!checked);
+
   const dispatch = useDispatch();
-
-  const controlCheckedList = () => {
-    if (!checked) {
-      dispatch(addCheckedTrack(track));
-    } else {
-      dispatch(deleteCheckedTrack(track));
-    }
-  };
-
-  const handleChecked = () => {
-    setChecked(!checked);
-    controlCheckedList();
-  };
-
   useEffect(() => {
     if (allChecked) {
       setChecked(true);
@@ -64,19 +50,11 @@ const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: numb
   }, [allChecked]);
 
   useEffect(() => {
-    if (checked) {
-      if (checkedTracks.size === numberOfCards) {
-        dispatch(setAllChecked(true));
-      }
-    } else if (checkedTracks.size < numberOfCards) {
-      dispatch(setAllChecked(false));
-    }
-  }, [checked]);
+    checked === true ? dispatch(addCheckedTrack(track)) : dispatch(deleteCheckedTrack(track));
 
-  const artists: string[] = [];
-  Artists.forEach((el) => {
-    artists.push(el.artistName);
-  });
+    if (checked && checkedTracks.size === numberOfCards) dispatch(setAllChecked(true));
+    else if (checkedTracks.size < numberOfCards) dispatch(setAllChecked(false));
+  }, [checked]);
 
   return (
     <StyledTrackCard>
@@ -88,11 +66,13 @@ const TrackCard = ({ track, numberOfCards }: { track: Track; numberOfCards: numb
       </StyledImg>
       <StyledTrackName>{trackName}</StyledTrackName>
       <StyledArtists>
-        {Artists.map((artist) => {
-          return <Link href={`/artists/${artist.id}`}>{artist.artistName}</Link>;
-        })}
+        {Artists.map((artist) => (
+          <Link href={`/artists/${artist.id}`}>{artist.artistName}</Link>
+        ))}
       </StyledArtists>
-      <StyledAlbum>{albumName}</StyledAlbum>
+      <StyledAlbum>
+        <Link href={`/albums/${albumId}`}>{albumName}</Link>
+      </StyledAlbum>
       <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
     </StyledTrackCard>
   );
