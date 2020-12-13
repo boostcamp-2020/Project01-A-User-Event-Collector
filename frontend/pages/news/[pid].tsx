@@ -1,15 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
 import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
 import myAxios from "../../utils/myAxios";
+import { _News } from "../../interfaces";
 
 const StyleNewsPage = styled.div`
   height: 100vh;
 `;
 
-const NewsPage = ({ News }: any) => {
+const NewsPage: FC<_News[]> = ({ News }: any) => {
   return (
     <StyleNewsPage>
       <DetailPage type="news" detailData={News} tracks={News.Tracks} />

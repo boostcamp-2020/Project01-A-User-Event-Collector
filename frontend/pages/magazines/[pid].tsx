@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
-import React from "react";
+import React, { FC } from "react";
 import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
 import { Collector } from "../../event";
 import EventObjectExample from "../../event/Exampe_eventObject";
 import myAxios from "../../utils/myAxios";
+import { Magazine } from "../../interfaces";
 
 const StyleMagazinePage = styled.div`
   height: 100vh;
 `;
 
-const MagazinePage = ({ Magazines }: any): React.ReactElement => {
+const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
   return (
+    // eslint-disable-next-line no-console
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyleMagazinePage>
         <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />

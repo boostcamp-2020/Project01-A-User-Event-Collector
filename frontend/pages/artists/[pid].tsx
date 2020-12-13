@@ -1,9 +1,9 @@
-import React from "react";
-import { GetServerSideProps } from "next";
-import findTokenFromCookie from "../../utils/findTokenFromCookie";
+import React, { FC } from "react";
 import DetailPage from "../../components/DetailPage";
+import { Artist } from "../../interfaces";
+import findTokenFromCookie from "../../utils/findTokenFromCookie";
 
-const ArtistPage = ({ Artists }: any): React.ReactElement => {
+const ArtistPage: FC<Artist[]> = ({ Artists }: any) => {
   return <DetailPage type="artist" detailData={Artists} tracks={Artists.Tracks} />;
 };
 
