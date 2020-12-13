@@ -9,11 +9,16 @@ import Foundation
 
 class AnalyticsManager {
     private var currentEngine: AnalyticsEngine?
-    private let serverEngine: AnalyticsEngine
-    private let backupEngine = BackupAnalyticsEngine()
+    private let serverEngine: AnalyticsEngine?
+    private let backupEngine: AnalyticsEngine?
+    private let alertEngine: AnalyticsEngine?
     
-    init(engine: AnalyticsEngine) {
-        self.serverEngine = engine
+    init(serverEngine: AnalyticsEngine?,
+         backupEngine: AnalyticsEngine?,
+         alertEngine: AnalyticsEngine?) {
+        self.serverEngine = serverEngine
+        self.backupEngine = backupEngine
+        self.alertEngine = alertEngine
         try? addReachabilityObserver()
         setupEngine()
     }
@@ -36,6 +41,7 @@ class AnalyticsManager {
     func log<T: AnalyticsEvent>(_ event: T) {
         guard let currentEngine = currentEngine else { return }
         currentEngine.sendAnalyticsEvent(event)
+        alertEngine?.sendAnalyticsEvent(event)
     }
     
     private func switchToServerEngine() {
