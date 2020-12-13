@@ -259,16 +259,15 @@ const IndexPage = () => {
 
 ### 구성요소
 
-**1. AnalyticsEvent**
-&emsp; 현재 수집기가 제공하는 모든 이벤트
-&emsp; 프로토콜로 정의
-
-**2. AnalyticsManager**
-&emsp; 이벤트를 로깅하기 위한 최상단 API
-
-**3. AnalyticsEngine**
-&emsp; 직접적으로 이벤트 로깅의 전송/저장을 담당
-&emsp; 프로토콜로 정의
+1. AnalyticsEvent
+    - analytics system이 제공하는 모든 **이벤트들**.
+    - 프로토콜로 정의
+2. AnalyticsManager
+    - 이벤트를 로깅하기 위한 최상단 API, 실제로 로깅을하지는 않고,
+    - `AnalyticsEngine`을 이용하여 보낼것이다.
+3. AnalyticsEngine
+    - 직접적으로 로깅 전송/저장을 담당한다.
+    - 프로토콜로 정의 
 
 <br>
 
@@ -279,6 +278,7 @@ protocol AnalyticsEvent: Codable {
     var metadata: [String: String]? { get }
 }
 ```
+
 ### AnalyticsEngine
 ```swift
 protocol AnalyticsEngine: class {
