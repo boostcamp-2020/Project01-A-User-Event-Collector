@@ -4,8 +4,10 @@ import express from "express";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import bodyParser from "body-parser";
 import publicRouter from "./routes/public";
 import privateRouter from "./routes/private";
+import { connect } from "./mongo";
 
 if (process.env.NODE_ENV) {
   dotenv.config({ path: ".env.production" });
@@ -14,18 +16,22 @@ if (process.env.NODE_ENV) {
 }
 
 const app = express();
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(logger("short"));
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+connect();
 
 app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
 
-
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server Start on Stage: ${process.env.STAGE}`);
-  if (process.env.NODE_ENV) {
+
+  if (process.env.STAGE === "development") {
     console.log(`Server is on http://localhost:${process.env.PORT || 4000}`);
     console.log(`And http://127.0.0.1:${process.env.PORT || 4000}`);
   } else {

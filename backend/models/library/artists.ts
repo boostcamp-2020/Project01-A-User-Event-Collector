@@ -9,4 +9,41 @@ const getUserLikeArtists = async (id: number): Promise<Object> => {
   return artists;
 };
 
-export default getUserLikeArtists;
+const postUserLikeArtists = async (
+  userId: number,
+  artistId: number
+): Promise<String | Error> => {
+  try {
+    await prisma.users_Like_Artists.create({
+      data: {
+        Users: {
+          connect: { id: userId },
+        },
+        Artists: {
+          connect: { id: artistId },
+        },
+      },
+    });
+    return "Success Post";
+  } catch (err) {
+    return new Error("Fail Post");
+  }
+};
+
+const deleteUserLikeArtists = async (
+  userId: number,
+  artistId: number
+): Promise<String | Error> => {
+  try {
+    await prisma.users_Like_Artists.deleteMany({
+      where: {
+        userId,
+        artistId,
+      },
+    });
+    return "Success Delete";
+  } catch (err) {
+    return new Error("Fail Delete");
+  }
+};
+export { getUserLikeArtists, postUserLikeArtists, deleteUserLikeArtists };

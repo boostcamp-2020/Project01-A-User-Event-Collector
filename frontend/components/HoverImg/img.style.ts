@@ -21,6 +21,10 @@ const HoverImgthemes: any = {
     width: 2.5rem;
     height: 2.5rem;
   `,
+  magazineBig: `
+    width: 19rem;
+    height: 19rem;
+  `,
 };
 
 export const StyledHoverImg = styled.div<styledHoverImgProps>`

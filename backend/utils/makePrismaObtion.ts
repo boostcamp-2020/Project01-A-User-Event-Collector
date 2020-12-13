@@ -1,6 +1,7 @@
 type optionObject = {
   take?: number;
   where?: Object;
+  skip?: number;
 };
 
 const makeOption = (_query: any, _target?: any, _type?: string): Object => {
@@ -26,7 +27,7 @@ const makeOption = (_query: any, _target?: any, _type?: string): Object => {
 };
 
 const makeSearchOption = (_query: any, _target: string): Object => {
-  const { limit, filter } = _query;
+  const { limit, filter, page } = _query;
   const optObj: optionObject = {};
 
   if (limit) {
@@ -36,6 +37,10 @@ const makeSearchOption = (_query: any, _target: string): Object => {
     optObj.where = {
       [_target]: { contains: filter },
     };
+  }
+  if (!limit && page) {
+    optObj.skip = (+page - 1) * 10;
+    optObj.take = 10;
   }
   return optObj;
 };

@@ -8,10 +8,10 @@ export interface Props {
 }
 
 const StyledGenreTitle = styled.div`
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-top: 1em;
-  margin-bottom: 0.2em;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
 `;
 
 const StyledGenreContainer = styled.div<Props>`
@@ -19,7 +19,7 @@ const StyledGenreContainer = styled.div<Props>`
   flex-direction: column;
   width: 70rem;
   height: 15rem;
-  margin: 1em 0em;
+  margin: 1rem 0rem;
   & > a > svg {
     width: 0.7rem;
     height: 0.7rem;
@@ -35,7 +35,7 @@ const GenreContent = styled.ul`
   grid-row-gap: 1rem;
   width: 100%;
   height: 100%;
-  margin: 1em 0em;
+  margin: 1rem 0rem;
   & > li {
     margin: 0;
   }

@@ -68,13 +68,13 @@ const genreData = [
 ];
 
 const StyledChartPageWrapper = styled.div`
-  margin: 5em 7em;
+  margin: 5rem 7rem;
 `;
 
 const StyledPagetitle = styled.div`
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
-  margin: 2em 0em 1em 0em;
+  margin: 2rem 0rem 1rem 0rem;
 `;
 
 const ChartsPage = memo(() => {

@@ -1,4 +1,4 @@
 import getTrackCard from "./getTrackCard";
-import getTrackCovers from "./getCovers";
+import getTrackForSearch from "./getTrackForSearch";
 
-export { getTrackCard, getTrackCovers };
+export { getTrackCard, getTrackForSearch };

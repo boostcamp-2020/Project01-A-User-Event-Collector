@@ -2,7 +2,7 @@ import React, { memo, useState } from "react";
 import LinkCardBlock from "./LinkCardBlock";
 import NavTopLogoSearch from "./NavTopLogoSearch";
 import NavBarUser from "./NavBarUser";
-import StyledNavBar from "./styled";
+import { StyledNavBar, StyledLibrary, StyledLibraryText } from "./styled";
 
 export enum Theme {
   Main = "main",
@@ -18,7 +18,14 @@ const NavBar = memo(
         <NavTopLogoSearch handleSearch={handleSearch} />
         <NavBarUser loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <LinkCardBlock theme={Theme.Main} />
-        {loggedIn ? <LinkCardBlock theme={Theme.Library} /> : ""}
+        {loggedIn ? (
+          <StyledLibrary>
+            <StyledLibraryText>보관함</StyledLibraryText>
+            <LinkCardBlock theme={Theme.Library} />
+          </StyledLibrary>
+        ) : (
+          ""
+        )}
       </StyledNavBar>
     );
   },

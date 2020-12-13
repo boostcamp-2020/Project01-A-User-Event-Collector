@@ -17,6 +17,9 @@ const themes: any = {
   trackCardCover: `
     width: 2.5rem;
   `,
+  magazineBig: `
+    width: 19rem;
+  `,
 };
 
 export const StyledCard = styled.li<StyledCardProps>`

@@ -2,29 +2,31 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
+import { Emitter, Collector, EventObject } from "../../event";
+import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyledHotMag = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2.75em;
-  margin-bottom: 4.5em;
+  margin-top: 2.75rem;
+  margin-bottom: 4.5rem;
 `;
 
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15em);
-  top: -4em;
+  width: calc(100vw - 15rem);
+  top: -4rem;
   z-index: 1;
-  height: 30em;
+  height: 28rem;
 `;
 
 const StyledSections = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0.5em 0em;
+  margin: 0.5rem 0rem;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
@@ -32,12 +34,20 @@ const StyledSections = styled.div`
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
-    <>
+    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
+      {/* Collector 사용 */}
       <StyledHotMag>
         <HotMagCard />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
+        <Emitter identifier="identifier_1" eventType={["click"]}>
+          <h1> 이벤트 테스트</h1>
+        </Emitter>
+        <Emitter identifier="identifier_2" eventType={["mouseover"]}>
+          <h1> 마우스 오버 테스트</h1>
+        </Emitter>
+        {/* Emitter 사용 */}
         <Slidebar
           varient="todayBig"
           dataType="magazine"
@@ -58,7 +68,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
           data={Playlists}
         />
       </StyledSections>
-    </>
+    </Collector>
   );
 });
 
@@ -77,7 +87,6 @@ export async function getStaticProps() {
       fetch(`${apiUrl}:${apiPort}/api/news?limit=${dataLength}`),
       fetch(`${apiUrl}:${apiPort}/api/playlists?filter=${VIBE_ID}&limit=${dataLength}`),
     ]);
-    console.log(apiPort, apiUrl);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
     const { News } = result[1];
