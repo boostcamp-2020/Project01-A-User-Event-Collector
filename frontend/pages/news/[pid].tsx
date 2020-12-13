@@ -1,6 +1,9 @@
 import React from "react";
+import { GetServerSideProps } from "next";
 import styled from "styled-components";
+import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
+import myAxios from "../../utils/myAxios";
 
 const StyleNewsPage = styled.div`
   height: 100vh;
@@ -9,30 +12,30 @@ const StyleNewsPage = styled.div`
 const NewsPage = ({ News }: any) => {
   return (
     <StyleNewsPage>
-      <DetailPage type={"news"} detailData={News} tracks={News.Tracks} />
+      <DetailPage type="news" detailData={News} tracks={News.Tracks} />
     </StyleNewsPage>
   );
 };
 
 export default NewsPage;
 
-export async function getStaticPath() {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
+// export async function getStaticPaths() {
+//   const {
+//     data: { News },
+//   }: any = await myAxios.get(`/news`);
+//   const paths = News.map((news: any) => `/news/${news.id}`);
 
-  const res = await fetch(`${apiUrl}:${apiPort}/api/news`);
-  const news = await res.json();
-  const paths = news.map((news: any) => `/news/${news.id}`);
+//   return { paths, fallback: false };
+// }
 
-  return { paths, fallback: false };
-}
+export async function getServerSideProps(context: GetServerSideProps) {
+  const { params, req } = context;
+  const Cookie = req.headers.cookie;
+  const jwt = findTokenFromCookie(Cookie);
 
-export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
-  const { News } = await res.json();
-
+  const res = await myAxios.get(`/news/${params.pid}`, jwt);
+  const {
+    data: { News },
+  }: any = res;
   return { props: { News } };
 }

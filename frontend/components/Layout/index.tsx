@@ -1,7 +1,9 @@
-import React, { ReactNode, memo, useState, useEffect } from "react";
+import React, { ReactNode, memo, useState, useEffect, MouseEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { RootState } from "../../reduxModules";
 import NavBar from "../NavBar";
+import { Track } from "../../interfaces";
 import SearchBar from "../SearchBar";
 import Playbar from "../Playbar";
 import { initCheckedTrack } from "../../reduxModules/checkedTrack";
@@ -13,49 +15,40 @@ import {
   StyledBlockingOverlay,
 } from "./styled";
 import Overlay from "./Overlay";
-
+import PlaylistCheckBar from "./PlaylistCheckBar";
 
 type Props = {
   children: ReactNode | undefined;
 };
 
-interface TrackProps {
-  id: number;
-  trackName: string;
-  albumTrackNumber: number;
-  albumId: number;
-  Albums: {
-    cover: string;
-    albumName: string;
-  };
-  Artists_Tracks: {
-    id: number;
-    trackId: number;
-    artistId: number;
-    Artists: {
-      artistName: string;
-    };
-  }[];
-}
-
 const Layout = memo(({ children }: Props) => {
   const [searchMode, setSearchMode] = useState(false);
-
   const [showPlaylist, setShowPlaylist] = useState(false);
-    
+  const { checkedTracks }: { checkedTracks: Set<Track> } = useSelector(
+    (state: RootState) => state.checkedTracks,
+  );
+
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initCheckedTrack());
   }, [router.pathname]);
-  
-  const handleSearch = (): void => setSearchMode(!searchMode);
-  const handleShowPlaylist = () => setShowPlaylist(!showPlaylist);
 
+  const handleSearch = (): void => setSearchMode(!searchMode);
+  const handleShowPlaylist = (e: MouseEvent): void => {
+    setShowPlaylist(!showPlaylist);
+  };
+
+  const closeSearch = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape" || e.key === "Esc") {
+      handleSearch();
+    }
+  };
 
   return (
-    <StyledLayoutWrapper>
+    <StyledLayoutWrapper onKeyDown={closeSearch}>
       <StyledLayout>
+        {checkedTracks.size !== 0 ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
         {searchMode ? (
           <StyledSearchBar>

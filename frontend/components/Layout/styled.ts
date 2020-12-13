@@ -44,6 +44,7 @@ const StyledContent = styled.div`
   box-sizing: border-box;
   left: 15rem;
   width: calc(100% - 15rem);
+  min-height: calc(100vh - 6rem);
   background-color: #fff;
   padding: 0rem 10rem;
 `;
@@ -64,7 +65,7 @@ const showOverlay = keyframes`
   100% {
     bottom: 0rem;
   }
-`; //TODO: animation 변경
+`; // TODO: animation 변경
 
 const StyledBlockingOverlay = styled.div`
   display: flex;
@@ -186,7 +187,7 @@ const StyledTrackDeleteButton = styled.div`
   align-items: center;
   position: absolute;
   right: 1.5rem;
-  color: #333;
+  color: #666;
 `;
 
 export {

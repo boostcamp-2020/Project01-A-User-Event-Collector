@@ -1,7 +1,9 @@
 import prisma from "../../prisma";
-import { getTrackCard } from "../tracks";
 
-const getPlaylistById = async (id: number): Promise<Object | null> => {
+const getPlaylistById = async (
+  id: number,
+  user: any
+): Promise<Object | null> => {
   const playlist: any = await prisma.playlists.findUnique({
     where: { id },
     include: {
@@ -15,10 +17,37 @@ const getPlaylistById = async (id: number): Promise<Object | null> => {
   const trackIdArr = await prisma.playlists_Tracks.findMany({
     where: { playlistId: id },
     orderBy: { playlistTrackNumber: "asc" },
+    include: {
+      Tracks: {
+        include: {
+          Albums: true,
+          Artists_Tracks: {
+            include: {
+              Artists: {
+                select: {
+                  id: true,
+                  artistName: true,
+                },
+              },
+            },
+          },
+          Users_Like_Tracks: {
+            where: { userId: user ? user.id : -1 },
+          },
+        },
+      },
+    },
   });
-  playlist.Tracks = await Promise.all(
-    trackIdArr.map((elem: any) => getTrackCard(elem.trackId))
-  );
+  const tracks: any = [];
+  trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  playlist.Tracks = tracks;
+  playlist.Tracks.forEach((el) => {
+    el.Artists = [];
+    el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
+    delete el.Artists_Tracks;
+    el.Liked = el.Users_Like_Tracks.length > 0;
+    delete el.Users_Like_Tracks;
+  });
 
   return playlist;
 };

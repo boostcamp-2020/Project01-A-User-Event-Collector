@@ -19,6 +19,7 @@ interface Track {
   albumId: number;
   Albums: Album;
   Artists: Artist[];
+  Liked: boolean;
 }
 
 interface Playlist {

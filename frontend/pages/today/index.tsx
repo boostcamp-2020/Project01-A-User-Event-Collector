@@ -87,7 +87,6 @@ export async function getStaticProps() {
       fetch(`${apiUrl}:${apiPort}/api/news?limit=${dataLength}`),
       fetch(`${apiUrl}:${apiPort}/api/playlists?filter=${VIBE_ID}&limit=${dataLength}`),
     ]);
-    console.log(apiPort, apiUrl);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
     const { News } = result[1];
