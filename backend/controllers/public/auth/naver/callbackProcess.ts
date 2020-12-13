@@ -48,7 +48,7 @@ const takeCallback = async (req: Request, res: Response): Promise<void> => {
     httpOnly: true,
     path: "/",
   });
-  res.redirect(process.env.REDIRECT_URL || "/");
+  res.json({ result: "success", token: jwt });
 };
 
 export default takeCallback;
