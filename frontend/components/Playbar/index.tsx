@@ -47,15 +47,15 @@ const Playbar = memo(
       albumId: 0,
       Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
       Artists: [{ artistName: "", id: 0, cover: "" }],
-      Users_Like_Tracks: [],
+      Liked: false,
     };
     const {
       id: trackId,
       trackName,
       Albums: { cover, id: albumId },
       Artists,
+      Liked: liked,
     } = playList[0] ? playList[0] : emptyTrack;
-    const liked = true;
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
     const router = useRouter();

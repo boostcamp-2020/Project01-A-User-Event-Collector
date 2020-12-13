@@ -12,12 +12,6 @@ interface Album {
   artistId: number;
 }
 
-interface Users_Like_Tracks {
-  id: number;
-  userId: number;
-  trackId: number;
-}
-
 interface Track {
   id: number;
   trackName: string;
@@ -25,7 +19,7 @@ interface Track {
   albumId: number;
   Albums: Album;
   Artists: Artist[];
-  Users_Like_Tracks: Users_Like_Tracks[];
+  Liked: boolean;
 }
 
 interface Playlist {
