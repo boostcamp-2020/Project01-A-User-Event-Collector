@@ -10,14 +10,14 @@ const authenticate = (
     const {
       headers: { authorization },
     } = req;
-    if (!authorization) {
+    if (!authorization)
       return res.status(401).send({ message: "Unauthorized" });
-    }
-    const token = authorization.split(" ")[1];
-    const user = decodeJWT(token);
 
-    req.user = user;
-    next();
+    const token = authorization.split(" ")[1];
+    const userInfo = decodeJWT(token);
+    req.user = userInfo;
+
+    return next();
   } catch (err) {
     return res.status(401).send({ message: "Unauthorized", err });
   }
