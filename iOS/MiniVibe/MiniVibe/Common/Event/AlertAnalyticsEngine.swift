@@ -13,7 +13,7 @@ class AlertAnalyticsEngine: AnalyticsEngine {
     }
     
     func sendAnalyticsEvent<T>(_ event: T) where T: AnalyticsEvent {
-        var message = ""
+        var message = "Metadata: "
         if let metadata = event.metadata {
             for (key, value) in metadata {
                 message.append("(\(key), \(value))")
