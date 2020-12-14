@@ -22,23 +22,23 @@ class ThumbnailRouter: StarterOrientedRouterProtocol {
         switch routingStarter {
         case .magazines:
             return AnyView(MagazineView(magazineID: id)
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.magazine, source: .thumbnailList))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.magazine, source: .thumbnailList))
                             })
         case .recommendations:
             return AnyView(PlaylistView(playlistID: id)
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .thumbnailList))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .thumbnailList))
                             })
         case .favorites:
             return AnyView(PlaylistView(playlistID: id)
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .thumbnailList))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .thumbnailList))
                             })
         default:
             return AnyView(ErrorView()
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.error, source: .thumbnailList))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.error, source: .thumbnailList))
                             })
         }
     }

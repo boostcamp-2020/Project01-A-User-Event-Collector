@@ -24,7 +24,12 @@ class PlayerViewModel: ObservableObject {
     private let coreTrackAPI = CoreTrackAPI()
     private var volumeChangeAmount = 0
     private var timer: Timer?
-    private var subscriptions = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
+    }
+    
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
     }
@@ -149,8 +154,8 @@ extension PlayerViewModel {
         } catch {
             print("cannot activate session")
         }
-        progressObserver = session.observe(\.outputVolume) { (session, _) in
-            self.volumeChangeAmount += 1
+        progressObserver = session.observe(\.outputVolume) { [weak self] (_, _) in
+            self?.volumeChangeAmount += 1
         }
     }
     
@@ -185,47 +190,47 @@ extension PlayerViewModel {
                     self?.setupTimer(isPlaying: isPlaying)
                 }
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
     }
     
     private func shuffleSubscription() {
         $isShuffle
-            .sink { isShuffle in
-                if self.isInitial == false {
-                    self.manager.log(PlayerEvent.shuffle(isShuffle))
+            .sink { [weak self] isShuffle in
+                if self?.isInitial == false {
+                    self?.manager.log(PlayerEvent.shuffle(isShuffle))
                 }
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
     }
     
     private func repeatSubscription() {
         $isRepeat
-            .sink { isRepeat in
-                if self.isInitial == false {
-                    self.manager.log(PlayerEvent.repeat(isRepeat))
+            .sink { [weak self] isRepeat in
+                if self?.isInitial == false {
+                    self?.manager.log(PlayerEvent.repeat(isRepeat))
                 }
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
     }
     
     private func timeSubscription() {
         $timeRemaining
-            .sink { timeRemaining in
+            .sink { [weak self] timeRemaining in
                 if timeRemaining <= 0 {
-                    self.timer?.invalidate()
-                    self.checkVolume()
+                    self?.timer?.invalidate()
+                    self?.checkVolume()
                 }
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
     }
     
     private func trackIndexSubscription() {
         $currentTrack
             .compactMap { $0 }
-            .sink { track in
-                self.currentTrackIndex = self.queue.firstIndex(where: {$0.id == track.id})
+            .sink { [weak self] track in
+                self?.currentTrackIndex = self?.queue.firstIndex(where: {$0.id == track.id})
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
     }
     
 }

@@ -36,7 +36,7 @@ struct URLBuilder {
     
     func create() -> URL? {
         let path = pathType.rawValue
-        guard let path2 = self.endPoint.networkPath() else { return nil }
+        guard let path2 = endPoint.networkPath() else { return nil }
         let endPoint = "/" + path2
         var urlString = baseURL + path + endPoint
         var queryItems = [URLQueryItem]()

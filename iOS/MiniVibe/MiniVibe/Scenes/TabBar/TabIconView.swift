@@ -23,14 +23,14 @@ struct TabIconView: View {
             Image(systemName: imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(self.selectedTab == tab ? .red : .gray)
+                .foregroundColor(selectedTab == tab ? .red : .gray)
                 .frame(width: iconHeight, height: iconHeight)
                 .padding(.top, 20)
                 .padding(.horizontal, 15)
             if let labelText = labelText {
                 Text(labelText)
                     .padding(.bottom, 5)
-                    .foregroundColor(self.selectedTab == tab ? .red : .gray)
+                    .foregroundColor(selectedTab == tab ? .red : .gray)
                     .modifier(Description1())
             }
         }

@@ -17,7 +17,7 @@ struct ToggleableImage: View {
     var body: some View {
         Button(action: {
             isEnabled.toggle()
-            self.eventHandler?()
+            eventHandler?()
         }, label: {
             if isEnabled {
                 Image(systemName: imageWhenTrue)

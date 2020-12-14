@@ -54,7 +54,7 @@ class TodayViewModel: ObservableObject {
                 }
             default:
                 if let decodedData = try? JSONDecoder().decode(Playlists.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         switch type {
                         case .favorites:
                             self?.favorites = decodedData.playlists

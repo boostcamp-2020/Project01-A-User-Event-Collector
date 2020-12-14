@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayerControlView: View {
     @ObservedObject var viewModel: PlayerViewModel
-    var didPressQueueButton: (()->Void)?
+    var didPressQueueButton: (() -> Void)?
     
     var body: some View {
         VStack {
@@ -57,7 +57,7 @@ struct PlayerControlView: View {
                     .foregroundColor(.red)
                 Spacer()
                 Button(action: {
-                    self.didPressQueueButton?()
+                    didPressQueueButton?()
                 }, label: {
                     Image(systemName: "music.note.list")
                         .accesoryModifier(color: .gray, size: .medium)

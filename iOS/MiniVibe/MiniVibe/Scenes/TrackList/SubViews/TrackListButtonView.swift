@@ -14,7 +14,7 @@ struct TrackListButtonView: View {
     var body: some View {
         HStack {
             Button(action: {
-                self.didPressPlayButton?()
+                didPressPlayButton?()
             }, label: {
                 HStack {
                     Image(systemName: "play.fill")
@@ -23,7 +23,7 @@ struct TrackListButtonView: View {
                 }.modifier(TrackListButtonStyle())
             })
             Button(action: {
-                self.didPressShuffleButton?()
+                didPressShuffleButton?()
             }, label: {
                 HStack {
                     Image(systemName: "shuffle")
