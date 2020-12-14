@@ -9,7 +9,7 @@ import Foundation
 
 extension Date {
     
-    func convertToStringForWeb(dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> String {
+    public func convertToStringForWeb(dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko")
         dateFormatter.dateFormat = dateFormat

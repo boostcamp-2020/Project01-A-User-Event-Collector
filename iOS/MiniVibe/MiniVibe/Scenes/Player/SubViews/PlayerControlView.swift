@@ -18,6 +18,7 @@ struct PlayerControlView: View {
                                 imageWhenTrue: "repeat",
                                 imageWhenFalse: "repeat",
                                 size: .medium)
+                    .accessibility(identifier: "Repeat")
                 Spacer()
                 Button(action: {}, label: {
                     Image(systemName: "paperplane")
@@ -30,6 +31,7 @@ struct PlayerControlView: View {
                                 imageWhenTrue: "pause",
                                 imageWhenFalse: "play",
                                 size: .large)
+                    .accessibility(identifier: "PauseOrPlay")
                 .accentColor(.primary)
                 Spacer()
                 Button(action: {}, label: {
@@ -42,6 +44,7 @@ struct PlayerControlView: View {
                                 imageWhenTrue: "shuffle",
                                 imageWhenFalse: "shuffle",
                                 size: .medium)
+                    .accessibility(identifier: "Shuffle")
             }
             .padding(.vertical, 10)
             HStack(alignment: .bottom) {
