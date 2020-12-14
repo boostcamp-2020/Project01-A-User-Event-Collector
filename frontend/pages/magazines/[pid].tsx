@@ -25,14 +25,14 @@ const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
 
 export default MagazinePage;
 
-export async function getServerSideProps(context: GetServerSideProps): Promise<any> {
-  const { params, req }: any = context;
+export async function getServerSideProps({ params }: any): Promise<any> {
+  const apiUrl = process.env.API_URL;
+  const apiPort = process.env.API_PORT;
   // const Cookie = req.headers.cookie;
   // const jwt = findTokenFromCookie(Cookie);
 
-  const res = await myAxios.get(`/magazines/${params.pid}`); // jwt
-  const {
-    data: { Magazines },
-  }: any = res;
+  const res = await fetch(`${apiUrl}:${apiPort}/api/magazines/${params.pid}`);
+  const { Magazines } = await res.json();
+
   return { props: { Magazines } };
 }

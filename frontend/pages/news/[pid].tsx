@@ -20,14 +20,14 @@ const NewsPage: FC<_News[]> = ({ News }: any) => {
 
 export default NewsPage;
 
-export async function getServerSideProps(context: GetServerSideProps): Promise<any> {
-  const { params, req }: any = context;
+export async function getServerSideProps({ params }: any): Promise<any> {
+  const apiUrl = process.env.API_URL;
+  const apiPort = process.env.API_PORT;
   // const Cookie = req.headers.cookie;
   // const jwt = findTokenFromCookie(Cookie);
 
-  const res = await myAxios.get(`/news/${params.pid}`); // jwt
-  const {
-    data: { News },
-  }: any = res;
+  const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
+  const { News } = await res.json();
+
   return { props: { News } };
 }

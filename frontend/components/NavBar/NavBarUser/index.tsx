@@ -10,11 +10,11 @@ const NavBarUser = memo(
     const defaultUsername = "로그인";
     const defaultProfile =
       "https://www.nailseatowncouncil.gov.uk/wp-content/uploads/blank-profile-picture-973460_1280.jpg";
-    const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
-
     const [userID, setUserID] = useState(defaultID);
     const [username, setUsername] = useState(defaultUsername);
     const [userProfile, setUserProfile] = useState(defaultProfile);
+
+    const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
     useEffect(() => {
       if (!loggedIn) {
         try {
