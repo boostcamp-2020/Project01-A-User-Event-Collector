@@ -12,31 +12,33 @@ struct SearchBarView: View {
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해주세요", text: $viewModel.searchText)
-                .onTapGesture {
-                    viewModel.isEditing = true
-                }
-            .padding(9)
-            .padding(.horizontal, 27)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
-            .overlay(
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.gray)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 12)
-//                    if !viewModel.isEditing {
-//                        Image(systemName: "music.note")
-//                            .foregroundColor(.gray)
-//                            .padding(.trailing, 12)
-//                    }
-                }
-            )
+            TextField("검색어를 입력해주세요",
+                      text: $viewModel.searchText,
+                      onEditingChanged: { isEditing in
+                        withAnimation {
+                            viewModel.isEditing = isEditing
+                        }},
+                      onCommit: {
+                        viewModel.reset()
+                      })
+                .padding(9)
+                .padding(.horizontal, 27)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .overlay(
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 12)
+                    }
+                )
             
             if viewModel.isEditing {
                 Button(action: {
-                    viewModel.reset()
+                    withAnimation {
+                        viewModel.reset()
+                    }
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                                     to: nil,
                                                     from: nil,
@@ -45,8 +47,6 @@ struct SearchBarView: View {
                     Text("취소")
                 })
                 .padding(.trailing, 10)
-                .animation(.default)
-                .transition(.move(edge: .trailing))
             }
         }
     }
