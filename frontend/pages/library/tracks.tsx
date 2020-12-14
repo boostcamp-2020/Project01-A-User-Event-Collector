@@ -42,8 +42,9 @@ const TracksLibraryPage = memo(() => {
   return (
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
-      <StyledPagetitle>앨범</StyledPagetitle>
+      <StyledPagetitle>노래</StyledPagetitle>
       <StyledSection>
+        {console.log(likedTracks)}
         {likedTracks?.map((value: Track) => (
           <Card varient="todaySmall" dataType="album" rawData={value.Albums} />
         ))}
