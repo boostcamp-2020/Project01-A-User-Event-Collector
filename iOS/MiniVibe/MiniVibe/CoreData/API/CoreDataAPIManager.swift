@@ -23,8 +23,12 @@ class CoreDataAPIManager {
     
     func processResult(result: PersistenceController.CoreDataResult) {
         switch result {
-        case .success:
-            print("success")
+        case .success(.saveSuccess):
+            print("saveSuccess")
+        case .success(.deleteSuccess):
+            print("deleteSuccess")
+        case .success(.deleteAllSuccess):
+            print("deleteAllSuccess")
         case .failure(.saveFailed):
             print("saveFailed")
         case .failure(.deleteFailed):
