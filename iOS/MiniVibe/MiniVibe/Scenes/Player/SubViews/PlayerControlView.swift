@@ -9,14 +9,15 @@ import SwiftUI
 
 struct PlayerControlView: View {
     @ObservedObject var viewModel: PlayerViewModel
+    @State var isFavorite = false
     var didPressQueueButton: (() -> Void)?
     
     var body: some View {
         VStack {
             HStack {
                 ToggleableImage(isEnabled: $viewModel.isRepeat,
-                                imageWhenTrue: "repeat",
-                                imageWhenFalse: "repeat",
+                                imageWhenTrue: "repeat", colorWhenTrue: .red,
+                                imageWhenFalse: "repeat", colorWhenFalse: .gray,
                                 size: .medium)
                     .accessibility(identifier: "Repeat")
                 Spacer()
@@ -28,21 +29,22 @@ struct PlayerControlView: View {
                 .accentColor(.primary)
                 Spacer()
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
-                                imageWhenTrue: "pause",
-                                imageWhenFalse: "play",
+                                imageWhenTrue: "pause", colorWhenTrue: .gray,
+                                imageWhenFalse: "play", colorWhenFalse: .gray,
                                 size: .large)
                     .accessibility(identifier: "PauseOrPlay")
                 .accentColor(.primary)
                 Spacer()
-                Button(action: {}, label: {
-                    Image(systemName: "heart")
-                        .accesoryModifier(color: .red, size: .large)
-                })
+                ToggleableImage(isEnabled: $viewModel.isFavorite,
+                                imageWhenTrue: "heart.fill", colorWhenTrue: .red,
+                                imageWhenFalse: "heart", colorWhenFalse: .red,
+                                size: .large)
+                    .accessibility(identifier: "Heart")
                 .accentColor(.red)
                 Spacer()
                 ToggleableImage(isEnabled: $viewModel.isShuffle,
-                                imageWhenTrue: "shuffle",
-                                imageWhenFalse: "shuffle",
+                                imageWhenTrue: "shuffle", colorWhenTrue: .red,
+                                imageWhenFalse: "shuffle", colorWhenFalse: .gray,
                                 size: .medium)
                     .accessibility(identifier: "Shuffle")
             }

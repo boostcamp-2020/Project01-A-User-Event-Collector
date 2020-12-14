@@ -30,8 +30,8 @@ struct NowPlayingView: View {
             .accessibility(identifier: "NowPlayingView")
             HStack(spacing: 20) {
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
-                                imageWhenTrue: "pause",
-                                imageWhenFalse: "play.fill",
+                                imageWhenTrue: "pause", colorWhenTrue: .gray,
+                                imageWhenFalse: "play.fill", colorWhenFalse: .gray,
                                 size: .medium)
                 Button(action: {
                     viewModel.playNextTrack()
