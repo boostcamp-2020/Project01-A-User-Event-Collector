@@ -16,7 +16,7 @@ struct NowPlayingView: View {
         HStack {
             Button(action: {
                 if viewModel.currentTrack != nil {
-                    self.showMediaPlayer.toggle()
+                    showMediaPlayer.toggle()
                 }
             }, label: {
                 SwappableRowView(title: viewModel.trackName,

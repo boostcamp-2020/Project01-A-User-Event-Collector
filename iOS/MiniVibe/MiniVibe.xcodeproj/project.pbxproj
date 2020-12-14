@@ -110,6 +110,7 @@
 		CF9A6590257F60880051E799 /* HeartAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A658F257F60880051E799 /* HeartAccessory.swift */; };
 		CF9A659C257F61070051E799 /* EllipsisAssessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A659B257F61070051E799 /* EllipsisAssessory.swift */; };
 		CF9A65A9257F691A0051E799 /* TrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */; };
+		CFC9D5A925873F310046B8F2 /* DeallocPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9D5A825873F310046B8F2 /* DeallocPrinter.swift */; };
 		CFCBC92E257764B200439C3F /* MiniVibeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC92D257764B200439C3F /* MiniVibeType.swift */; };
 		CFCBC9392577852900439C3F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9382577852900439C3F /* NetworkManager.swift */; };
 		CFCBC9442577866900439C3F /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9432577866900439C3F /* MagazineViewModel.swift */; };
@@ -250,6 +251,7 @@
 		CF9A658F257F60880051E799 /* HeartAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartAccessory.swift; sourceTree = "<group>"; };
 		CF9A659B257F61070051E799 /* EllipsisAssessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisAssessory.swift; sourceTree = "<group>"; };
 		CF9A65A8257F691A0051E799 /* TrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellViewModel.swift; sourceTree = "<group>"; };
+		CFC9D5A825873F310046B8F2 /* DeallocPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeallocPrinter.swift; sourceTree = "<group>"; };
 		CFCBC92D257764B200439C3F /* MiniVibeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeType.swift; sourceTree = "<group>"; };
 		CFCBC9382577852900439C3F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CFCBC9432577866900439C3F /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
@@ -532,12 +534,13 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		CF0737DB257926E8009EC640 /* TestData */ = {
+		CF0737DB257926E8009EC640 /* Test */ = {
 			isa = PBXGroup;
 			children = (
 				515D26742575224A00B542BF /* TestData.swift */,
+				CFC9D5A825873F310046B8F2 /* DeallocPrinter.swift */,
 			);
-			path = TestData;
+			path = Test;
 			sourceTree = "<group>";
 		};
 		CF0737DC257926FA009EC640 /* Error */ = {
@@ -641,7 +644,7 @@
 				CF232C7C257AB03C00838F18 /* CustomView */,
 				CF93D7D7256E8FBF005A71CF /* Extension */,
 				CFCFC5C0256E2A75004200C4 /* ViewModifier */,
-				CF0737DB257926E8009EC640 /* TestData */,
+				CF0737DB257926E8009EC640 /* Test */,
 				CF05F8AB2567E7B0008080D7 /* Assets.xcassets */,
 			);
 			path = Common;
@@ -1007,6 +1010,7 @@
 				51EED2DF256F7E3C00DB32CB /* CategoryView.swift in Sources */,
 				515D26922575FAFF00B542BF /* ChartView.swift in Sources */,
 				CF05F8B12567E7B0008080D7 /* Persistence.swift in Sources */,
+				CFC9D5A925873F310046B8F2 /* DeallocPrinter.swift in Sources */,
 				512E0E1E257B4AA000576C78 /* SearchViewModel.swift in Sources */,
 				51EED2E1256F7E3C00DB32CB /* CategoryHeaderView.swift in Sources */,
 				51BEB334256F3C8600FB2876 /* DJStationListView.swift in Sources */,

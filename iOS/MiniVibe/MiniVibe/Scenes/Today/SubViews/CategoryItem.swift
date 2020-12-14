@@ -17,35 +17,35 @@ struct CategoryItem: Identifiable {
 
 extension CategoryItem {
     init(magazine: Magazine) {
-        self.id = magazine.id
-        self.imageName = magazine.cover
-        self.title = nil
-        self.author = nil
-        self.description = nil
+        id = magazine.id
+        imageName = magazine.cover
+        title = nil
+        author = nil
+        description = nil
     }
 }
 
 extension CategoryItem {
     init(playlist: Playlist, type: MiniVibeType) {
-        self.id = playlist.id
-        self.imageName = playlist.cover
-        self.title = playlist.name
-        self.author = playlist.user?.name
+        id = playlist.id
+        imageName = playlist.cover
+        title = playlist.name
+        author = playlist.user?.name
         switch type {
         case .recommendations:
-            self.description = playlist.description
+            description = playlist.description
         default:
-            self.description = nil
+            description = nil
         }
     }
 }
 
 extension CategoryItem {
     init(station: DJStation) {
-        self.id = station.id
-        self.imageName = station.cover
-        self.title = nil
-        self.author = nil
-        self.description = nil
+        id = station.id
+        imageName = station.cover
+        title = nil
+        author = nil
+        description = nil
     }
 }

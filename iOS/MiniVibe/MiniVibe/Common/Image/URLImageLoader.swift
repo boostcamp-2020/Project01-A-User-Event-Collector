@@ -50,7 +50,7 @@ class URLImageLoader: ObservableObject {
                     break
                 }
             } receiveValue: { [weak self] data in
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.image = UIImage(data: data)
                     self?.imageCache.set(forKey: urlString, data: data as NSData)
                 }
@@ -63,8 +63,8 @@ class URLImageLoader: ObservableObject {
             return false
         }
         
-        DispatchQueue.main.async {
-            self.image = UIImage(data: data as Data)
+        DispatchQueue.main.async { [weak self] in
+            self?.image = UIImage(data: data as Data)
         }
         return true
     }

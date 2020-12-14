@@ -22,34 +22,34 @@ class TodayRouter: DestinationOrientedRouterProtocol {
             let router = ThumbnailRouter(routingStarter: .magazines, manager: manager)
             let screenEvent = ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)
             return AnyView(ThumbnailListView(router: router)
-                            .onAppear {
-                                self.manager.log(screenEvent)
+                            .onAppear { [weak self] in
+                                self?.manager.log(screenEvent)
                             })
         case .recommendations:
             let router = ThumbnailRouter(routingStarter: .recommendations, manager: manager)
             let screenEvent = ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)
             return AnyView(ThumbnailListView(router: router)
-                            .onAppear {
-                                self.manager.log(screenEvent)
+                            .onAppear { [weak self] in
+                                self?.manager.log(screenEvent)
                             })
         case .favorites:
             let router = ThumbnailRouter(routingStarter: .favorites, manager: manager)
             let screenEvent = ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)
             return AnyView(ThumbnailListView(router: router)
-                            .onAppear {
-                                self.manager.log(screenEvent)
+                            .onAppear { [weak self] in
+                                self?.manager.log(screenEvent)
                             })
         case .djStations:
             let screenEvent = ScreenEvent.screenViewedWithSource(.djStationList, source: .today)
             return AnyView(DJStationListView(manager: manager)
-                            .onAppear {
-                                self.manager.log(screenEvent)
+                            .onAppear { [weak self] in
+                                self?.manager.log(screenEvent)
                             })
         case .tracks:
             let screenEvent = ScreenEvent.screenViewedWithSource(.playlist, source: .today)
             return AnyView(PlaylistView(playlistID: 18)
-                            .onAppear {
-                                self.manager.log(screenEvent)
+                            .onAppear { [weak self] in
+                                self?.manager.log(screenEvent)
                             })
         default:
             return AnyView(ErrorView())

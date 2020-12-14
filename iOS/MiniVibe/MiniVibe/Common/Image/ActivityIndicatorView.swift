@@ -28,8 +28,8 @@ struct ActivityIndicatorView: View {
                 .rotationEffect(Angle(degrees: animate ? 360 : 0))
                 .animation(Animation.linear(duration: 0.7).repeatForever(autoreverses: false))
         }
-        .onAppear {
-            self.animate.toggle()
+        .onAppear { 
+            animate.toggle()
         }
 
     }

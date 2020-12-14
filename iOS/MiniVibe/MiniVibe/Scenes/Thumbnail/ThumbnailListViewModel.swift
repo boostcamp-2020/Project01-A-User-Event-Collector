@@ -22,13 +22,13 @@ class ThumbnailListViewModel: ObservableObject {
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.thumbnails = decodedData.magazines
                     }
                 }
             default:
                 if let decodedData = try? JSONDecoder().decode(Playlists.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.thumbnails = decodedData.playlists
                     }
                 }

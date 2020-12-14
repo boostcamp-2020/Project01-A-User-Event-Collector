@@ -27,6 +27,10 @@ class TrackCellViewModel: ObservableObject {
         toggleSubscription()
     }
     
+    deinit {
+        cancellables.forEach { $0.cancel() }
+    }
+    
     func didToggleFavorite() {
         isFavorite.toggle()
     }
