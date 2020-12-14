@@ -7,6 +7,7 @@ const authenticate = (
   next: NextFunction
 ): Response | void => {
   try {
+    console.log(req.path);
     const {
       headers: { authorization },
     } = req;
