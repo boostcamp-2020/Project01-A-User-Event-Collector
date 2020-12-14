@@ -12,11 +12,11 @@ import Reachability
 //declare this property where it won't go out of scope relative to your listener
 private var reachability: Reachability!
 
-protocol ReachabilityActionDelegate {
+protocol ReachabilityActionDelegate: class {
     func reachabilityChanged(_ isReachable: Bool)
 }
 
-protocol ReachabilityObserverDelegate: class, ReachabilityActionDelegate {
+protocol ReachabilityObserverDelegate: ReachabilityActionDelegate {
     func addReachabilityObserver() throws
     func removeReachabilityObserver()
 }
