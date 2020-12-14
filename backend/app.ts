@@ -5,9 +5,10 @@ import logger from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
-import publicRouter from "./routes/public";
-import privateRouter from "./routes/private";
+import apiRouter from "./routes";
+// import privateRouter from "./routes/private";
 import { connect } from "./mongo";
+import test from "./middlewares/test";
 
 if (process.env.NODE_ENV === "production") {
   dotenv.config({ path: ".env.production" });
@@ -25,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 connect();
 
-app.use("/api/private", privateRouter);
-app.use("/api", publicRouter);
+// app.use("/api/private", privateRouter);
+app.use("/api", test, apiRouter);
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server Start on Stage: ${process.env.NODE_ENV}`);

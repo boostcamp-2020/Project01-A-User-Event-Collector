@@ -18,7 +18,7 @@ const NavBarUser = memo(
     useEffect(() => {
       if (!loggedIn) {
         try {
-          myAxios.get("/private/auth/userinfo").then((data: any) => {
+          myAxios.get("/user").then((data: any) => {
             const {
               data: { user },
             } = data;

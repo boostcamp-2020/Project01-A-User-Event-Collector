@@ -7,11 +7,11 @@ const combineMiddle = (
   next: NextFunction
 ): Response | void => {
   try {
-    console.log(req.path);
-
+    const mainPath = req.path.split("/")[1];
     const { authorization } = req.headers;
-    const mainPath = req.path.split("/")[0];
 
+    console.log(mainPath);
+    console.log(authorization);
     if (authorization) {
       const token = authorization.split(" ")[1];
       const userInfo = decodeJWT(token);
