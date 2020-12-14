@@ -11,9 +11,7 @@ const getLibAlbums = async (req: Request, res: Response): Promise<void> => {
     headers: { authorization },
   } = req;
 
-  if (!authorization) {
-    res.status(401).send({ message: "Unauthorized" });
-  }
+  if (!authorization) res.status(401).send({ message: "Unauthorized" });
 
   const token = authorization?.split(" ")[1];
   const { id: userId } = decodeJWT(token || " ");

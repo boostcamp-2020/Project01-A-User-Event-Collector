@@ -37,7 +37,7 @@ const ArtistsLibraryPage = memo(() => {
 
   useEffect(() => {
     myAxios.get("/library/artists").then((res: any) => {
-      setLikedArtists(res.data.Aritsts);
+      setLikedArtists(res.data.Artists);
     });
   }, []);
 
@@ -46,7 +46,7 @@ const ArtistsLibraryPage = memo(() => {
       <StyledLibraryText>보관함</StyledLibraryText>
       <StyledPagetitle>아티스트</StyledPagetitle>
       <StyledSection>
-        {likedArtists.map((value: Artist) => (
+        {likedArtists?.map((value: Artist) => (
           <LikedArtistCard varient="likedArtist" artist={value} />
         ))}
       </StyledSection>
