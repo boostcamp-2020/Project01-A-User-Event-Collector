@@ -14,6 +14,22 @@ const example1: EventObject = {
       once: true,
       description: "이건 두번째 식별자에요~",
     },
+    identifier_3: {
+      event_id: 4,
+      event_type: "click",
+      once: false,
+      description: "이게 바로 스트레스 테스트",
+    },
+  },
+  complex: {
+    identifier_3: {
+      timer: 3000,
+      sequence: ["identifier_1", "identifier_2", "identifier_1"],
+      event_id: 3,
+      event_type: "compext test1",
+      once: false,
+      description: "complex event 테스트 임둥",
+    },
   },
 };
 export default example1;

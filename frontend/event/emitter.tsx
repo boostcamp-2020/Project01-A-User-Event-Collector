@@ -17,6 +17,7 @@ const Emitter: FC<Props> = ({ identifier, eventType, children }: Props) => {
     eventType.forEach((event: EventType) => {
       div?.current?.addEventListener(event, (e: any) => {
         e.identifier = identifier;
+        e.children = children.props;
       });
     });
   }, []);

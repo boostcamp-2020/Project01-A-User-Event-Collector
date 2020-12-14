@@ -7,7 +7,7 @@ const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
       const {
         user: { id },
       } = req;
-
+      console.log("@@@@", req.user);
       const user = await getUserInfoWithID(id);
 
       return res.status(200).send({ user });

@@ -45,7 +45,7 @@ const AlbumsLibraryPage = memo(({ albums }: any) => {
 
 export default AlbumsLibraryPage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
 

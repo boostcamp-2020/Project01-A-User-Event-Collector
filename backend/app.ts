@@ -9,7 +9,7 @@ import publicRouter from "./routes/public";
 import privateRouter from "./routes/private";
 import { connect } from "./mongo";
 
-if (process.env.NODE_ENV) {
+if (process.env.NODE_ENV === "production") {
   dotenv.config({ path: ".env.production" });
 } else {
   dotenv.config({ path: ".env.development" });
@@ -29,12 +29,5 @@ app.use("/api/private", privateRouter);
 app.use("/api", publicRouter);
 
 app.listen(process.env.PORT || 4000, () => {
-  console.log(`Server Start on Stage: ${process.env.STAGE}`);
-
-  if (process.env.STAGE === "development") {
-    console.log(`Server is on http://localhost:${process.env.PORT || 4000}`);
-    console.log(`And http://127.0.0.1:${process.env.PORT || 4000}`);
-  } else {
-    // TODO: Servery URL 올리기
-  }
+  console.log(`Server Start on Stage: ${process.env.NODE_ENV}`);
 });
