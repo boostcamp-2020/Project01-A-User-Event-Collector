@@ -19,12 +19,12 @@ struct RequestBuilder {
     private let url: URL?
     private let method: NetworkMethod
     private let body: Data?
-    private let headers: [String: String]?
+    private let headers: [String: String]
     
     init(url: URL?,
          method: NetworkMethod,
          body: Data? = nil,
-         headers: [String: String]? = nil) {
+         headers: [String: String] = ["Content-Type": "application/json"]) {
         
         self.url = url
         self.method = method
@@ -39,9 +39,7 @@ struct RequestBuilder {
         if let body = body {
             request.httpBody = body
         }
-        if let headers = headers {
-            request.allHTTPHeaderFields = headers
-        }
+        request.allHTTPHeaderFields = headers
         return request
     }
 }
