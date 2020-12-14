@@ -4,25 +4,19 @@ import {
   postUserLikeAlbums,
   deleteUserLikeAlbums,
 } from "../../models/library";
-import decodeJWT from "../../utils/decodeJWT";
 
 const getLibAlbums = async (req: Request, res: Response): Promise<void> => {
-  const {
-    headers: { authorization },
-  } = req;
-
-  console.log(req.user);
-
-  if (!authorization) res.status(401).send({ message: "Unauthorized" });
-
-  const token = authorization?.split(" ")[1];
-  const { id: userId } = decodeJWT(token || " ");
-
   try {
-    const result = await getUserLikeAlbums(userId);
+    if (!req.user) throw new Error("Unauthorized");
+
+    const result = await getUserLikeAlbums(req.user.id);
     res.status(200).json({ Albums: result });
   } catch (err) {
-    res.status(500).json({ statusCode: 500, message: err.message });
+    if (err === "Unauthorized") {
+      res.status(401).json({ message: "Unauthroized" });
+    } else {
+      res.status(500).json({ statusCode: 500, message: err.message });
+    }
   }
 };
 

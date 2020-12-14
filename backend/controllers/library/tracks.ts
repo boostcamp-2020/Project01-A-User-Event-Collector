@@ -4,20 +4,12 @@ import {
   postUserLikeTracks,
   deleteUserLikeTracks,
 } from "../../models/library";
-import decodeJWT from "../../utils/decodeJWT";
 
 const getLibTracks = async (req: Request, res: Response): Promise<void> => {
-  const {
-    headers: { authorization },
-  } = req;
-
-  if (!authorization) res.status(401).send({ message: "Unauthorized" });
-
-  const token = authorization?.split(" ")[1];
-  const { id: userId } = decodeJWT(token || " ");
-
   try {
-    const result = await getUserLikeTracks(userId);
+    if (!req.user) throw new Error("Unauthorized");
+
+    const result = await getUserLikeTracks(req.user.id);
     res.status(200).json({ Tracks: result });
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
