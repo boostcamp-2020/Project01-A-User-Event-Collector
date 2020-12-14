@@ -1,5 +1,5 @@
 import { Router } from "express";
-import logController from "../../controllers/public/log";
+import logController from "../../controllers/log";
 
 const router = Router();
 router.get("/web", logController.getWebLog);
