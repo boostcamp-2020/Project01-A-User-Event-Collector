@@ -22,6 +22,8 @@ const LinkCardBlock = memo(({ theme }: Props) => {
         ]
       : [
           { name: "노래", href: "/library/tracks" },
+          { name: "아티스트", href: "/library/artists" },
+          { name: "앨범", href: "/library/albums" },
           { name: "플레이리스트", href: "/library/playlists" },
         ];
   return (
