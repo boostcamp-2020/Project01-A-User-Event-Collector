@@ -22,7 +22,6 @@ const NavBarUser = memo(
             const {
               data: { user },
             } = data;
-            console.log(data);
             setLoggedIn(true);
             setUserID(user.id);
             setUsername(user.username);
