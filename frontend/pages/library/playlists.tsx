@@ -43,7 +43,9 @@ const PlaylistsLibraryPage = memo(() => {
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
       <StyledPagetitle>플레이리스트</StyledPagetitle>
+
       <StyledSection>
+        {console.log(likedPlaylists)}
         {likedPlaylists?.map((value: Playlist) => (
           <Card varient="todaySmall" dataType="playlist" rawData={value} />
         ))}

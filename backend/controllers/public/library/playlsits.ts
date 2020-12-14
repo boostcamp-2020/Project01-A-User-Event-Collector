@@ -4,11 +4,20 @@ import {
   postUserLikePlaylists,
   deleteUserLikePlaylists,
 } from "../../../models/library";
+import decodeJWT from "../../../utils/decodeJWT";
 
 const getLibPlaylists = async (req: Request, res: Response): Promise<void> => {
-  const tmpUserId = 1;
+  const {
+    headers: { authorization },
+  } = req;
+
+  if (!authorization) res.status(401).send({ message: "Unauthorized" });
+
+  const token = authorization?.split(" ")[1];
+  const { id: userId } = decodeJWT(token || " ");
+
   try {
-    const result = await getUserLikePlaylists(tmpUserId);
+    const result = await getUserLikePlaylists(userId);
     res.status(200).json({ Playlists: result });
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
