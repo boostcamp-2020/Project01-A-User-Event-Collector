@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
-import { ParsedUrlQuery } from "querystring";
 
 interface Props {
   token: string;
