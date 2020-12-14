@@ -19,10 +19,14 @@ struct PlaylistView: View {
     
     var body: some View {
         guard let playlist = viewModel.playlist,
-              let tracks = playlist.tracks else { return AnyView(EmptyView().onAppear(perform: {
-                viewModel.fetch(id: playlistID)
-            }))
-        }
+              let tracks = playlist.tracks else {
+            return AnyView(EmptyView()
+                            .onAppear(perform: {
+                                withAnimation {
+                                    viewModel.fetch(id: playlistID)
+                                }
+                            })
+                            .navigationBarTitleDisplayMode(.inline))}
         
         return AnyView(
             ScrollView(showsIndicators: false) {
@@ -36,18 +40,14 @@ struct PlaylistView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    VStack {
-                        if let name = playlist.name {
-                            Text(name)
-                                .modifier(Title2())
-                        }
-                        if let author = playlist.user?.name {
-                            Text(author)
-                                .modifier(Description2())
-                        }
+                    if let name = playlist.name {
+                        Text(name)
+                            .modifier(Title2())
+                            .transition(.slide)
                     }
                 }
             }
+            
         )
     }
 }
