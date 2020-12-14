@@ -10,7 +10,9 @@ import SwiftUI
 struct ToggleableImage: View {
     @Binding var isEnabled: Bool
     let imageWhenTrue: String
+    let colorWhenTrue: Color
     let imageWhenFalse: String
+    let colorWhenFalse: Color
     let size: Image.AccessorySize
     var eventHandler: (() -> Void)?
     
@@ -21,10 +23,10 @@ struct ToggleableImage: View {
         }, label: {
             if isEnabled {
                 Image(systemName: imageWhenTrue)
-                    .accesoryModifier(color: .red, size: size)
+                    .accesoryModifier(color: colorWhenTrue, size: size)
             } else {
                 Image(systemName: imageWhenFalse)
-                    .accesoryModifier(color: .gray, size: size)
+                    .accesoryModifier(color: colorWhenFalse, size: size)
 
             }
         })
