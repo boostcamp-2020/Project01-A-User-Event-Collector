@@ -27,6 +27,7 @@ struct NowPlayingView: View {
             }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
             })
+            .accessibility(identifier: "NowPlayingView")
             HStack(spacing: 20) {
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
                                 imageWhenTrue: "pause",

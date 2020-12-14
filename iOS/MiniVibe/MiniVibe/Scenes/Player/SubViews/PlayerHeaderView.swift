@@ -22,8 +22,8 @@ struct PlayerHeaderView: View {
             }, label: {
                 Image(systemName: "chevron.down")
                     .accesoryModifier(color: .secondary, size: .medium)
-                
             })
+            .accessibility(identifier: "ClosePlayer")
         }
     }
 }
