@@ -1,23 +1,14 @@
 import { Request, Response } from "express";
 import { getUserInfoWithID } from "../../../models/users";
 
-const getUserProfile = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
+const getUserProfile = async (req: Request, res: Response): Promise<void> => {
   try {
-    if (req.user) {
-      const {
-        user: { id },
-      } = req;
+    if (!req.user) throw new Error("Unauthorized");
 
-      const user = await getUserInfoWithID(id);
-
-      return res.status(200).send({ user });
-    }
-    return res.status(401).send({ message: "Unauthroized" });
+    const userProfile = await getUserInfoWithID(req.user.id);
+    res.status(200).send({ userProfile });
   } catch (err) {
-    return res.status(401).send({ message: "Unauthroized" });
+    res.status(401).send({ message: "Unauthroized" });
   }
 };
 

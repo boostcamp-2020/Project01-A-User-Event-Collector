@@ -12,7 +12,7 @@ const NavBarUser = memo(
       "https://www.nailseatowncouncil.gov.uk/wp-content/uploads/blank-profile-picture-973460_1280.jpg";
     const [userID, setUserID] = useState(defaultID);
     const [username, setUsername] = useState(defaultUsername);
-    const [userProfile, setUserProfile] = useState(defaultProfile);
+    const [userProfileCover, setUserProfileCover] = useState(defaultProfile);
 
     const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
     useEffect(() => {
@@ -20,12 +20,12 @@ const NavBarUser = memo(
         try {
           myAxios.get("/users/profile").then((data: any) => {
             const {
-              data: { user },
+              data: { userProfile },
             } = data;
             setLoggedIn(true);
-            setUserID(user.id);
-            setUsername(user.username);
-            setUserProfile(user.profile);
+            setUserID(userProfile.id);
+            setUsername(userProfile.username);
+            setUserProfileCover(userProfile.profile);
           });
         } catch (err) {
           // eslint-disable-next-line no-console
@@ -34,7 +34,7 @@ const NavBarUser = memo(
       } else {
         setUserID(defaultID);
         setUsername(defaultUsername);
-        setUserProfile(defaultProfile);
+        setUserProfileCover(defaultProfile);
       }
     }, [loggedIn]);
 
@@ -42,7 +42,7 @@ const NavBarUser = memo(
       <>
         {loggedIn ? (
           <StyledNavUser>
-            <Img varient="profile" src={userProfile} />
+            <Img varient="profile" src={userProfileCover} />
             <StyledUser loggedIn={loggedIn}>{username}</StyledUser>
           </StyledNavUser>
         ) : (
