@@ -7,10 +7,6 @@ const serverURL =
 
 const URL = `${serverURL}/api`;
 
-const headerConfig: AxiosRequestConfig = {
-  withCredentials: true,
-};
-
 interface AxiosInterface {
   get: (path: string, cookie?: string) => Promise<Object>;
   post: (path: string, data: any, cookie?: string) => Promise<Object>;
@@ -19,48 +15,45 @@ interface AxiosInterface {
 }
 
 const myAxios: AxiosInterface = {
-  get(path, token = undefined) {
+  get(path) {
+    const token = localStorage.getItem("token");
     return token
       ? axios.get(URL + path, {
-          ...headerConfig,
           headers: {
-            Cookie: `token=${token}`,
+            Authorization: `Bearer ${token}`,
           },
         })
-      : axios.get(URL + path, headerConfig);
+      : axios.get(URL + path);
   },
 
   post(path, data, token = undefined) {
     return token
       ? axios.post(URL + path, data, {
-          ...headerConfig,
           headers: {
-            Cookie: `token=${token}`,
+            Authorization: `Bearer ${token}`,
           },
         })
-      : axios.post(URL + path, data, headerConfig);
+      : axios.post(URL + path, data);
   },
 
   put(path, data, token = undefined) {
     return token
       ? axios.put(URL + path, data, {
-          ...headerConfig,
           headers: {
-            Cookie: `token=${token}`,
+            Authorization: `Bearer ${token}`,
           },
         })
-      : axios.put(URL + path, data, headerConfig);
+      : axios.put(URL + path, data);
   },
 
   delete(path, token = undefined) {
     return token
       ? axios.delete(URL + path, {
-          ...headerConfig,
           headers: {
-            Cookie: `token=${token}`,
+            Authorization: `Bearer ${token}`,
           },
         })
-      : axios.delete(URL + path, headerConfig);
+      : axios.delete(URL + path);
   },
 };
 

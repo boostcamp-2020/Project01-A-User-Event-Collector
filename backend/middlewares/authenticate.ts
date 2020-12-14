@@ -7,8 +7,15 @@ const authenticate = (
   next: NextFunction
 ): Response | void => {
   try {
-    const { token } = req.cookies;
+    const {
+      headers: { authorization },
+    } = req;
+    if (!authorization) {
+      return res.status(401).send({ message: "Unauthorized" });
+    }
+    const token = authorization.split(" ")[1];
     const user = decodeJWT(token);
+
     req.user = user;
     next();
   } catch (err) {

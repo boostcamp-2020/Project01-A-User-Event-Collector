@@ -18,6 +18,7 @@ const AuthPage: React.FC<Props> = ({ token }: Props) => {
   if (!isMount) return <>Loading Login Data</>;
 
   localStorage.setItem("token", token);
+
   router.push("/");
   return <></>;
 };
