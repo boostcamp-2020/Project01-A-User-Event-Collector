@@ -8,14 +8,14 @@
 import Foundation
 
 class AnalyticsManager {
-    private var currentEngine: AnalyticsEngine?
-    private let serverEngine: AnalyticsEngine?
+    private var currentEngine: AnalyticsPostEngine?
+    private let serverEngine: AnalyticsPostEngine?
     private let backupEngine: AnalyticsEngine?
-    private let alertEngine: AnalyticsEngine?
+    private let alertEngine: AnalyticsPostEngine?
     
-    init(serverEngine: AnalyticsEngine?,
+    init(serverEngine: AnalyticsPostEngine?,
          backupEngine: AnalyticsEngine?,
-         alertEngine: AnalyticsEngine?) {
+         alertEngine: AnalyticsPostEngine?) {
         self.serverEngine = serverEngine
         self.backupEngine = backupEngine
         self.alertEngine = alertEngine
@@ -40,8 +40,8 @@ class AnalyticsManager {
     
     func log<T: AnalyticsEvent>(_ event: T) {
         guard let currentEngine = currentEngine else { return }
-        currentEngine.sendAnalyticsEvent(event)
-        alertEngine?.sendAnalyticsEvent(event)
+        currentEngine.send(event)
+        alertEngine?.send(event)
     }
     
     private func switchToServerEngine() {
@@ -54,7 +54,6 @@ class AnalyticsManager {
     
     private func switchToBackupEngine() {
         if currentEngine !== backupEngine {
-            print("switchToBackupEngine")
             currentEngine = backupEngine
         }
     }

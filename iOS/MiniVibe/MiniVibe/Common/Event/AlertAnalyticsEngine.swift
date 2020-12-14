@@ -7,12 +7,12 @@
 
 import UIKit
 
-class AlertAnalyticsEngine: AnalyticsEngine {
+class AlertAnalyticsEngine: AnalyticsPostEngine {
     private var window: UIWindow? {
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first
     }
     
-    func sendAnalyticsEvent<T>(_ event: T) where T: AnalyticsEvent {
+    func send<T>(_ event: T) where T: AnalyticsEvent {
         var message = "Metadata: "
         if let metadata = event.metadata {
             for (key, value) in metadata {

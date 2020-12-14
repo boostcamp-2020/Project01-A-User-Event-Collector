@@ -35,9 +35,7 @@ class URLImageLoader: ObservableObject {
     
     func loadFromUrl(urlString: String) {
         let url = URL(string: urlString)
-        let urlRequest = RequestBuilder(url: url, method: .get,
-                                        body: nil,
-                                        headers: nil).create()
+        let urlRequest = RequestBuilder(url: url, method: .get).create()
         guard let request = urlRequest else { return }
         
         network.request(request: request)
