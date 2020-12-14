@@ -39,9 +39,11 @@ class AnalyticsManager {
     
     private func switchToServerEngine() {
         if currentEngine !== serverEngine {
-            print("switchToServerEngine")
-            //TODO: Core Data에 쌓인 이벤트 로그 서버에 보내기
             currentEngine = serverEngine
+            guard let events = backupEngine?.fetch() else { return }
+            events.forEach {
+                currentEngine?.send($0)
+            }
         }
     }
     
