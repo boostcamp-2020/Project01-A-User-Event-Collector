@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import { GetServerSideProps } from "next";
 import React, { FC } from "react";
-import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
 import { Collector } from "../../event";
 import EventObjectExample from "../../event/Exampe_eventObject";
-import myAxios from "../../utils/myAxios";
 import { Magazine } from "../../interfaces";
 
 const StyleMagazinePage = styled.div`

@@ -1,9 +1,6 @@
 import React, { FC } from "react";
-import { GetServerSideProps } from "next";
 import styled from "styled-components";
-import findTokenFromCookie from "../../utils/findTokenFromCookie";
 import DetailPage from "../../components/DetailPage";
-import myAxios from "../../utils/myAxios";
 import { Playlist } from "../../interfaces";
 
 const StylePlaylistPage = styled.div`
