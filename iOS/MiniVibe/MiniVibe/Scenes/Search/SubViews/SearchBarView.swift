@@ -21,7 +21,7 @@ struct SearchBarView: View {
                       onCommit: {
                         viewModel.reset()
                       })
-                .padding(9)
+                .padding(15)
                 .padding(.horizontal, 27)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
@@ -33,6 +33,7 @@ struct SearchBarView: View {
                             .padding(.leading, 12)
                     }
                 )
+                .zIndex(2)
             
             if viewModel.isEditing {
                 Button(action: {
@@ -47,13 +48,14 @@ struct SearchBarView: View {
                     Text("취소")
                 })
                 .padding(.trailing, 10)
+                .zIndex(1)
             }
         }
     }
 }
-//
-//struct SearchBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchBarView(defaultText: "")
-//    }
-//}
+
+struct SearchBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchBarView(viewModel: SearchViewModel(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil)))
+    }
+}
