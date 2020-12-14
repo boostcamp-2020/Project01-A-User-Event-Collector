@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUserInfoWithID } from "../../../../models/users";
+import { getUserInfoWithID } from "../../../models/users";
 
 const getUserProfile = async (
   req: Request,

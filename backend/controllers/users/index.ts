@@ -1,11 +1,11 @@
 import getUserProfile from "./getUserProfile";
 
-interface Auth {
+interface User {
   getUserProfile: any;
 }
 
-const authController: Auth = {
+const userController: User = {
   getUserProfile,
 };
 
-export default authController;
+export default userController;

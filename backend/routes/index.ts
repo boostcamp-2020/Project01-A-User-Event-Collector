@@ -11,7 +11,7 @@ import libraryRouter from "./library";
 import searchRouter from "./search";
 import authRouter from "./auth";
 import logRouter from "./log";
-import userRouter from "./user";
+import usersRouter from "./users";
 
 const router = express.Router();
 
@@ -26,7 +26,7 @@ router.use("/playlists", playlistsRouter);
 router.use("/library", libraryRouter);
 router.use("/search", searchRouter);
 router.use("/auth", authRouter);
-router.use("/user", userRouter);
+router.use("/users", usersRouter);
 router.use("/log", logRouter);
 
 export default router;
