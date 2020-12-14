@@ -11,14 +11,14 @@ const AlbumPage: FC<Album[]> = ({ Albums }: any) => {
 
 export default AlbumPage;
 
-export async function getServerSideProps(context: GetServerSideProps): Promise<any> {
-  const { params, req }: any = context;
+export async function getServerSideProps({ params }: any): Promise<any> {
+  const apiUrl = process.env.API_URL;
+  const apiPort = process.env.API_PORT;
   // const Cookie = req.headers.cookie;
   // const jwt = findTokenFromCookie(Cookie);
 
-  const res = await myAxios.get(`/albums/${params.pid}`); // jwt
-  const {
-    data: { Albums },
-  }: any = res;
+  const res = await fetch(`${apiUrl}:${apiPort}/api/albums/${params.pid}`);
+  const { Albums } = await res.json();
+
   return { props: { Albums } };
 }
