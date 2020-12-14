@@ -11,12 +11,12 @@ struct TabIconView: View {
     let height: CGFloat
     let imageName: String
     let labelText: String
-    let tab: CustomTabView.MiniVibeTab
+    let tab: MiniVibeTab
     var iconHeight: CGFloat {
         height * 0.3
     }
     
-    @Binding var selectedTab: CustomTabView.MiniVibeTab
+    @Binding var selectedTab: MiniVibeTab
     
     var body: some View {
         VStack(alignment: .center) {
