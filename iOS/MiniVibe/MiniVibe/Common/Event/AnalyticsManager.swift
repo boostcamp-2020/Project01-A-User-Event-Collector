@@ -28,14 +28,7 @@ class AnalyticsManager {
     }
     
     private func setupEngine() {
-        switch getConnection() {
-        case .unavailable:
-            currentEngine = backupEngine
-            print("init engine: backup")
-        default:
-            currentEngine = serverEngine
-            print("init engine: server")
-        }
+        currentEngine = backupEngine
     }
     
     func log<T: AnalyticsEvent>(_ event: T) {
