@@ -12,11 +12,10 @@ struct SearchBarView: View {
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해 주세요.", text: $viewModel.searchText) { isEditing in
-                viewModel.isEditing = isEditing
-            } onCommit: {
-                viewModel.reset()
-            }
+            TextField("검색어를 입력해주세요", text: $viewModel.searchText)
+                .onTapGesture {
+                    viewModel.isEditing = true
+                }
             .padding(9)
             .padding(.horizontal, 27)
             .background(Color(.systemGray6))
@@ -38,7 +37,10 @@ struct SearchBarView: View {
             if viewModel.isEditing {
                 Button(action: {
                     viewModel.reset()
-
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                    to: nil,
+                                                    from: nil,
+                                                    for: nil)
                 }, label: {
                     Text("취소")
                 })
