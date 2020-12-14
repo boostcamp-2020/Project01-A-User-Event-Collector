@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import decodeJWT from "../utils/decodeJWT";
 
-const combineMiddle = (
+const authorizer = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -23,4 +23,4 @@ const combineMiddle = (
   }
 };
 
-export default combineMiddle;
+export default authorizer;
