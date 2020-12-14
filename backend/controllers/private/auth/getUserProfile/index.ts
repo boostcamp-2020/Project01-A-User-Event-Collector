@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import { getUserInfoWithID } from "../../../../models/users";
 
-const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
+const getUserProfile = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   try {
-    console.log(req.headers);
     if (req.user) {
       const {
         user: { id },
@@ -19,4 +21,4 @@ const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
   }
 };
 
-export default getUserInfo;
+export default getUserProfile;

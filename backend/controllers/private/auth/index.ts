@@ -1,11 +1,11 @@
-import getUserInfo from "./getUserInfo";
+import getUserProfile from "./getUserProfile";
 
 interface Auth {
-  getUserInfo: any;
+  getUserProfile: any;
 }
 
 const authController: Auth = {
-  getUserInfo,
+  getUserProfile,
 };
 
 export default authController;

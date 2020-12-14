@@ -6,7 +6,6 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
 import apiRouter from "./routes";
-// import privateRouter from "./routes/private";
 import { connect } from "./mongo";
 import test from "./middlewares/test";
 
@@ -26,7 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 connect();
 
-// app.use("/api/private", privateRouter);
 app.use("/api", test, apiRouter);
 
 app.listen(process.env.PORT || 4000, () => {

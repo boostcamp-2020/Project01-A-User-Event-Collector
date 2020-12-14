@@ -10,8 +10,6 @@ const combineMiddle = (
     const mainPath = req.path.split("/")[1];
     const { authorization } = req.headers;
 
-    console.log(mainPath);
-    console.log(authorization);
     if (authorization) {
       const token = authorization.split(" ")[1];
       const userInfo = decodeJWT(token);
