@@ -5,7 +5,7 @@
 //  Created by 강병민 on 2020/11/27.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 import AVFoundation
 import MediaPlayer
@@ -25,10 +25,7 @@ class PlayerViewModel: ObservableObject {
     private var volumeChangeAmount = 0
     private var timer: Timer?
     private var cancellables = Set<AnyCancellable>()
-    
-    deinit {
-        cancellables.forEach { $0.cancel() }
-    }
+    var closePlayerView: (() -> Void)?
     
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
@@ -59,6 +56,10 @@ class PlayerViewModel: ObservableObject {
         setupVolumeListener()
         fetchFromCoreData()
         isInitial = false
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
     }
     
     func update(with track: Track) {
@@ -160,6 +161,7 @@ extension PlayerViewModel {
         shuffleSubscription()
         repeatSubscription()
         timeSubscription()
+        queueSubscription()
     }
     
     private func setupVolumeListener() {
@@ -234,6 +236,16 @@ extension PlayerViewModel {
                 if timeRemaining <= 0 {
                     self?.timer?.invalidate()
                     self?.checkVolume()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func queueSubscription() {
+        $queue
+            .sink { [weak self] tracks in
+                if tracks.isEmpty {
+                    self?.closePlayerView?()
                 }
             }
             .store(in: &cancellables)
