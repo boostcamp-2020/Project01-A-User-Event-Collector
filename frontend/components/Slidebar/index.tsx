@@ -5,6 +5,7 @@ import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButto
 import Card from "../Card";
 import calculatePixels from "./calculatePixels";
 import onNextClicked from "./onNextClicked";
+import onPreviousClicked from "./onPreviousClicked";
 
 export interface SlidebarProps {
   varient: string;
@@ -31,16 +32,14 @@ const Slidebar: FC<SlidebarProps> = ({
   const [previousHide, setPreviousHide] = useState(true);
   const currentSlideRef = useRef<HTMLUListElement>(null);
 
-  const onPreviousClicked = () => {
-    const newTranslateX = currentTranslateX + slidePixels;
-    if (newTranslateX > 0) {
-      setCurrentTranslateX(0);
-      setPreviousHide(true);
-      setNextHide(false);
-      return;
-    }
-    setCurrentTranslateX(newTranslateX);
-    setNextHide(false);
+  const prevBtnHandler = () => {
+    onPreviousClicked({
+      setCurrentTranslateX,
+      setPreviousHide,
+      setNextHide,
+      currentTranslateX,
+      slidePixels,
+    });
   };
 
   const nextBtnHandler = () => {
@@ -90,7 +89,7 @@ const Slidebar: FC<SlidebarProps> = ({
             <Card key={`card${-idx}`} varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
-        <SliderPreviousButton onClick={onPreviousClicked} hide={previousHide} />
+        <SliderPreviousButton onClick={prevBtnHandler} hide={previousHide} />
         <SliderNextButtton onClick={nextBtnHandler} hide={nextHide} />
       </SlideContainer>
     </StyledSlidebar>
