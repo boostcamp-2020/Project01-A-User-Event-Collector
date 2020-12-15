@@ -9,24 +9,32 @@ const StyledTrackCard = styled.div`
   justify-content: left;
   align-items: left;
   width: 100%;
-  padding: 0.4rem 0rem;
+  box-sizing: border-box;
+  padding: 0.25rem 0.75rem;
   &:hover {
     background-color: #ededed;
   }
 `;
+
 const StyledImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1rem;
 `;
 
-const PlaylistDetails = styled.div`
+const StyledPlaylistDetails = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.25rem 0rem;
 `;
-const PlaylistTitle = styled.div``;
-const NumOfTracks = styled.div`
-  color: #777777;
+
+const StyledPlaylistTitle = styled.div``;
+
+const StyledNumOfTracks = styled.div`
+  color: #777;
 `;
 
 interface Props {
@@ -42,10 +50,10 @@ const ModalRow: FC<Props> = ({ data, tracks }: Props) => {
       <StyledImg>
         <HoverImg varient="trackCardCover" src={data.cover} />
       </StyledImg>
-      <PlaylistDetails>
-        <PlaylistTitle>{data.playlistName}</PlaylistTitle>
-        <NumOfTracks>{data.author}</NumOfTracks>
-      </PlaylistDetails>
+      <StyledPlaylistDetails>
+        <StyledPlaylistTitle>{data.playlistName}</StyledPlaylistTitle>
+        <StyledNumOfTracks>{data.author}곡</StyledNumOfTracks>
+      </StyledPlaylistDetails>
     </StyledTrackCard>
   );
 };

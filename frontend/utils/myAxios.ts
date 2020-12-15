@@ -26,7 +26,8 @@ const myAxios: AxiosInterface = {
       : axios.get(URL + path);
   },
 
-  post(path, data, token = undefined) {
+  post(path, data) {
+    const token = localStorage.getItem("token");
     return token
       ? axios.post(URL + path, data, {
           headers: {

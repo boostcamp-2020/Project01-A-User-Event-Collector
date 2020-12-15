@@ -16,7 +16,7 @@ interface ConcatenateAction {
 
 interface RemoveAction {
   type: typeof REMOVE;
-  payload: Track;
+  payload: number;
 }
 
 export type PlayQueueActionTypes = InitAction | ConcatenateAction | RemoveAction;
@@ -35,10 +35,10 @@ export const concatenatePlayQueue = (tracks: Set<Track>): ConcatenateAction => {
   };
 };
 
-export const removePlayQueue = (track: Track): RemoveAction => {
+export const removePlayQueue = (idx: number): RemoveAction => {
   return {
     type: REMOVE,
-    payload: track,
+    payload: idx,
   };
 };
 
@@ -54,7 +54,7 @@ const playQueueReducer = (state = initialState, action: PlayQueueActionTypes): T
       return state.concat([...action.payload]);
 
     case REMOVE:
-      return state.filter((track) => track.id !== action.payload.id);
+      return state.filter((track, idx) => idx !== action.payload);
 
     default:
       return state;
