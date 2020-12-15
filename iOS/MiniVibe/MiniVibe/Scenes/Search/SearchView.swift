@@ -29,12 +29,11 @@ struct SearchView: View {
                             SearchAfterView(viewModel: viewModel)
                                 .animation(.easeInOut)
                         } else {
-                            SearchBeforeView()
+                            SearchBeforeView(manager: manager)
                         }
                     }
                     Rectangle()
                         .clearBottom()
-
                 }
                 .padding()
             }

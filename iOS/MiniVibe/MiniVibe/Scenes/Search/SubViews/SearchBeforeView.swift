@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct SearchBeforeView: View {
+    private let manager: AnalyticsManager
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
     var body: some View {
         VStack {
-            RectangleListView()
+            RectangleListView(manager: manager)
             HStack {
                 Text("장르")
                     .modifier(Title1())
                 Spacer()
             }
-            GenreListView()
+            GenreListView(manager: manager)
         }
     }
 }
 
 struct SearchBefore_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBeforeView()
+        SearchBeforeView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }
