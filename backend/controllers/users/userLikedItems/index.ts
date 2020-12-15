@@ -1,10 +1,15 @@
 import { Request, Response } from "express";
+import { Album, Artist, Playlist, Track } from "../../../interfaces";
 import {
   getUserLikeAlbums,
   getUserLikeTracks,
   getUserLikeArtists,
   getUserLikePlaylists,
 } from "../../../models/library";
+
+// interface test {
+//     [Albums[],]
+// }
 
 const userLikedItems = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -17,11 +22,16 @@ const userLikedItems = async (req: Request, res: Response): Promise<void> => {
       getUserLikePlaylists(req.user.id),
     ]);
 
+    const LikedAlbums: number[] = result[0].map((elem: Album) => elem.id);
+    const LikedTracks: number[] = result[1].map((elem: Track) => elem.id);
+    const LikedArtists: number[] = result[2].map((elem: Artist) => elem.id);
+    const LikedPlaylists: number[] = result[3].map((elem: Playlist) => elem.id);
+
     res.status(200).json({
-      LikedAlbums: result[0],
-      LikedTracks: result[1],
-      LikedArtists: result[2],
-      LikedPlaylists: result[3],
+      LikedAlbums,
+      LikedTracks,
+      LikedArtists,
+      LikedPlaylists,
     });
   } catch (err) {
     if (err === "Unautorized") {

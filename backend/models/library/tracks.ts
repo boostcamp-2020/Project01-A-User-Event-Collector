@@ -1,7 +1,7 @@
 import prisma from "../../prisma";
 import { getTrackCard } from "../tracks";
 
-const getUserLikeTracks = async (id: number): Promise<Object> => {
+const getUserLikeTracks = async (id: number): Promise<[]> => {
   const trackIdArr: any = await prisma.users_Like_Tracks.findMany({
     where: { userId: id },
   });
