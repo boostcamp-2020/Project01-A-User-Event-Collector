@@ -3,9 +3,9 @@ import { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledIcon }
 import icons from "../../constant/icons";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import Card from "../Card";
-import calculatePixels from "./calculatePixels";
-import onNextClicked from "./onNextClicked";
-import onPreviousClicked from "./onPreviousClicked";
+import calculatePixels from "./func/calculatePixels";
+import onNextClicked from "./func/onNextClicked";
+import onPreviousClicked from "./func/onPreviousClicked";
 
 export interface SlidebarProps {
   varient: string;
