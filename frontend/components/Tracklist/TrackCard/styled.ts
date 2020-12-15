@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-const StyledTrackCards = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
-
 const StyledTrackCard = styled.div`
   display: flex;
   justify-content: center;
@@ -71,7 +63,6 @@ const StyledEllipsis = styled.div`
 `;
 
 export {
-  StyledTrackCards,
   StyledTrackCard,
   StyledCheckboxDiv,
   StyledCheckbox,

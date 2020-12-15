@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { StyledDetailPage, StyledDescriptionHeader, StyledTrackCard } from "./styled";
 import DescriptionHeader from "../DescriptionHeader";
 import { Track } from "../../interfaces";
-import TrackCard from "../TrackCard";
+import Tracklist from "../Tracklist";
 
 interface Props {
   type: "album" | "playlist" | "artist" | "magazine" | "news";
@@ -60,7 +60,7 @@ const DetailPage: FC<Props> = ({ type, detailData, tracks }: Props) => {
         />
       </StyledDescriptionHeader>
       <StyledTrackCard>
-        <TrackCard data={tracks} />
+        <Tracklist data={tracks} />
       </StyledTrackCard>
     </StyledDetailPage>
   );
