@@ -33,6 +33,7 @@ const NavBarUser = memo(
               data: { userProfile },
             } = data;
             setLoggedIn(true);
+            localStorage.userProfile = JSON.stringify(userProfile);
             setUserID(userProfile.id);
             setUsername(userProfile.username);
             setUserProfileCover(userProfile.profile);
