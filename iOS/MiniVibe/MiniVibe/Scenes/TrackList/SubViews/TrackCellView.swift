@@ -45,7 +45,7 @@ struct TrackCellView: View {
                     HeartAccessory(isFavorite: viewModel.isFavorite, toggleLiked: viewModel.didToggleLiked)
                     if hasDeleteAccessory {
                         DeleteAccessory {
-                            nowPlayingViewModel.didTogleTrashed(id: track.id)
+                            nowPlayingViewModel.didToggleTrash(id: track.id)
                         }
                     }
                 }

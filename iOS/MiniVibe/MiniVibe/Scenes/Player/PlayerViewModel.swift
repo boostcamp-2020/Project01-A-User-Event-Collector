@@ -101,13 +101,14 @@ class PlayerViewModel: ObservableObject {
         queue.move(fromOffsets: source, toOffset: destination)
     }
     
-    func didTogleTrashed(id: Int) {
+    func didToggleTrash(id: Int) {
         queue = queue.filter {
             $0.id != id
         }
         if currentTrack?.id == id {
             currentTrack = queue.last
         }
+        coreTrackAPI.delete(id: id)
     }
     
     private func safeAppend(_ track: Track) {
