@@ -4,6 +4,7 @@ import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
 import { Emitter, Collector, EventObject } from "../../event";
 import EventObjectExample from "../../event/Exampe_eventObject";
+import Ellipsis from "../../components/Ellipsis";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -41,6 +42,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
+        <Ellipsis />
         <Emitter identifier="identifier_1" eventType={["click"]}>
           <h1> 이벤트 테스트</h1>
         </Emitter>
