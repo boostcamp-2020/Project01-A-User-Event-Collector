@@ -5,8 +5,8 @@ import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButto
 import Card from "../Card";
 
 export interface SlidebarProps {
-  varient?: string;
-  dataType?: string;
+  varient: string;
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album";
   title?: string;
   titleLink?: string;
   data?: any;
@@ -98,7 +98,7 @@ const Slidebar: React.FC<SlidebarProps> = ({
   }, [nextHide]);
 
   return (
-    <StyledSlidebar varient={varient}>
+    <StyledSlidebar>
       <StyledTitle>
         <a href={titleLink}>
           {title}

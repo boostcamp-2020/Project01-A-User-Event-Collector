@@ -2,11 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { PlaySvg } from "../../../utils/svg";
 
+interface StyleProps {
+  hover?: boolean;
+}
+
 interface Props {
   hover?: boolean;
 }
 
-export const StyledTrackCardHoverCover = styled.div<Props>`
+export const StyledTrackCardHoverCover = styled.div<StyleProps>`
   width: 100%;
   height: 100%;
   cursor: pointer;

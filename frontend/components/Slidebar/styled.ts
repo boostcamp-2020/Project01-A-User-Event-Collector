@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SlidebarProps, TranslateProps } from "./index";
 
-const StyledSlidebar = styled.div<SlidebarProps>`
+const StyledSlidebar = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;

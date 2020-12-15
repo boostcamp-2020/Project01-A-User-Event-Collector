@@ -1,4 +1,6 @@
 import React from "react";
+import { EllipsisSvg } from "../../utils/svg";
+import Ellipsis from "../Ellipsis";
 import HoverImg from "../HoverImg";
 import { SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
 
@@ -11,12 +13,15 @@ interface cardData {
 }
 
 export interface CardProps {
-  varient?: string;
-  dataType?: string;
+  varient: string;
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album";
   rawData?: any;
 }
 
-function convertData(dataType?: string, rawData?: any): cardData {
+function convertData(
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album",
+  rawData?: any,
+): cardData {
   switch (dataType) {
     case "magazine":
       return {
@@ -79,6 +84,9 @@ const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) =>
       ) : (
         <SmallSpan>{smallText}</SmallSpan>
       )}
+      <Ellipsis>
+        <EllipsisSvg />
+      </Ellipsis>
     </StyledCard>
   );
 };

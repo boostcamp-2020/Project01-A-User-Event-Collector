@@ -9,7 +9,7 @@ export interface HoverImgProps {
   src?: string;
 }
 
-export const getChildren = (hover: boolean, varient?: string): JSX.Element | null => {
+export const getChildren = (hover: boolean, varient?: string) => {
   switch (varient) {
     case "todayBig":
     case "todaySmall":

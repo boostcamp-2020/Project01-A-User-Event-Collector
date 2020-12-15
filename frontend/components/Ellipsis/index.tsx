@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -33,7 +35,7 @@ interface Props {
   data: Track | Album | Artist | Playlist;
 }
 
-const Ellipsis: FC<any> = ({ type, data }: any) => {
+const Ellipsis: FC<any> = ({ type, data, children }: any) => {
   const [isEllipsisOpen, setIsEllipsisOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -54,7 +56,7 @@ const Ellipsis: FC<any> = ({ type, data }: any) => {
   return (
     <>
       <RelativeEmptyDiv onClick={ellipsisHandler}>
-        <div>Ellipsis Button</div>
+        {children}
 
         {isEllipsisOpen && <StyledOverlay onClick={overlayHandler} />}
         {isEllipsisOpen && (
