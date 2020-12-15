@@ -42,7 +42,6 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
-        <Ellipsis />
         <Emitter identifier="identifier_1" eventType={["click"]}>
           <h1> 이벤트 테스트</h1>
         </Emitter>

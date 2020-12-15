@@ -1,5 +1,8 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { concatenatePlayQueue } from "../../reduxModules/playQueue";
+import { Album, Artist, Playlist, Track } from "../../interfaces";
 
 const RelativeEmptyDiv = styled.div`
   position: relative;
@@ -25,17 +28,28 @@ const StyledEllipsis = styled.div`
   font-size: 17px;
 `;
 
-const Ellipsis: FC<any> = () => {
+interface Props {
+  type: "track" | "album" | "artist" | "playlist";
+  data: Track | Album | Artist | Playlist;
+}
+
+const Ellipsis: FC<any> = ({ type, data }: any) => {
   const [isEllipsisOpen, setIsEllipsisOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const ellipsisHandler = () => setIsEllipsisOpen(!isEllipsisOpen);
   const overlayHandler = () => setIsEllipsisOpen(false);
 
   const libraryBtnHandler = () => alert("라이브러리 버튼 핸들러");
+  const addPlaylistBtnHandler = () => alert("내 플레이리스트에 추가");
 
-  const addPlaylistBtnHandler = () => alert("플레이 리스트에 추가");
-
-  const addPlayQueueBtnHandler = () => alert("재생목록에 추가");
+  const addPlayQueueBtnHandler = () => {
+    if (!data.Tracks) dispatch(concatenatePlayQueue(new Set(data)));
+    else {
+      const trackSet = new Set<Track>(data.Tracks);
+      dispatch(concatenatePlayQueue(trackSet));
+    }
+  };
 
   return (
     <>
