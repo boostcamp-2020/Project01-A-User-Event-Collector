@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RectangleCellInfoView: View {
+    var didPressPlayButton: (() -> Void)?
     var body: some View {
         ZStack(alignment: .topLeading) {
             Rectangle()
@@ -24,15 +25,15 @@ struct RectangleCellInfoView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    //TODO: 이벤트 추가
+                    didPressPlayButton?()
                 }, label: {
                     Image(systemName: "play.circle")
                     Text("음악듣기")
                 })
                 .foregroundColor(Color.pink)
-
+                .padding(.trailing, 14)
             }
-            .padding(.trailing)
+            .padding(.trailing, 14)
             .padding(.top, 64)
         }
         .frame(width: UIScreen.main.bounds.width - 20,

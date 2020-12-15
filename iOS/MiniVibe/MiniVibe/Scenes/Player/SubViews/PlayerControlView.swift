@@ -21,7 +21,9 @@ struct PlayerControlView: View {
                                 size: .medium)
                     .accessibility(identifier: "Repeat")
                 Spacer()
-                Button(action: {}, label: {
+                Button(action: {
+                    viewModel.manager.log(PlayerEvent.sendTouched)
+                }, label: {
                     Image(systemName: "paperplane")
                         .accesoryModifier(color: .gray, size: .large)
                     //                        .font(Font.title.weight(.light))
@@ -38,7 +40,9 @@ struct PlayerControlView: View {
                 ToggleableImage(isEnabled: $viewModel.isFavorite,
                                 imageWhenTrue: "heart.fill", colorWhenTrue: .red,
                                 imageWhenFalse: "heart", colorWhenFalse: .red,
-                                size: .large)
+                                size: .large) {
+                    viewModel.manager.log(PlayerEvent.isFavorite(viewModel.isFavorite, trackID: viewModel.currentTrack?.id ?? 0))
+                }
                     .accessibility(identifier: "Heart")
                 .accentColor(.red)
                 Spacer()
@@ -51,7 +55,7 @@ struct PlayerControlView: View {
             .padding(.vertical, 10)
             HStack(alignment: .bottom) {
                 Button(action: {
-                    print(viewModel.queue)
+                    viewModel.manager.log(PlayerEvent.airPlayTouched)
                 }, label: {
                     Image(systemName: "airplayaudio")
                         .accesoryModifier(color: .gray, size: .medium)
@@ -63,6 +67,7 @@ struct PlayerControlView: View {
                 Spacer()
                 Button(action: {
                     didPressQueueButton?()
+                    viewModel.manager.log(PlayerEvent.queuelistTouched)
                 }, label: {
                     Image(systemName: "music.note.list")
                         .accesoryModifier(color: .gray, size: .medium)

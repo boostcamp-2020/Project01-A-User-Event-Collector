@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct GenreListView: View {
+    private let manager: AnalyticsManager
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
+
     private let layout = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -16,22 +21,36 @@ struct GenreListView: View {
     var body: some View {
         LazyVGrid(columns: layout,
                   spacing: 10) {
-            GenreCellView(title: "국내 댄스")
-            GenreCellView(title: "국내 발라드")
-            GenreCellView(title: "국내 락/메탈")
-            GenreCellView(title: "국내 알앤비/소울")
-            GenreCellView(title: "국내 Pop")
-            GenreCellView(title: "국내 K-Pop")
-            GenreCellView(title: "국내 일레트로닉")
-            GenreCellView(title: "국내 힙합")
-            GenreCellView(title: "국내 재즈")
-            GenreCellView(title: "국내 인디")
+            GenreCellView(title: "국내 댄스") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 발라드") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 락/메탈") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 알앤비/소울") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 Pop") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 K-Pop") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 일레트로닉") {
+                manager.log(ButtonEvent.genreTouched)
+            }
+            GenreCellView(title: "국내 힙합") {
+                manager.log(ButtonEvent.genreTouched)
+            }
         }
     }
 }
 
 struct GenreListView_Previews: PreviewProvider {
     static var previews: some View {
-        GenreListView()
+        GenreListView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }

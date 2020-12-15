@@ -32,6 +32,14 @@ struct PlayerEvent: AnalyticsEvent {
         )
     }
     
+    static func isFavorite(_ isOn: Bool, trackID: Int) -> PlayerEvent {
+        let suffix = isOn ? "On" : "Off"
+        return PlayerEvent(
+            name: "isFavorite" + suffix,
+            metadata: ["trackID": "\(trackID)"]
+        )
+    }
+    
     static func shuffle(_ isEnabled: Bool) -> PlayerEvent {
         let suffix = isEnabled ? "On" : "Off"
         return PlayerEvent(
@@ -54,6 +62,12 @@ struct PlayerEvent: AnalyticsEvent {
         )
     }
     
+    static let airPlayTouched = PlayerEvent(name: "airDropTouched")
+    
+    static let sendTouched = PlayerEvent(name: "sendTouched")
+    
+    static let queuelistTouched = PlayerEvent(name: "queuelistTouched")
+
     static let volumeChanged = PlayerEvent(name: "volumeChangedIn3Seconds")
     
     static let shuffleOn = PlayerEvent(name: "shuffleOn")

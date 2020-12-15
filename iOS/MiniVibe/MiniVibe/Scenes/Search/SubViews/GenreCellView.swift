@@ -9,10 +9,11 @@ import SwiftUI
 
 struct GenreCellView: View {
     let title: String
+    var didTouchCell: (() -> Void)?
     
     var body: some View {
         Button(action: {
-            // action
+            didTouchCell?()
         }, label: {
             HStack {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
