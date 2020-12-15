@@ -14,15 +14,17 @@ struct RectangleCellView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            Image("Blueming")
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width/2)
-            RectangleCellInfoView {
-                manager.log(ButtonEvent.newsTouched)
+        Button(action: {
+            manager.log(ButtonEvent.newsTouched)
+        }, label: {
+            ZStack(alignment: .bottomLeading) {
+                Image("logo")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width/2)
+                RectangleCellInfoView()
             }
-        }
+        })
     }
 }
 
