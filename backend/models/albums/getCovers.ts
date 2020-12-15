@@ -4,7 +4,9 @@ const getAlbumCovers = async (user: any): Promise<Object> => {
   const optObj = {
     include: {
       Artists: {
-        select: { artistName: true },
+        include: {
+          Users_Like_Artists: { where: { userId: user ? user.id : -1 } },
+        },
       },
       Users_Like_Albums: { where: { userId: user ? user.id : -1 } },
     },

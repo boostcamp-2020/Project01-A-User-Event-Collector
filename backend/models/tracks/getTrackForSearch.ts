@@ -11,7 +11,9 @@ const getTrackForSearch = async (optObj: any, user: any): Promise<Object> => {
     Artists_Tracks: {
       include: {
         Artists: {
-          select: { id: true, artistName: true },
+          include: {
+            Users_Like_Artists: { where: { userId: user ? user.id : -1 } },
+          },
         },
       },
     },
@@ -24,6 +26,10 @@ const getTrackForSearch = async (optObj: any, user: any): Promise<Object> => {
     el.Artists = [];
     el.Artists_Tracks.forEach((artist) => el.Artists.push(artist.Artists));
     delete el.Artists_Tracks;
+    el.Artists.forEach((artist) => {
+      artist.Liked = artist.Users_Like_Artists.length > 0;
+      delete artist.Users_Like_Artists;
+    });
     el.Liked = el.Users_Like_Tracks.length > 0;
     delete el.Users_Like_Tracks;
     el.Albums.Liked = el.Albums.Users_Like_Albums.length > 0;

@@ -1,7 +1,12 @@
 import prisma from "../../prisma";
 
 const getArtistById = async (id: number, user: any): Promise<Object | null> => {
-  const artist: any = await prisma.artists.findUnique({ where: { id } });
+  const artist: any = await prisma.artists.findUnique({
+    where: { id },
+    include: {
+      Users_Like_Artists: { where: { userId: user ? user.id : -1 } },
+    },
+  });
   if (!artist) return null;
   const trackIdArr = await prisma.artists_Tracks.findMany({
     where: { artistId: artist.id },
@@ -32,6 +37,8 @@ const getArtistById = async (id: number, user: any): Promise<Object | null> => {
   });
   const tracks: any = [];
   trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  artist.Liked = artist.Users_Like_Artists.length > 0;
+  delete artist.Users_Like_Artists;
   artist.Tracks = tracks;
   artist.Tracks.forEach((el) => {
     el.Artists = [];

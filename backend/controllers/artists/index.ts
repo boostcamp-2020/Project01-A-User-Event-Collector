@@ -8,7 +8,7 @@ interface Controller {
 
 const getAll = async (req: Request, res: Response): Promise<void> => {
   try {
-    const result = await getArtistCovers({});
+    const result = await getArtistCovers(req.user);
     res.status(200).json({ Artists: result });
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
