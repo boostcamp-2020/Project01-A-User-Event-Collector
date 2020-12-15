@@ -13,7 +13,6 @@ import CoreData
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?
-    @Published var currentTrackIndex: Int?
     @Published var queue: [Track] = []
     @Published var isPlaying = false
     @Published var isShuffle = false
@@ -42,6 +41,11 @@ class PlayerViewModel: ObservableObject {
     }
     var coverData: Data? {
         currentTrack?.coverData
+    }
+    var currentTrackIndex: Int? {
+        queue.firstIndex { track -> Bool in
+            track.id == currentTrack?.id
+        }
     }
     
     let manager: AnalyticsManager
@@ -156,7 +160,6 @@ extension PlayerViewModel {
         shuffleSubscription()
         repeatSubscription()
         timeSubscription()
-        trackIndexSubscription()
     }
     
     private func setupVolumeListener() {
@@ -232,15 +235,6 @@ extension PlayerViewModel {
                     self?.timer?.invalidate()
                     self?.checkVolume()
                 }
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func trackIndexSubscription() {
-        $currentTrack
-            .compactMap { $0 }
-            .sink { [weak self] track in
-                self?.currentTrackIndex = self?.queue.firstIndex(where: {$0.id == track.id})
             }
             .store(in: &cancellables)
     }
