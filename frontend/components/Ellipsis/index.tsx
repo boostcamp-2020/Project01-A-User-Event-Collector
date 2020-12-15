@@ -5,9 +5,14 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { concatenatePlayQueue } from "../../reduxModules/playQueue";
 import { Album, Artist, Playlist, Track } from "../../interfaces";
+import icons from "../../constant/icons";
 
-const RelativeEmptyDiv = styled.div`
-  position: relative;
+const StyledEllipsis = styled.div`
+  z-index: 1300;
+  position: absolute;
+  font-size: 2rem;
+  bottom: 0rem;
+  right: 0rem;
 `;
 
 const StyledOverlay = styled.div`
@@ -20,7 +25,7 @@ const StyledOverlay = styled.div`
   height: 100%;
 `;
 
-const StyledEllipsis = styled.div`
+const StyledEllipsisModal = styled.div`
   position: absolute;
   z-index: 2000;
   top: 20px;
@@ -35,7 +40,7 @@ interface Props {
   data: Track | Album | Artist | Playlist;
 }
 
-const Ellipsis: FC<any> = ({ type, data, children }: any) => {
+const Ellipsis: FC<any> = ({ type, data }: any) => {
   const [isEllipsisOpen, setIsEllipsisOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -54,20 +59,18 @@ const Ellipsis: FC<any> = ({ type, data, children }: any) => {
   };
 
   return (
-    <>
-      <RelativeEmptyDiv onClick={ellipsisHandler}>
-        {children}
+    <StyledEllipsis onClick={ellipsisHandler}>
+      {icons.ellipsis}
 
-        {isEllipsisOpen && <StyledOverlay onClick={overlayHandler} />}
-        {isEllipsisOpen && (
-          <StyledEllipsis>
-            <div onClick={libraryBtnHandler}>보관함에 추가/삭제</div>
-            <div onClick={addPlaylistBtnHandler}>내 플레이리스트에 추가</div>
-            <div onClick={addPlayQueueBtnHandler}>재생목록에 추가</div>
-          </StyledEllipsis>
-        )}
-      </RelativeEmptyDiv>
-    </>
+      {isEllipsisOpen && <StyledOverlay onClick={overlayHandler} />}
+      {isEllipsisOpen && (
+        <StyledEllipsisModal>
+          <div onClick={libraryBtnHandler}>보관함에 추가/삭제</div>
+          <div onClick={addPlaylistBtnHandler}>내 플레이리스트에 추가</div>
+          <div onClick={addPlayQueueBtnHandler}>재생목록에 추가</div>
+        </StyledEllipsisModal>
+      )}
+    </StyledEllipsis>
   );
 };
 
