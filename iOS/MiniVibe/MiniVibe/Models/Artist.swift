@@ -8,7 +8,7 @@
 import Foundation
 
 struct Artist: Codable, Identifiable, Cellable {
-    let id: Int
+    let id: Int?
     var name: String
     let cover: String?
     let coverData: Data?

@@ -18,7 +18,8 @@ struct Track: Codable, Identifiable, Cellable {
     let albumID: Int?
     let album: Album?
     let artists: [Artist]?
-    var isFavorite: Bool?
+    let liked: Bool?
+    var isSavedToLibrary: Bool?
     
     var artist: String {
         artists?.first?.name ?? ""
@@ -36,6 +37,8 @@ struct Track: Codable, Identifiable, Cellable {
         case albumID = "albumId"
         case album = "Albums"
         case artists = "Artists"
+        case liked = "Liked"
+        case isSavedToLibrary
     }
 }
 
@@ -48,7 +51,7 @@ extension Track {
         if let coreAlbum = coreTrack.album {
             let album = Album(from: coreAlbum)
             self.album = album
-            self.albumID = Int(album.id)
+            self.albumID = Int(id)
         } else {
             self.album = nil
             self.albumID = nil
@@ -65,6 +68,7 @@ extension Track {
         } else {
             self.artists = nil
         }
-        self.isFavorite = coreTrack.isFavorite
+        self.isSavedToLibrary = coreTrack.isSavedToLibrary
+        self.liked = false
     }
 }
