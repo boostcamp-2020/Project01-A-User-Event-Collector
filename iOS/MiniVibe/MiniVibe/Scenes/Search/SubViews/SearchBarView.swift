@@ -21,8 +21,8 @@ struct SearchBarView: View {
                       onCommit: {
                         viewModel.reset()
                       })
-                .padding(15)
-                .padding(.horizontal, 27)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 34)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
                 .overlay(
@@ -47,10 +47,9 @@ struct SearchBarView: View {
                 }, label: {
                     Text("취소")
                 })
-                .padding(.trailing, 10)
                 .zIndex(1)
             }
-        }
+        }.background(Color(UIColor.systemBackground))
     }
 }
 
