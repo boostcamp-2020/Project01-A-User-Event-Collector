@@ -18,6 +18,7 @@ class PlayerViewModel: ObservableObject {
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
+    @Published var isFavorite = false
     private var isInitial = true
     @Published private var timeRemaining = 3
     
@@ -181,6 +182,7 @@ extension PlayerViewModel {
     private func trackPlayingSubscription() {
         $isPlaying
             .sink { [weak self] isPlaying in
+                self?.isFavorite = false
                 if let id = self?.currentTrack?.id {
                     if isPlaying {
                         self?.manager.log(PlayerEvent.trackPlayed(id))

@@ -64,8 +64,8 @@ class SearchViewModel: ObservableObject {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()
-            .map({ (string) -> String? in
-                self.validate(string)
+            .map({[weak self] (string) -> String? in
+                self?.validate(string)
             })
             .compactMap { $0 }
             .sink { (_) in
@@ -82,10 +82,6 @@ class SearchViewModel: ObservableObject {
                 if isEditing {
                     self?.manager.log(ScreenEvent.screenViewed(.searchAfter))
                 } else {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                                    to: nil,
-                                                    from: nil,
-                                                    for: nil)
                     self?.manager.log(ScreenEvent.screenViewed(.searchBefore))
                 }
             }
@@ -94,9 +90,6 @@ class SearchViewModel: ObservableObject {
 
     private func validate(_ string: String) -> String? {
         if string.isEmpty { 
-            if self.isEditing {
-                 self.reset()
-            }
             return nil
         }
         return string

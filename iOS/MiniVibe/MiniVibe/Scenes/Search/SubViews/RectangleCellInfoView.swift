@@ -13,20 +13,25 @@ struct RectangleCellInfoView: View {
             Rectangle()
                 .fill(Color.white)
             HStack {
-                Text("EXO 카이가 솔로 데뷔곡 MV를 선공개했습니다.")
+                Text("아이유, 타이틀곡 ‘Blueming’ 티저공개... 미니 5집으로 컴백")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.black)
                     .lineLimit(2)
-                    .padding([.leading, .top])
+                    .padding([.horizontal, .top])
                 Spacer()
             }
             HStack {
                 Spacer()
-                Image(systemName: "play.circle")
-                Text("음악듣기")
+                Button(action: {
+                    //TODO: 이벤트 추가
+                }, label: {
+                    Image(systemName: "play.circle")
+                    Text("음악듣기")
+                })
+                .foregroundColor(Color.pink)
+
             }
-            .foregroundColor(Color.pink)
             .padding(.trailing)
             .padding(.top, 64)
         }

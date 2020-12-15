@@ -27,6 +27,7 @@ struct SearchView: View {
                     Section(header: SearchBarView(viewModel: viewModel)) {
                         if viewModel.isEditing {
                             SearchAfterView(viewModel: viewModel)
+                                .animation(.easeInOut)
                         } else {
                             SearchBeforeView()
                         }
