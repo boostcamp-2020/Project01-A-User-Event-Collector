@@ -21,14 +21,11 @@ struct PlayerControlView: View {
                                 size: .medium)
                     .accessibility(identifier: "Repeat")
                 Spacer()
-                Button(action: {
+                ToggleableImage(isEnabled: .constant(true),
+                                imageWhenTrue: "paperplane", colorWhenTrue: .gray,
+                                imageWhenFalse: "paperplane", colorWhenFalse: .gray, size: .large) {
                     viewModel.manager.log(PlayerEvent.sendTouched)
-                }, label: {
-                    Image(systemName: "paperplane")
-                        .accesoryModifier(color: .gray, size: .large)
-                    //                        .font(Font.title.weight(.light))
-                })
-                .accentColor(.primary)
+                }
                 Spacer()
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
                                 imageWhenTrue: "pause", colorWhenTrue: .gray,
