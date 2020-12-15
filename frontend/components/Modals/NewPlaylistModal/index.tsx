@@ -102,13 +102,14 @@ const StyledValidVerifyButton = styled.button`
   outline: none;
   color: #fff;
   background-color: #fe1250;
+  cursor: pointer;
 `;
 
 interface Props {
   tracks: Track[];
 }
 
-const NewPlaylistModal: React.FC<Props> = ({ tracks }: Props) => {
+const NewPlaylistModal: React.FC<Props> = () => {
   const [input, setInput] = useState("");
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
