@@ -56,7 +56,7 @@ struct CategoryView: View {
 //                                            items: favoritePlaylistItems,
 //                                            type: .magazines,
 //                                            mode: .full),
-//                         manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//                         manager: AnalyticsManager(engine: MockServerEngine()))
 //        }
 //        //        .preferredColorScheme(.dark)
 //    }

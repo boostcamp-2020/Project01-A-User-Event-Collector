@@ -71,6 +71,6 @@ struct TodayView: View {
 
 //struct TodayView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        TodayView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//        TodayView(manager: AnalyticsManager(engine: MockServerEngine()))
 //    }
 //}
