@@ -1,9 +1,16 @@
 import { Request, Response } from "express";
-import { getArtistCovers, getArtistById } from "../../models/artists";
+import {
+  getArtistCovers,
+  getArtistById,
+  likeArtist,
+  unlikeArtist,
+} from "../../models/artists";
 
 interface Controller {
   getAll(req: Request, res: Response): Promise<void>;
   getArtist(req: Request, res: Response): Promise<void>;
+  like(req: Request, res: Response): Promise<void>;
+  unlike(req: Request, res: Response): Promise<void>;
 }
 
 const getAll = async (req: Request, res: Response): Promise<void> => {
@@ -31,5 +38,25 @@ const getArtist = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-const controller: Controller = { getAll, getArtist };
+const like = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { artistId } = req.body;
+    const result = await likeArtist(artistId, req.user);
+    res.status(200).json({ Albums: result });
+  } catch (err) {
+    res.status(500).json({ statusCode: 500, message: err.message });
+  }
+};
+
+const unlike = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { artistId } = req.body;
+    const result = await unlikeArtist(artistId, req.user);
+    res.status(200).json({ Albums: result });
+  } catch (err) {
+    res.status(500).json({ statusCode: 500, message: err.message });
+  }
+};
+
+const controller: Controller = { getAll, getArtist, like, unlike };
 export default controller;
