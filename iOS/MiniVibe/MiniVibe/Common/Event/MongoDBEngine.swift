@@ -8,12 +8,12 @@
 import Foundation
 import Combine
 
-class MongoDBEngine: AnalyticsEngine {
+class MongoDBEngine: AnalyticsPostEngine {
     
     private let networkManager = NetworkManager()
     private var cancellables = Set<AnyCancellable>()
     
-    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
+    func send<T: AnalyticsEvent>(_ event: T) {
         post(event)
     }
     

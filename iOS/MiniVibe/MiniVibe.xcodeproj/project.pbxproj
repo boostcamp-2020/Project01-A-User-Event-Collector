@@ -126,6 +126,8 @@
 		CFCBC95A2577FB4A00439C3F /* BasicRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */; };
 		CFCBC975257807F300439C3F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBC974257807F300439C3F /* Search.swift */; };
 		CFCFC5C2256E2AA5004200C4 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */; };
+		CFDAC3552587B51E00CCA0D5 /* BackupAnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDAC3542587B51E00CCA0D5 /* BackupAnalyticsEngine.swift */; };
+		CFDAC3682587D66700CCA0D5 /* MappingModelV1ToV2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = CFDAC3672587D66700CCA0D5 /* MappingModelV1ToV2.xcmappingmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +272,9 @@
 		CFCBC9592577FB4A00439C3F /* BasicRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRowCellView.swift; sourceTree = "<group>"; };
 		CFCBC974257807F300439C3F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CFCFC5C1256E2AA5004200C4 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		CFDAC3542587B51E00CCA0D5 /* BackupAnalyticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupAnalyticsEngine.swift; sourceTree = "<group>"; };
+		CFDAC3632587CE1700CCA0D5 /* MiniVibe v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MiniVibe v2.xcdatamodel"; sourceTree = "<group>"; };
+		CFDAC3672587D66700CCA0D5 /* MappingModelV1ToV2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MappingModelV1ToV2.xcmappingmodel; sourceTree = "<group>"; };
 		D1B4E01659B0EC9FC452EFE9 /* Pods-MiniVibe-MiniVibeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe-MiniVibeUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe-MiniVibeUITests/Pods-MiniVibe-MiniVibeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -366,6 +371,7 @@
 				512EF5742580EE4C00930F13 /* LoggableButton.swift */,
 				51B3D4C8257CFDCF008025E5 /* AnalyticsEngine.swift */,
 				516F45792581E0D3004400D1 /* MongoDBEngine.swift */,
+				CFDAC3542587B51E00CCA0D5 /* BackupAnalyticsEngine.swift */,
 				CF414BFE258611A00051412A /* AlertAnalyticsEngine.swift */,
 				51B3D4C9257CFDCF008025E5 /* AnalyticsManager.swift */,
 			);
@@ -642,6 +648,7 @@
 			children = (
 				CF0564C8257FFA6A00F24681 /* API */,
 				CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */,
+				CFDAC3672587D66700CCA0D5 /* MappingModelV1ToV2.xcmappingmodel */,
 				CF05F8B02567E7B0008080D7 /* Persistence.swift */,
 			);
 			path = CoreData;
@@ -1043,12 +1050,14 @@
 				CF6E5D9E2574EE6C00BE7503 /* MagazineView.swift in Sources */,
 				51B82B09257DE8A200A005E8 /* PlayerEvent.swift in Sources */,
 				515D266F2575220B00B542BF /* Playlist.swift in Sources */,
+				CFDAC3552587B51E00CCA0D5 /* BackupAnalyticsEngine.swift in Sources */,
 				515D266D2575220B00B542BF /* User.swift in Sources */,
 				CF5E007A2572669E0048F019 /* PlaylistView.swift in Sources */,
 				51B82B21257E00AC00A005E8 /* ToggleableImage.swift in Sources */,
 				5188C3F2257715D6001601E6 /* ActivityIndicatorView.swift in Sources */,
 				51B3D4EB257DB739008025E5 /* TabIconView.swift in Sources */,
 				51EED2E4256F7E3C00DB32CB /* CategoryCellView.swift in Sources */,
+				CFDAC3682587D66700CCA0D5 /* MappingModelV1ToV2.xcmappingmodel in Sources */,
 				51D6C7032572725500EF1B26 /* BlurView.swift in Sources */,
 				CF10A56B2582530500044827 /* CoreDataAPIManager.swift in Sources */,
 				CF414BFF258611A00051412A /* AlertAnalyticsEngine.swift in Sources */,
@@ -1428,9 +1437,10 @@
 		CF05F8B22567E7B0008080D7 /* MiniVibe.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CFDAC3632587CE1700CCA0D5 /* MiniVibe v2.xcdatamodel */,
 				CF05F8B32567E7B0008080D7 /* MiniVibe.xcdatamodel */,
 			);
-			currentVersion = CF05F8B32567E7B0008080D7 /* MiniVibe.xcdatamodel */;
+			currentVersion = CFDAC3632587CE1700CCA0D5 /* MiniVibe v2.xcdatamodel */;
 			path = MiniVibe.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
