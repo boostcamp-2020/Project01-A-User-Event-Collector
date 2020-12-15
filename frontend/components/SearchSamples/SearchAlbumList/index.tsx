@@ -13,7 +13,11 @@ interface Album {
   };
 }
 
-const SearchAlbumList = ({ data }: { data: Album[] }): React.ReactElement => {
+interface Props {
+  data: Album[];
+}
+
+const SearchAlbumList: FC<Props> = ({ data }: Props) => {
   return (
     <StyledAlbumList>
       {data.map((album) => {
