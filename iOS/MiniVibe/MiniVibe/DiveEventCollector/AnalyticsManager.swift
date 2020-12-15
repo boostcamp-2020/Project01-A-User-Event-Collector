@@ -7,18 +7,23 @@
 
 import Foundation
 
-class AnalyticsManager {
-    private var currentEngine: AnalyticsPostEngine?
-    private let serverEngine: AnalyticsPostEngine?
-    private let backupEngine: AnalyticsEngine?
-    private let alertEngine: AnalyticsPostEngine?
+public final class AnalyticsManager {
+    private var currentEngine: EventSendable?
+    private var mainEngine: EventSendable?
+    private var backupEngine: EventSendableAndFetchable?
+    private var alertEngine: EventSendable?
     
-    init(serverEngine: AnalyticsPostEngine?,
-         backupEngine: AnalyticsEngine?,
-         alertEngine: AnalyticsPostEngine?) {
-        self.serverEngine = serverEngine
+    var isAlerting: Bool
+    
+    public init(serverEngine: EventSendable?,
+                backupEngine: EventSendableAndFetchable?,
+                alertEngine: EventSendable?,
+                isAlerting: Bool = true) {
+        self.mainEngine = serverEngine
         self.backupEngine = backupEngine
         self.alertEngine = alertEngine
+        self.isAlerting = isAlerting
+        
         try? addReachabilityObserver()
         setupEngine()
     }
@@ -32,14 +37,16 @@ class AnalyticsManager {
     }
     
     func log<T: AnalyticsEvent>(_ event: T) {
+        if isAlerting {
+            alertEngine?.send(event)
+        }
         guard let currentEngine = currentEngine else { return }
         currentEngine.send(event)
-        alertEngine?.send(event)
     }
     
     private func switchToServerEngine() {
-        if currentEngine !== serverEngine {
-            currentEngine = serverEngine
+        if currentEngine !== mainEngine {
+            currentEngine = mainEngine
             guard let events = backupEngine?.fetch() else { return }
             events.forEach {
                 currentEngine?.send($0)

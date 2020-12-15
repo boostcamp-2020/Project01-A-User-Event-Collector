@@ -1,5 +1,5 @@
 //
-//  MongoDBEngine.swift
+//  MongoDBEventEngine.swift
 //  MiniVibe
 //
 //  Created by 강병민 on 2020/12/10.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class MongoDBEngine: AnalyticsPostEngine {
+class MongoDBEventEngine: EventSendable {
     
     private let networkManager = NetworkManager()
     private var cancellables = Set<AnyCancellable>()

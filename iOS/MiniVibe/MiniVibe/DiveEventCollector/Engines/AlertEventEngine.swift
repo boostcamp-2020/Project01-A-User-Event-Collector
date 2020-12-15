@@ -1,5 +1,5 @@
 //
-//  AlertAnalyticsEngine.swift
+//  AlertEventEngine.swift
 //  MiniVibe
 //
 //  Created by 류연수 on 2020/12/13.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-class AlertAnalyticsEngine: AnalyticsPostEngine {
+public final class AlertEventEngine: EventSendable {
     private var window: UIWindow? {
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first
     }
     
-    func send<T>(_ event: T) where T: AnalyticsEvent {
-        var message = "Metadata: "
+    public func send<T>(_ event: T) where T: AnalyticsEvent {
+        var message = " "
         if let metadata = event.metadata {
             for (key, value) in metadata {
                 message.append("(\(key), \(value))")
             }
         }
         let alert = UIAlertController(
-            title: "Analytics event: \(event.name)",
+            title: "\(event.name)",
             message: message,
             preferredStyle: .alert
         )

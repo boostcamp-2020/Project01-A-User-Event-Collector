@@ -1,5 +1,5 @@
 //
-//  BackupAnalyticsEngine.swift
+//  BackupEventEngine.swift
 //  MiniVibe
 //
 //  Created by 류연수 on 2020/12/14.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BackupAnalyticsEngine: AnalyticsEngine {
+class BackupEventEngine: EventSendableAndFetchable {
     
     let coreEventManager = CoreEventAPI()
     
