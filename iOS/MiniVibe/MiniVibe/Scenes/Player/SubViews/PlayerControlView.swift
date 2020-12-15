@@ -40,7 +40,9 @@ struct PlayerControlView: View {
                 ToggleableImage(isEnabled: $viewModel.isFavorite,
                                 imageWhenTrue: "heart.fill", colorWhenTrue: .red,
                                 imageWhenFalse: "heart", colorWhenFalse: .red,
-                                size: .large)
+                                size: .large) {
+                    viewModel.manager.log(PlayerEvent.isFavorite(viewModel.isFavorite, trackID: viewModel.currentTrack?.id ?? 0))
+                }
                     .accessibility(identifier: "Heart")
                 .accentColor(.red)
                 Spacer()

@@ -12,10 +12,6 @@ struct PlayerEvent: AnalyticsEvent {
     var createdAt: String?
     var metadata: [String: String]?
     
-    enum ScreenType: String {
-        case player, tracklist
-    }
-    
     private init(name: String, metadata: [String: String]? = nil) {
         self.name = name
         self.createdAt = Date().convertToStringForWeb()
@@ -36,11 +32,11 @@ struct PlayerEvent: AnalyticsEvent {
         )
     }
     
-    static func isFavorite(_ isOn: Bool, trackID: Int, from source: ScreenType) -> PlayerEvent {
+    static func isFavorite(_ isOn: Bool, trackID: Int) -> PlayerEvent {
         let suffix = isOn ? "On" : "Off"
         return PlayerEvent(
             name: "isFavorite" + suffix,
-            metadata: ["trackID": "\(trackID)", "from": "\(source.rawValue)"]
+            metadata: ["trackID": "\(trackID)"]
         )
     }
     

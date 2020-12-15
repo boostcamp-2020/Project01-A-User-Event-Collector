@@ -39,9 +39,7 @@ struct PlayerView: View {
                             .clearBottom()
                     }
                     .padding(.horizontal, 20)
-
                 }
-
             }
             .background(Color(UIColor.systemBackground))
             .preferredColorScheme(.dark)
