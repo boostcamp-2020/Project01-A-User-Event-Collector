@@ -16,8 +16,11 @@ struct SwappableImageWithURL: View {
     }
     
     var body: some View {
-        Image(uiImage: UIImage(data: imageLoader.imageData) ?? UIImage())
-            .resizable()
-            .scaledToFit()
+        if let defaultImage = UIImage(named: "appIcon") {
+            Image(uiImage: UIImage(data: imageLoader.imageData) ?? defaultImage)
+                .resizable()
+                .scaledToFit()
+        }
+        
     }
 }
