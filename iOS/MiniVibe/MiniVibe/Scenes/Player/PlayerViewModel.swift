@@ -5,7 +5,7 @@
 //  Created by 강병민 on 2020/11/27.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 import AVFoundation
 import MediaPlayer
@@ -13,7 +13,6 @@ import CoreData
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?
-    @Published var currentTrackIndex: Int?
     @Published var queue: [Track] = []
     @Published var isPlaying = false
     @Published var isShuffle = false
@@ -26,10 +25,7 @@ class PlayerViewModel: ObservableObject {
     private var volumeChangeAmount = 0
     private var timer: Timer?
     private var cancellables = Set<AnyCancellable>()
-    
-    deinit {
-        cancellables.forEach { $0.cancel() }
-    }
+    var closePlayerView: (() -> Void)?
     
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
@@ -43,6 +39,11 @@ class PlayerViewModel: ObservableObject {
     var coverData: Data? {
         currentTrack?.coverData
     }
+    var currentTrackIndex: Int? {
+        queue.firstIndex { track -> Bool in
+            track.id == currentTrack?.id
+        }
+    }
     
     let manager: AnalyticsManager
     
@@ -55,6 +56,10 @@ class PlayerViewModel: ObservableObject {
         setupVolumeListener()
         fetchFromCoreData()
         isInitial = false
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
     }
     
     func update(with track: Track) {
@@ -156,7 +161,7 @@ extension PlayerViewModel {
         shuffleSubscription()
         repeatSubscription()
         timeSubscription()
-        trackIndexSubscription()
+        queueSubscription()
     }
     
     private func setupVolumeListener() {
@@ -236,11 +241,12 @@ extension PlayerViewModel {
             .store(in: &cancellables)
     }
     
-    private func trackIndexSubscription() {
-        $currentTrack
-            .compactMap { $0 }
-            .sink { [weak self] track in
-                self?.currentTrackIndex = self?.queue.firstIndex(where: {$0.id == track.id})
+    private func queueSubscription() {
+        $queue
+            .sink { [weak self] tracks in
+                if tracks.isEmpty {
+                    self?.closePlayerView?()
+                }
             }
             .store(in: &cancellables)
     }

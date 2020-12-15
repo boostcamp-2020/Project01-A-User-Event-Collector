@@ -4,6 +4,7 @@
 //
 //  Created by 류연수 on 2020/12/13.
 //
+// https://www.swiftbysundell.com/articles/ui-testing-analytics-code-in-swift/ 참고
 
 import UIKit
 
@@ -31,9 +32,6 @@ class AlertAnalyticsEngine: AnalyticsPostEngine {
             handler: nil
         ))
 
-        // In order to handle both view controllers presented as part of a
-        // container view controller and as modals, we need to check if there's
-        // currently a presented view controller.
         guard let window = window else { return }
         var viewController = window.rootViewController
 

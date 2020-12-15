@@ -15,6 +15,7 @@ struct SearchBeforeView: View {
     var body: some View {
         VStack {
             RectangleListView(manager: manager)
+            Spacer()
             HStack {
                 Text("장르")
                     .modifier(Title1())

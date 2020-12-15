@@ -50,6 +50,9 @@ struct PlayerView: View {
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             viewModel.manager.log(ScreenEvent.playerPushed)
+            viewModel.closePlayerView = {
+                showMediaPlayer = false
+            }
         }
         .onDisappear {
             viewModel.manager.log(ScreenEvent.playerPopped)
@@ -68,3 +71,9 @@ struct PlayerView: View {
 //        }
 //    }
 //}
+
+struct PlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerView(viewModel: PlayerViewModel(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil)), showMediaPlayer: .constant(true))
+    }
+}

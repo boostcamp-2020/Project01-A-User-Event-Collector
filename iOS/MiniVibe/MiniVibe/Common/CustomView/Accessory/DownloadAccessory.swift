@@ -17,6 +17,7 @@ struct DownloadAccessory: View {
         }, label: {
             Image(systemName: isSavedToLibrary ? "square.and.arrow.down.fill" : "square.and.arrow.down")
                 .accesoryModifier(color: .gray, size: .medium)
+                .padding([.leading, .vertical])
         })
         .buttonStyle(BorderlessButtonStyle())
     }

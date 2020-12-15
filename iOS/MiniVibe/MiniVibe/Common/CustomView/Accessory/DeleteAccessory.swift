@@ -16,7 +16,7 @@ struct DeleteAccessory: View {
         }, label: {
             Image(systemName: "minus.circle")
                 .accesoryModifier(color: .gray, size: .small)
-            
+                .padding([.leading, .vertical])
         })
         .buttonStyle(BorderlessButtonStyle())
     }

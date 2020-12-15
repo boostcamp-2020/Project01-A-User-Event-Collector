@@ -40,6 +40,6 @@ struct LibraryView: View {
 
 //struct LibraryView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        LibraryView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//        LibraryView(manager: AnalyticsManager(engine: MockServerEngine()))
 //    }
 //}
