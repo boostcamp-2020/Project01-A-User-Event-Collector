@@ -19,7 +19,7 @@ class TrackCellViewModel: ObservableObject {
     
     init(track: Track) {
         self.track = track
-        if let isFavorite = track.isFavorite {
+        if let isFavorite = track.liked {
             self.isFavorite = isFavorite
         } else {
             self.isFavorite = false
@@ -49,7 +49,7 @@ class TrackCellViewModel: ObservableObject {
     }
     
     private func postToServer() {
-        // TODO:- Server로 isFavorite update
+        // TODO:- Server로 liked update
     }
     
     private func addToFavorite(track: Track, isFavorite: Bool) {
@@ -59,7 +59,7 @@ class TrackCellViewModel: ObservableObject {
         }
         if isFavorite {
             var track = track
-            track.isFavorite = isFavorite
+            track.liked = isFavorite
             coreTrackAPI.create(with: track)
         } else {
             coreTrackAPI.delete(id: track.id)
