@@ -22,7 +22,7 @@ import {
 import icons from "../../constant/icons";
 import Img from "../Img";
 
-const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
+const TrackCard = ({ track, idx }: { track: Track; idx: number }): React.ReactElement => {
   const dispatch = useDispatch();
 
   const {
@@ -35,7 +35,7 @@ const TrackCard = ({ track }: { track: Track }): React.ReactElement => {
   Artists.forEach((el) => artists.push(el.artistName));
 
   const handleRemove = () => {
-    dispatch(removePlayQueue(track));
+    dispatch(removePlayQueue(idx));
   };
 
   return (
@@ -85,8 +85,8 @@ const Overlay = (): React.ReactElement => {
           </StyledButtons>
         </StyledOverlayControl>
         <StyledTrackLists>
-          {playList.map((track) => (
-            <TrackCard key={track.id} track={track} />
+          {playList.map((track, idx) => (
+            <TrackCard key={-idx} track={track} idx={idx} />
           ))}
         </StyledTrackLists>
       </StyledOverlayBar>
