@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-const StyledArtists = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 const StyledArtist = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,4 +34,4 @@ const StyledArtistName = styled.div`
   }
 `;
 
-export { StyledArtists, StyledArtist, StyledCover, StyledArtistName };
+export { StyledArtist, StyledCover, StyledArtistName };
