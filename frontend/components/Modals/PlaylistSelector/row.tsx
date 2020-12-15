@@ -35,8 +35,10 @@ interface Props {
 }
 
 const ModalRow: FC<Props> = ({ data, tracks }: Props) => {
+  const addTracksToPlaylist = () => {};
+
   return (
-    <StyledTrackCard>
+    <StyledTrackCard onClick={addTracksToPlaylist}>
       <StyledImg>
         <HoverImg varient="trackCardCover" src={data.cover} />
       </StyledImg>

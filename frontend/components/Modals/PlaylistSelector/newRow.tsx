@@ -31,8 +31,10 @@ const NumOfTracks = styled.div`
 `;
 
 const ModalNewRow: FC = () => {
+  const showNewPlaylistModal = () => {};
+
   return (
-    <StyledTrackCard>
+    <StyledTrackCard onClick={showNewPlaylistModal}>
       <StyledImg>
         <HoverImg varient="trackCardCover" src="" />
       </StyledImg>
