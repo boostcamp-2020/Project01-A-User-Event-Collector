@@ -14,7 +14,7 @@ struct DeleteAccessory: View {
         Button(action: {
             toggleDeleted?()
         }, label: {
-            Image(systemName: "trash")
+            Image(systemName: "minus.circle")
                 .accesoryModifier(color: .gray, size: .small)
             
         })

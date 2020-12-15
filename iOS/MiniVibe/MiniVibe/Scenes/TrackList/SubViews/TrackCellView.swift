@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrackCellView: View {
-    let hasHeartAccessory: Bool
+    let hasDownloadAccessory: Bool
     let hasDeleteAccessory: Bool
     let isCellForQueue: Bool
     let track: Track
@@ -19,7 +19,7 @@ struct TrackCellView: View {
          hasDeleteAccessory: Bool = false,
          track: Track,
          isCellForQueue: Bool = false) {
-        self.hasHeartAccessory = hasHeartAccessory
+        self.hasDownloadAccessory = hasHeartAccessory
         self.hasDeleteAccessory = hasDeleteAccessory
         self.track = track
         self.isCellForQueue = isCellForQueue
@@ -40,14 +40,12 @@ struct TrackCellView: View {
                                  coverURLString: track.coverURLString,
                                  coverData: track.coverData)
             })
-            if hasHeartAccessory {
-                HStack(spacing: 20) {
-                    HeartAccessory(isFavorite: viewModel.isFavorite, toggleLiked: viewModel.didToggleLiked)
-                    if hasDeleteAccessory {
-                        DeleteAccessory {
-                            nowPlayingViewModel.didToggleTrash(id: track.id)
-                        }
-                    }
+            if hasDownloadAccessory {
+                DownloadAccessory(isSavedToLibrary: viewModel.isSavedToLibrary, toggleLiked: viewModel.didToggleLiked)
+            }
+            if hasDeleteAccessory {
+                DeleteAccessory {
+                    nowPlayingViewModel.didToggleTrash(id: track.id)
                 }
             }
         }

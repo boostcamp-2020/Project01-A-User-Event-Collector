@@ -29,8 +29,8 @@ class CoreTrackAPI {
         coreTrack.id = Int64(track.id)
         coreTrack.name = track.name
         coreTrack.albumTrackNumber = Int64(track.albumTrackNumber)
-        if let isFavorite = track.liked {
-            coreTrack.isFavorite = isFavorite
+        if let isSavedToLibrary = track.isSavedToLibrary {
+            coreTrack.isSavedToLibrary = isSavedToLibrary
         }
         coreTrack.isQueue = isQueue
         coreTrack.updatedAt = Date()

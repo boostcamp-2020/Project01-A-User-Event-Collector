@@ -8,56 +8,57 @@
 import Foundation
 
 struct TestData {
-//    static let stationItems: [CategoryItem] =
-//        [.init(id: 1, imageName: "dj1", title: nil, description: nil),
-//         .init(id: 2, imageName: "dj2", title: nil, description: nil),
-//         .init(id: 3, imageName: "dj3", title: nil, description: nil),
-//         .init(id: 4, imageName: "dj4", title: nil, description: nil),
-//         .init(id: 5, imageName: "dj5", title: nil, description: nil),
-//        ]
-//    static let favoritePlaylistItems: [CategoryItem] =
-//        [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", description: "VIBE"),
-//         .init(id: 2, imageName: "favorite2", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
-//         .init(id: 4, imageName: "favorite3", title: "Avicii 대표곡", description: "VIBE"),
-//        ]
-//    static let recomendPlaylistItems: [CategoryItem] =
-//        [.init(id: 1, imageName: "recommend1", title: "올림픽대로", description: "VIBE"),
-//         .init(id: 2, imageName: "recommend2", title: "하우스 파티", description: "VIBE"),
-//         .init(id: 4, imageName: "recommend3", title: "꿀 떨어지는 R&B", description: "VIBE"),
-//        ]
-//    static let magazineItems: [CategoryItem] =
-//        [.init(id: 1, imageName: "magazine1", title: nil, description: nil),
-//         .init(id: 2, imageName: "magazine2", title: nil, description: nil),
-//         .init(id: 3, imageName: "magazine3", title: nil, description: nil),
-//         .init(id: 4, imageName: "magazine4", title: nil, description: nil),
-//         .init(id: 5, imageName: "magazine5", title: nil, description: nil),
-//        ]
+    //    static let stationItems: [CategoryItem] =
+    //        [.init(id: 1, imageName: "dj1", title: nil, description: nil),
+    //         .init(id: 2, imageName: "dj2", title: nil, description: nil),
+    //         .init(id: 3, imageName: "dj3", title: nil, description: nil),
+    //         .init(id: 4, imageName: "dj4", title: nil, description: nil),
+    //         .init(id: 5, imageName: "dj5", title: nil, description: nil),
+    //        ]
+    //    static let favoritePlaylistItems: [CategoryItem] =
+    //        [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", description: "VIBE"),
+    //         .init(id: 2, imageName: "favorite2", title: "Kanye West 대표곡", description: "내가 만든 플레이리스트"),
+    //         .init(id: 4, imageName: "favorite3", title: "Avicii 대표곡", description: "VIBE"),
+    //        ]
+    //    static let recomendPlaylistItems: [CategoryItem] =
+    //        [.init(id: 1, imageName: "recommend1", title: "올림픽대로", description: "VIBE"),
+    //         .init(id: 2, imageName: "recommend2", title: "하우스 파티", description: "VIBE"),
+    //         .init(id: 4, imageName: "recommend3", title: "꿀 떨어지는 R&B", description: "VIBE"),
+    //        ]
+    //    static let magazineItems: [CategoryItem] =
+    //        [.init(id: 1, imageName: "magazine1", title: nil, description: nil),
+    //         .init(id: 2, imageName: "magazine2", title: nil, description: nil),
+    //         .init(id: 3, imageName: "magazine3", title: nil, description: nil),
+    //         .init(id: 4, imageName: "magazine4", title: nil, description: nil),
+    //         .init(id: 5, imageName: "magazine5", title: nil, description: nil),
+    //        ]
     
-//    static let categories: [Category]
-//        = [.init(title: "DJ 스테이션",
-//                 items: stationItems,
-//                 type: .djStations,
-//                 mode: .half),
-//           .init(title: "VIBE 추천 플레이리스트",
-//                 items: recomendPlaylistItems,
-//                 type: .recommendations,
-//                 mode: .full),
-//           .init(title: "즐겨찾는 플레이리스트",
-//                 items: favoritePlaylistItems,
-//                 type: .favorites,
-//                 mode: .half),
-//           .init(title: "VIBE MAG",
-//                 items: magazineItems,
-//                 type: .magazines,
-//                 mode: .full),
-//        ]
+    //    static let categories: [Category]
+    //        = [.init(title: "DJ 스테이션",
+    //                 items: stationItems,
+    //                 type: .djStations,
+    //                 mode: .half),
+    //           .init(title: "VIBE 추천 플레이리스트",
+    //                 items: recomendPlaylistItems,
+    //                 type: .recommendations,
+    //                 mode: .full),
+    //           .init(title: "즐겨찾는 플레이리스트",
+    //                 items: favoritePlaylistItems,
+    //                 type: .favorites,
+    //                 mode: .half),
+    //           .init(title: "VIBE MAG",
+    //                 items: magazineItems,
+    //                 type: .magazines,
+    //                 mode: .full),
+    //        ]
     
     static let defaultTrack = Track(id: -1,
                                     name: "오늘 뭐 듣지?",
                                     albumTrackNumber: -1,
                                     albumID: -1,
                                     album: nil,
-                                    artists: [defaultArtist])
+                                    artists: [defaultArtist],
+                                    liked: nil)
     
     static let defaultArtist = Artist(id: -1,
                                       name: "재생버튼을 눌러보세요",
@@ -83,7 +84,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 2,
                           name: "우산",
@@ -96,7 +98,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "윤하", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "윤하", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 3,
                           name: "Blueming",
@@ -109,7 +112,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "아이유", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "아이유", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 4,
                           name: "FeelGood",
@@ -122,7 +126,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 5,
                           name: "LoveSick Girls",
@@ -135,7 +140,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 6,
                           name: "Fake Love",
@@ -148,7 +154,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "방탄소년단", cover: "BTS", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 7,
                           name: "빗소리",
@@ -161,7 +168,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "윤하", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "윤하", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 8,
                           name: "밤편지",
@@ -174,7 +182,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "아이유", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "아이유", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 9,
                           name: "물고기",
@@ -187,7 +196,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)],
+                          liked: nil
                     ),
                     Track(id: 10,
                           name: "휘파람",
@@ -200,7 +210,8 @@ struct TestData {
                                             coverData: nil,
                                             artistID: nil,
                                             artist: nil),
-                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??", coverData: nil)]
+                          artists: [Artist.init(id: 1, name: "블랙핑크", cover: "??", coverData: nil)],
+                          liked: nil
                     )
                     
                    ]
@@ -222,7 +233,8 @@ struct TestData {
                                                             coverData: nil,
                                                             artistID: nil,
                                                             artist: nil),
-                                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)]
+                                          artists: [Artist.init(id: 1, name: "프로미스나인", cover: "??", coverData: nil)],
+                                          liked: nil
                                     )],
                                    createdAt: "2020년 10월",
                                    type: "PICK")

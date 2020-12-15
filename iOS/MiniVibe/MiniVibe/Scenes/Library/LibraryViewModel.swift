@@ -20,7 +20,7 @@ class LibraryViewModel: ObservableObject {
     
     func fetch() {
         var tracks = [Track]()
-        let predicate = NSPredicate(format: "isFavorite Contains %d", true)
+        let predicate = NSPredicate(format: "isSavedToLibrary Contains %d", true)
         let coreTracks = coreDataManager.fetch(predicate: predicate)
         coreTracks.forEach { coreTrack in
             tracks.append(Track(from: coreTrack))

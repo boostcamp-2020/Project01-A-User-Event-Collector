@@ -31,7 +31,7 @@ struct PlayerView: View {
 
                     LazyVGrid(columns: [GridItem(.flexible())]) {
                         ForEach(viewModel.queue) { track in
-                            TrackCellView(hasHeartAccessory: true,
+                            TrackCellView(hasHeartAccessory: false,
                                           hasDeleteAccessory: true,
                                           track: track,
                                           isCellForQueue: true)

@@ -11,7 +11,7 @@ import CoreData
 
 class TrackCellViewModel: ObservableObject {
     @Published var track: Track
-    @Published var isFavorite: Bool
+    @Published var isSavedToLibrary: Bool
     
     private let coreTrackAPI = CoreTrackAPI()
     private var cancellables = Set<AnyCancellable>()
@@ -19,10 +19,10 @@ class TrackCellViewModel: ObservableObject {
     
     init(track: Track) {
         self.track = track
-        if let isFavorite = track.liked {
-            self.isFavorite = isFavorite
+        if let isFavorite = track.isSavedToLibrary {
+            self.isSavedToLibrary = isFavorite
         } else {
-            self.isFavorite = false
+            self.isSavedToLibrary = false
         }
         toggleSubscription()
     }
@@ -32,11 +32,11 @@ class TrackCellViewModel: ObservableObject {
     }
     
     func didToggleLiked() {
-        isFavorite.toggle()
+        isSavedToLibrary.toggle()
     }
     
     func toggleSubscription() {
-        $isFavorite
+        $isSavedToLibrary
             .sink { [weak self] isFavorite in
                 self?.post(isFavorite: isFavorite)
             }
@@ -45,21 +45,21 @@ class TrackCellViewModel: ObservableObject {
     
     private func post(isFavorite: Bool) {
         postToServer()
-        addToFavorite(track: track, isFavorite: isFavorite)
+        addToLibrary(track: track, isSavedToLibrary: isFavorite)
     }
     
     private func postToServer() {
         // TODO:- Server로 liked update
     }
     
-    private func addToFavorite(track: Track, isFavorite: Bool) {
+    private func addToLibrary(track: Track, isSavedToLibrary: Bool) {
         if isFirst {
             isFirst = false
             return
         }
-        if isFavorite {
+        if isSavedToLibrary {
             var track = track
-            track.liked = isFavorite
+            track.isSavedToLibrary = isSavedToLibrary
             coreTrackAPI.create(with: track)
         } else {
             coreTrackAPI.delete(id: track.id)
