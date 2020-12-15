@@ -9,7 +9,7 @@ const StyledDetailPage = styled.div`
 const StyledDescriptionHeader = styled.div`
   display: flex;
   justify-content: flex-start;
-  algin-items: center;
+  align-items: center;
   width: 100%;
   padding-bottom: 3rem;
   box-sizing: border-box;

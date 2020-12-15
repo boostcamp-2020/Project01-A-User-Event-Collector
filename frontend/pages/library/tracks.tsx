@@ -1,8 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
-import Card from "../../components/Card";
-import { Album } from "../../interfaces";
 import myAxios from "../../utils/myAxios";
+import TrackCard from "../../components/TrackCard";
 
 const StyledLibraryText = styled.div`
   font-size: 1em;
@@ -19,10 +18,8 @@ const StyledPagetitle = styled.div`
 const StyledSection = styled.ul`
   width: 100%;
   padding-top: 2.5rem;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(19%, auto));
-  grid-template-rows: repeat(auto-fill, auto);
-  grid-auto-flow: row;
+  display: flex;
+  margin-top: 1rem;
   row-gap: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   & > li:nth-child(5n + 1) {
@@ -30,26 +27,25 @@ const StyledSection = styled.ul`
   }
 `;
 
-const AlbumsLibraryPage = memo(() => {
-  const [likedAlbums, setLikedAlbums] = useState([]);
+const TracksLibraryPage = memo(() => {
+  const [likedTracks, setLikedTracks] = useState([]);
 
   useEffect(() => {
-    myAxios.get("/library/albums").then((res: any) => {
-      setLikedAlbums(res.data.Albums);
+    myAxios.get("/library/tracks").then((res: any) => {
+      setLikedTracks(res.data.Tracks);
     });
   }, []);
 
   return (
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
-      <StyledPagetitle>앨범</StyledPagetitle>
+      <StyledPagetitle>노래</StyledPagetitle>
+
       <StyledSection>
-        {likedAlbums?.map((value: Album) => (
-          <Card varient="todaySmall" dataType="album" rawData={value} />
-        ))}
+        <TrackCard data={likedTracks} />
       </StyledSection>
     </>
   );
 });
 
-export default AlbumsLibraryPage;
+export default TracksLibraryPage;

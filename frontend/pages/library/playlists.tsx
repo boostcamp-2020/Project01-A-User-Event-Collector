@@ -1,9 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../../components/Card";
-import Img from "../../components/Img";
-import { Artist } from "../../interfaces";
-import LikedArtistCard from "../../components/LikedArtistCard";
+import { Playlist } from "../../interfaces";
 import myAxios from "../../utils/myAxios";
 
 const StyledLibraryText = styled.div`
@@ -32,26 +30,27 @@ const StyledSection = styled.ul`
   }
 `;
 
-const ArtistsLibraryPage = memo(() => {
-  const [likedArtists, setLikedArtists] = useState([]);
+const PlaylistsLibraryPage = memo(() => {
+  const [likedPlaylists, setLikedPlaylists] = useState([]);
 
   useEffect(() => {
-    myAxios.get("/library/artists").then((res: any) => {
-      setLikedArtists(res.data.Artists);
+    myAxios.get("/library/playlists").then((res: any) => {
+      setLikedPlaylists(res.data.Playlists);
     });
   }, []);
 
   return (
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
-      <StyledPagetitle>아티스트</StyledPagetitle>
+      <StyledPagetitle>플레이리스트</StyledPagetitle>
+
       <StyledSection>
-        {likedArtists?.map((value: Artist) => (
-          <LikedArtistCard varient="likedArtist" artist={value} />
+        {likedPlaylists?.map((value: Playlist) => (
+          <Card varient="todaySmall" dataType="playlist" rawData={value} />
         ))}
       </StyledSection>
     </>
   );
 });
 
-export default ArtistsLibraryPage;
+export default PlaylistsLibraryPage;
