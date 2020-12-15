@@ -10,6 +10,9 @@ const getPlaylistById = async (
       Users: {
         select: { username: true },
       },
+      Users_Likes_Playlists: {
+        where: { userId: user ? user.id : -1 },
+      },
     },
   });
   if (!playlist) return null;
@@ -45,6 +48,8 @@ const getPlaylistById = async (
   });
   const tracks: any = [];
   trackIdArr.forEach((el) => tracks.push(el.Tracks));
+  playlist.Liked = playlist.Users_Likes_Playlists.length > 0;
+  delete playlist.Users_Likes_Playlists;
   playlist.Tracks = tracks;
   playlist.Tracks.forEach((el) => {
     el.Artists = [];
