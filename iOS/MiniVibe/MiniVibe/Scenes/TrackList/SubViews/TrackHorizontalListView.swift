@@ -38,7 +38,7 @@ struct TrackHorizontalListView: View {
                     LazyHGrid(rows: layout,
                               spacing: 20) {
                         ForEach(tracks) { track -> TrackCellView in
-                            TrackCellView(hasAccessory: false, track: track)
+                            TrackCellView(hasHeartAccessory: false, track: track)
                         }.frame(width: UIScreen.main.bounds.width - 64)
                     }
                 }
@@ -47,9 +47,9 @@ struct TrackHorizontalListView: View {
     }
 }
 
-struct TrackHorizontalListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
-                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-    }
-}
+//struct TrackHorizontalListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
+//                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//    }
+//}

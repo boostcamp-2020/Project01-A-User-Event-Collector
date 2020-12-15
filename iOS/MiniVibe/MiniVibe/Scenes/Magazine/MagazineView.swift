@@ -19,11 +19,14 @@ struct MagazineView: View {
     
     var body: some View {
         guard let magazine = viewModel.magazine,
-              let tracks = magazine.tracks else { return AnyView(EmptyView().onAppear(perform: {
-                viewModel.fetch(id: magazineID)
-            }))
-             
-        }
+              let tracks = magazine.tracks else {
+            return AnyView(EmptyView()
+                            .onAppear(perform: {
+                                withAnimation {
+                                    viewModel.fetch(id: magazineID)
+                                }
+                            })
+                            .navigationBarTitleDisplayMode(.inline))}
         
         return AnyView(
             ScrollView(showsIndicators: false) {

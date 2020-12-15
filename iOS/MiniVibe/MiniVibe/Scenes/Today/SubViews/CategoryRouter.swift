@@ -10,7 +10,7 @@ import SwiftUI
 class CategoryRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingType = MiniVibeType
-    private let manager: AnalyticsManager
+    let manager: AnalyticsManager
     
     init(manager: AnalyticsManager) {
         self.manager = manager
@@ -21,18 +21,18 @@ class CategoryRouter: DestinationOrientedRouterProtocol {
         switch routingDestination {
         case .magazines:
             return AnyView(MagazineView(magazineID: id)
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.magazine, source: .today))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.magazine, source: .today))
                             })
         case .favorites:
             return AnyView(PlaylistView(playlistID: id)
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))
                             })
         case .recommendations:
             return AnyView(PlaylistView(playlistID: id)
-                            .onAppear {
-                                self.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))
+                            .onAppear { [weak self] in
+                                self?.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))
                             })
         default:
             return AnyView(Text("기본 화면"))

@@ -6,6 +6,7 @@
 //
 import Foundation
 import Combine
+import UIKit
 
 class SearchViewModel: ObservableObject {
     @Published var searchText = ""
@@ -14,14 +15,17 @@ class SearchViewModel: ObservableObject {
     @Published var albums = [Album]()
     @Published var artists = [Artist]()
     
-    var subscription: Set<AnyCancellable> = []
+    var cancellables: Set<AnyCancellable> = []
     private let manager: AnalyticsManager
     private let networkManager = NetworkManager()
     
     init(manager: AnalyticsManager) {
         self.manager = manager
-        searchSubscription()
-        searchEventSubscription()
+        addSubscriptions()
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
     }
     
     func fetch(_ searchText: String) {
@@ -33,7 +37,7 @@ class SearchViewModel: ObservableObject {
                                             method: .get).create()
             networkManager.request(urlRequest: urlRequest) { [weak self] data in
                 if let decodedData = try? JSONDecoder().decode(Search.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.tracks = decodedData.tracks ?? []
                         self?.albums = decodedData.albums ?? []
                         self?.artists = decodedData.artists ?? []
@@ -41,6 +45,11 @@ class SearchViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func addSubscriptions() {
+        searchSubscription()
+        searchEventSubscription()
     }
     
     func reset() {
@@ -55,8 +64,8 @@ class SearchViewModel: ObservableObject {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()
-            .map({ (string) -> String? in
-                self.validate(string)
+            .map({[weak self] (string) -> String? in
+                self?.validate(string)
             })
             .compactMap { $0 }
             .sink { (_) in
@@ -64,22 +73,10 @@ class SearchViewModel: ObservableObject {
             } receiveValue: { [weak self] searchText in
                 self?.fetch(searchText)
             }
-            .store(in: &subscription)
-
+            .store(in: &cancellables)
     }
     
-    func validate(_ string: String) -> String? {
-        if string.isEmpty {
-            if self.isEditing {
-                 self.reset()
-            }
-            return nil
-        }
-        self.isEditing = true
-        return string
-    }
-    
-    func searchEventSubscription() {
+    private func searchEventSubscription() {
         $isEditing
             .sink { [weak self] isEditing in
                 if isEditing {
@@ -88,6 +85,14 @@ class SearchViewModel: ObservableObject {
                     self?.manager.log(ScreenEvent.screenViewed(.searchBefore))
                 }
             }
-            .store(in: &subscription)
+            .store(in: &cancellables)
     }
+
+    private func validate(_ string: String) -> String? {
+        if string.isEmpty { 
+            return nil
+        }
+        return string
+    }
+    
 }

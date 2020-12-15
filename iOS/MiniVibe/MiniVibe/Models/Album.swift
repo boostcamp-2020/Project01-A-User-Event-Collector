@@ -8,16 +8,20 @@
 import Foundation
 
 struct Album: Codable, Identifiable, Cellable {
-    let id: Int
+    let id: Int?
     var name: String
-    let description: String
+    let description: String?
     let cover: String?
     let coverData: Data?
+    let artistID: Int?
+    let artist: Artist?
     
     enum CodingKeys: String, CodingKey {
         case id, description, coverData
         case name = "albumName"
         case cover
+        case artistID = "artistId"
+        case artist = "Artists"
     }
 }
 
@@ -29,5 +33,7 @@ extension Album {
         self.description = coreAlbum.descript ?? ""
         self.cover = nil
         self.coverData = coreAlbum.cover
+        self.artistID = nil
+        self.artist = nil
     }
 }

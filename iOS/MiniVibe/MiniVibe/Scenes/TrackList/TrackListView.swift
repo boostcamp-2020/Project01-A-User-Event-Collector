@@ -28,7 +28,7 @@ struct TrackListView: View {
         Section(header: headerView) {
             LazyVGrid(columns: layout) {
                 ForEach(tracks) { track -> TrackCellView in
-                    TrackCellView(hasAccessory: true, track: track)
+                    TrackCellView(hasHeartAccessory: true, track: track)
                 }
                 Rectangle()
                     .clearBottom()

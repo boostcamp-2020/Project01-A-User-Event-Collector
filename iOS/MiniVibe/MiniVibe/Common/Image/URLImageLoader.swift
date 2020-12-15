@@ -35,9 +35,7 @@ class URLImageLoader: ObservableObject {
     
     func loadFromUrl(urlString: String) {
         let url = URL(string: urlString)
-        let urlRequest = RequestBuilder(url: url, method: .get,
-                                        body: nil,
-                                        headers: nil).create()
+        let urlRequest = RequestBuilder(url: url, method: .get).create()
         guard let request = urlRequest else { return }
         
         network.request(request: request)
@@ -50,7 +48,7 @@ class URLImageLoader: ObservableObject {
                     break
                 }
             } receiveValue: { [weak self] data in
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.image = UIImage(data: data)
                     self?.imageCache.set(forKey: urlString, data: data as NSData)
                 }
@@ -63,8 +61,8 @@ class URLImageLoader: ObservableObject {
             return false
         }
         
-        DispatchQueue.main.async {
-            self.image = UIImage(data: data as Data)
+        DispatchQueue.main.async { [weak self] in
+            self?.image = UIImage(data: data as Data)
         }
         return true
     }

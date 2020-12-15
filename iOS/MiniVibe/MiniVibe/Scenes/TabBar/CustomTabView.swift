@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum MiniVibeTab: Hashable, CaseIterable {
+    case today
+    case chart
+    case search
+    case library
+}
+
 struct CustomTabView: View {
     
     @State var selectedTab: MiniVibeTab = MiniVibeTab.today
@@ -23,15 +30,7 @@ struct CustomTabView: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                if case MiniVibeTab.today = selectedTab {
-                    TodayView(manager: manager)
-                } else if case MiniVibeTab.chart = selectedTab {
-                    ChartView(playlistID: 18, manager: manager)
-                } else if case MiniVibeTab.search = selectedTab {
-                    SearchView(manager: manager)
-                } else if case MiniVibeTab.library = selectedTab {
-                    LibraryView(manager: manager)
-                }
+                CustomTabViewContent(manager: manager, selectedTab: selectedTab)
                 Spacer()
                 ZStack {
                     NowPlayingView(viewModel: playerViewModel)
@@ -69,22 +68,3 @@ struct CustomTabView: View {
         .edgesIgnoringSafeArea(.top)
     }
 }
-
-extension CustomTabView {
-    enum MiniVibeTab: Hashable, CaseIterable {
-        case today
-        case chart
-        case search
-        case library
-    }
-}
-
-//struct CustomTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            CustomTabView()
-//            CustomTabView()
-//                .previewDevice("iPhone SE (2nd generation)")
-//        }
-//    }
-//}

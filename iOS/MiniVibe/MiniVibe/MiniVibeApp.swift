@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct MiniVibeApp: App {
-    
-    let manager = AnalyticsManager(engine: MongoDBEngine())
-
+    let manager = AnalyticsManager(serverEngine: MongoDBEngine(),
+                                   backupEngine: BackupAnalyticsEngine(),
+                                   alertEngine: nil)
     var body: some Scene {
         WindowGroup {
             CustomTabView(manager: manager)

@@ -9,13 +9,13 @@ import SwiftUI
 import Combine
 
 struct SearchView: View {
-    @ObservedObject private var viewModel: SearchViewModel
+    @StateObject private var viewModel: SearchViewModel
     private let manager: AnalyticsManager
     private let layout = [GridItem(.flexible())]
     
     init(manager: AnalyticsManager) {
         self.manager = manager
-        self.viewModel = SearchViewModel(manager: manager)
+        _viewModel = StateObject(wrappedValue: SearchViewModel(manager: manager))
     }
 
     var body: some View {
@@ -27,15 +27,13 @@ struct SearchView: View {
                     Section(header: SearchBarView(viewModel: viewModel)) {
                         if viewModel.isEditing {
                             SearchAfterView(viewModel: viewModel)
-                                .animation(.easeIn)
-                                .transition(.slide)
+                                .animation(.easeInOut)
                         } else {
-                            SearchBeforeView()
+                            SearchBeforeView(manager: manager)
                         }
                     }
                     Rectangle()
                         .clearBottom()
-
                 }
                 .padding()
             }
@@ -44,8 +42,8 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-    }
-}
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//    }
+//}

@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct RectangleListView: View {
+    private let manager: AnalyticsManager
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
+
     private let layout = [GridItem(.flexible())]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: layout,
                       spacing: 20) {
-                RectangleCellView()
-                RectangleCellView()
-                RectangleCellView()
-                RectangleCellView()
-                RectangleCellView()
-                RectangleCellView()
-                RectangleCellView()
+                RectangleCellView(manager: manager)
+                RectangleCellView(manager: manager)
+                RectangleCellView(manager: manager)
             }
         }
     }
@@ -28,6 +29,6 @@ struct RectangleListView: View {
 
 struct RectangleListView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleListView()
+        RectangleListView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }

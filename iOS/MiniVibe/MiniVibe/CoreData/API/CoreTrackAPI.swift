@@ -29,15 +29,17 @@ class CoreTrackAPI {
         coreTrack.id = Int64(track.id)
         coreTrack.name = track.name
         coreTrack.albumTrackNumber = Int64(track.albumTrackNumber)
-        if let isFavorite = track.isFavorite {
-            coreTrack.isFavorite = isFavorite
+        if let isSavedToLibrary = track.isSavedToLibrary {
+            coreTrack.isSavedToLibrary = isSavedToLibrary
         }
         coreTrack.isQueue = isQueue
         coreTrack.updatedAt = Date()
         // Artists 추가
         track.artists?.forEach { artist in
             let coreArtist = CoreArtist(context: context)
-            coreArtist.id = Int64(artist.id)
+            if let id = artist.id {
+                coreArtist.id = Int64(id)
+            }
             coreArtist.name = artist.name
             if let coverData = artist.coverData {
                 coreArtist.cover = coverData
@@ -49,7 +51,9 @@ class CoreTrackAPI {
         // Album 추가
         guard let album = track.album else { return }
         let coreAlbum = CoreAlbum(context: context)
-        coreAlbum.id = Int64(album.id)
+        if let albumID = album.id {
+            coreAlbum.id = Int64(albumID)
+        }
         coreAlbum.descript = album.description
         if let coverData = album.coverData {
             coreAlbum.cover = coverData

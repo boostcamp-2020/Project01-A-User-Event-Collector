@@ -41,13 +41,13 @@ struct PlayerInfoView: View {
     }
 }
 
-struct PlayerInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerInfoView(timeDuration: .constant(0),
-                       viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())),
-                       track: TestData.defaultTrack)
-    }
-}
+//struct PlayerInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlayerInfoView(timeDuration: .constant(0),
+//                       viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())),
+//                       track: TestData.defaultTrack)
+//    }
+//}
 
 struct SwipableImageView: View {
     @State private var offset: CGSize = .zero
@@ -63,14 +63,14 @@ struct SwipableImageView: View {
             .highPriorityGesture(
                 DragGesture(minimumDistance: 20, coordinateSpace: .local)
                     .onChanged { gesture in
-                        self.offset = gesture.translation
+                        offset = gesture.translation
                     }
                     .onEnded { _ in
-                        if self.offset.width > 30 {
-                            self.didSwipeRight?()
+                        if offset.width > 30 {
+                            didSwipeRight?()
                         }
-                        if self.offset.width < -30 {
-                            self.didSwipeLeft?()
+                        if offset.width < -30 {
+                            didSwipeLeft?()
                         }
                     }
             )

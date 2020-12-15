@@ -23,15 +23,15 @@ class SwappableImageLoaderAndCache: ObservableObject {
                                  timeoutInterval: 60.0)
         if let data = cache.cachedResponse(for: request)?.data {
             print("got image from cache")
-            self.imageData = data
+            imageData = data
         } else {
             URLSession.shared.dataTask(with: request, completionHandler: { (data, response, _) in
                 if let data = data, let response = response {
                     let cachedData = CachedURLResponse(response: response, data: data)
                     cache.storeCachedResponse(cachedData, for: request)
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         print("downloaded from internet")
-                        self.imageData = data
+                        self?.imageData = data
                     }
                 }
             }).resume()

@@ -9,10 +9,12 @@ import Foundation
 
 struct PlayerEvent: AnalyticsEvent {
     var name: String
+    var createdAt: String?
     var metadata: [String: String]?
     
     private init(name: String, metadata: [String: String]? = nil) {
         self.name = name
+        self.createdAt = Date().convertToStringForWeb()
         self.metadata = metadata
     }
     
@@ -26,6 +28,14 @@ struct PlayerEvent: AnalyticsEvent {
     static func trackPaused(_ trackID: Int) -> PlayerEvent {
         return PlayerEvent(
             name: "trackPaused",
+            metadata: ["trackID": "\(trackID)"]
+        )
+    }
+    
+    static func isFavorite(_ isOn: Bool, trackID: Int) -> PlayerEvent {
+        let suffix = isOn ? "On" : "Off"
+        return PlayerEvent(
+            name: "isFavorite" + suffix,
             metadata: ["trackID": "\(trackID)"]
         )
     }
@@ -52,6 +62,12 @@ struct PlayerEvent: AnalyticsEvent {
         )
     }
     
+    static let airPlayTouched = PlayerEvent(name: "airDropTouched")
+    
+    static let sendTouched = PlayerEvent(name: "sendTouched")
+    
+    static let queuelistTouched = PlayerEvent(name: "queuelistTouched")
+
     static let volumeChanged = PlayerEvent(name: "volumeChangedIn3Seconds")
     
     static let shuffleOn = PlayerEvent(name: "shuffleOn")

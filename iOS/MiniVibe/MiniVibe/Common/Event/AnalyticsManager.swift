@@ -8,12 +8,17 @@
 import Foundation
 
 class AnalyticsManager {
-    private var currentEngine: AnalyticsEngine?
-    private let serverEngine: AnalyticsEngine
-    private let backupEngine = BackupAnalyticsEngine()
+    private var currentEngine: AnalyticsPostEngine?
+    private let serverEngine: AnalyticsPostEngine?
+    private let backupEngine: AnalyticsEngine?
+    private let alertEngine: AnalyticsPostEngine?
     
-    init(engine: AnalyticsEngine) {
-        self.serverEngine = engine
+    init(serverEngine: AnalyticsPostEngine?,
+         backupEngine: AnalyticsEngine?,
+         alertEngine: AnalyticsPostEngine?) {
+        self.serverEngine = serverEngine
+        self.backupEngine = backupEngine
+        self.alertEngine = alertEngine
         try? addReachabilityObserver()
         setupEngine()
     }
@@ -23,32 +28,27 @@ class AnalyticsManager {
     }
     
     private func setupEngine() {
-        switch getConnection() {
-        case .unavailable:
-            currentEngine = backupEngine
-            print("init engine: backup")
-        default:
-            currentEngine = serverEngine
-            print("init engine: server")
-        }
+        currentEngine = backupEngine
     }
     
     func log<T: AnalyticsEvent>(_ event: T) {
         guard let currentEngine = currentEngine else { return }
-        currentEngine.sendAnalyticsEvent(event)
+        currentEngine.send(event)
+        alertEngine?.send(event)
     }
     
     private func switchToServerEngine() {
         if currentEngine !== serverEngine {
-            print("switchToServerEngine")
-            //TODO: Core Data에 쌓인 이벤트 로그 서버에 보내기
             currentEngine = serverEngine
+            guard let events = backupEngine?.fetch() else { return }
+            events.forEach {
+                currentEngine?.send($0)
+            }
         }
     }
     
     private func switchToBackupEngine() {
         if currentEngine !== backupEngine {
-            print("switchToBackupEngine")
             currentEngine = backupEngine
         }
     }

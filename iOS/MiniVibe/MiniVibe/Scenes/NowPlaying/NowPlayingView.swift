@@ -16,7 +16,7 @@ struct NowPlayingView: View {
         HStack {
             Button(action: {
                 if viewModel.currentTrack != nil {
-                    self.showMediaPlayer.toggle()
+                    showMediaPlayer.toggle()
                 }
             }, label: {
                 SwappableRowView(title: viewModel.trackName,
@@ -27,10 +27,11 @@ struct NowPlayingView: View {
             }).sheet(isPresented: $showMediaPlayer, content: {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
             })
+            .accessibility(identifier: "NowPlayingView")
             HStack(spacing: 20) {
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
-                                imageWhenTrue: "pause",
-                                imageWhenFalse: "play.fill",
+                                imageWhenTrue: "pause", colorWhenTrue: .gray,
+                                imageWhenFalse: "play.fill", colorWhenFalse: .gray,
                                 size: .medium)
                 Button(action: {
                     viewModel.playNextTrack()
@@ -46,8 +47,8 @@ struct NowPlayingView: View {
     }
 }
 
-struct NowPlayingView_Previews: PreviewProvider {
-    static var previews: some View {
-        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
-    }
-}
+//struct NowPlayingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
+//    }
+//}

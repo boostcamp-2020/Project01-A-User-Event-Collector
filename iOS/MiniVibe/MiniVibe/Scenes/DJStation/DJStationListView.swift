@@ -10,6 +10,11 @@ import SwiftUI
 struct DJStationListView: View {
     
     @StateObject var stationViewModel = DJStationListViewModel()
+    private let manager: AnalyticsManager
+    
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
     
     let columns = [
         GridItem(.flexible(minimum: 50, maximum: .infinity)),
@@ -21,6 +26,7 @@ struct DJStationListView: View {
             LazyVGrid(columns: columns) {
                 ForEach(stationViewModel.stations) { station in
                     Button(action: {
+                        manager.log(ButtonEvent.djStationTouched)
                     }, label: {
                         URLImage(urlString: station.cover)
                             .frame(minHeight: 100)
@@ -35,8 +41,8 @@ struct DJStationListView: View {
     }
 }
 
-struct DJStationListView_Previews: PreviewProvider {
-    static var previews: some View {
-        DJStationListView()
-    }
-}
+//struct DJStationListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DJStationListView()
+//    }
+//}

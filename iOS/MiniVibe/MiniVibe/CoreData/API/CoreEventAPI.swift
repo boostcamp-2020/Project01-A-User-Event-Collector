@@ -21,7 +21,7 @@ class CoreEventAPI {
     func create(with event: AnalyticsEvent) {
         let coreEvent = CoreEvent(context: context)
         coreEvent.id = UUID()
-        coreEvent.createdAt = Date()
+        coreEvent.createdAt = event.createdAt
         coreEvent.name = event.name
         event.metadata?.forEach {
             let coreEventMetadata = CoreEventMetadata(context: context)
@@ -47,7 +47,10 @@ class CoreEventAPI {
         coreEvents.forEach { coreEvent in
             if let name = coreEvent.name {
                 let metadatas = convert(with: coreEvent.metadatas)
-                events.append(BaseEvent(name: name, metadata: metadatas))
+                let event = BaseEvent(name: name,
+                                      createdAt: coreEvent.createdAt,
+                                      metadata: metadatas)
+                events.append(event)
             }
         }
         return events

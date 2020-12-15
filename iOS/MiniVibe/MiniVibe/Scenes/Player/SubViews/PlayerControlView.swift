@@ -9,17 +9,21 @@ import SwiftUI
 
 struct PlayerControlView: View {
     @ObservedObject var viewModel: PlayerViewModel
-    var didPressQueueButton: (()->Void)?
+    @State var isFavorite = false
+    var didPressQueueButton: (() -> Void)?
     
     var body: some View {
         VStack {
             HStack {
                 ToggleableImage(isEnabled: $viewModel.isRepeat,
-                                imageWhenTrue: "repeat",
-                                imageWhenFalse: "repeat",
+                                imageWhenTrue: "repeat", colorWhenTrue: .red,
+                                imageWhenFalse: "repeat", colorWhenFalse: .gray,
                                 size: .medium)
+                    .accessibility(identifier: "Repeat")
                 Spacer()
-                Button(action: {}, label: {
+                Button(action: {
+                    viewModel.manager.log(PlayerEvent.sendTouched)
+                }, label: {
                     Image(systemName: "paperplane")
                         .accesoryModifier(color: .gray, size: .large)
                     //                        .font(Font.title.weight(.light))
@@ -27,26 +31,31 @@ struct PlayerControlView: View {
                 .accentColor(.primary)
                 Spacer()
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
-                                imageWhenTrue: "pause",
-                                imageWhenFalse: "play",
+                                imageWhenTrue: "pause", colorWhenTrue: .gray,
+                                imageWhenFalse: "play", colorWhenFalse: .gray,
                                 size: .large)
+                    .accessibility(identifier: "PauseOrPlay")
                 .accentColor(.primary)
                 Spacer()
-                Button(action: {}, label: {
-                    Image(systemName: "heart")
-                        .accesoryModifier(color: .red, size: .large)
-                })
+                ToggleableImage(isEnabled: $viewModel.isFavorite,
+                                imageWhenTrue: "heart.fill", colorWhenTrue: .red,
+                                imageWhenFalse: "heart", colorWhenFalse: .red,
+                                size: .large) {
+                    viewModel.manager.log(PlayerEvent.isFavorite(viewModel.isFavorite, trackID: viewModel.currentTrack?.id ?? 0))
+                }
+                    .accessibility(identifier: "Heart")
                 .accentColor(.red)
                 Spacer()
                 ToggleableImage(isEnabled: $viewModel.isShuffle,
-                                imageWhenTrue: "shuffle",
-                                imageWhenFalse: "shuffle",
+                                imageWhenTrue: "shuffle", colorWhenTrue: .red,
+                                imageWhenFalse: "shuffle", colorWhenFalse: .gray,
                                 size: .medium)
+                    .accessibility(identifier: "Shuffle")
             }
             .padding(.vertical, 10)
             HStack(alignment: .bottom) {
                 Button(action: {
-                    print(viewModel.queue)
+                    viewModel.manager.log(PlayerEvent.airPlayTouched)
                 }, label: {
                     Image(systemName: "airplayaudio")
                         .accesoryModifier(color: .gray, size: .medium)
@@ -57,7 +66,8 @@ struct PlayerControlView: View {
                     .foregroundColor(.red)
                 Spacer()
                 Button(action: {
-                    self.didPressQueueButton?()
+                    didPressQueueButton?()
+                    viewModel.manager.log(PlayerEvent.queuelistTouched)
                 }, label: {
                     Image(systemName: "music.note.list")
                         .accesoryModifier(color: .gray, size: .medium)

@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct RectangleCellView: View {
+    private let manager: AnalyticsManager
+    init(manager: AnalyticsManager) {
+        self.manager = manager
+    }
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             Image("Blueming")
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width/2)
-            RectangleCellInfoView()
+            RectangleCellInfoView {
+                manager.log(ButtonEvent.newsTouched)
+            }
         }
     }
 }
 
 struct RectangleCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleCellView()
+        RectangleCellView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }

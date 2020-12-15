@@ -31,7 +31,10 @@ struct PlayerView: View {
 
                     LazyVGrid(columns: [GridItem(.flexible())]) {
                         ForEach(viewModel.queue) { track in
-                            TrackCellView(hasAccessory: false, track: track, isCellForQueue: true)
+                            TrackCellView(hasHeartAccessory: false,
+                                          hasDeleteAccessory: true,
+                                          track: track,
+                                          isCellForQueue: true)
                                 .padding(.vertical, 5)
                         }
                         .onMove(perform: viewModel.reorder(from:to:))
@@ -39,9 +42,7 @@ struct PlayerView: View {
                             .clearBottom()
                     }
                     .padding(.horizontal, 20)
-
                 }
-
             }
             .background(Color(UIColor.systemBackground))
             .preferredColorScheme(.dark)

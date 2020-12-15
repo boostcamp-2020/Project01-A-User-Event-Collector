@@ -57,7 +57,7 @@ class PersistenceController {
         } catch {
             return .failure(.deleteAllFailed)
         }
-        return .success
+        return .success(.deleteAllSuccess)
     }
     
     func save() -> CoreDataResult {
@@ -66,11 +66,11 @@ class PersistenceController {
         } catch {
             return .failure(.saveFailed)
         }
-        return .success
+        return .success(.saveSuccess)
     }
     
     enum CoreDataResult {
-        case success
+        case success(CoreDataSuccess)
         case failure(CoreDataError)
     }
     
@@ -78,5 +78,11 @@ class PersistenceController {
         case deleteFailed
         case saveFailed
         case deleteAllFailed
+    }
+    
+    enum CoreDataSuccess {
+        case deleteSuccess
+        case saveSuccess
+        case deleteAllSuccess
     }
 }

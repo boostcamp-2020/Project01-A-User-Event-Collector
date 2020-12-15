@@ -7,27 +7,19 @@
 
 import Foundation
 
-protocol AnalyticsEngine: class {
-    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T)
+protocol AnalyticsEngine: AnalyticsPostEngine {
+    func fetch() -> [BaseEvent]
 }
 
-class MockAnalyticsEngine: AnalyticsEngine {
-    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
+protocol AnalyticsPostEngine: class {
+    func send<T: AnalyticsEvent>(_ event: T)
+}
+
+class MockAnalyticsEngine: AnalyticsPostEngine {
+    func send<T: AnalyticsEvent>(_ event: T) {
         print("MockServer - \(event.name)")
         event.metadata?.forEach { key, value in
             print("ㄴ \(key) : \(value)")
         }
-    }
-}
-
-class BackupAnalyticsEngine: AnalyticsEngine {
-    let coreEventManager = CoreEventAPI()
-    
-    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
-        print("Backup - \(event.name)")
-        event.metadata?.forEach { key, value in
-            print("ㄴ \(key) : \(value)")
-        }
-        coreEventManager.create(with: event)
     }
 }

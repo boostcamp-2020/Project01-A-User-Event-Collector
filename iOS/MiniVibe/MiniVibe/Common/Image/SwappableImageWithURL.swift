@@ -16,7 +16,7 @@ struct SwappableImageWithURL: View {
     }
     
     var body: some View {
-        Image(uiImage: UIImage(data: self.imageLoader.imageData) ?? UIImage())
+        Image(uiImage: UIImage(data: imageLoader.imageData) ?? UIImage())
             .resizable()
             .scaledToFit()
     }
