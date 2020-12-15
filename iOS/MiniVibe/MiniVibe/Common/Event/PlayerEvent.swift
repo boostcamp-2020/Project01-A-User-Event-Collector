@@ -12,6 +12,10 @@ struct PlayerEvent: AnalyticsEvent {
     var createdAt: String?
     var metadata: [String: String]?
     
+    enum ScreenType: String {
+        case player, tracklist
+    }
+    
     private init(name: String, metadata: [String: String]? = nil) {
         self.name = name
         self.createdAt = Date().convertToStringForWeb()
@@ -29,6 +33,14 @@ struct PlayerEvent: AnalyticsEvent {
         return PlayerEvent(
             name: "trackPaused",
             metadata: ["trackID": "\(trackID)"]
+        )
+    }
+    
+    static func isFavorite(_ isOn: Bool, trackID: Int, from source: ScreenType) -> PlayerEvent {
+        let suffix = isOn ? "On" : "Off"
+        return PlayerEvent(
+            name: "isFavorite" + suffix,
+            metadata: ["trackID": "\(trackID)", "from": "\(source.rawValue)"]
         )
     }
     
@@ -54,6 +66,12 @@ struct PlayerEvent: AnalyticsEvent {
         )
     }
     
+    static let airPlayTouched = PlayerEvent(name: "airDropTouched")
+    
+    static let sendTouched = PlayerEvent(name: "sendTouched")
+    
+    static let queuelistTouched = PlayerEvent(name: "queuelistTouched")
+
     static let volumeChanged = PlayerEvent(name: "volumeChangedIn3Seconds")
     
     static let shuffleOn = PlayerEvent(name: "shuffleOn")
