@@ -4,6 +4,7 @@ import icons from "../../constant/icons";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import Card from "../Card";
 import calculatePixels from "./calculatePixels";
+import onNextClicked from "./onNextClicked";
 
 export interface SlidebarProps {
   varient: string;
@@ -42,26 +43,16 @@ const Slidebar: FC<SlidebarProps> = ({
     setNextHide(false);
   };
 
-  const onNextClicked = () => {
-    const { current } = currentSlideRef;
-    if (current !== null) {
-      const containerWidth = Number(window.getComputedStyle(current).width.slice(0, -2));
-      const cardStyles = window.getComputedStyle(
-        current.firstElementChild?.nextElementSibling || new Element(),
-      );
-      const cardWidth = Number(cardStyles.width.slice(0, -2));
-      const cardMargin = Number(cardStyles.marginLeft.slice(0, -2));
-      const maxCardWidth = (cardWidth + cardMargin) * data.length - cardMargin - containerWidth;
-      const newTranslateX = currentTranslateX - slidePixels;
-      if (newTranslateX < -maxCardWidth) {
-        setCurrentTranslateX(-maxCardWidth);
-        setNextHide(true);
-        setPreviousHide(false);
-        return;
-      }
-      setCurrentTranslateX(newTranslateX);
-      setPreviousHide(false);
-    }
+  const nextBtnHandler = () => {
+    onNextClicked({
+      currentSlideRef,
+      data,
+      setCurrentTranslateX,
+      setPreviousHide,
+      setNextHide,
+      currentTranslateX,
+      slidePixels,
+    });
   };
 
   const resizeHandler = () => {
@@ -100,7 +91,7 @@ const Slidebar: FC<SlidebarProps> = ({
           ))}
         </SlideContent>
         <SliderPreviousButton onClick={onPreviousClicked} hide={previousHide} />
-        <SliderNextButtton onClick={onNextClicked} hide={nextHide} />
+        <SliderNextButtton onClick={nextBtnHandler} hide={nextHide} />
       </SlideContainer>
     </StyledSlidebar>
   );
