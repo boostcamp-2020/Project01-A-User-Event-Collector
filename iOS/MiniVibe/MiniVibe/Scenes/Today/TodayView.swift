@@ -11,12 +11,13 @@ struct TodayView: View {
     private let router: TodayRouter
     private let manager: AnalyticsManager
     @StateObject private var viewModel = TodayViewModel()
-
+    @State private var isAlerting = true
+    
     init(manager: AnalyticsManager) {
         self.manager = manager
         self.router = TodayRouter(manager: manager)
     }
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -25,7 +26,7 @@ struct TodayView: View {
                     contentView: CategoryView(category: stationCategory, manager: manager),
                     destination: router.getDestination(to: .djStations)
                 )
-
+                
                 let favoritesCategory = Category(playlists: viewModel.favorites,
                                                  type: .favorites,
                                                  mode: .half)
@@ -49,16 +50,22 @@ struct TodayView: View {
                     destination: router.getDestination(to: .recommendations)
                 )
                 
-//                MemorySafeNavigationLink(
-//                    contentView: TrackHorizontalListView(tracks: viewModel.tracks),
-//                    destination: router.getDestination(to: .tracks)
-//                )
+                //                MemorySafeNavigationLink(
+                //                    contentView: TrackHorizontalListView(tracks: viewModel.tracks),
+                //                    destination: router.getDestination(to: .tracks)
+                //                )
                 
                 Rectangle()
                     .clearBottom()
             }
             .listStyle(PlainListStyle())
             .navigationTitle("VIBE")
+            .navigationBarItems(trailing:
+                                    Button(isAlerting ? "Alert Off" : "Alert On") {
+                                        manager.isAlerting.toggle()
+                                        isAlerting = manager.isAlerting
+                                    }
+            )
             .onAppear(perform: {
                 viewModel.fetchAll()
                 manager.log(ScreenEvent.screenViewed(.today))

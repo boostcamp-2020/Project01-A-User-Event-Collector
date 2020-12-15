@@ -7,8 +7,8 @@
 
 import Foundation
 
-class MockServerEngine: AnalyticsPostEngine {
-    func send<T: AnalyticsEvent>(_ event: T) {
+public final class MockServerEngine: EventSendable {
+    public func send<T: AnalyticsEvent>(_ event: T) {
         print("MockServer - \(event.name)")
         event.metadata?.forEach { key, value in
             print("ㄴ \(key) : \(value)")

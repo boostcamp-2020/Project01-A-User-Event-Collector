@@ -16,8 +16,8 @@ extension XCUIApplication {
             return false
         }
         
-        let expectedTitle = "Analytics event: \(event.name)"
-        var expectedMessage = "Metadata: "
+        let expectedTitle = "\(event.name)"
+        var expectedMessage = " "
         
         if let metadata = event.metadata {
             for (key, value) in metadata {
@@ -47,8 +47,8 @@ extension XCUIApplication {
             return false
         }
         
-        let expectedTitle = "Analytics event: \(event.name)"
-        var expectedMessage = "Metadata: "
+        let expectedTitle = "\(event.name)"
+        var expectedMessage = " "
         
         if let metadata = event.metadata {
             for (key, value) in metadata {

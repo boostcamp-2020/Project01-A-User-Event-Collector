@@ -119,39 +119,6 @@ class MiniVibeUITests: XCTestCase {
     }
 
     //test 완료
-    func testTodayNavigation() throws {
-        //차트화면에서 화면 전환 이벤트 수집이 제대로 이루어지는지 test
-        app.launch()
-        _ = app.alerts.element.waitForExistence(timeout: 1)
-        
-        app.tables.element(boundBy: 0).cells.element(boundBy: 0).tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ButtonEvent.djStationTouched))
-        
-        
-        app.tables.element(boundBy: 0).cells.element(boundBy: 1).tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)))
-        
-        XCUIApplication().navigationBars["즐겨듣는 플레이리스트"].buttons["VIBE"].tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ScreenEvent.screenViewed(.today)))
-        
-        app.tables.element(boundBy: 0).cells.element(boundBy: 2).tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)))
-        
-        XCUIApplication().navigationBars["VIBE MAG"].buttons["VIBE"].tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ScreenEvent.screenViewed(.today)))
-        
-        
-        app.tables.element(boundBy: 0).cells.element(boundBy: 3).tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ScreenEvent.screenViewedWithSource(.thumbnailList, source: .today)))
-        XCUIApplication().navigationBars["VIBE 추천 플레이리스트"].buttons["VIBE"].tap()
-        XCTAssertTrue(app.isDisplayingAlertWithMetaDataForEvent(ScreenEvent.screenViewed(.today)))
-        
-    }
     
-    
-    func testSomething() throws {
-        XCUIApplication()/*@START_MENU_TOKEN@*/.tables/*[[".otherElements[\"TodayList\"].tables",".tables"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.cells["DJ 스테이션, 더보기, chevron.right"].children(matching: .other).element(boundBy: 0).twoFingerTap()
-        
-    }
 }
 
