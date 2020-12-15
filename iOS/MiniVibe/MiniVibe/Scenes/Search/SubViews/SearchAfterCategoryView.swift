@@ -31,7 +31,7 @@ struct SearchAfterCategoryView: View {
             }
             if let tracks = cellDatas as? [Track] {
                 ForEach(tracks.prefix(maxCountOfTracks)) { track in
-                    TrackCellView(hasAccessory: true, track: track)
+                    TrackCellView(hasHeartAccessory: true, track: track)
                 }
             }
             if let albums = cellDatas as? [Album] {

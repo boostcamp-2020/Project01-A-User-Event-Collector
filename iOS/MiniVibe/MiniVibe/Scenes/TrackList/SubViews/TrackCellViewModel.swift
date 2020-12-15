@@ -31,7 +31,7 @@ class TrackCellViewModel: ObservableObject {
         cancellables.forEach { $0.cancel() }
     }
     
-    func didToggleFavorite() {
+    func didToggleLiked() {
         isFavorite.toggle()
     }
     

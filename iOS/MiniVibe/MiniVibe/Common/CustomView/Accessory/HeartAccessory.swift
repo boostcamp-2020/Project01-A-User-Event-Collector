@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HeartAccessory: View {
     var isFavorite: Bool
-    let toggleFavorite: (() -> Void)?
+    let toggleLiked: (() -> Void)?
     
     var body: some View {
         Button(action: {
-            toggleFavorite?()
+            toggleLiked?()
         }, label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
                 .accesoryModifier(color: .red, size: .small)

@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct TrackCellView: View {
-    let hasAccessory: Bool
+    let hasHeartAccessory: Bool
+    let hasDeleteAccessory: Bool
     let isCellForQueue: Bool
     let track: Track
     @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
     @StateObject private var viewModel: TrackCellViewModel
     
-    init(hasAccessory: Bool, track: Track, isCellForQueue: Bool = false) {
-        self.hasAccessory = hasAccessory
+    init(hasHeartAccessory: Bool,
+         hasDeleteAccessory: Bool = false,
+         track: Track,
+         isCellForQueue: Bool = false) {
+        self.hasHeartAccessory = hasHeartAccessory
+        self.hasDeleteAccessory = hasDeleteAccessory
         self.track = track
         self.isCellForQueue = isCellForQueue
         _viewModel = StateObject(wrappedValue: TrackCellViewModel(track: track))
@@ -35,10 +40,14 @@ struct TrackCellView: View {
                                  coverURLString: track.coverURLString,
                                  coverData: track.coverData)
             })
-            if hasAccessory {
+            if hasHeartAccessory {
                 HStack(spacing: 20) {
-                    HeartAccessory(isFavorite: viewModel.isFavorite, toggleFavorite: viewModel.didToggleFavorite)
-                    EllipsisAssessory()
+                    HeartAccessory(isFavorite: viewModel.isFavorite, toggleLiked: viewModel.didToggleLiked)
+                    if hasDeleteAccessory {
+                        DeleteAccessory {
+                            nowPlayingViewModel.didTogleTrashed(id: track.id)
+                        }
+                    }
                 }
             }
         }
@@ -51,7 +60,7 @@ struct TrackCellView_Previews: PreviewProvider {
         let testTrack1 = TestData.playlist.tracks!.first!
         
         Group {
-            TrackCellView(hasAccessory: true, track: testTrack1)
+            TrackCellView(hasHeartAccessory: true, track: testTrack1)
             
         }
         .previewLayout(.sizeThatFits)
