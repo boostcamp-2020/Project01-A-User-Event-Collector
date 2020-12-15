@@ -7,6 +7,7 @@ const getAlbumById = async (id: number, user: any): Promise<Object | null> => {
       Artists: {
         select: { artistName: true },
       },
+      Users_Like_Albums: { where: { userId: user ? user.id : -1 } },
     },
   });
   if (!album) return null;
@@ -15,7 +16,11 @@ const getAlbumById = async (id: number, user: any): Promise<Object | null> => {
     where: { albumId: id },
     orderBy: { albumTrackNumber: "asc" },
     include: {
-      Albums: true,
+      Albums: {
+        include: {
+          Users_Like_Albums: { where: { userId: user ? user.id : -1 } },
+        },
+      },
       Artists_Tracks: {
         include: {
           Artists: {
@@ -31,6 +36,8 @@ const getAlbumById = async (id: number, user: any): Promise<Object | null> => {
       },
     },
   });
+  album.Liked = album.Users_Like_Albums.length > 0;
+  delete album.Users_Like_Albums;
   album.Tracks = trackIdArr;
   album.Tracks.forEach((el) => {
     el.Artists = [];
@@ -38,6 +45,8 @@ const getAlbumById = async (id: number, user: any): Promise<Object | null> => {
     delete el.Artists_Tracks;
     el.Liked = el.Users_Like_Tracks.length > 0;
     delete el.Users_Like_Tracks;
+    el.Albums.Liked = el.Albums.Users_Like_Albums.length > 0;
+    delete el.Albums.Users_Like_Albums;
   });
 
   return album;

@@ -13,7 +13,11 @@ const getMagazineById = async (
     include: {
       Tracks: {
         include: {
-          Albums: true,
+          Albums: {
+            include: {
+              Users_Like_Albums: { where: { userId: user ? user.id : -1 } },
+            },
+          },
           Artists_Tracks: {
             include: {
               Artists: {
@@ -40,6 +44,8 @@ const getMagazineById = async (
     delete el.Artists_Tracks;
     el.Liked = el.Users_Like_Tracks.length > 0;
     delete el.Users_Like_Tracks;
+    el.Albums.Liked = el.Albums.Users_Like_Albums.length > 0;
+    delete el.Albums.Users_Like_Albums;
   });
 
   return magazine;
