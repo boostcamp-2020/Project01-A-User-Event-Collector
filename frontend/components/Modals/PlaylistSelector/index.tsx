@@ -13,7 +13,7 @@ const StyledModalLayer = styled.div`
   top: 0px;
   left: 0px;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 500;
 `;
 const StyledModal = styled.div`
   position: fixed;
