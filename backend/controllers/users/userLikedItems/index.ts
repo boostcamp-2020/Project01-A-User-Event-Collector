@@ -7,10 +7,6 @@ import {
   getUserLikePlaylists,
 } from "../../../models/library";
 
-// interface test {
-//     [Albums[],]
-// }
-
 const userLikedItems = async (req: Request, res: Response): Promise<void> => {
   try {
     if (!req.user) throw new Error("Unauthorized");
@@ -34,7 +30,7 @@ const userLikedItems = async (req: Request, res: Response): Promise<void> => {
       LikedPlaylists,
     });
   } catch (err) {
-    if (err === "Unautorized") {
+    if (err === "Unauthorized") {
       res.status(401).send({ message: "Unauthroized" });
     } else {
       res.status(500).json({ statusCode: 500, message: err.message });
