@@ -7,6 +7,7 @@
 import Foundation
 import Combine
 import UIKit
+import DiveEventCollector
 
 class SearchViewModel: ObservableObject {
     @Published var searchText = ""

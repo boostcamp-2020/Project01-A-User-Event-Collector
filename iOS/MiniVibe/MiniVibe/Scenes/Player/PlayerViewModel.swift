@@ -10,6 +10,7 @@ import Combine
 import AVFoundation
 import MediaPlayer
 import CoreData
+import DiveEventCollector
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?

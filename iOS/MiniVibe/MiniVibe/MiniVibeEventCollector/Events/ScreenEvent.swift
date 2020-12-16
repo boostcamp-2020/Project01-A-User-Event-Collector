@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DiveEventCollector
 
 struct ScreenEvent: Event {
     var name: String

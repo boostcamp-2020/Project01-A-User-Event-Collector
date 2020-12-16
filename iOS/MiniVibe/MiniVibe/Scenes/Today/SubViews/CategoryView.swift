@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct CategoryView: View {
     let category: Category

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct PlayerInfoView: View {
     @Binding var timeDuration: Float

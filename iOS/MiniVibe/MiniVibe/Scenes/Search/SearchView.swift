@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import DiveEventCollector
 
 struct SearchView: View {
     @StateObject private var viewModel: SearchViewModel

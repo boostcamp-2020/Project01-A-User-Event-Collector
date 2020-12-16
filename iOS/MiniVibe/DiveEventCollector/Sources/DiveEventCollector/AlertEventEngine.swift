@@ -9,6 +9,11 @@
 import UIKit
 
 public final class AlertEventEngine: EventSendable {
+    
+    public init() {
+        
+    }
+    
     private var window: UIWindow? {
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first
     }

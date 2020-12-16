@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct SearchBeforeView: View {
     private let manager: EventManager

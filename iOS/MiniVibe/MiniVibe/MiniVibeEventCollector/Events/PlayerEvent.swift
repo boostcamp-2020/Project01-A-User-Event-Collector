@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DiveEventCollector
 
 struct PlayerEvent: Event {
     var name: String

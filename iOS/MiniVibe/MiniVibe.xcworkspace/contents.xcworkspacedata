@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DiveEventCollector">
+   </FileRef>
+   <FileRef
       location = "group:MiniVibe.xcodeproj">
    </FileRef>
    <FileRef
