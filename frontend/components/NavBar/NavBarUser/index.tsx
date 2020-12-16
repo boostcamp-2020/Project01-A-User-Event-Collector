@@ -3,6 +3,7 @@ import Link from "next/link";
 import Img from "../../Img";
 import myAxios from "../../../utils/myAxios";
 import { StyledNavUser, StyledUser } from "./styled";
+import asyncAxios from "../../../utils/asyncAxios";
 
 const NavBarUser = memo(
   ({ loggedIn, setLoggedIn }: { loggedIn: boolean; setLoggedIn: Function }) => {
@@ -18,6 +19,15 @@ const NavBarUser = memo(
     useEffect(() => {
       if (!loggedIn) {
         try {
+          myAxios.get("/users/likedItem").then((res: any) => {
+            localStorage.setItem("likedItem", JSON.stringify(res.data));
+            // const test = localStorage.getItem("likedItem");
+            // if (test !== null) {
+            //   const { LikedAlbums, LikedTracks, LikedPlaylists, LikedArtists } = JSON.parse(test);
+            //   console.dir(LikedAlbums);
+            // }
+          });
+
           myAxios.get("/users/profile").then((data: any) => {
             const {
               data: { userProfile },

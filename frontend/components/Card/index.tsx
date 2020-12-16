@@ -11,12 +11,15 @@ interface cardData {
 }
 
 export interface CardProps {
-  varient?: string;
-  dataType?: string;
+  varient: string;
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album";
   rawData?: any;
 }
 
-function convertData(dataType?: string, rawData?: any): cardData {
+function convertData(
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album",
+  rawData?: any,
+): cardData {
   switch (dataType) {
     case "magazine":
       return {

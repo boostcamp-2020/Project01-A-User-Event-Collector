@@ -6,7 +6,7 @@ import {
   StyledResultText,
   StyledSearchAlbumCards,
 } from "./styled";
-import SearchAlbumCards from "../../../components/SearchSamples/albums";
+import SearchAlbumList from "../../../components/SearchSamples/SearchAlbumList";
 
 const SearchAlbumPage = ({ filter }: { filter: string }): React.ReactElement => {
   const [sampleAlbums, setSampleAlbums] = useState([]);
@@ -24,7 +24,7 @@ const SearchAlbumPage = ({ filter }: { filter: string }): React.ReactElement => 
         <StyledResultText>{`'${filter}'의 검색 결과`}</StyledResultText>
       </StyledResult>
       <StyledSearchAlbumCards>
-        <SearchAlbumCards data={sampleAlbums} />
+        <SearchAlbumList data={sampleAlbums} />
       </StyledSearchAlbumCards>
     </StyledSearchAlbumPage>
   );

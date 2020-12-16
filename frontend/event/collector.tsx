@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useRef } from "react";
+import styled from "styled-components";
 import { SimpleEvent, ComplexEvent } from "./interface";
 import SequenceEvent from "./complexEvent";
 
@@ -12,6 +13,10 @@ export interface Props {
   eventConfig: EventObject;
   dispatch: Function;
 }
+
+const StyledCollector = styled.div`
+  position: relative;
+`;
 
 const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
   const { simple, complex } = eventConfig;
@@ -52,7 +57,7 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
     });
   }, []);
 
-  return <div ref={div}>{children}</div>;
+  return <StyledCollector ref={div}>{children}</StyledCollector>;
 };
 
 export default Collector;

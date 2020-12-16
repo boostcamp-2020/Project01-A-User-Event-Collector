@@ -1,6 +1,6 @@
 import prisma from "../../prisma";
 
-const getUserLikePlaylists = async (id: number): Promise<Object> => {
+const getUserLikePlaylists = async (id: number): Promise<any> => {
   const playlistsWithRelation = await prisma.users_Likes_Playlists.findMany({
     where: { userId: id },
     include: {

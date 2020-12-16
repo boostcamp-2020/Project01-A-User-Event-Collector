@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { EllipsisSvg } from "../../../utils/svg";
+import Ellipsis from "../../Ellipsis";
 
 export const StyledEllipsisButton = styled.button`
   width: 2.5rem;

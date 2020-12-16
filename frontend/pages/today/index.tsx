@@ -25,6 +25,7 @@ const StyledHotMagOverlay = styled.div`
 
 const StyledSections = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   margin: 0.5rem 0rem;
   & + & {
@@ -35,19 +36,11 @@ const StyledSections = styled.div`
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
   return (
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
-      {/* Collector 사용 */}
       <StyledHotMag>
         <HotMagCard />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
-        <Emitter identifier="identifier_1" eventType={["click"]}>
-          <h1> 이벤트 테스트</h1>
-        </Emitter>
-        <Emitter identifier="identifier_2" eventType={["mouseover"]}>
-          <h1> 마우스 오버 테스트</h1>
-        </Emitter>
-        {/* Emitter 사용 */}
         <Slidebar
           varient="todayBig"
           dataType="magazine"

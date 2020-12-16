@@ -2,16 +2,15 @@
 import React, { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { Track } from "../../interfaces";
+import { Track } from "../../../interfaces";
 import {
   addCheckedTrack,
   deleteCheckedTrack,
   setAllChecked,
   emptyCheckedTrack,
-} from "../../reduxModules/checkedTrack";
-import { RootState } from "../../reduxModules";
+} from "../../../reduxModules/checkedTrack";
+import { RootState } from "../../../reduxModules";
 import {
-  StyledTrackCards,
   StyledTrackCard,
   StyledCheckboxDiv,
   StyledCheckbox,
@@ -21,8 +20,8 @@ import {
   StyledAlbum,
   StyledEllipsis,
 } from "./styled";
-import HoverImg from "../HoverImg";
-import icons from "../../constant/icons";
+import HoverImg from "../../HoverImg";
+import icons from "../../../constant/icons";
 
 interface Props {
   track: Track;
@@ -79,14 +78,4 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
   );
 };
 
-const TrackCards: FC<{ data: Track[] }> = ({ data }: { data: Track[] }) => {
-  return (
-    <StyledTrackCards>
-      {data.map((track: Track) => {
-        return <TrackCard key={track.trackName} track={track} numberOfCards={data.length} />;
-      })}
-    </StyledTrackCards>
-  );
-};
-
-export default TrackCards;
+export default TrackCard;

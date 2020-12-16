@@ -23,14 +23,16 @@ const getBearer = () => {
 };
 
 const asyncAxios: AsyncAxios = {
-  get: async (path: string) => {
-    const bearer = getBearer();
+  get: (path: string) => {
+    return async () => {
+      const bearer = getBearer();
 
-    let result;
-    bearer === null
-      ? (result = await axios.get(URL + path))
-      : (result = await axios.get(URL + path, { headers: bearer }));
-    return result;
+      let result;
+      bearer === null
+        ? (result = await axios.get(URL + path))
+        : (result = await axios.get(URL + path, { headers: bearer }));
+      return result;
+    };
   },
 
   post: async (path: string, data: any) => {
