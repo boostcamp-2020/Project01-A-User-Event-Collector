@@ -17,9 +17,13 @@ const StyledEllipsis = styled.div`
   display: flex;
 `;
 
-const Ellipsis: FC<any> = () => {
+interface Props {
+  onClick: (e: MouseEvent) => void;
+}
+
+const Ellipsis: FC<any> = ({ onClick }: Props) => {
   return (
-    <StyledEllipsisWrapper>
+    <StyledEllipsisWrapper onClick={onClick}>
       <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
     </StyledEllipsisWrapper>
   );

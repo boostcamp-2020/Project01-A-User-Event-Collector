@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Ellipsis from "../../Ellipsis";
 import EllipsisModal from "../../Ellipsis/EllipsisModal";
@@ -29,16 +29,24 @@ const PlayButton = styled(HoverPlayButton)`
 `;
 
 const GeneralHoverCover: React.FC<Props> = ({ hover }: Props) => {
-  if (hover) {
-    return (
-      <StyledGeneralHoverCover>
-        <PlayButton />
-        <Ellipsis />
-        <EllipsisModal />
-      </StyledGeneralHoverCover>
-    );
-  }
-  return <></>;
+  const [showModal, setShowModal] = useState(false);
+  const handleShowModal = (e: MouseEvent) => {
+    setShowModal(!showModal);
+  };
+
+  return (
+    <>
+      {hover ? (
+        <StyledGeneralHoverCover>
+          <PlayButton />
+          <Ellipsis onClick={handleShowModal} />
+        </StyledGeneralHoverCover>
+      ) : (
+        ""
+      )}
+      {showModal ? <EllipsisModal /> : ""}
+    </>
+  );
 };
 
 export default GeneralHoverCover;
