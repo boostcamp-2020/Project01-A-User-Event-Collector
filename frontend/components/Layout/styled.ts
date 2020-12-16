@@ -42,7 +42,7 @@ const StyledContent = styled.div`
   display: block;
   position: relative;
   box-sizing: border-box;
-  left: 15rem;
+  left: 15%;
   width: 85%;
   min-height: calc(100vh - 6rem);
   background-color: #fff;
