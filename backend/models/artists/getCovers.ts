@@ -1,15 +1,12 @@
 import prisma from "../../prisma";
 
-const getArtistCovers = async (user: any): Promise<Object> => {
-  const result = await prisma.artists.findMany({
-    include: {
-      Users_Like_Artists: { where: { userId: user ? user.id : -1 } },
+const getArtistCovers = async (optObj: any): Promise<Object> => {
+  optObj.include = {
+    Albums: {
+      select: { albumName: true },
     },
-  });
-  result.forEach((artist) => {
-    artist.Liked = artist.Users_Like_Artists.length > 0;
-    delete artist.Users_Like_Artists;
-  });
+  };
+  const result = await prisma.artists.findMany(optObj);
   return result;
 };
 
