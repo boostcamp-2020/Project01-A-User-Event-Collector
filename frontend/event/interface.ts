@@ -31,7 +31,6 @@ export interface SimpleEvent {
   once?: boolean;
   description?: string;
   stopPropagation?: boolean;
-  activateOn?: (...args: any[]) => boolean;
 }
 
 export interface ComplexEvent {

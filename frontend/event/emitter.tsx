@@ -10,6 +10,7 @@ type eventEmitterObj =
   | {
       eventType: EventType;
       restrictFire?: RestrictOptions;
+      activateOn?: Function;
     }
   | EventType;
 
