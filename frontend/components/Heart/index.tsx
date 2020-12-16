@@ -18,7 +18,7 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
       const { [`liked${type}`]: baseArray } = JSON.parse(likedItem);
       setIsLike(baseArray.includes(targetId));
     }
-  }, []);
+  }, [targetId]);
 
   const likeBtnHandler = () => {
     (async () => {
@@ -34,7 +34,6 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
 
   return (
     <>
-      {console.log(targetId)}
       {isLike ? (
         <StyledFilledHeart onClick={likeBtnHandler}>{icons.emptyHeart}</StyledFilledHeart>
       ) : (
