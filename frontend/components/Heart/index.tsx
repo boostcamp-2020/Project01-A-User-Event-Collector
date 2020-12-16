@@ -22,19 +22,11 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
 
   const likeBtnHandler = () => {
     (async () => {
-      if (!isLike) {
-        await myAxios.post(reqPath, {}).then(() => {
-          myAxios.get("/users/likedItem").then((res: any) => {
-            localStorage.setItem("likedItem", JSON.stringify(res.data));
-          });
-        });
-      } else {
-        await myAxios.delete(reqPath).then(() => {
-          myAxios.get("/users/likedItem").then((res: any) => {
-            localStorage.setItem("likedItem", JSON.stringify(res.data));
-          });
-        });
-      }
+      if (!isLike) await myAxios.post(reqPath, {});
+      else await myAxios.delete(reqPath);
+
+      const { data }: any = await myAxios.get("/users/likedItem");
+      localStorage.setItem("likedItem", JSON.stringify(data));
     })();
 
     setIsLike(!isLike);
