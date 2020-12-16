@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Ellipsis from "../../Ellipsis";
+import EllipsisModal from "../../Ellipsis/EllipsisModal";
 import HoverPlayButton from "../../Button/HoverPlayButton";
 
 interface StyledProps {
@@ -11,18 +13,15 @@ interface Props {
 }
 
 export const StyledGeneralHoverCover = styled.div<StyledProps>`
+  display: flex;
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   top: 0px;
   left: 0px;
   cursor: pointer;
   background-color: #00000055;
   z-index: 5;
-  display: ${(props) => (props.hover ? "block" : "none")};
-  & svg {
-    background-color: transparent;
-  }
 `;
 
 const PlayButton = styled(HoverPlayButton)`
@@ -32,11 +31,16 @@ const PlayButton = styled(HoverPlayButton)`
 `;
 
 const GeneralHoverCover: React.FC<Props> = ({ hover }: Props) => {
-  return (
-    <StyledGeneralHoverCover hover={hover}>
-      <PlayButton />
-    </StyledGeneralHoverCover>
-  );
+  if (hover) {
+    return (
+      <StyledGeneralHoverCover>
+        <PlayButton />
+        <Ellipsis />
+        <EllipsisModal />
+      </StyledGeneralHoverCover>
+    );
+  }
+  return <></>;
 };
 
 export default GeneralHoverCover;

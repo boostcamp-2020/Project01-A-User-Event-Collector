@@ -36,6 +36,7 @@ export const StyledCard = styled.li<StyledCardProps>`
     text-decoration: underline;
   }
 `;
+
 export const TitleA = styled.a`
   font-size: 1rem;
   color: #222222;

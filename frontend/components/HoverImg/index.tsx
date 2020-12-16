@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import Img from "../Img";
 import GeneralHoverCover from "./GeneralHoverCover";
 import { StyledHoverImg } from "./img.style";
@@ -8,20 +9,6 @@ export interface HoverImgProps {
   varient?: string;
   src?: string;
 }
-
-export const getChildren = (hover: boolean, varient?: string) => {
-  switch (varient) {
-    case "todayBig":
-    case "todaySmall":
-    case "todayNews":
-    case "magazineBig":
-      return <GeneralHoverCover hover={hover} />;
-    case "trackCardCover":
-      return <TrackCardHoverCover hover={hover} />;
-    default:
-      return null;
-  }
-};
 
 const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
   const [hover, setHover] = useState(false);
@@ -35,9 +22,13 @@ const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
   };
 
   return (
-    <StyledHoverImg varient={varient} onMouseOver={onHover} onMouseOut={onHoverOut}>
+    <StyledHoverImg varient={varient} onMouseEnter={onHover} onMouseLeave={onHoverOut}>
       <Img varient={varient} src={src} />
-      {getChildren(hover, varient)}
+      {varient === "trackCardCover" ? (
+        <TrackCardHoverCover hover={hover} />
+      ) : (
+        <GeneralHoverCover hover={hover} />
+      )}
     </StyledHoverImg>
   );
 };
