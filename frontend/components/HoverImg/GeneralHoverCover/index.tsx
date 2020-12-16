@@ -17,8 +17,8 @@ export const StyledGeneralHoverCover = styled.div<StyledProps>`
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
+  top: -0.7rem;
+  left: 0rem;
   cursor: pointer;
   background-color: #00000055;
   z-index: 5;
