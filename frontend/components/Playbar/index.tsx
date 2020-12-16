@@ -1,6 +1,7 @@
 import React, { memo, MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 import { fetchLike, fetchUnlike } from "../../utils/fetchLike";
 import { Track } from "../../interfaces";
 import Img from "../Img";
@@ -27,7 +28,6 @@ import {
   StyledMiddleButtons,
   StyledPlayButtons,
 } from "./styled";
-import Heart from "../Heart";
 import PlaybarTrackCard from "./PlaybarTrackCard";
 
 const Playbar = memo(
@@ -69,64 +69,43 @@ const Playbar = memo(
     } = playList[0] ? playList[0] : emptyTrack;
     const fullPlayTime = "3:32";
     const currentPlayTime = "1:32";
-    const router = useRouter();
-
-    const pushToAlbum = (e: MouseEvent) => {
-      e.stopPropagation();
-      router.push(`/albums/${albumId}`);
-    };
-
-    const pushToArtist = (artistId: number) => (e: MouseEvent) => {
-      e.stopPropagation();
-      router.push(`/artists/${artistId}`);
-    };
-
-    const makeLike = async () => {
-      const result = await fetchLike(trackId);
-      if (result) {
-        playList[0].Liked = true;
-      }
-    };
-
-    const makeUnlike = async () => {
-      const result = await fetchUnlike(trackId);
-      if (result) {
-        playList[0].Liked = false;
-      }
-    };
 
     const artists = () =>
       Artists.map((el, idx) => {
         if (idx === Artists.length - 1) {
           return (
-            <>
-              <StyledTrackArtist onClick={pushToArtist(el.id)}>{el.artistName}</StyledTrackArtist>
-            </>
+            <Link href={`/artists/${el.id}`}>
+              <StyledTrackArtist>{el.artistName}</StyledTrackArtist>
+            </Link>
           );
         }
         return (
-          <>
-            <StyledTrackArtist onClick={pushToArtist(el.id)}>{el.artistName}</StyledTrackArtist>
+          <Link href={`/artists/${el.id}`}>
+            <StyledTrackArtist>{el.artistName}</StyledTrackArtist>
             <span>, </span>
-          </>
+          </Link>
         );
       });
 
     return (
       <StyledPlaybar onClick={handleShowPlaylist}>
         <StyledTrackSection>
-          <StyledImgSection onClick={pushToAlbum}>
-            {cover ? (
-              <Img varient="nowPlayingCover" src={cover} />
-            ) : (
-              <Img
-                varient="nowPlayingCover"
-                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIWFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDisZFhktLSsrKystKysrKysrLSsrKy0tKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAJRABAQEAAAUEAgMBAAAAAAAAAAERAiFRYYEScZHwMUGh4fHB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOK0Se2LIBqpFgAfKbgLAANAAME0FNTF9IEolhmAuJhLTQCcXhNzp8lv2gbv4Xb+2bJ++Rn7/wCgu/dNT4TekoLb28LLGfVy/vmk4vANZfb70PbzjN4ep7A145M7epfvM9XwB6Z18ls6JvwWgvpWSd/dmdk0G/V2/wBOLindPV28G6C9Wk1dAIRPnwDV4icSG/IL/JzZn2meQW3qb3N7ciARdiXiScILeJObW4esEtpOOr6yZQPyzhZi+oElTl1+YVL9/oDbC9/4OyAvt/q8/wAZ/TKA1nfn3QtQBqfKb2SAqKYCGlXQQ0AWVKANrnRIgKuoAudfys+UoCms0gKTkJQWRbxISgeleQmAsk6VMMTQal6slT9guTyhSAgAFNQAAAABcTAAVAAAAXU0GxFADAAEBaQSA1UKABF0DyVAAABmtJQKkWpwgYigCCggEAwAAABUAANAXEWUGkFBA0ADSgsqU1aCpwnCWYAEABcMBEXABmLVwGeKqmLQQABFxAApgBhpQNBAWQ0qAvgSLoAiwGgUEAAqoYC0QgKSABFEsAwNXQZ0ka1nQXGbVANRQEqRQEwVAXUCAUUoMqqWAUhgCKYAi4iwGgAAAAAKtQgKEAMNNADDADBADQAAANRUAAACQAwSRQMDABFUGYKAiyBoNJQBUFBAAFQBQAAAAABAFQAAAAAAoAlUAKACKAYAAiwAMAFRcAQAAFBAUAAAwAAKCaKmgIoAGKAigILQAoAIpQEVAAAAABTQEUBCrUAIAGKABAAAAAATFQAFAlIiwDAgAAAYtQACAIoCKAIKAGBgAoCAAFAAwACCgIoCCoAABQAAAVFIAGAAAFiABAXAQIoJigAABEUAABBQBFAIUAAAAAQAFIABABFAFiABUigAAIRQEqwACABAAf/Z"
-              />
-            )}
-          </StyledImgSection>
+          <Link href={`/albums/${albumId}`}>
+            <StyledImgSection>
+              {cover ? (
+                <Img varient="nowPlayingCover" src={cover} />
+              ) : (
+                <Img
+                  varient="nowPlayingCover"
+                  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIWFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDisZFhktLSsrKystKysrKysrLSsrKy0tKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAJRABAQEAAAUEAgMBAAAAAAAAAAERAiFRYYEScZHwMUGh4fHB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOK0Se2LIBqpFgAfKbgLAANAAME0FNTF9IEolhmAuJhLTQCcXhNzp8lv2gbv4Xb+2bJ++Rn7/wCgu/dNT4TekoLb28LLGfVy/vmk4vANZfb70PbzjN4ep7A145M7epfvM9XwB6Z18ls6JvwWgvpWSd/dmdk0G/V2/wBOLindPV28G6C9Wk1dAIRPnwDV4icSG/IL/JzZn2meQW3qb3N7ciARdiXiScILeJObW4esEtpOOr6yZQPyzhZi+oElTl1+YVL9/oDbC9/4OyAvt/q8/wAZ/TKA1nfn3QtQBqfKb2SAqKYCGlXQQ0AWVKANrnRIgKuoAudfys+UoCms0gKTkJQWRbxISgeleQmAsk6VMMTQal6slT9guTyhSAgAFNQAAAABcTAAVAAAAXU0GxFADAAEBaQSA1UKABF0DyVAAABmtJQKkWpwgYigCCggEAwAAABUAANAXEWUGkFBA0ADSgsqU1aCpwnCWYAEABcMBEXABmLVwGeKqmLQQABFxAApgBhpQNBAWQ0qAvgSLoAiwGgUEAAqoYC0QgKSABFEsAwNXQZ0ka1nQXGbVANRQEqRQEwVAXUCAUUoMqqWAUhgCKYAi4iwGgAAAAAKtQgKEAMNNADDADBADQAAANRUAAACQAwSRQMDABFUGYKAiyBoNJQBUFBAAFQBQAAAAABAFQAAAAAAoAlUAKACKAYAAiwAMAFRcAQAAFBAUAAAwAAKCaKmgIoAGKAigILQAoAIpQEVAAAAABTQEUBCrUAIAGKABAAAAAATFQAFAlIiwDAgAAAYtQACAIoCKAIKAGBgAoCAAFAAwACCgIoCCoAABQAAAVFIAGAAAFiABAXAQIoJigAABEUAABBQBFAIUAAAAAQAFIABABFAFiABUigAAIRQEqwACABAAf/Z"
+                />
+              )}
+            </StyledImgSection>
+          </Link>
+
           <PlaybarTrackCard trackId={trackId} trackName={trackName} artist={artists()} />
         </StyledTrackSection>
+
         <StyledMainControlSection>
           <StyledMainButtons>
             <StyledSideButtons>{icons.random}</StyledSideButtons>
