@@ -261,7 +261,7 @@ const IndexPage = () => {
 # 구성요소
 
 1. Event
-    - analytics system이 제공하는 모든 **이벤트들**.
+    - Event Collector에서 제공하는 모든 **이벤트**.
     - `Event` 프로토콜 채택
 2. EventManager
     - 이벤트를 로깅하기 위한 최상단 API, 실제로 로깅을하지는 않고,
