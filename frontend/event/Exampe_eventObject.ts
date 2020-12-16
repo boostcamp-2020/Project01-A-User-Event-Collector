@@ -11,7 +11,7 @@ const example1: EventObject = {
     identifier_2: {
       event_id: 2,
       event_type: "mouseover",
-      once: true,
+      once: false,
       description: "이건 두번째 식별자에요~",
     },
     identifier_3: {
