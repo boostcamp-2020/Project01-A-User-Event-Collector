@@ -26,6 +26,7 @@ const StyledHotMagOverlay = styled.div`
 
 const StyledSections = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   margin: 0.5rem 0rem;
   & + & {

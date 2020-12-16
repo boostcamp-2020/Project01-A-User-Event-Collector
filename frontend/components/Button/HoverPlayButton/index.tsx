@@ -1,25 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import { PlaySvg } from "../../../utils/svg";
+import icons from "../../../constant/icons";
 
-export const StyledPlayButton = styled.button`
+const StyledPlayButton = styled.button`
   width: 2.5rem;
   height: 2.5rem;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 50%;
   border: 0px;
   position: absolute;
-  left: 10%;
-  bottom: 10%;
-  & svg {
-    fill: pink;
+  left: 7.5%;
+  bottom: 7.5%;
+  font-size: 1.25rem;
+  color: #fe1250;
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
   }
+`;
+
+const StyledText = styled.span`
+  margin-left: 0.25rem;
 `;
 
 const HoverPlayButton: React.FC = () => {
   return (
     <StyledPlayButton>
-      <PlaySvg />
+      <StyledText>{icons.play}</StyledText>
     </StyledPlayButton>
   );
 };

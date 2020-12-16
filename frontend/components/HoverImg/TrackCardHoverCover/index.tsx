@@ -20,13 +20,6 @@ export const StyledTrackCardHoverCover = styled.div<StyleProps>`
   background-color: #fff; // TODO: 색상 수정
   z-index: 1;
   display: ${(props) => (props.hover ? "block" : "none")};
-  & svg {
-    fill: #fff; // TODO: 색상 수정
-    background-color: transparent;
-    width: 60%;
-    height: 60%;
-    margin: 20%;
-  }
 `;
 
 const TrackCardHoverCover: React.FC<Props> = ({ hover }: Props) => {

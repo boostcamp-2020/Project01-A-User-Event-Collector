@@ -1,6 +1,4 @@
 import React from "react";
-import icons from "../../constant/icons";
-import Ellipsis from "../Ellipsis";
 import HoverImg from "../HoverImg";
 import { SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
 
@@ -78,7 +76,6 @@ const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) =>
   return (
     <StyledCard varient={varient}>
       <HoverImg varient={varient} src={src} />
-      <Ellipsis />
       <TitleA href={mainLink}>{title}</TitleA>
       {smallLink ? (
         <SmallA href={smallLink}>{smallText}</SmallA>
