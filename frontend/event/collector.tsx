@@ -52,15 +52,15 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
   const div = useRef<HTMLDivElement>(null);
   useEffect(() => {
     Array.from(eventTypeSet).forEach((ev: EventType) => {
-      if (ev in WindowEventType) {
-      }
       div?.current?.addEventListener(ev, (e: any) => {
         const eventKey = e.identifier;
         if (identifierSet.has(eventKey)) {
           dispatch({ userEvent: simple[eventKey], props: e.children, nativeEvent: e });
           complexInstanceArr.forEach((complexInstance) => complexInstance.notify(eventKey));
         }
-        e.stopPropagation();
+        if (simple[eventKey].stopPropagation === true) {
+          e.stopPropagation();
+        }
       });
     });
   }, []);
