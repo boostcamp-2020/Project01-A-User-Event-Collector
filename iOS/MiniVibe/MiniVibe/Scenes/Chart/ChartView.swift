@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ChartView: View {
     @StateObject private var viewModel = PlaylistViewModel()
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     private let playlistID: Int
     private let layout = [GridItem(.flexible())]
     
-    init(playlistID: Int, manager: AnalyticsManager) {
+    init(playlistID: Int, manager: EventManager) {
         self.playlistID = playlistID
         self.manager = manager
     }

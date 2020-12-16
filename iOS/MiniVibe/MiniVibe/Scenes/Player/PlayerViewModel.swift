@@ -45,12 +45,12 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    let manager: AnalyticsManager
+    let manager: EventManager
     
     private let session = AVAudioSession.sharedInstance()// Audio session object
     private var progressObserver: NSKeyValueObservation!// Observer
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         setupSubscriptions()
         setupVolumeListener()

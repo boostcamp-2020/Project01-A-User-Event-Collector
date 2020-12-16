@@ -16,10 +16,10 @@ class SearchViewModel: ObservableObject {
     @Published var artists = [Artist]()
     
     var cancellables: Set<AnyCancellable> = []
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     private let networkManager = NetworkManager()
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         addSubscriptions()
     }

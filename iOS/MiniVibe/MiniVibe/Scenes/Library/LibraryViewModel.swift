@@ -11,10 +11,10 @@ import Combine
 class LibraryViewModel: ObservableObject {
     @Published var tracks = [Track]()
     
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     private let coreDataManager = CoreTrackAPI()
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
     }
     

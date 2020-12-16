@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CustomTabViewContent: View {
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     var selectedTab: MiniVibeTab
 
-    init(manager: AnalyticsManager, selectedTab: MiniVibeTab) {
+    init(manager: EventManager, selectedTab: MiniVibeTab) {
         self.manager = manager
         self.selectedTab = selectedTab
     }

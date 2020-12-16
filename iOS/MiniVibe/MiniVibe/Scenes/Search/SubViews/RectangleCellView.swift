@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RectangleCellView: View {
-    private let manager: AnalyticsManager
-    init(manager: AnalyticsManager) {
+    private let manager: EventManager
+    init(manager: EventManager) {
         self.manager = manager
     }
     
@@ -30,6 +30,6 @@ struct RectangleCellView: View {
 
 struct RectangleCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleCellView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
+        RectangleCellView(manager: EventManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }

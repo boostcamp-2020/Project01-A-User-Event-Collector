@@ -10,9 +10,9 @@ import SwiftUI
 class TodayRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingStarter = MiniVibeType
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
     }
     

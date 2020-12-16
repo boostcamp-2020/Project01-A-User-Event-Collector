@@ -11,7 +11,7 @@ class BackupEventEngine: EventSendableAndFetchable {
     
     let coreEventManager = CoreEventAPI()
     
-    func send<T: AnalyticsEvent>(_ event: T) {
+    func send<T: Event>(_ event: T) {
         coreEventManager.create(with: event)
     }
     

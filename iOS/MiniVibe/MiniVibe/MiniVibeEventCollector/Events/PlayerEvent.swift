@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlayerEvent: AnalyticsEvent {
+struct PlayerEvent: Event {
     var name: String
     var createdAt: String?
     var metadata: [String: String]?

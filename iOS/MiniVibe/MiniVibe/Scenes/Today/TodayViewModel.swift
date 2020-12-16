@@ -34,19 +34,19 @@ class TodayViewModel: ObservableObject {
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.magazines = decodedData.magazines
                     }
                 }
             case .djStations:
                 if let decodedData = try? JSONDecoder().decode(DJStationResponse.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.stations = decodedData.djStations
                     }
                 }
             case .playlists:
                 if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         if let tracks = decodedData.playlist.tracks {
                             self?.tracks = tracks
                         }

@@ -18,7 +18,7 @@ class CoreEventAPI {
         self.context = manager.context
     }
     
-    func create(with event: AnalyticsEvent) {
+    func create(with event: Event) {
         let coreEvent = CoreEvent(context: context)
         coreEvent.id = UUID()
         coreEvent.createdAt = event.createdAt

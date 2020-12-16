@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ButtonEvent: AnalyticsEvent {
+struct ButtonEvent: Event {
     var name: String
     var createdAt: String?
     var metadata: [String: String]?

@@ -11,7 +11,7 @@ public protocol EventSendableAndFetchable: EventSendable, EventFetchable {
 }
 
 public protocol EventSendable: class {
-    func send<T: AnalyticsEvent>(_ event: T)
+    func send<T: Event>(_ event: T)
 }
 
 public protocol EventFetchable: class {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScreenEvent: AnalyticsEvent {
+struct ScreenEvent: Event {
     var name: String
     var createdAt: String?
     var metadata: [String: String]?

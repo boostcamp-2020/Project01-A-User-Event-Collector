@@ -42,7 +42,7 @@ struct PlayerInfoView: View {
 struct PlayerInfoView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerInfoView(timeDuration: .constant(100),
-                       viewModel: PlayerViewModel(manager: AnalyticsManager(serverEngine: nil,
+                       viewModel: PlayerViewModel(manager: EventManager(serverEngine: nil,
                                                                             backupEngine: nil,
                                                                             alertEngine: nil)),
                        track: TestData.defaultTrack)

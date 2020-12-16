@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class BaseEvent: AnalyticsEvent {
+open class BaseEvent: Event {
     public var name: String
     public var createdAt: String?
     public var metadata: [String: String]?

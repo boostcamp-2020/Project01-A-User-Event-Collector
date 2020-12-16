@@ -1,5 +1,5 @@
 //
-//  AnalyticsManager.swift
+//  EventManager.swift
 //  TodoApp
 //
 //  Created by 강병민 on 2020/12/06.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-public final class AnalyticsManager {
+public final class EventManager {
     private var currentEngine: EventSendable?
     private var mainEngine: EventSendable?
     private var backupEngine: EventSendableAndFetchable?
     private var alertEngine: EventSendable?
     
-    var isAlerting: Bool
+    public var isAlerting: Bool
     
     public init(serverEngine: EventSendable?,
                 backupEngine: EventSendableAndFetchable?,
@@ -36,7 +36,7 @@ public final class AnalyticsManager {
         currentEngine = backupEngine
     }
     
-    func log<T: AnalyticsEvent>(_ event: T) {
+    public func log<T: Event>(_ event: T) {
         if isAlerting {
             alertEngine?.send(event)
         }
@@ -62,7 +62,7 @@ public final class AnalyticsManager {
     
 }
 
-extension AnalyticsManager: ReachabilityObserverDelegate {
+extension EventManager: ReachabilityObserverDelegate {
     
     internal func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {

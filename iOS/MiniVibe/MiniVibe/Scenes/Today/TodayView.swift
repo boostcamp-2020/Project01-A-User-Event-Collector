@@ -9,11 +9,11 @@ import SwiftUI
 
 struct TodayView: View {
     private let router: TodayRouter
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     @StateObject private var viewModel = TodayViewModel()
     @State private var isAlerting = true
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         self.router = TodayRouter(manager: manager)
     }
@@ -21,7 +21,7 @@ struct TodayView: View {
     var body: some View {
         NavigationView {
             List {
-                let stationCategory = Category(stations: viewModel.stations)
+                let stationCategory = Category(stations: Array(viewModel.stations.prefix(3)))
                 MemorySafeNavigationLink(
                     contentView: CategoryView(category: stationCategory, manager: manager),
                     destination: router.getDestination(to: .djStations)
