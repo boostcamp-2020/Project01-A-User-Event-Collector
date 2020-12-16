@@ -34,11 +34,11 @@ const StyledDescriptionContent = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   width: 600px;
-  height: 48px;
+  height: 32px;
   color: #939393;
   font-size: 16px;
   margin: 0.25rem 0rem;

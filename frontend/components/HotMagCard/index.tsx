@@ -57,7 +57,7 @@ const HotMagCard = memo(({ magazine }: HotMagProps) => {
           <StyledDescriptionTitle>{magazineName}</StyledDescriptionTitle>
           <StyledDescriptionContent>{description}</StyledDescriptionContent>
           <StyledDescriptionInfo>
-            <StyledTrivialInfo>VIBE MAG-{createdAt}</StyledTrivialInfo>
+            <StyledTrivialInfo>VIBE MAG-{createdAt.substring(0, 10)}</StyledTrivialInfo>
           </StyledDescriptionInfo>
         </StyledDescription>
       </StyledHotMagCard>
