@@ -352,21 +352,17 @@ public final class MockServerEngine: EventSendable {
 
 `Event` protocol로 구현함으로써, 새로운 이벤트를 추가하는것은 매우 간편해집니다. 
 
-![](https://i.imgur.com/fCncpdR.gif)
+<img width="500" alt="New Model Version" src="https://i.imgur.com/fCncpdR.gif">
 
 ### 이벤트 type checking
 
 `Event` protocol을 채택하는 custom type의 이벤트를 구현함으로써, 원하는 이벤트에 대한 자동완성 결과를 볼수 있습니다.
 
-![](https://i.imgur.com/MSw2rnw.png)
-
-
-
 ### 엔진의 다양한 구현
 `EventSendable`, `EventFetchable`protocol을 채택하는 엔진을 다양하게 구현할수 있습니다.
 그리고 상황에 맞게 필요한 엔진을 갈아 끼우는것도 매우 쉽습니다.
 
-![](https://i.imgur.com/s13yZNi.gif)
+<img width="550" alt="New Model Version" src="https://i.imgur.com/s13yZNi.gif">
 
 또한, EventManager는 다수의 엔진을 가질 수도 있습니다.
 실제로 [저희 앱](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector)에서는 back end server를 위한 `engine`과 core data를 위한 `engine` 두개를 구현하고 주입했습니다.
@@ -403,6 +399,10 @@ public final class MockServerEngine: EventSendable {
 | [SwiftUI에서 View와 Model Binding (part3: @EnvironmentObject)](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector/wiki/SwiftUI%EC%97%90%EC%84%9C-View%EC%99%80-Model-Binding-(part3:-@EnvironmentObject))| 강병민 |
 | [Combine을 이용힌 chaining](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector/wiki/Combine%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%9E%8C-chaining-(feat.-SearchView))| 강병민 |
 | [Protocol 기반의 Analytics System을 만들어보자](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector/wiki/Protocol-%EA%B8%B0%EB%B0%98%EC%9D%98-Analytics-System%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EC%9E%90)| 강병민 |
+| [SwiftUI) 사용자 이벤트 수집 및 Alert로 확인](https://yeonduing.tistory.com/50) | 류연수 |
+| [서버로 post할 때 json 형식으로 보내기](https://yeonduing.tistory.com/49) | 류연수 |
+| [코어데이터 마이그레이션](https://yeonduing.tistory.com/48) | 류연수 |
+| [CoreData로 오프라인에서도 이용 가능한 앱 만들기](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector/wiki/CoreData%EB%A1%9C-%EC%98%A4%ED%94%84%EB%9D%BC%EC%9D%B8%EC%97%90%EC%84%9C%EB%8F%84-%EC%9D%B4%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0) | 류연수 |
 | [SwiftUI) NavigationLink와 Memory Leak](https://yeonduing.tistory.com/47)| 류연수 |
 | [URL로 비동기 이미지 생성하기 - Combine과 Network](https://yeonduing.tistory.com/46)| 류연수 |
 | [SwiftUI) ViewBuilder 와 guard let](https://yeonduing.tistory.com/45)| 류연수 |
