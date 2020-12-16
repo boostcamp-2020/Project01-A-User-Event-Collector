@@ -136,6 +136,7 @@ const Playbar = memo(
             <StyledEmptyHeart onClick={makeLike}>{icons.emptyHeart}</StyledEmptyHeart>
           )}
           <Heart type="Tracks" targetId={1} />
+
           <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
         </StyledTrackSection>
         <StyledMainControlSection>
