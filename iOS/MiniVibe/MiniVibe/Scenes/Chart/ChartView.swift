@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct ChartView: View {
     @StateObject private var viewModel = PlaylistViewModel()

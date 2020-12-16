@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct LibraryView: View {
     private let layout = [GridItem(.flexible())]

@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import DiveEventCollector
 
 class CoreEventAPI {
     private let manager = CoreDataAPIManager()

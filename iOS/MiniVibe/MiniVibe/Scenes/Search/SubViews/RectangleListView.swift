@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct RectangleListView: View {
     private let manager: EventManager

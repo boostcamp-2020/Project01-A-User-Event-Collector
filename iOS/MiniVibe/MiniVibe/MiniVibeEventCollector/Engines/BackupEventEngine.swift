@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DiveEventCollector
 
 class BackupEventEngine: EventSendableAndFetchable {
     

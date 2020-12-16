@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct PlayerView: View {
     @ObservedObject var viewModel: PlayerViewModel

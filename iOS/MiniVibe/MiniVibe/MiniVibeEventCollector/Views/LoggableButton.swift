@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct LoggableButton<T: Event, Content: View>: View {
     let content : () -> Content

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DiveEventCollector
 
 class LibraryViewModel: ObservableObject {
     @Published var tracks = [Track]()

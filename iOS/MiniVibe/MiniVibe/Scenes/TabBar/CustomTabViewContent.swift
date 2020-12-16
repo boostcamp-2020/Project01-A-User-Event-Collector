@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct CustomTabViewContent: View {
     private let manager: EventManager

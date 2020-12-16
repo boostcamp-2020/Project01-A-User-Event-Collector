@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 class ThumbnailRouter: StarterOrientedRouterProtocol {
     typealias RoutingStarter = MiniVibeType

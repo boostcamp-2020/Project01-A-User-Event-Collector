@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import DiveEventCollector
+
 
 class MongoDBEventEngine: EventSendable {
     
