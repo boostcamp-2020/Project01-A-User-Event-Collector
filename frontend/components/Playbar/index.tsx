@@ -41,6 +41,8 @@ const emptyTrack: Track = {
 const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) => {
   const playList: Track[] = useSelector((state: RootState) => state.playQueue);
   const [headTrack, setHeadTrack] = useState<Track>(emptyTrack);
+  // 더블클릭하면, 재생되는 노래가 바뀐다면, headTrack로는 안됨
+  // nowPlaying 같은 것이 필요함
 
   useEffect(() => {
     if (playList.length <= 0) setHeadTrack(emptyTrack);
@@ -52,14 +54,6 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
   const fullPlayTime = "3:32";
   const currentPlayTime = "1:32";
 
-  const {
-    id: trackId,
-    trackName,
-    Albums: { cover, id: albumId },
-    Artists,
-    Liked: liked,
-  } = playList[0] ? playList[0] : emptyTrack;
-
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
   const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
@@ -68,7 +62,7 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
 
   const artists = (playingArtist: Artist[]) =>
     playingArtist.map((el, idx) => {
-      if (idx === Artists.length - 1) {
+      if (idx === playingArtist.length - 1) {
         return (
           <Link href={`/artists/${el.id}`}>
             <StyledTrackArtist>{el.artistName}</StyledTrackArtist>
@@ -86,10 +80,10 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
   return (
     <StyledPlaybar onClick={handleShowPlaylist}>
       <StyledTrackSection>
-        <Link href={`/albums/${albumId}`}>
+        <Link href={`/albums/${headTrack.Albums.id}`}>
           <StyledImgSection>
-            {cover ? (
-              <Img varient="nowPlayingCover" src={cover} />
+            {headTrack.Albums.cover ? (
+              <Img varient="nowPlayingCover" src={headTrack.Albums.cover} />
             ) : (
               <Img
                 varient="nowPlayingCover"
