@@ -33,13 +33,11 @@ const StyledSections = styled.div`
   }
 `;
 
-const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
-  const hotMag = Magazines.shift();
-
+const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
   return (
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyledHotMag>
-        <HotMagCard magazine={hotMag} />
+        <HotMagCard magazine={HotMag} />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
@@ -84,11 +82,13 @@ export async function getStaticProps() {
     ]);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
+    const HotMag = Magazines.shift();
     const { News } = result[1];
     const { Playlists } = result[2];
 
     return {
       props: {
+        HotMag,
         Magazines,
         News,
         Playlists,
