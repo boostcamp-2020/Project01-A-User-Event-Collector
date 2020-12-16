@@ -17,7 +17,7 @@ const StyledHotMag = styled.div`
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
+  width: 85vw;
   top: -4rem;
   z-index: 1;
   height: 28rem;
