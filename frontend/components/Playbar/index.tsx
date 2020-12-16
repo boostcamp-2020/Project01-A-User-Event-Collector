@@ -29,6 +29,7 @@ import {
   StyledMiddleButtons,
   StyledPlayButtons,
 } from "./styled";
+import Heart from "../Heart";
 
 const Playbar = memo(
   ({
@@ -134,6 +135,7 @@ const Playbar = memo(
           ) : (
             <StyledEmptyHeart onClick={makeLike}>{icons.emptyHeart}</StyledEmptyHeart>
           )}
+          <Heart type="Tracks" targetId={1} />
           <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
         </StyledTrackSection>
         <StyledMainControlSection>
