@@ -14,8 +14,6 @@ import {
   StyledTrackTitle,
   StyledTrackArtists,
   StyledTrackArtist,
-  StyledEmptyHeart,
-  StyledFilledHeart,
   StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
@@ -130,12 +128,8 @@ const Playbar = memo(
             <StyledTrackTitle>{trackName}</StyledTrackTitle>
             <StyledTrackArtists>{artists()}</StyledTrackArtists>
           </StyledTrackInfo>
-          {liked ? (
-            <StyledFilledHeart onClick={makeUnlike}>{icons.emptyHeart}</StyledFilledHeart>
-          ) : (
-            <StyledEmptyHeart onClick={makeLike}>{icons.emptyHeart}</StyledEmptyHeart>
-          )}
-          <Heart type="Tracks" targetId={1} />
+
+          <Heart type="Tracks" targetId={trackId} />
 
           <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
         </StyledTrackSection>

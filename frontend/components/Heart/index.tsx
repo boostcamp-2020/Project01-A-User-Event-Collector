@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import icons from "../../constant/icons";
 import myAxios from "../../utils/myAxios";
-import { StyledEmptyHeart, StyledFilledHeart } from "../Playbar/styled";
+import { StyledEmptyHeart, StyledFilledHeart } from "./styled";
 
 interface Props {
   type: "Tracks" | "Playlists" | "Albums" | "Artists";
