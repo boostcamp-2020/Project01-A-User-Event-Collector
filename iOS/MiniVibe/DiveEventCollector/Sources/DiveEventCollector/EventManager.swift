@@ -1,5 +1,5 @@
 //
-//  EventManager.swift
+//  AnalyticsManager.swift
 //  TodoApp
 //
 //  Created by 강병민 on 2020/12/06.
@@ -34,6 +34,9 @@ public final class EventManager {
     
     private func setupEngine() {
         currentEngine = backupEngine
+        if backupEngine == nil {
+            currentEngine = mainEngine
+        }
     }
     
     public func log<T: Event>(_ event: T) {

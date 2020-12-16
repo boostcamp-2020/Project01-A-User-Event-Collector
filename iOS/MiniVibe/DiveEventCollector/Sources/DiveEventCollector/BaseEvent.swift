@@ -12,7 +12,7 @@ open class BaseEvent: Event {
     public var createdAt: String?
     public var metadata: [String: String]?
     
-    init(name: String, createdAt: String?, metadata: [String: String]?) {
+    public init(name: String, createdAt: String?, metadata: [String: String]?) {
         self.name = name
         self.createdAt = createdAt
         self.metadata = metadata
