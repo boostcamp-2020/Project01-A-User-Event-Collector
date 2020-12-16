@@ -32,6 +32,10 @@ const Layout = memo(({ children }: Props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initCheckedTrack());
+  }, []);
+
+  useEffect(() => {
+    setSearchMode(false);
   }, [router.pathname]);
 
   const handleSearch = (): void => setSearchMode(!searchMode);
