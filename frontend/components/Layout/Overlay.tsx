@@ -71,9 +71,7 @@ const Overlay = (): React.ReactElement => {
 
   return (
     <StyledOverlay>
-      <StyledOverlayImg>
-        <img src={cover} alt="alt" />
-      </StyledOverlayImg>
+      <StyledOverlayImg>{cover ? <img src={cover} alt="alt" /> : ""}</StyledOverlayImg>
       <StyledOverlayBar>
         <StyledOverlayControl>
           <>
