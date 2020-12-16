@@ -10,10 +10,11 @@ interface Props {
 
 const Heart: FC<Props> = ({ type, targetId }: Props) => {
   const [isLike, setIsLike] = useState(false);
+  const reqPath = `/library/${type.toLowerCase()}/${targetId}`;
 
   const likeBtnHandler = () => {
-    if (!isLike) myAxios.post(`/api/library/${type}/${targetId}`, {});
-    else myAxios.delete(`/api/library/${type}/${targetId}`);
+    if (!isLike) myAxios.post(reqPath, {});
+    else myAxios.delete(reqPath);
 
     setIsLike(!isLike);
   };
@@ -22,7 +23,7 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
     const likedItem = localStorage.getItem("likedItem");
 
     if (likedItem !== null) {
-      const { [`Liked${type}`]: baseArray } = JSON.parse(likedItem);
+      const { [`liked${type}`]: baseArray } = JSON.parse(likedItem);
       setIsLike(baseArray.includes(targetId));
     }
   }, []);
