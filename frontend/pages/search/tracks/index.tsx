@@ -10,7 +10,7 @@ import {
   StyledSearchTrackCards,
   StyledIcons,
 } from "./styled";
-import SearchTrackCards from "../../../components/TrackCard";
+import Tracklist from "../../../components/Tracklist";
 import icons from "../../../constant/icons";
 
 const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => {
@@ -37,7 +37,7 @@ const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => 
         </StyledResultButtons>
       </StyledResult>
       <StyledSearchTrackCards>
-        <SearchTrackCards data={sampleTracks} />
+        <Tracklist data={sampleTracks} />
       </StyledSearchTrackCards>
     </StyledSearchTrackPage>
   );

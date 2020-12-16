@@ -6,7 +6,12 @@ import myAxios from "../../../utils/myAxios";
 import ModalNewRow from "./newRow";
 import ModalRow from "./row";
 
-const StyledModalLayer = styled.div`
+interface ModalProps {
+  showModal?: "display" | "none";
+}
+
+const StyledModalLayer = styled.div<ModalProps>`
+  display: ${(props) => props.showModal};
   position: fixed;
   width: 100%;
   height: 100%;
@@ -19,7 +24,7 @@ const StyledModal = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
-  algin-items: center;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   padding: 2rem;
@@ -58,10 +63,12 @@ const PlaylistList = styled.div`
 
 interface Props {
   tracks: Track[];
+  playlistId: number;
 }
 
-const PlaylistSelectModal: React.FC<Props> = ({ tracks }: Props) => {
+const PlaylistSelectModal: React.FC<Props> = ({ tracks, playlistId }: Props) => {
   const [myPlaylists, setMyPlaylists] = useState([]);
+  const [showModal, setShowModal] = useState<"display" | "none">("none"); // 상위에서 받아야함
   useEffect(() => {
     if (localStorage !== undefined) {
       const userProfile = JSON.parse(localStorage.userProfile);
@@ -71,14 +78,19 @@ const PlaylistSelectModal: React.FC<Props> = ({ tracks }: Props) => {
     }
   }, []);
   return (
-    <StyledModalLayer>
+    <StyledModalLayer showModal={showModal}>
       <StyledModal>
         <StyledX>{icons.x}</StyledX>
         <StyledTitle>내 플레이리스트에 추가</StyledTitle>
         <PlaylistList>
           <ModalNewRow />
           {myPlaylists.map((value) => (
-            <ModalRow data={value} tracks={tracks} />
+            <ModalRow
+              data={value}
+              tracks={tracks}
+              playlistId={playlistId}
+              setShowModal={setShowModal}
+            />
           ))}
         </PlaylistList>
       </StyledModal>

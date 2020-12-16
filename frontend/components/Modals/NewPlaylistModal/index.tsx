@@ -4,7 +4,12 @@ import icons from "../../../constant/icons";
 import { Track } from "../../../interfaces";
 import myAxios from "../../../utils/myAxios";
 
-const StyledModalLayer = styled.div`
+interface ModalProps {
+  showModal?: "display" | "none";
+}
+
+const StyledModalLayer = styled.div<ModalProps>`
+  display: ${(props) => props.showModal};
   position: fixed;
   width: 100%;
   height: 100%;
@@ -111,13 +116,20 @@ interface Props {
 
 const NewPlaylistModal: React.FC<Props> = () => {
   const [input, setInput] = useState("");
+  const [showModal, setShowModal] = useState<"display" | "none">("none");
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   };
 
+  const submitAdd = () => {
+    const postData = { playlistName: input };
+    myAxios.post("/api/????", postData);
+    setShowModal("none");
+  };
+
   return (
-    <StyledModalLayer>
+    <StyledModalLayer showModal={showModal}>
       <StyledModal>
         <StyledTitle>새 플레이리스트</StyledTitle>
         <StyledPlaylistListInput>
@@ -133,7 +145,7 @@ const NewPlaylistModal: React.FC<Props> = () => {
           {input.length === 0 ? (
             <StyledInvalidVerifyButton>확인</StyledInvalidVerifyButton>
           ) : (
-            <StyledValidVerifyButton>확인</StyledValidVerifyButton>
+            <StyledValidVerifyButton onClick={submitAdd}>확인</StyledValidVerifyButton>
           )}
         </StyledPlaylistButtons>
       </StyledModal>

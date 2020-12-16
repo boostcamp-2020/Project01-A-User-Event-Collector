@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import HoverImg from "../../HoverImg";
 import { Playlist, Track } from "../../../interfaces";
+import myAxios from "../../../utils/myAxios";
 
 const StyledTrackCard = styled.div`
   display: flex;
@@ -40,11 +41,19 @@ const StyledNumOfTracks = styled.div`
 interface Props {
   data: Playlist;
   tracks: Track[];
+  playlistId: number;
+  setShowModal: Function;
 }
 
-const ModalRow: FC<Props> = ({ data, tracks }: Props) => {
+const ModalRow: FC<Props> = ({ data, tracks, playlistId, setShowModal }: Props) => {
+  const addTracksToPlaylist = () => {
+    const postData = { tracks: tracks.map((value) => value.id), playlistId };
+    myAxios.post(`/api/?`, tracks);
+    setShowModal("none");
+  };
+
   return (
-    <StyledTrackCard>
+    <StyledTrackCard onClick={addTracksToPlaylist}>
       <StyledImg>
         <HoverImg varient="trackCardCover" src={data.cover} />
       </StyledImg>
