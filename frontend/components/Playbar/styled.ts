@@ -9,7 +9,7 @@ const StyledPlaybar = styled.div`
   height: 6rem;
   bottom: 0rem;
   background-color: rgba(10, 10, 10, 0.95);
-  z-index: 15;
+  z-index: 150;
 `;
 
 const StyledTrackSection = styled.div`
