@@ -5,10 +5,6 @@ const StyledHotMagCard = styled.div`
   width: 100%;
   background-color: #fff;
   z-index: 2;
-  &: hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
 `;
 
 const StyledDescriptionLabel = styled.div`
@@ -25,11 +21,15 @@ const StyledDescription = styled.div`
 
 const StyledDescriptionTitle = styled.div`
   display: block;
-  font-size: 2.75rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 0.25rem 0rem;
   width: 27rem;
   overflow-text: auto;
+  &: hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
 
 const StyledDescriptionContent = styled.div`
