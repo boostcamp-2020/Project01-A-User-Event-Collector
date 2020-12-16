@@ -4,8 +4,8 @@
 | ----- | ----- | ----- | ----- |----- |
 | 유선규[(sunkest)](https://github.com/sunkest) | 이유택[(lcpnine)](https://github.com/lcpnine) | 조병건[(marulloc)](https://github.com/marulloc) | 강병민[(mike123789-dev)](https://github.com/mike123789-dev) | 류연수[(yeonduing)](https://github.com/yeonduing) |
 
-#### Link to Web Dev Logs   
-#### Link to iOS Dev Logs
+[Link to Web Dev Logs](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#web-dev-logs)   
+[Link to iOS Dev Logs](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#ios-dev-logs)
 
 ![](https://i.imgur.com/YrK0BDA.gif)
 
@@ -39,8 +39,9 @@
  Clone scope에서 VIBE의 추천 기능과 음원 재생 기능은 제외 
 
 
-#### Link to Web DIVE ReadMe
-#### Link to iOS DIVE ReadMe
+[Link to Web DIVE ReadMe](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#web-event-collector)
+
+[Link to iOS DIVE ReadMe](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#ios-event-collector)
 
 <br>
 <br>
@@ -257,30 +258,48 @@ const IndexPage = () => {
 
 <br>
 
-### 구성요소
+# 구성요소
 
-1. AnalyticsEvent
+1. Event
     - analytics system이 제공하는 모든 **이벤트들**.
-    - 프로토콜로 정의
-2. AnalyticsManager
+    - `Event` 프로토콜 채택
+2. EventManager
     - 이벤트를 로깅하기 위한 최상단 API, 실제로 로깅을하지는 않고,
-    - `AnalyticsEngine`을 이용하여 보낼것이다.
-3. AnalyticsEngine
-    - 직접적으로 로깅 전송/저장을 담당한다.
-    - 프로토콜로 정의 
+    - `EventEngine`을 이용하여 보냄.
+3. EventEngine
+    - 직접적으로 로깅 전송/저장을 담당.
+    - `EventSendable`, `EventFetchable` 프로토콜 채택 
 
 <br>
 
-### AnalyticsEvent
+## Event
+
 ```swift
-protocol AnalyticsEvent: Codable {
+public protocol Event: Codable {
     var name: String { get }
+    var createdAt: String? { get }
     var metadata: [String: String]? { get }
+}
+
+```
+기본적으로 제공되는 이벤트
+```swift
+class BaseEvent: Event {
+    var name: String
+    var createdAt: String?
+    var metadata: [String: String]?
+    
+    public init(name: String, createdAt: String?, metadata: [String: String]?) {
+        self.name = name
+        self.createdAt = createdAt
+        self.metadata = metadata
+    }
 }
 ```
 
+Event 프로토콜을 채택하는 Custom Event의 예시
 ```swift
-struct ScreenEvent: AnalyticsEvent {
+struct ScreenEvent: Event {
     var name: String
     var metadata: [String: String]?
     
@@ -296,16 +315,26 @@ struct ScreenEvent: AnalyticsEvent {
 }
 ```
 
-### AnalyticsEngine
+## Event Engine
 ```swift
-protocol AnalyticsEngine: class {
-    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T)
+public protocol EventSendable: class {
+    func send<T: Event>(_ event: T)
 }
-```
 
+public protocol EventFetchable: class {
+    func fetch() -> [BaseEvent]
+}
+public protocol EventSendableAndFetchable: EventSendable, EventFetchable {
+}
+
+```
+기본적으로 제공되는 Engine
 ```swift
-class MockAnalyticsEngine: AnalyticsEngine {
-    func sendAnalyticsEvent<T: AnalyticsEvent>(_ event: T) {
+public final class MockServerEngine: EventSendable {
+    public init() {
+        
+    }
+    public func send<T: Event>(_ event: T) {
         print("MockServer - \(event.name)")
         event.metadata?.forEach { key, value in
             print("ㄴ \(key) : \(value)")
@@ -315,32 +344,39 @@ class MockAnalyticsEngine: AnalyticsEngine {
 ```
 <br>
 
-### 이벤트의 흐름
+## 이벤트의 흐름
 ![](https://i.imgur.com/gHEZrYz.gif)
 
 
-**이벤트의 간편한 확장성**
+### 이벤트의 간편한 확장성
 
-`AnalyticEvent이` protocol로 구현함으로써, 새로운 이벤트를 추가하는것은 매우 간편해집니다. 
+`Event` protocol로 구현함으로써, 새로운 이벤트를 추가하는것은 매우 간편해집니다. 
 
 ![](https://i.imgur.com/fCncpdR.gif)
 
-**이벤트 type checking**
+### 이벤트 type checking
 
-`AnalyticEvent` protocol을 채택하는 custom type의 이벤트를 구현함으로써, 원하는 이벤트에 대한 자동완성 결과를 볼수 있습니다.
+`Event` protocol을 채택하는 custom type의 이벤트를 구현함으로써, 원하는 이벤트에 대한 자동완성 결과를 볼수 있습니다.
 
 ![](https://i.imgur.com/MSw2rnw.png)
 
 
 
-**엔진의 다양한 구현**
-`AnalyticsEngine` protocol을 채택하는 엔진을 다양하게 구현할수 있습니다.
+### 엔진의 다양한 구현
+`EventSendable`, `EventFetchable`protocol을 채택하는 엔진을 다양하게 구현할수 있습니다.
 그리고 상황에 맞게 필요한 엔진을 갈아 끼우는것도 매우 쉽습니다.
 
 ![](https://i.imgur.com/s13yZNi.gif)
 
-또한, AnalyticsManager는 다수의 엔진을 가질 수도 있습니다.
-실제로 저희 앱에서는 back end server를 위한 `engine`과 core data를 위한 `engine` 두개를 구현하고 주입했습니다.
+또한, EventManager는 다수의 엔진을 가질 수도 있습니다.
+실제로 [저희 앱](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector)에서는 back end server를 위한 `engine`과 core data를 위한 `engine` 두개를 구현하고 주입했습니다.
+
+
+# 설치
+어느 프로젝트에서도 사용 가능하도록 Swift package manager를 이용한 설치가 가능합니다.
+1. Xcode 메뉴에서 File > Swift Packages > Add Package Dependency를 선택후
+2. `https://github.com/mike123789-dev/DiveEventCollector` 를 입력합니다
+
 
 
 # ***Web Dev Logs*** 
