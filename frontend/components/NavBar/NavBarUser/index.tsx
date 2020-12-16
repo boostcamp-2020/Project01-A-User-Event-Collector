@@ -36,7 +36,7 @@ const NavBarUser = memo(
             localStorage.userProfile = JSON.stringify(userProfile);
             setUserID(userProfile.id);
             setUsername(userProfile.username);
-            setUserProfileCover(userProfile.profile);
+            setUserProfileCover(userProfile.profile ? userProfile.profile : defaultProfile);
           });
         } catch (err) {
           // eslint-disable-next-line no-console
