@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MiniVibeApp: App {
-    let manager = AnalyticsManager(serverEngine: MongoDBEventEngine(),
+    let manager = EventManager(serverEngine: MongoDBEventEngine(),
                                    backupEngine: BackupEventEngine(),
                                    alertEngine: AlertEventEngine())
     var body: some Scene {

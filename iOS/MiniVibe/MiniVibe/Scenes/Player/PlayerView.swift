@@ -74,6 +74,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(viewModel: PlayerViewModel(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil)), showMediaPlayer: .constant(true))
+        PlayerView(viewModel: PlayerViewModel(manager: EventManager(serverEngine: nil, backupEngine: nil, alertEngine: nil)), showMediaPlayer: .constant(true))
     }
 }

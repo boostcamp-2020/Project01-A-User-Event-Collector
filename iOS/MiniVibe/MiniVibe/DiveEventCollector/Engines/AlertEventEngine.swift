@@ -13,7 +13,7 @@ public final class AlertEventEngine: EventSendable {
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first
     }
     
-    public func send<T>(_ event: T) where T: AnalyticsEvent {
+    public func send<T>(_ event: T) where T: Event {
         var message = " "
         if let metadata = event.metadata {
             for (key, value) in metadata {

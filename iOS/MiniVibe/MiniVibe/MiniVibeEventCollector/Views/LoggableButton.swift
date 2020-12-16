@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct LoggableButton<T: AnalyticsEvent, Content: View>: View {
+struct LoggableButton<T: Event, Content: View>: View {
     let content : () -> Content
-    let manager: AnalyticsManager
+    let manager: EventManager
     let event: T
 
-    init(@ViewBuilder content: @escaping () -> Content, manager: AnalyticsManager, event: T) {
+    init(@ViewBuilder content: @escaping () -> Content, manager: EventManager, event: T) {
         self.content = content
         self.manager = manager
         self.event = event

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SearchBeforeView: View {
-    private let manager: AnalyticsManager
-    init(manager: AnalyticsManager) {
+    private let manager: EventManager
+    init(manager: EventManager) {
         self.manager = manager
     }
     var body: some View {
@@ -28,6 +28,6 @@ struct SearchBeforeView: View {
 
 struct SearchBefore_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBeforeView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
+        SearchBeforeView(manager: EventManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }

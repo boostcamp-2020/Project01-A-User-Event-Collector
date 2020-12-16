@@ -46,15 +46,3 @@ struct URLImage_Previews: PreviewProvider {
         URLImage(urlString: "", imageData: nil)
     }
 }
-
-//class DeallocPrinter {
-//    let target: String
-//
-//    init(target: String) {
-//        self.target = target
-//    }
-//
-//    deinit {
-//        print("\(target) deinit")
-//    }
-//}

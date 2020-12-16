@@ -10,9 +10,9 @@ import SwiftUI
 struct DJStationListView: View {
     
     @StateObject var stationViewModel = DJStationListViewModel()
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
     }
     

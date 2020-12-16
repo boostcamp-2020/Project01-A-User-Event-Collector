@@ -13,11 +13,11 @@ class MongoDBEventEngine: EventSendable {
     private let networkManager = NetworkManager()
     private var cancellables = Set<AnyCancellable>()
     
-    func send<T: AnalyticsEvent>(_ event: T) {
+    func send<T: Event>(_ event: T) {
         post(event)
     }
     
-    func post<T: AnalyticsEvent>(_ event: T) {
+    func post<T: Event>(_ event: T) {
         let url = URLBuilder(pathType: .api,
                              endPoint: .log).create()
         let jsonBody = try? JSONEncoder().encode(event)

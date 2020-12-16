@@ -55,6 +55,6 @@ struct SearchBarView: View {
 
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView(viewModel: SearchViewModel(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil)))
+        SearchBarView(viewModel: SearchViewModel(manager: EventManager(serverEngine: nil, backupEngine: nil, alertEngine: nil)))
     }
 }

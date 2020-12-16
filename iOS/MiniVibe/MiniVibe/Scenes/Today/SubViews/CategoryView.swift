@@ -11,7 +11,7 @@ struct CategoryView: View {
     let category: Category
     private let router: CategoryRouter
     
-    init(category: Category, manager: AnalyticsManager) {
+    init(category: Category, manager: EventManager) {
         self.category = category
         router = CategoryRouter(manager: manager)
     }

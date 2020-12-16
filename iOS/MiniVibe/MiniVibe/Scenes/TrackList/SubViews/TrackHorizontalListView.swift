@@ -16,9 +16,9 @@ struct TrackHorizontalListView: View {
         GridItem(.fixed(60)),
         GridItem(.fixed(60))
     ]
-    private let manager: AnalyticsManager
+    private let manager: EventManager
 
-    init(tracks: [Track], manager: AnalyticsManager) {
+    init(tracks: [Track], manager: EventManager) {
         self.tracks = tracks
         self.manager = manager
     }
