@@ -55,7 +55,7 @@ interface Props {
   tracks: Track[];
 }
 
-const ModalNewRow: FC<Props> = () => {
+const ModalNewRow: FC = () => {
   const showNewPlaylistModal = () => {};
   return (
     <StyledTrackCard onClick={showNewPlaylistModal}>
