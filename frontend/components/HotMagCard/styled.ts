@@ -24,10 +24,12 @@ const StyledDescription = styled.div`
 `;
 
 const StyledDescriptionTitle = styled.div`
-  display: flex;
+  display: block;
   font-size: 2.75rem;
   font-weight: bold;
   margin: 0.25rem 0rem;
+  width: 27rem;
+  overflow-text: auto;
 `;
 
 const StyledDescriptionContent = styled.div`
