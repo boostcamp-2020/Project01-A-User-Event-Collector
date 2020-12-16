@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import Link from "next/link";
 import Img from "../Img";
 import { SpecialMagLabel, PickMagLabel, GenreMagLabel } from "../MagLabel";
 import {
@@ -40,25 +41,27 @@ const HotMagCard = memo(({ magazine }: HotMagProps) => {
   const { magazineName, magazineType, description, createdAt, cover, playlistId } = magazine;
 
   return (
-    <StyledHotMagCard>
-      <Img varient="todayBig" src={cover} />
-      <StyledDescription>
-        <StyledDescriptionLabel>
-          {magazineType === "SPECIAL" ? (
-            <SpecialMagLabel />
-          ) : magazineType === "PICK" ? (
-            <PickMagLabel />
-          ) : (
-            <GenreMagLabel />
-          )}
-        </StyledDescriptionLabel>
-        <StyledDescriptionTitle>{magazineName}</StyledDescriptionTitle>
-        <StyledDescriptionContent>{description}</StyledDescriptionContent>
-        <StyledDescriptionInfo>
-          <StyledTrivialInfo>VIBE MAG-{createdAt}</StyledTrivialInfo>
-        </StyledDescriptionInfo>
-      </StyledDescription>
-    </StyledHotMagCard>
+    <Link href={`/magazines/${playlistId}`}>
+      <StyledHotMagCard>
+        <Img varient="todayBig" src={cover} />
+        <StyledDescription>
+          <StyledDescriptionLabel>
+            {magazineType === "SPECIAL" ? (
+              <SpecialMagLabel />
+            ) : magazineType === "PICK" ? (
+              <PickMagLabel />
+            ) : (
+              <GenreMagLabel />
+            )}
+          </StyledDescriptionLabel>
+          <StyledDescriptionTitle>{magazineName}</StyledDescriptionTitle>
+          <StyledDescriptionContent>{description}</StyledDescriptionContent>
+          <StyledDescriptionInfo>
+            <StyledTrivialInfo>VIBE MAG-{createdAt}</StyledTrivialInfo>
+          </StyledDescriptionInfo>
+        </StyledDescription>
+      </StyledHotMagCard>
+    </Link>
   );
 });
 
