@@ -11,7 +11,7 @@ import {
 import { Magazine } from "../../interfaces";
 
 const MagazineContainer = styled.div`
-  width: 964px;
+  width:  100%;
 `;
 
 const StyledPagetitle = styled.div`
@@ -34,17 +34,7 @@ const StyledHotMag = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2.75rem;
-  margin-bottom: 4.5rem;
-`;
-
-const StyledHotMagOverlay = styled.div`
-  position: absolute;
-  background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
-  top: -4rem;
-  z-index: 1;
-  height: 30rem;
+  margin: 2.75rem 1rem 3rem 1rem;
 `;
 
 const StyledSection = styled.div`
@@ -53,7 +43,6 @@ const StyledSection = styled.div`
   grid-template-columns: repeat(3, minmax(33%, auto));
   grid-template-rows: repeat(auto-fill, minmax(20%, auto));
   grid-auto-flow: row;
-  row-gap: 1rem;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
@@ -84,7 +73,7 @@ const GenreMagLabelToggle = styled(GenreMagLabel)<{ magType: string; className: 
   border: ${({ magType }) => (magType === "GENRE" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const IndexPage = memo(({ magazines, className }: any) => {
+const IndexPage = memo(({ magazines, HotMag, className }: any) => {
   const [magType, setMagType] = useState("ALL");
 
   const handleTypeChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -141,7 +130,7 @@ const IndexPage = memo(({ magazines, className }: any) => {
         </label>
       </StyledMagazineRadioContainer>
       <StyledHotMag>
-        <HotMagCard />
+        <HotMagCard magazine={HotMag} />
       </StyledHotMag>
       <StyledSection>
         {magazines
@@ -166,9 +155,12 @@ export async function getStaticProps() {
     const res = await fetch(`${apiUrl}:${apiPort}/api/magazines?limit=${dataLength}`);
     const magazines = await res.json();
 
+    const HotMag = magazines.Magazines.shift();
+
     return {
       props: {
         magazines: magazines.Magazines,
+        HotMag
       },
     };
   } catch (err) {
