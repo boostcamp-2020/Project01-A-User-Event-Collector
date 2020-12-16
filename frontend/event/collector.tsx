@@ -31,10 +31,10 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
   const simpleEventArr = Object.values(simple);
   const simpleEventKeys = Object.keys(simple);
 
-  const eventTypeSet: Set<string> = new Set();
+  const eventTypeSet: Set<EventType> = new Set();
   const identifierSet: Set<string> = new Set();
 
-  simpleEventArr.forEach((eventObject: SimpleEvent) => {
+  simpleEventArr.forEach((eventObject: any) => {
     eventTypeSet.add(eventObject.event_type); // listen
   });
   simpleEventKeys.forEach((eventKey: string) => {
@@ -51,8 +51,9 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
   // event listener
   const div = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    Array.from(eventTypeSet).forEach((ev: string) => {
-      // TODO WindowEventTypes 처리 필요
+    Array.from(eventTypeSet).forEach((ev: EventType) => {
+      if (ev in WindowEventType) {
+      }
       div?.current?.addEventListener(ev, (e: any) => {
         const eventKey = e.identifier;
         if (identifierSet.has(eventKey)) {
