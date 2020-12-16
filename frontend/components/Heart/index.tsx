@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
 import icons from "../../constant/icons";
-import asyncAxios from "../../utils/asyncAxios";
 import myAxios from "../../utils/myAxios";
 import { StyledEmptyHeart, StyledFilledHeart } from "../Playbar/styled";
 

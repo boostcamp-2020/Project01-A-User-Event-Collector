@@ -21,11 +21,6 @@ const NavBarUser = memo(
         try {
           myAxios.get("/users/likedItem").then((res: any) => {
             localStorage.setItem("likedItem", JSON.stringify(res.data));
-            // const test = localStorage.getItem("likedItem");
-            // if (test !== null) {
-            //   const { LikedAlbums, LikedTracks, LikedPlaylists, LikedArtists } = JSON.parse(test);
-            //   console.dir(LikedAlbums);
-            // }
           });
 
           myAxios.get("/users/profile").then((data: any) => {
