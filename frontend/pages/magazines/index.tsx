@@ -11,7 +11,7 @@ import {
 import { Magazine } from "../../interfaces";
 
 const MagazineContainer = styled.div`
-  width:  100%;
+  width: 100%;
 `;
 
 const StyledPagetitle = styled.div`
@@ -48,28 +48,35 @@ const StyledSection = styled.div`
   }
 `;
 
-const AllMagLabelToggle = styled(AllMagLabel)<{ magType: string; className: string }>`
+interface Props {
+  magType: string;
+  className: string;
+}
+
+const AllMagLabelToggle = styled(AllMagLabel)<Props>`
   background-color: ${({ magType }) => (magType === "ALL" ? "#FF0350" : "#fff")};
-  color: ${({ magType }) => (magType === "ALL" ? "#fff" : "#000")};
-  border: ${({ magType }) => (magType === "PICK" ? "1px solid transparent" : "1px solid #dddddd")};
+  color: ${({ magType }) => (magType === "ALL" ? "#fff" : "#777")};
+  border: ${({ magType }) => (magType === "ALL" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const SpecialMagLabelToggle = styled(SpecialMagLabel)<{ magType: string; className: string }>`
-  background-color: ${({ magType }) => (magType === "SPECIAL" ? "" : "#fff")};
-  background-image: ${({ magType }) => (magType === "SPECIAL" ? "linear-gradient(#e66465, #9198e5)" : "none")};
-  color: ${({ magType }) => (magType === "SPECIAL" ? "#fff" : "#000")};
-  border: ${({ magType }) => (magType === "SPECIAL" ? "1px solid transparent" : "1px solid #dddddd")};
+const SpecialMagLabelToggle = styled(SpecialMagLabel)<Props>`
+  background-color: ${({ magType }) => (magType === "SPECIAL" ? "#FF0350" : "#fff")};
+  background-image: ${({ magType }) =>
+    magType === "SPECIAL" ? "linear-gradient(#e66465, #9198e5)" : "none"};
+  color: ${({ magType }) => (magType === "SPECIAL" ? "#fff" : "#777")};
+  border: ${({ magType }) =>
+    magType === "SPECIAL" ? "1px solid transparent" : "1px solid #dddddd"};
 `;
 
-const PickMagLabelToggle = styled(PickMagLabel)<{ magType: string; className: string }>`
+const PickMagLabelToggle = styled(PickMagLabel)<Props>`
   background-color: ${({ magType }) => (magType === "PICK" ? "#FF0350" : "#fff")};
-  color: ${({ magType }) => (magType === "PICK" ? "#fff" : "#000")};
+  color: ${({ magType }) => (magType === "PICK" ? "#fff" : "#777")};
   border: ${({ magType }) => (magType === "PICK" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const GenreMagLabelToggle = styled(GenreMagLabel)<{ magType: string; className: string }>`
+const GenreMagLabelToggle = styled(GenreMagLabel)<Props>`
   background-color: ${({ magType }) => (magType === "GENRE" ? "#8B02ED" : "#fff")};
-  color: ${({ magType }) => (magType === "GENRE" ? "#fff" : "#000")};
+  color: ${({ magType }) => (magType === "GENRE" ? "#fff" : "#777")};
   border: ${({ magType }) => (magType === "GENRE" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
@@ -160,7 +167,7 @@ export async function getStaticProps() {
     return {
       props: {
         magazines: magazines.Magazines,
-        HotMag
+        HotMag,
       },
     };
   } catch (err) {
