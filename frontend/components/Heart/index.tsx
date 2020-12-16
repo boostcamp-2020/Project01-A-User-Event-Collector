@@ -34,6 +34,7 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
 
   return (
     <>
+      {console.log(targetId)}
       {isLike ? (
         <StyledFilledHeart onClick={likeBtnHandler}>{icons.emptyHeart}</StyledFilledHeart>
       ) : (

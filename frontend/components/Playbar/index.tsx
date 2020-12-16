@@ -10,11 +10,11 @@ import {
   StyledPlaybar,
   StyledTrackSection,
   StyledImgSection,
-  StyledTrackInfo,
-  StyledTrackTitle,
-  StyledTrackArtists,
+  // StyledTrackInfo,
+  // StyledTrackTitle,
+  // StyledTrackArtists,
   StyledTrackArtist,
-  StyledEllipsis,
+  // StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
   StyledTrackTime,
@@ -28,6 +28,7 @@ import {
   StyledPlayButtons,
 } from "./styled";
 import Heart from "../Heart";
+import PlaybarTrackCard from "./PlaybarTrackCard";
 
 const Playbar = memo(
   ({
@@ -124,14 +125,7 @@ const Playbar = memo(
               />
             )}
           </StyledImgSection>
-          <StyledTrackInfo>
-            <StyledTrackTitle>{trackName}</StyledTrackTitle>
-            <StyledTrackArtists>{artists()}</StyledTrackArtists>
-          </StyledTrackInfo>
-
-          <Heart type="Tracks" targetId={trackId} />
-
-          <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
+          <PlaybarTrackCard trackId={trackId} trackName={trackName} artist={artists()} />
         </StyledTrackSection>
         <StyledMainControlSection>
           <StyledMainButtons>

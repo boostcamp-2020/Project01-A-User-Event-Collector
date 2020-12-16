@@ -26,34 +26,34 @@ const StyledImgSection = styled.div`
   cursor: pointer;
 `;
 
-const StyledTrackInfo = styled.div`
-  display: flex;
-  width: 8.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+// const StyledTrackInfo = styled.div`
+//   display: flex;
+//   width: 8.5rem;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
-const StyledTrackTitle = styled.div`
-  display: flex;
-  color: #fff;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  font-size: 1.05rem;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+// const StyledTrackTitle = styled.div`
+//   display: flex;
+//   color: #fff;
+//   width: 100%;
+//   margin-bottom: 0.5rem;
+//   font-size: 1.05rem;
+//   font-weight: bold;
+//   cursor: pointer;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
 
-const StyledTrackArtists = styled.div`
-  display: flex;
-  width: 100%;
-  color: #888;
-  font-size: 0.95rem;
-  cursor: pointer;
-`;
+// const StyledTrackArtists = styled.div`
+//   display: flex;
+//   width: 100%;
+//   color: #888;
+//   font-size: 0.95rem;
+//   cursor: pointer;
+// `;
 
 const StyledTrackArtist = styled.span`
   &:hover {
@@ -197,11 +197,11 @@ export {
   StyledPlaybar,
   StyledTrackSection,
   StyledImgSection,
-  StyledTrackInfo,
-  StyledTrackTitle,
-  StyledTrackArtists,
+  // StyledTrackInfo,
+  // StyledTrackTitle,
+  // StyledTrackArtists,
   StyledTrackArtist,
-  StyledEllipsis,
+  // StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
   StyledTrackTime,
