@@ -14,8 +14,8 @@ const StyledEllipsisModal = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: -5.5rem;
-  right: 1.25rem;
+  bottom: -6.5rem;
+  right: 2rem;
   width: 12rem;
   border-radius: 0.25rem;
   background-color: #ffffff;

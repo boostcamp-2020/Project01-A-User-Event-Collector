@@ -8,9 +8,9 @@ const StyledEllipsisWrapper = styled.div`
   position: absolute;
   font-size: 1rem;
   bottom: 7.5%;
-  right: 7.5%;
-  color: #fff;
-  z-index: 400;
+  right: 2rem;
+  color: #aaa;
+  z-index: 600;
 `;
 
 const StyledEllipsis = styled.div`

@@ -16,12 +16,10 @@ export const StyledGeneralHoverCover = styled.div<StyledProps>`
   display: flex;
   position: absolute;
   width: 100%;
-  height: 100%;
-  top: -0.7rem;
+  bottom: 1.75rem;
   left: 0rem;
   cursor: pointer;
-  background-color: #00000055;
-  z-index: 5;
+  z-index: 200;
 `;
 
 const PlayButton = styled(HoverPlayButton)`

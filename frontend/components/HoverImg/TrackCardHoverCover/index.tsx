@@ -17,7 +17,6 @@ export const StyledTrackCardHoverCover = styled.div<StyleProps>`
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: #fff; // TODO: 색상 수정
   z-index: 1;
   display: ${(props) => (props.hover ? "block" : "none")};
 `;
