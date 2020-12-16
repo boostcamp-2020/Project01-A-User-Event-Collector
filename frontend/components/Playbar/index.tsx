@@ -41,13 +41,30 @@ const emptyTrack: Track = {
 const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) => {
   const playList: Track[] = useSelector((state: RootState) => state.playQueue);
   const [headTrack, setHeadTrack] = useState<Track>(emptyTrack);
-  // 더블클릭하면, 재생되는 노래가 바뀐다면, headTrack로는 안됨
-  // nowPlaying 같은 것이 필요함
+  const [playingTrackPointer, setPlayingTrackPointer] = useState<number>(-1);
 
   useEffect(() => {
-    if (playList.length <= 0) setHeadTrack(emptyTrack);
-    else setHeadTrack(playList[0]);
+    if (headTrack === emptyTrack) {
+      setHeadTrack(playList[0]);
+      setPlayingTrackPointer(0);
+    }
+
+    if (playList.length <= 0) {
+      setHeadTrack(emptyTrack);
+      setPlayingTrackPointer(-1);
+    }
   }, [playList]);
+
+  const nextBtnHandler = () => {
+    if (playList[playingTrackPointer + 1]) {
+      setPlayingTrackPointer(playingTrackPointer + 1);
+    }
+  };
+  const prevBtnHandler = () => {
+    if (playList.length > 0 && playingTrackPointer > 0) {
+      setPlayingTrackPointer(playingTrackPointer - 1);
+    }
+  };
 
   const dispatch = useDispatch();
   const [volume, setVolume] = useState<number>(50);
@@ -80,32 +97,36 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
   return (
     <StyledPlaybar onClick={handleShowPlaylist}>
       <StyledTrackSection>
-        <Link href={`/albums/${headTrack.Albums.id}`}>
-          <StyledImgSection>
-            {headTrack.Albums.cover ? (
-              <Img varient="nowPlayingCover" src={headTrack.Albums.cover} />
-            ) : (
-              <Img
-                varient="nowPlayingCover"
-                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIWFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDisZFhktLSsrKystKysrKysrLSsrKy0tKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAJRABAQEAAAUEAgMBAAAAAAAAAAERAiFRYYEScZHwMUGh4fHB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOK0Se2LIBqpFgAfKbgLAANAAME0FNTF9IEolhmAuJhLTQCcXhNzp8lv2gbv4Xb+2bJ++Rn7/wCgu/dNT4TekoLb28LLGfVy/vmk4vANZfb70PbzjN4ep7A145M7epfvM9XwB6Z18ls6JvwWgvpWSd/dmdk0G/V2/wBOLindPV28G6C9Wk1dAIRPnwDV4icSG/IL/JzZn2meQW3qb3N7ciARdiXiScILeJObW4esEtpOOr6yZQPyzhZi+oElTl1+YVL9/oDbC9/4OyAvt/q8/wAZ/TKA1nfn3QtQBqfKb2SAqKYCGlXQQ0AWVKANrnRIgKuoAudfys+UoCms0gKTkJQWRbxISgeleQmAsk6VMMTQal6slT9guTyhSAgAFNQAAAABcTAAVAAAAXU0GxFADAAEBaQSA1UKABF0DyVAAABmtJQKkWpwgYigCCggEAwAAABUAANAXEWUGkFBA0ADSgsqU1aCpwnCWYAEABcMBEXABmLVwGeKqmLQQABFxAApgBhpQNBAWQ0qAvgSLoAiwGgUEAAqoYC0QgKSABFEsAwNXQZ0ka1nQXGbVANRQEqRQEwVAXUCAUUoMqqWAUhgCKYAi4iwGgAAAAAKtQgKEAMNNADDADBADQAAANRUAAACQAwSRQMDABFUGYKAiyBoNJQBUFBAAFQBQAAAAABAFQAAAAAAoAlUAKACKAYAAiwAMAFRcAQAAFBAUAAAwAAKCaKmgIoAGKAigILQAoAIpQEVAAAAABTQEUBCrUAIAGKABAAAAAATFQAFAlIiwDAgAAAYtQACAIoCKAIKAGBgAoCAAFAAwACCgIoCCoAABQAAAVFIAGAAAFiABAXAQIoJigAABEUAABBQBFAIUAAAAAQAFIABABFAFiABUigAAIRQEqwACABAAf/Z"
-              />
-            )}
-          </StyledImgSection>
-        </Link>
+        {playList[playingTrackPointer] && (
+          <div>
+            <Link href={`/albums/${playList[playingTrackPointer].Albums.id}`}>
+              <StyledImgSection>
+                {playList[playingTrackPointer].Albums.cover ? (
+                  <Img varient="nowPlayingCover" src={playList[playingTrackPointer].Albums.cover} />
+                ) : (
+                  <Img
+                    varient="nowPlayingCover"
+                    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIWFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDisZFhktLSsrKystKysrKysrLSsrKy0tKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAJRABAQEAAAUEAgMBAAAAAAAAAAERAiFRYYEScZHwMUGh4fHB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOK0Se2LIBqpFgAfKbgLAANAAME0FNTF9IEolhmAuJhLTQCcXhNzp8lv2gbv4Xb+2bJ++Rn7/wCgu/dNT4TekoLb28LLGfVy/vmk4vANZfb70PbzjN4ep7A145M7epfvM9XwB6Z18ls6JvwWgvpWSd/dmdk0G/V2/wBOLindPV28G6C9Wk1dAIRPnwDV4icSG/IL/JzZn2meQW3qb3N7ciARdiXiScILeJObW4esEtpOOr6yZQPyzhZi+oElTl1+YVL9/oDbC9/4OyAvt/q8/wAZ/TKA1nfn3QtQBqfKb2SAqKYCGlXQQ0AWVKANrnRIgKuoAudfys+UoCms0gKTkJQWRbxISgeleQmAsk6VMMTQal6slT9guTyhSAgAFNQAAAABcTAAVAAAAXU0GxFADAAEBaQSA1UKABF0DyVAAABmtJQKkWpwgYigCCggEAwAAABUAANAXEWUGkFBA0ADSgsqU1aCpwnCWYAEABcMBEXABmLVwGeKqmLQQABFxAApgBhpQNBAWQ0qAvgSLoAiwGgUEAAqoYC0QgKSABFEsAwNXQZ0ka1nQXGbVANRQEqRQEwVAXUCAUUoMqqWAUhgCKYAi4iwGgAAAAAKtQgKEAMNNADDADBADQAAANRUAAACQAwSRQMDABFUGYKAiyBoNJQBUFBAAFQBQAAAAABAFQAAAAAAoAlUAKACKAYAAiwAMAFRcAQAAFBAUAAAwAAKCaKmgIoAGKAigILQAoAIpQEVAAAAABTQEUBCrUAIAGKABAAAAAATFQAFAlIiwDAgAAAYtQACAIoCKAIKAGBgAoCAAFAAwACCgIoCCoAABQAAAVFIAGAAAFiABAXAQIoJigAABEUAABBQBFAIUAAAAAQAFIABABFAFiABUigAAIRQEqwACABAAf/Z"
+                  />
+                )}
+              </StyledImgSection>
+            </Link>
 
-        <PlaybarTrackCard
-          trackId={headTrack.id}
-          trackName={headTrack.trackName}
-          artist={artists(headTrack.Artists)}
-        />
+            <PlaybarTrackCard
+              trackId={playList[playingTrackPointer].id}
+              trackName={playList[playingTrackPointer].trackName}
+              artist={artists(playList[playingTrackPointer].Artists)}
+            />
+          </div>
+        )}
       </StyledTrackSection>
 
       <StyledMainControlSection>
         <StyledMainButtons>
           <StyledSideButtons>{icons.random}</StyledSideButtons>
-          <StyledMiddleButtons>{icons.previous}</StyledMiddleButtons>
+          <StyledMiddleButtons onClick={prevBtnHandler}>{icons.previous}</StyledMiddleButtons>
           <StyledPlayButtons>{icons.play}</StyledPlayButtons>
-          <StyledMiddleButtons>{icons.next}</StyledMiddleButtons>
+          <StyledMiddleButtons onClick={nextBtnHandler}>{icons.next}</StyledMiddleButtons>
           <StyledSideButtons>{icons.repeat}</StyledSideButtons>
         </StyledMainButtons>
       </StyledMainControlSection>
