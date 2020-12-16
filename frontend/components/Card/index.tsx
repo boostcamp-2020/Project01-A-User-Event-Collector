@@ -26,7 +26,7 @@ function convertData(
         title: rawData.magazineName,
         smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
-        mainLink: `/magazines/${rawData.playlistId}`,
+        mainLink: `/magazines/${rawData.id}`,
       };
     case "playlist":
       return {
@@ -63,7 +63,7 @@ function convertData(
         src: rawData.cover,
         title: rawData.newsName,
         smallText: "관련 뉴스 보기",
-        mainLink: `/playlists/${rawData.id}`,
+        mainLink: `/playlists/${rawData.playlistId}`,
         smallLink: rawData.newLink,
       };
     default:
