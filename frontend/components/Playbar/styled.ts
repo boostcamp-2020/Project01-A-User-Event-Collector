@@ -152,21 +152,40 @@ const StyledTrackVolumeSlide = styled.input`
   -webkit-appearance: none;
 
   &::-webkit-slider-runnable-track {
-    background-color: #555;
-    height: 0.5rem;
-    &:hover {
-      background-color: #555;
-    }
+    height: 0.3rem;
+    background: #777;
+    border: none;
+    border-radius: 0.1rem;
+  }
+
+  &::-webkit-slider-runnable-track:hover {
+    height: 0.6rem;
+    background: #fff;
   }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background-color: #ffffff;
-    cursor: pointer;
     border: none;
-    height: 0rem;
-    width: 16px;
-    margin-top: -0.3rem;
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50%;
+    background: #999;
+    margin-top: -0.1rem;
+  }
+
+  &:hover::-webkit-slider-thumb {
+    height: 0.75rem;
+    width: 0.75rem;
+    margin-bottom: 2rem;
+    background: #ccc;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: #ccc;
   }
 `;
 

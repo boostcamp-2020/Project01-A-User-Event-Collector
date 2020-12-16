@@ -1,4 +1,4 @@
-import React, { memo, MouseEvent } from "react";
+import React, { memo, MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLike, fetchUnlike } from "../../utils/fetchLike";
@@ -40,6 +40,16 @@ const Playbar = memo(
   }) => {
     const playList: Track[] = useSelector((state: RootState) => state.playQueue);
     const dispatch = useDispatch();
+    const [volume, setVolume] = useState<number>(50);
+
+    const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.stopPropagation();
+      setVolume(parseInt(e.currentTarget.value, 10));
+    };
+
+    const stopPropagation = (e: React.MouseEvent) => {
+      e.stopPropagation();
+    };
 
     const emptyTrack: Track = {
       id: 0,
@@ -133,7 +143,12 @@ const Playbar = memo(
             {currentPlayTime} / {fullPlayTime}
           </StyledTrackTime>
           <StyledTrackVolume>
-            <StyledTrackVolumeSlide type="range" />
+            <StyledTrackVolumeSlide
+              type="range"
+              value={volume}
+              onChange={handleVolume}
+              onClick={stopPropagation}
+            />
           </StyledTrackVolume>
           <StyledPlaylistButtonWrapper>
             <StyledPlaylistButton showPlaylist={showPlaylist}>{icons.list}</StyledPlaylistButton>
