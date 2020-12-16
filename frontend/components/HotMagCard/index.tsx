@@ -23,33 +23,39 @@ interface Props {
   icon?: string;
 }
 
-const HotMagCard = memo(() => {
-  const fetchedData = {
-    title: "송우기\n멋있어",
-    type: "PICK",
-    description: "이게 설명이야",
-    date: "2020-10-02",
-  };
+interface Magazine {
+  magazineName: string;
+  magazineType: string;
+  description: string;
+  createdAt: string;
+  cover: string;
+  playlistId: number;
+}
 
-  const { title, type, description, date } = fetchedData;
+interface HotMagProps {
+  magazine: Magazine;
+}
+
+const HotMagCard = memo(({ magazine }: HotMagProps) => {
+  const { magazineName, magazineType, description, createdAt, cover, playlistId } = magazine;
 
   return (
     <StyledHotMagCard>
-      <Img varient="todayBig" src="https://i.ytimg.com/vi/ZTsGTGjQc_M/maxresdefault.jpg" />
+      <Img varient="todayBig" src={cover} />
       <StyledDescription>
         <StyledDescriptionLabel>
-          {type === "SPECIAL" ? (
+          {magazineType === "SPECIAL" ? (
             <SpecialMagLabel />
-          ) : type === "PICK" ? (
+          ) : magazineType === "PICK" ? (
             <PickMagLabel />
           ) : (
             <GenreMagLabel />
           )}
         </StyledDescriptionLabel>
-        <StyledDescriptionTitle>{title}</StyledDescriptionTitle>
+        <StyledDescriptionTitle>{magazineName}</StyledDescriptionTitle>
         <StyledDescriptionContent>{description}</StyledDescriptionContent>
         <StyledDescriptionInfo>
-          <StyledTrivialInfo>VIBE MAG-{date}</StyledTrivialInfo>
+          <StyledTrivialInfo>VIBE MAG-{createdAt}</StyledTrivialInfo>
         </StyledDescriptionInfo>
       </StyledDescription>
     </StyledHotMagCard>

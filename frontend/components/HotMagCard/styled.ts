@@ -5,6 +5,10 @@ const StyledHotMagCard = styled.div`
   width: 100%;
   background-color: #fff;
   z-index: 2;
+  &: hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
 
 const StyledDescriptionLabel = styled.div`
@@ -27,11 +31,17 @@ const StyledDescriptionTitle = styled.div`
 `;
 
 const StyledDescriptionContent = styled.div`
-  display: flex;
-  font-size: 1rem;
-  color: #939393;
-  margin: 0.25rem 0rem;
+  overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  width: 600px;
+  height: 48px;
+  color: #939393;
+  font-size: 16px;
+  margin: 0.25rem 0rem;
 `;
 
 const StyledDescriptionInfo = styled.div`

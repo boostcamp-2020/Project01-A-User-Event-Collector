@@ -34,10 +34,12 @@ const StyledSections = styled.div`
 `;
 
 const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
+  const hotMag = Magazines.shift();
+
   return (
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyledHotMag>
-        <HotMagCard />
+        <HotMagCard magazine={hotMag} />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
