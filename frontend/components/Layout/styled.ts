@@ -29,7 +29,7 @@ const StyledSearchBar = styled.div`
   z-index: 10;
   top: 0rem;
   background-color: #fff;
-  width: 85vw;
+  width: 85%;
   right: 0rem;
   height: 5rem;
   justify-content: center;
@@ -43,7 +43,7 @@ const StyledContent = styled.div`
   position: relative;
   box-sizing: border-box;
   left: 15rem;
-  width: calc(100% - 15rem);
+  width: 85%;
   min-height: calc(100vh - 6rem);
   background-color: #fff;
   padding: 0rem 10rem;
