@@ -18,16 +18,16 @@ const userLikedItems = async (req: Request, res: Response): Promise<void> => {
       getUserLikePlaylists(req.user.id),
     ]);
 
-    const LikedAlbums: number[] = result[0].map((elem: Album) => elem.id);
-    const LikedTracks: number[] = result[1].map((elem: Track) => elem.id);
-    const LikedArtists: number[] = result[2].map((elem: Artist) => elem.id);
-    const LikedPlaylists: number[] = result[3].map((elem: Playlist) => elem.id);
+    const likedAlbums: number[] = result[0].map((elem: Album) => elem.id);
+    const likedTracks: number[] = result[1].map((elem: Track) => elem.id);
+    const likedArtists: number[] = result[2].map((elem: Artist) => elem.id);
+    const likedPlaylists: number[] = result[3].map((elem: Playlist) => elem.id);
 
     res.status(200).json({
-      LikedAlbums,
-      LikedTracks,
-      LikedArtists,
-      LikedPlaylists,
+      likedAlbums,
+      likedTracks,
+      likedArtists,
+      likedPlaylists,
     });
   } catch (err) {
     if (err === "Unauthorized") {

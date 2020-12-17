@@ -53,24 +53,13 @@ const Layout = memo(({ children }: Props) => {
       <StyledLayout>
         {checkedTracks.size !== 0 ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
-        {searchMode ? (
+        {searchMode && (
           <StyledSearchBar>
             <SearchBar handleSearch={handleSearch} />
           </StyledSearchBar>
-        ) : (
-          ""
         )}
         <StyledContent>{children}</StyledContent>
       </StyledLayout>
-      {showPlaylist ? (
-        <>
-          <StyledBlockingOverlay />
-          <Overlay />
-        </>
-      ) : (
-        ""
-      )}
-      <Playbar handleShowPlaylist={handleShowPlaylist} showPlaylist={showPlaylist} />
     </StyledLayoutWrapper>
   );
 });
