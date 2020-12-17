@@ -21,24 +21,38 @@ const getLibArtists = async (req: Request, res: Response): Promise<void> => {
 };
 
 const postLibArtists = async (req: Request, res: Response): Promise<void> => {
-  const userId = 1; // decode jwt
-  const { id: artistId } = req.params;
   try {
+    if (!req.user) throw new Error("Unauthorized");
+
+    const { id: artistId } = req.params;
+    const userId = req.user.id;
+
     const msg = await postUserLikeArtists(userId, +artistId);
     res.status(200).json({ message: msg });
   } catch (err) {
-    res.status(500).json({ statusCode: 500, message: err.message });
+    if (err === "Unauthorized") {
+      res.status(401).json({ message: "Unauthroized" });
+    } else {
+      res.status(500).json({ statusCode: 500, message: err.message });
+    }
   }
 };
 
 const deleteLibArtists = async (req: Request, res: Response): Promise<void> => {
-  const userId = 1; // decode jwt
-  const { id: artistId } = req.params;
   try {
+    if (!req.user) throw new Error("Unauthorized");
+
+    const { id: artistId } = req.params;
+    const userId = req.user.id;
+
     const msg = await deleteUserLikeArtists(userId, +artistId);
     res.status(200).json({ message: msg });
   } catch (err) {
-    res.status(500).json({ statusCode: 500, message: err.message });
+    if (err === "Unauthorized") {
+      res.status(401).json({ message: "Unauthroized" });
+    } else {
+      res.status(500).json({ statusCode: 500, message: err.message });
+    }
   }
 };
 export { getLibArtists, postLibArtists, deleteLibArtists };

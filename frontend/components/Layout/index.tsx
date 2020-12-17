@@ -1,6 +1,6 @@
-import React, { ReactNode, memo, useState, useEffect, MouseEvent } from "react";
+import React, { ReactNode, memo, useState, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { RootState } from "../../reduxModules";
 import NavBar from "../NavBar";
 import { Track } from "../../interfaces";
@@ -28,16 +28,19 @@ const Layout = memo(({ children }: Props) => {
     (state: RootState) => state.checkedTracks,
   );
 
-  const router = useRouter();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(initCheckedTrack());
-  }, [router.pathname]);
 
-  const handleSearch = (): void => setSearchMode(!searchMode);
+  Router.events.on("routeChangeStart", async () => {
+    setSearchMode(false);
+    dispatch(initCheckedTrack());
+    checkedTracks.clear();
+  });
+
   const handleShowPlaylist = (e: MouseEvent): void => {
     setShowPlaylist(!showPlaylist);
   };
+
+  const handleSearch = (): void => setSearchMode(!searchMode);
 
   const closeSearch = (e: React.KeyboardEvent) => {
     if (e.key === "Escape" || e.key === "Esc") {
@@ -50,24 +53,13 @@ const Layout = memo(({ children }: Props) => {
       <StyledLayout>
         {checkedTracks.size !== 0 ? <PlaylistCheckBar /> : ""}
         <NavBar handleSearch={handleSearch} />
-        {searchMode ? (
+        {searchMode && (
           <StyledSearchBar>
             <SearchBar handleSearch={handleSearch} />
           </StyledSearchBar>
-        ) : (
-          ""
         )}
         <StyledContent>{children}</StyledContent>
       </StyledLayout>
-      {showPlaylist ? (
-        <>
-          <StyledBlockingOverlay />
-          <Overlay />
-        </>
-      ) : (
-        ""
-      )}
-      <Playbar handleShowPlaylist={handleShowPlaylist} showPlaylist={showPlaylist} />
     </StyledLayoutWrapper>
   );
 });

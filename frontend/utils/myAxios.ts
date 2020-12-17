@@ -26,7 +26,8 @@ const myAxios: AxiosInterface = {
       : axios.get(URL + path);
   },
 
-  post(path, data, token = undefined) {
+  post(path, data) {
+    const token = localStorage.getItem("token");
     return token
       ? axios.post(URL + path, data, {
           headers: {
@@ -36,7 +37,8 @@ const myAxios: AxiosInterface = {
       : axios.post(URL + path, data);
   },
 
-  put(path, data, token = undefined) {
+  put(path, data) {
+    const token = localStorage.getItem("token");
     return token
       ? axios.put(URL + path, data, {
           headers: {
@@ -46,7 +48,8 @@ const myAxios: AxiosInterface = {
       : axios.put(URL + path, data);
   },
 
-  delete(path, token = undefined) {
+  delete(path) {
+    const token = localStorage.getItem("token");
     return token
       ? axios.delete(URL + path, {
           headers: {

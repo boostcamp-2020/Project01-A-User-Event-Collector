@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
+import PlaylistSelectModal from "../../components/Modals/PlaylistSelector";
+import NewPlaylistModal from "../../components/Modals/NewPlaylistModal";
 import { Playlist } from "../../interfaces";
 
 const StylePlaylistPage = styled.div`
@@ -11,6 +13,8 @@ const PlaylistPage: FC<Playlist[]> = ({ Playlists }: any) => {
   return (
     <StylePlaylistPage>
       <DetailPage type="playlist" detailData={Playlists} tracks={Playlists.Tracks} />
+      <PlaylistSelectModal tracks={Playlists.Tracks} />
+      <NewPlaylistModal />
     </StylePlaylistPage>
   );
 };

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Request, Response } from "express";
+import crypto from "crypto";
 import { postUserInfo, getUserInfo } from "../../../models/users";
 import encodeJWT from "../../../utils/encodeJWT";
 
@@ -27,7 +28,10 @@ const getNaverUserProfile = async (token: any) => {
   const profile = data.response;
   return {
     username: profile.email.split("@")[0],
-    password: profile.id,
+    password: crypto
+      .createHash("sha512")
+      .update(String(profile.id))
+      .digest("hex"),
   };
 };
 

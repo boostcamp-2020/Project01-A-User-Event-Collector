@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import myAxios from "../../utils/myAxios";
-import TrackCard from "../../components/TrackCard";
+import Tracklist from "../../components/Tracklist";
 
 const StyledLibraryText = styled.div`
   font-size: 1em;
@@ -42,7 +42,7 @@ const TracksLibraryPage = memo(() => {
       <StyledPagetitle>노래</StyledPagetitle>
 
       <StyledSection>
-        <TrackCard data={likedTracks} />
+        <Tracklist data={likedTracks} />
       </StyledSection>
     </>
   );

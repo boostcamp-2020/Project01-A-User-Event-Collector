@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import Link from "next/link";
 import Img from "../Img";
 import { SpecialMagLabel, PickMagLabel, GenreMagLabel } from "../MagLabel";
 import {
@@ -23,36 +24,44 @@ interface Props {
   icon?: string;
 }
 
-const HotMagCard = memo(() => {
-  const fetchedData = {
-    title: "송우기\n멋있어",
-    type: "PICK",
-    description: "이게 설명이야",
-    date: "2020-10-02",
-  };
+interface Magazine {
+  magazineName: string;
+  magazineType: string;
+  description: string;
+  createdAt: string;
+  cover: string;
+  playlistId: number;
+}
 
-  const { title, type, description, date } = fetchedData;
+interface HotMagProps {
+  magazine: Magazine;
+}
+
+const HotMagCard = memo(({ magazine }: HotMagProps) => {
+  const { magazineName, magazineType, description, createdAt, cover, playlistId } = magazine;
 
   return (
-    <StyledHotMagCard>
-      <Img varient="todayBig" src="https://i.ytimg.com/vi/ZTsGTGjQc_M/maxresdefault.jpg" />
-      <StyledDescription>
-        <StyledDescriptionLabel>
-          {type === "SPECIAL" ? (
-            <SpecialMagLabel />
-          ) : type === "PICK" ? (
-            <PickMagLabel />
-          ) : (
-            <GenreMagLabel />
-          )}
-        </StyledDescriptionLabel>
-        <StyledDescriptionTitle>{title}</StyledDescriptionTitle>
-        <StyledDescriptionContent>{description}</StyledDescriptionContent>
-        <StyledDescriptionInfo>
-          <StyledTrivialInfo>VIBE MAG-{date}</StyledTrivialInfo>
-        </StyledDescriptionInfo>
-      </StyledDescription>
-    </StyledHotMagCard>
+    <Link href={`/magazines/${playlistId}`}>
+      <StyledHotMagCard>
+        <Img varient="todayBig" src={cover} />
+        <StyledDescription>
+          <StyledDescriptionLabel>
+            {magazineType === "SPECIAL" ? (
+              <SpecialMagLabel />
+            ) : magazineType === "PICK" ? (
+              <PickMagLabel />
+            ) : (
+              <GenreMagLabel />
+            )}
+          </StyledDescriptionLabel>
+          <StyledDescriptionTitle>{magazineName}</StyledDescriptionTitle>
+          <StyledDescriptionContent>{description}</StyledDescriptionContent>
+          <StyledDescriptionInfo>
+            <StyledTrivialInfo>VIBE MAG-{createdAt.substring(0, 10)}</StyledTrivialInfo>
+          </StyledDescriptionInfo>
+        </StyledDescription>
+      </StyledHotMagCard>
+    </Link>
   );
 });
 

@@ -11,19 +11,22 @@ interface cardData {
 }
 
 export interface CardProps {
-  varient?: string;
-  dataType?: string;
+  varient: string;
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album";
   rawData?: any;
 }
 
-function convertData(dataType?: string, rawData?: any): cardData {
+function convertData(
+  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album",
+  rawData?: any,
+): cardData {
   switch (dataType) {
     case "magazine":
       return {
         title: rawData.magazineName,
         smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
-        mainLink: `/magazines/${rawData.playlistId}`,
+        mainLink: `/magazines/${rawData.id}`,
       };
     case "playlist":
       return {
@@ -60,7 +63,7 @@ function convertData(dataType?: string, rawData?: any): cardData {
         src: rawData.cover,
         title: rawData.newsName,
         smallText: "관련 뉴스 보기",
-        mainLink: `/playlists/${rawData.id}`,
+        mainLink: `/playlists/${rawData.playlistId}`,
         smallLink: rawData.newLink,
       };
     default:

@@ -1,32 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import HoverEllipsisButton from "../../Button/HoverEllipsisButton";
+import Ellipsis from "../../Ellipsis";
+import EllipsisModal from "../../Ellipsis/EllipsisModal";
 import HoverPlayButton from "../../Button/HoverPlayButton";
+
+interface StyledProps {
+  hover?: boolean;
+}
 
 interface Props {
   hover?: boolean;
 }
 
-export const StyledGeneralHoverCover = styled.div<Props>`
-  width: 100%;
-  height: 100%;
+export const StyledGeneralHoverCover = styled.div<StyledProps>`
+  display: flex;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  width: 100%;
+  bottom: 1.75rem;
+  left: 0rem;
   cursor: pointer;
-  background-color: #00000055;
-  z-index: 5;
-  display: ${(props) => (props.hover ? "block" : "none")};
-  & svg {
-    background-color: transparent;
-  }
+  z-index: 200;
 `;
 
-const EllipsisButton = styled(HoverEllipsisButton)`
-  position: absolute;
-  bottom: 10%;
-  right: 10%;
-`;
 const PlayButton = styled(HoverPlayButton)`
   position: absolute;
   bottom: 10%;
@@ -34,11 +29,23 @@ const PlayButton = styled(HoverPlayButton)`
 `;
 
 const GeneralHoverCover: React.FC<Props> = ({ hover }: Props) => {
+  const [showModal, setShowModal] = useState(false);
+  const handleShowModal = (e: MouseEvent) => {
+    setShowModal(!showModal);
+  };
+
   return (
-    <StyledGeneralHoverCover hover={hover}>
-      <PlayButton />
-      <EllipsisButton />
-    </StyledGeneralHoverCover>
+    <>
+      {hover ? (
+        <StyledGeneralHoverCover>
+          <PlayButton />
+          <Ellipsis onClick={handleShowModal} />
+        </StyledGeneralHoverCover>
+      ) : (
+        ""
+      )}
+      {showModal ? <EllipsisModal /> : ""}
+    </>
   );
 };
 

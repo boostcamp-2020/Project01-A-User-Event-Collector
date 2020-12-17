@@ -34,6 +34,9 @@ const StyledDescription = styled.div`
   position: absolute;
   display: flex;
   font-size: 1rem;
+  width: 40rem;
+  height: 4rem;
+  text-overflow: ellipsis;
   top: 4rem;
   color: #888;
 `;

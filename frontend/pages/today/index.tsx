@@ -17,7 +17,7 @@ const StyledHotMag = styled.div`
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
+  width: 85vw;
   top: -4rem;
   z-index: 1;
   height: 28rem;
@@ -25,6 +25,7 @@ const StyledHotMagOverlay = styled.div`
 
 const StyledSections = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   margin: 0.5rem 0rem;
   & + & {
@@ -32,22 +33,14 @@ const StyledSections = styled.div`
   }
 `;
 
-const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
+const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
   return (
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
-      {/* Collector 사용 */}
       <StyledHotMag>
-        <HotMagCard />
+        <HotMagCard magazine={HotMag} />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
-        <Emitter identifier="identifier_1" eventType={["click"]}>
-          <h1> 이벤트 테스트</h1>
-        </Emitter>
-        <Emitter identifier="identifier_2" eventType={["mouseover"]}>
-          <h1> 마우스 오버 테스트</h1>
-        </Emitter>
-        {/* Emitter 사용 */}
         <Slidebar
           varient="todayBig"
           dataType="magazine"
@@ -89,11 +82,13 @@ export async function getStaticProps() {
     ]);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
+    const HotMag = Magazines.shift();
     const { News } = result[1];
     const { Playlists } = result[2];
 
     return {
       props: {
+        HotMag,
         Magazines,
         News,
         Playlists,

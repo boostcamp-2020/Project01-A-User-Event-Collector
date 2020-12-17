@@ -14,10 +14,8 @@ const NavBar = memo(
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-      const test = localStorage.getItem("token");
-
-      // 물론 토큰 파싱해야겠지만
-      if (test) setLoggedIn(true);
+      const token = localStorage.getItem("token");
+      if (token) setLoggedIn(true);
     }, []);
 
     return (

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface styledImgProps {
   varient?: string;
+  hover?: boolean;
 }
 
 const themes: any = {
@@ -47,6 +48,9 @@ const themes: any = {
 
 const StyledImg = styled.img<styledImgProps>`
   object-fit: cover;
+  &:hover {
+    filter: ${(props) => (props.hover ? "brightness(0.9)" : "none")};
+  }
   ${(props) => {
     return themes[props.varient || ""];
   }}

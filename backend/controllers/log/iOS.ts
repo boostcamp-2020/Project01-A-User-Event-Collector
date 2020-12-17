@@ -10,7 +10,14 @@ const getiOSLog = async (req: Request, res: Response): Promise<void> => {
 };
 
 const postiOSLog = async (req: Request, res: Response): Promise<void> => {
-  db.iOS.insertOne(req.body, (err, r) => {
+  const insertData = {
+    ...req.body,
+    "user-agent": req.headers["user-agent"],
+    loggedIn: !!req.user,
+    userId: req.user ? req.user.id : null,
+    username: req.user ? req.user.username : null,
+  };
+  db.iOS.insertOne(insertData, (err, r) => {
     return res.send(r);
   });
 };

@@ -7,12 +7,12 @@ const StyledPlaylistCheckBar = styled.div`
   right: 0rem;
   flex-direction: column;
   background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
   height: 8rem;
   z-index: 48;
   align-items: flex-start;
   justify-content: space-between;
   box-sizing: border-box;
+  width: 85%;
   padding: 1rem 17rem;
 `;
 
@@ -94,6 +94,7 @@ const StyledButtonSectionPlayButton = styled.button`
 `;
 
 const StyledIcons = styled.span`
+  box-sizing: border-box;
   padding-right: 0.5rem;
   font-size: 1rem;
 `;

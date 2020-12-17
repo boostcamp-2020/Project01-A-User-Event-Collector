@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-const StyledArtists = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const StyledArtist = styled.div`
+const StyledAlbum = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,9 +19,9 @@ const StyledCover = styled.div`
   width: 12rem;
 `;
 
-const StyledArtistName = styled.div`
+const StyledAlbumName = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-size: 1rem;
   width: 12rem;
@@ -40,4 +34,19 @@ const StyledArtistName = styled.div`
   }
 `;
 
-export { StyledArtists, StyledArtist, StyledCover, StyledArtistName };
+const StyledAlbumArtist = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  color: #aaa;
+  width: 12rem;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export { StyledAlbum, StyledCover, StyledAlbumName, StyledAlbumArtist };
