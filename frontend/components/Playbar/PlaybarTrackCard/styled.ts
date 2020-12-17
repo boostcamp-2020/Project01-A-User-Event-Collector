@@ -45,10 +45,23 @@ const StyledEllipsis = styled.div`
     color: #aaa;
   }
 `;
+const StyledImgSection = styled.div`
+  display: block;
+  margin: 0rem 1.5rem;
+  cursor: pointer;
+`;
+const StyledTrackArtist = styled.span`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export {
   StyledPlaybarTrackInfo,
   StyledPlaybarTrackCard,
   StyledTrackArtists,
+  StyledTrackArtist,
   StyledTrackTitle,
   StyledEllipsis,
+  StyledImgSection,
 };
