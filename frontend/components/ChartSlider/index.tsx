@@ -25,7 +25,7 @@ const ChartSlider: React.FC<Props> = ({ title, titleLink, data }: Props) => {
     setCurrentSlide(currentSlide - 1);
   };
   const onNextClicked = () => {
-    if (currentSlide === 19) return;
+    if (currentSlide === 4) return;
     setCurrentSlide(currentSlide + 1);
   };
 
@@ -51,9 +51,9 @@ const ChartSlider: React.FC<Props> = ({ title, titleLink, data }: Props) => {
             <ChartTrackCard data={value} />
           ))}
         </SlideContent>
-        <SliderPreviousButton onClick={onPreviousClicked} />
-        <SliderNextButtton onClick={onNextClicked} />
       </SlideContainer>
+      <SliderPreviousButton onClick={onPreviousClicked} />
+      <SliderNextButtton onClick={onNextClicked} />
     </StyledSlidebar>
   );
 };

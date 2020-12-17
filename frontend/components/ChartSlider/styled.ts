@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledSlidebar = styled.div`
   width: 70rem;
+  position: relative;
   &:nth-child(n) {
     padding-top: 1.5rem;
     padding-bottom: 2.5rem;
@@ -19,7 +20,6 @@ const StyledSlidebarTitle = styled.div`
 const SlideContainer = styled.div`
   overflow-x: hidden;
   margin: 1rem 0rem;
-  position: relative;
   width: 100%;
   height: 100%;
 `;
