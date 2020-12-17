@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import HoverImg from "../HoverImg";
 import { SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
@@ -76,9 +77,13 @@ const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) =>
   return (
     <StyledCard varient={varient}>
       <HoverImg varient={varient} src={src} />
-      <TitleA href={mainLink}>{title}</TitleA>
+      <Link href={`${mainLink}`}>
+        <TitleA>{title}</TitleA>
+      </Link>
       {smallLink ? (
-        <SmallA href={smallLink}>{smallText}</SmallA>
+        <Link href={`${smallLink}`}>
+          <SmallA href={smallLink}>{smallText}</SmallA>
+        </Link>
       ) : (
         <SmallSpan>{smallText}</SmallSpan>
       )}
