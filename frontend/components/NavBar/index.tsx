@@ -15,7 +15,6 @@ const NavBar = memo(
 
     useEffect(() => {
       const token = localStorage.getItem("token");
-      if (token) setLoggedIn(true);
     }, []);
 
     return (

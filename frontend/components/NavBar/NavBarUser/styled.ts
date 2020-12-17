@@ -9,7 +9,7 @@ const StyledNavUser = styled.div`
   margin: 1.5rem 0rem;
   border-top: 0.1rem solid #282828;
   border-bottom: 0.1rem solid #282828;
-  &: hover {
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -29,7 +29,7 @@ const StyledUser = styled.div`
         color: #888;
         `;
   }}
-  &: hover {
+  &:hover {
     color: #fff;
   } ;
 `;
