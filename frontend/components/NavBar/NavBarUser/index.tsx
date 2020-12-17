@@ -1,67 +1,73 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { FC, memo, useState, useEffect } from "react";
 import Link from "next/link";
 import Img from "../../Img";
 import myAxios from "../../../utils/myAxios";
 import { StyledNavUser, StyledUser } from "./styled";
-import asyncAxios from "../../../utils/asyncAxios";
 
-const NavBarUser = memo(
-  ({ loggedIn, setLoggedIn }: { loggedIn: boolean; setLoggedIn: Function }) => {
-    const defaultID = 0;
-    const defaultUsername = "로그인";
-    const defaultProfile =
-      "https://www.nailseatowncouncil.gov.uk/wp-content/uploads/blank-profile-picture-973460_1280.jpg";
-    const [userID, setUserID] = useState(defaultID);
-    const [username, setUsername] = useState(defaultUsername);
-    const [userProfileCover, setUserProfileCover] = useState(defaultProfile);
+interface Props {
+  isLogged: boolean;
+  setIsLogged: Function;
+}
 
-    const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
-    useEffect(() => {
-      if (!loggedIn) {
-        try {
-          myAxios.get("/users/likedItem").then((res: any) => {
-            localStorage.setItem("likedItem", JSON.stringify(res.data));
+const defaultProfile =
+  "https://www.nailseatowncouncil.gov.uk/wp-content/uploads/blank-profile-picture-973460_1280.jpg";
+const defaultUserInfo = {
+  userId: 0,
+  username: "로그인",
+  userProfile: defaultProfile,
+};
+
+const NavBarUser: FC<Props> = memo(({ isLogged, setIsLogged }: Props) => {
+  const [userInfo, setUserInfo] = useState(defaultUserInfo);
+
+  const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
+  useEffect(() => {
+    if (!isLogged) {
+      try {
+        (async () => {
+          const response: any = await Promise.all([
+            myAxios.get("/users/likedItem"),
+            myAxios.get("/users/profile"),
+          ]);
+
+          const { data: likedData }: any = response[0];
+          const { data: userData }: any = response[1];
+          const { userProfile } = userData;
+
+          localStorage.setItem("likedItem", JSON.stringify(likedData));
+          localStorage.setItem("userProfile", JSON.stringify(userProfile));
+
+          setUserInfo({
+            userId: userProfile.id,
+            username: userProfile.username,
+            userProfile: userProfile.profile || defaultProfile,
           });
-
-          myAxios.get("/users/profile").then((data: any) => {
-            const {
-              data: { userProfile },
-            } = data;
-            setLoggedIn(true);
-            localStorage.userProfile = JSON.stringify(userProfile);
-            setUserID(userProfile.id);
-            setUsername(userProfile.username);
-            setUserProfileCover(userProfile.profile ? userProfile.profile : defaultProfile);
-          });
-        } catch (err) {
-          // eslint-disable-next-line no-console
-          console.log("No valid token");
-        }
-      } else {
-        setUserID(defaultID);
-        setUsername(defaultUsername);
-        setUserProfileCover(defaultProfile);
+          setIsLogged(true);
+        })();
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log("No valid token");
       }
-    }, [loggedIn]);
+    }
+  }, [isLogged]);
 
-    return (
-      <>
-        {loggedIn ? (
+  return (
+    <>
+      {isLogged ? (
+        <StyledNavUser>
+          <Img varient="profile" src={userInfo.userProfile} />
+          <StyledUser isLogged={isLogged}>{userInfo.username}</StyledUser>
+        </StyledNavUser>
+      ) : (
+        <Link href={naverLoginURL}>
           <StyledNavUser>
-            <Img varient="profile" src={userProfileCover} />
-            <StyledUser loggedIn={loggedIn}>{username}</StyledUser>
+            <Img varient="profile" src={defaultProfile} />
+            <StyledUser isLogged={isLogged}>로그인</StyledUser>
           </StyledNavUser>
-        ) : (
-          <Link href={naverLoginURL}>
-            <StyledNavUser>
-              <Img varient="profile" src={defaultProfile} />
-              <StyledUser loggedIn={loggedIn}>{defaultUsername}</StyledUser>
-            </StyledNavUser>
-          </Link>
-        )}
-      </>
-    );
-  },
-);
+        </Link>
+      )}
+    </>
+  );
+});
 
 export default NavBarUser;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Artist } from "../../interfaces";
 import Img from "../Img";
-import LikeButton from "../Button/LikeButton";
+import HeartButton from "../Button/HeartButton";
 
 interface LikedArtistProps {
   varient: string;
@@ -36,7 +36,7 @@ const LikedArtistCard: React.FC<LikedArtistProps> = ({ varient, artist }: LikedA
   return (
     <StyledLikedArtist>
       <Img varient={varient} src={artist.cover} />
-      <LikeButton />
+      <HeartButton type="Albums" targetId={artist.id} />
       <StyledArtistName>{artist.artistName}</StyledArtistName>
     </StyledLikedArtist>
   );
