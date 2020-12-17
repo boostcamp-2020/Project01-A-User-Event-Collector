@@ -1,10 +1,10 @@
 import React, { memo, MouseEvent, useState, FC, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { StyledBlockingOverlay } from "../Layout/styled";
-import Overlay from "../Layout/Overlay";
-import { Track } from "../../interfaces";
-import icons from "../../constant/icons";
-import { RootState } from "../../reduxModules";
+import { StyledBlockingOverlay } from "../styled";
+import Overlay from "./Overlay";
+import { Track } from "../../../interfaces";
+import icons from "../../../constant/icons";
+import { RootState } from "../../../reduxModules";
 import {
   StyledPlaybar,
   StyledTrackSection,

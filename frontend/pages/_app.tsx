@@ -6,7 +6,6 @@ import reset from "styled-reset";
 import React, { FC, memo, useState } from "react";
 import Layout from "../components/Layout";
 import { rootReducer } from "../reduxModules";
-import Playbar from "../components/Playbar";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -38,7 +37,6 @@ const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      <Playbar />
     </Provider>
   );
 });

@@ -5,7 +5,7 @@ import { RootState } from "../../reduxModules";
 import NavBar from "../NavBar";
 import { Track } from "../../interfaces";
 import SearchBar from "../SearchBar";
-import Playbar from "../Playbar";
+import Playbar from "./Playbar";
 import { initCheckedTrack } from "../../reduxModules/checkedTrack";
 import {
   StyledLayoutWrapper,
@@ -14,7 +14,6 @@ import {
   StyledSearchBar,
   StyledBlockingOverlay,
 } from "./styled";
-import Overlay from "./Overlay";
 import PlaylistCheckBar from "./PlaylistCheckBar";
 
 type Props = {
@@ -60,6 +59,7 @@ const Layout = memo(({ children }: Props) => {
         )}
         <StyledContent>{children}</StyledContent>
       </StyledLayout>
+      <Playbar />
     </StyledLayoutWrapper>
   );
 });

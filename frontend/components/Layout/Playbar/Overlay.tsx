@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removePlayQueue } from "../../reduxModules/playQueue";
-import { Track } from "../../interfaces";
-import { RootState } from "../../reduxModules";
+import { removePlayQueue } from "../../../reduxModules/playQueue";
+import { Track } from "../../../interfaces";
+import { RootState } from "../../../reduxModules";
 import {
   StyledOverlay,
   StyledOverlayImg,
@@ -18,9 +18,9 @@ import {
   StyledTrackCardTitle,
   StyledTrackCardArtists,
   StyledTrackDeleteButton,
-} from "./styled";
-import icons from "../../constant/icons";
-import Img from "../Img";
+} from "../styled";
+import icons from "../../../constant/icons";
+import Img from "../../Img";
 
 const TrackCard = ({ track, idx }: { track: Track; idx: number }): React.ReactElement => {
   const dispatch = useDispatch();
