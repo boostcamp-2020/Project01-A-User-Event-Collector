@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState, MouseEvent } from "react";
-import icons from "../../constant/icons";
-import myAxios from "../../utils/myAxios";
+import icons from "../../../constant/icons";
+import myAxios from "../../../utils/myAxios";
 import { StyledEmptyHeart, StyledFilledHeart } from "./styled";
 
 interface Props {
