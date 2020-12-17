@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { FC, useState } from "react";
+import React, { FC, MouseEvent } from "react";
 import styled from "styled-components";
 import icons from "../../constant/icons";
 
