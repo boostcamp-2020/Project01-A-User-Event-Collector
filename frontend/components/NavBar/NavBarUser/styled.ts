@@ -18,8 +18,8 @@ const StyledUser = styled.div`
   padding-left: 0.4rem;
   margin-left: 0.3rem;
   font-size: 1.25rem;
-  ${({ loggedIn }: { loggedIn: boolean }) => {
-    return loggedIn
+  ${({ isLogged }: { isLogged: boolean }) => {
+    return isLogged
       ? `
         line-height: 1.25rem;
         color: #ccc;

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { FC, memo } from "react";
 import LinkCard from "./LinkCard";
 import StyledLinkCardBlock from "./styled";
 
@@ -11,7 +11,7 @@ interface Props {
   theme: Theme;
 }
 
-const LinkCardBlock = memo(({ theme }: Props) => {
+const LinkCardBlock: FC<Props> = memo(({ theme }: Props) => {
   const arr: { name: string; icon?: string; href: string }[] =
     theme === Theme.Main
       ? [
