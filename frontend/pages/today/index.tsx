@@ -17,7 +17,7 @@ const StyledHotMag = styled.div`
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
+  width: 85vw;
   top: -4rem;
   z-index: 1;
   height: 28rem;
@@ -33,11 +33,11 @@ const StyledSections = styled.div`
   }
 `;
 
-const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
+const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
   return (
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyledHotMag>
-        <HotMagCard />
+        <HotMagCard magazine={HotMag} />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
@@ -82,11 +82,13 @@ export async function getStaticProps() {
     ]);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
+    const HotMag = Magazines.shift();
     const { News } = result[1];
     const { Playlists } = result[2];
 
     return {
       props: {
+        HotMag,
         Magazines,
         News,
         Playlists,

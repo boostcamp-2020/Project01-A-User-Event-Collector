@@ -21,11 +21,6 @@ const NavBarUser = memo(
         try {
           myAxios.get("/users/likedItem").then((res: any) => {
             localStorage.setItem("likedItem", JSON.stringify(res.data));
-            // const test = localStorage.getItem("likedItem");
-            // if (test !== null) {
-            //   const { LikedAlbums, LikedTracks, LikedPlaylists, LikedArtists } = JSON.parse(test);
-            //   console.dir(LikedAlbums);
-            // }
           });
 
           myAxios.get("/users/profile").then((data: any) => {
@@ -36,7 +31,7 @@ const NavBarUser = memo(
             localStorage.userProfile = JSON.stringify(userProfile);
             setUserID(userProfile.id);
             setUsername(userProfile.username);
-            setUserProfileCover(userProfile.profile);
+            setUserProfileCover(userProfile.profile ? userProfile.profile : defaultProfile);
           });
         } catch (err) {
           // eslint-disable-next-line no-console

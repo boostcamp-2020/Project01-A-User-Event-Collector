@@ -14,8 +14,8 @@ const StyledEllipsisModal = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: -5.5rem;
-  right: 1.25rem;
+  bottom: -4.75rem;
+  right: 2rem;
   width: 12rem;
   border-radius: 0.25rem;
   background-color: #ffffff;
@@ -43,7 +43,7 @@ interface Props {
 }
 
 const EllipsisModal = ({ type, data }: any): React.ReactElement => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   const libraryBtnHandler = () => alert("라이브러리 버튼 핸들러");
   const addPlaylistBtnHandler = () => alert("내 플레이리스트에 추가");

@@ -11,7 +11,7 @@ import {
 import { Magazine } from "../../interfaces";
 
 const MagazineContainer = styled.div`
-  width: 964px;
+  width: 100%;
 `;
 
 const StyledPagetitle = styled.div`
@@ -34,17 +34,7 @@ const StyledHotMag = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2.75rem;
-  margin-bottom: 4.5rem;
-`;
-
-const StyledHotMagOverlay = styled.div`
-  position: absolute;
-  background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
-  top: -4rem;
-  z-index: 1;
-  height: 30rem;
+  margin: 2.75rem 1rem 3rem 1rem;
 `;
 
 const StyledSection = styled.div`
@@ -53,38 +43,44 @@ const StyledSection = styled.div`
   grid-template-columns: repeat(3, minmax(33%, auto));
   grid-template-rows: repeat(auto-fill, minmax(20%, auto));
   grid-auto-flow: row;
-  row-gap: 1rem;
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
 `;
 
-const AllMagLabelToggle = styled(AllMagLabel)<{ magType: string; className: string }>`
+interface Props {
+  magType: string;
+  className: string;
+}
+
+const AllMagLabelToggle = styled(AllMagLabel)<Props>`
   background-color: ${({ magType }) => (magType === "ALL" ? "#FF0350" : "#fff")};
-  color: ${({ magType }) => (magType === "ALL" ? "#fff" : "#000")};
-  border: ${({ magType }) => (magType === "PICK" ? "1px solid transparent" : "1px solid #dddddd")};
+  color: ${({ magType }) => (magType === "ALL" ? "#fff" : "#777")};
+  border: ${({ magType }) => (magType === "ALL" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const SpecialMagLabelToggle = styled(SpecialMagLabel)<{ magType: string; className: string }>`
-  background-color: ${({ magType }) => (magType === "SPECIAL" ? "" : "#fff")};
-  background-image: ${({ magType }) => (magType === "SPECIAL" ? "linear-gradient(#e66465, #9198e5)" : "none")};
-  color: ${({ magType }) => (magType === "SPECIAL" ? "#fff" : "#000")};
-  border: ${({ magType }) => (magType === "SPECIAL" ? "1px solid transparent" : "1px solid #dddddd")};
+const SpecialMagLabelToggle = styled(SpecialMagLabel)<Props>`
+  background-color: ${({ magType }) => (magType === "SPECIAL" ? "#FF0350" : "#fff")};
+  background-image: ${({ magType }) =>
+    magType === "SPECIAL" ? "linear-gradient(#e66465, #9198e5)" : "none"};
+  color: ${({ magType }) => (magType === "SPECIAL" ? "#fff" : "#777")};
+  border: ${({ magType }) =>
+    magType === "SPECIAL" ? "1px solid transparent" : "1px solid #dddddd"};
 `;
 
-const PickMagLabelToggle = styled(PickMagLabel)<{ magType: string; className: string }>`
+const PickMagLabelToggle = styled(PickMagLabel)<Props>`
   background-color: ${({ magType }) => (magType === "PICK" ? "#FF0350" : "#fff")};
-  color: ${({ magType }) => (magType === "PICK" ? "#fff" : "#000")};
+  color: ${({ magType }) => (magType === "PICK" ? "#fff" : "#777")};
   border: ${({ magType }) => (magType === "PICK" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const GenreMagLabelToggle = styled(GenreMagLabel)<{ magType: string; className: string }>`
+const GenreMagLabelToggle = styled(GenreMagLabel)<Props>`
   background-color: ${({ magType }) => (magType === "GENRE" ? "#8B02ED" : "#fff")};
-  color: ${({ magType }) => (magType === "GENRE" ? "#fff" : "#000")};
+  color: ${({ magType }) => (magType === "GENRE" ? "#fff" : "#777")};
   border: ${({ magType }) => (magType === "GENRE" ? "1px solid transparent" : "1px solid #dddddd")};
 `;
 
-const IndexPage = memo(({ magazines, className }: any) => {
+const IndexPage = memo(({ magazines, HotMag, className }: any) => {
   const [magType, setMagType] = useState("ALL");
 
   const handleTypeChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -141,7 +137,7 @@ const IndexPage = memo(({ magazines, className }: any) => {
         </label>
       </StyledMagazineRadioContainer>
       <StyledHotMag>
-        <HotMagCard />
+        <HotMagCard magazine={HotMag} />
       </StyledHotMag>
       <StyledSection>
         {magazines
@@ -166,9 +162,12 @@ export async function getStaticProps() {
     const res = await fetch(`${apiUrl}:${apiPort}/api/magazines?limit=${dataLength}`);
     const magazines = await res.json();
 
+    const HotMag = magazines.Magazines.shift();
+
     return {
       props: {
         magazines: magazines.Magazines,
+        HotMag,
       },
     };
   } catch (err) {

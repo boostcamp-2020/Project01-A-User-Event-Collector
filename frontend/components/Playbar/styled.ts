@@ -9,7 +9,7 @@ const StyledPlaybar = styled.div`
   height: 6rem;
   bottom: 0rem;
   background-color: rgba(10, 10, 10, 0.95);
-  z-index: 15;
+  z-index: 150;
 `;
 
 const StyledTrackSection = styled.div`
@@ -18,70 +18,6 @@ const StyledTrackSection = styled.div`
   align-items: center;
   width: 30rem;
   box-sizing: border-box;
-`;
-
-const StyledImgSection = styled.div`
-  display: block;
-  margin: 0rem 1.5rem;
-  cursor: pointer;
-`;
-
-const StyledTrackInfo = styled.div`
-  display: flex;
-  width: 8.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledTrackTitle = styled.div`
-  display: flex;
-  color: #fff;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  font-size: 1.05rem;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const StyledTrackArtists = styled.div`
-  display: flex;
-  width: 100%;
-  color: #888;
-  font-size: 0.95rem;
-  cursor: pointer;
-`;
-
-const StyledTrackArtist = styled.span`
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const StyledEmptyHeart = styled.div`
-  color: #555;
-  font-size: 1.5rem;
-  cursor: pointer;
-`;
-
-const StyledFilledHeart = styled.div`
-  color: #fe1250;
-  font-size: 1.5rem;
-  cursor: pointer;
-`;
-
-const StyledEllipsis = styled.div`
-  display: flex;
-  color: #555;
-  font-size: 1.5rem;
-  margin: 0rem 1rem;
-  cursor: pointer;
-  &:hover {
-    color: #aaa;
-  }
 `;
 
 const StyledMainControlSection = styled.div`
@@ -152,21 +88,40 @@ const StyledTrackVolumeSlide = styled.input`
   -webkit-appearance: none;
 
   &::-webkit-slider-runnable-track {
-    background-color: #555;
-    height: 0.5rem;
-    &:hover {
-      background-color: #555;
-    }
+    height: 0.3rem;
+    background: #777;
+    border: none;
+    border-radius: 0.1rem;
+  }
+
+  &::-webkit-slider-runnable-track:hover {
+    height: 0.6rem;
+    background: #fff;
   }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background-color: #ffffff;
-    cursor: pointer;
     border: none;
-    height: 0rem;
-    width: 16px;
-    margin-top: -0.3rem;
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50%;
+    background: #999;
+    margin-top: -0.1rem;
+  }
+
+  &:hover::-webkit-slider-thumb {
+    height: 0.75rem;
+    width: 0.75rem;
+    margin-bottom: 2rem;
+    background: #ccc;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: #ccc;
   }
 `;
 
@@ -189,14 +144,6 @@ const StyledPlaylistButton = styled.div`
 export {
   StyledPlaybar,
   StyledTrackSection,
-  StyledImgSection,
-  StyledTrackInfo,
-  StyledTrackTitle,
-  StyledTrackArtists,
-  StyledTrackArtist,
-  StyledEmptyHeart,
-  StyledFilledHeart,
-  StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
   StyledTrackTime,

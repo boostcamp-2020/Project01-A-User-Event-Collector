@@ -23,7 +23,7 @@ const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
 
   return (
     <StyledHoverImg varient={varient} onMouseEnter={onHover} onMouseLeave={onHoverOut}>
-      <Img varient={varient} src={src} />
+      <Img varient={varient} src={src} hover={hover} />
       {varient === "trackCardCover" ? (
         <TrackCardHoverCover hover={hover} />
       ) : (

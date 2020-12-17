@@ -89,9 +89,9 @@ const Slidebar: FC<SlidebarProps> = ({
             <Card key={`card${-idx}`} varient={varient} dataType={dataType} rawData={value} />
           ))}
         </SlideContent>
-        <SliderPreviousButton onClick={prevBtnHandler} hide={previousHide} />
-        <SliderNextButtton onClick={nextBtnHandler} hide={nextHide} />
       </SlideContainer>
+      <SliderPreviousButton onClick={prevBtnHandler} hide={previousHide} />
+      <SliderNextButtton onClick={nextBtnHandler} hide={nextHide} />
     </StyledSlidebar>
   );
 };

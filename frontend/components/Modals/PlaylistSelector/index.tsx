@@ -3,8 +3,8 @@ import styled from "styled-components";
 import icons from "../../../constant/icons";
 import { Playlist, Track } from "../../../interfaces";
 import myAxios from "../../../utils/myAxios";
-import ModalNewRow from "./newRow";
-import ModalRow from "./row";
+import ModalNewRow from "./NewRow";
+import ModalRow from "./ModalRow";
 
 interface ModalProps {
   showModal?: "display" | "none";
@@ -63,10 +63,9 @@ const PlaylistList = styled.div`
 
 interface Props {
   tracks: Track[];
-  playlistId: number;
 }
 
-const PlaylistSelectModal: React.FC<Props> = ({ tracks, playlistId }: Props) => {
+const PlaylistSelectModal: React.FC<Props> = ({ tracks }: Props) => {
   const [myPlaylists, setMyPlaylists] = useState([]);
   const [showModal, setShowModal] = useState<"display" | "none">("none"); // 상위에서 받아야함
   useEffect(() => {
@@ -85,12 +84,7 @@ const PlaylistSelectModal: React.FC<Props> = ({ tracks, playlistId }: Props) => 
         <PlaylistList>
           <ModalNewRow />
           {myPlaylists.map((value) => (
-            <ModalRow
-              data={value}
-              tracks={tracks}
-              playlistId={playlistId}
-              setShowModal={setShowModal}
-            />
+            <ModalRow data={value} tracks={tracks} setShowModal={setShowModal} />
           ))}
         </PlaylistList>
       </StyledModal>

@@ -9,10 +9,12 @@ const StyledSlidebar = styled.div`
 `;
 
 const SlideContainer = styled.div`
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: auto;
   width: 100%;
   position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const StyledTitle = styled.div`
