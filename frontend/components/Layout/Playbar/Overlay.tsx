@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removePlayQueue } from "../../../reduxModules/playQueue";
 import { Track } from "../../../interfaces";
@@ -34,7 +34,8 @@ const TrackCard = ({ track, idx }: { track: Track; idx: number }): React.ReactEl
   const artists: string[] = [];
   Artists.forEach((el) => artists.push(el.artistName));
 
-  const handleRemove = () => {
+  const handleRemove = (e: MouseEvent) => {
+    e.stopPropagation();
     dispatch(removePlayQueue(idx));
   };
 
