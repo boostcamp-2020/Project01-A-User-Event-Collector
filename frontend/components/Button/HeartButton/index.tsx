@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
-import icons from "../../constant/icons";
-import myAxios from "../../utils/myAxios";
+import React, { FC, useEffect, useState, MouseEvent } from "react";
+import icons from "../../../constant/icons";
+import myAxios from "../../../utils/myAxios";
 import { StyledEmptyHeart, StyledFilledHeart } from "./styled";
 
 interface Props {
@@ -20,16 +20,20 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
     }
   }, [targetId]);
 
-  const likeBtnHandler = () => {
-    (async () => {
-      if (!isLike) await myAxios.post(reqPath, {});
-      else await myAxios.delete(reqPath);
+  const likeBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
+    try {
+      (async () => {
+        if (!isLike) await myAxios.post(reqPath, {});
+        else await myAxios.delete(reqPath);
 
-      const { data }: any = await myAxios.get("/users/likedItem");
-      localStorage.setItem("likedItem", JSON.stringify(data));
-    })();
-
-    setIsLike(!isLike);
+        const { data }: any = await myAxios.get("/users/likedItem");
+        localStorage.setItem("likedItem", JSON.stringify(data));
+        setIsLike(!isLike);
+      })();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Ellipsis from "../../Ellipsis";
-import EllipsisModal from "../../Ellipsis/EllipsisModal";
+import Ellipsis from "../../Button/EllipsisButton";
+import EllipsisModal from "../../Button/EllipsisButton/EllipsisModal";
 import HoverPlayButton from "../../Button/HoverPlayButton";
 
 interface StyledProps {
@@ -24,6 +24,7 @@ export const StyledGeneralHoverCover = styled.div<StyledProps>`
 
 const PlayButton = styled(HoverPlayButton)`
   position: absolute;
+  outline: none;
   bottom: 10%;
   left: 10%;
 `;
