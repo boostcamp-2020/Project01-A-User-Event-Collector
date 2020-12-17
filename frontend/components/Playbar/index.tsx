@@ -38,6 +38,7 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
   const playList: Track[] = useSelector((state: RootState) => state.playQueue);
   const [headTrack, setHeadTrack] = useState<Track>(emptyTrack);
   const [playingPointer, setPlayingPointer] = useState<number>(-1);
+  const [playmode, setPlaymode] = useState<boolean>(false);
 
   useEffect(() => {
     if (headTrack === emptyTrack) {
@@ -51,12 +52,19 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
     }
   }, [playList]);
 
-  const nextBtnHandler = () => {
+  const playBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
+    setPlaymode(!playmode);
+  };
+
+  const nextBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
     if (playList[playingPointer + 1]) {
       setPlayingPointer(playingPointer + 1);
     }
   };
-  const prevBtnHandler = () => {
+  const prevBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
     if (playList.length > 0 && playingPointer > 0) {
       setPlayingPointer(playingPointer - 1);
     }
@@ -83,7 +91,9 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
         <StyledMainButtons>
           <StyledSideButtons>{icons.random}</StyledSideButtons>
           <StyledMiddleButtons onClick={prevBtnHandler}>{icons.previous}</StyledMiddleButtons>
-          <StyledPlayButtons>{icons.play}</StyledPlayButtons>
+          <StyledPlayButtons onClick={playBtnHandler}>
+            {playmode ? icons.pause : icons.play}
+          </StyledPlayButtons>
           <StyledMiddleButtons onClick={nextBtnHandler}>{icons.next}</StyledMiddleButtons>
           <StyledSideButtons>{icons.repeat}</StyledSideButtons>
         </StyledMainButtons>
