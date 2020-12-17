@@ -41,11 +41,11 @@ const StyledNumOfTracks = styled.div`
 interface Props {
   data: Playlist;
   tracks: Track[];
-  playlistId: number;
   setShowModal: Function;
 }
 
-const ModalRow: FC<Props> = ({ data, tracks, playlistId, setShowModal }: Props) => {
+const ModalRow: FC<Props> = ({ data, tracks, setShowModal }: Props) => {
+  const { id: playlistId } = data;
   const addTracksToPlaylist = () => {
     const postData = { tracks: tracks.map((value) => value.id), playlistId };
     myAxios.post(`/api/?`, tracks);

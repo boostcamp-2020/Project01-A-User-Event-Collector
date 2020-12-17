@@ -110,11 +110,7 @@ const StyledValidVerifyButton = styled.button`
   cursor: pointer;
 `;
 
-interface Props {
-  tracks: Track[];
-}
-
-const NewPlaylistModal: React.FC<Props> = () => {
+const NewPlaylistModal: React.FC = () => {
   const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState<"display" | "none">("none");
 
