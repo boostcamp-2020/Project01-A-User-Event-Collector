@@ -24,6 +24,7 @@ export const StyledGeneralHoverCover = styled.div<StyledProps>`
 
 const PlayButton = styled(HoverPlayButton)`
   position: absolute;
+  outline: none;
   bottom: 10%;
   left: 10%;
 `;

@@ -13,6 +13,8 @@ const StyledPlayButton = styled.button`
   bottom: 7.5%;
   font-size: 1.25rem;
   color: #fe1250;
+  outline: none;
+  cursor: pointer;
   &:hover {
     background-color: rgba(255, 255, 255, 1);
   }
