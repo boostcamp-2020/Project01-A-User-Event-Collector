@@ -5,6 +5,7 @@ export interface Props {
   data: {
     id?: number;
     genreName?: string;
+    genreColor: string;
   };
 }
 
@@ -13,21 +14,22 @@ interface GenreColorProps {
 }
 
 const StyledGenreCard = styled.li`
+  display: flex;
+  align-items: center;
   background-color: #ddd;
   width: 11rem;
   height: 4rem;
   border-radius: 0.3rem;
-  display: flex;
 `;
 
 const ColorDiv = styled.div<GenreColorProps>`
-  width: 5px;
+  width: 0.25rem;
   height: 80%;
-  border-radius: 3px;
+  border-radius: 0.1rem;
   margin: 5% 7px;
   background-color: ${(props) => props.genreColor};
 `;
-const NameDiv = styled.div`
+const StyledGenreCardName = styled.div`
   margin-left: 10px;
   text-align: left;
   padding: 1.2rrem 0;
@@ -35,11 +37,11 @@ const NameDiv = styled.div`
 `;
 
 const GenreCard: React.FC<Props> = ({ data }: Props) => {
-  const { genreName } = data;
+  const { genreName, genreColor } = data;
   return (
     <StyledGenreCard>
-      <ColorDiv genreColor={`#${Math.random().toString(16).substr(2, 6)}`} />
-      <NameDiv>{genreName}</NameDiv>
+      <ColorDiv genreColor={genreColor} />
+      <StyledGenreCardName>{genreName}</StyledGenreCardName>
     </StyledGenreCard>
   );
 };

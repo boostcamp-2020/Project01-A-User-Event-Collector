@@ -17,22 +17,18 @@ const StyledGenreTitle = styled.div`
 const StyledGenreContainer = styled.div<Props>`
   display: flex;
   flex-direction: column;
-  width: 70rem;
   height: 15rem;
   margin: 1rem 0rem;
-  & > a > svg {
-    width: 0.7rem;
-    height: 0.7rem;
-  }
 `;
 
 const GenreContent = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, minmax(20%, auto));
   grid-template-rows: repeat(3, minmax(33%, auto));
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   position: relative;
   grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
   width: 100%;
   height: 100%;
   margin: 1rem 0rem;
