@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import icons from "../../../constant/icons";
 import { PlaySvg } from "../../../utils/svg";
 
 interface StyleProps {
@@ -10,21 +11,33 @@ interface Props {
   hover?: boolean;
 }
 
-export const StyledTrackCardHoverCover = styled.div<StyleProps>`
-  width: 100%;
-  height: 100%;
+const StyledTrackCardHoverCover = styled.div<StyleProps>`
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
   cursor: pointer;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  justify-content: center;
+  align-items: center;
+  top: 0rem;
+  left: 0rem;
+  color: #fff;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
   display: ${(props) => (props.hover ? "block" : "none")};
+`;
+
+const StyledIcon = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TrackCardHoverCover: React.FC<Props> = ({ hover }: Props) => {
   return (
     <StyledTrackCardHoverCover hover={hover}>
-      <PlaySvg />
+      <StyledIcon>{icons.play}</StyledIcon>
     </StyledTrackCardHoverCover>
   );
 };
