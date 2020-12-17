@@ -1,12 +1,6 @@
 import React, { FC, useEffect, useRef } from "react";
 import styled from "styled-components";
-import {
-  SimpleEvent,
-  ComplexEvent,
-  WindowEventType,
-  ComponentEventType,
-  EventType,
-} from "./interface";
+import { SimpleEvent, ComplexEvent, ComponentEventType, EventType } from "./interface";
 import SequenceEvent from "./complexEvent";
 
 export interface EventObject {
