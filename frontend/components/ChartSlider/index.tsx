@@ -38,23 +38,25 @@ const ChartSlider: React.FC<Props> = ({ title, titleLink, data }: Props) => {
   }, [currentSlide]);
 
   return (
-    <StyledSlidebar>
+    <>
       <StyledSlidebarTitle>
         <a href={titleLink}>
           {title}
           <StyledIcon>{[icons.angleRight]}</StyledIcon>{" "}
         </a>
       </StyledSlidebarTitle>
-      <SlideContainer>
-        <SlideContent ref={currentSlideRef}>
-          {data?.map((value: any) => (
-            <ChartTrackCard data={value} />
-          ))}
-        </SlideContent>
-      </SlideContainer>
-      <SliderPreviousButton onClick={onPreviousClicked} />
-      <SliderNextButtton onClick={onNextClicked} />
-    </StyledSlidebar>
+      <StyledSlidebar>
+        <SlideContainer>
+          <SlideContent ref={currentSlideRef}>
+            {data?.map((value: any) => (
+              <ChartTrackCard data={value} />
+            ))}
+          </SlideContent>
+        </SlideContainer>
+        <SliderPreviousButton onClick={onPreviousClicked} />
+        <SliderNextButtton onClick={onNextClicked} />
+      </StyledSlidebar>
+    </>
   );
 };
 

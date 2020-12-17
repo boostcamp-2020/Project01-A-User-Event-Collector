@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledSlidebar = styled.div`
-  width: 70rem;
+  display: flex;
   position: relative;
   &:nth-child(n) {
     padding-top: 1.5rem;

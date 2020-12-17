@@ -68,7 +68,8 @@ const genreData = [
 ];
 
 const StyledChartPageWrapper = styled.div`
-  margin: 5rem 7rem;
+  box-sizing: border-box;
+  padding: 5rem 7rem;
 `;
 
 const StyledPagetitle = styled.div`
