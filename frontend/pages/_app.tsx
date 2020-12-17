@@ -7,8 +7,6 @@ import React, { FC, memo, useState } from "react";
 import Layout from "../components/Layout";
 import { rootReducer } from "../reduxModules";
 import Playbar from "../components/Playbar";
-import { StyledBlockingOverlay } from "../components/Layout/styled";
-import Overlay from "../components/Layout/Overlay";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -34,25 +32,13 @@ const GlobalStyles = createGlobalStyle`
 
 const store = createStore(rootReducer);
 const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
-  const [showPlaylist, setShowPlaylist] = useState(false);
-
-  const handleShowPlaylist = (e: any): void => {
-    setShowPlaylist(!showPlaylist);
-  };
-
   return (
     <Provider store={store}>
       <GlobalStyles />
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      {showPlaylist && (
-        <>
-          <StyledBlockingOverlay />
-          <Overlay />
-        </>
-      )}
-      <Playbar handleShowPlaylist={handleShowPlaylist} showPlaylist={showPlaylist} />
+      <Playbar />
     </Provider>
   );
 });

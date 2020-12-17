@@ -1,5 +1,7 @@
 import React, { memo, MouseEvent, useState, FC, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { StyledBlockingOverlay } from "../Layout/styled";
+import Overlay from "../Layout/Overlay";
 import { Track } from "../../interfaces";
 import icons from "../../constant/icons";
 import { RootState } from "../../reduxModules";
@@ -20,10 +22,6 @@ import {
 } from "./styled";
 import PlaybarTrackCard from "./PlaybarTrackCard";
 
-interface Props {
-  handleShowPlaylist: (e: MouseEvent) => void;
-  showPlaylist: boolean;
-}
 const emptyTrack: Track = {
   id: 0,
   albumTrackNumber: 0,
@@ -34,11 +32,16 @@ const emptyTrack: Track = {
   Liked: false,
 };
 
-const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) => {
+const Playbar: FC = memo(() => {
   const playList: Track[] = useSelector((state: RootState) => state.playQueue);
   const [headTrack, setHeadTrack] = useState<Track>(emptyTrack);
   const [playingPointer, setPlayingPointer] = useState<number>(-1);
   const [playmode, setPlaymode] = useState<boolean>(false);
+  const [showPlaylist, setShowPlaylist] = useState(false);
+
+  const handleShowPlaylist = (e: any): void => {
+    setShowPlaylist(!showPlaylist);
+  };
 
   useEffect(() => {
     if (headTrack === emptyTrack) {
@@ -70,7 +73,6 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
     }
   };
 
-  const dispatch = useDispatch();
   const [volume, setVolume] = useState<number>(50);
   const fullPlayTime = "3:32";
   const currentPlayTime = "1:32";
@@ -114,6 +116,12 @@ const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) =>
           <StyledPlaylistButton showPlaylist={showPlaylist}>{icons.list}</StyledPlaylistButton>
         </StyledPlaylistButtonWrapper>
       </StyledSideControlSection>
+      {showPlaylist && (
+        <>
+          <StyledBlockingOverlay />
+          <Overlay />
+        </>
+      )}
     </StyledPlaybar>
   );
 });
