@@ -3,7 +3,7 @@ import styled from "styled-components";
 import icons from "../../../constant/icons";
 import { Playlist, Track } from "../../../interfaces";
 import myAxios from "../../../utils/myAxios";
-import ModalNewRow from "./NewRow";
+import ModalNewRow from "./ModalNewRow";
 import ModalRow from "./ModalRow";
 
 interface ModalProps {
