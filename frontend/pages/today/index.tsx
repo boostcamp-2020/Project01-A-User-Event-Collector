@@ -41,15 +41,6 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
-        <Emitter identifier="identifier_1" eventType={["click"]}>
-          <h1> 이벤트 테스트</h1>
-        </Emitter>
-        <Emitter
-          identifier="identifier_2"
-          eventType={[{ eventType: "mouseover", restrictFire: { method: "throttle", time: 1000 } }]}
-        >
-          <h1> 마우스 오버 테스트</h1>
-        </Emitter>
         <Slidebar
           varient="todayBig"
           dataType="magazine"
