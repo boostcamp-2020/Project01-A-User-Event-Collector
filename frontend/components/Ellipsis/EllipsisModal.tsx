@@ -43,7 +43,7 @@ interface Props {
 }
 
 const EllipsisModal = ({ type, data }: any): React.ReactElement => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   const libraryBtnHandler = () => alert("라이브러리 버튼 핸들러");
   const addPlaylistBtnHandler = () => alert("내 플레이리스트에 추가");
