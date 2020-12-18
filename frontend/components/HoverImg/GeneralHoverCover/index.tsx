@@ -32,6 +32,7 @@ const PlayButton = styled(HoverPlayButton)`
 const GeneralHoverCover: React.FC<Props> = ({ hover }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const handleShowModal = (e: MouseEvent) => {
+    e.stopPropagation();
     setShowModal(!showModal);
   };
 
