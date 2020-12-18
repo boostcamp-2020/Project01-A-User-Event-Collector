@@ -45,7 +45,7 @@ const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
           varient="todayBig"
           dataType="magazine"
           title="매거진"
-          titleLink=""
+          titleLink="/magazines"
           data={Magazines}
         />
       </StyledSections>

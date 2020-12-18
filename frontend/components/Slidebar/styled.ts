@@ -33,8 +33,13 @@ const SlideContent = styled.ul<TranslateProps>`
   transform: ${({ currentTranslateX }) => `translateX(${currentTranslateX}px)`};
 `;
 
+const StyledLink = styled.div`
+  display: flex;
+  cursor: pointer;
+`;
+
 const StyledIcon = styled.span`
   margin-left: 0.3rem;
 `;
 
-export { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledIcon };
+export { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledLink, StyledIcon };
