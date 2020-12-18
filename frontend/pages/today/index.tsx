@@ -29,7 +29,7 @@ const StyledSections = styled.div`
   flex-direction: column;
   margin: 0.5rem 0rem;
   & + & {
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 `;
 
