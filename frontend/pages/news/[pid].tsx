@@ -7,10 +7,10 @@ const StyleNewsPage = styled.div`
   height: 100vh;
 `;
 
-const NewsPage: FC<News[]> = ({ News }: any) => {
+const NewsPage: FC<News[]> = ({ NewsData }: any) => {
   return (
     <StyleNewsPage>
-      <DetailPage type="news" detailData={News} tracks={News.Tracks} />
+      <DetailPage type="news" detailData={NewsData} tracks={NewsData.Tracks} />
     </StyleNewsPage>
   );
 };
@@ -24,7 +24,7 @@ export async function getServerSideProps({ params }: any): Promise<any> {
   // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
-  const { News } = await res.json();
+  const { NewsData } = await res.json();
 
-  return { props: { News } };
+  return { props: { NewsData } };
 }
