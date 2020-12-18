@@ -11,9 +11,7 @@ const Tracklist: FC<Props> = ({ data }: Props) => {
   return (
     <StyledTrackCards>
       {data.map((track: Track, idx: number) => {
-        return (
-          <TrackCard key={-idx} key={track.trackName} track={track} numberOfCards={data.length} />
-        );
+        return <TrackCard key={-idx} track={track} numberOfCards={data.length} />;
       })}
     </StyledTrackCards>
   );
