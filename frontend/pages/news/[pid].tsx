@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
-import { _News } from "../../interfaces";
+import { News } from "../../interfaces";
 
 const StyleNewsPage = styled.div`
   height: 100vh;
 `;
 
-const NewsPage: FC<_News[]> = ({ News }: any) => {
+const NewsPage: FC<News[]> = ({ News }: any) => {
   return (
     <StyleNewsPage>
       <DetailPage type="news" detailData={News} tracks={News.Tracks} />
