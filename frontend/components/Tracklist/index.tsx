@@ -10,8 +10,10 @@ interface Props {
 const Tracklist: FC<Props> = ({ data }: Props) => {
   return (
     <StyledTrackCards>
-      {data.map((track: Track) => {
-        return <TrackCard key={track.trackName} track={track} numberOfCards={data.length} />;
+      {data.map((track: Track, idx: number) => {
+        return (
+          <TrackCard key={-idx} key={track.trackName} track={track} numberOfCards={data.length} />
+        );
       })}
     </StyledTrackCards>
   );
