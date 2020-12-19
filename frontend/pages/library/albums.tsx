@@ -34,9 +34,10 @@ const AlbumsLibraryPage = memo(() => {
   const [likedAlbums, setLikedAlbums] = useState([]);
 
   useEffect(() => {
-    myAxios.get("/library/albums").then((res: any) => {
+    (async () => {
+      const res: any = await myAxios.get("/library/albums");
       setLikedAlbums(res.data.Albums);
-    });
+    })();
   }, []);
 
   return (
