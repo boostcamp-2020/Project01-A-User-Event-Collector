@@ -17,7 +17,6 @@ interface AxiosInterface {
 const myAxios: AxiosInterface = {
   get(path) {
     const token = localStorage.getItem("token");
-    console.log("@@@@", URL + path);
     return token
       ? axios.get(URL + path, {
           headers: {
