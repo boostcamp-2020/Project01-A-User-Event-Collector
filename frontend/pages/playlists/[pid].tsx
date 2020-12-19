@@ -12,9 +12,7 @@ const StylePlaylistPage = styled.div`
 const PlaylistPage: FC<Playlist[]> = ({ Playlists }: any) => {
   return (
     <StylePlaylistPage>
-      <DetailPage type="playlist" detailData={Playlists} tracks={Playlists.Tracks} />
-      {/* <PlaylistSelectModal tracks={Playlists.Tracks} /> */}
-      {/* <NewPlaylistModal /> */}
+      <DetailPage type="Playlists" detailData={Playlists} tracks={Playlists.Tracks} />
     </StylePlaylistPage>
   );
 };
