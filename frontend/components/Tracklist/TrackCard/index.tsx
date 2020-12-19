@@ -8,6 +8,7 @@ import {
   deleteCheckedTrack,
   setAllChecked,
   emptyCheckedTrack,
+  setAllUnchecked,
 } from "../../../reduxModules/checkedTrack";
 import { RootState } from "../../../reduxModules";
 import {
@@ -32,7 +33,9 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
   const { trackName, Albums, Artists } = track;
   const { cover, albumName, id: albumId } = Albums;
 
-  const { allChecked, checkedTracks } = useSelector((state: RootState) => state.checkedTracks);
+  const { allChecked, allUnchecked, checkedTracks } = useSelector(
+    (state: RootState) => state.checkedTracks,
+  );
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const handleChecked = () => setChecked(!checked);
@@ -44,14 +47,25 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
     } else if (!allChecked && checkedTracks.size === numberOfCards) {
       setChecked(false);
       dispatch(emptyCheckedTrack());
+    } else if (allUnchecked) {
+      setChecked(false);
+      dispatch(emptyCheckedTrack());
     }
-  }, [allChecked]);
+  }, [allChecked, allUnchecked]);
 
   useEffect(() => {
     checked === true ? dispatch(addCheckedTrack(track)) : dispatch(deleteCheckedTrack(track));
 
-    if (checked && checkedTracks.size === numberOfCards) dispatch(setAllChecked(true));
-    else if (checkedTracks.size < numberOfCards) dispatch(setAllChecked(false));
+    if (checked && checkedTracks.size === numberOfCards) {
+      dispatch(setAllChecked(true));
+      dispatch(setAllUnchecked(false));
+    } else if (checkedTracks.size < numberOfCards && checkedTracks.size > 0) {
+      dispatch(setAllChecked(false));
+      dispatch(setAllUnchecked(false));
+    } else if (checkedTracks.size === 0) {
+      dispatch(setAllChecked(false));
+      dispatch(setAllUnchecked(true));
+    }
   }, [checked]);
 
   return (
