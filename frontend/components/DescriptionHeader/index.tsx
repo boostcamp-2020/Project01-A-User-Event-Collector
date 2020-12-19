@@ -21,15 +21,24 @@ import { Artist } from "../../interfaces";
 type detailPageTypes = "Albums" | "Playlists" | "Artists" | "Magazines" | "News";
 
 interface Props {
-  type: detailPageTypes;
+  type: "Albums" | "Playlists" | "Artists" | "Magazines" | "News";
   id: number;
   title: string;
   cover: string;
   artists?: Artist[];
   description: string;
+  playlistId?: number;
 }
-const DescriptionHeader: FC<Props> = ({ type, id, title, cover, artists, description }: Props) => {
-  const convertType = (pageType: detailPageTypes) => {
+const DescriptionHeader: FC<Props> = ({
+  type,
+  id,
+  title,
+  cover,
+  artists,
+  description,
+  playlistId,
+}: Props) => {
+  const makeHeartProps = (pageType: detailPageTypes) => {
     switch (pageType) {
       case "Magazines":
       case "News":
@@ -59,7 +68,7 @@ const DescriptionHeader: FC<Props> = ({ type, id, title, cover, artists, descrip
           <StyledMP3Button>MP3 구매</StyledMP3Button>
           <StyledPlaylistETCButton>{icons.plus}</StyledPlaylistETCButton>
           <StyledPlaylistETCButton>
-            <Heart type={convertType(type)} targetId={id} />
+            <Heart type={makeHeartProps(type)} targetId={playlistId || id} />
           </StyledPlaylistETCButton>
         </StyledButtons>
       </StyledInfo>

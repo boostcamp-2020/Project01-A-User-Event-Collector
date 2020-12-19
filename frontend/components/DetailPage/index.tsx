@@ -30,10 +30,12 @@ const makeProps = (detailType: string, detailData: any) => {
     case "Magazines":
       result.title = detailData.magazineName;
       result.magazineType = detailData.magazineType;
+      result.playlistId = detailData.playlistId;
       break;
 
     case "News":
       result.title = detailData.newsName;
+      result.playlistId = detailData.playlistId;
       break;
 
     case "Artists":
@@ -47,7 +49,7 @@ const makeProps = (detailType: string, detailData: any) => {
 
 const DetailPage: FC<Props> = ({ type, detailData, tracks }: Props) => {
   const props = makeProps(type, detailData);
-  const { id, cover, title, owner, magazineType, description } = props;
+  const { id, cover, title, owner, magazineType, description, playlistId } = props;
 
   return (
     <StyledDetailPage>
@@ -55,6 +57,7 @@ const DetailPage: FC<Props> = ({ type, detailData, tracks }: Props) => {
         <DescriptionHeader
           type={type}
           id={id}
+          playlistId={playlistId}
           title={title}
           cover={cover}
           artists={owner || magazineType}
