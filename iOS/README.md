@@ -1,3 +1,17 @@
+# Vibe Clone
+
+## Today / Playlist / Magazine
+
+<img width="280" alt="Today" src="https://user-images.githubusercontent.com/60538517/102685524-adf98980-4224-11eb-8ca3-d13d6acf93b3.gif"> &emsp; <img width="280" alt="Favorite" src="https://user-images.githubusercontent.com/60538517/102685499-7e4a8180-4224-11eb-92df-fe459704a1ce.gif"> &emsp; <img width="280" alt="Magazine" src="https://user-images.githubusercontent.com/60538517/102685555-eef19e00-4224-11eb-93ec-06f1fc2ec66e.gif">
+
+## Chart / Search / Library
+
+<img width="280" alt="Chart" src="https://user-images.githubusercontent.com/60538517/102685567-19dbf200-4225-11eb-8ecf-24aec93ea0d6.gif"> &emsp; <img width="280" alt="Search" src="https://user-images.githubusercontent.com/60538517/102685617-61fb1480-4225-11eb-97d1-8bd7c412286c.gif"> &emsp; <img width="280" alt="Library" src="https://user-images.githubusercontent.com/60538517/102685644-8e169580-4225-11eb-9720-fa9eda2fcc73.gif">
+
+## NowPlaying
+
+<img width="280" alt="NowPlaying" src="https://user-images.githubusercontent.com/60538517/102685667-b1d9db80-4225-11eb-9b30-243a2b4abad6.gif">
+
 # DiveEventCollector
 
 DiveEventCollector는 이벤트 수집을 돕기위해 만든 패키지 입니다
