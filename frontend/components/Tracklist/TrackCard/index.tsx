@@ -22,6 +22,7 @@ import {
 } from "./styled";
 import HoverImg from "../../HoverImg";
 import icons from "../../../constant/icons";
+import Heart from "../../Button/HeartButton";
 
 interface Props {
   track: Track;
@@ -73,7 +74,7 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
       <StyledAlbum>
         <Link href={`/albums/${albumId}`}>{albumName}</Link>
       </StyledAlbum>
-      <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
+      <Heart type="Tracks" targetId={track.id} />
     </StyledTrackCard>
   );
 };
