@@ -14,14 +14,21 @@ const StyledNavLogo = styled.div`
   cursor: pointer;
 `;
 
-const StyledNavNaver = styled.span`
+const StyledNavVIBE = styled.span`
   font-size: 1rem;
   padding-left: 0.5rem;
-  padding-right: 0.25rem;
-  font-weight: bold;
+  padding-top: 0.5rem;
 `;
 
-const StyledNavVibe = styled.span`
+const StyledWith = styled.span`
+  font-size: 1rem;
+  margin-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+`;
+
+const StyledNavDIVE = styled.span`
   font-size: 1.75rem;
 `;
 
@@ -33,4 +40,11 @@ const StyledNavSearch = styled.div`
   cursor: pointer;
 `;
 
-export { StyledNavTopLogoSearch, StyledNavLogo, StyledNavNaver, StyledNavVibe, StyledNavSearch };
+export {
+  StyledNavTopLogoSearch,
+  StyledNavLogo,
+  StyledNavVIBE,
+  StyledWith,
+  StyledNavDIVE,
+  StyledNavSearch,
+};
