@@ -13,8 +13,8 @@ const PlaylistPage: FC<Playlist[]> = ({ Playlists }: any) => {
   return (
     <StylePlaylistPage>
       <DetailPage type="playlist" detailData={Playlists} tracks={Playlists.Tracks} />
-      <PlaylistSelectModal tracks={Playlists.Tracks} />
-      <NewPlaylistModal />
+      {/* <PlaylistSelectModal tracks={Playlists.Tracks} /> */}
+      {/* <NewPlaylistModal /> */}
     </StylePlaylistPage>
   );
 };
