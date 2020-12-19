@@ -46,7 +46,6 @@ struct CategoryCellView: View {
                     .modifier(Description2())
             }
         }
-//        .padding(.leading, 20)
 
     }
 }
@@ -57,4 +56,3 @@ struct CategoryItemView_Previews: PreviewProvider {
         CategoryCellView(item: TestData.categoryItem2, mode: .half)
     }
 }
-//414

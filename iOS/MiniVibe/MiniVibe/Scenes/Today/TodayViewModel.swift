@@ -21,10 +21,9 @@ class TodayViewModel: ObservableObject {
         fetch(type: .favorites)
         fetch(type: .magazines)
         fetch(type: .recommendations)
-//        fetch(type: .playlists, id: 18)
     }
     
-    func fetch(type: MiniVibeType, id: Int? = nil) {
+    private func fetch(type: MiniVibeType, id: Int? = nil) {
         let url = URLBuilder(pathType: .api,
                              endPoint: type,
                              id: id).create()
@@ -34,19 +33,19 @@ class TodayViewModel: ObservableObject {
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.magazines = decodedData.magazines
                     }
                 }
             case .djStations:
                 if let decodedData = try? JSONDecoder().decode(DJStationResponse.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.stations = decodedData.djStations
                     }
                 }
             case .playlists:
                 if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         if let tracks = decodedData.playlist.tracks {
                             self?.tracks = tracks
                         }

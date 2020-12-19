@@ -28,7 +28,7 @@ struct NowPlayingView: View {
                 PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
             })
             .accessibility(identifier: "NowPlayingView")
-            HStack(spacing: 20) {
+            HStack(spacing: 5) {
                 ToggleableImage(isEnabled: $viewModel.isPlaying,
                                 imageWhenTrue: "pause", colorWhenTrue: .gray,
                                 imageWhenFalse: "play.fill", colorWhenFalse: .gray,
@@ -37,18 +37,14 @@ struct NowPlayingView: View {
                     viewModel.playNextTrack()
                 }, label: {
                     Image(systemName: "forward.fill")
-                        .accesoryModifier(color: .gray, size: .small)
+                        .accesoryModifier(color: .gray, size: .medium)
+                        .padding(10)
                 })
             }
-            .padding(.horizontal, 20)
+            .padding(.leading, 20)
+            .padding(.trailing, 10)
         }
         .background(BlurView())
         .preferredColorScheme(.dark)
     }
 }
-
-//struct NowPlayingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockAnalyticsEngine())))
-//    }
-//}

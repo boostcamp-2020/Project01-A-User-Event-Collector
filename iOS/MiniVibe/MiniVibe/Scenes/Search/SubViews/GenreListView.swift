@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct GenreListView: View {
-    private let manager: AnalyticsManager
-    init(manager: AnalyticsManager) {
+    private let manager: EventManager
+    init(manager: EventManager) {
         self.manager = manager
     }
 
@@ -51,6 +52,6 @@ struct GenreListView: View {
 
 struct GenreListView_Previews: PreviewProvider {
     static var previews: some View {
-        GenreListView(manager: AnalyticsManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
+        GenreListView(manager: EventManager(serverEngine: nil, backupEngine: nil, alertEngine: nil))
     }
 }

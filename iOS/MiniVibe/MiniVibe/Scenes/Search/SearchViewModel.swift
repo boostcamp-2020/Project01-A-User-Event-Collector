@@ -7,6 +7,7 @@
 import Foundation
 import Combine
 import UIKit
+import DiveEventCollector
 
 class SearchViewModel: ObservableObject {
     @Published var searchText = ""
@@ -15,11 +16,11 @@ class SearchViewModel: ObservableObject {
     @Published var albums = [Album]()
     @Published var artists = [Artist]()
     
-    var cancellables: Set<AnyCancellable> = []
-    private let manager: AnalyticsManager
+    private var cancellables: Set<AnyCancellable> = []
+    private let manager: EventManager
     private let networkManager = NetworkManager()
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         addSubscriptions()
     }
@@ -28,7 +29,15 @@ class SearchViewModel: ObservableObject {
         cancellables.forEach { $0.cancel() }
     }
     
-    func fetch(_ searchText: String) {
+    func reset() {
+        isEditing = false
+        searchText = ""
+        tracks.removeAll()
+        albums.removeAll()
+        artists.removeAll()
+    }
+    
+    private func fetch(_ searchText: String) {
         if isEditing {
             let url = URLBuilder(pathType: .api,
                                  endPoint: .search,
@@ -47,20 +56,12 @@ class SearchViewModel: ObservableObject {
         }
     }
     
-    func addSubscriptions() {
+    private func addSubscriptions() {
         searchSubscription()
         searchEventSubscription()
     }
     
-    func reset() {
-        isEditing = false
-        searchText = ""
-        tracks.removeAll()
-        albums.removeAll()
-        artists.removeAll()
-    }
-    
-    func searchSubscription() {
+    private func searchSubscription() {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()

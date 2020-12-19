@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct ChartView: View {
     @StateObject private var viewModel = PlaylistViewModel()
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     private let playlistID: Int
     private let layout = [GridItem(.flexible())]
     
-    init(playlistID: Int, manager: AnalyticsManager) {
+    init(playlistID: Int, manager: EventManager) {
         self.playlistID = playlistID
         self.manager = manager
     }
@@ -37,8 +38,3 @@ struct ChartView: View {
         }    }
     
 }
-//struct ChartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChartView(playlistID: 18, manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-//    }
-//}

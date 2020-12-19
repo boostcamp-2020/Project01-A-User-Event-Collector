@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct RectangleCellInfoView: View {
-    var didPressPlayButton: (() -> Void)?
     var body: some View {
         ZStack(alignment: .topLeading) {
             Rectangle()
                 .fill(Color.white)
             HStack {
-                Text("아이유, 타이틀곡 ‘Blueming’ 티저공개... 미니 5집으로 컴백")
+                Text("BoostCamp 01_A 팀 사용자 이벤트 수집기 DIVE 선보여...")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.black)
@@ -22,19 +21,6 @@ struct RectangleCellInfoView: View {
                     .padding([.horizontal, .top])
                 Spacer()
             }
-            HStack {
-                Spacer()
-                Button(action: {
-                    didPressPlayButton?()
-                }, label: {
-                    Image(systemName: "play.circle")
-                    Text("음악듣기")
-                })
-                .foregroundColor(Color.pink)
-                .padding(.trailing, 14)
-            }
-            .padding(.trailing, 14)
-            .padding(.top, 64)
         }
         .frame(width: UIScreen.main.bounds.width - 20,
                 height: UIScreen.main.bounds.width/4)

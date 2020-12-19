@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct DJStationListView: View {
     
     @StateObject var stationViewModel = DJStationListViewModel()
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
     }
     
@@ -40,9 +41,3 @@ struct DJStationListView: View {
         .onAppear(perform: stationViewModel.fetch)
     }
 }
-
-//struct DJStationListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DJStationListView()
-//    }
-//}

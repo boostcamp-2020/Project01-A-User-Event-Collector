@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 enum MiniVibeTab: Hashable, CaseIterable {
     case today
@@ -16,12 +17,12 @@ enum MiniVibeTab: Hashable, CaseIterable {
 
 struct CustomTabView: View {
     
-    @State var selectedTab: MiniVibeTab = MiniVibeTab.today
-    @ObservedObject var playerViewModel: PlayerViewModel
+    @State private var selectedTab: MiniVibeTab = MiniVibeTab.today
+    @ObservedObject private var playerViewModel: PlayerViewModel
     
-    private let manager: AnalyticsManager
+    private let manager: EventManager
 
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         self.playerViewModel = PlayerViewModel(manager: manager)
     }

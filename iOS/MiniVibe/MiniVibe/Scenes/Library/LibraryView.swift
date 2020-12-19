@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct LibraryView: View {
     private let layout = [GridItem(.flexible())]
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     @StateObject var viewModel: LibraryViewModel
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         _viewModel = StateObject(wrappedValue: LibraryViewModel(manager: manager))
     }
@@ -37,9 +38,3 @@ struct LibraryView: View {
         }
     }
 }
-
-//struct LibraryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LibraryView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-//    }
-//}

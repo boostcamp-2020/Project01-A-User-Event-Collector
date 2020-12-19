@@ -24,10 +24,11 @@ struct ToggleableImage: View {
             if isEnabled {
                 Image(systemName: imageWhenTrue)
                     .accesoryModifier(color: colorWhenTrue, size: size)
+                    .padding(5)
             } else {
                 Image(systemName: imageWhenFalse)
                     .accesoryModifier(color: colorWhenFalse, size: size)
-
+                    .padding(5)
             }
         })
         .accentColor(.primary)

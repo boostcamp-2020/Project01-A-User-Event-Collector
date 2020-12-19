@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 class CategoryRouter: DestinationOrientedRouterProtocol {
     
     typealias RoutingType = MiniVibeType
-    let manager: AnalyticsManager
+    let manager: EventManager
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
     }
 

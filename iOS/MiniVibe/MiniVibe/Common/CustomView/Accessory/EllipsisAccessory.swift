@@ -14,7 +14,7 @@ struct EllipsisAccessory: View {
         }, label: {
             Image(systemName: "ellipsis")
                 .accesoryModifier(color: .gray, size: .small)
-            
+                .padding([.leading, .vertical])
         })
         .buttonStyle(BorderlessButtonStyle())
     }

@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayerView: View {
     @ObservedObject var viewModel: PlayerViewModel
     @Binding var showMediaPlayer: Bool
-    @State var timeDuration = Float(180)
+    @State private var timeDuration = Float(180)
     
     var body: some View {
         GeometryReader { geometry in
@@ -50,21 +50,12 @@ struct PlayerView: View {
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             viewModel.manager.log(ScreenEvent.playerPushed)
+            viewModel.closePlayerView = {
+                showMediaPlayer = false
+            }
         }
         .onDisappear {
             viewModel.manager.log(ScreenEvent.playerPopped)
         }
     }
 }
-
-//struct PlayerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            PlayerView(viewModel: PlayerViewModel(), showMediaPlayer: .constant(true))
-//                .colorScheme(.dark)
-//            //작은 화면 프리뷰
-//            PlayerView(viewModel: PlayerViewModel(), showMediaPlayer: .constant(true))
-//                .previewDevice("iPhone 8")
-//        }
-//    }
-//}

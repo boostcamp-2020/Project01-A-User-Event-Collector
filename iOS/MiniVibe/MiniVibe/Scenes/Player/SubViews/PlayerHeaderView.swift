@@ -14,6 +14,7 @@ struct PlayerHeaderView: View {
         HStack {
             Image(systemName: "flame")
                 .accesoryModifier(color: .secondary, size: .medium)
+                .hidden()
             Spacer()
             Text("플레이리스트 제목")
             Spacer()
@@ -25,5 +26,12 @@ struct PlayerHeaderView: View {
             })
             .accessibility(identifier: "ClosePlayer")
         }
+    }
+}
+
+struct PlayerHeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerHeaderView(showMediaPlayer: .constant(true))
+            .preferredColorScheme(.dark)
     }
 }

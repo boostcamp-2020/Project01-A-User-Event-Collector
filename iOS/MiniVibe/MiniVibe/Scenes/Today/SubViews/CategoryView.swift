@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct CategoryView: View {
-    let category: Category
+    private let category: Category
     private let router: CategoryRouter
     
-    init(category: Category, manager: AnalyticsManager) {
+    init(category: Category, manager: EventManager) {
         self.category = category
         router = CategoryRouter(manager: manager)
     }
@@ -42,22 +43,3 @@ struct CategoryView: View {
     }
     
 }
-
-//struct CategoryRowView_Previews: PreviewProvider {
-//    static let favoritePlaylistItems: [CategoryItem] =
-//        [.init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
-//         .init(id: 2, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil),
-//         .init(id: 1, imageName: "favorite1", title: "잠못드는 밤", author: "VIBE", description: nil)
-//        ]
-//    
-//    static var previews: some View {
-//        NavigationView {
-//            CategoryView(category: Category(title: "Station",
-//                                            items: favoritePlaylistItems,
-//                                            type: .magazines,
-//                                            mode: .full),
-//                         manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-//        }
-//        //        .preferredColorScheme(.dark)
-//    }
-//}

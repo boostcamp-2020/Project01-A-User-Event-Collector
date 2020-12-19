@@ -7,13 +7,14 @@
 
 import SwiftUI
 import Combine
+import DiveEventCollector
 
 struct SearchView: View {
     @StateObject private var viewModel: SearchViewModel
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     private let layout = [GridItem(.flexible())]
     
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         _viewModel = StateObject(wrappedValue: SearchViewModel(manager: manager))
     }
@@ -41,9 +42,3 @@ struct SearchView: View {
         }
     }
 }
-
-//struct SearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-//    }
-//}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct TrackHorizontalListView: View {
     let tracks: [Track]
@@ -16,9 +17,9 @@ struct TrackHorizontalListView: View {
         GridItem(.fixed(60)),
         GridItem(.fixed(60))
     ]
-    private let manager: AnalyticsManager
+    private let manager: EventManager
 
-    init(tracks: [Track], manager: AnalyticsManager) {
+    init(tracks: [Track], manager: EventManager) {
         self.tracks = tracks
         self.manager = manager
     }
@@ -50,6 +51,6 @@ struct TrackHorizontalListView: View {
 //struct TrackHorizontalListView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
-//                                manager: AnalyticsManager(engine: MockAnalyticsEngine()))
+//                                manager: AnalyticsManager(engine: MockServerEngine()))
 //    }
 //}

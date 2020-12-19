@@ -5,31 +5,32 @@
 //  Created by 강병민 on 2020/11/27.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 import AVFoundation
 import MediaPlayer
 import CoreData
+import DiveEventCollector
 
 class PlayerViewModel: ObservableObject {
     @Published var currentTrack: Track?
-    @Published var currentTrackIndex: Int?
     @Published var queue: [Track] = []
     @Published var isPlaying = false
     @Published var isShuffle = false
     @Published var isRepeat = false
     @Published var isFavorite = false
-    private var isInitial = true
     @Published private var timeRemaining = 3
     
+    private var isInitial = true
     private let coreTrackAPI = CoreTrackAPI()
     private var volumeChangeAmount = 0
     private var timer: Timer?
     private var cancellables = Set<AnyCancellable>()
     
-    deinit {
-        cancellables.forEach { $0.cancel() }
-    }
+    private let session = AVAudioSession.sharedInstance()// Audio session object
+    private var progressObserver: NSKeyValueObservation!// Observer
+    
+    var closePlayerView: (() -> Void)?
     
     var trackName: String {
         currentTrack?.name ?? "오늘 뭐 듣지?"
@@ -43,13 +44,15 @@ class PlayerViewModel: ObservableObject {
     var coverData: Data? {
         currentTrack?.coverData
     }
+    var currentTrackIndex: Int? {
+        queue.firstIndex { track -> Bool in
+            track.id == currentTrack?.id
+        }
+    }
     
-    let manager: AnalyticsManager
+    let manager: EventManager
     
-    private let session = AVAudioSession.sharedInstance()// Audio session object
-    private var progressObserver: NSKeyValueObservation!// Observer
-    
-    init(manager: AnalyticsManager) {
+    init(manager: EventManager) {
         self.manager = manager
         setupSubscriptions()
         setupVolumeListener()
@@ -57,12 +60,20 @@ class PlayerViewModel: ObservableObject {
         isInitial = false
     }
     
+    deinit {
+        cancellables.forEach { $0.cancel() }
+    }
+    
+    // 새로운 트랙(음원)을 최근 재생한 큐에 추가
+    // 코어데이터에 저장한 후 코어데이터에 저장된 전체 트랙 목록 불러온다.
     func update(with track: Track) {
         isPlaying = true
         coreTrackAPI.create(with: track, isQueue: true)
         fetchFromCoreData()
     }
     
+    // 새로운 트랙 리스트를 최근 재상한 큐에 추가
+    // 셔플할 필요가 있는지 판단해서 저장
     func update(with tracks: [Track], isShuffled: Bool = false) {
         let mytracks = isShuffled ? tracks.shuffled() : tracks
         isPlaying = true
@@ -71,13 +82,6 @@ class PlayerViewModel: ObservableObject {
             coreTrackAPI.create(with: $0, isQueue: true)
         }
         fetchFromCoreData()
-    }
-    
-    private func fetchFromCoreData() {
-        let predicate = NSPredicate(format: "isQueue == %d", true)
-        let coreTracks = coreTrackAPI.fetch(predicate: predicate)
-        self.queue = coreTracks.map { Track(from: $0) }
-        currentTrack = queue.last
     }
     
     func changeCurrentTrackInQueue(to track: Track) {
@@ -101,7 +105,7 @@ class PlayerViewModel: ObservableObject {
         queue.move(fromOffsets: source, toOffset: destination)
     }
     
-    func didToggleTrash(id: Int) {
+    func didToggleDeleteAccessory(id: Int) {
         queue = queue.filter {
             $0.id != id
         }
@@ -109,6 +113,14 @@ class PlayerViewModel: ObservableObject {
             currentTrack = queue.last
         }
         coreTrackAPI.delete(id: id)
+    }
+    
+    // 코어데이터로부터 최근 재상한 큐에 포함될 트랙 목록을 불러옴
+    private func fetchFromCoreData() {
+        let predicate = NSPredicate(format: "isQueue == %d", true)
+        let coreTracks = coreTrackAPI.fetch(predicate: predicate)
+        self.queue = coreTracks.map { Track(from: $0) }
+        currentTrack = queue.last
     }
     
     private func safeAppend(_ track: Track) {
@@ -156,7 +168,7 @@ extension PlayerViewModel {
         shuffleSubscription()
         repeatSubscription()
         timeSubscription()
-        trackIndexSubscription()
+        queueSubscription()
     }
     
     private func setupVolumeListener() {
@@ -236,11 +248,12 @@ extension PlayerViewModel {
             .store(in: &cancellables)
     }
     
-    private func trackIndexSubscription() {
-        $currentTrack
-            .compactMap { $0 }
-            .sink { [weak self] track in
-                self?.currentTrackIndex = self?.queue.firstIndex(where: {$0.id == track.id})
+    private func queueSubscription() {
+        $queue
+            .sink { [weak self] tracks in
+                if tracks.isEmpty {
+                    self?.closePlayerView?()
+                }
             }
             .store(in: &cancellables)
     }

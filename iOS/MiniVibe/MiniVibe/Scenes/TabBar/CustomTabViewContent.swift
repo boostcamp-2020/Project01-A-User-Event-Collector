@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct CustomTabViewContent: View {
-    private let manager: AnalyticsManager
-    var selectedTab: MiniVibeTab
+    private let manager: EventManager
+    private var selectedTab: MiniVibeTab
 
-    init(manager: AnalyticsManager, selectedTab: MiniVibeTab) {
+    init(manager: EventManager, selectedTab: MiniVibeTab) {
         self.manager = manager
         self.selectedTab = selectedTab
     }

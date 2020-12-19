@@ -6,26 +6,28 @@
 //
 
 import SwiftUI
+import DiveEventCollector
 
 struct TodayView: View {
     private let router: TodayRouter
-    private let manager: AnalyticsManager
+    private let manager: EventManager
     @StateObject private var viewModel = TodayViewModel()
-
-    init(manager: AnalyticsManager) {
+    @State private var isAlerting = true
+    
+    init(manager: EventManager) {
         self.manager = manager
         self.router = TodayRouter(manager: manager)
     }
-
+    
     var body: some View {
         NavigationView {
             List {
-                let stationCategory = Category(stations: viewModel.stations)
+                let stationCategory = Category(stations: Array(viewModel.stations.prefix(3)))
                 MemorySafeNavigationLink(
                     contentView: CategoryView(category: stationCategory, manager: manager),
                     destination: router.getDestination(to: .djStations)
                 )
-
+                
                 let favoritesCategory = Category(playlists: viewModel.favorites,
                                                  type: .favorites,
                                                  mode: .half)
@@ -49,16 +51,22 @@ struct TodayView: View {
                     destination: router.getDestination(to: .recommendations)
                 )
                 
-//                MemorySafeNavigationLink(
-//                    contentView: TrackHorizontalListView(tracks: viewModel.tracks),
-//                    destination: router.getDestination(to: .tracks)
-//                )
+                //                MemorySafeNavigationLink(
+                //                    contentView: TrackHorizontalListView(tracks: viewModel.tracks),
+                //                    destination: router.getDestination(to: .tracks)
+                //                )
                 
                 Rectangle()
                     .clearBottom()
             }
             .listStyle(PlainListStyle())
             .navigationTitle("VIBE")
+            .navigationBarItems(trailing:
+                                    Button(isAlerting ? "Alert Off" : "Alert On") {
+                                        manager.isAlerting.toggle()
+                                        isAlerting = manager.isAlerting
+                                    }
+            )
             .onAppear(perform: {
                 viewModel.fetchAll()
                 manager.log(ScreenEvent.screenViewed(.today))
@@ -68,9 +76,3 @@ struct TodayView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-//struct TodayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodayView(manager: AnalyticsManager(engine: MockAnalyticsEngine()))
-//    }
-//}
