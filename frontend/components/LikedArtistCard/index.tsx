@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Artist } from "../../interfaces";
 import Img from "../Img";
-// import HeartButton from "../Button/HeartButton";
 import Heart from "../Button/HeartButton";
 
 interface LikedArtistProps {

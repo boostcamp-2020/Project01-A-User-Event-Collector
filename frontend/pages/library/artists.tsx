@@ -1,7 +1,5 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
-import Card from "../../components/Card";
-import Img from "../../components/Img";
 import { Artist } from "../../interfaces";
 import LikedArtistCard from "../../components/LikedArtistCard";
 import myAxios from "../../utils/myAxios";

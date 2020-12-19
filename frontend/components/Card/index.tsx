@@ -20,7 +20,6 @@ export interface CardProps {
 }
 
 function convertData(dataType: SlidebarTypes, rawData?: any): cardData {
-  console.log(rawData);
   switch (dataType) {
     case "Magazines":
       return {
