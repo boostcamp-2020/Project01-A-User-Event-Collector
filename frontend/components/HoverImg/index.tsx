@@ -7,10 +7,12 @@ import TrackCardHoverCover from "./TrackCardHoverCover";
 
 export interface HoverImgProps {
   varient?: string;
+  heartType: "Tracks" | "Albums" | "Playlists" | "Artists";
+  heartId: number;
   src?: string;
 }
 
-const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
+const HoverImg: React.FC<HoverImgProps> = ({ varient, src, heartType, heartId }: HoverImgProps) => {
   const [hover, setHover] = useState(false);
 
   const onHover = () => {
@@ -27,7 +29,7 @@ const HoverImg: React.FC<HoverImgProps> = ({ varient, src }: HoverImgProps) => {
       {varient === "trackCardCover" ? (
         <TrackCardHoverCover hover={hover} />
       ) : (
-        <GeneralHoverCover hover={hover} />
+        <GeneralHoverCover hover={hover} heartType={heartType} heartId={heartId} />
       )}
     </StyledHoverImg>
   );

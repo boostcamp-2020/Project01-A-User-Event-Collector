@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Ellipsis from "../../Button/EllipsisButton";
 import EllipsisModal from "../../Button/EllipsisButton/EllipsisModal";
+import Heart from "../../Button/HeartButton";
 import HoverPlayButton from "../../Button/HoverPlayButton";
 
 interface StyledProps {
@@ -10,6 +11,8 @@ interface StyledProps {
 
 interface Props {
   hover?: boolean;
+  heartType: "Tracks" | "Albums" | "Playlists" | "Artists";
+  heartId: number;
 }
 
 export const StyledGeneralHoverCover = styled.div<StyledProps>`
@@ -29,24 +32,15 @@ const PlayButton = styled(HoverPlayButton)`
   left: 10%;
 `;
 
-const GeneralHoverCover: React.FC<Props> = ({ hover }: Props) => {
-  const [showModal, setShowModal] = useState(false);
-  const handleShowModal = (e: MouseEvent) => {
-    e.stopPropagation();
-    setShowModal(!showModal);
-  };
-
+const GeneralHoverCover: React.FC<Props> = ({ hover, heartType, heartId }: Props) => {
   return (
     <>
-      {hover ? (
+      {hover && (
         <StyledGeneralHoverCover>
           <PlayButton />
-          <Ellipsis onClick={handleShowModal} />
+          <Heart type={heartType} targetId={heartId} />
         </StyledGeneralHoverCover>
-      ) : (
-        ""
       )}
-      {showModal ? <EllipsisModal /> : ""}
     </>
   );
 };

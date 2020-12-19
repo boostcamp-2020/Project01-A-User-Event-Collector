@@ -3,15 +3,7 @@ import Router from "next/router";
 import React, { MouseEvent } from "react";
 import HoverImg from "../HoverImg";
 import { StyledLinkDiv, SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
-
-type SlidebarTypes =
-  | "Tracks"
-  | "Albums"
-  | "Playlists"
-  | "Artists"
-  | "Magazines"
-  | "News"
-  | "MyPlaylists";
+import { SlidebarTypes } from "../Slidebar";
 
 interface cardData {
   src?: string;
@@ -75,6 +67,18 @@ function convertData(dataType: SlidebarTypes, rawData?: any): cardData {
 
 const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) => {
   const { src, title, smallText, mainLink, smallLink } = convertData(dataType, rawData);
+  const makeHoverProps = (pageType: SlidebarTypes) => {
+    switch (pageType) {
+      case "Magazines":
+      case "News":
+      case "MyPlaylists":
+        return "Playlists";
+
+      default:
+        return pageType;
+    }
+  };
+
   const linkHandler = (link?: string) => (e: MouseEvent) => {
     e.stopPropagation();
     Router.push(link || "");
@@ -83,7 +87,12 @@ const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) =>
   return (
     <StyledCard varient={varient}>
       <StyledLinkDiv onClick={linkHandler(mainLink)}>
-        <HoverImg varient={varient} src={src} />
+        <HoverImg
+          varient={varient}
+          heartType={makeHoverProps(dataType)}
+          heartId={rawData.playlistId || rawData.id}
+          src={src}
+        />
       </StyledLinkDiv>
       <StyledLinkDiv onClick={linkHandler(mainLink)}>
         <TitleA>{title}</TitleA>

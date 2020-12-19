@@ -15,14 +15,14 @@ import calculatePixels from "./func/calculatePixels";
 import onNextClicked from "./func/onNextClicked";
 import onPreviousClicked from "./func/onPreviousClicked";
 
-type SlidebarTypes =
+export type SlidebarTypes =
   | "Tracks"
   | "Albums"
   | "Playlists"
   | "Artists"
   | "Magazines"
   | "News"
-  | "MyPlaylist";
+  | "MyPlaylists";
 
 export interface SlidebarProps {
   varient: string;
