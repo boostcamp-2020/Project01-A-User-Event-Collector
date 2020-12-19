@@ -38,7 +38,8 @@ struct PlayerControlView: View {
                                 imageWhenTrue: "heart.fill", colorWhenTrue: .red,
                                 imageWhenFalse: "heart", colorWhenFalse: .red,
                                 size: .large) {
-                    viewModel.manager.log(PlayerEvent.isFavorite(viewModel.isFavorite, trackID: viewModel.currentTrack?.id ?? 0))
+                    viewModel.manager.log(PlayerEvent.isFavorite(viewModel.isFavorite,
+                                                                 trackID: viewModel.currentTrack?.id ?? 0))
                 }
                     .accessibility(identifier: "Heart")
                 .accentColor(.red)

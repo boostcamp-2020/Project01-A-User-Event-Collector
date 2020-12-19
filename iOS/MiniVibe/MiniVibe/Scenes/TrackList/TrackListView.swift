@@ -36,9 +36,3 @@ struct TrackListView: View {
         }
     }
 }
-
-//struct TrackListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrackListView(id: 1)
-//    }
-//}

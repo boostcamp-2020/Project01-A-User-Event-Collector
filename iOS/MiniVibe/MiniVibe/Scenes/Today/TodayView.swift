@@ -76,9 +76,3 @@ struct TodayView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-//struct TodayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodayView(manager: AnalyticsManager(engine: MockServerEngine()))
-//    }
-//}

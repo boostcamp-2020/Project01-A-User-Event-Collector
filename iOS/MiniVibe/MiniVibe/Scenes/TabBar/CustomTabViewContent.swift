@@ -10,7 +10,7 @@ import DiveEventCollector
 
 struct CustomTabViewContent: View {
     private let manager: EventManager
-    var selectedTab: MiniVibeTab
+    private var selectedTab: MiniVibeTab
 
     init(manager: EventManager, selectedTab: MiniVibeTab) {
         self.manager = manager

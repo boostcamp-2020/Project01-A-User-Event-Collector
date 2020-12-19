@@ -41,9 +41,3 @@ struct DJStationListView: View {
         .onAppear(perform: stationViewModel.fetch)
     }
 }
-
-//struct DJStationListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DJStationListView()
-//    }
-//}

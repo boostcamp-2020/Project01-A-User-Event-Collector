@@ -48,9 +48,3 @@ struct NowPlayingView: View {
         .preferredColorScheme(.dark)
     }
 }
-
-//struct NowPlayingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NowPlayingView(viewModel: PlayerViewModel(manager: AnalyticsManager(engine: MockServerEngine())))
-//    }
-//}

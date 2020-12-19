@@ -9,7 +9,6 @@ import Foundation
 import Combine
 import DiveEventCollector
 
-
 class MongoDBEventEngine: EventSendable {
     
     private let networkManager = NetworkManager()
@@ -27,11 +26,7 @@ class MongoDBEventEngine: EventSendable {
                                            method: .post,
                                            body: jsonBody).create()
         
-        networkManager.request(urlRequest: urlrequest) { data in
-            if let prettifyJSONString = data.prettifyJSONString {
-                print(prettifyJSONString)
-            }
-        }
+        networkManager.request(urlRequest: urlrequest) { _ in }
     }
     
     deinit {

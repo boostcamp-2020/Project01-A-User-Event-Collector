@@ -21,10 +21,9 @@ class TodayViewModel: ObservableObject {
         fetch(type: .favorites)
         fetch(type: .magazines)
         fetch(type: .recommendations)
-//        fetch(type: .playlists, id: 18)
     }
     
-    func fetch(type: MiniVibeType, id: Int? = nil) {
+    private func fetch(type: MiniVibeType, id: Int? = nil) {
         let url = URLBuilder(pathType: .api,
                              endPoint: type,
                              id: id).create()
