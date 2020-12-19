@@ -20,8 +20,6 @@ export default NewsPage;
 export async function getServerSideProps({ params }: any): Promise<any> {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
-  // const Cookie = req.headers.cookie;
-  // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
   const { NewsData } = await res.json();
