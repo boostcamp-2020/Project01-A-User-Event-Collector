@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { concatenatePlayQueue } from "../../reduxModules/playQueue";
 import { Track } from "../../interfaces";
-import {
-  emptyCheckedTrack,
-  setAllChecked,
-  toggleAllChecked,
-} from "../../reduxModules/checkedTrack";
+import { setAllChecked, setAllUnchecked, toggleAllChecked } from "../../reduxModules/checkedTrack";
 import { RootState } from "../../reduxModules";
 import icons from "../../constant/icons";
 import {
@@ -27,17 +23,25 @@ import {
 const PlaylistCheckBar = (): React.ReactElement => {
   const {
     allChecked,
+    allUnchecked,
     checkedTracks,
-  }: { allChecked: boolean; checkedTracks: Set<Track> } = useSelector(
+  }: { allChecked: boolean; allUnchecked: boolean; checkedTracks: Set<Track> } = useSelector(
     (state: RootState) => state.checkedTracks,
   );
   const dispatch = useDispatch();
   const allCheckHandler = () => {
     dispatch(toggleAllChecked());
+    dispatch(setAllUnchecked(false));
   };
 
   const concatePlaylist = () => {
     dispatch(concatenatePlayQueue(checkedTracks));
+  };
+
+  const closeBtnHandler = () => {
+    checkedTracks.clear();
+    dispatch(setAllChecked(false));
+    dispatch(setAllUnchecked(true));
   };
 
   return (
@@ -52,7 +56,7 @@ const PlaylistCheckBar = (): React.ReactElement => {
             {checkedTracks.size}곡 선택
           </StyledInfoSectionCheckedNumber>
         </StyledInfoSectionLeft>
-        <StyledInfoSectionRight>{icons.x}</StyledInfoSectionRight>
+        <StyledInfoSectionRight onClick={closeBtnHandler}>{icons.x}</StyledInfoSectionRight>
       </StyledInfoSection>
       <StyledButtonSection>
         <StyledButtonSectionButtons>
