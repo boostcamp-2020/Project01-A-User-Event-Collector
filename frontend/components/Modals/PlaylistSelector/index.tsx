@@ -83,8 +83,8 @@ const PlaylistSelectModal: React.FC<Props> = ({ tracks }: Props) => {
         <StyledTitle>내 플레이리스트에 추가</StyledTitle>
         <PlaylistList>
           <ModalNewRow />
-          {myPlaylists.map((value) => (
-            <ModalRow data={value} tracks={tracks} setShowModal={setShowModal} />
+          {myPlaylists.map((value, idx) => (
+            <ModalRow key={-idx} data={value} tracks={tracks} setShowModal={setShowModal} />
           ))}
         </PlaylistList>
       </StyledModal>

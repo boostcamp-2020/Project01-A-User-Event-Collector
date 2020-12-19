@@ -64,8 +64,8 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
       </StyledImg>
       <StyledTrackName>{trackName}</StyledTrackName>
       <StyledArtists>
-        {Artists.map((artist) => (
-          <Link href={`/artists/${artist.id}`}>
+        {Artists.map((artist, idx) => (
+          <Link key={-idx} href={`/artists/${artist.id}`}>
             <span style={{ padding: "3px" }}>{artist.artistName}</span>
           </Link>
         ))}

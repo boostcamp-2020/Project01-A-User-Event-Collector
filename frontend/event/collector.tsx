@@ -52,7 +52,7 @@ const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
           dispatch({ userEvent: simple[eventKey], props: e.children, nativeEvent: e });
           complexInstanceArr.forEach((complexInstance) => complexInstance.notify(eventKey));
         }
-        if (simple[eventKey].stopPropagation === true) {
+        if (simple[eventKey] && simple[eventKey].stopPropagation === true) {
           e.stopPropagation();
         }
       });

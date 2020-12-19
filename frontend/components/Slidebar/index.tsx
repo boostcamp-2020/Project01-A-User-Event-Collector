@@ -1,5 +1,13 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import { StyledSlidebar, SlideContainer, StyledTitle, SlideContent, StyledIcon } from "./styled";
+import Link from "next/link";
+import {
+  StyledSlidebar,
+  SlideContainer,
+  StyledTitle,
+  SlideContent,
+  StyledLink,
+  StyledIcon,
+} from "./styled";
 import icons from "../../constant/icons";
 import { SliderNextButtton, SliderPreviousButton } from "../Button/SlidebarButton";
 import Card from "../Card";
@@ -78,10 +86,16 @@ const Slidebar: FC<SlidebarProps> = ({
   return (
     <StyledSlidebar>
       <StyledTitle>
-        <a href={titleLink}>
-          {title}
-          <StyledIcon>{icons.angleRight}</StyledIcon>
-        </a>
+        {titleLink ? (
+          <Link href={titleLink}>
+            <StyledLink>
+              {title}
+              <StyledIcon>{icons.angleRight}</StyledIcon>
+            </StyledLink>
+          </Link>
+        ) : (
+          title
+        )}
       </StyledTitle>
       <SlideContainer>
         <SlideContent currentTranslateX={currentTranslateX} ref={currentSlideRef}>

@@ -1,6 +1,8 @@
-import React from "react";
+import Link from "next/link";
+import Router from "next/router";
+import React, { MouseEvent } from "react";
 import HoverImg from "../HoverImg";
-import { SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
+import { StyledLinkDiv, SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
 
 interface cardData {
   src?: string;
@@ -73,12 +75,23 @@ function convertData(
 
 const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) => {
   const { src, title, smallText, mainLink, smallLink } = convertData(dataType, rawData);
+  const linkHandler = (link?: string) => (e: MouseEvent) => {
+    e.stopPropagation();
+    Router.push(link || "");
+  };
+
   return (
     <StyledCard varient={varient}>
-      <HoverImg varient={varient} src={src} />
-      <TitleA href={mainLink}>{title}</TitleA>
+      <StyledLinkDiv onClick={linkHandler(mainLink)}>
+        <HoverImg varient={varient} src={src} />
+      </StyledLinkDiv>
+      <StyledLinkDiv onClick={linkHandler(mainLink)}>
+        <TitleA>{title}</TitleA>
+      </StyledLinkDiv>
       {smallLink ? (
-        <SmallA href={smallLink}>{smallText}</SmallA>
+        <Link href={`${smallLink}`}>
+          <SmallA href={smallLink}>{smallText}</SmallA>
+        </Link>
       ) : (
         <SmallSpan>{smallText}</SmallSpan>
       )}

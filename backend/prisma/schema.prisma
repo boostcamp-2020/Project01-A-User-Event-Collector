@@ -76,6 +76,7 @@ model Genres {
   id             Int              @id @default(autoincrement())
   genreName      String?
   popularity     Int?
+  genreColor     String?
   Albums_Genres  Albums_Genres[]
   Artists_Genres Artists_Genres[]
   Tracks_Genres  Tracks_Genres[]

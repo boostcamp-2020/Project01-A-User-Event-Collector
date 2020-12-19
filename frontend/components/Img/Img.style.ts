@@ -15,7 +15,7 @@ const themes: any = {
     height: 12rem;
   `,
   todayNews: `
-    width: 20rem;
+    min-width: 20rem;
     height: 12rem;
   `,
   descriptionCover: `

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React, { FC } from "react";
-import icons from "../../../constant/icons";
-import { Artist, Track } from "../../../interfaces";
-import Heart from "../../Heart";
-import Img from "../../Img";
+import icons from "../../../../constant/icons";
+import { Artist, Track } from "../../../../interfaces";
+import Heart from "../../../Button/HeartButton";
+import Img from "../../../Img";
 import {
   StyledPlaybarTrackInfo,
   StyledPlaybarTrackCard,

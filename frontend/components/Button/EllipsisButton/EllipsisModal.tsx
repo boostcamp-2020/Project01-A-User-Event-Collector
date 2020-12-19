@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { Album, Artist, Playlist, Track } from "../../interfaces";
-import { concatenatePlayQueue } from "../../reduxModules/playQueue";
+import { Album, Artist, Playlist, Track } from "../../../interfaces";
+import { concatenatePlayQueue } from "../../../reduxModules/playQueue";
 
 const StyledHiddenModal = styled.div`
   display: flex;

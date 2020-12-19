@@ -50,3 +50,8 @@ export const SmallSpan = styled.span`
   font-size: 0.7rem;
   color: #777777;
 `;
+
+export const StyledLinkDiv = styled.div`
+  display: flex;
+  cursor: pointer;
+`;

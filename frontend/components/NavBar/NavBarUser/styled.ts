@@ -9,7 +9,7 @@ const StyledNavUser = styled.div`
   margin: 1.5rem 0rem;
   border-top: 0.1rem solid #282828;
   border-bottom: 0.1rem solid #282828;
-  &: hover {
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -18,8 +18,8 @@ const StyledUser = styled.div`
   padding-left: 0.4rem;
   margin-left: 0.3rem;
   font-size: 1.25rem;
-  ${({ loggedIn }: { loggedIn: boolean }) => {
-    return loggedIn
+  ${({ isLogged }: { isLogged: boolean }) => {
+    return isLogged
       ? `
         line-height: 1.25rem;
         color: #ccc;
@@ -29,7 +29,7 @@ const StyledUser = styled.div`
         color: #888;
         `;
   }}
-  &: hover {
+  &:hover {
     color: #fff;
   } ;
 `;

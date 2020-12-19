@@ -39,7 +39,7 @@ interface Magazine {
   playlistId: number;
 }
 
-interface _News {
+interface News {
   id: number;
   newsName: string;
   type?: string;
@@ -47,4 +47,4 @@ interface _News {
   playlistId?: number;
 }
 
-export type { Track, Artist, Album, Playlist, Magazine, _News };
+export type { Track, Artist, Album, Playlist, Magazine, News };
