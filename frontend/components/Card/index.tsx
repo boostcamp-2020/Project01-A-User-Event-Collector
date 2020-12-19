@@ -20,6 +20,7 @@ export interface CardProps {
 }
 
 function convertData(dataType: SlidebarTypes, rawData?: any): cardData {
+  console.log(rawData);
   switch (dataType) {
     case "Magazines":
       return {
@@ -40,7 +41,7 @@ function convertData(dataType: SlidebarTypes, rawData?: any): cardData {
       return {
         src: rawData.cover,
         title: rawData.albumName,
-        smallText: rawData.artistId,
+        smallText: rawData.Artists?.artistName,
         mainLink: `/albums/${rawData.id}`,
         smallLink: `/artists/${rawData.artistId}`,
       };
