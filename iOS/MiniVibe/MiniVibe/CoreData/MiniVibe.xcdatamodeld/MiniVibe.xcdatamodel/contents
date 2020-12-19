@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CoreAlbum" representedClassName="CoreAlbum" syncable="YES" codeGenerationType="class">
+        <attribute name="cover" optional="YES" attributeType="Binary"/>
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreTrack" inverseName="album" inverseEntity="CoreTrack"/>
+    </entity>
+    <entity name="CoreArtist" representedClassName="CoreArtist" syncable="YES" codeGenerationType="class">
+        <attribute name="cover" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreTrack" inverseName="artists" inverseEntity="CoreTrack"/>
+    </entity>
+    <entity name="CoreEvent" representedClassName="CoreEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="metadatas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CoreEventMetadata" inverseName="event" inverseEntity="CoreEventMetadata"/>
+    </entity>
+    <entity name="CoreEventMetadata" representedClassName="CoreEventMetadata" syncable="YES" codeGenerationType="class">
+        <attribute name="key" attributeType="String"/>
+        <attribute name="value" attributeType="String"/>
+        <relationship name="event" maxCount="1" deletionRule="Cascade" destinationEntity="CoreEvent" inverseName="metadatas" inverseEntity="CoreEvent"/>
+    </entity>
+    <entity name="CoreTrack" representedClassName="CoreTrack" syncable="YES" codeGenerationType="class">
+        <attribute name="albumTrackNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isQueue" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreAlbum" inverseName="tracks" inverseEntity="CoreAlbum"/>
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreArtist" inverseName="tracks" inverseEntity="CoreArtist"/>
+    </entity>
+    <elements>
+        <element name="CoreAlbum" positionX="-54" positionY="18" width="128" height="118"/>
+        <element name="CoreArtist" positionX="-36" positionY="45" width="128" height="103"/>
+        <element name="CoreEvent" positionX="-54" positionY="54" width="128" height="103"/>
+        <element name="CoreEventMetadata" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="CoreTrack" positionX="-63" positionY="-18" width="128" height="163"/>
+    </elements>
+</model>
