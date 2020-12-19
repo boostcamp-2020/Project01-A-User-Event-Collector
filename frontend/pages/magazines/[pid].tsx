@@ -14,7 +14,7 @@ const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
     // eslint-disable-next-line no-console
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyleMagazinePage>
-        <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
+        <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />
       </StyleMagazinePage>
     </Collector>
   );
