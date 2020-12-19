@@ -36,7 +36,7 @@ const StyledRank = styled.div`
   display: flex;
   width: auto;
   height: 100%;
-  justify-conent: end;
+  justify-content: end;
   align-items: start;
 `;
 
@@ -77,7 +77,7 @@ const ChartTrackCard: FC<Props> = ({ data }: Props) => {
 
   return (
     <StyleTrack>
-      <HoverImg src={cover} varient="trackCardCover" />
+      <HoverImg src={cover} varient="trackCardCover" heartType="Tracks" heartId={-1} />
       <StyledRank>
         <StyledRankNumber>{rank}</StyledRankNumber>
       </StyledRank>

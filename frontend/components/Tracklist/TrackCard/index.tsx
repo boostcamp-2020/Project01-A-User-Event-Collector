@@ -75,7 +75,7 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
         <StyledCheckbox type="checkbox" checked={checked} onChange={handleChecked} />
       </StyledCheckboxDiv>
       <StyledImg>
-        <HoverImg varient="trackCardCover" src={cover} />
+        <HoverImg varient="trackCardCover" src={cover} heartType="Tracks" heartId={-1} />
       </StyledImg>
       <StyledTrackName>{trackName}</StyledTrackName>
       <StyledArtists>
