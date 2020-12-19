@@ -87,7 +87,7 @@ const NavBarUser: FC<Props> = memo(({ isLogged, setIsLogged }: Props) => {
     {
       title: "로컬 로그인",
       onClick: () => {
-        Router.push("login");
+        Router.push("auth/login");
       },
     },
   ];
