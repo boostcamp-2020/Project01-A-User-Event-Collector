@@ -4,6 +4,15 @@ import React, { MouseEvent } from "react";
 import HoverImg from "../HoverImg";
 import { StyledLinkDiv, SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
 
+type SlidebarTypes =
+  | "Tracks"
+  | "Albums"
+  | "Playlists"
+  | "Artists"
+  | "Magazines"
+  | "News"
+  | "MyPlaylists";
+
 interface cardData {
   src?: string;
   title?: string;
@@ -14,37 +23,28 @@ interface cardData {
 
 export interface CardProps {
   varient: string;
-  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album";
+  dataType: SlidebarTypes;
   rawData?: any;
 }
 
-function convertData(
-  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album",
-  rawData?: any,
-): cardData {
+function convertData(dataType: SlidebarTypes, rawData?: any): cardData {
   switch (dataType) {
-    case "magazine":
+    case "Magazines":
       return {
         title: rawData.magazineName,
         smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
         mainLink: `/magazines/${rawData.id}`,
       };
-    case "playlist":
+    case "Playlists":
+    case "MyPlaylists":
       return {
         title: rawData.playlistName,
         smallText: `${rawData.Users.username}`,
         src: rawData.cover,
         mainLink: `/playlists/${rawData.id}`,
       };
-    case "myPlaylist":
-      return {
-        title: rawData.playlistName,
-        smallText: `${rawData.Users.username}`,
-        src: rawData.cover,
-        mainLink: `/playlists/${rawData.id}`,
-      };
-    case "album":
+    case "Albums":
       return {
         src: rawData.cover,
         title: rawData.albumName,
@@ -52,7 +52,7 @@ function convertData(
         mainLink: `/albums/${rawData.id}`,
         smallLink: `/artists/${rawData.artistId}`,
       };
-    case "track":
+    case "Tracks":
       return {
         src: rawData.Albums.cover,
         title: rawData.trackName,
@@ -60,7 +60,7 @@ function convertData(
         mainLink: `/albums/${rawData.Albums.id}`,
         smallLink: `/artists/${rawData.Artists.id}`,
       };
-    case "news":
+    case "News":
       return {
         src: rawData.cover,
         title: rawData.newsName,

@@ -43,19 +43,19 @@ const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
       <StyledSections>
         <Slidebar
           varient="todayBig"
-          dataType="magazine"
+          dataType="Magazines"
           title="매거진"
           titleLink="/magazines"
           data={Magazines}
         />
       </StyledSections>
       <StyledSections>
-        <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
+        <Slidebar varient="todayNews" dataType="News" title="News" titleLink="" data={News} />
       </StyledSections>
       <StyledSections>
         <Slidebar
           varient="todayBig"
-          dataType="playlist"
+          dataType="Playlists"
           title="VIBE 추천 플레이리스트"
           titleLink=""
           data={Playlists}
