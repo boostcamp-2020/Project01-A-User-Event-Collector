@@ -16,12 +16,19 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
     const likedItem = localStorage.getItem("likedItem");
     if (likedItem !== null) {
       const { [`liked${type}`]: baseArray } = JSON.parse(likedItem);
+      if (!baseArray) return;
       setIsLike(baseArray.includes(targetId));
     }
   }, [targetId]);
 
   const likeBtnHandler = (e: MouseEvent) => {
     e.stopPropagation();
+
+    if (!localStorage.getItem("token")) {
+      alert("로그인 해주세용~");
+      return;
+    }
+
     try {
       (async () => {
         if (!isLike) await myAxios.post(reqPath, {});
