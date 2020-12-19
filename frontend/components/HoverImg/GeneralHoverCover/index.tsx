@@ -15,6 +15,23 @@ interface Props {
   heartId: number;
 }
 
+const StyledHeart = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  border: 0px;
+  position: absolute;
+  right: 7.5%;
+  bottom: 7.5%;
+  font-size: 1.25rem;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+`;
+
 export const StyledGeneralHoverCover = styled.div<StyledProps>`
   display: flex;
   position: absolute;
@@ -38,7 +55,9 @@ const GeneralHoverCover: React.FC<Props> = ({ hover, heartType, heartId }: Props
       {hover && (
         <StyledGeneralHoverCover>
           <PlayButton />
-          <Heart type={heartType} targetId={heartId} />
+          <StyledHeart>
+            <Heart type={heartType} targetId={heartId} />
+          </StyledHeart>
         </StyledGeneralHoverCover>
       )}
     </>
