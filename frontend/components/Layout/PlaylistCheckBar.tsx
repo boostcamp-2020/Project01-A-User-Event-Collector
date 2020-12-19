@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { concatenatePlayQueue } from "../../reduxModules/playQueue";
 import { Track } from "../../interfaces";
-import { toggleAllChecked } from "../../reduxModules/checkedTrack";
+import {
+  emptyCheckedTrack,
+  setAllChecked,
+  toggleAllChecked,
+} from "../../reduxModules/checkedTrack";
 import { RootState } from "../../reduxModules";
 import icons from "../../constant/icons";
 import {
