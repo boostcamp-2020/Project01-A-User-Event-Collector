@@ -15,7 +15,7 @@ const signup = async (req: Request, res: Response): Promise<Response> => {
       password: crypto.createHash("sha512").update(password1).digest("hex"),
     });
 
-    return res.status(200).send({ message: "success" });
+    return res.status(200).send({ result: "success" });
   } catch (err) {
     return res.send(400).send({ err });
   }
