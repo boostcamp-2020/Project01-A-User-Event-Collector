@@ -116,7 +116,7 @@ const LoginPage: FC = () => {
   };
 
   const handleLink = (e: MouseEvent) => {
-    Router.push("/signup");
+    Router.push("/auth/login");
   };
 
   return (

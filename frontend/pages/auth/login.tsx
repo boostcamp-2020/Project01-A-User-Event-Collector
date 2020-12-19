@@ -105,7 +105,7 @@ const LoginPage: FC = () => {
       } = response;
       if (result === "success") {
         localStorage.setItem("token", token);
-        Router.push("../today").then(() => {
+        Router.push("/today").then(() => {
           Router.reload();
         });
       } else {
@@ -115,7 +115,7 @@ const LoginPage: FC = () => {
   };
 
   const handleLink = (e: MouseEvent) => {
-    Router.push("/signup");
+    Router.push("/auth/signup");
   };
 
   return (
@@ -128,7 +128,7 @@ const LoginPage: FC = () => {
         </StyledUsername>
         <StyledPassword>
           <StyledLabel>비밀번호:</StyledLabel>{" "}
-          <StyledInput value={password} onChange={handlePassword1} />
+          <StyledInput type="password" value={password} onChange={handlePassword1} />
         </StyledPassword>
         <StyledBtns>
           <StyledSubmitBtn onClick={handleSubmit}>Submit</StyledSubmitBtn>
