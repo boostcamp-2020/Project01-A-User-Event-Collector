@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ThumbnailCellView: View {
-    let thumbnail: Thumbnailable
+    private let thumbnail: Thumbnailable
+    
+    init(thumbnail: Thumbnailable) {
+        self.thumbnail = thumbnail
+    }
         
     var body: some View {
         HStack(spacing: 20) {

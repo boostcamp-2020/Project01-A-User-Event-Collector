@@ -38,8 +38,3 @@ struct ChartView: View {
         }    }
     
 }
-//struct ChartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChartView(playlistID: 18, manager: AnalyticsManager(engine: MockServerEngine()))
-//    }
-//}

@@ -31,25 +31,18 @@ class TrackCellViewModel: ObservableObject {
         cancellables.forEach { $0.cancel() }
     }
     
-    func didToggleLiked() {
+    func didToggleLikedAccessory() {
         isSavedToLibrary.toggle()
     }
     
-    func toggleSubscription() {
+    private func toggleSubscription() {
         $isSavedToLibrary
-            .sink { [weak self] isFavorite in
-                self?.post(isFavorite: isFavorite)
+            .sink { [weak self] isSavedToLibrary in
+                if let track = self?.track {
+                    self?.addToLibrary(track: track, isSavedToLibrary: isSavedToLibrary)
+                }
             }
             .store(in: &cancellables)
-    }
-    
-    private func post(isFavorite: Bool) {
-        postToServer()
-        addToLibrary(track: track, isSavedToLibrary: isFavorite)
-    }
-    
-    private func postToServer() {
-        // TODO:- Server로 liked update
     }
     
     private func addToLibrary(track: Track, isSavedToLibrary: Bool) {

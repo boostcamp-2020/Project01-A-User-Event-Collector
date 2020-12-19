@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TrackCellView: View {
-    let hasDownloadAccessory: Bool
-    let hasDeleteAccessory: Bool
-    let isCellForQueue: Bool
-    let track: Track
-    @EnvironmentObject var nowPlayingViewModel: PlayerViewModel
+    private let hasDownloadAccessory: Bool
+    private let hasDeleteAccessory: Bool
+    private let isCellForQueue: Bool
+    private let track: Track
+    @EnvironmentObject private var nowPlayingViewModel: PlayerViewModel
     @StateObject private var viewModel: TrackCellViewModel
     
     init(hasHeartAccessory: Bool,
@@ -41,11 +41,12 @@ struct TrackCellView: View {
                                  coverData: track.coverData)
             })
             if hasDownloadAccessory {
-                DownloadAccessory(isSavedToLibrary: viewModel.isSavedToLibrary, toggleLiked: viewModel.didToggleLiked)
+                DownloadAccessory(isSavedToLibrary: viewModel.isSavedToLibrary,
+                                  toggleLiked: viewModel.didToggleLikedAccessory)
             }
             if hasDeleteAccessory {
                 DeleteAccessory {
-                    nowPlayingViewModel.didToggleTrash(id: track.id)
+                    nowPlayingViewModel.didToggleDeleteAccessory(id: track.id)
                 }
             }
         }

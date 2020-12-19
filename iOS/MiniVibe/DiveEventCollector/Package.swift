@@ -9,7 +9,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "DiveEventCollector",
-            targets: ["DiveEventCollector"]),
+            targets: ["DiveEventCollector"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -24,6 +24,6 @@ let package = Package(
             dependencies: ["Reachability"]),
         .testTarget(
             name: "DiveEventCollectorTests",
-            dependencies: ["DiveEventCollector"]),
+            dependencies: ["DiveEventCollector"])
     ]
 )
