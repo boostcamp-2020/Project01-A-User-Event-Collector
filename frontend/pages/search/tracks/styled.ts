@@ -77,3 +77,4 @@ export {
   StyledSearchTrackCards,
   StyledIcons,
 };
+export default StyledSearchTrackPage;

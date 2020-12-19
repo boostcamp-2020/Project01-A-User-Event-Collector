@@ -23,5 +23,5 @@
     "types": []
   },
   "exclude": ["node_modules", "**/*.stories.tsx"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "event/event.config.ts"]
 }

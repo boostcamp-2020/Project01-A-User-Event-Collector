@@ -17,11 +17,13 @@ const LinkCardBlock = memo(({ theme }: Props) => {
       ? [
           { name: "투데이", icon: "home", href: "/today" },
           { name: "차트", icon: "chart", href: "/chart" },
-          { name: "DJ 스테이션", icon: "dj", href: "/dj-stations" },
+          // { name: "DJ 스테이션", icon: "dj", href: "/dj-stations" },
           { name: "VIBE MAG", icon: "mag", href: "/magazines" },
         ]
       : [
           { name: "노래", href: "/library/tracks" },
+          { name: "아티스트", href: "/library/artists" },
+          { name: "앨범", href: "/library/albums" },
           { name: "플레이리스트", href: "/library/playlists" },
         ];
   return (

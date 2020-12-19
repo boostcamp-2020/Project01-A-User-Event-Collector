@@ -1,35 +1,27 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
+import { _News } from "../../interfaces";
 
 const StyleNewsPage = styled.div`
   height: 100vh;
 `;
 
-const NewsPage = ({ News }: any) => {
+const NewsPage: FC<_News[]> = ({ News }: any) => {
   return (
     <StyleNewsPage>
-      <DetailPage type={"news"} detailData={News} tracks={News.Tracks} />
+      <DetailPage type="news" detailData={News} tracks={News.Tracks} />
     </StyleNewsPage>
   );
 };
 
 export default NewsPage;
 
-export async function getStaticPath() {
+export async function getServerSideProps({ params }: any): Promise<any> {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/news`);
-  const news = await res.json();
-  const paths = news.map((news: any) => `/news/${news.id}`);
-
-  return { paths, fallback: false };
-}
-
-export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
+  // const Cookie = req.headers.cookie;
+  // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
   const { News } = await res.json();

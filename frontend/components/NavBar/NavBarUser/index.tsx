@@ -3,6 +3,7 @@ import Link from "next/link";
 import Img from "../../Img";
 import myAxios from "../../../utils/myAxios";
 import { StyledNavUser, StyledUser } from "./styled";
+import asyncAxios from "../../../utils/asyncAxios";
 
 const NavBarUser = memo(
   ({ loggedIn, setLoggedIn }: { loggedIn: boolean; setLoggedIn: Function }) => {
@@ -10,22 +11,27 @@ const NavBarUser = memo(
     const defaultUsername = "로그인";
     const defaultProfile =
       "https://www.nailseatowncouncil.gov.uk/wp-content/uploads/blank-profile-picture-973460_1280.jpg";
-    const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
-
     const [userID, setUserID] = useState(defaultID);
     const [username, setUsername] = useState(defaultUsername);
-    const [userProfile, setUserProfile] = useState(defaultProfile);
+    const [userProfileCover, setUserProfileCover] = useState(defaultProfile);
+
+    const naverLoginURL = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL || "today";
     useEffect(() => {
       if (!loggedIn) {
         try {
-          myAxios.get("/private/auth/userinfo").then((data: any) => {
+          myAxios.get("/users/likedItem").then((res: any) => {
+            localStorage.setItem("likedItem", JSON.stringify(res.data));
+          });
+
+          myAxios.get("/users/profile").then((data: any) => {
             const {
-              data: { user },
+              data: { userProfile },
             } = data;
             setLoggedIn(true);
-            setUserID(user.id);
-            setUsername(user.username);
-            setUserProfile(user.profile);
+            localStorage.userProfile = JSON.stringify(userProfile);
+            setUserID(userProfile.id);
+            setUsername(userProfile.username);
+            setUserProfileCover(userProfile.profile ? userProfile.profile : defaultProfile);
           });
         } catch (err) {
           // eslint-disable-next-line no-console
@@ -34,7 +40,7 @@ const NavBarUser = memo(
       } else {
         setUserID(defaultID);
         setUsername(defaultUsername);
-        setUserProfile(defaultProfile);
+        setUserProfileCover(defaultProfile);
       }
     }, [loggedIn]);
 
@@ -42,7 +48,7 @@ const NavBarUser = memo(
       <>
         {loggedIn ? (
           <StyledNavUser>
-            <Img varient="profile" src={userProfile} />
+            <Img varient="profile" src={userProfileCover} />
             <StyledUser loggedIn={loggedIn}>{username}</StyledUser>
           </StyledNavUser>
         ) : (

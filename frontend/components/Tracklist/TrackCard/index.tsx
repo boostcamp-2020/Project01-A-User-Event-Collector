@@ -1,67 +1,81 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+/* eslint-disable no-unused-expressions */
+import React, { FC, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import TrackModal from "./TrackModal";
-import Img from "../../Img";
-import { Album, Artist } from "../../../interfaces";
-import CheckBox from "./CheckBox";
+import { Track } from "../../../interfaces";
+import {
+  addCheckedTrack,
+  deleteCheckedTrack,
+  setAllChecked,
+  emptyCheckedTrack,
+} from "../../../reduxModules/checkedTrack";
+import { RootState } from "../../../reduxModules";
+import {
+  StyledTrackCard,
+  StyledCheckboxDiv,
+  StyledCheckbox,
+  StyledImg,
+  StyledTrackName,
+  StyledArtists,
+  StyledAlbum,
+  StyledEllipsis,
+} from "./styled";
+import HoverImg from "../../HoverImg";
+import icons from "../../../constant/icons";
 
 interface Props {
-  id: number;
-  trackName: string;
-  Albums: Album;
-  Artists: Artist[];
-  listLength: number;
+  track: Track;
+  numberOfCards: number;
 }
 
-interface Styles {}
+const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
+  const { trackName, Albums, Artists } = track;
+  const { cover, albumName, id: albumId } = Albums;
 
-const StyleTrack = styled.div<Styles>`
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  &:hover {
-    background-color: red;
-  }
-`;
+  const { allChecked, checkedTracks } = useSelector((state: RootState) => state.checkedTracks);
+  const [checked, setChecked] = useState(false);
+  const dispatch = useDispatch();
+  const handleChecked = () => setChecked(!checked);
 
-const ChildElem = styled.div`
-  flex: 1;
-`;
+  useEffect(() => {
+    if (allChecked) {
+      setChecked(true);
+      dispatch(addCheckedTrack(track));
+    } else if (!allChecked && checkedTracks.size === numberOfCards) {
+      setChecked(false);
+      dispatch(emptyCheckedTrack());
+    }
+  }, [allChecked]);
 
-const TrackCard: FC<Props> = ({ id, trackName, Albums, Artists, listLength }: Props) => {
-  const { albumName, id: albumId, cover } = Albums;
+  useEffect(() => {
+    checked === true ? dispatch(addCheckedTrack(track)) : dispatch(deleteCheckedTrack(track));
 
-  const artistArr = Artists.map((elem: Artist) => {
-    return { id: elem.id, artistName: elem.artistName };
-  });
+    if (checked && checkedTracks.size === numberOfCards) dispatch(setAllChecked(true));
+    else if (checkedTracks.size < numberOfCards) dispatch(setAllChecked(false));
+  }, [checked]);
 
   return (
-    <StyleTrack>
-      <CheckBox trackData={{ id, trackName, Albums, Artists }} listLength={listLength} />
-      <Img src={cover} varient="trackCardCover" />
-
-      <ChildElem>
-        <span>{trackName}</span>
-      </ChildElem>
-      <ChildElem>
-        <Link href={`/albums/${albumId}`}>
-          <span>{albumName}</span>
-        </Link>
-      </ChildElem>
-      <ChildElem>
-        {artistArr.map((elem: any) => (
-          <Link key={elem.id} href={`/artists/${elem.id}`}>
-            <span>{` ${elem.artistName} `}</span>
+    <StyledTrackCard>
+      <StyledCheckboxDiv>
+        <StyledCheckbox type="checkbox" checked={checked} onChange={handleChecked} />
+      </StyledCheckboxDiv>
+      <StyledImg>
+        <HoverImg varient="trackCardCover" src={cover} />
+      </StyledImg>
+      <StyledTrackName>{trackName}</StyledTrackName>
+      <StyledArtists>
+        {Artists.map((artist) => (
+          <Link href={`/artists/${artist.id}`}>
+            <span style={{ padding: "3px" }}>{artist.artistName}</span>
           </Link>
         ))}
-      </ChildElem>
-
-      <TrackModal trackId={id} />
-    </StyleTrack>
+      </StyledArtists>
+      <StyledAlbum>
+        <Link href={`/albums/${albumId}`}>{albumName}</Link>
+      </StyledAlbum>
+      <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
+    </StyledTrackCard>
   );
 };
 
 export default TrackCard;
-export type { Props };

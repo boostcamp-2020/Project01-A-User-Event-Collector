@@ -1,22 +1,20 @@
 import styled from "styled-components";
 import { SlidebarProps, TranslateProps } from "./index";
 
-const StyledSlidebar = styled.div<SlidebarProps>`
+const StyledSlidebar = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: auto;
-  & > a > svg {
-    width: 0.7rem;
-    height: 0.7rem;
-  }
 `;
 
 const SlideContainer = styled.div`
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: auto;
   width: 100%;
   position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const StyledTitle = styled.div`

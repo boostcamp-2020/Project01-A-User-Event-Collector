@@ -10,7 +10,7 @@ import {
   StyledSearchTrackCards,
   StyledIcons,
 } from "./styled";
-import SearchTrackCards from "../../../components/SearchSamples/tracks";
+import Tracklist from "../../../components/Tracklist";
 import icons from "../../../constant/icons";
 
 const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => {
@@ -21,7 +21,7 @@ const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => 
       const { data } = response;
       setSampleTracks(data);
     });
-  }, []);
+  }, [filter]);
 
   return (
     <StyledSearchTrackPage>
@@ -37,16 +37,17 @@ const SearchTrackPage = ({ filter }: { filter: string }): React.ReactElement => 
         </StyledResultButtons>
       </StyledResult>
       <StyledSearchTrackCards>
-        <SearchTrackCards data={sampleTracks} />
+        <Tracklist data={sampleTracks} />
       </StyledSearchTrackCards>
     </StyledSearchTrackPage>
   );
 };
 
 SearchTrackPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
-  const { filter } = query;
-
-  return { filter };
+  if (query && query.filter) {
+    const { filter } = query;
+    return { filter };
+  }
 };
 
 export default SearchTrackPage;

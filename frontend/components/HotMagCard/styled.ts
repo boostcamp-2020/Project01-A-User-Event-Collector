@@ -20,18 +20,30 @@ const StyledDescription = styled.div`
 `;
 
 const StyledDescriptionTitle = styled.div`
-  display: flex;
-  font-size: 2.75rem;
+  display: block;
+  font-size: 2rem;
   font-weight: bold;
   margin: 0.25rem 0rem;
+  width: 27rem;
+  overflow-text: auto;
+  &: hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
 
 const StyledDescriptionContent = styled.div`
-  display: flex;
-  font-size: 1rem;
-  color: #939393;
-  margin: 0.25rem 0rem;
+  overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  width: 600px;
+  height: 32px;
+  color: #939393;
+  font-size: 16px;
+  margin: 0.25rem 0rem;
 `;
 
 const StyledDescriptionInfo = styled.div`

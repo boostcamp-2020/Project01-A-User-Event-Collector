@@ -34,3 +34,4 @@ const StyledSearchAlbumCards = styled.div`
 `;
 
 export { StyledSearchAlbumPage, StyledResult, StyledResultText, StyledSearchAlbumCards };
+export default StyledSearchAlbumPage;

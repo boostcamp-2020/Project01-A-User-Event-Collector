@@ -1,9 +1,10 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../../components/Card";
 import Img from "../../components/Img";
 import { Artist } from "../../interfaces";
 import LikedArtistCard from "../../components/LikedArtistCard";
+import myAxios from "../../utils/myAxios";
 
 const StyledLibraryText = styled.div`
   font-size: 1em;
@@ -31,13 +32,21 @@ const StyledSection = styled.ul`
   }
 `;
 
-const ArtistsLibraryPage = memo(({ artists }: any) => {
+const ArtistsLibraryPage = memo(() => {
+  const [likedArtists, setLikedArtists] = useState([]);
+
+  useEffect(() => {
+    myAxios.get("/library/artists").then((res: any) => {
+      setLikedArtists(res.data.Artists);
+    });
+  }, []);
+
   return (
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
       <StyledPagetitle>아티스트</StyledPagetitle>
       <StyledSection>
-        {artists.map((value: Artist) => (
+        {likedArtists?.map((value: Artist) => (
           <LikedArtistCard varient="likedArtist" artist={value} />
         ))}
       </StyledSection>
@@ -46,21 +55,3 @@ const ArtistsLibraryPage = memo(({ artists }: any) => {
 });
 
 export default ArtistsLibraryPage;
-
-export async function getStaticProps() {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  try {
-    const res = await fetch(`${apiUrl}:${apiPort}/api/library/artists`);
-    const artists = await res.json();
-    return {
-      props: {
-        artists: artists.Artists,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-  }
-  return { props: {} };
-}

@@ -29,8 +29,9 @@ const StyledResultText = styled.div`
   font-weight: bold;
 `;
 
-const StyledSearchArtistCards = styled.div`
+const StyledSearchArtistList = styled.div`
   display: flex;
 `;
 
-export { StyledSearchArtistPage, StyledResult, StyledResultText, StyledSearchArtistCards };
+export { StyledSearchArtistPage, StyledResult, StyledResultText, StyledSearchArtistList };
+export default StyledSearchArtistPage;

@@ -1,35 +1,18 @@
-import React from "react";
-import styled from "styled-components";
+import React, { FC } from "react";
 import DetailPage from "../../components/DetailPage";
+import { Artist } from "../../interfaces";
 
-const StyleMagazinePage = styled.div`
-  height: 100vh;
-`;
-
-const ArtistsPage = ({ Artists }: any) => {
-  return (
-    <StyleMagazinePage>
-      <DetailPage type="artist" detailData={Artists} tracks={Artists.Tracks} />
-    </StyleMagazinePage>
-  );
+const ArtistPage: FC<Artist[]> = ({ Artists }: any) => {
+  return <DetailPage type="artist" detailData={Artists} tracks={Artists.Tracks} />;
 };
 
-export default ArtistsPage;
+export default ArtistPage;
 
-export async function getStaticPath() {
+export async function getServerSideProps({ params }: any): Promise<any> {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
-
-  const res = await fetch(`${apiUrl}:${apiPort}/api/artists`);
-  const artists = await res.json();
-  const paths = artists.map((artist: any) => `/artists/${artist.id}`);
-
-  return { paths, fallback: false };
-}
-
-export async function getServerSideProps({ params }: any) {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
+  // const Cookie = req.headers.cookie;
+  // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/artists/${params.pid}`);
   const { Artists } = await res.json();

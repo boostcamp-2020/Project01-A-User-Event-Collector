@@ -1,18 +1,11 @@
-import React, { memo } from "react";
-import { useSelector } from "react-redux";
-import Img from "../Img";
+import React, { memo, MouseEvent, useState, FC, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Track } from "../../interfaces";
 import icons from "../../constant/icons";
 import { RootState } from "../../reduxModules";
 import {
   StyledPlaybar,
   StyledTrackSection,
-  StyledImgSection,
-  StyledTrackInfo,
-  StyledTrackTitle,
-  StyledTrackArtists,
-  StyledEmptyHeart,
-  StyledFilledHeart,
-  StyledEllipsis,
   StyledMainControlSection,
   StyledSideControlSection,
   StyledTrackTime,
@@ -25,67 +18,104 @@ import {
   StyledMiddleButtons,
   StyledPlayButtons,
 } from "./styled";
+import PlaybarTrackCard from "./PlaybarTrackCard";
 
-const Playbar = memo(
-  ({
-    handleShowPlaylist,
-    showPlaylist,
-  }: {
-    handleShowPlaylist: () => void;
-    showPlaylist: boolean;
-  }) => {
-    const trackImg =
-      "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2528/image/gAQwYrfgzrdhkL4odG7BDoaIHu8";
-    const trackname = "보자보자";
-    const trackArtists = ["머쉬베놈"];
-    const liked = true;
-    const fullPlayTime = "3:32";
-    const currentPlayTime = "1:32";
+interface Props {
+  handleShowPlaylist: (e: MouseEvent) => void;
+  showPlaylist: boolean;
+}
+const emptyTrack: Track = {
+  id: 0,
+  albumTrackNumber: 0,
+  trackName: "",
+  albumId: 0,
+  Albums: { cover: "", id: 0, artistId: 0, albumName: "" },
+  Artists: [{ artistName: "", id: 0, cover: "" }],
+  Liked: false,
+};
 
-    const data = useSelector((state: RootState) => state.playQueue);
-  
-    return (
-      <StyledPlaybar onClick={handleShowPlaylist}>
-        {console.log(data)}
-        <StyledTrackSection>
-          <StyledImgSection>
-            <Img varient="nowPlayingCover" src={trackImg} />
-          </StyledImgSection>
-          <StyledTrackInfo>
-            <StyledTrackTitle>{trackname}</StyledTrackTitle>
-            <StyledTrackArtists>{trackArtists.join(", ")}</StyledTrackArtists>
-          </StyledTrackInfo>
-          {liked ? (
-            <StyledFilledHeart>{icons.emptyHeart}</StyledFilledHeart>
-          ) : (
-            <StyledEmptyHeart>{icons.emptyHeart}</StyledEmptyHeart>
-          )}
-          <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
-        </StyledTrackSection>
-        <StyledMainControlSection>
-          <StyledMainButtons>
-            <StyledSideButtons>{icons.random}</StyledSideButtons>
-            <StyledMiddleButtons>{icons.previous}</StyledMiddleButtons>
-            <StyledPlayButtons>{icons.play}</StyledPlayButtons>
-            <StyledMiddleButtons>{icons.next}</StyledMiddleButtons>
-            <StyledSideButtons>{icons.repeat}</StyledSideButtons>
-          </StyledMainButtons>
-        </StyledMainControlSection>
-        <StyledSideControlSection>
-          <StyledTrackTime>
-            {currentPlayTime} / {fullPlayTime}
-          </StyledTrackTime>
-          <StyledTrackVolume>
-            <StyledTrackVolumeSlide type="range" />
-          </StyledTrackVolume>
-          <StyledPlaylistButtonWrapper>
-            <StyledPlaylistButton showPlaylist={showPlaylist}>{icons.list}</StyledPlaylistButton>
-          </StyledPlaylistButtonWrapper>
-        </StyledSideControlSection>
-      </StyledPlaybar>
-    );
-  },
-);
+const Playbar: FC<Props> = memo(({ handleShowPlaylist, showPlaylist }: Props) => {
+  const playList: Track[] = useSelector((state: RootState) => state.playQueue);
+  const [headTrack, setHeadTrack] = useState<Track>(emptyTrack);
+  const [playingPointer, setPlayingPointer] = useState<number>(-1);
+  const [playmode, setPlaymode] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (headTrack === emptyTrack) {
+      setHeadTrack(playList[0]);
+      setPlayingPointer(0);
+    }
+
+    if (playList.length <= 0) {
+      setHeadTrack(emptyTrack);
+      setPlayingPointer(-1);
+    }
+  }, [playList]);
+
+  const playBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
+    setPlaymode(!playmode);
+  };
+
+  const nextBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
+    if (playList[playingPointer + 1]) {
+      setPlayingPointer(playingPointer + 1);
+    }
+  };
+  const prevBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
+    if (playList.length > 0 && playingPointer > 0) {
+      setPlayingPointer(playingPointer - 1);
+    }
+  };
+
+  const dispatch = useDispatch();
+  const [volume, setVolume] = useState<number>(50);
+  const fullPlayTime = "3:32";
+  const currentPlayTime = "1:32";
+
+  const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
+  const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    setVolume(parseInt(e.currentTarget.value, 10));
+  };
+
+  return (
+    <StyledPlaybar onClick={handleShowPlaylist}>
+      <StyledTrackSection>
+        {playList[playingPointer] && <PlaybarTrackCard track={playList[playingPointer]} />}
+      </StyledTrackSection>
+
+      <StyledMainControlSection>
+        <StyledMainButtons>
+          <StyledSideButtons>{icons.random}</StyledSideButtons>
+          <StyledMiddleButtons onClick={prevBtnHandler}>{icons.previous}</StyledMiddleButtons>
+          <StyledPlayButtons onClick={playBtnHandler}>
+            {playmode ? icons.pause : icons.play}
+          </StyledPlayButtons>
+          <StyledMiddleButtons onClick={nextBtnHandler}>{icons.next}</StyledMiddleButtons>
+          <StyledSideButtons>{icons.repeat}</StyledSideButtons>
+        </StyledMainButtons>
+      </StyledMainControlSection>
+      <StyledSideControlSection>
+        <StyledTrackTime>
+          {currentPlayTime} / {fullPlayTime}
+        </StyledTrackTime>
+        <StyledTrackVolume>
+          <StyledTrackVolumeSlide
+            type="range"
+            value={volume}
+            onChange={handleVolume}
+            onClick={stopPropagation}
+          />
+        </StyledTrackVolume>
+        <StyledPlaylistButtonWrapper>
+          <StyledPlaylistButton showPlaylist={showPlaylist}>{icons.list}</StyledPlaylistButton>
+        </StyledPlaylistButtonWrapper>
+      </StyledSideControlSection>
+    </StyledPlaybar>
+  );
+});
 
 export default Playbar;

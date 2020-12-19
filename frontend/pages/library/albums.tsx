@@ -1,7 +1,8 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../../components/Card";
 import { Album } from "../../interfaces";
+import myAxios from "../../utils/myAxios";
 
 const StyledLibraryText = styled.div`
   font-size: 1em;
@@ -29,13 +30,21 @@ const StyledSection = styled.ul`
   }
 `;
 
-const AlbumsLibraryPage = memo(({ albums }: any) => {
+const AlbumsLibraryPage = memo(() => {
+  const [likedAlbums, setLikedAlbums] = useState([]);
+
+  useEffect(() => {
+    myAxios.get("/library/albums").then((res: any) => {
+      setLikedAlbums(res.data.Albums);
+    });
+  }, []);
+
   return (
     <>
       <StyledLibraryText>보관함</StyledLibraryText>
       <StyledPagetitle>앨범</StyledPagetitle>
       <StyledSection>
-        {albums.map((value: Album) => (
+        {likedAlbums?.map((value: Album) => (
           <Card varient="todaySmall" dataType="album" rawData={value} />
         ))}
       </StyledSection>
@@ -44,21 +53,3 @@ const AlbumsLibraryPage = memo(({ albums }: any) => {
 });
 
 export default AlbumsLibraryPage;
-
-export async function getStaticProps() {
-  const apiUrl = process.env.API_URL;
-  const apiPort = process.env.API_PORT;
-
-  try {
-    const res = await fetch(`${apiUrl}:${apiPort}/api/library/albums`);
-    const albums = await res.json();
-    return {
-      props: {
-        albums: albums.Albums,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-  }
-  return { props: {} };
-}

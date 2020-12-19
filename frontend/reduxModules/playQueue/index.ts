@@ -1,39 +1,25 @@
-import { Album, Artist } from "../../interfaces";
-
-// State
-export interface TrackNode {
-  id: number;
-  trackName: string;
-  Albums: Album;
-  Artists: Artist[];
-}
+import { Track } from "../../interfaces";
 
 // Actions
-export const PUSH = "playQueue/PUSH";
+export const CONCATENATE = "playQueue/CONCATENATE";
 export const REMOVE = "playQueue/REMOVE";
 export const INIT = "playQueue/INIT";
-export const ALLPUSH = "playQueue/ALLPUSH";
 
 interface InitAction {
   type: typeof INIT;
 }
 
-interface PushAction {
-  type: typeof PUSH;
-  payload: TrackNode;
+interface ConcatenateAction {
+  type: typeof CONCATENATE;
+  payload: Set<Track>;
 }
 
 interface RemoveAction {
   type: typeof REMOVE;
-  payload: TrackNode;
+  payload: number;
 }
 
-interface AllPushAction {
-  type: typeof ALLPUSH;
-  payload: TrackNode[];
-}
-
-export type PlayQueueActionTypes = InitAction | PushAction | RemoveAction | AllPushAction;
+export type PlayQueueActionTypes = InitAction | ConcatenateAction | RemoveAction;
 
 // Action Creator
 export const initPlayQueue = (): InitAction => {
@@ -42,43 +28,33 @@ export const initPlayQueue = (): InitAction => {
   };
 };
 
-export const pushPlayQueue = (trackNode: TrackNode): PushAction => {
+export const concatenatePlayQueue = (tracks: Set<Track>): ConcatenateAction => {
   return {
-    type: PUSH,
-    payload: trackNode,
+    type: CONCATENATE,
+    payload: tracks,
   };
 };
 
-export const removePlayQueue = (trackNode: TrackNode): RemoveAction => {
+export const removePlayQueue = (idx: number): RemoveAction => {
   return {
     type: REMOVE,
-    payload: trackNode,
-  };
-};
-
-export const allPushPlayQueue = (trackNodeList: TrackNode[]): AllPushAction => {
-  return {
-    type: ALLPUSH,
-    payload: trackNodeList,
+    payload: idx,
   };
 };
 
 // Reducer
-const initialState: TrackNode[] = [];
+const initialState: Track[] = [];
 
-const playQueueReducer = (state = initialState, action: PlayQueueActionTypes): TrackNode[] => {
+const playQueueReducer = (state = initialState, action: PlayQueueActionTypes): Track[] => {
   switch (action.type) {
     case INIT:
       return initialState;
 
-    case PUSH:
-      return [...state, action.payload];
+    case CONCATENATE:
+      return state.concat([...action.payload]);
 
     case REMOVE:
-      return state.filter((elem) => elem.id !== action.payload.id);
-
-    case ALLPUSH:
-      return [...state, ...action.payload];
+      return state.filter((track, idx) => idx !== action.payload);
 
     default:
       return state;

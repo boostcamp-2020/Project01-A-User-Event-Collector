@@ -5,11 +5,11 @@ const StyledNavBar = styled.div`
   position: fixed;
   flex-direction: column;
   background-color: #000;
-  width: 15rem;
   min-height: 100%;
   box-sizing: border-box;
   padding: 1.5rem;
-  z-index: 9;
+  width: 15%;
+  z-index: 50;
 `;
 
 const StyledLibrary = styled.div`

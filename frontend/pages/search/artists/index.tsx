@@ -4,9 +4,9 @@ import {
   StyledSearchArtistPage,
   StyledResult,
   StyledResultText,
-  StyledSearchArtistCards,
+  StyledSearchArtistList,
 } from "./styled";
-import SearchArtistCards from "../../../components/SearchSamples/artists";
+import SearchArtistList from "../../../components/SearchSamples/SearchArtistList";
 
 const SearchArtistPage = ({ filter }: { filter: string }): React.ReactElement => {
   const [sampleArtists, setSampleArtists] = useState([]);
@@ -16,24 +16,25 @@ const SearchArtistPage = ({ filter }: { filter: string }): React.ReactElement =>
       const { data } = response;
       setSampleArtists(data);
     });
-  }, []);
+  }, [filter]);
 
   return (
     <StyledSearchArtistPage>
       <StyledResult>
         <StyledResultText>{`'${filter}'의 검색 결과`}</StyledResultText>
       </StyledResult>
-      <StyledSearchArtistCards>
-        <SearchArtistCards data={sampleArtists} />
-      </StyledSearchArtistCards>
+      <StyledSearchArtistList>
+        <SearchArtistList data={sampleArtists} />
+      </StyledSearchArtistList>
     </StyledSearchArtistPage>
   );
 };
 
 SearchArtistPage.getInitialProps = async ({ query }: { query?: { filter?: string } }) => {
-  const { filter } = query;
-
-  return { filter };
+  if (query && query.filter) {
+    const { filter } = query;
+    return { filter };
+  }
 };
 
 export default SearchArtistPage;

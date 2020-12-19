@@ -2,6 +2,8 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
+import { Emitter, Collector, EventObject } from "../../event";
+import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -15,7 +17,7 @@ const StyledHotMag = styled.div`
 const StyledHotMagOverlay = styled.div`
   position: absolute;
   background-color: #f2f2f2;
-  width: calc(100vw - 15rem);
+  width: 85vw;
   top: -4rem;
   z-index: 1;
   height: 28rem;
@@ -23,6 +25,7 @@ const StyledHotMagOverlay = styled.div`
 
 const StyledSections = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   margin: 0.5rem 0rem;
   & + & {
@@ -30,11 +33,11 @@ const StyledSections = styled.div`
   }
 `;
 
-const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
+const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
   return (
-    <>
+    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyledHotMag>
-        <HotMagCard />
+        <HotMagCard magazine={HotMag} />
         <StyledHotMagOverlay />
       </StyledHotMag>
       <StyledSections>
@@ -58,7 +61,7 @@ const IndexPage = memo(({ Magazines, News, Playlists }: any) => {
           data={Playlists}
         />
       </StyledSections>
-    </>
+    </Collector>
   );
 });
 
@@ -77,14 +80,15 @@ export async function getStaticProps() {
       fetch(`${apiUrl}:${apiPort}/api/news?limit=${dataLength}`),
       fetch(`${apiUrl}:${apiPort}/api/playlists?filter=${VIBE_ID}&limit=${dataLength}`),
     ]);
-    console.log(apiPort, apiUrl);
     const result = await Promise.all(resolveArr.map((resolve) => resolve.json()));
     const { Magazines } = result[0];
+    const HotMag = Magazines.shift();
     const { News } = result[1];
     const { Playlists } = result[2];
 
     return {
       props: {
+        HotMag,
         Magazines,
         News,
         Playlists,

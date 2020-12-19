@@ -23,6 +23,7 @@ const themes: any = {
 };
 
 export const StyledCard = styled.li<StyledCardProps>`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
@@ -35,6 +36,7 @@ export const StyledCard = styled.li<StyledCardProps>`
     text-decoration: underline;
   }
 `;
+
 export const TitleA = styled.a`
   font-size: 1rem;
   color: #222222;
