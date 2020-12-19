@@ -15,8 +15,16 @@ import {
   StyledPlaylistETCButton,
   StyledIcons,
 } from "./styled";
+import Heart from "../Button/HeartButton";
 
-const DescriptionHeader = ({ title, cover, artists, description }: any): React.ReactElement => {
+const DescriptionHeader = ({
+  type,
+  id,
+  title,
+  cover,
+  artists,
+  description,
+}: any): React.ReactElement => {
   return (
     <StyledDescriptionHeader>
       <StyledCover>
@@ -35,7 +43,9 @@ const DescriptionHeader = ({ title, cover, artists, description }: any): React.R
           </StyledRandomPlayButton>
           <StyledMP3Button>MP3 구매</StyledMP3Button>
           <StyledPlaylistETCButton>{icons.plus}</StyledPlaylistETCButton>
-          <StyledPlaylistETCButton>{icons.ellipsis}</StyledPlaylistETCButton>
+          <StyledPlaylistETCButton>
+            <Heart type={type} targetId={id} />
+          </StyledPlaylistETCButton>
         </StyledButtons>
       </StyledInfo>
     </StyledDescriptionHeader>
