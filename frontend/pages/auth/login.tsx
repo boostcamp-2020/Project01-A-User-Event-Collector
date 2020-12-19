@@ -6,8 +6,8 @@ import myAxios from "../../utils/myAxios";
 
 const StyledLoginPage = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   padding: 5rem 0rem;
@@ -18,13 +18,15 @@ const StyledLoginPage = styled.div`
 const StyledForm = styled.div`
   display: flex;
   width: 32rem;
-  height: 40rem;
+  height: 20rem;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 6rem 1.5rem;
+  padding: 3rem 1.5rem;
   align-items: center;
-  background: linear-gradient(to bottom right, #8665e5, #f4b7cc);
+  border: 0.1rem solid #afafaf;
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem #ff115012;
 `;
 
 const StyledTitle = styled.div`
