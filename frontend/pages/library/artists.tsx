@@ -22,6 +22,7 @@ const StyledSection = styled.ul`
   width: 100%;
   padding-top: 2.5rem;
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(5, minmax(19%, auto));
   grid-template-rows: repeat(auto-fill, auto);
   grid-auto-flow: row;
