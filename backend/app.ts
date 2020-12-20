@@ -15,12 +15,17 @@ if (process.env.NODE_ENV === "production") {
   dotenv.config({ path: ".env.development" });
 }
 
+const corsOptions = {
+  origin: "http://118.67.135.69:3000",
+  optionsSuccessStatus: 200,
+};
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(logger("short"));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 connect();
