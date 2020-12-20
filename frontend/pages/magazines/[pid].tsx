@@ -1,21 +1,13 @@
-import styled from "styled-components";
 import React, { FC } from "react";
 import DetailPage from "../../components/DetailPage";
 import { Collector } from "../../event";
 import EventObjectExample from "../../event/Exampe_eventObject";
 import { Magazine } from "../../interfaces";
 
-const StyleMagazinePage = styled.div`
-  height: 100vh;
-`;
-
 const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
   return (
-    // eslint-disable-next-line no-console
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
-      <StyleMagazinePage>
-        <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />
-      </StyleMagazinePage>
+      <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />
     </Collector>
   );
 };
