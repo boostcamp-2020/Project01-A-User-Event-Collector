@@ -1,4 +1,4 @@
-import React, { FC, memo, useState, useEffect } from "react";
+import React, { FC, memo, useState, useEffect, MouseEvent } from "react";
 import Router from "next/router";
 import Img from "../../Img";
 import icons from "../../../constant/icons";
@@ -21,7 +21,7 @@ const defaultUserInfo = {
 
 interface Card {
   title: string;
-  onClick?: Function;
+  onClick?: (e: MouseEvent) => any;
 }
 
 const NavUserModal = ({ cards }: { cards: Card[] }): React.ReactElement => {

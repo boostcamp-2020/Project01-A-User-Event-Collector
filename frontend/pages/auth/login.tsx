@@ -1,4 +1,4 @@
-import React, { useState, FC, ChangeEvent } from "react";
+import React, { useState, FC, ChangeEvent, MouseEvent } from "react";
 import Router from "next/router";
 import styled from "styled-components";
 import { redirect } from "next/dist/next-server/server/api-utils";
