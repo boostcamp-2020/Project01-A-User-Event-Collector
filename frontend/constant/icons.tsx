@@ -21,6 +21,7 @@ import {
   faMusic,
   faHeadphonesAlt,
   faPause,
+  faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -45,6 +46,7 @@ const arrowDown = <FontAwesomeIcon icon={faArrowDown} />;
 const music = <FontAwesomeIcon icon={faMusic} />;
 const headphones = <FontAwesomeIcon icon={faHeadphonesAlt} />;
 const pause = <FontAwesomeIcon icon={faPause} />;
+const sortDown = <FontAwesomeIcon icon={faSortDown} />;
 
 const icons = {
   search,
@@ -68,6 +70,7 @@ const icons = {
   music,
   headphones,
   pause,
+  sortDown,
 };
 
 export default icons;

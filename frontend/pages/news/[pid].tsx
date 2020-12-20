@@ -3,16 +3,8 @@ import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
 import { News } from "../../interfaces";
 
-const StyleNewsPage = styled.div`
-  height: 100vh;
-`;
-
 const NewsPage: FC<News[]> = ({ NewsData }: any) => {
-  return (
-    <StyleNewsPage>
-      <DetailPage type="News" detailData={NewsData} tracks={NewsData.Tracks} />
-    </StyleNewsPage>
-  );
+  return <DetailPage type="News" detailData={NewsData} tracks={NewsData.Tracks} />;
 };
 
 export default NewsPage;

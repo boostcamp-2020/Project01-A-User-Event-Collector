@@ -1,12 +1,7 @@
-import styled from "styled-components";
 import React, { FC } from "react";
 import DetailPage from "../../components/DetailPage";
 import EventObjectExample from "../../event/Exampe_eventObject";
 import { Magazine } from "../../interfaces";
-
-const StyleMagazinePage = styled.div`
-  height: 100vh;
-`;
 
 const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
   return (

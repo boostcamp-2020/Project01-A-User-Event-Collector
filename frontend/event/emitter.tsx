@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import * as React from "react";
 import { EventType } from "./interface";
 
 interface RestrictOptions {
@@ -10,23 +10,19 @@ type eventEmitterObj =
   | {
       eventType: EventType;
       restrictFire?: RestrictOptions;
-      activateOn?: Function;
     }
   | EventType;
 
-interface InitialOption {
+interface Props {
   identifier: string;
   eventType: eventEmitterObj[];
-}
-
-interface Props extends InitialOption {
   children: any;
 }
 
-const Emitter: FC<Props> = ({ identifier, eventType, children }: Props) => {
-  const div = useRef<HTMLDivElement>(null);
+const Emitter: React.FC<Props> = ({ identifier, eventType, children }: Props) => {
+  const emitterElement = React.useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     eventType.forEach((eventObj: eventEmitterObj) => {
       let event: EventType;
       let restrictFire: RestrictOptions | undefined;
@@ -44,23 +40,23 @@ const Emitter: FC<Props> = ({ identifier, eventType, children }: Props) => {
 
       const throttledEventListener = (e: any) => {
         eventListener(e);
-        div?.current?.removeEventListener(event, throttledEventListener);
+        emitterElement?.current?.removeEventListener(event, throttledEventListener);
         setTimeout(() => {
-          div?.current?.addEventListener(event, throttledEventListener);
+          emitterElement?.current?.addEventListener(event, throttledEventListener);
         }, restrictFire?.time);
       };
 
       if (restrictFire && restrictFire.method === "throttle") {
-        div?.current?.addEventListener(event, throttledEventListener);
+        emitterElement?.current?.addEventListener(event, throttledEventListener);
         return;
       }
 
-      div?.current?.addEventListener(event, eventListener);
+      emitterElement?.current?.addEventListener(event, eventListener);
     });
   }, []);
 
   return (
-    <div ref={div} id={identifier}>
+    <div ref={emitterElement}>
       {children}
     </div>
   );

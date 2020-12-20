@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledNavUser = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
@@ -34,4 +35,29 @@ const StyledUser = styled.div`
   } ;
 `;
 
-export { StyledNavUser, StyledUser };
+const StyledModal = styled.div`
+  display: flex;
+  position: absolute;
+  top: 3.5rem;
+  left: 2.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 0.25rem;
+  width: 7rem;
+`;
+
+const StyledModalCard = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  padding: 1rem 0rem;
+  justify-content: left;
+  align-items: center;
+`;
+
+const StyledIcon = styled.span`
+  margin-left: 0.5rem;
+`;
+
+export { StyledNavUser, StyledUser, StyledModal, StyledModalCard, StyledIcon };
