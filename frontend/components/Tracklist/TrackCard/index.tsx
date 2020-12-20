@@ -23,6 +23,7 @@ import {
 } from "./styled";
 import HoverImg from "../../HoverImg";
 import icons from "../../../constant/icons";
+import Heart from "../../Button/HeartButton";
 
 interface Props {
   track: Track;
@@ -74,7 +75,7 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
         <StyledCheckbox type="checkbox" checked={checked} onChange={handleChecked} />
       </StyledCheckboxDiv>
       <StyledImg>
-        <HoverImg varient="trackCardCover" src={cover} />
+        <HoverImg varient="trackCardCover" src={cover} heartType="Tracks" heartId={-1} />
       </StyledImg>
       <StyledTrackName>{trackName}</StyledTrackName>
       <StyledArtists>
@@ -87,7 +88,7 @@ const TrackCard: FC<Props> = ({ track, numberOfCards }: Props) => {
       <StyledAlbum>
         <Link href={`/albums/${albumId}`}>{albumName}</Link>
       </StyledAlbum>
-      <StyledEllipsis>{icons.ellipsis}</StyledEllipsis>
+      <Heart type="Tracks" targetId={track.id} />
     </StyledTrackCard>
   );
 };

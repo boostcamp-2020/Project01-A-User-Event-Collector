@@ -10,7 +10,7 @@ const StyleNewsPage = styled.div`
 const NewsPage: FC<News[]> = ({ NewsData }: any) => {
   return (
     <StyleNewsPage>
-      <DetailPage type="news" detailData={NewsData} tracks={NewsData.Tracks} />
+      <DetailPage type="News" detailData={NewsData} tracks={NewsData.Tracks} />
     </StyleNewsPage>
   );
 };

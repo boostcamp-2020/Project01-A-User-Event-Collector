@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Artist } from "../../interfaces";
 import Img from "../Img";
-import HeartButton from "../Button/HeartButton";
+import Heart from "../Button/HeartButton";
 
 interface LikedArtistProps {
   varient: string;
@@ -31,12 +31,19 @@ const StyledArtistName = styled.div`
   text-align: center;
   width: 100%;
 `;
+const StyledHeartWrapper = styled.div`
+  position: absolute;
+  bottom: 15%;
+  left: 3%;
+`;
 
 const LikedArtistCard: React.FC<LikedArtistProps> = ({ varient, artist }: LikedArtistProps) => {
   return (
     <StyledLikedArtist>
       <Img varient={varient} src={artist.cover} />
-      <HeartButton type="Albums" targetId={artist.id} />
+      <StyledHeartWrapper>
+        <Heart type="Artists" targetId={artist.id} />
+      </StyledHeartWrapper>
       <StyledArtistName>{artist.artistName}</StyledArtistName>
     </StyledLikedArtist>
   );

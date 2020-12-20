@@ -12,7 +12,7 @@ const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
   return (
     // eslint-disable-next-line no-console
     <StyleMagazinePage>
-      <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
+      <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />
     </StyleMagazinePage>
   );
 };

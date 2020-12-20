@@ -46,7 +46,7 @@ const AlbumsLibraryPage = memo(() => {
       <StyledPagetitle>앨범</StyledPagetitle>
       <StyledSection>
         {likedAlbums?.map((value: Album) => (
-          <Card varient="todaySmall" dataType="album" rawData={value} />
+          <Card varient="todaySmall" dataType="Albums" rawData={value} />
         ))}
       </StyledSection>
     </>

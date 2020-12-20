@@ -3,7 +3,7 @@ import DetailPage from "../../components/DetailPage";
 import { Album } from "../../interfaces";
 
 const AlbumPage: FC<Album[]> = ({ Albums }: any) => {
-  return <DetailPage type="album" detailData={Albums} tracks={Albums.Tracks} />;
+  return <DetailPage type="Albums" detailData={Albums} tracks={Albums.Tracks} />;
 };
 
 export default AlbumPage;
