@@ -1,12 +1,6 @@
-import React, { FC, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { SimpleEvent, ComplexEvent, ComponentEventType, EventType } from "./interface";
-import SequenceEvent from "./complexEvent";
-
-export interface EventObject {
-  simple: { [identifier: string]: SimpleEvent };
-  complex: { [identifier: string]: ComplexEvent };
-}
+import * as React from "react";
+import { SimpleEvent, EventObject, EventType, ComplexEvent } from "./interface";
+import SequencedEventObserver from "./SequencedEventObserver";
 
 export interface Props {
   children: React.ReactNode;
@@ -14,52 +8,63 @@ export interface Props {
   dispatch: Function;
 }
 
-const StyledCollector = styled.div`
-  position: relative;
-`;
-
-const Collector: FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
-  const { simple, complex } = eventConfig;
+const Collector: React.FC<Props> = ({ eventConfig, children, dispatch }: Props) => {
+  const simple = eventConfig.simple || {};
+  const complex = eventConfig.complex || {};
 
   // config event
-  const simpleEventArr = Object.values(simple);
+  const simpleEventArr: SimpleEvent[] = [];
   const simpleEventKeys = Object.keys(simple);
+  simpleEventKeys.forEach((key) => {
+    simpleEventArr.push(simple[key]);
+  });
 
   const eventTypeSet: Set<EventType> = new Set();
   const identifierSet: Set<string> = new Set();
 
-  simpleEventArr.forEach((eventObject: any) => {
-    eventTypeSet.add(eventObject.event_type); // listen
+  simpleEventArr.forEach((simpleEventObject: SimpleEvent) => {
+    simpleEventObject.event_type.forEach((element) => {
+      eventTypeSet.add(element); // listen
+    });
   });
   simpleEventKeys.forEach((eventKey: string) => {
     identifierSet.add(eventKey); // filter
   });
 
   // Complex Event
-  const complexEventArr = Object.values(complex);
+  const complexEventArr: ComplexEvent[] = [];
+  const complexEventKeys = Object.keys(complex);
+  complexEventKeys.forEach((key) => {
+    complexEventArr.push(complex[key]);
+  });
+
   const complexInstanceArr = complexEventArr.map((complexInstance) => {
-    // eslint-disable-next-line no-new
-    return new SequenceEvent(complexInstance, dispatch);
+    return new SequencedEventObserver(complexInstance, dispatch);
   });
 
   // event listener
-  const div = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  const collectorElement = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
     Array.from(eventTypeSet).forEach((ev: EventType) => {
-      div?.current?.addEventListener(ev, (e: any) => {
-        const eventKey = e.identifier;
-        if (identifierSet.has(eventKey)) {
-          dispatch({ userEvent: simple[eventKey], props: e.children, nativeEvent: e });
-          complexInstanceArr.forEach((complexInstance) => complexInstance.notify(eventKey));
+      collectorElement?.current?.addEventListener(ev, (e: any) => {
+        const { identifier } = e;
+        const bubbledEventType = e.type;
+        if (identifierSet.has(identifier)) {
+          if (!simple[identifier].event_type.includes(bubbledEventType)) {
+            return;
+          }
+          dispatch({ userEvent: simple[identifier], props: e.children, nativeEvent: e });
+
+          complexInstanceArr.forEach((complexInstance) => complexInstance.notify(identifier));
         }
-        if (simple[eventKey] && simple[eventKey].stopPropagation === true) {
+        if (simple[identifier] && simple[identifier].stopPropagation === true) {
           e.stopPropagation();
         }
       });
     });
   }, []);
 
-  return <StyledCollector ref={div}>{children}</StyledCollector>;
+  return <div ref={collectorElement}>{children}</div>;
 };
 
 export default Collector;

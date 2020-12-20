@@ -1,13 +1,18 @@
-/* eslint-disable lines-between-class-members */
-import { SimpleEvent, ComplexEvent } from "./interface";
+import { ComplexEvent } from "./interface";
 
-class SequenceEvent {
+class SequencedEventObserver {
   eventObejct: ComplexEvent;
+
   sequence: string[];
+
   remainingQueue: string[];
+
   timer: number;
+
   timerId: number;
+
   dispatch: Function;
+
   isTimerRun: boolean;
 
   constructor(eventObject: ComplexEvent, dispatch: Function) {
@@ -52,4 +57,4 @@ class SequenceEvent {
   }
 }
 
-export default SequenceEvent;
+export default SequencedEventObserver;
