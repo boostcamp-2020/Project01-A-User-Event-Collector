@@ -8,7 +8,7 @@
 [Link to Web Dev Logs](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#web-dev-logs)  
 [Link to iOS Dev Logs](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#ios-dev-logs)
 
-![](https://i.imgur.com/YrK0BDA.gif)
+[iOS 실생화면](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector/tree/dev/iOS)
 
 <br>
 <br>
