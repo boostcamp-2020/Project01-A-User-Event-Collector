@@ -3,6 +3,7 @@ import Router from "next/router";
 import React, { MouseEvent } from "react";
 import HoverImg from "../HoverImg";
 import { StyledLinkDiv, SmallA, SmallSpan, StyledCard, TitleA } from "./index.style";
+import { SlidebarTypes } from "../Slidebar";
 
 interface cardData {
   src?: string;
@@ -14,45 +15,36 @@ interface cardData {
 
 export interface CardProps {
   varient: string;
-  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album";
+  dataType: SlidebarTypes;
   rawData?: any;
 }
 
-function convertData(
-  dataType: "track" | "magazine" | "playlist" | "news" | "myPlaylist" | "album",
-  rawData?: any,
-): cardData {
+function convertData(dataType: SlidebarTypes, rawData?: any): cardData {
   switch (dataType) {
-    case "magazine":
+    case "Magazines":
       return {
         title: rawData.magazineName,
         smallText: `${rawData.createdAt.substring(0, 10)}`,
         src: rawData.cover,
         mainLink: `/magazines/${rawData.id}`,
       };
-    case "playlist":
+    case "Playlists":
+    case "MyPlaylists":
       return {
         title: rawData.playlistName,
         smallText: `${rawData.Users.username}`,
         src: rawData.cover,
         mainLink: `/playlists/${rawData.id}`,
       };
-    case "myPlaylist":
-      return {
-        title: rawData.playlistName,
-        smallText: `${rawData.Users.username}`,
-        src: rawData.cover,
-        mainLink: `/playlists/${rawData.id}`,
-      };
-    case "album":
+    case "Albums":
       return {
         src: rawData.cover,
         title: rawData.albumName,
-        smallText: rawData.artistId,
+        smallText: rawData.Artists?.artistName,
         mainLink: `/albums/${rawData.id}`,
         smallLink: `/artists/${rawData.artistId}`,
       };
-    case "track":
+    case "Tracks":
       return {
         src: rawData.Albums.cover,
         title: rawData.trackName,
@@ -60,7 +52,7 @@ function convertData(
         mainLink: `/albums/${rawData.Albums.id}`,
         smallLink: `/artists/${rawData.Artists.id}`,
       };
-    case "news":
+    case "News":
       return {
         src: rawData.cover,
         title: rawData.newsName,
@@ -75,6 +67,18 @@ function convertData(
 
 const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) => {
   const { src, title, smallText, mainLink, smallLink } = convertData(dataType, rawData);
+  const makeHoverProps = (pageType: SlidebarTypes) => {
+    switch (pageType) {
+      case "Magazines":
+      case "News":
+      case "MyPlaylists":
+        return "Playlists";
+
+      default:
+        return pageType;
+    }
+  };
+
   const linkHandler = (link?: string) => (e: MouseEvent) => {
     e.stopPropagation();
     Router.push(link || "");
@@ -83,7 +87,12 @@ const Card: React.FC<CardProps> = ({ varient, dataType, rawData }: CardProps) =>
   return (
     <StyledCard varient={varient}>
       <StyledLinkDiv onClick={linkHandler(mainLink)}>
-        <HoverImg varient={varient} src={src} />
+        <HoverImg
+          varient={varient}
+          heartType={makeHoverProps(dataType)}
+          heartId={rawData.playlistId || rawData.id}
+          src={src}
+        />
       </StyledLinkDiv>
       <StyledLinkDiv onClick={linkHandler(mainLink)}>
         <TitleA>{title}</TitleA>

@@ -14,7 +14,7 @@ const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
     // eslint-disable-next-line no-console
     <Collector eventConfig={EventObjectExample} dispatch={console.log}>
       <StyleMagazinePage>
-        <DetailPage type="magazine" detailData={Magazines} tracks={Magazines.Tracks} />
+        <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />
       </StyleMagazinePage>
     </Collector>
   );
@@ -25,8 +25,6 @@ export default MagazinePage;
 export async function getServerSideProps({ params }: any): Promise<any> {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
-  // const Cookie = req.headers.cookie;
-  // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/magazines/${params.pid}`);
   const { Magazines } = await res.json();

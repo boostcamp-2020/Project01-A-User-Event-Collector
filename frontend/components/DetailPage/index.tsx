@@ -5,7 +5,7 @@ import { Track } from "../../interfaces";
 import Tracklist from "../Tracklist";
 
 interface Props {
-  type: "album" | "playlist" | "artist" | "magazine" | "news";
+  type: "Albums" | "Playlists" | "Artists" | "Magazines" | "News";
   detailData: any;
   tracks: Track[];
 }
@@ -17,26 +17,28 @@ const makeProps = (detailType: string, detailData: any) => {
   result.cover = detailData.cover;
 
   switch (detailType) {
-    case "album":
+    case "Albums":
       result.title = detailData.albumName;
       result.owner = detailData.Artists.artistName;
       break;
 
-    case "playlist":
+    case "Playlists":
       result.title = detailData.playlistName;
       result.owner = detailData.Users.username;
       break;
 
-    case "magazine":
+    case "Magazines":
       result.title = detailData.magazineName;
       result.magazineType = detailData.magazineType;
+      result.playlistId = detailData.playlistId;
       break;
 
-    case "news":
+    case "News":
       result.title = detailData.newsName;
+      result.playlistId = detailData.playlistId;
       break;
 
-    case "artist":
+    case "Artists":
       result.title = detailData.artistName;
       break;
 
@@ -47,12 +49,15 @@ const makeProps = (detailType: string, detailData: any) => {
 
 const DetailPage: FC<Props> = ({ type, detailData, tracks }: Props) => {
   const props = makeProps(type, detailData);
-  const { id, cover, title, owner, magazineType, description } = props;
+  const { id, cover, title, owner, magazineType, description, playlistId } = props;
 
   return (
     <StyledDetailPage>
       <StyledDescriptionHeader>
         <DescriptionHeader
+          type={type}
+          id={id}
+          playlistId={playlistId}
           title={title}
           cover={cover}
           artists={owner || magazineType}

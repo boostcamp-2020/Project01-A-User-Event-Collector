@@ -31,9 +31,10 @@ const TracksLibraryPage = memo(() => {
   const [likedTracks, setLikedTracks] = useState([]);
 
   useEffect(() => {
-    myAxios.get("/library/tracks").then((res: any) => {
+    (async () => {
+      const res: any = await myAxios.get("/library/tracks");
       setLikedTracks(res.data.Tracks);
-    });
+    })();
   }, []);
 
   return (
