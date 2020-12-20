@@ -3,7 +3,6 @@ import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
 import { Emitter, Collector, EventObject } from "../../event";
-import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -35,7 +34,7 @@ const StyledSections = styled.div`
 
 const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
   return (
-    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
+    <>
       <StyledHotMag>
         <HotMagCard magazine={HotMag} />
         <StyledHotMagOverlay />
@@ -61,7 +60,7 @@ const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
           data={Playlists}
         />
       </StyledSections>
-    </Collector>
+    </>
   );
 });
 

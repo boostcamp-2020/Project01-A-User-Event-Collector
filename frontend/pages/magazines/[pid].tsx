@@ -1,15 +1,9 @@
 import React, { FC } from "react";
 import DetailPage from "../../components/DetailPage";
-import { Collector } from "../../event";
-import EventObjectExample from "../../event/Exampe_eventObject";
 import { Magazine } from "../../interfaces";
 
 const MagazinePage: FC<Magazine[]> = ({ Magazines }: any) => {
-  return (
-    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
-      <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />
-    </Collector>
-  );
+  return <DetailPage type="Magazines" detailData={Magazines} tracks={Magazines.Tracks} />;
 };
 
 export default MagazinePage;
