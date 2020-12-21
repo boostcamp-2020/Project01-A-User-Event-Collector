@@ -8,6 +8,7 @@
 [Link to Web Dev Logs](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#web-dev-logs)  
 [Link to iOS Dev Logs](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector#ios-dev-logs)
 
+[Wev 배포주소](http://118.67.135.69:3000/)
 [iOS 실생화면](https://github.com/boostcamp-2020/Project01-A-User-Event-Collector/tree/dev/iOS)
 
 <br>
