@@ -21,6 +21,7 @@ import {
   StyledPlayButtons,
 } from "./styled";
 import PlaybarTrackCard from "./PlaybarTrackCard";
+import { Emitter } from "../../../event";
 
 const emptyTrack: Track = {
   id: 0,
@@ -93,9 +94,12 @@ const Playbar: FC = memo(() => {
         <StyledMainButtons>
           <StyledSideButtons>{icons.random}</StyledSideButtons>
           <StyledMiddleButtons onClick={prevBtnHandler}>{icons.previous}</StyledMiddleButtons>
-          <StyledPlayButtons onClick={playBtnHandler}>
-            {playmode ? icons.pause : icons.play}
-          </StyledPlayButtons>
+
+          <Emitter identifier="playButton" eventType={["click"]}>
+            <StyledPlayButtons onClick={playBtnHandler}>
+              {playmode ? icons.pause : icons.play}
+            </StyledPlayButtons>
+          </Emitter>
           <StyledMiddleButtons onClick={nextBtnHandler}>{icons.next}</StyledMiddleButtons>
           <StyledSideButtons>{icons.repeat}</StyledSideButtons>
         </StyledMainButtons>
@@ -105,12 +109,14 @@ const Playbar: FC = memo(() => {
           {currentPlayTime} / {fullPlayTime}
         </StyledTrackTime>
         <StyledTrackVolume>
-          <StyledTrackVolumeSlide
-            type="range"
-            value={volume}
-            onChange={handleVolume}
-            onClick={stopPropagation}
-          />
+          <Emitter identifier="volumeButton" eventType={["click"]}>
+            <StyledTrackVolumeSlide
+              type="range"
+              value={volume}
+              onChange={handleVolume}
+              onClick={stopPropagation}
+            />
+          </Emitter>
         </StyledTrackVolume>
         <StyledPlaylistButtonWrapper>
           <StyledPlaylistButton showPlaylist={showPlaylist}>{icons.list}</StyledPlaylistButton>
