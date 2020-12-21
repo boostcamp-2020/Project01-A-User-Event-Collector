@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Img from "../Img";
 import icons from "../../constant/icons";
 import {
@@ -15,8 +15,40 @@ import {
   StyledPlaylistETCButton,
   StyledIcons,
 } from "./styled";
+import Heart from "../Button/HeartButton";
+import { Artist } from "../../interfaces";
 
-const DescriptionHeader = ({ title, cover, artists, description }: any): React.ReactElement => {
+type detailPageTypes = "Albums" | "Playlists" | "Artists" | "Magazines" | "News";
+
+interface Props {
+  type: "Albums" | "Playlists" | "Artists" | "Magazines" | "News";
+  id: number;
+  title: string;
+  cover: string;
+  artists?: Artist[];
+  description: string;
+  playlistId?: number;
+}
+const DescriptionHeader: FC<Props> = ({
+  type,
+  id,
+  title,
+  cover,
+  artists,
+  description,
+  playlistId,
+}: Props) => {
+  const makeHeartProps = (pageType: detailPageTypes) => {
+    switch (pageType) {
+      case "Magazines":
+      case "News":
+        return "Playlists";
+
+      default:
+        return pageType;
+    }
+  };
+
   return (
     <StyledDescriptionHeader>
       <StyledCover>
@@ -35,7 +67,9 @@ const DescriptionHeader = ({ title, cover, artists, description }: any): React.R
           </StyledRandomPlayButton>
           <StyledMP3Button>MP3 구매</StyledMP3Button>
           <StyledPlaylistETCButton>{icons.plus}</StyledPlaylistETCButton>
-          <StyledPlaylistETCButton>{icons.ellipsis}</StyledPlaylistETCButton>
+          <StyledPlaylistETCButton>
+            <Heart type={makeHeartProps(type)} targetId={playlistId || id} />
+          </StyledPlaylistETCButton>
         </StyledButtons>
       </StyledInfo>
     </StyledDescriptionHeader>

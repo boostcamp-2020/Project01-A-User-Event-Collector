@@ -143,7 +143,7 @@ const IndexPage = memo(({ magazines, HotMag, className }: any) => {
         {magazines
           .filter((value: Magazine) => magType === "ALL" || value.magazineType === magType)
           .map((value: Magazine) => (
-            <Card varient="magazineBig" dataType="magazine" rawData={value} />
+            <Card varient="magazineBig" dataType="Magazines" rawData={value} />
           ))}
       </StyledSection>
     </MagazineContainer>

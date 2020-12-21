@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
-import icons from "../../constant/icons";
-import myAxios from "../../utils/myAxios";
+import React, { FC, useEffect, useState, MouseEvent } from "react";
+import icons from "../../../constant/icons";
+import myAxios from "../../../utils/myAxios";
 import { StyledEmptyHeart, StyledFilledHeart } from "./styled";
 
 interface Props {
@@ -16,20 +16,31 @@ const Heart: FC<Props> = ({ type, targetId }: Props) => {
     const likedItem = localStorage.getItem("likedItem");
     if (likedItem !== null) {
       const { [`liked${type}`]: baseArray } = JSON.parse(likedItem);
+      if (!baseArray) return;
       setIsLike(baseArray.includes(targetId));
     }
   }, [targetId]);
 
-  const likeBtnHandler = () => {
-    (async () => {
-      if (!isLike) await myAxios.post(reqPath, {});
-      else await myAxios.delete(reqPath);
+  const likeBtnHandler = (e: MouseEvent) => {
+    e.stopPropagation();
 
-      const { data }: any = await myAxios.get("/users/likedItem");
-      localStorage.setItem("likedItem", JSON.stringify(data));
-    })();
+    if (!localStorage.getItem("token")) {
+      alert("로그인 해주세용~");
+      return;
+    }
 
-    setIsLike(!isLike);
+    try {
+      (async () => {
+        if (!isLike) await myAxios.post(reqPath, {});
+        else await myAxios.delete(reqPath);
+
+        const { data }: any = await myAxios.get("/users/likedItem");
+        localStorage.setItem("likedItem", JSON.stringify(data));
+        setIsLike(!isLike);
+      })();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

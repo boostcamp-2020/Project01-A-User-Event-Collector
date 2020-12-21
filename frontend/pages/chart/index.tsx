@@ -1,71 +1,9 @@
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import styled from "styled-components";
+import myAxios from "../../utils/myAxios";
 import ChartSlider from "../../components/ChartSlider";
 import { mockData } from "../../components/ChartSlider/index.stories";
 import GenreContainer from "../../components/GenreContainer";
-
-const genreData = [
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-  {
-    id: 1,
-    genreName: "국내 댄스",
-  },
-];
 
 const StyledChartPageWrapper = styled.div`
   box-sizing: border-box;
@@ -79,6 +17,16 @@ const StyledPagetitle = styled.div`
 `;
 
 const ChartsPage = memo(() => {
+  const [genreData, setGenreData] = useState([]);
+  useEffect(() => {
+    myAxios.get("/genres").then((response: any) => {
+      const {
+        data: { Genres },
+      } = response;
+      setGenreData(Genres);
+    });
+  }, []);
+
   return (
     <StyledChartPageWrapper>
       <StyledPagetitle>차트</StyledPagetitle>

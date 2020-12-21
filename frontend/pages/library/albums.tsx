@@ -34,9 +34,10 @@ const AlbumsLibraryPage = memo(() => {
   const [likedAlbums, setLikedAlbums] = useState([]);
 
   useEffect(() => {
-    myAxios.get("/library/albums").then((res: any) => {
+    (async () => {
+      const res: any = await myAxios.get("/library/albums");
       setLikedAlbums(res.data.Albums);
-    });
+    })();
   }, []);
 
   return (
@@ -45,7 +46,7 @@ const AlbumsLibraryPage = memo(() => {
       <StyledPagetitle>앨범</StyledPagetitle>
       <StyledSection>
         {likedAlbums?.map((value: Album) => (
-          <Card varient="todaySmall" dataType="album" rawData={value} />
+          <Card varient="todaySmall" dataType="Albums" rawData={value} />
         ))}
       </StyledSection>
     </>

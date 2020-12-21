@@ -1,18 +1,10 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import DetailPage from "../../components/DetailPage";
-import { _News } from "../../interfaces";
+import { News } from "../../interfaces";
 
-const StyleNewsPage = styled.div`
-  height: 100vh;
-`;
-
-const NewsPage: FC<_News[]> = ({ News }: any) => {
-  return (
-    <StyleNewsPage>
-      <DetailPage type="news" detailData={News} tracks={News.Tracks} />
-    </StyleNewsPage>
-  );
+const NewsPage: FC<News[]> = ({ NewsData }: any) => {
+  return <DetailPage type="News" detailData={NewsData} tracks={NewsData.Tracks} />;
 };
 
 export default NewsPage;
@@ -20,11 +12,9 @@ export default NewsPage;
 export async function getServerSideProps({ params }: any): Promise<any> {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
-  // const Cookie = req.headers.cookie;
-  // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/news/${params.pid}`);
-  const { News } = await res.json();
+  const { NewsData } = await res.json();
 
-  return { props: { News } };
+  return { props: { NewsData } };
 }

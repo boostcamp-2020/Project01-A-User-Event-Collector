@@ -8,6 +8,7 @@ export const ADD = "checkedTrack/ADD";
 export const DELETE = "checkedTrack/DELETE";
 export const EMPTY = "checkedTrack/EMPTY";
 export const SET_ALLCHECKED = "checkedTrack/SET_ALL";
+export const SET_ALLUNCHECKED = "checkedTrack/SET_ALLUNCHECKED";
 export const TOGGLE_ALLCHECKED = "checkedTrack/TOGGLE_ALL";
 
 interface InitAction {
@@ -37,13 +38,19 @@ interface SetAllCheckedAction {
   payload: boolean;
 }
 
+interface SetAllUncheckedAction {
+  type: typeof SET_ALLUNCHECKED;
+  payload: boolean;
+}
+
 export type CheckedTrackActionTypes =
   | AddAction
   | DeleteAction
   | InitAction
   | EmptyAction
   | ToggleAllCheckedAction
-  | SetAllCheckedAction;
+  | SetAllCheckedAction
+  | SetAllUncheckedAction;
 
 // Action Creator
 export const initCheckedTrack = (): InitAction => {
@@ -85,16 +92,24 @@ export const setAllChecked = (newAllChecked: boolean): SetAllCheckedAction => {
   };
 };
 
+export const setAllUnchecked = (newAllUnchecked: boolean): SetAllUncheckedAction => {
+  return {
+    type: SET_ALLUNCHECKED,
+    payload: newAllUnchecked,
+  };
+};
+
 // Reducer
-const initialState: { allChecked: boolean; checkedTracks: Set<Track> } = {
+const initialState: { allChecked: boolean; allUnchecked: boolean; checkedTracks: Set<Track> } = {
   allChecked: false,
+  allUnchecked: false,
   checkedTracks: new Set(),
 };
 
 const checkedTrackReducer = (
   state = initialState,
   action: CheckedTrackActionTypes,
-): { allChecked: boolean; checkedTracks: Set<Track> } => {
+): { allChecked: boolean; allUnchecked: boolean; checkedTracks: Set<Track> } => {
   switch (action.type) {
     case INIT:
       return initialState;
@@ -113,7 +128,10 @@ const checkedTrackReducer = (
       return { ...state, allChecked: !state.allChecked };
 
     case SET_ALLCHECKED:
-      return { ...state, allChecked: action.payload };
+      return { ...state, allChecked: action.payload, allUnchecked: false };
+
+    case SET_ALLUNCHECKED:
+      return { ...state, allUnchecked: action.payload };
 
     default:
       return state;

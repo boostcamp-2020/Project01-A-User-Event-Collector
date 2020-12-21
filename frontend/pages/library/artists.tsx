@@ -1,7 +1,5 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
-import Card from "../../components/Card";
-import Img from "../../components/Img";
 import { Artist } from "../../interfaces";
 import LikedArtistCard from "../../components/LikedArtistCard";
 import myAxios from "../../utils/myAxios";
@@ -22,6 +20,7 @@ const StyledSection = styled.ul`
   width: 100%;
   padding-top: 2.5rem;
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(5, minmax(19%, auto));
   grid-template-rows: repeat(auto-fill, auto);
   grid-auto-flow: row;
@@ -36,9 +35,10 @@ const ArtistsLibraryPage = memo(() => {
   const [likedArtists, setLikedArtists] = useState([]);
 
   useEffect(() => {
-    myAxios.get("/library/artists").then((res: any) => {
+    (async () => {
+      const res: any = await myAxios.get("/library/artists");
       setLikedArtists(res.data.Artists);
-    });
+    })();
   }, []);
 
   return (

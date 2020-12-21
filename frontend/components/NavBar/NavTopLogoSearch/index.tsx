@@ -4,8 +4,9 @@ import icons from "../../../constant/icons";
 import {
   StyledNavTopLogoSearch,
   StyledNavLogo,
-  StyledNavNaver,
-  StyledNavVibe,
+  StyledNavVIBE,
+  StyledWith,
+  StyledNavDIVE,
   StyledNavSearch,
 } from "./styled";
 
@@ -16,8 +17,9 @@ const NavTopLogoSearch = memo(
     return (
       <StyledNavTopLogoSearch>
         <StyledNavLogo onClick={() => router.push("/today")}>
-          <StyledNavNaver>NAVER</StyledNavNaver>
-          <StyledNavVibe>VIBE</StyledNavVibe>
+          <StyledNavVIBE>VIBE</StyledNavVIBE>
+          <StyledWith>with</StyledWith>
+          <StyledNavDIVE>DIVE</StyledNavDIVE>
         </StyledNavLogo>
         <StyledNavSearch onClick={handleSearch}>{icons.search}</StyledNavSearch>
       </StyledNavTopLogoSearch>

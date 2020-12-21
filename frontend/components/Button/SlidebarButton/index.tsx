@@ -19,6 +19,7 @@ const NextButton = styled.div<SlideButtonProps>`
   border: 0.1rem solid #eee;
   box-shadow: 0 0 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   display: ${({ hide }) => (hide ? "none" : "block")};
+  cursor: pointer;
   & svg {
     width: 20px;
     height: 20px;
@@ -38,6 +39,7 @@ const PreviousButton = styled.div<SlideButtonProps>`
   display: ${({ hide }) => (hide ? "none" : "block")};
   border: 0.1rem solid #eee;
   box-shadow: 0 0 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
   & svg {
     width: 20px;
     height: 20px;

@@ -3,7 +3,7 @@ import DetailPage from "../../components/DetailPage";
 import { Artist } from "../../interfaces";
 
 const ArtistPage: FC<Artist[]> = ({ Artists }: any) => {
-  return <DetailPage type="artist" detailData={Artists} tracks={Artists.Tracks} />;
+  return <DetailPage type="Artists" detailData={Artists} tracks={Artists.Tracks} />;
 };
 
 export default ArtistPage;
@@ -11,8 +11,6 @@ export default ArtistPage;
 export async function getServerSideProps({ params }: any): Promise<any> {
   const apiUrl = process.env.API_URL;
   const apiPort = process.env.API_PORT;
-  // const Cookie = req.headers.cookie;
-  // const jwt = findTokenFromCookie(Cookie);
 
   const res = await fetch(`${apiUrl}:${apiPort}/api/artists/${params.pid}`);
   const { Artists } = await res.json();

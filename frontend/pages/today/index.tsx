@@ -3,7 +3,6 @@ import styled from "styled-components";
 import HotMagCard from "../../components/HotMagCard";
 import Slidebar from "../../components/Slidebar";
 import { Emitter, Collector, EventObject } from "../../event";
-import EventObjectExample from "../../event/Exampe_eventObject";
 
 const StyledHotMag = styled.div`
   position: relative;
@@ -29,13 +28,13 @@ const StyledSections = styled.div`
   flex-direction: column;
   margin: 0.5rem 0rem;
   & + & {
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 `;
 
 const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
   return (
-    <Collector eventConfig={EventObjectExample} dispatch={console.log}>
+    <>
       <StyledHotMag>
         <HotMagCard magazine={HotMag} />
         <StyledHotMagOverlay />
@@ -43,25 +42,25 @@ const IndexPage = memo(({ HotMag, Magazines, News, Playlists }: any) => {
       <StyledSections>
         <Slidebar
           varient="todayBig"
-          dataType="magazine"
+          dataType="Magazines"
           title="매거진"
-          titleLink=""
+          titleLink="/magazines"
           data={Magazines}
         />
       </StyledSections>
       <StyledSections>
-        <Slidebar varient="todayNews" dataType="news" title="News" titleLink="" data={News} />
+        <Slidebar varient="todayNews" dataType="News" title="News" titleLink="" data={News} />
       </StyledSections>
       <StyledSections>
         <Slidebar
           varient="todayBig"
-          dataType="playlist"
+          dataType="Playlists"
           title="VIBE 추천 플레이리스트"
           titleLink=""
           data={Playlists}
         />
       </StyledSections>
-    </Collector>
+    </>
   );
 });
 
