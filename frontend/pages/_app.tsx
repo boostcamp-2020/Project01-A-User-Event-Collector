@@ -56,24 +56,18 @@ const eventObj: EventObject = {
   },
 };
 
-const starConsole = (e: any) => {
-  console.log("****************");
-  console.log(e);
-  console.log("*********");
-};
-
 // Collector
 const store = createStore(rootReducer);
 const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       {/* <Collector eventConfig={eventObj} dispatch={console.log}> */}
-      <Collector eventConfig={eventObj} dispatch={sendLog}>
-        <GlobalStyles />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Collector>
+      {/* <Collector eventConfig={eventObj} dispatch={sendLog}> */}
+      <GlobalStyles />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      {/* </Collector> */}
     </Provider>
   );
 });
