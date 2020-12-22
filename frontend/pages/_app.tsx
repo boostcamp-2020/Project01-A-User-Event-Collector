@@ -6,6 +6,8 @@ import reset from "styled-reset";
 import React, { FC, memo, useState } from "react";
 import Layout from "../components/Layout";
 import { rootReducer } from "../reduxModules";
+import { Collector, EventObject } from "../event";
+import sendLog from "../utils/sendLog";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -29,14 +31,43 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+// Event object
+const eventObj: EventObject = {
+  simple: {
+    playButton: {
+      event_id: 1,
+      event_type: ["click"],
+      description: "재생버튼 클릭함",
+    },
+    volumeButton: {
+      event_id: 3,
+      event_type: ["click"],
+      description: "볼륨 조절",
+    },
+  },
+
+  complex: {
+    playButtonX3: {
+      event_id: 2,
+      timer: 1000,
+      sequence: ["playButton", "volumeButton"],
+      description: "기본 음량이 저랑 좀 안맞네요..",
+    },
+  },
+};
+
+// Collector
 const store = createStore(rootReducer);
 const MyApp: FC<any> = memo(({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
+      {/* <Collector eventConfig={eventObj} dispatch={console.log}> */}
+      {/* <Collector eventConfig={eventObj} dispatch={sendLog}> */}
       <GlobalStyles />
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      {/* </Collector> */}
     </Provider>
   );
 });
