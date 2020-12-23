@@ -17,18 +17,21 @@ struct URLImage: View {
     init(urlString: String?, imageData: Data? = nil) {
         self.urlString = urlString
         self.imageData = imageData
+        if let urlString = urlString {
+            print("\(UUID())\n\(urlString)")
+        }
     }
 
     var body: some View {
         content
-            .onAppear {
-                imageLoader.fetch(urlString: urlString, imageData: imageData)
+            .onAppear { [weak imageLoader = self.imageLoader] in
+                imageLoader?.fetch(urlString: urlString, imageData: imageData)
             }
     }
 
     private var content: some View {
-        Group {
-            if let image = imageLoader.image {
+        Group { [weak imageLoader = self.imageLoader] in
+            if let image = imageLoader?.image {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

@@ -26,10 +26,6 @@ struct TrackListHeaderView: View {
                 Spacer()
             }
             VStack(alignment: .leading) {
-//                if let createdAt = playlist.createdAt {
-//                    Text(createdAt)
-//                        .modifier(Title2())
-//                }
                 if let description = playlist.description {
                     Text(description)
                         .modifier(Description2())

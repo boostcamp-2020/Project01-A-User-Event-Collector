@@ -18,19 +18,23 @@ struct SearchView: View {
         self.manager = manager
         _viewModel = StateObject(wrappedValue: SearchViewModel(manager: manager))
     }
-
+    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: layout,
                           spacing: 20,
-                          pinnedViews: [.sectionHeaders]) {
-                    Section(header: SearchBarView(viewModel: viewModel)) {
-                        if viewModel.isEditing {
-                            SearchAfterView(viewModel: viewModel)
-                                .animation(.easeInOut)
-                        } else {
-                            SearchBeforeView(manager: manager)
+                          pinnedViews: [.sectionHeaders]) { [weak viewModel = self.viewModel,
+                                                             weak manager = self.manager] in
+                    if let viewModel = viewModel,
+                       let manager = manager {
+                        Section(header: SearchBarView(viewModel: viewModel)) {
+                            if viewModel.isEditing {
+                                SearchAfterView(viewModel: viewModel)
+                                    .animation(.easeInOut)
+                            } else {
+                                SearchBeforeView(manager: manager)
+                            }
                         }
                     }
                     Rectangle()

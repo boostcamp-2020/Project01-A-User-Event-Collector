@@ -22,20 +22,24 @@ struct ThumbnailListView: View {
         guard let title = router.title() else { return AnyView(ErrorView()) }
         
         return AnyView(
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: layout) {
-                    ForEach(viewModel.thumbnails, id: \.id) { thumbnail in
-                        MemorySafeNavigationLink(
-                            contentView: ThumbnailCellView(thumbnail: thumbnail),
-                            destination: router.getDestination(id: thumbnail.id)
-                        )
+            ScrollView(showsIndicators: false) { [weak viewModel = self.viewModel,
+                                                  weak router = self.router] in
+                if let viewModel = viewModel,
+                   let router = router {
+                    LazyVGrid(columns: layout) {
+                        ForEach(viewModel.thumbnails, id: \.id) { thumbnail in
+                            MemorySafeNavigationLink(
+                                contentView: ThumbnailCellView(thumbnail: thumbnail),
+                                destination: router.getDestination(id: thumbnail.id)
+                            )
+                        }
+                        Rectangle()
+                            .clearBottom()
                     }
-                    Rectangle()
-                        .clearBottom()
-                }
-                .modifier(NavigationBarStyle(title: title))
-                .onAppear {
-                    viewModel.fetch(type: router.routingStarter)
+                    .modifier(NavigationBarStyle(title: title))
+                    .onAppear {
+                        viewModel.fetch(type: router.routingStarter)
+                    }
                 }
             }
             .padding()

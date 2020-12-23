@@ -33,7 +33,7 @@ class URLImageLoader: ObservableObject {
         loadFromUrl(urlString: urlString)
     }
     
-    func loadFromUrl(urlString: String) {
+    private func loadFromUrl(urlString: String) {
         let url = URL(string: urlString)
         let urlRequest = RequestBuilder(url: url, method: .get).create()
         guard let request = urlRequest else { return }
@@ -56,7 +56,7 @@ class URLImageLoader: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadFromCache(urlString: String) -> Bool {
+    private func loadFromCache(urlString: String) -> Bool {
         guard let data = imageCache.get(forKey: urlString) else {
             return false
         }
