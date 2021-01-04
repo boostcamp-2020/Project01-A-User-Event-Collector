@@ -17,9 +17,6 @@ struct URLImage: View {
     init(urlString: String?, imageData: Data? = nil) {
         self.urlString = urlString
         self.imageData = imageData
-        if let urlString = urlString {
-            print("\(UUID())\n\(urlString)")
-        }
     }
 
     var body: some View {

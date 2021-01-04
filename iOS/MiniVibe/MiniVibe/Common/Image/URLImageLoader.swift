@@ -10,9 +10,9 @@ import Combine
 
 class URLImageLoader: ObservableObject {
     @Published var image: UIImage?
-    var imageCache = ImageCache.shared
     
-    private let network = NetworkService(session: URLSession.shared)
+    private var imageCache = ImageCache.shared
+    private let network = NetworkManager()
     private var cancellables = Set<AnyCancellable>()
     
     func fetch(urlString: String?, imageData: Data?) {
@@ -38,22 +38,12 @@ class URLImageLoader: ObservableObject {
         let urlRequest = RequestBuilder(url: url, method: .get).create()
         guard let request = urlRequest else { return }
         
-        network.request(request: request)
-            .sink { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    //                    print("success")
-                    break
-                }
-            } receiveValue: { [weak self] data in
-                DispatchQueue.main.async { [weak self] in
-                    self?.image = UIImage(data: data)
-                    self?.imageCache.set(forKey: urlString, data: data as NSData)
-                }
+        network.request(urlRequest: request) { data in
+            DispatchQueue.main.async { [weak self] in
+                self?.image = UIImage(data: data)
+                self?.imageCache.set(forKey: urlString, data: data as NSData)
             }
-            .store(in: &cancellables)
+        }
     }
     
     private func loadFromCache(urlString: String) -> Bool {

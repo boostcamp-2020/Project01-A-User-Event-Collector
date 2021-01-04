@@ -30,12 +30,11 @@ struct ChartView: View {
                 }
             }
             .padding()
-            .navigationTitle("차트")
             .onAppear { [weak manager = self.manager, weak viewModel = self.viewModel] in
                 manager?.log(ScreenEvent.screenViewed(.chart))
                 viewModel?.fetch(id: playlistID)
             }
-
-        }    }
-    
+            .navigationTitle("차트")
+        }
+    }
 }
