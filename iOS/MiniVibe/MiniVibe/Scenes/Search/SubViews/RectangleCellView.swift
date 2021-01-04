@@ -23,7 +23,7 @@ struct RectangleCellView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width/2)
-                RectangleCellInfoView()
+//                RectangleCellInfoView()
             }
         })
     }
