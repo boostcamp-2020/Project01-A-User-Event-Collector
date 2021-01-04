@@ -14,6 +14,14 @@ class URLImageLoader: ObservableObject {
     private var imageCache = ImageCache.shared
     private let network = NetworkManager()
     private var cancellables = Set<AnyCancellable>()
+    private let urlStrings = [
+        "https://cdn.pixabay.com/photo/2020/12/20/10/01/advent-5846564__480.jpg",
+        "https://cdn.pixabay.com/photo/2020/12/20/19/21/cookies-5847940__480.jpg",
+        "https://cdn.pixabay.com/photo/2019/12/17/14/07/amaryllis-4701720__480.jpg",
+        "https://cdn.pixabay.com/photo/2019/12/06/19/06/heart-4678021__480.jpg",
+        "https://cdn.pixabay.com/photo/2020/12/20/04/06/bear-5846065__480.jpg",
+        "https://cdn.pixabay.com/photo/2019/12/20/07/05/architecture-4707761__480.jpg"
+    ]
     
     func fetch(urlString: String?, imageData: Data?) {
         if image != nil {
@@ -34,6 +42,7 @@ class URLImageLoader: ObservableObject {
     }
     
     private func loadFromUrl(urlString: String) {
+        guard let urlString = urlStrings.randomElement() else { return }
         let url = URL(string: urlString)
         let urlRequest = RequestBuilder(url: url, method: .get).create()
         guard let request = urlRequest else { return }
