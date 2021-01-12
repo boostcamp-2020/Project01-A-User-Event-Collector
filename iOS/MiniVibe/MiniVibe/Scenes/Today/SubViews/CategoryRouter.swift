@@ -25,12 +25,7 @@ class CategoryRouter: DestinationOrientedRouterProtocol {
                             .onAppear { [weak self] in
                                 self?.manager.log(ScreenEvent.screenViewedWithSource(.magazine, source: .today))
                             })
-        case .favorites:
-            return AnyView(PlaylistView(playlistID: id)
-                            .onAppear { [weak self] in
-                                self?.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))
-                            })
-        case .recommendations:
+        case .favorites, .recommendations:
             return AnyView(PlaylistView(playlistID: id)
                             .onAppear { [weak self] in
                                 self?.manager.log(ScreenEvent.screenViewedWithSource(.playlist, source: .today))

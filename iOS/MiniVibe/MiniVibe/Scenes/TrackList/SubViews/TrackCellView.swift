@@ -27,26 +27,29 @@ struct TrackCellView: View {
     }
     
     var body: some View {
-        HStack {
-            Button(action: {
-                if isCellForQueue {
-                    nowPlayingViewModel.changeCurrentTrackInQueue(to: track)
-                } else {
-                    nowPlayingViewModel.update(with: track)
+        HStack { [weak nowPlayingViewModel = self.nowPlayingViewModel, weak viewModel = self.viewModel] in
+            if let nowPlayingViewModel = nowPlayingViewModel,
+               let viewModel = viewModel {
+                Button(action: {
+                    if isCellForQueue {
+                        nowPlayingViewModel.changeCurrentTrackInQueue(to: track)
+                    } else {
+                        nowPlayingViewModel.update(with: track)
+                    }
+                }, label: {
+                    BasicRowCellView(title: track.name,
+                                     subTitle: track.artist,
+                                     coverURLString: track.coverURLString,
+                                     coverData: track.coverData)
+                })
+                if hasDownloadAccessory {
+                    DownloadAccessory(isSavedToLibrary: viewModel.isSavedToLibrary,
+                                      toggleLiked: viewModel.didToggleLikedAccessory)
                 }
-            }, label: {
-                BasicRowCellView(title: track.name,
-                                 subTitle: track.artist,
-                                 coverURLString: track.coverURLString,
-                                 coverData: track.coverData)
-            })
-            if hasDownloadAccessory {
-                DownloadAccessory(isSavedToLibrary: viewModel.isSavedToLibrary,
-                                  toggleLiked: viewModel.didToggleLikedAccessory)
-            }
-            if hasDeleteAccessory {
-                DeleteAccessory {
-                    nowPlayingViewModel.didToggleDeleteAccessory(id: track.id)
+                if hasDeleteAccessory {
+                    DeleteAccessory {
+                        nowPlayingViewModel.didToggleDeleteAccessory(id: track.id)
+                    }
                 }
             }
         }

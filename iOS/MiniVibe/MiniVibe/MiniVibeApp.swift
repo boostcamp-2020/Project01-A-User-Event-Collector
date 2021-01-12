@@ -15,7 +15,7 @@ struct MiniVibeApp: App {
                                    alertEngine: AlertEventEngine())
     var body: some Scene {
         WindowGroup {
-            CustomTabView(manager: manager)
+            TabBarView(manager: manager)
         }
     }
 }

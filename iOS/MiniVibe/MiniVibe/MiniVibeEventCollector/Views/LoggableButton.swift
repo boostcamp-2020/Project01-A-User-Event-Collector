@@ -20,8 +20,8 @@ struct LoggableButton<T: Event, Content: View>: View {
     }
 
     var body: some View {
-        Button(action: {
-            manager.log(event)
+        Button(action: { [weak manager = manager] in
+            manager?.log(event)
         }, label: {
             content()
         })

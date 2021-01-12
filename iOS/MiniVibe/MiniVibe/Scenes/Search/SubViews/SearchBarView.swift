@@ -16,11 +16,11 @@ struct SearchBarView: View {
             TextField("검색어를 입력해주세요",
                       text: $viewModel.searchText,
                       onEditingChanged: { isEditing in
-                        withAnimation {
-                            viewModel.isEditing = isEditing
+                        withAnimation { [weak viewModel = self.viewModel] in
+                            viewModel?.isEditing = isEditing
                         }},
-                      onCommit: {
-                        viewModel.reset()
+                      onCommit: { [weak viewModel = self.viewModel] in
+                        viewModel?.reset()
                       })
                 .padding(.vertical, 12)
                 .padding(.horizontal, 34)
@@ -38,8 +38,8 @@ struct SearchBarView: View {
             
             if viewModel.isEditing {
                 Button(action: {
-                    withAnimation {
-                        viewModel.reset()
+                    withAnimation { [weak viewModel = self.viewModel] in
+                        viewModel?.reset()
                     }
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                                     to: nil,

@@ -15,15 +15,15 @@ struct RectangleCellView: View {
     }
     
     var body: some View {
-        Button(action: {
-            manager.log(ButtonEvent.newsTouched)
+        Button(action: { [weak manager = self.manager] in
+            manager?.log(ButtonEvent.newsTouched)
         }, label: {
             ZStack(alignment: .bottomLeading) {
                 Image("logo")
                     .resizable()
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width/2)
-                RectangleCellInfoView()
+//                RectangleCellInfoView()
             }
         })
     }

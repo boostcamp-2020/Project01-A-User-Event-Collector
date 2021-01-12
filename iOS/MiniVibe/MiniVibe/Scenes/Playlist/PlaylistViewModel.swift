@@ -10,7 +10,7 @@ import Foundation
 class PlaylistViewModel: ObservableObject {
     @Published var playlist: Playlist?
     
-    private let networkManager = NetworkManager()
+    private let network = NetworkManager()
     
     func fetch(id: Int) {
         let url = URLBuilder(pathType: .api,
@@ -18,7 +18,7 @@ class PlaylistViewModel: ObservableObject {
                              id: id).create()
         let urlRequest = RequestBuilder(url: url,
                                         method: .get).create()
-        networkManager.request(urlRequest: urlRequest) { [weak self] data in
+        network.request(urlRequest: urlRequest) { [weak self] data in
             if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
                 DispatchQueue.main.async { [weak self] in
                     self?.playlist = decodedData.playlist

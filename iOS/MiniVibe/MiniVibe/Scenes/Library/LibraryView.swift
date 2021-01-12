@@ -23,17 +23,19 @@ struct LibraryView: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: layout,
                           spacing: 20,
-                          pinnedViews: [.sectionHeaders]) {
-                    TrackListView(tracks: viewModel.tracks)
+                          pinnedViews: [.sectionHeaders]) { [weak viewModel = self.viewModel] in
+                    if let viewModel = viewModel {
+                        TrackListView(tracks: viewModel.tracks)
+                    }
                 }
                 .padding()
                 Rectangle()
                     .clearBottom()
             }
             .navigationTitle("보관함")
-            .onAppear {
-                viewModel.fetch()
-                manager.log(ScreenEvent.screenViewed(.library))
+            .onAppear { [weak manager = self.manager, weak viewModel = self.viewModel] in
+                viewModel?.fetch()
+                manager?.log(ScreenEvent.screenViewed(.library))
             }
         }
     }

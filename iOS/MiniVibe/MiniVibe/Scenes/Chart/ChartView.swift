@@ -22,19 +22,19 @@ struct ChartView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: layout) {
-                    if let tracks = viewModel.playlist?.tracks {
+                LazyVGrid(columns: layout) { [weak viewModel = self.viewModel, weak manager = self.manager] in
+                    if let tracks = viewModel?.playlist?.tracks,
+                       let manager = manager {
                         TrackHorizontalListView(tracks: tracks, manager: manager)
                     }
                 }
             }
             .padding()
-            .navigationTitle("차트")
-            .onAppear {
-                manager.log(ScreenEvent.screenViewed(.chart))
-                viewModel.fetch(id: playlistID)
+            .onAppear { [weak manager = self.manager, weak viewModel = self.viewModel] in
+                manager?.log(ScreenEvent.screenViewed(.chart))
+                viewModel?.fetch(id: playlistID)
             }
-
-        }    }
-    
+            .navigationTitle("차트")
+        }
+    }
 }

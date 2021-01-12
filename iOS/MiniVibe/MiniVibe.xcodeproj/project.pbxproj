@@ -105,6 +105,7 @@
 		CF6E5DD625756A3300BE7503 /* RectangleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DD525756A3300BE7503 /* RectangleListView.swift */; };
 		CF6E5DDB25756BAC00BE7503 /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */; };
 		CF6E5DE325756E6300BE7503 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E5DE225756E6300BE7503 /* GenreListView.swift */; };
+		CF8254ED25A3907700B7C230 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8254EC25A3907700B7C230 /* TabBarView.swift */; };
 		CF8286A2256BA5BA00D68373 /* ThumbnailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */; };
 		CF93D7AE256E31FB005A71CF /* ThumbnailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */; };
 		CF93D7BE256E660D005A71CF /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */; };
@@ -249,6 +250,7 @@
 		CF6E5DD525756A3300BE7503 /* RectangleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleListView.swift; sourceTree = "<group>"; };
 		CF6E5DDA25756BAC00BE7503 /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
 		CF6E5DE225756E6300BE7503 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
+		CF8254EC25A3907700B7C230 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		CF8286A1256BA5BA00D68373 /* ThumbnailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCellView.swift; sourceTree = "<group>"; };
 		CF93D7AD256E31FB005A71CF /* ThumbnailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailListView.swift; sourceTree = "<group>"; };
 		CF93D7BD256E660C005A71CF /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				51B3D4E5257D168B008025E5 /* CustomTabView.swift */,
 				51C2B004258712B5002CEFB5 /* CustomTabViewContent.swift */,
 				51B3D4EA257DB739008025E5 /* TabIconView.swift */,
+				CF8254EC25A3907700B7C230 /* TabBarView.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -989,6 +992,7 @@
 			files = (
 				CF05F8B42567E7B0008080D7 /* MiniVibe.xcdatamodeld in Sources */,
 				CF3BDD632576AA6100FF768E /* SearchAfterCategoryView.swift in Sources */,
+				CF8254ED25A3907700B7C230 /* TabBarView.swift in Sources */,
 				CF93D7D9256E9009005A71CF /* Sequence+indexed.swift in Sources */,
 				CF9A659C257F61070051E799 /* EllipsisAccessory.swift in Sources */,
 				CFCBC9392577852900439C3F /* NetworkManager.swift in Sources */,

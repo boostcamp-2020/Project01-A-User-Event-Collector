@@ -9,10 +9,10 @@ import Foundation
 
 class TodayViewModel: ObservableObject {
     @Published var stations = [DJStation]()
-    @Published var recommends = [Playlist]()
-    @Published var favorites = [Playlist]()
-    @Published var magazines = [Magazine]()
-    @Published var tracks = [Track]()
+    @Published var recommends = [TestData.playlist, TestData.playlist, TestData.playlist]
+    @Published var favorites = [TestData.playlist, TestData.playlist, TestData.playlist]
+    @Published var magazines = [TestData.magazine, TestData.magazine, TestData.magazine]
+    @Published var tracks = [TestData.defaultTrack, TestData.defaultTrack, TestData.defaultTrack]
     
     private let networkManager = NetworkManager()
     

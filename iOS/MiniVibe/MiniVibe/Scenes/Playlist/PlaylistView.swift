@@ -21,11 +21,11 @@ struct PlaylistView: View {
         guard let playlist = viewModel.playlist,
               let tracks = playlist.tracks else {
             return AnyView(EmptyView()
-                            .onAppear(perform: {
-                                withAnimation {
-                                    viewModel.fetch(id: playlistID)
+                            .onAppear {
+                                withAnimation { [weak viewModel = self.viewModel] in
+                                    viewModel?.fetch(id: playlistID)
                                 }
-                            })
+                            }
                             .navigationBarTitleDisplayMode(.inline))}
         
         return AnyView(
