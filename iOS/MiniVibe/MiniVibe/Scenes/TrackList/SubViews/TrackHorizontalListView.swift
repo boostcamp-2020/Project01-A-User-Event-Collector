@@ -31,8 +31,8 @@ struct TrackHorizontalListView: View {
                 MemorySafeNavigationLink(
                     contentView: CategoryHeaderView(title: "오늘 TOP 100").foregroundColor(.primary),
                     destination: AnyView(PlaylistView(playlistID: 18)
-                                            .onAppear {
-                                                manager.log(screenEvent)
+                                            .onAppear { [weak manager = self.manager] in
+                                                manager?.log(screenEvent)
                                             })
                 )
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -47,10 +47,3 @@ struct TrackHorizontalListView: View {
         }
     }
 }
-
-//struct TrackHorizontalListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrackHorizontalListView(tracks: TestData.playlist.tracks!,
-//                                manager: AnalyticsManager(engine: MockServerEngine()))
-//    }
-//}

@@ -37,6 +37,6 @@ final class NetworkService {
     }
     
     deinit {
-//        session.invalidateAndCancel()
+        session.invalidateAndCancel()
     }
 }

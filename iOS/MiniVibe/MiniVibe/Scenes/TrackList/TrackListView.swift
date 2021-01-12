@@ -18,11 +18,11 @@ struct TrackListView: View {
     
     var body: some View {
         let headerView = TrackListButtonView(
-            didPressPlayButton: {
-                nowPlayingViewModel.update(with: tracks)
+            didPressPlayButton: { [weak nowPlayingViewModel = self.nowPlayingViewModel] in
+                nowPlayingViewModel?.update(with: tracks)
             },
-            didPressShuffleButton: {
-                nowPlayingViewModel.update(with: tracks, isShuffled: true)
+            didPressShuffleButton: { [weak nowPlayingViewModel = self.nowPlayingViewModel] in
+                nowPlayingViewModel?.update(with: tracks, isShuffled: true)
             }
         )
         Section(header: headerView) {

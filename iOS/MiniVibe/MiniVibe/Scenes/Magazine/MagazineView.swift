@@ -21,11 +21,11 @@ struct MagazineView: View {
         guard let magazine = viewModel.magazine,
               let tracks = magazine.tracks else {
             return AnyView(EmptyView()
-                            .onAppear(perform: {
-                                withAnimation {
-                                    viewModel.fetch(id: magazineID)
+                            .onAppear {
+                                withAnimation { [weak viewModel = self.viewModel] in
+                                    viewModel?.fetch(id: magazineID)
                                 }
-                            })
+                            }
                             .navigationBarTitleDisplayMode(.inline))}
         
         return AnyView(

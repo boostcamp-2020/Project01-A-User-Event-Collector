@@ -13,36 +13,38 @@ struct NowPlayingView: View {
     @GestureState private var dragAmount = CGSize.zero
     
     var body: some View {
-        HStack {
-            Button(action: {
-                if viewModel.currentTrack != nil {
-                    showMediaPlayer.toggle()
-                }
-            }, label: {
-                SwappableRowView(title: viewModel.trackName,
-                                 subTitle: viewModel.artist,
-                                 coverURLString: viewModel.coverURLString,
-                                 coverData: viewModel.coverData)
-                    .padding(.all, 9)
-            }).sheet(isPresented: $showMediaPlayer, content: {
-                PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
-            })
-            .accessibility(identifier: "NowPlayingView")
-            HStack(spacing: 5) {
-                ToggleableImage(isEnabled: $viewModel.isPlaying,
-                                imageWhenTrue: "pause", colorWhenTrue: .gray,
-                                imageWhenFalse: "play.fill", colorWhenFalse: .gray,
-                                size: .medium)
+        HStack { [weak viewModel = self.viewModel] in
+            if let viewModel = viewModel {
                 Button(action: {
-                    viewModel.playNextTrack()
+                    if viewModel.currentTrack != nil {
+                        showMediaPlayer.toggle()
+                    }
                 }, label: {
-                    Image(systemName: "forward.fill")
-                        .accesoryModifier(color: .gray, size: .medium)
-                        .padding(10)
+                    SwappableRowView(title: viewModel.trackName,
+                                     subTitle: viewModel.artist,
+                                     coverURLString: viewModel.coverURLString,
+                                     coverData: viewModel.coverData)
+                        .padding(.all, 9)
+                }).sheet(isPresented: $showMediaPlayer, content: {
+                    PlayerView(viewModel: viewModel, showMediaPlayer: $showMediaPlayer)
                 })
+                .accessibility(identifier: "NowPlayingView")
+                HStack(spacing: 5) {
+                    ToggleableImage(isEnabled: $viewModel.isPlaying,
+                                    imageWhenTrue: "pause", colorWhenTrue: .gray,
+                                    imageWhenFalse: "play.fill", colorWhenFalse: .gray,
+                                    size: .medium)
+                    Button(action: { [weak viewModel = self.viewModel] in
+                        viewModel?.playNextTrack()
+                    }, label: {
+                        Image(systemName: "forward.fill")
+                            .accesoryModifier(color: .gray, size: .medium)
+                            .padding(10)
+                    })
+                }
+                .padding(.leading, 20)
+                .padding(.trailing, 10)
             }
-            .padding(.leading, 20)
-            .padding(.trailing, 10)
         }
         .background(BlurView())
         .preferredColorScheme(.dark)
