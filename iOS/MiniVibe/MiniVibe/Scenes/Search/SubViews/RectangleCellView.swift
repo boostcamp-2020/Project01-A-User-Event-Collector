@@ -15,8 +15,8 @@ struct RectangleCellView: View {
     }
     
     var body: some View {
-        Button(action: { [weak manager = self.manager] in
-            manager?.log(ButtonEvent.newsTouched)
+        Button(action: {
+            manager.log(ButtonEvent.newsTouched)
         }, label: {
             ZStack(alignment: .bottomLeading) {
                 Image("logo")

@@ -31,8 +31,8 @@ struct TrackHorizontalListView: View {
                 MemorySafeNavigationLink(
                     contentView: CategoryHeaderView(title: "오늘 TOP 100").foregroundColor(.primary),
                     destination: AnyView(PlaylistView(playlistID: 18)
-                                            .onAppear { [weak manager = self.manager] in
-                                                manager?.log(screenEvent)
+                                            .onAppear {
+                                                manager.log(screenEvent)
                                             })
                 )
                 ScrollView(.horizontal, showsIndicators: false) {

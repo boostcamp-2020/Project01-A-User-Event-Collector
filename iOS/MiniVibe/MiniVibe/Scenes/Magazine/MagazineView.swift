@@ -22,8 +22,8 @@ struct MagazineView: View {
               let tracks = magazine.tracks else {
             return AnyView(EmptyView()
                             .onAppear {
-                                withAnimation { [weak viewModel = self.viewModel] in
-                                    viewModel?.fetch(id: magazineID)
+                                withAnimation {
+                                    viewModel.fetch(id: magazineID)
                                 }
                             }
                             .navigationBarTitleDisplayMode(.inline))}

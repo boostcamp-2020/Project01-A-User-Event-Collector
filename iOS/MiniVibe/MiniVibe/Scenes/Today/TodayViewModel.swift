@@ -9,9 +9,25 @@ import Foundation
 
 class TodayViewModel: ObservableObject {
     @Published var stations = [DJStation]()
-    @Published var recommends = [TestData.playlist, TestData.playlist, TestData.playlist]
-    @Published var favorites = [TestData.playlist, TestData.playlist, TestData.playlist]
-    @Published var magazines = [TestData.magazine, TestData.magazine, TestData.magazine]
+    @Published var recommends = [TestData.playlist, TestData.playlist, TestData.playlist,
+                                 TestData.playlist, TestData.playlist, TestData.playlist,
+                                 TestData.playlist, TestData.playlist, TestData.playlist,
+                                 TestData.playlist, TestData.playlist, TestData.playlist,
+                                 TestData.playlist, TestData.playlist, TestData.playlist,
+                                 TestData.playlist, TestData.playlist, TestData.playlist]
+    @Published var favorites = [TestData.playlist, TestData.playlist, TestData.playlist,
+                                TestData.playlist, TestData.playlist, TestData.playlist,
+                                TestData.playlist, TestData.playlist, TestData.playlist,
+                                TestData.playlist, TestData.playlist, TestData.playlist,
+                                TestData.playlist, TestData.playlist, TestData.playlist,
+                                TestData.playlist, TestData.playlist, TestData.playlist]
+    @Published var magazines = [TestData.magazine, TestData.magazine, TestData.magazine,
+                                TestData.magazine, TestData.magazine, TestData.magazine,
+                                TestData.magazine, TestData.magazine, TestData.magazine,
+                                TestData.magazine, TestData.magazine, TestData.magazine,
+                                TestData.magazine, TestData.magazine, TestData.magazine,
+                                TestData.magazine, TestData.magazine, TestData.magazine,
+                                TestData.magazine, TestData.magazine, TestData.magazine]
     @Published var tracks = [TestData.defaultTrack, TestData.defaultTrack, TestData.defaultTrack]
     
     private let networkManager = NetworkManager()
@@ -30,39 +46,31 @@ class TodayViewModel: ObservableObject {
         let urlRequest = RequestBuilder(url: url,
                                         method: .get).create()
         networkManager.request(urlRequest: urlRequest) { [weak self] data in
+            guard let self = self else { return }
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.magazines = decodedData.magazines
-                    }
+                    self.magazines = decodedData.magazines
                 }
             case .djStations:
                 if let decodedData = try? JSONDecoder().decode(DJStationResponse.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.stations = decodedData.djStations
-                    }
+                    self.stations = decodedData.djStations
                 }
             case .playlists:
                 if let decodedData = try? JSONDecoder().decode(PlayListReponse.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        if let tracks = decodedData.playlist.tracks {
-                            self?.tracks = tracks
-                        }
+                    if let tracks = decodedData.playlist.tracks {
+                        self.tracks = tracks
                     }
                 }
             default:
                 if let decodedData = try? JSONDecoder().decode(Playlists.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        switch type {
-                        case .favorites:
-                            self?.favorites = decodedData.playlists
-                        case .recommendations:
-                            self?.recommends = decodedData.playlists
-                        default:
-                            return
-                        }
-                        
+                    switch type {
+                    case .favorites:
+                        self.favorites = decodedData.playlists
+                    case .recommendations:
+                        self.recommends = decodedData.playlists
+                    default:
+                        return
                     }
                 }
             }

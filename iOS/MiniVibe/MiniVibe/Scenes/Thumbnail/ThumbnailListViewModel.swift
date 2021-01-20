@@ -19,18 +19,15 @@ class ThumbnailListViewModel: ObservableObject {
         let urlRequest = RequestBuilder(url: url,
                                         method: .get).create()
         networkManager.request(urlRequest: urlRequest) { [weak self] data in
+            guard let self = self else { return }
             switch type {
             case .magazines:
                 if let decodedData = try? JSONDecoder().decode(Magazines.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.thumbnails = decodedData.magazines
-                    }
+                    self.thumbnails = decodedData.magazines
                 }
             default:
                 if let decodedData = try? JSONDecoder().decode(Playlists.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.thumbnails = decodedData.playlists
-                    }
+                    self.thumbnails = decodedData.playlists
                 }
             }
         }

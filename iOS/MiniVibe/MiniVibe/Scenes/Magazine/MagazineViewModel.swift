@@ -19,10 +19,9 @@ class MagazineViewModel: ObservableObject {
         let urlRequest = RequestBuilder(url: url,
                                         method: .get).create()
         networkManager.request(urlRequest: urlRequest) { [weak self] data in
+            guard let self = self else { return }
             if let decodedData = try? JSONDecoder().decode(MagazineReponse.self, from: data) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.magazine = decodedData.magazine
-                }
+                self.magazine = decodedData.magazine
             }
         }
     }

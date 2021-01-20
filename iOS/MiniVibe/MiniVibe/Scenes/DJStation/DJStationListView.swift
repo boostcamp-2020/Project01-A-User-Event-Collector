@@ -24,24 +24,22 @@ struct DJStationListView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVGrid(columns: columns) { [ weak stationViewModel = self.stationViewModel] in
-                if let stationViewModel = stationViewModel {
-                    ForEach(stationViewModel.stations) { station in
-                        Button(action: {
-                            manager.log(ButtonEvent.djStationTouched)
-                        }, label: {
-                            URLImage(urlString: station.cover)
-                                .frame(minHeight: 100)
-                        })
-                        .padding(.all, 15)
-                        .accentColor(.green)
-                    }
+            LazyVGrid(columns: columns) {
+                ForEach(stationViewModel.stations) { station in
+                    Button(action: {
+                        manager.log(ButtonEvent.djStationTouched)
+                    }, label: {
+                        URLImage(urlString: station.cover)
+                            .frame(minHeight: 100)
+                    })
+                    .padding(.all, 15)
+                    .accentColor(.green)
                 }
             }
         }
         .modifier(NavigationBarStyle(title: "DJ 스테이션"))
-        .onAppear { [weak stationViewModel = self.stationViewModel] in
-            stationViewModel?.fetch()
+        .onAppear {
+            stationViewModel.fetch()
         }
     }
 }

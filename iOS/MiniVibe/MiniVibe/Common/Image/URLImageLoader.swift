@@ -12,18 +12,12 @@ class URLImageLoader: ObservableObject {
     @Published var image: UIImage?
     
     private var imageCache = ImageCache.shared
-    private let network = NetworkManager()
-    private var cancellables = Set<AnyCancellable>()
-    private let urlStrings = [
-        "https://cdn.pixabay.com/photo/2020/12/20/10/01/advent-5846564__480.jpg",
-        "https://cdn.pixabay.com/photo/2020/12/20/19/21/cookies-5847940__480.jpg",
-        "https://cdn.pixabay.com/photo/2019/12/17/14/07/amaryllis-4701720__480.jpg",
-        "https://cdn.pixabay.com/photo/2019/12/06/19/06/heart-4678021__480.jpg",
-        "https://cdn.pixabay.com/photo/2020/12/20/04/06/bear-5846065__480.jpg",
-        "https://cdn.pixabay.com/photo/2019/12/20/07/05/architecture-4707761__480.jpg"
-    ]
+    private let network = NetworkService(session: URLSession.shared)
+    private var cancellable: AnyCancellable?
+    private var id: UUID?
     
     func fetch(urlString: String?, imageData: Data?) {
+        guard let urlString = urlString else { return }
         if image != nil {
             return
         }
@@ -31,42 +25,54 @@ class URLImageLoader: ObservableObject {
             image = UIImage(data: imageData)
             return
         }
-        guard let urlString = urlString else {
-            image = UIImage(named: "appIcon")
-            return
-        }
+//        guard let urlString = urlString else {
+//            image = UIImage(named: "appIcon")
+//            return
+//        }
         if loadFromCache(urlString: urlString) {
             return
         }
         loadFromUrl(urlString: urlString)
     }
     
+    func cancel() {
+        cancellable?.cancel()
+    }
+    
     private func loadFromUrl(urlString: String) {
-        guard let urlString = urlStrings.randomElement() else { return }
         let url = URL(string: urlString)
         let urlRequest = RequestBuilder(url: url, method: .get).create()
         guard let request = urlRequest else { return }
         
-        network.request(urlRequest: request) { data in
-            DispatchQueue.main.async { [weak self] in
-                self?.image = UIImage(data: data)
-                self?.imageCache.set(forKey: urlString, data: data as NSData)
+        cancellable = network.request(request: request)
+            .sink { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            } receiveValue: { [weak self] data in
+                guard let self = self,
+                      let image = UIImage(data: data) else { return }
+                DispatchQueue.main.async { [weak self] in
+                    self?.image = image
+                }
+                self.imageCache.set(forKey: urlString, data: data as NSData)
+                self.imageCache.imageCache.set(forKey: urlString, data: image)
             }
-        }
     }
     
     private func loadFromCache(urlString: String) -> Bool {
-        guard let data = imageCache.get(forKey: urlString) else {
+        guard let image = imageCache.imageCache.get(forKey: urlString) else {
             return false
         }
         
-        DispatchQueue.main.async { [weak self] in
-            self?.image = UIImage(data: data as Data)
-        }
+        self.image = image
         return true
     }
     
     deinit {
-        cancellables.forEach { $0.cancel() }
+        cancel()
     }
 }

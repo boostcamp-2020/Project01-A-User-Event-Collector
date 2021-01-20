@@ -11,13 +11,13 @@ import Combine
 class NetworkManager {
     
     private let network = NetworkService(session: URLSession.shared)
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellable: AnyCancellable?
     
     func request(urlRequest: URLRequest?,
                  completion: @escaping (Data) -> Void) {
         guard let urlRequest = urlRequest else { return }
         
-        network.request(request: urlRequest)
+        cancellable = network.request(request: urlRequest)
             .sink { result in
                 switch result {
                 case .failure(let error):
@@ -28,10 +28,9 @@ class NetworkManager {
             } receiveValue: { data in
                 completion(data)
             }
-            .store(in: &cancellables)
     }
     
     deinit {
-        cancellables.forEach { $0.cancel() }
+        cancellable?.cancel()
     }
 }

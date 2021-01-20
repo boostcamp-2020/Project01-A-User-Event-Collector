@@ -18,10 +18,9 @@ class DJStationListViewModel: ObservableObject {
         let urlRequest = RequestBuilder(url: url,
                                         method: .get).create()
         networkManager.request(urlRequest: urlRequest) { [weak self] data in
+            guard let self = self else { return }
             if let decodedData = try? JSONDecoder().decode(DJStationResponse.self, from: data) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.stations = decodedData.djStations
-                }
+                self.stations = decodedData.djStations
             }
         }
     }

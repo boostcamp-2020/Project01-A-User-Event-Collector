@@ -45,12 +45,11 @@ class SearchViewModel: ObservableObject {
             let urlRequest = RequestBuilder(url: url,
                                             method: .get).create()
             networkManager.request(urlRequest: urlRequest) { [weak self] data in
+                guard let self = self else { return }
                 if let decodedData = try? JSONDecoder().decode(Search.self, from: data) {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.tracks = decodedData.tracks ?? []
-                        self?.albums = decodedData.albums ?? []
-                        self?.artists = decodedData.artists ?? []
-                    }
+                    self.tracks = decodedData.tracks ?? []
+                    self.albums = decodedData.albums ?? []
+                    self.artists = decodedData.artists ?? []
                 }
             }
         }

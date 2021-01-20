@@ -29,42 +29,39 @@ struct CustomTabView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack { [weak playerViewModel = self.playerViewModel, weak manager = self.manager] in
-                if let playerViewModel = playerViewModel,
-                   let manager = manager {
-                    Spacer()
-                    CustomTabViewContent(manager: manager, selectedTab: selectedTab)
-                    Spacer()
-                    ZStack {
-                        NowPlayingView(viewModel: playerViewModel)
-                            .offset(y: -geometry.size.height/12)
-                        
-                        HStack(alignment: .bottom, spacing: 30) {
-                            TabIconView(height: geometry.size.height/10,
-                                    imageName: "house.fill",
-                                    labelText: "투데이",
-                                    tab: .today,
-                                    selectedTab: $selectedTab)
-                            TabIconView(height: geometry.size.height/10,
-                                    imageName: "chart.bar.fill",
-                                    labelText: "차트",
-                                    tab: .chart,
-                                    selectedTab: $selectedTab)
-                            TabIconView(height: geometry.size.height/10,
-                                    imageName: "magnifyingglass.circle",
-                                    labelText: "검색",
-                                    tab: .search,
-                                    selectedTab: $selectedTab)
-                            TabIconView(height: geometry.size.height/10,
-                                    imageName: "tray.full.fill",
-                                    labelText: "보관함",
-                                    tab: .library,
-                                    selectedTab: $selectedTab)
-                        }
-                        .padding(.horizontal, 20)
-                        .frame(width: geometry.size.width, height: geometry.size.height/12)
-                        .background(Color.black.shadow(radius: 2))
-                }
+            VStack {
+                Spacer()
+                CustomTabViewContent(manager: manager, selectedTab: selectedTab)
+                Spacer()
+                ZStack {
+                    NowPlayingView(viewModel: playerViewModel)
+                        .offset(y: -geometry.size.height/12)
+                    
+                    HStack(alignment: .bottom, spacing: 30) {
+                        TabIconView(height: geometry.size.height/10,
+                                imageName: "house.fill",
+                                labelText: "투데이",
+                                tab: .today,
+                                selectedTab: $selectedTab)
+                        TabIconView(height: geometry.size.height/10,
+                                imageName: "chart.bar.fill",
+                                labelText: "차트",
+                                tab: .chart,
+                                selectedTab: $selectedTab)
+                        TabIconView(height: geometry.size.height/10,
+                                imageName: "magnifyingglass.circle",
+                                labelText: "검색",
+                                tab: .search,
+                                selectedTab: $selectedTab)
+                        TabIconView(height: geometry.size.height/10,
+                                imageName: "tray.full.fill",
+                                labelText: "보관함",
+                                tab: .library,
+                                selectedTab: $selectedTab)
+                    }
+                    .padding(.horizontal, 20)
+                    .frame(width: geometry.size.width, height: geometry.size.height/12)
+                    .background(Color.black.shadow(radius: 2))
             }
         }
     }

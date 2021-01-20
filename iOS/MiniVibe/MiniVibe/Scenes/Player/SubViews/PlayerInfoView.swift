@@ -17,11 +17,11 @@ struct PlayerInfoView: View {
         VStack(spacing: 40) {
             SwipableImageView(urlString: track.coverURLString, 
                               coverData: track.coverData,
-                              didSwipeLeft: { [weak viewModel = self.viewModel] in
-                                viewModel?.playNextTrack()
+                              didSwipeLeft: {
+                                viewModel.playNextTrack()
                               },
-                              didSwipeRight: { [weak viewModel = self.viewModel] in
-                                viewModel?.playPreviousTrack()
+                              didSwipeRight: {
+                                viewModel.playPreviousTrack()
                               })
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
